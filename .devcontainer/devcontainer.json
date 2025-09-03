@@ -1,0 +1,29 @@
+{
+  "name": "Fullstack Explorer - Trivia Game v1.0",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode@10.1.0",
+        "dsznajder.es7-react-js-snippets@4.4.3",
+        "formulahendry.auto-rename-tag@0.1.10"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "files.eol": "\n",
+        "extensions.autoUpdate": false
+      }
+    }
+  },
+  "forwardPorts": [5173],
+  "postCreateCommand": "npm ci",
+  "remoteUser": "node",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  }
+}
