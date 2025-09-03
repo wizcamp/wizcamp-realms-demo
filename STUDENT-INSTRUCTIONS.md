@@ -4,12 +4,13 @@ Welcome to your React development journey! You'll be building an interactive tri
 
 ## 🚀 Getting Started
 
-### Step 1: Set Up Your Environment
-1. Click "Use this template" to create your own copy
-2. Name your repository `fullstack-explorer`
-3. Open in GitHub Codespaces
-4. Run `npm run dev` in the terminal
-5. Open the preview to see your starting point
+### Step 1: Launch Your Codespace
+1. **Navigate to**: `https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=wizcamp/wizcamp-realms-demo`
+2. **Click**: "Create new codespace"
+3. **Wait**: For Codespace to build (Dark Dracula theme loads automatically)
+4. **Run**: `npm run dev` in the terminal
+5. **Open**: `http://localhost:5173/` to see your starting point
+6. **Optional**: Configure terminal settings to send keybindings to shell
 
 ### Step 2: Understand the Project Structure
 - `src/App.jsx` - Main app component (starts with placeholder)
@@ -88,6 +89,12 @@ npm run dev          # Start development server (use this most!)
 npm run format       # Clean up your code formatting
 ```
 
+### 💡 Codespaces Tips
+
+**Terminal Keybindings**: If you see a message about "keybindings don't go to the terminal," click "Configure Terminal Settings" and enable "Send Keybindings to Shell" for smoother terminal experience.
+
+**Everything Configured**: Dark Dracula theme, extensions, and formatting are pre-configured - no manual setup needed!
+
 ### React DevTools
 1. Install React DevTools browser extension
 2. Use Components tab to inspect state
@@ -113,6 +120,7 @@ By the end, you'll have:
 - **Don't skip the TODOs** - They guide your learning progression
 - **Commit often** - Save your progress with meaningful messages
 - **Ask questions** - No question is too small
+- **Codespace Issues?** - Try rebuilding your container: `Ctrl+Shift+P` → "Codespaces: Rebuild Container"
 - **Have fun** - You're building something awesome!
 
 ---
