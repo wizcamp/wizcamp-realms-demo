@@ -4,7 +4,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "esbenp.prettier-vscode@10.1.0",
+        "esbenp.prettier-vscode@11.1.0",
         "dsznajder.es7-react-js-snippets@4.4.3",
         "formulahendry.auto-rename-tag@0.1.10"
       ],
