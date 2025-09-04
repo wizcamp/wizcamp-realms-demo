@@ -1,8 +1,8 @@
 /**
  * GAME MAP - Interactive Zone Selection
  * 
- * TODO: Day 3 - Add to App.jsx PLAYING screen
- * TODO: Day 7 - Add setIsQuizVisible(true) to handleZoneClick
+ * TODO: Session 3 - Add to App.jsx PLAYING screen
+ * TODO: Session 7 - Add setIsQuizVisible(true) to handleZoneClick
  */
 
 export default function GameMap() {

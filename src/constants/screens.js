@@ -4,7 +4,7 @@
  * These constants define the different screens/states of the game.
  * Used by App.jsx to determine which components to render.
  * 
- * TODO: Day 3 - Use these constants instead of strings like "splash"
+ * TODO: Session 3 - Use these constants instead of strings like "splash"
  */
 export const SCREENS = {
   /** Welcome screen with start button and credits */

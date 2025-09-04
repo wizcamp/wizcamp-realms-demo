@@ -1,7 +1,7 @@
 /**
  * ZONE CONFIGURATION - The Heart of Your Game
  * 
- * TODO: Day 4 - Students will design their zone themes here
+ * TODO: Session 4 - Students will design their zone themes here
  * 
  * Each zone needs:
  * - id: Zone number (0, 1, 2)
@@ -31,7 +31,7 @@ export const ZONES = [
       alignment: "left",
     },
   },
-  // TODO: Day 4 - Add Zone 1 and Zone 2
+  // TODO: Session 4 - Add Zone 1 and Zone 2
 ];
 
 /**

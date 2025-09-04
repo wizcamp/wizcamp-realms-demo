@@ -1,7 +1,7 @@
 /**
  * FEEDBACK MESSAGES - Custom Game Responses
  * 
- * TODO: Day 7 - Students will create these arrays for quiz feedback
+ * TODO: Session 7 - Students will create these arrays for quiz feedback
  * 
  * Example arrays to create:
  * export const CORRECT_FEEDBACK = [
@@ -19,4 +19,4 @@
  * ];
  */
 
-// TODO: Day 7 - Students will implement these arrays
+// TODO: Session 7 - Students will implement these arrays

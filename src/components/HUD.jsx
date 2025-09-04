@@ -1,8 +1,8 @@
 /**
  * HUD - Heads Up Display
  * 
- * TODO: Day 8 - Display current score
- * TODO: Day 9 - Add MusicToggle component
+ * TODO: Session 8 - Display current score
+ * TODO: Session 9 - Add MusicToggle component
  */
 
 export default function HUD() {

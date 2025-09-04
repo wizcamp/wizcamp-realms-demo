@@ -1,7 +1,7 @@
 /**
  * GAME OVER - Victory Screen
  * 
- * TODO: Day 8 - Students will create this component
+ * TODO: Session 8 - Students will create this component
  * - Display final score
  * - Show completed zones count
  * - Add "Play Again" button that calls resetGame()

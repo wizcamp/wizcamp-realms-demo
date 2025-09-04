@@ -1,7 +1,7 @@
 /**
  * GAME BUTTON - Reusable Button Component
  * 
- * TODO: Day 2 - Students will create this component
+ * TODO: Session 2 - Students will create this component
  * 
  * Props needed:
  * - text: Button text to display
@@ -13,7 +13,7 @@
  */
 
 export default function GameButton({ text, onClick, variant = "primary" }) {
-  // TODO: Day 2 - Students implement this component
+  // TODO: Session 2 - Students implement this component
   return (
     <button 
       className={`game-button ${variant}`}

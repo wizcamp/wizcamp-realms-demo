@@ -1,8 +1,8 @@
 /**
  * QUIZ MODAL - Interactive Trivia Interface
  * 
- * TODO: Day 7 - Students will build this complex component
- * TODO: Day 8 - Connect to scoring system
+ * TODO: Session 7 - Students will build this complex component
+ * TODO: Session 8 - Connect to scoring system
  */
 
 export default function QuizModal() {

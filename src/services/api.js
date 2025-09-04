@@ -3,8 +3,8 @@ import { getZoneById } from "../data/zones";
 /**
  * API SERVICE - Connecting to External Data
  * 
- * TODO: Day 5 - Students implement fetchQuestions function
- * TODO: Day 6 - Add localStorage caching
+ * TODO: Session 5 - Students implement fetchQuestions function
+ * TODO: Session 6 - Add localStorage caching
  */
 
 /**
@@ -13,7 +13,7 @@ import { getZoneById } from "../data/zones";
  * @returns {Promise<Array>} Array of formatted question objects
  */
 export async function fetchQuestions(zoneId) {
-  // TODO: Day 5 - Implement this function
+  // TODO: Session 5 - Implement this function
   // 1. Get zone data using getZoneById(zoneId)
   // 2. Build API URL with zone's categoryId, difficulty, questionCount
   // 3. Fetch from Open Trivia Database
@@ -24,6 +24,6 @@ export async function fetchQuestions(zoneId) {
   return [];
 }
 
-// TODO: Day 6 - Add caching functions
+// TODO: Session 6 - Add caching functions
 // export function clearQuestionCache(zoneId) { }
 // export function clearAllQuestionCache() { }
