@@ -15,6 +15,7 @@
   },
   "forwardPorts": [5173],
   "postCreateCommand": "npm install",
+  "postStartCommand": "echo '\n🎉 Howdy Wizcamper! Your codespace is ready to go.\n\n🚀 Launch the app by typing: npm run dev\n\n📖 Then follow the on-screen instructions to start building!\n'",
   "remoteUser": "node",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {

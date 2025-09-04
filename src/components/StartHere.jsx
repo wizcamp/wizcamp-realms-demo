@@ -5,7 +5,6 @@ export default function StartHere() {
         .start-here {
           display: flex;
           flex-direction: column;
-          justify-content: center;
           align-items: center;
           min-height: 100vh;
           color: white;
@@ -13,15 +12,13 @@ export default function StartHere() {
           background: linear-gradient(135deg, #0f172a, #1e293b);
           color: #e2e8f0;
           padding: 2rem 1rem;
+          overflow-y: auto;
         }
 
         .start-here-content {
-          max-width: 640px;
+          max-width: 720px;
           width: 100%;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
+          margin: auto;
         }
 
         .start-here-svg {
@@ -185,9 +182,8 @@ export default function StartHere() {
                 <li>Open <code>src/App.jsx</code></li>
                 <li>Replace <code>&lt;StartHere /&gt;</code> with <code>&lt;SplashScreen /&gt;</code></li>
                 <li>Add the import: <code>import SplashScreen from './components/SplashScreen';</code></li>
-                <li>Save the file and watch the magic happen!</li>
               </ol>
-              <p>✨ Watch the screen update instantly — no refresh needed. This is called <strong>Hot Module Reloading</strong>!</p>
+              <p>✨ Watch the screen update instantly — no save needed! This is called <strong>Hot Module Reloading</strong>!</p>
             </div>
           </div>
         </div>
