@@ -2,6 +2,15 @@ export default function StartHere() {
   return (
     <>
       <style>{`
+        /* Override app-container constraints for StartHere */
+        .app-container:has(.start-here) {
+          height: auto;
+          min-height: 100vh;
+        }
+        
+        body:has(.start-here) {
+          overflow: auto;
+        }
         .start-here {
           display: flex;
           flex-direction: column;
@@ -19,6 +28,11 @@ export default function StartHere() {
           max-width: 720px;
           width: 100%;
           margin: auto;
+          overflow: visible;
+        }
+        
+        .start-here-logo {
+          overflow: visible;
         }
 
         .start-here-svg {
