@@ -4,11 +4,23 @@ Welcome to your React development journey! You'll be building an interactive tri
 
 ## 🚀 Getting Started
 
-### Step 1: Launch Your Codespace
+### 🎯 Quick Start - Launch Your Game!
+
+**After your Codespace loads, run this command in the terminal:**
+
+```bash
+npm run dev
+```
+
+**Then click "Open in Browser" when the port notification appears!**
+
+---
+
+### Complete Setup Steps
 1. **Navigate to**: `https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=wizcamp/wizcamp-realms-demo`
 2. **Click**: "Create new codespace"
 3. **Wait**: For Codespace to build (Dark Dracula theme loads automatically)
-4. **Run**: `npm run dev` in the terminal
+4. **🚀 RUN**: `npm run dev` in the terminal
 5. **Port Notification**: When you see "Your application running on port 5173 is available" → Click **"Open in Browser"** (NOT "Make Public") or visit http://localhost:5173/
 6. **Follow the on-screen instructions** to swap `<StartHere />` for `<SplashScreen />` and experience hot module reloading
 7. **Optional**: Configure terminal settings to send keybindings to shell
