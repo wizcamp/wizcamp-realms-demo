@@ -9,8 +9,10 @@ Welcome to your React development journey! You'll be building an interactive tri
 2. **Click**: "Create new codespace"
 3. **Wait**: For Codespace to build (Dark Dracula theme loads automatically)
 4. **Run**: `npm run dev` in the terminal
-5. **Open**: `http://localhost:5173/` to see your starting point
-6. **Optional**: Configure terminal settings to send keybindings to shell
+5. **Port Notification**: When you see "Your application running on port 5173 is available" → Click **"Open in Browser"** (NOT "Make Public") or visit http://localhost:5173/
+6. **Follow the on-screen instructions** to swap `<StartHere />` for `<SplashScreen />` and experience hot module reloading
+7. **Optional**: Configure terminal settings to send keybindings to shell
+8. **Optional**: Allow sharing of clipboard when prompted
 
 ### Step 2: Understand the Project Structure
 - `src/App.jsx` - Main app component (starts with placeholder)
@@ -22,9 +24,9 @@ Welcome to your React development journey! You'll be building an interactive tri
 ## 📅 Daily Learning Path
 
 ### Day 1: Welcome to React
-- **Goal**: Replace placeholder with SplashScreen component
-- **Key Concept**: Component composition
-- **Task**: Change `<div>Game will appear here...</div>` to `<SplashScreen />`
+- **Goal**: Replace StartHere with SplashScreen component
+- **Key Concept**: Component composition and hot module reloading
+- **Task**: Follow the on-screen instructions to swap `<StartHere />` for `<SplashScreen />` in App.jsx
 
 ### Day 2: Reusable Components  
 - **Goal**: Create GameButton component
