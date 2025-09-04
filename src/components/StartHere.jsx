@@ -9,7 +9,8 @@ export default function StartHere() {
         }
         
         body:has(.start-here) {
-          overflow: auto;
+          overflow-y: auto;
+          overflow-x: hidden;
         }
         .start-here {
           display: flex;
@@ -22,10 +23,11 @@ export default function StartHere() {
           color: #e2e8f0;
           padding: 2rem 1rem;
           overflow-y: auto;
+          overflow-x: hidden;
         }
 
         .start-here-content {
-          max-width: 720px;
+          max-width: min(720px, 90vw);
           width: 100%;
           margin: auto;
           overflow: visible;
@@ -39,10 +41,12 @@ export default function StartHere() {
           animation: float 4s ease-in-out infinite;
           filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
           margin-bottom: 1rem;
+          max-width: 100%;
+          height: auto;
         }
 
         .start-here-title {
-          font-size: 2.5rem;
+          font-size: clamp(2rem, 5vw, 2.5rem);
           font-weight: 700;
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
           color: #9cdcfe;
@@ -50,7 +54,7 @@ export default function StartHere() {
         }
 
         .start-here-subtitle {
-          font-size: 1.25rem;
+          font-size: clamp(1rem, 3vw, 1.25rem);
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
           color: #94a3b8;
           margin-bottom: 2rem;
@@ -153,12 +157,6 @@ export default function StartHere() {
         }
 
         @media (max-width: 640px) {
-          .start-here-title {
-            font-size: 2rem;
-          }
-          .start-here-subtitle {
-            font-size: 1.125rem;
-          }
           .terminal-body {
             padding: 1rem;
           }
