@@ -14,7 +14,6 @@
     }
   },
   "forwardPorts": [5173],
-  "onCreateCommand": "echo '\n🎉 Howdy Wizcamper! Your codespace is ready to go.\n\n🚀 Launch the app by typing: npm run dev\n\n📖 Then follow the on-screen instructions to start building!\n'",
   "postCreateCommand": "npm install",
   "remoteUser": "node",
   "features": {

@@ -6,6 +6,7 @@ export default function StartHere() {
         .app-container:has(.start-here) {
           height: auto;
           min-height: 100vh;
+          width: auto;
         }
         
         body:has(.start-here) {
