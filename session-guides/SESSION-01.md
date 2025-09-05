@@ -1,6 +1,6 @@
 # 🧭 Session 01 — Setting Up Your Trivia Game
 
-Welcome to your first session! 🎉  
+Welcome to React Development! 🎉  
 
 You're about to launch your dev setup and start building like a pro. This guide breaks everything down into bite-sized tasks so you can move fast, learn by doing, and see results right away. Ready to dive in? Let's go!
 
@@ -13,6 +13,7 @@ You're about to launch your dev setup and start building like a pro. This guide 
 
 
 <a id="launch-your-codespace"></a>
+
 ## 🔧 Launch Your Codespace
 
 Let's get your cloud coding environment up and running so you can start building without messing with local installs. This is your dev playground in the cloud — no setup headaches, no installs, just code.
@@ -37,6 +38,7 @@ Visit [github.com/codespaces](https://github.com/codespaces) to explore more abo
 Peek inside the `.devcontainer/devcontainer.json` file to see how your Codespace is configured — it's like a blueprint for your dev environment.
 
 <a id="start-the-development-server"></a>
+
 ## 🚀 Start the Development Server
 
 Preview the app in your browser by running the dev server to confirm everything is wired up correctly.
@@ -53,6 +55,7 @@ A running dev server lets you see and test your app as you build it. It gives yo
 Visit [github.com/codespaces](https://github.com/codespaces) to explore more about managing your Codespaces.
 
 <a id="replace-the-placeholder-component"></a>
+
 ## 🧩 Replace the Placeholder Component
 
 With the development server still running, replace the placeholder component with the game's splash screen component to experience live updates in action.
@@ -71,6 +74,7 @@ You probably noticed the `.jsx` file extension. That's because these components 
 The live update "magic" you experienced is actually powered by a build tool we are using called **Vite**, which uses a process known as **Hot Module Replacement (HMR)** to apply "smart updates" to your app instantly as you code.
 
 <a id="update-the-page-title"></a>
+
 ## 🏷️ Update the Page Title
 
 Even though React apps are built with components, they still use a standard HTML file as the entry point. Let's update the page title to reflect our project name.
@@ -85,6 +89,7 @@ Even though React apps are built with components, they still use a standard HTML
 A descriptive page title is important for usability, accessibility, and SEO. It helps users identify your app when they have multiple tabs open and improves discoverability in search engines.
 
 <a id="ask-the-ai"></a>
+
 ## 🤖 Ask the AI — What Just Happened?
 
 You just launched your Codespace, ran your dev server, swapped a component, and updated your page title — nice work! 🎯
