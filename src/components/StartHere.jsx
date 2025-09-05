@@ -1,3 +1,17 @@
+/**
+ * START HERE COMPONENT - Project Boilerplate
+ * 
+ * This is a temporary welcome screen that's part of the project setup.
+ * Students can safely ignore this file - it will be replaced in Session 1.
+ * 
+ * This component contains:
+ * - Welcome message and instructions
+ * - Self-contained styling (no external dependencies)
+ * - Animated logo and responsive design
+ * 
+ * Students should focus on App.jsx and other core components instead.
+ */
+
 export default function StartHere() {
   return (
     <>

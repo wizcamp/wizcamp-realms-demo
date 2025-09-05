@@ -350,6 +350,11 @@ body {
   font-weight: 400;
 }
 
+/* ===================================
+   PROGRESS DOTS - Session 11 Extension
+   ================================= */
+/* TODO: Session 11 - Uncomment these styles when adding progress dots extension
+
 .progress-dots {
   display: flex;
   justify-content: center;
@@ -380,6 +385,8 @@ body {
 .progress-dot.unanswered {
   background: #d1d5db;
 }
+
+*/
 
 .answers-grid {
   display: grid;

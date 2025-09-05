@@ -5,6 +5,8 @@
   "files.eol": "\n",
   "workbench.colorTheme": "Dark-Dracula",
   "editor.linkedEditing": true,
+  "terminal.integrated.sendKeybindingsToShell": true,
+  "markdown.preview.markEditorSelection": false,
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
@@ -25,5 +27,8 @@
   },
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "workbench.editorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
   }
 }

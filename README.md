@@ -1,10 +1,10 @@
-# Wizcamp Realms: Legends of Trivia
+# Fullstack Explorer: Trivia Game Edition
 
 Welcome to your React development journey! You'll be building an interactive trivia game over 12 sessions using modern web development tools and techniques.
 
-## 🚀 Getting Started
+## 🎯 For Students
 
-### 🎯 Quick Start - Launch Your Game!
+### 🚀 Quick Start - Launch Your Game!
 
 **After your Codespace loads, run this command in the terminal:**
 
@@ -23,8 +23,7 @@ npm run dev
 4. **🚀 RUN**: `npm run dev` in the terminal
 5. **Port Notification**: When you see "Your application running on port 5173 is available" → Click **"Open in Browser"** (NOT "Make Public") or visit http://localhost:5173/
 6. **Follow the on-screen instructions** to swap `<StartHere />` for `<SplashScreen />` and experience hot module reloading
-7. **Optional**: Configure terminal settings to send keybindings to shell
-8. **Optional**: Allow sharing of clipboard when prompted
+7. **Optional**: Allow sharing of clipboard when prompted
 
 ### Essential Commands
 ```bash
@@ -46,6 +45,7 @@ npm run format:check # Check code formatting
 │   ├── hooks/         # Custom React hooks (useGame, useAudio)
 │   ├── services/      # API integration (api.js)
 │   └── styles/        # CSS stylesheets
+├── session-guides/   # Detailed guides for each session
 ├── public/           # Static assets (images, audio)
 ├── .devcontainer/    # Codespaces configuration
 └── .github/workflows/ # GitHub Actions deployment
@@ -174,6 +174,7 @@ npm run format:check # Check code formatting
 3. Great for debugging Context and component hierarchy
 
 ### Getting Help
+- **Check session-guides/** folder for detailed step-by-step instructions
 - Read TODO comments in each file for guidance
 - Use console.log() for debugging
 - Ask questions during sessions
