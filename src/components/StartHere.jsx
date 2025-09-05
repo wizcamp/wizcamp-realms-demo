@@ -207,10 +207,10 @@ export default function StartHere() {
               <p>This screen is powered by a React component...</p>
               <ol>
                 <li>Open <code>src/App.jsx</code></li>
-                <li>Replace <code>&lt;StartHere /&gt;</code> with <code>&lt;SplashScreen /&gt;</code></li>
                 <li>Add the import: <code>import SplashScreen from './components/SplashScreen';</code></li>
+                <li>Replace <code>&lt;StartHere /&gt;</code> with <code>&lt;SplashScreen /&gt;</code></li>
               </ol>
-              <p>✨ Watch the screen update instantly — no save needed! This is called <strong>Hot Module Reloading</strong>!</p>
+              <p>✨ Watch the screen update instantly — no save needed! This is called <strong>Hot Module Replacement (HMR)</strong>!</p>
             </div>
           </div>
         </div>

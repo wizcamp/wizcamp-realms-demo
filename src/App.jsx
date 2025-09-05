@@ -8,7 +8,6 @@
  */
 
 import StartHere from './components/StartHere';
-// import SplashScreen from './components/SplashScreen';
 
 export default function App() {
   return (
