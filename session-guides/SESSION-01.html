@@ -12,37 +12,76 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <style type="text/css">
+
+@page {
+margin: 0.6in 0.75in 0.6in 0.75in;
+size: letter;
+}
 body {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
-line-height: 1.5;
+line-height: 1.4;
 color: #1f2328;
-max-width: 980px;
-margin: 0 auto;
-padding: 45px;
+margin: 0;
+padding: 0;
+max-width: none;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-weight: 600;
 line-height: 1.25;
 margin-bottom: 16px;
 margin-top: 24px;
 }
 h1 {
-font-size: 2em;
+font-size: 1.75em;
 border-bottom: 1px solid #d0d7de;
 padding-bottom: 0.3em;
+margin-top: 0;
 }
 h2 {
 font-size: 1.5em;
 border-bottom: 1px solid #d0d7de;
 padding-bottom: 0.3em;
+margin-top: 36px;
+margin-bottom: 18px;
+page-break-after: avoid;
+}
+
+h1 + * h2:first-of-type,
+h2:first-of-type {
+margin-top: 24px;
+}
+
+a[id] {
+scroll-margin-top: 20px;
 }
 h3 {
 font-size: 1.25em;
+margin-top: 24px;
+margin-bottom: 12px;
+page-break-after: avoid;
+break-after: avoid;
+}
+
+h3 + ol,
+h3 + ul,
+h3 + p {
+page-break-before: avoid;
+break-before: avoid;
+}
+
+ol, ul {
+page-break-inside: avoid;
+break-inside: avoid;
+}
+
+h3 {
+orphans: 2;
+widows: 2;
 }
 code {
-font-family: "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
 font-size: 13px !important;
 font-weight: 500 !important;
 background-color: #f1f3f4 !important;
@@ -56,14 +95,32 @@ word-break: break-word;
 print-color-adjust: exact !important;
 }
 pre {
-font-family: "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
 background-color: #f8f9fa !important;
 border: 1px solid #e1e4e8 !important;
 border-radius: 6px !important;
 padding: 16px !important;
-overflow-x: auto;
+overflow: visible !important;
+white-space: pre !important;
+word-wrap: normal !important;
+page-break-inside: avoid !important;
 -webkit-print-color-adjust: exact !important;
 print-color-adjust: exact !important;
+font-size: 14px !important;
+line-height: 1.4 !important;
+display: block !important;
+width: 100% !important;
+}
+
+@media print {
+pre {
+white-space: pre !important;
+font-family: "JetBrains Mono", monospace !important;
+display: block !important;
+}
+pre * {
+white-space: pre !important;
+}
 }
 pre code {
 background-color: transparent !important;
@@ -72,11 +129,31 @@ padding: 0 !important;
 color: #24292f !important;
 }
 ul, ol {
-padding-left: 2em;
-margin-bottom: 16px;
+padding-left: 1.8em;
+margin-bottom: 12px;
+}
+li {
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+@media print {
+ul, ol {
+page-break-inside: avoid;
+display: block !important;
+}
+li {
+page-break-inside: avoid;
+display: list-item !important;
+margin-bottom: 8px !important;
+}
+
+* {
+box-sizing: border-box !important;
+}
 }
 p {
-margin-bottom: 16px;
+margin-bottom: 12px;
 }
 a {
 color: #0969da;
@@ -85,35 +162,86 @@ text-decoration: none;
 strong {
 font-weight: 600;
 }
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+margin: 16px 0;
+font-size: 16px;
+line-height: 1.5;
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+vertical-align: top;
+border: 1px solid #d0d7de;
+}
+th {
+font-weight: 600;
+background-color: #f6f8fa;
+color: #24292f;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+tbody tr:nth-child(even) {
+background-color: #f8f9fa;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+
+table code {
+font-size: 14px !important;
+padding: 2px 4px !important;
+}
+
+table {
+page-break-inside: auto !important;
+}
+th {
+page-break-after: avoid !important;
+}
+tbody tr {
+page-break-inside: avoid !important;
+page-break-after: auto !important;
+}
+
+thead {
+display: table-header-group !important;
+}
+@media print {
+thead {
+display: table-row-group !important;
+}
+table {
+page-break-inside: auto !important;
+}
+tr {
+page-break-inside: avoid !important;
+}
+}
 </style>
 </head>
 <body>
-<h1 id="session-01-setting-up-your-trivia-game">🧭 Session 01 — Setting Up Your Trivia Game</h1>
+<h1 id="session-1-setting-up-your-trivia-game">Session 1 — Setting Up Your Trivia Game</h1>
 <p>Welcome to React Development! 🎉</p>
 <p>You’re about to launch your dev setup and start building like a pro. This guide breaks everything down into bite-sized tasks so you can move fast, learn by doing, and see results right away. Ready to dive in? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#launch-your-codespace">Launch Your Codespace</a></li>
+<li><a href="#project-navigation">Project Navigation</a></li>
 <li><a href="#start-the-development-server">Start the Development Server</a></li>
 <li><a href="#replace-the-placeholder-component">Replace the Placeholder Component</a></li>
 <li><a href="#update-the-page-title">Update the Page Title</a></li>
+<li><a href="#essential-terms">Essential Terms</a></li>
 <li><a href="#ask-the-ai">Ask the AI</a></li>
 </ul>
 <p><a id="launch-your-codespace"></a></p>
 <h2 id="launch-your-codespace">🔧 Launch Your Codespace</h2>
 <p>Let’s get your cloud coding environment up and running so you can start building without messing with local installs. This is your dev playground in the cloud — no setup headaches, no installs, just code.</p>
-<h3 id="steps">🛠️ Steps</h3>
 <ol type="1">
 <li>Head over to <a href="https://github.com">github.com</a> and log in using the account you set up during pre-camp.</li>
-<li>Pick one of these two ways to launch your Codespace:
-<ul>
-<li><strong>Quick link method</strong>: <a href="https://github.com/codespaces/new?hide_repo_select=true&amp;ref=main&amp;repo=wizcamp/wizcamp-realms-demo">Just click this link</a></li>
-<li><strong>Manual method</strong>:
-<ul>
-<li>Go to <a href="https://github.com/wizcamp/wizcamp-realms-demo">github.com/wizcamp/wizcamp-realms-demo</a></li>
-<li>Click <strong>Use this template → Open in codespace</strong> in the top-right corner of the page.</li>
-</ul></li>
-</ul></li>
+<li>Go to <a href="https://github.com/wizcamp/wizcamp-realms-demo">github.com/wizcamp/wizcamp-realms-demo</a> and click <strong>Use this template → Open in codespace</strong>.</li>
 <li>Wait a bit while your Codespace builds. You’ll see a <strong>VS Code</strong> editor pop up in your browser.</li>
 <li>Once it loads, make sure you can see the project files in the file explorer on the left.</li>
 <li>Dark mode not your thing? Click the gear icon in the bottom left, go to <strong>Themes -&gt; Color Theme</strong>, and pick your favorite.</li>
@@ -122,11 +250,27 @@ font-weight: 600;
 <p><strong>Codespaces</strong> give everyone the same setup — no more “it works on my machine” drama. When you launch a Codespace, it spins up a fresh cloud environment with all the tools and dependencies you need pre-installed, so you can focus on building. Best part, if you mess something up, just delete and start fresh. You will use this Codespace for all sessions.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
 <p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to explore more about managing your Codespaces.</p>
-<p>Peek inside the <code>.devcontainer/devcontainer.json</code> file to see how your Codespace is configured — it’s like a blueprint for your dev environment.</p>
+<p><a id="project-navigation"></a></p>
+<h2 id="project-navigation">🗂️ Project Navigation</h2>
+<p><em>Quick orientation to help you find files during today’s tasks:</em></p>
+<pre><code>wizcamp-realms-demo/
+├── src/                    # Your React code lives here
+│   ├── components/         # React components (SplashScreen, etc.)
+│   └── App.jsx             # Main app component (you&#39;ll edit this!)
+├── public/                 # Static files (images, etc.)
+├── session-guides/         # Step-by-step guides (like this one)
+├── index.html              # HTML entry point (you&#39;ll edit this too!)
+└── package.json            # Project configuration (npm scripts, dependencies)</code></pre>
+<p><strong>For today’s tasks, you’ll only work with:</strong></p>
+<ul>
+<li><code>src/App.jsx</code> — to swap components</li>
+<li><code>index.html</code> — to update the page title</li>
+<li><code>session-guides/</code> — for instructions (that’s where you are now!)</li>
+</ul>
+<p><em>Don’t worry about the other folders yet — we’ll explore them in future sessions.</em></p>
 <p><a id="start-the-development-server"></a></p>
 <h2 id="start-the-development-server">🚀 Start the Development Server</h2>
 <p>Preview the app in your browser by running the dev server to confirm everything is wired up correctly.</p>
-<h3 id="steps-1">🛠️ Steps</h3>
 <ol type="1">
 <li>Launch the dev server from the terminal: <code>npm run dev</code>.</li>
 <li>Click “Open in Browser” or visit the provided localhost URL (e.g., http://localhost:5173/).</li>
@@ -135,11 +279,14 @@ font-weight: 600;
 <h3 id="why-this-matters-1">💡 Why This Matters</h3>
 <p>A running dev server lets you see and test your app as you build it. It gives you instant feedback on your code changes and allows you to interact with the app, speeding up your development workflow.</p>
 <h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
-<p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to explore more about managing your Codespaces.</p>
+<p>Try stopping and restarting the dev server:</p>
+<ul>
+<li>Stop the server with <code>Ctrl + C</code> in the terminal.</li>
+<li>Restart it with <code>npm run dev</code> and refresh the browser to see the app again.</li>
+</ul>
 <p><a id="replace-the-placeholder-component"></a></p>
 <h2 id="replace-the-placeholder-component">🧩 Replace the Placeholder Component</h2>
 <p>With the development server still running, replace the placeholder component with the game’s splash screen component to experience live updates in action.</p>
-<h3 id="steps-2">🛠️ Steps</h3>
 <ol type="1">
 <li>Open <code>src/App.jsx</code></li>
 <li>Add the import: <code>import SplashScreen from &#39;./components/SplashScreen&#39;;</code></li>
@@ -147,13 +294,12 @@ font-weight: 600;
 <li>Watch the screen update instantly — no save needed!</li>
 </ol>
 <h3 id="why-this-matters-2">💡 Why This Matters</h3>
-<p>Components are the building blocks 🧊 of <strong>React</strong> web apps — kind of like digital LEGO pieces. You build apps by snapping them together.</p>
+<p>Components are the building blocks of <strong>React</strong> web apps — kind of like digital LEGO pieces. You build apps by snapping them together.</p>
 <p>You probably noticed the <code>.jsx</code> file extension. That’s because these components are written in a special syntax called <strong>JSX</strong>. It looks a lot like HTML, but is actually JavaScript under the hood. JSX lets you describe what the UI should look — using a syntax that’s readable like HTML but powered by JavaScript.</p>
 <p>The live update “magic” you experienced is actually powered by a build tool we are using called <strong>Vite</strong>, which uses a process known as <strong>Hot Module Replacement (HMR)</strong> to apply “smart updates” to your app instantly as you code.</p>
 <p><a id="update-the-page-title"></a></p>
 <h2 id="update-the-page-title">🏷️ Update the Page Title</h2>
 <p>Even though React apps are built with components, they still use a standard HTML file as the entry point. Let’s update the page title to reflect our project name.</p>
-<h3 id="steps-3">🛠️ Steps</h3>
 <ol type="1">
 <li>Open <code>index.html</code></li>
 <li>Identify where the HTML head/title is defined</li>
@@ -162,23 +308,93 @@ font-weight: 600;
 </ol>
 <h3 id="why-this-matters-3">💡 Why This Matters</h3>
 <p>A descriptive page title is important for usability, accessibility, and SEO. It helps users identify your app when they have multiple tabs open and improves discoverability in search engines.</p>
+<p><a id="essential-terms"></a></p>
+<h2 id="essential-terms">📚 Essential Terms</h2>
+<p><em>Quick reference for all the tools and concepts you just experienced:</em></p>
+<table>
+<colgroup>
+<col style="width: 33%"></col>
+<col style="width: 33%"></col>
+<col style="width: 33%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Definition</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>☁️ Codespace</td>
+<td>A cloud dev environment from GitHub — a ready-made VS Code workspace that runs in your browser.</td>
+<td>You’ll launch this first; it gives everyone the same setup so you can jump straight to coding.</td>
+</tr>
+<tr class="even">
+<td>🖥️ VS Code</td>
+<td>Your coding headquarters — think Photoshop but for building apps instead of editing photos.</td>
+<td>This is where the magic happens. File explorer, code editor, terminal — all in one place.</td>
+</tr>
+<tr class="odd">
+<td>🔧 Node</td>
+<td>JavaScript that runs on your computer (not just in browsers) — like having a JavaScript engine everywhere.</td>
+<td>Powers your dev tools and lets you run <code>npm</code> commands. It’s JavaScript unleashed.</td>
+</tr>
+<tr class="even">
+<td>📦 npm</td>
+<td>Node’s package manager — installs libraries and runs scripts (<code>npm run dev</code>).</td>
+<td>Use it to install dependencies and start the dev server.</td>
+</tr>
+<tr class="odd">
+<td>⚡ Vite</td>
+<td>The Ferrari of dev servers — crazy fast and makes your app load instantly during development.</td>
+<td>When you run <code>npm run dev</code>, Vite serves your app at lightning speed. You’ll see why it’s so popular.</td>
+</tr>
+<tr class="even">
+<td>🔁 HMR (Hot Module Replacement)</td>
+<td>Updates only the changed code in the browser without a full reload, often keeping app state.</td>
+<td>Lets you see edits instantly (CSS/JS) while you work — you’ll notice changes apply without losing progress.</td>
+</tr>
+<tr class="odd">
+<td>⚛️ React</td>
+<td>A library for building UIs out of components; it updates the UI when data changes.</td>
+<td>The project is a React app — you’ll edit components to change what users see.</td>
+</tr>
+<tr class="even">
+<td>✨ JSX</td>
+<td>JavaScript syntax that looks like HTML — used to describe UI in React components (<code>.jsx</code>).</td>
+<td>You’ll edit <code>.jsx</code> files (e.g., <code>src/App.jsx</code>) to swap components and change UI.</td>
+</tr>
+<tr class="odd">
+<td>🧩 Component</td>
+<td>A reusable piece of UI that can include markup, styles, and logic (example: <code>&lt;SplashScreen /&gt;</code>).</td>
+<td>You’ll replace a placeholder component with <code>SplashScreen</code> to practice editing and imports.</td>
+</tr>
+<tr class="even">
+<td>🌐 DOM (Document Object Model)</td>
+<td>The browser’s object model of the page — JS code (including React) reads and updates the DOM to change what users see.</td>
+<td>React updates the DOM when you change components or state (e.g., button clicks, title updates).</td>
+</tr>
+</tbody>
+</table>
 <p><a id="ask-the-ai"></a></p>
 <h2 id="ask-the-ai-what-just-happened">🤖 Ask the AI — What Just Happened?</h2>
-<p>You just launched your Codespace, ran your dev server, swapped a component, and updated your page title — nice work! 🎯</p>
+<p>You just launched your Codespace, ran your dev server, swapped a component, and updated your page title — nice work!</p>
 <p>Now let’s make sure you understand what you did and why it matters. Use these AI prompts to dig deeper into the tools and concepts you just used. You can ask your AI assistant any of these questions or use them as a starting point to explore further.</p>
-<h3 id="ai-prompts-that-reinforce-session-01-tasks">🧠 AI Prompts That Reinforce Session 01 Tasks</h3>
-<h4 id="codespaces-setup">🔧 Codespaces &amp; Setup</h4>
+<h4 id="codespaces-setup">☁️ Codespaces &amp; Setup</h4>
 <ul>
 <li>“What is a Codespace and why are we using it?”</li>
 <li>“How does a Codespace work behind the scenes?”</li>
 <li>“What does the <code>.devcontainer.json</code> file do?”</li>
 <li>“Why is cloud development better for beginners?”</li>
+<li>“What is Node.js and why do we need it for React development?”</li>
 </ul>
 <h4 id="vs-code-basics">🖥️ VS Code Basics</h4>
 <ul>
 <li>“How do I open and edit files in VS Code?”</li>
 <li>“How do I change the theme in VS Code?”</li>
 <li>“What is the file explorer and how do I use it?”</li>
+<li>“How does VS Code work as a remote editor connected to my Codespace?”</li>
 </ul>
 <h4 id="running-the-dev-server">🚀 Running the Dev Server</h4>
 <ul>
@@ -186,6 +402,7 @@ font-weight: 600;
 <li>“What is a development server and why do we need it?”</li>
 <li>“What does the localhost URL mean?”</li>
 <li>“Why does the app reload when I change code?”</li>
+<li>“What is npm and why do we use it?”</li>
 </ul>
 <h4 id="react-vite-basics">⚡ React + Vite Basics</h4>
 <ul>
@@ -193,6 +410,7 @@ font-weight: 600;
 <li>“How does Hot Module Replacement work?”</li>
 <li>“What is JSX and how is it different from HTML?”</li>
 <li>“Why do React components use <code>.jsx</code> files?”</li>
+<li>“What is React and how is it different from regular HTML/CSS/JS?”</li>
 </ul>
 <h4 id="component-swapping">🧩 Component Swapping</h4>
 <ul>
@@ -200,12 +418,21 @@ font-weight: 600;
 <li>“What does <code>import SplashScreen from &#39;./components/SplashScreen&#39;</code> mean?”</li>
 <li>“How do I replace one component with another?”</li>
 <li>“Why does the screen update instantly when I change components?”</li>
+<li>“What are React components and why are they reusable?”</li>
+<li>“How does component composition work in React?”</li>
 </ul>
 <h4 id="html-page-title">🏷️ HTML &amp; Page Title</h4>
 <ul>
 <li>“How do I change the page title in a React app?”</li>
 <li>“Where is the <code>index.html</code> file and what does it do?”</li>
 <li>“Why is the title tag important for websites?”</li>
+</ul>
+<h4 id="understanding-the-big-picture">🌐 Understanding the Big Picture</h4>
+<ul>
+<li>“What is the DOM and how does React update it when I change components?”</li>
+<li>“Walk me through what happens when I run <code>npm run dev</code> step by step”</li>
+<li>“Explain the React entry point flow: index.html → main.jsx → App.jsx → Components”</li>
+<li>“How does this development setup compare to building websites the traditional way?”</li>
 </ul>
 <hr />
 <h3 id="pro-tip">💬 Pro Tip:</h3>
