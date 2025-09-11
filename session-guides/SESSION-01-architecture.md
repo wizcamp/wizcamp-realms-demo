@@ -1,9 +1,11 @@
 <!-- filepath: /home/bobleeswagger/wizcamp-realms-demo/session-guides/SESSION-01-architecture.md -->
+
 # 🏗️ Session 01 — Dev Environment Architecture
 
 A visual diagram showing relationships between GitHub Codespaces, OS, runtimes, dev tools, and the browser preview.
 
 ## Mermaid diagram (preferred)
+
 ```mermaid
 flowchart TB
   %% Actors
@@ -64,6 +66,7 @@ flowchart TB
 ```
 
 ### Legend / Notes
+
 - Codespace = remote container running Ubuntu with your project's config (.devcontainer).
 - Node + npm = runtime + package manager used to install/run Vite and the React app.
 - Vite = dev server with HMR; serves the app on localhost to the Browser preview.

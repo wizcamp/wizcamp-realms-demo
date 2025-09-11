@@ -2,7 +2,7 @@ import { getZoneById } from "../data/zones";
 
 /**
  * API SERVICE - Connecting to External Data
- * 
+ *
  * TODO: Session 5 - Students implement fetchQuestions function
  * TODO: Session 6 - Add localStorage caching
  */
@@ -19,7 +19,7 @@ export async function fetchQuestions(zoneId) {
   // 3. Fetch from Open Trivia Database
   // 4. Handle response and decode URL-encoded strings
   // 5. Shuffle answers and return formatted questions
-  
+
   console.log("TODO: Implement fetchQuestions for zone", zoneId);
   return [];
 }

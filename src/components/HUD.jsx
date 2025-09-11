@@ -1,6 +1,6 @@
 /**
  * HUD - Heads Up Display
- * 
+ *
  * TODO: Session 8 - Display current score
  * TODO: Session 9 - Add MusicToggle component
  */

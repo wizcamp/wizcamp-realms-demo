@@ -1,6 +1,6 @@
 /**
  * GAME OVER - Victory Screen
- * 
+ *
  * TODO: Session 8 - Students will create this component
  * - Display final score
  * - Show completed zones count

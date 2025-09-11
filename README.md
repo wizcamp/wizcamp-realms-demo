@@ -17,6 +17,7 @@ npm run dev
 ---
 
 ### Complete Setup Steps
+
 1. **Navigate to**: `https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=wizcamp/wizcamp-realms-demo`
 2. **Click**: "Create new codespace"
 3. **Wait**: For Codespace to build (Dark Dracula theme loads automatically)
@@ -26,6 +27,7 @@ npm run dev
 7. **Optional**: Allow sharing of clipboard when prompted
 
 ### Essential Commands
+
 ```bash
 npm run dev          # Start development server (use this most!)
 npm run build        # Build for production
@@ -54,16 +56,20 @@ npm run format:check # Check code formatting
 ## 📚 Learning Journey - 12 Sessions
 
 ### Session 1: Welcome to React Development
+
 **Setting Up Your Trivia Game**
+
 - **Goal**: Experience React's component composition and hot module reloading
 - **Key Concepts**: Components, JSX, development environment
-- **Tasks**: 
+- **Tasks**:
   - Follow on-screen instructions to swap `<StartHere />` for `<SplashScreen />`
   - Understand React entry point flow: index.html → main.jsx → App.jsx
   - Experience hot module reloading magic
 
 ### Session 2: Creating Reusable Components
+
 **Building Game Components**
+
 - **Goal**: Build reusable GameButton component
 - **Key Concepts**: Props, component reusability, React DevTools
 - **Tasks**:
@@ -72,7 +78,9 @@ npm run format:check # Check code formatting
   - Install and use React DevTools for component inspection
 
 ### Session 3: Shared State with Context
+
 **Managing Game Flow**
+
 - **Goal**: Implement screen navigation using shared state
 - **Key Concepts**: State vs props, Context API, constants
 - **Tasks**:
@@ -81,7 +89,9 @@ npm run format:check # Check code formatting
   - Understand how shared state controls entire app
 
 ### Session 4: Data-Driven Design
+
 **Configuring Game Zones**
+
 - **Goal**: Design zone themes and configure game metadata
 - **Key Concepts**: Data-driven architecture, API integration planning
 - **Tasks**:
@@ -90,7 +100,9 @@ npm run format:check # Check code formatting
   - Use React DevTools to test different zone data
 
 ### Session 5: Connecting to External APIs
+
 **Generating Dynamic Questions**
+
 - **Goal**: Fetch trivia questions from Open Trivia Database
 - **Key Concepts**: Async JavaScript, fetch(), API documentation
 - **Tasks**:
@@ -99,7 +111,9 @@ npm run format:check # Check code formatting
   - Implement error handling for network requests
 
 ### Session 6: Browser Storage & Caching
+
 **Adding Question Caching**
+
 - **Goal**: Implement localStorage caching for better performance
 - **Key Concepts**: Browser storage, caching strategies, performance
 - **Tasks**:
@@ -108,7 +122,9 @@ npm run format:check # Check code formatting
   - Test complete game flow with caching
 
 ### Session 7: Building Complex Interactive Components
+
 **Creating the Quiz Experience**
+
 - **Goal**: Build QuizModal with scaffolded components
 - **Key Concepts**: Component composition, user interaction patterns
 - **Tasks**:
@@ -117,7 +133,9 @@ npm run format:check # Check code formatting
   - Connect modal visibility to zone clicks
 
 ### Session 8: Application State Management
+
 **Implementing Scoring & Victory**
+
 - **Goal**: Build scoring system and GameOver screen
 - **Key Concepts**: Complex state management, game completion logic
 - **Tasks**:
@@ -126,7 +144,9 @@ npm run format:check # Check code formatting
   - Integrate scoring with quiz interactions
 
 ### Session 9: Custom Hooks & Browser APIs
+
 **Adding Theme Music**
+
 - **Goal**: Build reusable audio functionality with custom hooks
 - **Key Concepts**: Custom hooks, useRef, HTML5 Audio API
 - **Tasks**:
@@ -135,7 +155,9 @@ npm run format:check # Check code formatting
   - Integrate audio system with GameContext
 
 ### Session 10: Version Control & Deployment
+
 **Publishing Your Game**
+
 - **Goal**: Deploy game to GitHub Pages
 - **Key Concepts**: Git workflow, CI/CD, automated deployment
 - **Tasks**:
@@ -144,7 +166,9 @@ npm run format:check # Check code formatting
   - Test deployed game functionality
 
 ### Session 11: Choose Your Adventure
+
 **Extending Your Game**
+
 - **Goal**: Add personal features with AI assistance
 - **Key Concepts**: Self-directed learning, AI collaboration
 - **Extension Options**:
@@ -153,7 +177,9 @@ npm run format:check # Check code formatting
   - **Beast Mods**: Player selection, character movement, theme toggle
 
 ### Session 12: Project Showcase & Next Steps
+
 **Celebrating Your Achievement**
+
 - **Goal**: Present your game and plan future learning
 - **Key Concepts**: Technical presentation, continued learning
 - **Activities**:
@@ -164,16 +190,19 @@ npm run format:check # Check code formatting
 ## 💡 Development Tips
 
 ### Codespaces Tips
+
 - **Everything Configured**: Dark Dracula theme, extensions, and formatting are pre-configured
 - **Terminal Keybindings**: Enable "Send Keybindings to Shell" for smoother terminal experience
 - **Port Forwarding**: Development server runs on port 5173 (not 3000)
 
 ### React DevTools
+
 1. Install React DevTools browser extension
 2. Use Components tab to inspect state and props
 3. Great for debugging Context and component hierarchy
 
 ### Getting Help
+
 - **Check session-guides/** folder for detailed step-by-step instructions
 - Read TODO comments in each file for guidance
 - Use console.log() for debugging
@@ -183,6 +212,7 @@ npm run format:check # Check code formatting
 ## 🎯 Success Metrics
 
 By the end of this course, you'll have:
+
 - ✅ A fully functional, deployed trivia game
 - ✅ Understanding of React fundamentals (components, state, hooks)
 - ✅ Experience with external APIs and async JavaScript

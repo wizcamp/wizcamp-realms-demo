@@ -270,6 +270,11 @@ table code {
   padding: 2px 4px !important;
 }
 
+/* Set minimum width for first column (terms) but allow wrapping */
+table td:first-child {
+  min-width: 150px;
+}
+
 /* PDF-specific table styling */
 table {
   page-break-inside: auto !important;

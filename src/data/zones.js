@@ -1,12 +1,12 @@
 /**
  * ZONE CONFIGURATION - The Heart of Your Game
- * 
+ *
  * TODO: Session 4 - Students will design their zone themes here
- * 
+ *
  * Each zone needs:
  * - id: Zone number (0, 1, 2)
  * - name: Creative zone title
- * - subtitle: Zone tagline/description  
+ * - subtitle: Zone tagline/description
  * - categoryId: Question type from https://opentdb.com/api_category.php
  * - difficulty: "easy", "medium", or "hard"
  * - questionCount: How many questions (4, 7, 10)

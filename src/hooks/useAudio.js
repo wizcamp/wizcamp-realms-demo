@@ -2,12 +2,12 @@ import { useRef, useState } from "react";
 
 /**
  * CUSTOM AUDIO HOOK - Background Music Control
- * 
+ *
  * TODO: Session 9 - Students will implement this custom hook
- * 
+ *
  * This hook should return an object with:
  * - play: Function to start audio
- * - pause: Function to stop audio  
+ * - pause: Function to stop audio
  * - toggle: Function to play/pause
  * - isPlaying: Boolean state
  * - isLoaded: Boolean state
@@ -25,7 +25,7 @@ export function useAudio(audioSrc) {
 
   return {
     play: () => console.log("TODO: Implement play"),
-    pause: () => console.log("TODO: Implement pause"), 
+    pause: () => console.log("TODO: Implement pause"),
     toggle: () => console.log("TODO: Implement toggle"),
     isPlaying,
     isLoaded,

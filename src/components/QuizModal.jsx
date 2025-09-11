@@ -1,6 +1,6 @@
 /**
  * QUIZ MODAL - Interactive Trivia Interface
- * 
+ *
  * TODO: Session 7 - Students will build this complex component
  * TODO: Session 8 - Connect to scoring system
  */

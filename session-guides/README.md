@@ -5,7 +5,7 @@ This folder contains detailed guides for each session of the Fullstack Explorer 
 ## 📚 Available Guides
 
 - **Session 1**: Welcome to React Development - Setting Up Your Trivia Game
-- **Session 2**: Creating Reusable Components - Building Game Components  
+- **Session 2**: Creating Reusable Components - Building Game Components
 - **Session 3**: Shared State with Context - Managing Game Flow
 - **Session 4**: Data-Driven Design - Configuring Game Zones
 - **Session 5**: Connecting to External APIs - Generating Dynamic Questions
@@ -20,6 +20,7 @@ This folder contains detailed guides for each session of the Fullstack Explorer 
 ## 🎯 How to Use These Guides
 
 Each session guide contains:
+
 - **Learning objectives** for the session
 - **Step-by-step instructions** with code examples
 - **Key concepts** explained in detail

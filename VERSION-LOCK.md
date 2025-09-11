@@ -33,6 +33,7 @@ This project uses **locked dependency versions** to ensure a consistent learning
 ### For Advanced Students
 
 After completing the course, students can:
+
 1. Fork their project to personal GitHub accounts
 2. Upgrade dependencies using `npm update`
 3. Experiment with newer React features

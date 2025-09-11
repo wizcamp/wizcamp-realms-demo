@@ -1,6 +1,6 @@
 /**
  * COORDINATE DISPLAY - Development Helper
- * 
+ *
  * TODO: Session 4 - Students use this to position zone labels on the map
  * This component helps find x,y coordinates for zone positioning
  */
