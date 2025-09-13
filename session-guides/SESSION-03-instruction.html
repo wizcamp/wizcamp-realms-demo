@@ -231,34 +231,32 @@ page-break-inside: avoid !important;
 <h2 id="learning-outcomes">Learning Outcomes</h2>
 <p><strong>By the end of Session 3, students will be able to:</strong></p>
 <ol type="1">
-<li><strong>Define state</strong> as data that can change over time and causes components to re-render</li>
-<li><strong>Compare state and props</strong> including data flow direction and mutability differences</li>
-<li><strong>Explain local state versus shared state</strong> and identify appropriate use cases for each</li>
+<li><strong>Explain</strong> what state is in React and how it enables dynamic, interactive components</li>
+<li><strong>Compare</strong> state and props to understand how data flows and changes in a React app</li>
+<li><strong>Distinguish</strong> between local and shared state and choose the right type for different scenarios</li>
 <li><strong>Define hooks</strong> as functions starting with “use” that provide React features</li>
-<li><strong>Identify built-in React hooks</strong> including useState for local state and useContext for shared state</li>
+<li><strong>Use</strong> built-in React hooks like useState and useContext to manage local and shared state</li>
 <li><strong>Navigate Context Provider pattern</strong> and explain how custom hooks access shared state</li>
-<li><strong>Implement screen navigation</strong> using shared state and conditional rendering</li>
-<li><strong>Use constants</strong> for maintainable code and preventing typos</li>
-<li><strong>Apply React DevTools</strong> to observe and manipulate state changes in real-time</li>
-<li><strong>Create local state</strong> with useState for component-specific data</li>
+<li><strong>Trigger</strong> state changes through user interactions and event handlers</li>
+<li><strong>Use constants</strong> to organize code and prevent errors</li>
+<li><strong>Inspect</strong> state changes using React DevTools for real-time debugging</li>
+<li><strong>Create and manage</strong> local state with useState for component-specific behavior</li>
 <li><strong>Access shared state</strong> through custom hooks and Context API</li>
-<li><strong>Connect user interactions</strong> to state changes through event handlers</li>
 </ol>
 <h2 id="instruction">Instruction</h2>
 <p><strong>Instructor introduces key concepts students need to succeed:</strong></p>
 <ol type="1">
-<li><strong>State vs Props Recap</strong> - Review the fundamental difference: props flow down and are read-only, state lives inside components and can change</li>
-<li><strong>Local vs Shared State</strong> - Distinguish between component-specific data (local) and app-wide data (shared)</li>
-<li><strong>React Hooks Introduction</strong> - Define hooks as React’s way to “hook into” features like state and context</li>
-<li><strong>Context API Overview</strong> - Explain how Context prevents prop drilling and provides shared state</li>
-<li><strong>Constants for Maintainability</strong> - Show how SCREENS constants prevent typos and improve code quality</li>
-<li><strong>Conditional Rendering Patterns</strong> - Demonstrate &amp;&amp; operator for showing/hiding components based on state</li>
-<li><strong>React DevTools Deep Dive</strong> - Use DevTools to visualize state changes and component relationships</li>
-<li><strong>Professional State Management</strong> - Introduce patterns for organizing state in larger applications</li>
-<li><strong>Game Flow Architecture</strong> - Walk through the screen transition system using state diagrams</li>
-<li><strong>Custom Hooks Preview</strong> - Explain how useGame wraps useContext for cleaner component code</li>
-<li><strong>Event Handlers and State Updates</strong> - Connect user interactions to state changes through functions</li>
-<li><strong>Let’s Navigate!</strong> - Overview of today’s mission: implement screen navigation and local state</li>
+<li><strong>Introducing State</strong> - Define state as component memory that can change and trigger re-renders</li>
+<li><strong>State vs Props</strong> - Compare state (internal, changeable) with props (external, read-only)</li>
+<li><strong>Local vs Shared State</strong> - Distinguish component-specific from app-wide state with examples</li>
+<li><strong>React Hooks</strong> - Define hooks as “use” functions that provide React features</li>
+<li><strong>Context API</strong> - Explain how Context provides shared state without prop drilling</li>
+<li><strong>Constants and Conditional Rendering</strong> - Show SCREENS constants and <code>&amp;&amp;</code> operator patterns</li>
+<li><strong>Event Handlers</strong> - Connect user interactions to state changes</li>
+<li><strong>React DevTools</strong> - Demonstrate state inspection and manipulation</li>
+<li><strong>Game Flow Architecture</strong> - Walk through screen navigation system</li>
+<li><strong>Professional Patterns</strong> - Introduce scalable state management approaches</li>
+<li><strong>Let’s Navigate!</strong> - Kick off hands-on mission: screen navigation and modal state</li>
 </ol>
 <hr />
 <h2 id="slide-deck-outline">Slide Deck Outline</h2>
@@ -266,7 +264,7 @@ page-break-inside: avoid !important;
 <ul>
 <li><strong>Title:</strong> “Session 3: Managing Game Flow”</li>
 <li><strong>Session 2 Recap:</strong> “Last time: Built reusable GameButton with props, styling, and click handlers”</li>
-<li><strong>Hook:</strong> “Your buttons show alerts — today they’ll actually navigate your game!”</li>
+<li><strong>Hook:</strong> “Your app’s been static — today it starts reacting.”</li>
 <li><strong>Today’s Mission:</strong>
 <ul>
 <li><strong>Understand</strong> the difference between state and props</li>
@@ -317,7 +315,7 @@ page-break-inside: avoid !important;
 <h3 id="slide-3-local-vs-shared-state---choosing-the-right-tool"><strong>Slide 3: Local vs Shared State - Choosing the Right Tool 🎯</strong></h3>
 <ul>
 <li><strong>Title:</strong> “When to Use Which Type of State”</li>
-<li><strong>Visual:</strong> Component tree showing local state bubbles vs shared state umbrella</li>
+<li><strong>Visual:</strong> Component tree showing local state (room switches) vs shared state (building power grid)</li>
 </ul>
 <p><strong>Local State (useState):</strong> - <strong>Scope:</strong> Single component only - <strong>Examples:</strong> Modal visibility, form inputs, toggle states - <strong>Rule:</strong> “If only one component cares, use local state”</p>
 <p><strong>Shared State (Context):</strong> - <strong>Scope:</strong> Multiple components across the app - <strong>Examples:</strong> User authentication, theme, current screen - <strong>Rule:</strong> “If multiple components need it, use shared state”</p>
@@ -346,6 +344,7 @@ page-break-inside: avoid !important;
 <li><strong>useGame</strong> - Custom hook that wraps useContext for cleaner code</li>
 </ul></li>
 <li><strong>Visual:</strong> Hook examples with syntax highlighting</li>
+<li><strong>Live Demo Preview:</strong> “We’ll write our first useState hook together — and see it change the UI instantly”</li>
 <li><strong>Student Connection:</strong> “Hooks are your tools for making components dynamic and interactive”</li>
 </ul>
 <h3 id="slide-5-context-api---shared-state-without-prop-drilling"><strong>Slide 5: Context API - Shared State Without Prop Drilling 🌐</strong></h3>
@@ -369,6 +368,7 @@ Any component can access screen directly</code></pre>
 <li><strong>Global access</strong> - Any component can access shared data</li>
 <li><strong>Clean code</strong> - Less prop passing, more focused components</li>
 </ul></li>
+<li><strong>Context Metaphor:</strong> “Think of Context as your game’s command center — any component can radio in for information”</li>
 <li><strong>Today’s Context:</strong> GameProvider provides screen state to entire app</li>
 <li><strong>Student Preview:</strong> “Your useGame hook accesses this shared state from anywhere”</li>
 </ul>
@@ -379,7 +379,7 @@ Any component can access screen directly</code></pre>
 <li><strong>Bad Example:</strong> <code>if (screen === &quot;splash&quot;)</code> vs <code>if (screen === &quot;spalsh&quot;)</code> (typo!)</li>
 <li><strong>Good Example:</strong> <code>if (screen === SCREENS.SPLASH)</code> (autocomplete + no typos)</li>
 </ul>
-<p><strong>Benefits of Constants:</strong> - <strong>Prevent typos</strong> - Autocomplete catches errors - <strong>Single source of truth</strong> - Change once, updates everywhere - <strong>Better refactoring</strong> - IDE can find all usages - <strong>Self-documenting</strong> - Clear intent and available options</p>
+<p><strong>Constants Checklist:</strong> - ✅ <strong>Prevent typos</strong> - Autocomplete catches errors - ✅ <strong>Single source of truth</strong> - Change once, updates everywhere - ✅ <strong>Better refactoring</strong> - IDE can find all usages - ✅ <strong>Self-documenting</strong> - Clear intent and available options</p>
 <ul>
 <li><strong>Today’s Constants:</strong> SCREENS object with SPLASH, PLAYING, GAME_OVER</li>
 <li><strong>Professional Practice:</strong> “Real apps have hundreds of constants for maintainability”</li>
@@ -399,6 +399,7 @@ Any component can access screen directly</code></pre>
 {showCredits &amp;&amp; &lt;CreditsModal /&gt;}</code></pre></li>
 <li><strong>Visual:</strong> State diagram showing screen transitions</li>
 <li><strong>Key Insight:</strong> “One piece of state controls your entire app’s display”</li>
+<li><strong>Conditional Rendering Gotcha:</strong> “Remember: <code>false &amp;&amp; &lt;Component /&gt;</code> renders nothing — not an error!”</li>
 <li><p><strong>Student Connection:</strong> “This pattern powers navigation in most React apps”</p></li>
 </ul>
 <h3 id="slide-8-react-devtools---state-inspector"><strong>Slide 8: React DevTools - State Inspector 🔍</strong></h3>
@@ -438,6 +439,7 @@ Any component can access screen directly</code></pre>
 <li><strong>Today’s Focus:</strong> SPLASH ↔ PLAYING transition</li>
 <li><strong>State Control:</strong> Single <code>screen</code> variable determines entire app display</li>
 <li><strong>Future Sessions:</strong> Will add QUIZ and GAME_OVER screens</li>
+<li><strong>State Metaphor:</strong> “Think of each screen as a zone in your game — and state as the teleport system”</li>
 <li><strong>Architecture Insight:</strong> “Complex navigation is just state management”</li>
 </ul>
 <h3 id="slide-10-custom-hooks---clean-code-patterns"><strong>Slide 10: Custom Hooks - Clean Code Patterns 🎨</strong></h3>
