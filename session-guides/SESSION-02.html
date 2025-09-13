@@ -232,6 +232,7 @@ page-break-inside: avoid !important;
 <p>You’re about to build your first custom React component and unlock the power of reusable UI building blocks — the secret to fast, scalable development in React. This guide walks you through creating a GameButton component, understanding props, and using professional developer tools. Ready to build like a pro? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
+<li><a href="#access-your-codespace">Access Your Codespace</a></li>
 <li><a href="#create-your-first-component">Create Your First Component</a></li>
 <li><a href="#understanding-props">Understanding Props</a></li>
 <li><a href="#adding-click-functionality">Adding Click Functionality</a></li>
@@ -241,6 +242,9 @@ page-break-inside: avoid !important;
 <li><a href="#essential-terms">Essential Terms</a></li>
 <li><a href="#ask-the-ai">Ask the AI</a></li>
 </ul>
+<p><a id="access-your-codespace"></a></p>
+<h2 id="access-your-codespace">☁️ Access Your Codespace</h2>
+<p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 1.</p>
 <p><a id="create-your-first-component"></a></p>
 <h2 id="create-your-first-component">🧩 Create Your First Component</h2>
 <p>Let’s build a GameButton component for starting your trivia game. Components are like digital LEGO blocks — custom, reusable UI elements.</p>
@@ -249,14 +253,14 @@ page-break-inside: avoid !important;
 <li><strong>Use VS Code snippet</strong>: Type <code>ednf</code> (exportDefaultNamedFunction) and press Tab</li>
 <li><strong>Replace first placeholder</strong> with <code>GameButton</code></li>
 <li><strong>Remove second placeholder</strong> completely, leaving empty <code>()</code> parentheses</li>
-<li><strong>Add return statement</strong>: Type <code>return &lt;button&gt;Start Adventure&lt;/button&gt;;</code></li>
+<li><strong>Replace third placeholder</strong> with <code>return &lt;button&gt;Start Adventure&lt;/button&gt;;</code> ()</li>
 <li><strong>Import into SplashScreen</strong>: Add <code>import GameButton from &quot;./GameButton&quot;</code> at the top</li>
 </ol>
 <blockquote>
 <p>📦 <strong>Quick Explanation</strong>: <code>export default</code> lets other files use this component. <code>import</code> brings it into another file. Think of it like sharing and borrowing LEGO instructions!</p>
 </blockquote>
 <ol start="7" type="1">
-<li><p><strong>Add your button</strong>: Replace the TODO comment in splash-buttons div with:</p>
+<li><p><strong>Add your button</strong>: Place your button within <code>div.splash-buttons</code>:</p>
 <pre class="jsx"><code>&lt;GameButton /&gt;</code></pre></li>
 <li><p><strong>Test it</strong>: Run <code>npm run dev</code> and you should see your custom button!</p></li>
 </ol>
@@ -323,7 +327,7 @@ page-break-inside: avoid !important;
 <h2 id="reusing-your-component">🔄 Reusing Your Component</h2>
 <p>Now that you’ve built a complete, fully-featured GameButton component, let’s experience the power of reusability by adding a second button for the game’s credits.</p>
 <ol type="1">
-<li><p><strong>Add a second button</strong>: Below your existing GameButton in SplashScreen, add a credits button:</p>
+<li><p><strong>Add a second button</strong>: Below your existing GameButton in SplashScreen, add one that will show credits when clicked:</p>
 <pre class="jsx"><code>&lt;GameButton
   text=&quot;Credits&quot;
   onClick={() =&gt; alert(&#39;Show Credits&#39;)}

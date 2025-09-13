@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SESSION-03-instruction - Wizcamp Session Guide</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+
+@page {
+margin: 0.6in 0.75in 0.6in 0.75in;
+size: letter;
+}
+body {
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.4;
+color: #1f2328;
+margin: 0;
+padding: 0;
+max-width: none;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 600;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px;
+}
+h1 {
+font-size: 1.75em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 0;
+}
+h2 {
+font-size: 1.5em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 36px;
+margin-bottom: 18px;
+page-break-after: avoid;
+}
+
+h1 + * h2:first-of-type,
+h2:first-of-type {
+margin-top: 24px;
+}
+
+a[id] {
+scroll-margin-top: 20px;
+}
+h3 {
+font-size: 1.25em;
+margin-top: 24px;
+margin-bottom: 12px;
+page-break-after: avoid;
+break-after: avoid;
+}
+
+h3 + ol,
+h3 + ul,
+h3 + p {
+page-break-before: avoid;
+break-before: avoid;
+}
+
+ol, ul {
+page-break-inside: avoid;
+break-inside: avoid;
+}
+
+h3 {
+orphans: 2;
+widows: 2;
+}
+code {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-size: 13px !important;
+font-weight: 500 !important;
+background-color: #f1f3f4 !important;
+color: #c7254e !important;
+padding: 2px 4px !important;
+border-radius: 3px !important;
+border: 1px solid #d1d5da !important;
+white-space: nowrap;
+word-break: break-word;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+pre {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+background-color: #f8f9fa !important;
+border: 1px solid #e1e4e8 !important;
+border-radius: 6px !important;
+padding: 16px !important;
+overflow: visible !important;
+white-space: pre !important;
+word-wrap: normal !important;
+page-break-inside: avoid !important;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+font-size: 14px !important;
+line-height: 1.4 !important;
+display: block !important;
+width: 100% !important;
+}
+
+@media print {
+pre {
+white-space: pre !important;
+font-family: "JetBrains Mono", monospace !important;
+display: block !important;
+}
+pre * {
+white-space: pre !important;
+}
+}
+pre code {
+background-color: transparent !important;
+border: none !important;
+padding: 0 !important;
+color: #24292f !important;
+}
+ul, ol {
+padding-left: 1.8em;
+margin-bottom: 12px;
+}
+li {
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+@media print {
+ul, ol {
+page-break-inside: avoid;
+display: block !important;
+}
+li {
+page-break-inside: avoid;
+display: list-item !important;
+margin-bottom: 8px !important;
+}
+
+* {
+box-sizing: border-box !important;
+}
+}
+p {
+margin-bottom: 12px;
+}
+a {
+color: #0969da;
+text-decoration: none;
+}
+strong {
+font-weight: 600;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+margin: 16px 0;
+font-size: 16px;
+line-height: 1.5;
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+vertical-align: top;
+border: 1px solid #d0d7de;
+}
+th {
+font-weight: 600;
+background-color: #f6f8fa;
+color: #24292f;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+tbody tr:nth-child(even) {
+background-color: #f8f9fa;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+
+table code {
+font-size: 14px !important;
+padding: 2px 4px !important;
+}
+
+table td:first-child {
+min-width: 150px;
+}
+
+table {
+page-break-inside: auto !important;
+}
+th {
+page-break-after: avoid !important;
+}
+tbody tr {
+page-break-inside: avoid !important;
+page-break-after: auto !important;
+}
+
+thead {
+display: table-header-group !important;
+}
+@media print {
+thead {
+display: table-row-group !important;
+}
+table {
+page-break-inside: auto !important;
+}
+tr {
+page-break-inside: avoid !important;
+}
+}
+</style>
+</head>
+<body>
+<h1 id="session-3-instructor-guide-managing-game-flow">Session 3 Instructor Guide: Managing Game Flow</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p><strong>By the end of Session 3, students will be able to:</strong></p>
+<ol type="1">
+<li><strong>Define state</strong> as data that can change over time and causes components to re-render</li>
+<li><strong>Compare state and props</strong> including data flow direction and mutability differences</li>
+<li><strong>Explain local state versus shared state</strong> and identify appropriate use cases for each</li>
+<li><strong>Define hooks</strong> as functions starting with “use” that provide React features</li>
+<li><strong>Identify built-in React hooks</strong> including useState for local state and useContext for shared state</li>
+<li><strong>Navigate Context Provider pattern</strong> and explain how custom hooks access shared state</li>
+<li><strong>Implement screen navigation</strong> using shared state and conditional rendering</li>
+<li><strong>Use constants</strong> for maintainable code and preventing typos</li>
+<li><strong>Apply React DevTools</strong> to observe and manipulate state changes in real-time</li>
+<li><strong>Create local state</strong> with useState for component-specific data</li>
+<li><strong>Access shared state</strong> through custom hooks and Context API</li>
+<li><strong>Connect user interactions</strong> to state changes through event handlers</li>
+</ol>
+<h2 id="instruction">Instruction</h2>
+<p><strong>Instructor introduces key concepts students need to succeed:</strong></p>
+<ol type="1">
+<li><strong>State vs Props Recap</strong> - Review the fundamental difference: props flow down and are read-only, state lives inside components and can change</li>
+<li><strong>Local vs Shared State</strong> - Distinguish between component-specific data (local) and app-wide data (shared)</li>
+<li><strong>React Hooks Introduction</strong> - Define hooks as React’s way to “hook into” features like state and context</li>
+<li><strong>Context API Overview</strong> - Explain how Context prevents prop drilling and provides shared state</li>
+<li><strong>Constants for Maintainability</strong> - Show how SCREENS constants prevent typos and improve code quality</li>
+<li><strong>Conditional Rendering Patterns</strong> - Demonstrate &amp;&amp; operator for showing/hiding components based on state</li>
+<li><strong>React DevTools Deep Dive</strong> - Use DevTools to visualize state changes and component relationships</li>
+<li><strong>Professional State Management</strong> - Introduce patterns for organizing state in larger applications</li>
+<li><strong>Game Flow Architecture</strong> - Walk through the screen transition system using state diagrams</li>
+<li><strong>Custom Hooks Preview</strong> - Explain how useGame wraps useContext for cleaner component code</li>
+<li><strong>Event Handlers and State Updates</strong> - Connect user interactions to state changes through functions</li>
+<li><strong>Let’s Navigate!</strong> - Overview of today’s mission: implement screen navigation and local state</li>
+</ol>
+<hr />
+<h2 id="slide-deck-outline">Slide Deck Outline</h2>
+<h3 id="slide-1-welcome-to-state-management"><strong>Slide 1: Welcome to State Management! 🧠</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Session 3: Managing Game Flow”</li>
+<li><strong>Session 2 Recap:</strong> “Last time: Built reusable GameButton with props, styling, and click handlers”</li>
+<li><strong>Hook:</strong> “Your buttons show alerts — today they’ll actually navigate your game!”</li>
+<li><strong>Today’s Mission:</strong>
+<ul>
+<li><strong>Understand</strong> the difference between state and props</li>
+<li><strong>Implement</strong> screen navigation with shared state</li>
+<li><strong>Experience</strong> React’s Context API in action</li>
+<li><strong>Add</strong> local state for modal functionality</li>
+<li><strong>Master</strong> React DevTools for state inspection</li>
+</ul></li>
+<li><strong>Visual:</strong> Game screen flow diagram showing SPLASH → PLAYING transition</li>
+<li><strong>Connection:</strong> “From static components to dynamic, interactive navigation!”</li>
+</ul>
+<h3 id="slide-2-state-vs-props---the-data-flow-foundation"><strong>Slide 2: State vs Props - The Data Flow Foundation 📊</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Understanding React’s Data Management”</li>
+<li><strong>Visual:</strong> Split-screen comparison with arrows showing data flow</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Props</strong></th>
+<th><strong>State</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Flow <strong>down</strong> (parent → child)</td>
+<td>Live <strong>inside</strong> components</td>
+</tr>
+<tr class="even">
+<td><strong>Read-only</strong> (immutable)</td>
+<td><strong>Changeable</strong> (mutable)</td>
+</tr>
+<tr class="odd">
+<td>Like function parameters</td>
+<td>Like component memory</td>
+</tr>
+<tr class="even">
+<td>External data</td>
+<td>Internal data</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Analogy:</strong> “Props are like ingredients you receive (can’t change them), State is like your kitchen’s current condition (you control it)”</li>
+<li><strong>Key Insight:</strong> “Props communicate between components, State manages component behavior”</li>
+<li><strong>Student Preview:</strong> “You’ll use both today — shared state for navigation, local state for modals”</li>
+</ul>
+<h3 id="slide-3-local-vs-shared-state---choosing-the-right-tool"><strong>Slide 3: Local vs Shared State - Choosing the Right Tool 🎯</strong></h3>
+<ul>
+<li><strong>Title:</strong> “When to Use Which Type of State”</li>
+<li><strong>Visual:</strong> Component tree showing local state bubbles vs shared state umbrella</li>
+</ul>
+<p><strong>Local State (useState):</strong> - <strong>Scope:</strong> Single component only - <strong>Examples:</strong> Modal visibility, form inputs, toggle states - <strong>Rule:</strong> “If only one component cares, use local state”</p>
+<p><strong>Shared State (Context):</strong> - <strong>Scope:</strong> Multiple components across the app - <strong>Examples:</strong> User authentication, theme, current screen - <strong>Rule:</strong> “If multiple components need it, use shared state”</p>
+<ul>
+<li><strong>Today’s Examples:</strong>
+<ul>
+<li><strong>Shared:</strong> <code>screen</code> state (affects entire app navigation)</li>
+<li><strong>Local:</strong> <code>showCredits</code> state (only affects SplashScreen modal)</li>
+</ul></li>
+<li><strong>Professional Insight:</strong> “Choosing the right state type is a key React skill”</li>
+</ul>
+<h3 id="slide-4-react-hooks---your-state-management-toolkit"><strong>Slide 4: React Hooks - Your State Management Toolkit 🪝</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Hooks: Functions That Hook Into React Features”</li>
+<li><strong>Definition:</strong> “Functions starting with ‘use’ that provide React capabilities”</li>
+<li><strong>Key Rules:</strong>
+<ul>
+<li>Always start with “use” (useState, useContext, useEffect)</li>
+<li>Only call at the top level of components</li>
+<li>Can’t be called inside loops or conditions</li>
+</ul></li>
+<li><strong>Today’s Hooks:</strong>
+<ul>
+<li><strong>useState</strong> - Adds local state to components</li>
+<li><strong>useContext</strong> - Accesses shared state from Context</li>
+<li><strong>useGame</strong> - Custom hook that wraps useContext for cleaner code</li>
+</ul></li>
+<li><strong>Visual:</strong> Hook examples with syntax highlighting</li>
+<li><strong>Student Connection:</strong> “Hooks are your tools for making components dynamic and interactive”</li>
+</ul>
+<h3 id="slide-5-context-api---shared-state-without-prop-drilling"><strong>Slide 5: Context API - Shared State Without Prop Drilling 🌐</strong></h3>
+<ul>
+<li><strong>Title:</strong> “How Context Solves the Prop Drilling Problem”</li>
+<li><strong>The Problem:</strong> Passing props through multiple component levels</li>
+<li><strong>Visual:</strong> Before/After diagram showing prop drilling vs Context</li>
+</ul>
+<p><strong>Without Context (Prop Drilling):</strong></p>
+<pre><code>App → SplashScreen → GameButton
+  ↓       ↓           ↓
+screen  screen      screen</code></pre>
+<p><strong>With Context:</strong></p>
+<pre><code>GameProvider (wraps entire app)
+    ↓
+Any component can access screen directly</code></pre>
+<ul>
+<li><strong>Context Benefits:</strong>
+<ul>
+<li><strong>No prop drilling</strong> - Skip intermediate components</li>
+<li><strong>Global access</strong> - Any component can access shared data</li>
+<li><strong>Clean code</strong> - Less prop passing, more focused components</li>
+</ul></li>
+<li><strong>Today’s Context:</strong> GameProvider provides screen state to entire app</li>
+<li><strong>Student Preview:</strong> “Your useGame hook accesses this shared state from anywhere”</li>
+</ul>
+<h3 id="slide-6-constants---professional-code-organization"><strong>Slide 6: Constants - Professional Code Organization 📋</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Why Constants Matter for Maintainable Code”</li>
+<li><strong>The Problem:</strong> Magic strings scattered throughout code</li>
+<li><strong>Bad Example:</strong> <code>if (screen === &quot;splash&quot;)</code> vs <code>if (screen === &quot;spalsh&quot;)</code> (typo!)</li>
+<li><strong>Good Example:</strong> <code>if (screen === SCREENS.SPLASH)</code> (autocomplete + no typos)</li>
+</ul>
+<p><strong>Benefits of Constants:</strong> - <strong>Prevent typos</strong> - Autocomplete catches errors - <strong>Single source of truth</strong> - Change once, updates everywhere - <strong>Better refactoring</strong> - IDE can find all usages - <strong>Self-documenting</strong> - Clear intent and available options</p>
+<ul>
+<li><strong>Today’s Constants:</strong> SCREENS object with SPLASH, PLAYING, GAME_OVER</li>
+<li><strong>Professional Practice:</strong> “Real apps have hundreds of constants for maintainability”</li>
+</ul>
+<h3 id="slide-7-conditional-rendering---controlling-what-users-see"><strong>Slide 7: Conditional Rendering - Controlling What Users See 🔀</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Show/Hide Components Based on State”</li>
+<li><strong>Pattern:</strong> <code>{condition &amp;&amp; &lt;Component /&gt;}</code></li>
+<li><strong>How It Works:</strong>
+<ul>
+<li>If condition is <code>true</code> → Component renders</li>
+<li>If condition is <code>false</code> → Nothing renders</li>
+</ul></li>
+<li><p><strong>Examples:</strong></p>
+<pre class="jsx"><code>{screen === SCREENS.SPLASH &amp;&amp; &lt;SplashScreen /&gt;}
+{screen === SCREENS.PLAYING &amp;&amp; &lt;GameMap /&gt;}
+{showCredits &amp;&amp; &lt;CreditsModal /&gt;}</code></pre></li>
+<li><strong>Visual:</strong> State diagram showing screen transitions</li>
+<li><strong>Key Insight:</strong> “One piece of state controls your entire app’s display”</li>
+<li><p><strong>Student Connection:</strong> “This pattern powers navigation in most React apps”</p></li>
+</ul>
+<h3 id="slide-8-react-devtools---state-inspector"><strong>Slide 8: React DevTools - State Inspector 🔍</strong></h3>
+<ul>
+<li><strong>Title:</strong> “X-Ray Vision for Your App’s State”</li>
+<li><strong>Live Demo:</strong> Show GameProvider in DevTools with state inspection</li>
+<li><strong>Key Features for State:</strong>
+<ul>
+<li><strong>Component tree</strong> - See Provider/Consumer relationships</li>
+<li><strong>Hooks section</strong> - View current state values</li>
+<li><strong>Real-time updates</strong> - Watch state change as you interact</li>
+<li><strong>Manual editing</strong> - Change state values directly for testing</li>
+</ul></li>
+<li><strong>Today’s Exploration:</strong>
+<ul>
+<li>Find GameProvider in component tree</li>
+<li>Inspect screen state value</li>
+<li>Manually change screen from “splash” to “playing”</li>
+<li>Watch UI update instantly</li>
+</ul></li>
+<li><strong>Professional Usage:</strong> “Essential for debugging state-related issues”</li>
+</ul>
+<h3 id="slide-9-game-flow-architecture---the-big-picture-️"><strong>Slide 9: Game Flow Architecture - The Big Picture 🗺️</strong></h3>
+<ul>
+<li><strong>Title:</strong> “How Screen Navigation Works”</li>
+<li><strong>Visual:</strong> State diagram showing complete game flow</li>
+</ul>
+<pre><code>SPLASH ───► PLAYING ───► QUIZ ───► GAME_OVER
+  ▲           ▲ │        │           │
+  │           │ ▼        ▼           │
+  │           └──────────┘           │
+  │          (Pass Zone)             │
+  │                                  │
+  └──────────────────────────────────┘
+           (Play Again)</code></pre>
+<ul>
+<li><strong>Today’s Focus:</strong> SPLASH ↔ PLAYING transition</li>
+<li><strong>State Control:</strong> Single <code>screen</code> variable determines entire app display</li>
+<li><strong>Future Sessions:</strong> Will add QUIZ and GAME_OVER screens</li>
+<li><strong>Architecture Insight:</strong> “Complex navigation is just state management”</li>
+</ul>
+<h3 id="slide-10-custom-hooks---clean-code-patterns"><strong>Slide 10: Custom Hooks - Clean Code Patterns 🎨</strong></h3>
+<ul>
+<li><strong>Title:</strong> “useGame: Wrapping Context for Better Developer Experience”</li>
+<li><p><strong>Raw Context Usage:</strong></p>
+<pre class="jsx"><code>const context = useContext(GameContext);
+const { screen, setScreen } = context;</code></pre></li>
+<li><p><strong>Custom Hook Usage:</strong></p>
+<pre class="jsx"><code>const { screen, setScreen } = useGame();</code></pre></li>
+<li><strong>Benefits:</strong>
+<ul>
+<li><strong>Cleaner syntax</strong> - Less boilerplate code</li>
+<li><strong>Error handling</strong> - Can add validation and error messages</li>
+<li><strong>Abstraction</strong> - Hide implementation details</li>
+<li><strong>Reusability</strong> - Same hook used everywhere</li>
+</ul></li>
+<li><p><strong>Professional Pattern:</strong> “Custom hooks are how pros organize complex state logic”</p></li>
+</ul>
+<h3 id="slide-11-lets-navigate-todays-coding-mission"><strong>Slide 11: Let’s Navigate! Today’s Coding Mission 🚀</strong></h3>
+<ul>
+<li><strong>Today’s Implementation Journey:</strong>
+<ol type="1">
+<li><strong>Explore</strong> SCREENS constants for maintainable navigation</li>
+<li><strong>Add</strong> screen navigation to App.jsx with conditional rendering</li>
+<li><strong>Use</strong> React DevTools to inspect and manipulate state</li>
+<li><strong>Implement</strong> startGame functionality in SplashScreen</li>
+<li><strong>Add</strong> local state for credits modal with useState</li>
+<li><strong>Test</strong> both navigation and modal functionality</li>
+</ol></li>
+<li><strong>Success Criteria:</strong>
+<ul>
+<li>Start Adventure button navigates to GameMap</li>
+<li>Credits button shows/hides modal</li>
+<li>React DevTools shows state changes</li>
+</ul></li>
+<li><strong>Professional Workflow:</strong> “Build incrementally, test frequently, debug with tools”</li>
+</ul>
+<h3 id="hands-on-work-happens-here"><strong>[HANDS-ON WORK HAPPENS HERE]</strong></h3>
+<h3 id="slide-12-state-management-patterns---professional-insights"><strong>Slide 12: State Management Patterns - Professional Insights 💼</strong></h3>
+<ul>
+<li><strong>Title:</strong> “How Real Apps Organize State”</li>
+<li><strong>Today’s Patterns:</strong>
+<ul>
+<li><strong>Context for global state</strong> - App-wide data like current screen</li>
+<li><strong>useState for local state</strong> - Component-specific data like modal visibility</li>
+<li><strong>Custom hooks for reusability</strong> - Clean interfaces like useGame</li>
+<li><strong>Constants for maintainability</strong> - Prevent typos and improve refactoring</li>
+</ul></li>
+<li><strong>Scaling Considerations:</strong>
+<ul>
+<li><strong>Small apps</strong> - Context + useState (what you’re using)</li>
+<li><strong>Medium apps</strong> - Add useReducer for complex state logic</li>
+<li><strong>Large apps</strong> - External libraries like Redux or Zustand</li>
+</ul></li>
+<li><strong>Student Empowerment:</strong> “You’re learning patterns used in production apps”</li>
+</ul>
+<h3 id="slide-13-whats-next---data-and-apis"><strong>Slide 13: What’s Next - Data and APIs 🌐</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Preview of Session 4”</li>
+<li><strong>Today’s Achievement:</strong> “You built navigation with shared and local state”</li>
+<li><strong>Next Challenge:</strong> “Make your game dynamic with real trivia data”</li>
+<li><strong>Concepts Coming:</strong>
+<ul>
+<li><strong>API integration</strong> - Fetch trivia questions from the internet</li>
+<li><strong>Async JavaScript</strong> - Handle network requests and loading states</li>
+<li><strong>Data transformation</strong> - Process API responses for your game</li>
+<li><strong>Error handling</strong> - Gracefully handle network failures</li>
+</ul></li>
+<li><strong>Motivation:</strong> “Your GameMap will show real trivia zones with actual questions!”</li>
+<li><strong>Visual:</strong> Preview of data-driven game zones</li>
+</ul>
+</body>
+</html>

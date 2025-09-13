@@ -78,6 +78,7 @@ A running dev server lets you see and test your app as you build it. It gives yo
 Try stopping and restarting the dev server:
 
 - Stop the server with `Ctrl + C` in the terminal.
+- Check localhost again to see the app is gone.
 - Restart it with `npm run dev` and refresh the browser to see the app again.
 
 <a id="replace-the-placeholder-component"></a>
@@ -146,7 +147,7 @@ Now let's make sure you understand what you did and why it matters. Here are the
 - **What does the localhost URL mean?**
 - **What's the difference between npm run dev and npm start?**
 - **How and why do I import a component in React? Where am I importing all that from?**
-- **What does import SplashScreen from './components/SplashScreen' mean? Again, imagine I am in middle school.**
+- **What does import SplashScreen from './components/SplashScreen' mean?**
 - **In a React app, what does the index.html file do?**
 
 ---

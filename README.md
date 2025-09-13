@@ -32,7 +32,7 @@ npm run dev
 npm run dev          # Start development server (use this most!)
 npm run build        # Build for production
 npm run preview      # Preview production build
-npm run format       # Clean up your code formatting
+npm run format       # Clean up code formatting and import order
 npm run format:check # Check code formatting
 ```
 

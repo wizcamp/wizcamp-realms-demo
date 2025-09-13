@@ -6,6 +6,7 @@ You're about to build your first custom React component and unlock the power of 
 
 ## Table of Contents
 
+- [Access Your Codespace](#access-your-codespace)
 - [Create Your First Component](#create-your-first-component)
 - [Understanding Props](#understanding-props)
 - [Adding Click Functionality](#adding-click-functionality)
@@ -14,6 +15,12 @@ You're about to build your first custom React component and unlock the power of 
 - [Install React DevTools](#install-react-devtools)
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
+
+<a id="access-your-codespace"></a>
+
+## ☁️ Access Your Codespace
+
+Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 1.
 
 <a id="create-your-first-component"></a>
 
@@ -25,12 +32,12 @@ Let's build a GameButton component for starting your trivia game. Components are
 2. **Use VS Code snippet**: Type `ednf` (exportDefaultNamedFunction) and press Tab
 3. **Replace first placeholder** with `GameButton`
 4. **Remove second placeholder** completely, leaving empty `()` parentheses
-5. **Add return statement**: Type `return <button>Start Adventure</button>;`
+5. **Replace third placeholder** with `return <button>Start Adventure</button>;` ()
 6. **Import into SplashScreen**: Add `import GameButton from "./GameButton"` at the top
 
 > 📦 **Quick Explanation**: `export default` lets other files use this component. `import` brings it into another file. Think of it like sharing and borrowing LEGO instructions!
 
-7. **Add your button**: Replace the TODO comment in splash-buttons div with:
+7. **Add your button**: Place your button within `div.splash-buttons`:
    ```jsx
    <GameButton />
    ```
@@ -141,7 +148,7 @@ Let's add visual variety to your buttons using CSS classes, default parameters, 
 
 Now that you've built a complete, fully-featured GameButton component, let's experience the power of reusability by adding a second button for the game's credits.
 
-1. **Add a second button**: Below your existing GameButton in SplashScreen, add a credits button:
+1. **Add a second button**: Below your existing GameButton in SplashScreen, add one that will show credits when clicked:
    ```jsx
    <GameButton
      text="Credits"
