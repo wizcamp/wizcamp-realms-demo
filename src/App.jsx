@@ -7,12 +7,12 @@
  * TODO: Session 8 - Add GameOver screen navigation
  */
 
-import SplashScreen from "./components/SplashScreen";
+import StartHere from "./components/StartHere";
 
 export default function App() {
   return (
     <div className="app-container">
-      <SplashScreen />
+      <StartHere />
     </div>
   );
 }
