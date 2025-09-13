@@ -24,7 +24,7 @@ Let's get your cloud coding environment up and running so you can start building
 2. Go to [github.com/wizcamp/wizcamp-realms-demo](https://github.com/wizcamp/wizcamp-realms-demo) and click **Use this template → Open in codespace**.
 3. Wait a bit while your **Codespace** builds. You'll see a **VS Code** editor pop up in your browser.
 4. Once it loads, make sure you can see the project files in the file explorer on the left.
-5. Dark mode not your thing? Click the gear icon in the bottom left, go to **Themes -> Color Theme**, and pick your favorite.
+5. **Customize your theme**: Click the gear icon in the bottom left, go to **Themes -> Color Theme**, and pick your favorite (Dark+ is popular for coding).
 
 ### 💡 Why This Matters
 

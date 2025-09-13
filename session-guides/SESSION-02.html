@@ -251,10 +251,10 @@ page-break-inside: avoid !important;
 <p>When you create a component, export it with <code>export default</code> so it can be shared across your project. Then bring it into other files with <code>import</code>.</p>
 <ol type="1">
 <li><strong>Create the file</strong>: Right-click <code>src/components</code> → New File → name it <code>GameButton.jsx</code></li>
-<li><strong>Use VS Code snippet</strong>: Type <code>ednf</code> (exportDefaultNamedFunction) and press Tab</li>
-<li><strong>Replace first placeholder</strong> with <code>GameButton</code></li>
-<li><strong>Remove second placeholder</strong> completely, leaving empty <code>()</code> parentheses</li>
-<li><p><strong>Replace third placeholder</strong> with <code>return &lt;button&gt;Start Adventure&lt;/button&gt;;</code></p></li>
+<li><p><strong>Type the component structure</strong>:</p>
+<pre class="jsx"><code>export default function GameButton() {
+  return &lt;button&gt;Start Adventure&lt;/button&gt;;
+}</code></pre></li>
 <li><p><strong>Import into SplashScreen</strong>: Add <code>import GameButton from &quot;./GameButton&quot;</code> at the top</p></li>
 <li><p><strong>Add your button</strong>: Place your button within <code>div.splash-buttons</code>:</p>
 <pre class="jsx"><code>&lt;GameButton /&gt;</code></pre></li>

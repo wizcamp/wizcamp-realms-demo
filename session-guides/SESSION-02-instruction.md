@@ -11,7 +11,7 @@
 5. **Style components dynamically** using template literals and variant-based class names
 6. **Implement interactivity** by passing functions as props to handle events like clicks
 7. **Use default parameters** to provide fallback values for props
-8. **Leverage VS Code extensions and snippets** to accelerate component development
+8. **Leverage VS Code built-in features** to accelerate component development
 9. **Inspect component structure and props** using React DevTools for debugging
 10. **Compose components together** to build scalable, maintainable UIs
 11. **Follow a professional development workflow** including incremental testing and Hot Module Replacement
@@ -28,7 +28,7 @@
 6. **Styling with Variants** - Use template literals and dynamic class names to style components based on props
 7. **Functions as Props** - Show how components can trigger actions by receiving functions as props (e.g., onClick)
 8. **Default Parameters and Destructuring** - Introduce fallback values and cleaner syntax for handling props
-9. **VS Code Extensions and Snippets** - Reinforce professional tooling with live demos of snippets like ednf and clg
+9. **VS Code Built-in Features** - Reinforce professional tooling with IntelliSense, auto-completion, and formatting
 10. **React DevTools: Inspect Like a Pro** - Install and use DevTools to explore component trees and props in real time
 11. **Component Composition** - Illustrate how small components combine to form complex UIs, reinforcing the LEGO analogy
 12. **Professional Workflow** - Emphasize incremental development, Hot Module Replacement, and debugging best practices
@@ -154,23 +154,23 @@ export default function GameButton({ text, onClick, variant = "primary" }) {
 - **Props in Action Preview:** "Watch props flow from SplashScreen to GameButton in real-time"
 - **Student Preview:** "You'll pass text, onClick, and variant as props to your GameButton!"
 
-### **Slide 6: VS Code Extensions - Accelerate Your Development ⚡**
+### **Slide 6: VS Code Built-in Features - Accelerate Your Development ⚡**
 
 - **Title:** "Professional Developers Use Smart Tools"
-- **Core Concept:** "VS Code has thousands of extensions for every language and framework — we're using ES7+ React/Redux/React-Native snippets"
-- **Top 5 Snippets You'll Use Today:**
-  - `ednf` - Export default named function (your GameButton!)
-  - `clg` - Console.log for debugging
-  - `clo` - Console.log with label
-  - `dob` - Destructured object
-  - `nfn` - Named function
-- **Live Demo:** Type `ednf` and show snippet expansion in VS Code
+- **Core Concept:** "VS Code has powerful built-in features for React development — IntelliSense, auto-completion, and formatting"
+- **Key Features You'll Use Today:**
+  - **IntelliSense** - Smart code completion and suggestions
+  - **Auto-formatting** - Consistent code style on save
+  - **Error detection** - Real-time syntax checking
+  - **Import assistance** - Automatic import suggestions
+  - **Bracket matching** - Visual code structure helpers
+- **Live Demo:** Show IntelliSense suggesting React component structure
 - **Benefits:**
-  - **Speed** - Write components in seconds, not minutes
-  - **Consistency** - Same structure every time
-  - **Less errors** - Proper syntax automatically
-  - **Professional workflow** - Industry standard practice
-- **Student Encouragement:** "There are extensions for every language — React, Python, Java, CSS. Find ones that accelerate YOUR work!"
+  - **Speed** - Built-in suggestions accelerate coding
+  - **Consistency** - Auto-formatting ensures clean code
+  - **Less errors** - Real-time error detection
+  - **Professional workflow** - Industry standard editor
+- **Student Encouragement:** "VS Code's built-in features are powerful — explore extensions later to customize your workflow!"
 
 ### **Slide 7: Functions as Props - Passing Behavior 🎯**
 
@@ -204,7 +204,7 @@ export default function GameButton({ text, onClick, variant = "primary" }) {
 ### **Slide 9: Let's Build! Your GameButton Component 🚀**
 
 - **Today's Coding Journey:**
-  1. **Create** GameButton.jsx using `ednf` snippet
+  1. **Create** GameButton.jsx with export default function structure
   2. **Add** text prop for customizable content
   3. **Include** onClick prop for interactivity
   4. **Implement** variant prop for styling
@@ -237,7 +237,7 @@ App
 - **Title:** "How Real Developers Build Components"
 - **Workflow Steps:**
   1. **Plan** the component's purpose and props
-  2. **Create** the basic structure with snippets
+  2. **Create** the basic structure with VS Code IntelliSense
   3. **Add** props incrementally
   4. **Test** with Hot Module Replacement
   5. **Style** with CSS classes

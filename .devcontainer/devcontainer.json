@@ -4,7 +4,6 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "dsznajder.es7-react-js-snippets@4.4.3",
         "gerane.theme-dark-dracula@0.0.5"
       ],
       "settings": {

@@ -31,10 +31,12 @@ Let's build a GameButton component for starting your trivia game. Components are
 When you create a component, export it with `export default` so it can be shared across your project. Then bring it into other files with `import`.
 
 1. **Create the file**: Right-click `src/components` → New File → name it `GameButton.jsx`
-2. **Use VS Code snippet**: Type `ednf` (exportDefaultNamedFunction) and press Tab
-3. **Replace first placeholder** with `GameButton`
-4. **Remove second placeholder** completely, leaving empty `()` parentheses
-5. **Replace third placeholder** with `return <button>Start Adventure</button>;`
+2. **Type the component structure**:
+   ```jsx
+   export default function GameButton() {
+     return <button>Start Adventure</button>;
+   }
+   ```
 
 6. **Import into SplashScreen**: Add `import GameButton from "./GameButton"` at the top
 

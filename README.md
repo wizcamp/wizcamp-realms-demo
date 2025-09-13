@@ -20,7 +20,7 @@ npm run dev
 
 1. **Navigate to**: `https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=wizcamp/wizcamp-realms-demo`
 2. **Click**: "Create new codespace"
-3. **Wait**: For Codespace to build (Dark Dracula theme loads automatically)
+3. **Wait**: For Codespace to build
 4. **🚀 RUN**: `npm run dev` in the terminal
 5. **Port Notification**: When you see "Your application running on port 5173 is available" → Click **"Open in Browser"** (NOT "Make Public") or visit http://localhost:5173/
 6. **Follow the on-screen instructions** to swap `<StartHere />` for `<SplashScreen />` and experience hot module reloading
@@ -191,7 +191,8 @@ npm run format:check # Check code formatting
 
 ### Codespaces Tips
 
-- **Everything Configured**: Dark Dracula theme, extensions, and formatting are pre-configured
+- **Everything Configured**: Formatting and essential settings are pre-configured
+- **Choose Your Theme**: VS Code starts with the default theme - customize it in Settings > Themes > Color Theme
 - **Terminal Keybindings**: Enable "Send Keybindings to Shell" for smoother terminal experience
 - **Port Forwarding**: Development server runs on port 5173 (not 3000)
 
