@@ -28,14 +28,15 @@ Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Co
 
 Let's build a GameButton component for starting your trivia game. Components are like digital LEGO blocks — custom, reusable UI elements.
 
+When you create a component, export it with `export default` so it can be shared across your project. Then bring it into other files with `import`.
+
 1. **Create the file**: Right-click `src/components` → New File → name it `GameButton.jsx`
 2. **Use VS Code snippet**: Type `ednf` (exportDefaultNamedFunction) and press Tab
 3. **Replace first placeholder** with `GameButton`
 4. **Remove second placeholder** completely, leaving empty `()` parentheses
-5. **Replace third placeholder** with `return <button>Start Adventure</button>;` ()
-6. **Import into SplashScreen**: Add `import GameButton from "./GameButton"` at the top
+5. **Replace third placeholder** with `return <button>Start Adventure</button>;`
 
-> 📦 **Quick Explanation**: `export default` lets other files use this component. `import` brings it into another file. Think of it like sharing and borrowing LEGO instructions!
+6. **Import into SplashScreen**: Add `import GameButton from "./GameButton"` at the top
 
 7. **Add your button**: Place your button within `div.splash-buttons`:
    ```jsx
@@ -221,7 +222,7 @@ Now let's deepen your understanding of components, props, and the React developm
 - **How do props work in React and why are they read-only?**
 - **Why do we use className instead of class in React?**
 - **How do template literals work and why are they perfect for dynamic CSS classes?**
-- **What's the difference between a React component and a regular JavaScript function?**
+- **What is interpolation in JSX and can you show me examples?**
 - **How does JSX let me write HTML-like code inside JavaScript?**
 - **Can I pass functions as props? How does that work and why is it powerful?**
 - **What can I do with React DevTools that I can't do with regular browser DevTools?**

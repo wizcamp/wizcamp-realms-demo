@@ -291,20 +291,27 @@ page-break-inside: avoid !important;
 <h2 id="adding-screen-navigation">🗺️ Adding Screen Navigation</h2>
 <p>Now let’s implement the core navigation system that will control which screen users see. This is where <strong>shared state</strong> really shines!</p>
 <ol type="1">
-<li><p><strong>Open <code>src/App.jsx</code></strong> and add the necessary imports at the top:</p>
+<li><strong>Open <code>src/App.jsx</code></strong> and add the necessary imports at the top:</li>
+</ol>
 <pre class="jsx"><code>import { useGame } from &#39;./hooks/useGame&#39;;
 import { SCREENS } from &quot;./constants/screens&quot;;
-import GameMap from &quot;./components/GameMap&quot;;</code></pre></li>
-<li><p><strong>Access the shared state</strong> by adding this line inside the App function (before the return):</p>
-<pre class="jsx"><code>const { screen } = useGame();</code></pre></li>
-<li><p><strong>Add conditional rendering</strong> by replacing the current JSX with:</p>
+import GameMap from &quot;./components/GameMap&quot;;
+import SplashScreen from &quot;./components/SplashScreen&quot;;</code></pre>
+<ol start="2" type="1">
+<li><strong>Access the shared state</strong> by adding this line inside the App function (before the return):</li>
+</ol>
+<pre class="jsx"><code>const { screen } = useGame();</code></pre>
+<ol start="3" type="1">
+<li><strong>Add conditional rendering</strong> by replacing the current JSX with:</li>
+</ol>
 <pre class="jsx"><code>return (
   &lt;div className=&quot;app-container&quot;&gt;
     {screen === SCREENS.SPLASH &amp;&amp; &lt;SplashScreen /&gt;}
     {screen === SCREENS.PLAYING &amp;&amp; &lt;GameMap /&gt;}
   &lt;/div&gt;
-);</code></pre></li>
-<li><p><strong>Test the setup</strong>: Run <code>npm run dev</code> to make sure everything still works</p></li>
+);</code></pre>
+<ol start="4" type="1">
+<li><strong>Test the setup</strong>: Run <code>npm run dev</code> to make sure everything still works</li>
 </ol>
 <h3 id="why-this-matters-2">💡 Why This Matters</h3>
 <p><strong>Conditional rendering</strong> using <code>&amp;&amp;</code> is a React pattern that shows components only when certain conditions are true. When <code>screen</code> equals <code>SCREENS.SPLASH</code>, the SplashScreen component renders. When it equals <code>SCREENS.PLAYING</code>, GameMap renders instead. This single piece of <strong>shared state</strong> controls what your entire app displays!</p>
@@ -316,6 +323,10 @@ import GameMap from &quot;./components/GameMap&quot;;</code></pre></li>
 <li><strong>Find Components tab</strong>: Look for “Components” next to Console, Network, etc.</li>
 <li><strong>Locate GameProvider</strong>: Click on GameProvider in the component tree</li>
 <li><strong>Examine the hooks</strong>: Look for the screen state value (you may need to click “parse hook names”)</li>
+</ol>
+<h3 id="devtools-tip">🔧 DevTools Tip</h3>
+<p>If you don’t see hook names clearly, click the gear icon in the Components tab and enable “Parse hook names” to see readable hook names and values.</p>
+<ol start="5" type="1">
 <li><strong>Experiment with state</strong>: Change the screen value from “splash” to “playing” and watch the UI update!</li>
 <li><strong>Change it back</strong>: Set it back to “splash” to see the SplashScreen return</li>
 </ol>
@@ -327,22 +338,30 @@ import GameMap from &quot;./components/GameMap&quot;;</code></pre></li>
 <h2 id="implementing-start-game-functionality">🎮 Implementing Start Game Functionality</h2>
 <p>Now let’s make your “Start Adventure” button actually start the game by updating the <strong>shared state</strong>!</p>
 <ol type="1">
-<li><p><strong>Open <code>src/components/SplashScreen.jsx</code></strong> and add imports at the top:</p>
+<li><strong>Open <code>src/components/SplashScreen.jsx</code></strong> and add imports at the top:</li>
+</ol>
 <pre class="jsx"><code>import { SCREENS } from &quot;../constants/screens&quot;;
-import { useGame } from &quot;../hooks/useGame&quot;;</code></pre></li>
-<li><p><strong>Access the state setter</strong> by adding this inside the SplashScreen function (before the return):</p>
-<pre class="jsx"><code>const { setScreen } = useGame();</code></pre></li>
-<li><p><strong>Create the start game function</strong> (before the return):</p>
+import { useGame } from &quot;../hooks/useGame&quot;;</code></pre>
+<ol start="2" type="1">
+<li><strong>Access the state setter</strong> by adding this inside the SplashScreen function (before the return):</li>
+</ol>
+<pre class="jsx"><code>const { setScreen } = useGame();</code></pre>
+<ol start="3" type="1">
+<li><strong>Create the start game function</strong> (before the return):</li>
+</ol>
 <pre class="jsx"><code>const startGame = () =&gt; {
   setScreen(SCREENS.PLAYING);
-};</code></pre></li>
-<li><p><strong>Update the first GameButton</strong> to use the real function:</p>
+};</code></pre>
+<ol start="4" type="1">
+<li><strong>Update the first GameButton</strong> to use the real function:</li>
+</ol>
 <pre class="jsx"><code>&lt;GameButton
   text=&quot;Start Adventure&quot;
   onClick={startGame}
   variant=&quot;primary&quot;
-/&gt;</code></pre></li>
-<li><p><strong>Test it</strong>: Click the “Start Adventure” button and watch the screen change to GameMap!</p></li>
+/&gt;</code></pre>
+<ol start="5" type="1">
+<li><strong>Test it</strong>: Click the “Start Adventure” button and watch the screen change to GameMap!</li>
 </ol>
 <h3 id="why-this-matters-4">💡 Why This Matters</h3>
 <p><strong>State setters</strong> like <code>setScreen</code> are functions that update <strong>state</strong> and trigger re-renders. When you call <code>setScreen(SCREENS.PLAYING)</code>, React updates the shared state and re-renders all components that depend on it. This is how one button click can change your entire app’s display!</p>
@@ -350,20 +369,28 @@ import { useGame } from &quot;../hooks/useGame&quot;;</code></pre></li>
 <h2 id="adding-local-state-for-credits">🏆 Adding Local State for Credits</h2>
 <p>Let’s implement <strong>local state</strong> for the credits modal to understand the difference between local and shared state.</p>
 <ol type="1">
-<li><p><strong>Add useState import</strong> at the top of SplashScreen.jsx:</p>
+<li><strong>Add useState import</strong> at the top of SplashScreen.jsx:</li>
+</ol>
 <pre class="jsx"><code>import { useState } from &quot;react&quot;;
-import CreditsModal from &quot;./CreditsModal&quot;;</code></pre></li>
-<li><p><strong>Add local state</strong> inside the SplashScreen function (before the return):</p>
-<pre class="jsx"><code>const [showCredits, setShowCredits] = useState(false);</code></pre></li>
-<li><p><strong>Update the Credits button</strong>:</p>
+import CreditsModal from &quot;./CreditsModal&quot;;</code></pre>
+<ol start="2" type="1">
+<li><strong>Add local state</strong> inside the SplashScreen function (before the return):</li>
+</ol>
+<pre class="jsx"><code>const [showCredits, setShowCredits] = useState(false);</code></pre>
+<ol start="3" type="1">
+<li><strong>Update the Credits button</strong>:</li>
+</ol>
 <pre class="jsx"><code>&lt;GameButton
   text=&quot;Credits&quot;
   onClick={() =&gt; setShowCredits(true)}
   variant=&quot;secondary&quot;
-/&gt;</code></pre></li>
-<li><p><strong>Add the modal</strong> before the closing <code>&lt;/div&gt;</code> tag:</p>
-<pre class="jsx"><code>{showCredits &amp;&amp; &lt;CreditsModal onClose={() =&gt; setShowCredits(false)} /&gt;}</code></pre></li>
-<li><p><strong>Test both buttons</strong>: Start Adventure should navigate to GameMap, Credits should show the modal</p></li>
+/&gt;</code></pre>
+<ol start="4" type="1">
+<li><strong>Add the modal</strong> before the closing <code>&lt;/div&gt;</code> tag:</li>
+</ol>
+<pre class="jsx"><code>{showCredits &amp;&amp; &lt;CreditsModal onClose={() =&gt; setShowCredits(false)} /&gt;}</code></pre>
+<ol start="5" type="1">
+<li><strong>Test both buttons</strong>: Start Adventure should navigate to GameMap, Credits should show the modal</li>
 </ol>
 <h3 id="why-this-matters-5">💡 Why This Matters</h3>
 <p><strong>Local state</strong> with <code>useState</code> belongs to a single component, while <strong>shared state</strong> from Context belongs to the entire app. The credits modal only affects SplashScreen, so it uses local state. The screen navigation affects the whole app, so it uses shared state. Choosing the right type of state is a key React skill!</p>

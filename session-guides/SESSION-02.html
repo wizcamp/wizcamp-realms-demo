@@ -248,18 +248,14 @@ page-break-inside: avoid !important;
 <p><a id="create-your-first-component"></a></p>
 <h2 id="create-your-first-component">🧩 Create Your First Component</h2>
 <p>Let’s build a GameButton component for starting your trivia game. Components are like digital LEGO blocks — custom, reusable UI elements.</p>
+<p>When you create a component, export it with <code>export default</code> so it can be shared across your project. Then bring it into other files with <code>import</code>.</p>
 <ol type="1">
 <li><strong>Create the file</strong>: Right-click <code>src/components</code> → New File → name it <code>GameButton.jsx</code></li>
 <li><strong>Use VS Code snippet</strong>: Type <code>ednf</code> (exportDefaultNamedFunction) and press Tab</li>
 <li><strong>Replace first placeholder</strong> with <code>GameButton</code></li>
 <li><strong>Remove second placeholder</strong> completely, leaving empty <code>()</code> parentheses</li>
-<li><strong>Replace third placeholder</strong> with <code>return &lt;button&gt;Start Adventure&lt;/button&gt;;</code> ()</li>
-<li><strong>Import into SplashScreen</strong>: Add <code>import GameButton from &quot;./GameButton&quot;</code> at the top</li>
-</ol>
-<blockquote>
-<p>📦 <strong>Quick Explanation</strong>: <code>export default</code> lets other files use this component. <code>import</code> brings it into another file. Think of it like sharing and borrowing LEGO instructions!</p>
-</blockquote>
-<ol start="7" type="1">
+<li><p><strong>Replace third placeholder</strong> with <code>return &lt;button&gt;Start Adventure&lt;/button&gt;;</code></p></li>
+<li><p><strong>Import into SplashScreen</strong>: Add <code>import GameButton from &quot;./GameButton&quot;</code> at the top</p></li>
 <li><p><strong>Add your button</strong>: Place your button within <code>div.splash-buttons</code>:</p>
 <pre class="jsx"><code>&lt;GameButton /&gt;</code></pre></li>
 <li><p><strong>Test it</strong>: Run <code>npm run dev</code> and you should see your custom button!</p></li>
@@ -451,7 +447,7 @@ page-break-inside: avoid !important;
 <li><strong>How do props work in React and why are they read-only?</strong></li>
 <li><strong>Why do we use className instead of class in React?</strong></li>
 <li><strong>How do template literals work and why are they perfect for dynamic CSS classes?</strong></li>
-<li><strong>What’s the difference between a React component and a regular JavaScript function?</strong></li>
+<li><strong>What is interpolation in JSX and can you show me examples?</strong></li>
 <li><strong>How does JSX let me write HTML-like code inside JavaScript?</strong></li>
 <li><strong>Can I pass functions as props? How does that work and why is it powerful?</strong></li>
 <li><strong>What can I do with React DevTools that I can’t do with regular browser DevTools?</strong></li>
