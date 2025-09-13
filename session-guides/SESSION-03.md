@@ -62,26 +62,30 @@ Let's start by understanding how our game screens are organized using **constant
 Now let's implement the core navigation system that will control which screen users see. This is where **shared state** really shines!
 
 1. **Open `src/App.jsx`** and add the necessary imports at the top:
-   ```jsx
-   import { useGame } from './hooks/useGame';
-   import { SCREENS } from "./constants/screens";
-   import GameMap from "./components/GameMap";
-   ```
+
+```jsx
+import { useGame } from './hooks/useGame';
+import { SCREENS } from "./constants/screens";
+import GameMap from "./components/GameMap";
+import SplashScreen from "./components/SplashScreen";
+```
 
 2. **Access the shared state** by adding this line inside the App function (before the return):
-   ```jsx
-   const { screen } = useGame();
-   ```
+
+```jsx
+const { screen } = useGame();
+```
 
 3. **Add conditional rendering** by replacing the current JSX with:
-   ```jsx
-   return (
-     <div className="app-container">
-       {screen === SCREENS.SPLASH && <SplashScreen />}
-       {screen === SCREENS.PLAYING && <GameMap />}
-     </div>
-   );
-   ```
+
+```jsx
+return (
+  <div className="app-container">
+    {screen === SCREENS.SPLASH && <SplashScreen />}
+    {screen === SCREENS.PLAYING && <GameMap />}
+  </div>
+);
+```
 
 4. **Test the setup**: Run `npm run dev` to make sure everything still works
 
@@ -99,6 +103,11 @@ Let's use React DevTools to see how **shared state** works behind the scenes and
 2. **Find Components tab**: Look for "Components" next to Console, Network, etc.
 3. **Locate GameProvider**: Click on GameProvider in the component tree
 4. **Examine the hooks**: Look for the screen state value (you may need to click "parse hook names")
+
+### 🔧 DevTools Tip
+
+If you don't see hook names clearly, click the gear icon in the Components tab and enable "Parse hook names" to see readable hook names and values.
+
 5. **Experiment with state**: Change the screen value from "splash" to "playing" and watch the UI update!
 6. **Change it back**: Set it back to "splash" to see the SplashScreen return
 
@@ -117,31 +126,35 @@ Try changing the screen state to different values and see what happens. What occ
 Now let's make your "Start Adventure" button actually start the game by updating the **shared state**!
 
 1. **Open `src/components/SplashScreen.jsx`** and add imports at the top:
-   ```jsx
-   import { SCREENS } from "../constants/screens";
-   import { useGame } from "../hooks/useGame";
-   ```
+
+```jsx
+import { SCREENS } from "../constants/screens";
+import { useGame } from "../hooks/useGame";
+```
 
 2. **Access the state setter** by adding this inside the SplashScreen function (before the return):
-   ```jsx
-   const { setScreen } = useGame();
-   ```
+
+```jsx
+const { setScreen } = useGame();
+```
 
 3. **Create the start game function** (before the return):
-   ```jsx
-   const startGame = () => {
-     setScreen(SCREENS.PLAYING);
-   };
-   ```
+
+```jsx
+const startGame = () => {
+  setScreen(SCREENS.PLAYING);
+};
+```
 
 4. **Update the first GameButton** to use the real function:
-   ```jsx
-   <GameButton
-     text="Start Adventure"
-     onClick={startGame}
-     variant="primary"
-   />
-   ```
+
+```jsx
+<GameButton
+  text="Start Adventure"
+  onClick={startGame}
+  variant="primary"
+/>
+```
 
 5. **Test it**: Click the "Start Adventure" button and watch the screen change to GameMap!
 
@@ -156,29 +169,33 @@ Now let's make your "Start Adventure" button actually start the game by updating
 Let's implement **local state** for the credits modal to understand the difference between local and shared state.
 
 1. **Add useState import** at the top of SplashScreen.jsx:
-   ```jsx
-   import { useState } from "react";
-   import CreditsModal from "./CreditsModal";
-   ```
+
+```jsx
+import { useState } from "react";
+import CreditsModal from "./CreditsModal";
+```
 
 2. **Add local state** inside the SplashScreen function (before the return):
-   ```jsx
-   const [showCredits, setShowCredits] = useState(false);
-   ```
+
+```jsx
+const [showCredits, setShowCredits] = useState(false);
+```
 
 3. **Update the Credits button**:
-   ```jsx
-   <GameButton
-     text="Credits"
-     onClick={() => setShowCredits(true)}
-     variant="secondary"
-   />
-   ```
+
+```jsx
+<GameButton
+  text="Credits"
+  onClick={() => setShowCredits(true)}
+  variant="secondary"
+/>
+```
 
 4. **Add the modal** before the closing `</div>` tag:
-   ```jsx
-   {showCredits && <CreditsModal onClose={() => setShowCredits(false)} />}
-   ```
+
+```jsx
+{showCredits && <CreditsModal onClose={() => setShowCredits(false)} />}
+```
 
 5. **Test both buttons**: Start Adventure should navigate to GameMap, Credits should show the modal
 
