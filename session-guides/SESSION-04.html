@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SESSION-04 - Wizcamp Session Guide</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+
+@page {
+margin: 0.6in 0.75in 0.6in 0.75in;
+size: letter;
+}
+body {
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.4;
+color: #1f2328;
+margin: 0;
+padding: 0;
+max-width: none;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 600;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px;
+}
+h1 {
+font-size: 1.75em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 0;
+}
+h2 {
+font-size: 1.5em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 36px;
+margin-bottom: 18px;
+page-break-after: avoid;
+}
+
+h1 + * h2:first-of-type,
+h2:first-of-type {
+margin-top: 24px;
+}
+
+a[id] {
+scroll-margin-top: 20px;
+}
+h3 {
+font-size: 1.25em;
+margin-top: 24px;
+margin-bottom: 12px;
+page-break-after: avoid;
+break-after: avoid;
+}
+
+h3 + ol,
+h3 + ul,
+h3 + p {
+page-break-before: avoid;
+break-before: avoid;
+}
+
+ol, ul {
+page-break-inside: avoid;
+break-inside: avoid;
+}
+
+h3 {
+orphans: 2;
+widows: 2;
+}
+code {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-size: 13px !important;
+font-weight: 500 !important;
+background-color: #f1f3f4 !important;
+color: #c7254e !important;
+padding: 2px 4px !important;
+border-radius: 3px !important;
+border: 1px solid #d1d5da !important;
+white-space: nowrap;
+word-break: break-word;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+pre {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+background-color: #f8f9fa !important;
+border: 1px solid #e1e4e8 !important;
+border-radius: 6px !important;
+padding: 16px !important;
+overflow: visible !important;
+white-space: pre !important;
+word-wrap: normal !important;
+page-break-inside: avoid !important;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+font-size: 14px !important;
+line-height: 1.4 !important;
+display: block !important;
+width: 100% !important;
+}
+
+@media print {
+pre {
+white-space: pre !important;
+font-family: "JetBrains Mono", monospace !important;
+display: block !important;
+}
+pre * {
+white-space: pre !important;
+}
+}
+pre code {
+background-color: transparent !important;
+border: none !important;
+padding: 0 !important;
+color: #24292f !important;
+}
+ul, ol {
+padding-left: 1.8em;
+margin-bottom: 12px;
+}
+li {
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+@media print {
+ul, ol {
+page-break-inside: avoid;
+display: block !important;
+}
+li {
+page-break-inside: avoid;
+display: list-item !important;
+margin-bottom: 8px !important;
+}
+
+* {
+box-sizing: border-box !important;
+}
+}
+p {
+margin-bottom: 12px;
+}
+a {
+color: #0969da;
+text-decoration: none;
+}
+strong {
+font-weight: 600;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+margin: 16px 0;
+font-size: 16px;
+line-height: 1.5;
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+vertical-align: top;
+border: 1px solid #d0d7de;
+}
+th {
+font-weight: 600;
+background-color: #f6f8fa;
+color: #24292f;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+tbody tr:nth-child(even) {
+background-color: #f8f9fa;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+
+table code {
+font-size: 14px !important;
+padding: 2px 4px !important;
+}
+
+table td:first-child {
+min-width: 150px;
+}
+
+table {
+page-break-inside: auto !important;
+}
+th {
+page-break-after: avoid !important;
+}
+tbody tr {
+page-break-inside: avoid !important;
+page-break-after: auto !important;
+}
+
+thead {
+display: table-header-group !important;
+}
+@media print {
+thead {
+display: table-row-group !important;
+}
+table {
+page-break-inside: auto !important;
+}
+tr {
+page-break-inside: avoid !important;
+}
+}
+</style>
+</head>
+<body>
+<h1 id="session-4-configuring-game-zones">Session 4 — Configuring Game Zones</h1>
+<p>Data-Driven Architecture 🗺️</p>
+<p>You’re about to design the heart of your trivia game — the zone configuration that defines your entire game experience! This guide walks you through creating cohesive zone themes, understanding JavaScript data structures, and building the metadata that powers your adventure. Ready to architect your game world? Let’s go!</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#access-your-codespace">Access Your Codespace</a></li>
+<li><a href="#adding-the-hud-and-coordinate-display">Adding the HUD and Coordinate Display</a></li>
+<li><a href="#understanding-metadata-and-configuration">Understanding Metadata and Configuration</a></li>
+<li><a href="#exploring-javascript-data-structures">Exploring JavaScript Data Structures</a></li>
+<li><a href="#designing-your-zone-themes">Designing Your Zone Themes</a></li>
+<li><a href="#configuring-zone-metadata">Configuring Zone Metadata</a></li>
+<li><a href="#positioning-zone-labels">Positioning Zone Labels</a></li>
+<li><a href="#testing-with-react-devtools">Testing with React DevTools</a></li>
+<li><a href="#essential-terms">Essential Terms</a></li>
+<li><a href="#ask-the-ai">Ask the AI</a></li>
+</ul>
+<p><a id="access-your-codespace"></a></p>
+<h2 id="access-your-codespace">☁️ Access Your Codespace</h2>
+<p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 3.</p>
+<p><a id="adding-the-hud-and-coordinate-display"></a></p>
+<h2 id="adding-the-hud-and-coordinate-display">🖥️ Adding the HUD and Coordinate Display</h2>
+<p>Let’s add the game’s <strong>HUD</strong> (Heads Up Display) and a coordinate helper to assist with zone positioning.</p>
+<ol type="1">
+<li><strong>Open <code>src/App.jsx</code></strong> and add the new imports at the top:</li>
+</ol>
+<pre class="jsx"><code>import HUD from &quot;./components/HUD&quot;;
+import CoordinateDisplay from &quot;./components/CoordinateDisplay&quot;;</code></pre>
+<ol start="2" type="1">
+<li><strong>Update the PLAYING screen section</strong> to use a <strong>React Fragment</strong> and include both components:</li>
+</ol>
+<pre class="jsx"><code>{screen === SCREENS.PLAYING &amp;&amp; (
+  &lt;&gt;
+    &lt;GameMap /&gt;
+    &lt;HUD /&gt;
+    &lt;CoordinateDisplay /&gt;
+  &lt;/&gt;
+)}</code></pre>
+<ol start="3" type="1">
+<li><strong>Test the changes</strong>: Run <code>npm run dev</code> and navigate to the game screen to see the new HUD and coordinate display</li>
+</ol>
+<h3 id="why-this-matters">💡 Why This Matters</h3>
+<p><strong>React Fragments</strong> (<code>&lt;&gt;...&lt;/&gt;</code>) are like invisible containers — they let you snap together multiple components without clutter. React components must return a single root element, so fragments solve this requirement cleanly. The <strong>HUD</strong> shows game progress, while <strong>CoordinateDisplay</strong> helps you position zone labels precisely.</p>
+<h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
+<p>Try removing the fragment and see what error React gives you when trying to return multiple elements!</p>
+<p><a id="understanding-metadata-and-configuration"></a></p>
+<h2 id="understanding-metadata-and-configuration">📋 Understanding Metadata and Configuration</h2>
+<p>Now let’s understand what makes your game tick — <strong>metadata</strong> and <strong>configuration files</strong> that define your entire game experience.</p>
+<p><strong>Metadata</strong> is data about data. Think of it like a restaurant menu card: the card isn’t the actual food, but it tells you everything you need to know — the dish name, price, ingredients, spice level, and how it’s presented. In your trivia game, zone metadata works the same way: it describes each zone’s properties like name, difficulty, question count, and visual styling. This information isn’t the actual trivia questions — it’s the data that describes what questions to request and how to display the zone.</p>
+<h3 id="why-this-matters-1">💡 Why This Matters</h3>
+<p><strong>Configuration files</strong> like <code>zones.js</code> are the backbone of <strong>data-driven architecture</strong> — a professional approach where you separate data from code. Think of your <code>zones.js</code> file as the DNA of your game experience: it contains all the genetic information that defines how your zones look, behave, and connect to trivia content. This makes your app flexible, maintainable, and easy to modify without touching component code.</p>
+<p><a id="exploring-javascript-data-structures"></a></p>
+<h2 id="exploring-javascript-data-structures">🏗️ Exploring JavaScript Data Structures</h2>
+<p>Let’s explore the fundamental <strong>data structures</strong> that power your zone configuration — <strong>arrays</strong> and <strong>objects</strong>.</p>
+<ol type="1">
+<li><strong>Open <code>src/data/zones.js</code></strong> and examine the <code>ZONES</code> array structure</li>
+<li><strong>Notice the data types</strong>:
+<ul>
+<li><strong>Strings</strong> for text: <code>&quot;Forest of Knowledge&quot;</code></li>
+<li><strong>Numbers</strong> for IDs and counts: <code>18</code>, <code>4</code></li>
+<li><strong>Objects</strong> for complex data: <code>mapLabel: { x: 225, y: 140 }</code></li>
+</ul></li>
+<li><strong>Understand the nesting</strong>: An <strong>array</strong> of <strong>objects</strong>, where each object has <strong>properties</strong> that can be different data types</li>
+</ol>
+<h3 id="why-this-matters-2">💡 Why This Matters</h3>
+<p><strong>Arrays</strong> (<code>[]</code>) store ordered lists of items, perfect for your three game zones. <strong>Objects</strong> (<code>{}</code>) store key-value pairs, perfect for zone properties like name, difficulty, and styling. Combining these structures (arrays of objects, objects with object properties) lets you represent complex real-world data in code.</p>
+<p><a id="designing-your-zone-themes"></a></p>
+<h2 id="designing-your-zone-themes">🎨 Designing Your Zone Themes</h2>
+<p>Now for the creative part — designing three distinctive zone themes that create a cohesive game experience!</p>
+<ol type="1">
+<li><strong>Explore available categories</strong>: Visit <a href="https://opentdb.com/api_category.php">https://opentdb.com/api_category.php</a> to see all trivia categories</li>
+<li><strong>Brainstorm zone concepts</strong> that match the visual environments:
+<ul>
+<li><strong>Forest theme</strong>: Nature, animals, science categories</li>
+<li><strong>Desert theme</strong>: History, geography, mythology categories<br />
+</li>
+<li><strong>Ice castle theme</strong>: Entertainment, sports, art categories</li>
+</ul></li>
+<li><strong>Plan your zones</strong> — each zone needs:
+<ul>
+<li><strong>id</strong>: Zone number (0, 1, 2)</li>
+<li><strong>name</strong>: Creative zone title</li>
+<li><strong>subtitle</strong>: Zone tagline/description<br />
+</li>
+<li><strong>categoryId</strong>: Question type from the API categories</li>
+<li><strong>difficulty</strong>: “easy”, “medium”, or “hard”</li>
+<li><strong>questionCount</strong>: How many questions (max 50)</li>
+<li><strong>mapLabel</strong>: Position and styling (we’ll configure this later on)</li>
+</ul></li>
+</ol>
+<h3 id="why-this-matters-3">💡 Why This Matters</h3>
+<p><strong>Cohesive theming</strong> creates an immersive game experience. By matching visual environments with appropriate trivia categories, you create logical connections that help players navigate and remember your game. This attention to <strong>user experience</strong> separates good games from great ones.</p>
+<p><a id="configuring-zone-metadata"></a></p>
+<h2 id="configuring-zone-metadata">⚙️ Configuring Zone Metadata</h2>
+<p>Time to implement your zone designs by updating the <code>ZONES</code> array with your custom metadata.</p>
+<ol type="1">
+<li><strong>Open <code>src/data/zones.js</code></strong></li>
+<li><strong>Update the first zone object</strong> with your Zone 0 design:</li>
+</ol>
+<pre class="jsx"><code>{
+  id: 0,
+  name: &quot;Your Zone Name&quot;,
+  subtitle: &quot;Your Zone Subtitle&quot;, 
+  categoryId: 18, // Your chosen category
+  difficulty: &quot;easy&quot;,
+  questionCount: 4,
+  mapLabel: {
+    x: 225,
+    y: 140,
+    fontSize: &quot;35&quot;,
+    fontFamily: &quot;Pirata One, serif&quot;,
+    color: &quot;#333&quot;,
+    fontWeight: &quot;normal&quot;,
+    alignment: &quot;left&quot;,
+  },
+},</code></pre>
+<ol start="3" type="1">
+<li><strong>Add Zone 1 and Zone 2</strong> by copying the structure and updating all properties (keep the mapLabel coordinates for now — we’ll position them precisely in the next section)</li>
+<li><strong>Save the file</strong> — note that changes to <code>zones.js</code> will trigger a full page reload (not HMR-friendly)</li>
+</ol>
+<h3 id="why-this-matters-4">💡 Why This Matters</h3>
+<p><strong>Object properties</strong> use colon syntax (<code>name: &quot;value&quot;</code>) and are separated by commas. Each zone object contains different <strong>data types</strong>: strings for text, numbers for IDs, and nested objects for complex styling. This structure makes your game data organized and easy to modify.</p>
+<p><a id="positioning-zone-labels"></a></p>
+<h2 id="positioning-zone-labels">📍 Positioning Zone Labels</h2>
+<p>Use the <code>CoordinateDisplay</code> component to find optimal positions for your zone labels on the game map.</p>
+<ol type="1">
+<li><strong>Navigate to the game screen</strong> and observe the coordinate display</li>
+<li><strong>Move your mouse</strong> around the map and note the x, y coordinates — this tool gives you real-time feedback, no guessing, just precision</li>
+<li><strong>Find good positions</strong> for each zone label that don’t overlap with visual elements</li>
+<li><strong>Update the mapLabel coordinates</strong> in your zone objects:</li>
+</ol>
+<pre class="jsx"><code>mapLabel: {
+  x: 225, // Your chosen x coordinate
+  y: 140, // Your chosen y coordinate
+  // ... other styling properties
+}</code></pre>
+<ol start="5" type="1">
+<li><strong>Test each zone</strong> by navigating to the game screen and confirming label placement</li>
+</ol>
+<h3 id="why-this-matters-5">💡 Why This Matters</h3>
+<p><strong>Coordinate positioning</strong> requires precise <strong>number</strong> values to place UI elements exactly where you want them. The <strong>CoordinateDisplay</strong> component gives you real-time feedback, making it easy to find perfect positions without guessing.</p>
+<h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
+<p>Try different <code>fontSize</code> and <code>color</code> values to customize your zone labels’ appearance!</p>
+<p><a id="testing-with-react-devtools"></a></p>
+<h2 id="testing-with-react-devtools">🔍 Testing with React DevTools</h2>
+<p>Let’s use React DevTools to explore your zone configuration and test game progression.</p>
+<ol type="1">
+<li><strong>Open DevTools</strong>: Press F12 or right-click → Inspect</li>
+<li><strong>Find Components tab</strong>: Look for “Components” next to Console, Network, etc.</li>
+<li><strong>Locate GameProvider</strong>: Click on GameProvider in the component tree</li>
+<li><strong>Examine the hooks</strong>: Look for the zoneProgress state (if you don’t see hook names clearly, click the gear icon and enable “Parse hook names”)</li>
+<li><strong>Find zoneProgress array</strong>: Under hooks, locate the zoneProgress array</li>
+<li><strong>Experiment with progression</strong>: Change the first zone’s <code>completed</code> property to <code>true</code></li>
+<li><strong>Observe state changes</strong>: Notice how <code>activeZone</code> and <code>currentZone</code> update automatically</li>
+<li><strong>Check the HUD</strong>: See how the Context.Provider props reflect the updated game state</li>
+</ol>
+<h3 id="why-this-matters-6">💡 Why This Matters</h3>
+<p>React DevTools lets you manipulate <strong>state</strong> directly to test different game scenarios without playing through the entire game. This is invaluable for debugging and understanding how your <strong>shared state</strong> affects the entire app.</p>
+<p><a id="essential-terms"></a></p>
+<h2 id="essential-terms">📚 Essential Terms</h2>
+<p><em>Quick reference for all the data structure and configuration concepts you just learned:</em></p>
+<table>
+<colgroup>
+<col style="width: 17%"></col>
+<col style="width: 35%"></col>
+<col style="width: 47%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Definition</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>📋 metadata</td>
+<td>Data that describes other data — information about information.</td>
+<td>Your zone configuration describes how to get and display trivia questions without being the questions themselves.</td>
+</tr>
+<tr class="even">
+<td>🏗️ array</td>
+<td>An ordered list of items using bracket syntax <code>[]</code> with zero-based indexing.</td>
+<td>Perfect for storing your three game zones in a specific order that matches the game progression.</td>
+</tr>
+<tr class="odd">
+<td>📦 object</td>
+<td>A collection of key-value pairs using curly brace syntax <code>{}</code> with colon-separated properties.</td>
+<td>Ideal for zone properties like name, difficulty, and styling — each zone is an object with multiple attributes.</td>
+</tr>
+<tr class="even">
+<td>🔤 string</td>
+<td>Text data enclosed in quotes, used for names, descriptions, and categories.</td>
+<td>Zone names, subtitles, and difficulty levels are all strings that display to users.</td>
+</tr>
+<tr class="odd">
+<td>🔢 number</td>
+<td>Numeric data without quotes, used for IDs, counts, and coordinates.</td>
+<td>Category IDs, question counts, and map coordinates are numbers used for calculations and positioning.</td>
+</tr>
+<tr class="even">
+<td>🏷️ property</td>
+<td>A key-value pair within an object, accessed using dot notation like <code>zone.name</code>.</td>
+<td>Each zone object has properties like name, categoryId, and mapLabel that define its characteristics.</td>
+</tr>
+<tr class="odd">
+<td>⚛️ React Fragment</td>
+<td>JSX syntax <code>&lt;&gt;...&lt;/&gt;</code> that groups elements without adding extra DOM nodes.</td>
+<td>Lets you return multiple components from the PLAYING screen without wrapper divs cluttering your HTML.</td>
+</tr>
+</tbody>
+</table>
+<p><a id="ask-the-ai"></a></p>
+<h2 id="ask-the-ai-data-structure-mastery">🤖 Ask the AI — Data Structure Mastery</h2>
+<p>You just designed cohesive zone themes, configured complex JavaScript data structures, and experienced data-driven architecture — excellent work!</p>
+<p>Now let’s deepen your understanding of data structures, configuration patterns, and the relationship between data and UI. Here are the most impactful questions to ask your AI assistant about today’s session:</p>
+<ul>
+<li><strong>What makes arrays and objects different, and when should I use each?</strong></li>
+<li><strong>How does nesting data structures help represent complex real-world information?</strong></li>
+<li><strong>Why is separating data from code considered a best practice in software development?</strong></li>
+<li><strong>What are the benefits of using configuration files like zones.js?</strong></li>
+<li><strong>How do React Fragments solve the single root element requirement?</strong></li>
+<li><strong>What is metadata and why is it important in application design?</strong></li>
+<li><strong>How does the CoordinateDisplay component help with UI positioning?</strong></li>
+</ul>
+<hr />
+<h3 id="pro-tip">💬 Pro Tip:</h3>
+<p>Data-driven architecture is everywhere in professional development. Think of your zones.js file as the “DNA” of your game — change the data, and the entire game experience changes without touching any component code. This separation makes apps scalable and maintainable.</p>
+</body>
+</html>

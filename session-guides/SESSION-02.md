@@ -58,7 +58,7 @@ Try changing the button text in GameButton.jsx and watch it update instantly tha
 
 ## 📦 Understanding Props
 
-Props (short for "properties") are how you pass data from parent components to child components. They're like function parameters but for React components.
+Props are how you pass data from parent components to child components. They're like function parameters but for React components.
 
 1. **Add text prop to GameButton**:
 
@@ -204,7 +204,7 @@ _Quick reference for all the React concepts you just learned:_
 | Term                      | Definition                                                                                       | Why it matters                                                                                        |
 | ------------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
 | 🧩 component          | A reusable piece of UI that can include markup, styles, and logic (example: `<SplashScreen />`). | You'll build your entire app by composing components together — they're React's building blocks.      |
-| 📦 props              | Properties passed from parent to child components, like function parameters but for React.       | Props let you customize components and pass data around your app — essential for reusable components. |
+| 📦 props              | Data passed from parent to child components.       | Props let you customize components and pass data around your app — essential for reusable components. |
 | ✨ JSX                | JavaScript syntax that looks like HTML — used to describe UI in React components (`.jsx`).       | You'll write JSX in your GameButton component to describe what the button should look like.                      |
 | 🎨 className          | React's version of the HTML `class` attribute for applying CSS styles.                           | Use className instead of class because class is a reserved word in JavaScript.                        |
 | 📤 destructuring      | Extracting values from objects/arrays into variables, like `{ text, onClick }` from props.       | Makes your code cleaner by avoiding repetitive `props.text`, `props.onClick` syntax.                  |

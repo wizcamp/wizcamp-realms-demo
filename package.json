@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "eslint --fix src/**/*.{js,jsx} && prettier --write .",
+    "format": "eslint --config .eslintrc.format.json --fix src/**/*.{js,jsx} && prettier --write .",
     "format:check": "prettier --check ."
   },
   "keywords": [

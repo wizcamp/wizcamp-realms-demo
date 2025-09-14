@@ -9,16 +9,16 @@
  * - subtitle: Zone tagline/description
  * - categoryId: Question type from https://opentdb.com/api_category.php
  * - difficulty: "easy", "medium", or "hard"
- * - questionCount: How many questions (4, 7, 10)
+ * - questionCount: How many questions (max 50)
  * - mapLabel: Position and styling for map display
  */
 
 export const ZONES = [
   {
     id: 0,
-    name: "TODO: Your Zone Name",
-    subtitle: "TODO: Your Zone Subtitle",
-    categoryId: 18, // TODO: Choose from API categories
+    name: "Your Zone Name",
+    subtitle: "Your Zone Subtitle",
+    categoryId: 18,
     difficulty: "easy",
     questionCount: 4,
     mapLabel: {
@@ -31,7 +31,6 @@ export const ZONES = [
       alignment: "left",
     },
   },
-  // TODO: Session 4 - Add Zone 1 and Zone 2
 ];
 
 /**

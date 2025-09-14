@@ -252,15 +252,15 @@ SPLASH ───► PLAYING ───► QUIZ ───► GAME_OVER
   - **Large apps** - External libraries like Redux or Zustand
 - **Student Empowerment:** "You're learning patterns used in production apps"
 
-### **Slide 13: What's Next - Data and APIs 🌐**
+### **Slide 13: What's Next - Configuring Game Content 🎮**
 
 - **Title:** "Preview of Session 4"
 - **Today's Achievement:** "You built navigation with shared and local state"
-- **Next Challenge:** "Make your game dynamic with real trivia data"
+- **Next Challenge:** "Design your game world using data-driven architecture"
 - **Concepts Coming:**
-  - **API integration** - Fetch trivia questions from the internet
-  - **Async JavaScript** - Handle network requests and loading states
-  - **Data transformation** - Process API responses for your game
-  - **Error handling** - Gracefully handle network failures
-- **Motivation:** "Your GameMap will show real trivia zones with actual questions!"
-- **Visual:** Preview of data-driven game zones
+  - **Zone configuration** - Design themed trivia zones with metadata
+  - **JavaScript data structures** - Arrays and objects for game content
+  - **UI positioning** - Place zone labels with coordinate systems
+  - **Configuration testing** - Use React DevTools to verify game scenarios
+- **Motivation:** "Your GameMap will come alive with custom zones and themes!"
+- **Visual:** Preview of configured game zones with positioned labels

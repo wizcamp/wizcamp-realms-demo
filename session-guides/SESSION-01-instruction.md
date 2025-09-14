@@ -214,3 +214,16 @@ flowchart TB
     classDef container fill:#fff3e0,stroke:#ff9800,stroke-width:2px
     classDef bootstrap fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
 ```
+
+### **Slide 13: What's Next - Building Your Own Components 🧩**
+
+- **Title:** "Preview of Session 2"
+- **Today's Foundation:** "You experienced React's component system by swapping existing components"
+- **Next Challenge:** "Create your own reusable components from scratch"
+- **Concepts Coming:**
+  - **Component creation** - Build custom GameButton component
+  - **Props** - Pass data and behavior between components
+  - **JSX mastery** - Write dynamic markup with curly braces
+  - **Styling variants** - Create flexible, reusable UI elements
+- **Motivation:** "Your buttons will be truly yours - custom-built and infinitely reusable!"
+- **Visual:** Preview of GameButton component with different variants
