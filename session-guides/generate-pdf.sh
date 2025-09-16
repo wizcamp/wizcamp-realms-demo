@@ -100,9 +100,8 @@ h2 {
   font-size: 1.5em;
   border-bottom: 1px solid #d0d7de;
   padding-bottom: 0.3em;
-  margin-top: 36px;
-  margin-bottom: 18px;
-  page-break-after: avoid;
+  margin-top: 24px;
+  margin-bottom: 16px;
 }
 
 /* First H2 after title gets normal spacing */
@@ -123,24 +122,14 @@ h3 {
   break-after: avoid;
 }
 
-/* Keep headings with their following content */
-h3 + ol,
-h3 + ul,
-h3 + p {
-  page-break-before: avoid;
-  break-before: avoid;
+/* Minimal page break rules */
+h2, h3 {
+  page-break-after: avoid;
 }
 
-/* Ensure lists stay together better */
-ol, ul {
-  page-break-inside: avoid;
-  break-inside: avoid;
-}
-
-/* Keep at least 2 lines of a list on the same page as heading */
-h3 {
-  orphans: 2;
-  widows: 2;
+/* Allow content to flow naturally */
+ol, ul, li, p {
+  page-break-inside: auto;
 }
 code {
   font-family: "$CODE_FONT", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
@@ -207,12 +196,10 @@ li {
 /* Ensure proper list formatting in PDF */
 @media print {
   ul, ol {
-    page-break-inside: avoid;
     display: block !important;
   }
   
   li {
-    page-break-inside: avoid;
     display: list-item !important;
     margin-bottom: 8px !important;
   }

@@ -14,6 +14,7 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - Include "Ask the AI" section with 5-7 high-impact questions for deeper learning
 - End with "Pro Tip" section
 - Use practical, hands-on approach with clear numbered steps
+- **All content following numbered list items must be properly indented** - indent code blocks, Test paragraphs, explanatory text, and any other content with 3 spaces to align with list item content and maintain proper grouping under the numbered bullet point
 
 ### Essential Terms Table Standards
 - Terms use proper capitalization: lowercase for common terms, proper case for product names (e.g., "component", "Codespace", "Vite", "Node.js")
@@ -24,6 +25,15 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - First use of essential terms in body text should be **bolded**, subsequent uses unemphasized
 - Use "Node.js" for the technology, not "node" (which refers to the binary)
 - Format: emoji + term + definition + session-specific relevance
+
+### Essential Terms Ordering
+- Order terms to follow **logical learning progression** rather than alphabetical order
+- Group related concepts together (e.g., foundational concepts → data formats → tools → implementation details)
+- Follow the conceptual flow from "what" to "how" to "implementation details"
+- Match the order in which concepts are introduced in the session content
+- Examples of good ordering:
+  - SESSION-02: component → props → JSX → className → destructuring → template literals → default parameters → React DevTools
+  - SESSION-05: API → HTTP request → JSON → URI → URL encoding → Fetch API → asynchronous programming → async/await → promise
 
 ## Instructor Guide Requirements (SESSION-XX-instruction.md)
 - Follow SESSION-01-instruction.md structure: Learning Outcomes, Instruction overview, detailed Slide Deck Outline
@@ -72,6 +82,7 @@ Consistency check: Compare new learning outcomes against SESSION-01-instruction.
 - Use identical definitions from previous sessions for repeated terms
 - Only vary the "Why it matters" column to reflect session context
 - Add new terms following the established emoji + definition + relevance format
+- Order terms by logical learning progression, not alphabetically
 
 ## Quality Standards
 - Engaging and age-appropriate for 13-18 year olds

@@ -2,6 +2,7 @@ import { createContext, useMemo, useState } from "react";
 
 import { SCREENS } from "../constants/screens";
 import { getZoneById, ZONES } from "../data/zones";
+import { fetchQuestions } from "../services/api";
 
 /**
  * GAME CONTEXT - The Brain of Our Quiz Game
@@ -14,7 +15,7 @@ import { getZoneById, ZONES } from "../data/zones";
  *
  * Think of this as the "save file" for our game - it remembers everything!
  *
- * TODO: Session 6 - Add question loading and caching
+ * TODO: Session 6 - Add question cache clearing
  * TODO: Session 8 - Add scoring system
  * TODO: Session 9 - Add audio integration
  *
@@ -102,8 +103,8 @@ export function GameProvider({ children }) {
 
   // Load questions for a specific zone
   const loadQuestionsForZone = async (zoneId) => {
-    // TODO: Session 6 - Add fetchQuestions call
-    setCurrentQuestions([]);
+    const questions = await fetchQuestions(zoneId);
+    setCurrentQuestions(questions);
     setCurrentQuestion(0);
     setCorrectAnswers(0);
   };

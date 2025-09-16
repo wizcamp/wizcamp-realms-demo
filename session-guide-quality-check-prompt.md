@@ -46,5 +46,13 @@ Should be: [Suggested correction]
 - **Continuity**: Do sessions flow logically from one to the next?
 - **Consistency**: Are similar concepts described the same way across sessions?
 - **Completeness**: Are all major outcomes/previews covered?
+- **Essential Terms Ordering**: Are terms ordered by logical learning progression rather than alphabetically?
 
-Review all instructor guides and report any continuity issues found.
+### Step 5: Verify Essential Terms Ordering
+For each SESSION-XX.md student guide:
+- Check if Essential Terms table follows logical learning progression
+- Verify terms are grouped by related concepts (foundational → data formats → tools → implementation)
+- Ensure ordering matches the conceptual flow from "what" to "how" to "implementation details"
+- Confirm ordering aligns with how concepts are introduced in the session content
+
+Review all session guides and report any continuity or ordering issues found.
