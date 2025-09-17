@@ -2,7 +2,7 @@ import { createContext, useMemo, useState } from "react";
 
 import { SCREENS } from "../constants/screens";
 import { getZoneById, ZONES } from "../data/zones";
-import { fetchQuestions } from "../services/api";
+import { fetchQuestions } from "../services/trivia";
 
 /**
  * GAME CONTEXT - The Brain of Our Quiz Game
