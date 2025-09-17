@@ -15,9 +15,9 @@ import { fetchQuestions } from "../services/trivia";
  *
  * Think of this as the "save file" for our game - it remembers everything!
  *
- * TODO: Session 6 - Add question cache clearing
- * TODO: Session 8 - Add scoring system
+ * TODO: Session 8 - Add scoring system and cache clearing
  * TODO: Session 9 - Add audio integration
+ * TODO: Session X - Add game reset
  *
  * ┌─────────────────────┬───────────────┬───────────────────────────────────┐
  * │     GAME STATE      │ Type          │ Description                       │
