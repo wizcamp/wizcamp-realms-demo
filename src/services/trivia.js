@@ -5,6 +5,7 @@ import { getZoneById } from "../data/zones";
  *
  * TODO: Session 5 - Implement fetchQuestions and transformQuestion
  * TODO: Session 6 - Add caching with localStorage
+ * TODO: Session 8 - Add cache management functions
  */
 
 // Build API URL with zone parameters
