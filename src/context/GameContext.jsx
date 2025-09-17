@@ -17,7 +17,7 @@ import { fetchQuestions } from "../services/trivia";
  *
  * TODO: Session 8 - Add scoring system and cache clearing
  * TODO: Session 9 - Add audio integration
- * TODO: Session X - Add game reset
+ * TODO: Session X - Add score reset
  *
  * ┌─────────────────────┬───────────────┬───────────────────────────────────┐
  * │     GAME STATE      │ Type          │ Description                       │
@@ -140,7 +140,7 @@ export function GameProvider({ children }) {
         ...prev,
         [activeZone]: { completed: true },
       }));
-      // TODO: Session 6 - Add clearQuestionCache call
+      // TODO: Session 8 - Add clearQuestionCache call
 
       // Check if this was the final zone
       if (activeZone === ZONES.length - 1) {
@@ -161,7 +161,7 @@ export function GameProvider({ children }) {
     setCurrentQuestions([]);
     setCurrentQuestion(0);
     setCorrectAnswers(0);
-    // TODO: Session 6 - Add clearAllQuestionCache call
+    // TODO: Session X - Add clearAllQuestionCache call
   };
 
   return (

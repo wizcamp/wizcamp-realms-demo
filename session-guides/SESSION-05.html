@@ -81,7 +81,7 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
 color: #1f2328;
@@ -90,7 +90,7 @@ padding: 0;
 max-width: none;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-weight: 600;
 line-height: 1.25;
 margin-bottom: 16px;
@@ -190,6 +190,16 @@ margin-bottom: 6px;
 line-height: 1.4;
 }
 
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
 @media print {
 ul, ol {
 display: block !important;
@@ -197,6 +207,15 @@ display: block !important;
 li {
 display: list-item !important;
 margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
 }
 
 * {
@@ -546,7 +565,7 @@ page-break-inside: avoid !important;
     K --&gt; L[GameContext updates currentQuestions state]
     L --&gt; M[React re-renders with new data]</code></pre>
 <h3 id="data-transformation-flow">Data Transformation Flow</h3>
-<pre><code>┌─────────────────────────────────────────────────────────────────┐
+<pre class="text"><code>┌─────────────────────────────────────────────────────────────────┐
 │                    API Response (Raw)                           │
 ├─────────────────────────────────────────────────────────────────┤
 │ {                                                               │
@@ -602,29 +621,29 @@ page-break-inside: avoid !important;
 <td>Your trivia game uses the OpenTrivia Database API to fetch real questions, transforming static zones into dynamic content.</td>
 </tr>
 <tr class="even">
-<td>📨 HTTP request</td>
-<td>A message sent from your application to a server asking for specific data or resources.</td>
-<td>Each zone click triggers an HTTP request to OpenTrivia Database with your zone’s specific parameters.</td>
-</tr>
-<tr class="odd">
 <td>📋 JSON</td>
 <td>JavaScript Object Notation — a text format for exchanging structured data between applications.</td>
 <td>OpenTrivia Database returns question data in JSON format, which your transformQuestion function converts to game format.</td>
 </tr>
-<tr class="even">
-<td>🔗 Uniform Resource Identifier (URI)</td>
-<td>A string that uniquely identifies a resource on the internet, which can be the same as or part of a URL.</td>
-<td>Your buildApiUrl function creates URIs that uniquely identify the OpenTrivia API endpoint with specific parameters for each zone.</td>
-</tr>
 <tr class="odd">
-<td>🔐 URL encoding</td>
-<td>A method of converting characters into a format safe for transmission over the internet.</td>
-<td>Question text comes URL-encoded from the API — your decodeText function converts it to readable game text.</td>
+<td>📨 HTTP request</td>
+<td>A message sent from your application to a server asking for specific data or resources.</td>
+<td>Each zone click triggers an HTTP request to OpenTrivia Database with your zone’s specific parameters.</td>
 </tr>
 <tr class="even">
 <td>📡 Fetch API</td>
 <td>A modern JavaScript interface for making HTTP requests to servers and APIs.</td>
 <td>Your fetchQuestions function uses fetch to request trivia data based on each zone’s category and difficulty settings.</td>
+</tr>
+<tr class="odd">
+<td>🔗 Uniform Resource Identifier (URI)</td>
+<td>A string that uniquely identifies a resource on the internet, which can be the same as or part of a URL.</td>
+<td>Your buildApiUrl function creates URIs that uniquely identify the OpenTrivia API endpoint with specific parameters for each zone.</td>
+</tr>
+<tr class="even">
+<td>🔐 URL encoding</td>
+<td>A method of converting characters into a format safe for transmission over the internet.</td>
+<td>Question text comes URL-encoded from the API — your decodeText function converts it to readable game text.</td>
 </tr>
 <tr class="odd">
 <td>⏰ asynchronous programming</td>

@@ -133,7 +133,7 @@ zone.name // Access property with dot notation
 - **Good Solution:** React Fragments `<>...</>`
 
 **Before (Messy):**
-```jsx
+```javascript
 return (
   <div> {/* Unnecessary wrapper */}
     <GameMap />
@@ -144,7 +144,7 @@ return (
 ```
 
 **After (Clean):**
-```jsx
+```javascript
 return (
   <>
     <GameMap />

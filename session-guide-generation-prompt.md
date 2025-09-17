@@ -15,6 +15,7 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - End with "Pro Tip" section
 - Use practical, hands-on approach with clear numbered steps
 - **All content following numbered list items must be properly indented** - indent code blocks, Test paragraphs, explanatory text, and any other content with 3 spaces to align with list item content and maintain proper grouping under the numbered bullet point
+- **All multi-line code blocks must include language qualifiers** - use ```javascript, ```bash, ```json, etc. for proper syntax highlighting and consistency. Use `javascript` for all React/JSX code blocks as `jsx` provides poor syntax highlighting in PDF output
 
 ### Essential Terms Table Standards
 - Terms use proper capitalization: lowercase for common terms, proper case for product names (e.g., "component", "Codespace", "Vite", "Node.js")
@@ -78,6 +79,17 @@ Consistency check: Compare new learning outcomes against SESSION-01-instruction.
 - Focus on hands-on learning and immediate application
 - Maintain consistency with previous sessions' terminology and definitions
 
+## Tone and Audience Guidelines
+- **Target Audience**: 13-18 year olds getting their first taste of real-world web development
+- **Tone**: Conversational, encouraging, and relatable - avoid overly formal or academic language
+- **"Why This Matters" Sections**: Use engaging metaphors and real-world connections teenagers can relate to
+  - Examples: "You're basically becoming a detective", "debugging skills", "digital breadcrumbs", "like having X-ray vision"
+  - Connect to familiar experiences: apps they use, problems they've encountered, skills that build confidence
+  - Focus on empowerment and capability building rather than abstract professional development
+- **Avoid**: Corporate jargon, overly technical explanations without context, dry academic tone, excessive exclamations or "awesome/super" language
+- **Embrace**: Genuine excitement about technology, practical problem-solving, building useful things, gaining real skills
+- **Balance**: Enthusiastic but not cheesy - use natural, conversational language that respects the audience's intelligence
+
 ## Essential Terms Consistency
 - Use identical definitions from previous sessions for repeated terms
 - Only vary the "Why it matters" column to reflect session context
@@ -85,7 +97,8 @@ Consistency check: Compare new learning outcomes against SESSION-01-instruction.
 - Order terms by logical learning progression, not alphabetically
 
 ## Quality Standards
-- Engaging and age-appropriate for 13-18 year olds
+- Engaging and age-appropriate for 13-18 year olds with conversational, relatable tone
 - Clear progression from simple to complex concepts
-- Practical examples students can relate to
-- Professional development context and real-world applications
+- Practical examples students can relate to (apps they use, problems they've solved)
+- Real-world applications framed as exciting opportunities and skill-building rather than abstract career preparation
+- "Why This Matters" sections should inspire and empower, using metaphors and language that resonates with teenagers

@@ -77,7 +77,7 @@
   - Every React component returns JSX to describe its UI
 - **File Extensions:** `.jsx` files clearly indicate JSX syntax
 - **The Magic of Curly Braces {}:**
-  ```jsx
+  ```javascript
   const name = "Alice";
   return <h1>Hello, {name}!</h1>; // Dynamic content!
   ```
@@ -94,7 +94,7 @@
   - `{text}` — displays variable content
   - `{onClick}` — passes function references
   - Dynamic CSS classes:
-    ```jsx
+    ```javascript
     className={`game-button ${variant}`}
     ```
 - **Student Connection:** "JSX + {} = unlimited UI possibilities!"
@@ -104,7 +104,7 @@
 - **Title:** "Component Blueprint: What You'll Build Today"
 - **Visual:** Annotated GameButton component with labeled parts
 
-```jsx
+```javascript
 // 1. Import statements (if needed)
 
 // 2. Function declaration with props destructuring
@@ -123,7 +123,7 @@ export default function GameButton({ text, onClick, variant = "primary" }) {
 
 - **Usage Example:**
 
-```jsx
+```javascript
 <GameButton 
   text="Start Adventure" 
   onClick={() => alert('Game starting!')} 

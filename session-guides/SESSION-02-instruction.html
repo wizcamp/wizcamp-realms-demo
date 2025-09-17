@@ -12,13 +12,76 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style type="text/css">
 
 @page {
 margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
 color: #1f2328;
@@ -27,7 +90,7 @@ padding: 0;
 max-width: none;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-weight: 600;
 line-height: 1.25;
 margin-bottom: 16px;
@@ -43,9 +106,8 @@ h2 {
 font-size: 1.5em;
 border-bottom: 1px solid #d0d7de;
 padding-bottom: 0.3em;
-margin-top: 36px;
-margin-bottom: 18px;
-page-break-after: avoid;
+margin-top: 24px;
+margin-bottom: 16px;
 }
 
 h1 + * h2:first-of-type,
@@ -64,21 +126,12 @@ page-break-after: avoid;
 break-after: avoid;
 }
 
-h3 + ol,
-h3 + ul,
-h3 + p {
-page-break-before: avoid;
-break-before: avoid;
+h2, h3 {
+page-break-after: avoid;
 }
 
-ol, ul {
-page-break-inside: avoid;
-break-inside: avoid;
-}
-
-h3 {
-orphans: 2;
-widows: 2;
+ol, ul, li, p {
+page-break-inside: auto;
 }
 code {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
@@ -137,15 +190,32 @@ margin-bottom: 6px;
 line-height: 1.4;
 }
 
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
 @media print {
 ul, ol {
-page-break-inside: avoid;
 display: block !important;
 }
 li {
-page-break-inside: avoid;
 display: list-item !important;
 margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
 }
 
 * {
@@ -309,8 +379,8 @@ page-break-inside: avoid !important;
 </ul></li>
 <li><strong>File Extensions:</strong> <code>.jsx</code> files clearly indicate JSX syntax</li>
 <li><p><strong>The Magic of Curly Braces {}:</strong></p>
-<pre class="jsx"><code>const name = &quot;Alice&quot;;
-return &lt;h1&gt;Hello, {name}!&lt;/h1&gt;; // Dynamic content!</code></pre></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> name <span class="op">=</span> <span class="st">&quot;Alice&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="cf">return</span> <span class="op">&lt;</span>h1<span class="op">&gt;</span>Hello<span class="op">,</span> <span class="op">{</span>name<span class="op">}!</span>&lt;/h1<span class="op">&gt;;</span> <span class="co">// Dynamic content!</span></a></code></pre></div></li>
 <li><strong>JSX vs HTML - Key Differences:</strong>
 <ul>
 <li><code>className</code> instead of <code>class</code> (JavaScript reserved word)</li>
@@ -329,7 +399,7 @@ return &lt;h1&gt;Hello, {name}!&lt;/h1&gt;; // Dynamic content!</code></pre></li
 <li><code>{text}</code> — displays variable content</li>
 <li><code>{onClick}</code> — passes function references</li>
 <li><p>Dynamic CSS classes:</p>
-<pre class="jsx"><code>className={`game-button ${variant}`}</code></pre></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">className<span class="op">={</span><span class="vs">`game-button </span><span class="sc">${</span>variant<span class="sc">}</span><span class="vs">`</span><span class="op">}</span></a></code></pre></div></li>
 </ul></li>
 <li><p><strong>Student Connection:</strong> “JSX + {} = unlimited UI possibilities!”</p></li>
 </ul>
@@ -338,28 +408,28 @@ return &lt;h1&gt;Hello, {name}!&lt;/h1&gt;; // Dynamic content!</code></pre></li
 <li><strong>Title:</strong> “Component Blueprint: What You’ll Build Today”</li>
 <li><strong>Visual:</strong> Annotated GameButton component with labeled parts</li>
 </ul>
-<pre class="jsx"><code>// 1. Import statements (if needed)
-
-// 2. Function declaration with props destructuring
-export default function GameButton({ text, onClick, variant = &quot;primary&quot; }) {
-  // 3. Logic/variables (optional)
-  const buttonClass = `game-button ${variant}`;
-
-  // 4. Return JSX - this is what gets rendered!
-  return (
-    &lt;button className={buttonClass} onClick={onClick}&gt;
-      {text}
-    &lt;/button&gt;
-  );
-}</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="co">// 1. Import statements (if needed)</span></a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">// 2. Function declaration with props destructuring</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">GameButton</span>(<span class="op">{</span> text<span class="op">,</span> onClick<span class="op">,</span> variant <span class="op">=</span> <span class="st">&quot;primary&quot;</span> <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-5" title="5">  <span class="co">// 3. Logic/variables (optional)</span></a>
+<a class="sourceLine" id="cb3-6" title="6">  <span class="kw">const</span> buttonClass <span class="op">=</span> <span class="vs">`game-button </span><span class="sc">${</span>variant<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8">  <span class="co">// 4. Return JSX - this is what gets rendered!</span></a>
+<a class="sourceLine" id="cb3-9" title="9">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb3-10" title="10">    <span class="op">&lt;</span>button className<span class="op">={</span>buttonClass<span class="op">}</span> onClick<span class="op">={</span>onClick<span class="op">}&gt;</span></a>
+<a class="sourceLine" id="cb3-11" title="11">      <span class="op">{</span>text<span class="op">}</span></a>
+<a class="sourceLine" id="cb3-12" title="12">    &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-13" title="13">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="op">}</span></a></code></pre></div>
 <ul>
 <li><strong>Usage Example:</strong></li>
 </ul>
-<pre class="jsx"><code>&lt;GameButton 
-  text=&quot;Start Adventure&quot; 
-  onClick={() =&gt; alert(&#39;Game starting!&#39;)} 
-  variant=&quot;primary&quot; 
-/&gt;</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&lt;</span>GameButton </a>
+<a class="sourceLine" id="cb4-2" title="2">  text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span> </a>
+<a class="sourceLine" id="cb4-3" title="3">  onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Game starting!&#39;</span>)<span class="op">}</span> </a>
+<a class="sourceLine" id="cb4-4" title="4">  variant<span class="op">=</span><span class="st">&quot;primary&quot;</span> </a>
+<a class="sourceLine" id="cb4-5" title="5">/&gt;</a></code></pre></div>
 <ul>
 <li><strong>Component Blueprint:</strong>
 <ul>

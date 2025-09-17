@@ -193,6 +193,18 @@ li {
   line-height: 1.4;
 }
 
+/* Nested list spacing - add top margin to first item in nested lists */
+li > ul > li:first-child,
+li > ol > li:first-child {
+  margin-top: 8px;
+}
+
+/* Additional spacing for deeply nested lists */
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+  margin-top: 6px;
+}
+
 /* Ensure proper list formatting in PDF */
 @media print {
   ul, ol {
@@ -202,6 +214,17 @@ li {
   li {
     display: list-item !important;
     margin-bottom: 8px !important;
+  }
+  
+  /* Maintain nested list spacing in print */
+  li > ul > li:first-child,
+  li > ol > li:first-child {
+    margin-top: 8px !important;
+  }
+  
+  li > ul > li > ul > li:first-child,
+  li > ol > li > ol > li:first-child {
+    margin-top: 6px !important;
   }
   
   /* Force proper display of all elements */

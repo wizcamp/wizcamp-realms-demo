@@ -28,7 +28,7 @@ Let's get your cloud coding environment up and running so you can start building
 
 ### 💡 Why This Matters
 
-**Codespaces** give everyone the same setup — no more "it works on my machine" drama. When you launch a Codespace, it spins up a fresh cloud environment with all the tools and dependencies you need pre-installed, so you can focus on building. Best part, if you mess something up, just delete and start fresh. You will use this Codespace for all sessions.
+**Codespaces** give everyone the same setup — no more "it works on my machine" drama. If you mess something up, just delete and start fresh. It's like having a reset button for your entire dev environment. You will use this Codespace for all sessions.
 
 ### 🏆 Bonus Challenge
 
@@ -40,7 +40,7 @@ Visit [github.com/codespaces](https://github.com/codespaces) to explore more abo
 
 _Quick orientation to help you find files during today's tasks:_
 
-```
+```text
 wizcamp-realms-demo/
 ├── src/                    # Your React code lives here
 │   ├── components/         # React components (SplashScreen, etc.)
@@ -71,7 +71,7 @@ Preview the app in your browser by running the dev server to confirm everything 
 
 ### 💡 Why This Matters
 
-A running dev server lets you see and test your app as you build it. It gives you instant feedback on your code changes and allows you to interact with the app, speeding up your development workflow.
+Your dev server is like having a live preview of your creation. Every change you make shows up instantly — you're watching your code come to life in real-time.
 
 ### 🏆 Bonus Challenge
 
@@ -87,10 +87,10 @@ Try stopping and restarting the dev server:
 
 With the development server still running, replace the placeholder component with the game's splash screen component to experience live updates in action.
 
-1. Open `src/App.jsx`
-2. Add the import: `import SplashScreen from './components/SplashScreen';`
-3. Replace `<StartHere />` with `<SplashScreen />`
-4. Watch the screen update instantly — no save needed!
+1. **Open `src/App.jsx`**
+2. **Add the import**: `import SplashScreen from './components/SplashScreen';`
+3. **Replace `<StartHere />` with `<SplashScreen />`**
+4. **Watch the screen update instantly** — no save needed!
 
 ### 💡 Why This Matters
 
@@ -106,10 +106,10 @@ The live update "magic" you experienced is actually powered by a build tool we a
 
 Even though React apps are built with components, they still use a standard HTML file as the entry point. Let's update the page title to reflect our project name.
 
-1. Open `index.html`
-2. Identify where the HTML head/title is defined
-3. Update the `title` tag to the name of our project: `Wizcamp Realms - Legends of Trivia`
-4. Confirm the browser tab displays the new title.
+1. **Open `index.html`**
+2. **Identify where the HTML head/title is defined**
+3. **Update the `title` tag** to the name of our project: `Wizcamp Realms - Legends of Trivia`
+4. **Confirm the browser tab** displays the new title.
 
 ### 💡 Why This Matters
 

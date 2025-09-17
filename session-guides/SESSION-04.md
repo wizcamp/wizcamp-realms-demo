@@ -31,22 +31,22 @@ Let's add the game's **HUD** (Heads Up Display) and a coordinate helper to assis
 
 1. **Open `src/App.jsx`** and add the new imports at the top:
 
-```jsx
-import HUD from "./components/HUD";
-import CoordinateDisplay from "./components/CoordinateDisplay";
-```
+   ```javascript
+   import HUD from "./components/HUD";
+   import CoordinateDisplay from "./components/CoordinateDisplay";
+   ```
 
 2. **Update the PLAYING screen section** to use a **React Fragment** and include both components:
 
-```jsx
-{screen === SCREENS.PLAYING && (
-  <>
-    <GameMap />
-    <HUD />
-    <CoordinateDisplay />
-  </>
-)}
-```
+   ```javascript
+   {screen === SCREENS.PLAYING && (
+     <>
+       <GameMap />
+       <HUD />
+       <CoordinateDisplay />
+     </>
+   )}
+   ```
 
 3. **Test the changes**: Run `npm run dev` and navigate to the game screen to see the new HUD and coordinate display
 
@@ -64,7 +64,7 @@ Try removing the fragment and see what error React gives you when trying to retu
 
 Now let's understand what makes your game tick — **metadata** and **configuration files** that define your entire game experience.
 
-**Metadata** is data about data. Think of it like a restaurant menu card: the card isn't the actual food, but it tells you everything you need to know — the dish name, price, ingredients, spice level, and how it's presented. In your trivia game, zone metadata works the same way: it describes each zone's properties like name, difficulty, question count, and visual styling. This information isn't the actual trivia questions — it's the data that describes what questions to request and how to display the zone.
+**Metadata** is data about data. Think of it like a restaurant menu: it tells you everything about the dish — name, price, ingredients, spice level — but it's not the actual food. Your zone metadata works the same way: it describes each zone's properties without being the actual trivia questions.
 
 ### 💡 Why This Matters
 
@@ -85,7 +85,7 @@ Let's explore the fundamental **data structures** that power your zone configura
 
 ### 💡 Why This Matters
 
-**Arrays** (`[]`) store ordered lists of items, perfect for your three game zones. **Objects** (`{}`) store key-value pairs, perfect for zone properties like name, difficulty, and styling. Combining these structures (arrays of objects, objects with object properties) lets you represent complex real-world data in code.
+**Arrays** are like playlists — they keep things in order. **Objects** are like contact cards — they store all the details about one thing. Together, they're the perfect combo for organizing your game world and representing complex real-world data in code.
 
 <a id="designing-your-zone-themes"></a>
 
@@ -120,25 +120,25 @@ Time to implement your zone designs by updating the `ZONES` array with your cust
 1. **Open `src/data/zones.js`** 
 2. **Update the first zone object** with your Zone 0 design:
 
-```jsx
-{
-  id: 0,
-  name: "Your Zone Name",
-  subtitle: "Your Zone Subtitle", 
-  categoryId: 18, // Your chosen category
-  difficulty: "easy",
-  questionCount: 4,
-  mapLabel: {
-    x: 225,
-    y: 140,
-    fontSize: "35",
-    fontFamily: "Pirata One, serif",
-    color: "#333",
-    fontWeight: "normal",
-    alignment: "left",
-  },
-},
-```
+   ```javascript
+   {
+     id: 0,
+     name: "Your Zone Name",
+     subtitle: "Your Zone Subtitle", 
+     categoryId: 18, // Your chosen category
+     difficulty: "easy",
+     questionCount: 4,
+     mapLabel: {
+       x: 225,
+       y: 140,
+       fontSize: "35",
+       fontFamily: "Pirata One, serif",
+       color: "#333",
+       fontWeight: "normal",
+       alignment: "left",
+     },
+   },
+   ```
 
 3. **Add Zone 1 and Zone 2** by copying the structure and updating all properties (keep the mapLabel coordinates for now — we'll position them precisely in the next section)
 4. **Save the file** — note that changes to `zones.js` will trigger a full page reload (not HMR-friendly)
@@ -158,13 +158,13 @@ Use the `CoordinateDisplay` component to find optimal positions for your zone la
 3. **Find good positions** for each zone label that don't overlap with visual elements
 4. **Update the mapLabel coordinates** in your zone objects:
 
-```jsx
-mapLabel: {
-  x: 225, // Your chosen x coordinate
-  y: 140, // Your chosen y coordinate
-  // ... other styling properties
-}
-```
+   ```javascript
+   mapLabel: {
+     x: 225, // Your chosen x coordinate
+     y: 140, // Your chosen y coordinate
+     // ... other styling properties
+   }
+   ```
 
 5. **Test each zone** by navigating to the game screen and confirming label placement
 

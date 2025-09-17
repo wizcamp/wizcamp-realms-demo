@@ -18,7 +18,7 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
 color: #1f2328;
@@ -27,7 +27,7 @@ padding: 0;
 max-width: none;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-weight: 600;
 line-height: 1.25;
 margin-bottom: 16px;
@@ -43,9 +43,8 @@ h2 {
 font-size: 1.5em;
 border-bottom: 1px solid #d0d7de;
 padding-bottom: 0.3em;
-margin-top: 36px;
-margin-bottom: 18px;
-page-break-after: avoid;
+margin-top: 24px;
+margin-bottom: 16px;
 }
 
 h1 + * h2:first-of-type,
@@ -64,21 +63,12 @@ page-break-after: avoid;
 break-after: avoid;
 }
 
-h3 + ol,
-h3 + ul,
-h3 + p {
-page-break-before: avoid;
-break-before: avoid;
+h2, h3 {
+page-break-after: avoid;
 }
 
-ol, ul {
-page-break-inside: avoid;
-break-inside: avoid;
-}
-
-h3 {
-orphans: 2;
-widows: 2;
+ol, ul, li, p {
+page-break-inside: auto;
 }
 code {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
@@ -137,15 +127,32 @@ margin-bottom: 6px;
 line-height: 1.4;
 }
 
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
 @media print {
 ul, ol {
-page-break-inside: avoid;
 display: block !important;
 }
 li {
-page-break-inside: avoid;
 display: list-item !important;
 margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
 }
 
 * {
@@ -251,13 +258,13 @@ page-break-inside: avoid !important;
 <li><strong>Customize your theme</strong>: Click the gear icon in the bottom left, go to <strong>Themes -&gt; Color Theme</strong>, and pick your favorite (Dark+ is popular for coding).</li>
 </ol>
 <h3 id="why-this-matters">💡 Why This Matters</h3>
-<p><strong>Codespaces</strong> give everyone the same setup — no more “it works on my machine” drama. When you launch a Codespace, it spins up a fresh cloud environment with all the tools and dependencies you need pre-installed, so you can focus on building. Best part, if you mess something up, just delete and start fresh. You will use this Codespace for all sessions.</p>
+<p><strong>Codespaces</strong> give everyone the same setup — no more “it works on my machine” drama. If you mess something up, just delete and start fresh. It’s like having a reset button for your entire dev environment. You will use this Codespace for all sessions.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
 <p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to explore more about managing your Codespaces.</p>
 <p><a id="project-navigation"></a></p>
 <h2 id="project-navigation">🗂️ Project Navigation</h2>
 <p><em>Quick orientation to help you find files during today’s tasks:</em></p>
-<pre><code>wizcamp-realms-demo/
+<pre class="text"><code>wizcamp-realms-demo/
 ├── src/                    # Your React code lives here
 │   ├── components/         # React components (SplashScreen, etc.)
 │   └── App.jsx             # Main app component (you&#39;ll edit this!)
@@ -281,7 +288,7 @@ page-break-inside: avoid !important;
 <li>The starter app should load, showing a placeholder component.</li>
 </ol>
 <h3 id="why-this-matters-1">💡 Why This Matters</h3>
-<p>A running dev server lets you see and test your app as you build it. It gives you instant feedback on your code changes and allows you to interact with the app, speeding up your development workflow.</p>
+<p>Your dev server is like having a live preview of your creation. Every change you make shows up instantly — you’re watching your code come to life in real-time.</p>
 <h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
 <p>Try stopping and restarting the dev server:</p>
 <ul>
@@ -293,10 +300,10 @@ page-break-inside: avoid !important;
 <h2 id="replace-the-placeholder-component">🧩 Replace the Placeholder Component</h2>
 <p>With the development server still running, replace the placeholder component with the game’s splash screen component to experience live updates in action.</p>
 <ol type="1">
-<li>Open <code>src/App.jsx</code></li>
-<li>Add the import: <code>import SplashScreen from &#39;./components/SplashScreen&#39;;</code></li>
-<li>Replace <code>&lt;StartHere /&gt;</code> with <code>&lt;SplashScreen /&gt;</code></li>
-<li>Watch the screen update instantly — no save needed!</li>
+<li><strong>Open <code>src/App.jsx</code></strong></li>
+<li><strong>Add the import</strong>: <code>import SplashScreen from &#39;./components/SplashScreen&#39;;</code></li>
+<li><strong>Replace <code>&lt;StartHere /&gt;</code> with <code>&lt;SplashScreen /&gt;</code></strong></li>
+<li><strong>Watch the screen update instantly</strong> — no save needed!</li>
 </ol>
 <h3 id="why-this-matters-2">💡 Why This Matters</h3>
 <p><strong>Components</strong> are the building blocks of <strong>React</strong> web apps — kind of like digital LEGO pieces. You build apps by snapping them together.</p>
@@ -306,10 +313,10 @@ page-break-inside: avoid !important;
 <h2 id="update-the-page-title">🏷️ Update the Page Title</h2>
 <p>Even though React apps are built with components, they still use a standard HTML file as the entry point. Let’s update the page title to reflect our project name.</p>
 <ol type="1">
-<li>Open <code>index.html</code></li>
-<li>Identify where the HTML head/title is defined</li>
-<li>Update the <code>title</code> tag to the name of our project: <code>Wizcamp Realms - Legends of Trivia</code></li>
-<li>Confirm the browser tab displays the new title.</li>
+<li><strong>Open <code>index.html</code></strong></li>
+<li><strong>Identify where the HTML head/title is defined</strong></li>
+<li><strong>Update the <code>title</code> tag</strong> to the name of our project: <code>Wizcamp Realms - Legends of Trivia</code></li>
+<li><strong>Confirm the browser tab</strong> displays the new title.</li>
 </ol>
 <h3 id="why-this-matters-3">💡 Why This Matters</h3>
 <p>A descriptive page title is important for usability, accessibility, and SEO. It helps users identify your app when they have multiple tabs open and improves discoverability in search engines.</p>

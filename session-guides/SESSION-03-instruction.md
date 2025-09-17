@@ -154,7 +154,7 @@ Any component can access screen directly
   - If condition is `true` → Component renders
   - If condition is `false` → Nothing renders
 - **Examples:**
-  ```jsx
+  ```javascript
   {screen === SCREENS.SPLASH && <SplashScreen />}
   {screen === SCREENS.PLAYING && <GameMap />}
   {showCredits && <CreditsModal />}
@@ -206,12 +206,12 @@ SPLASH ───► PLAYING ───► QUIZ ───► GAME_OVER
 
 - **Title:** "useGame: Wrapping Context for Better Developer Experience"
 - **Raw Context Usage:**
-  ```jsx
+  ```javascript
   const context = useContext(GameContext);
   const { screen, setScreen } = context;
   ```
 - **Custom Hook Usage:**
-  ```jsx
+  ```javascript
   const { screen, setScreen } = useGame();
   ```
 - **Benefits:**

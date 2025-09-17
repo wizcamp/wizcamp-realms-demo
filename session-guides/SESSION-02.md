@@ -32,19 +32,19 @@ When you create a component, export it with `export default` so it can be shared
 
 1. **Create the file**: Right-click `src/components` → New File → name it `GameButton.jsx`
 2. **Type the component structure**:
-   ```jsx
+   ```javascript
    export default function GameButton() {
      return <button>Start Adventure</button>;
    }
    ```
 
-6. **Import into SplashScreen**: Add `import GameButton from "./GameButton"` at the top
+3. **Import into SplashScreen**: Add `import GameButton from "./GameButton"` at the top
 
-7. **Add your button**: Place your button within `div.splash-buttons`:
-   ```jsx
+4. **Add your button**: Place your button within `div.splash-buttons`:
+   ```javascript
    <GameButton />
    ```
-8. **Test it**: Run `npm run dev` and you should see your custom button!
+5. **Test it**: Run `npm run dev` and you should see your custom button!
 
 ### 💡 Why This Matters
 
@@ -62,7 +62,7 @@ Props are how you pass data from parent components to child components. They're 
 
 1. **Add text prop to GameButton**:
 
-   ```jsx
+   ```javascript
    export default function GameButton({ text }) {
      return <button>{text}</button>;
    }
@@ -70,7 +70,7 @@ Props are how you pass data from parent components to child components. They're 
 
 2. **Update SplashScreen to pass text**:
 
-   ```jsx
+   ```javascript
    <GameButton text="Start Adventure" />
    ```
 
@@ -88,7 +88,7 @@ Let's make your buttons actually do something when clicked. In React, you can pa
 
 1. **Add onClick prop to GameButton**:
 
-   ```jsx
+   ```javascript
    export default function GameButton({ text, onClick }) {
      return <button onClick={onClick}>{text}</button>;
    }
@@ -96,7 +96,7 @@ Let's make your buttons actually do something when clicked. In React, you can pa
 
 2. **Update SplashScreen with click handler**:
 
-   ```jsx
+   ```javascript
    <GameButton
      text="Start Adventure"
      onClick={() => alert('Start Game!')}
@@ -107,7 +107,7 @@ Let's make your buttons actually do something when clicked. In React, you can pa
 
 ### 💡 Why This Matters
 
-**Functions as props** let you control what happens when a component is used — without changing the component itself. This keeps your components flexible and focused on UI, while the parent decides the behavior. It's a key pattern in React for building interactive apps.
+**Functions as props** are like giving your components different personalities. Your GameButton can do different things depending on where you use it — same button, different actions. It's a key pattern in React for building interactive apps.
 
 <a id="styling-with-variants"></a>
 
@@ -117,7 +117,7 @@ Let's add visual variety to your buttons using CSS classes, default parameters, 
 
 1. **Add variant prop with default value and create buttonClass variable**:
 
-   ```jsx
+   ```javascript
    export default function GameButton({ text, onClick, variant = "primary" }) {
      const buttonClass = `game-button ${variant}`;
 
@@ -131,7 +131,7 @@ Let's add visual variety to your buttons using CSS classes, default parameters, 
 
 2. **Update SplashScreen with variant**:
 
-   ```jsx
+   ```javascript
    <GameButton
      text="Start Adventure"
      onClick={() => alert('Start Game!')}
@@ -152,7 +152,7 @@ Let's add visual variety to your buttons using CSS classes, default parameters, 
 Now that you've built a complete, fully-featured GameButton component, let's experience the power of reusability by adding a second button for the game's credits.
 
 1. **Add a second button**: Below your existing GameButton in SplashScreen, add one that will show credits when clicked:
-   ```jsx
+   ```javascript
    <GameButton
      text="Credits"
      onClick={() => alert('Show Credits')}

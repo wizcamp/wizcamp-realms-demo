@@ -373,7 +373,7 @@ graph TD
 
 ### Data Transformation Flow
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                    API Response (Raw)                           │
 ├─────────────────────────────────────────────────────────────────┤
@@ -420,11 +420,11 @@ _Quick reference for all the API and asynchronous programming concepts you just 
 | Term | Definition | Why it matters |
 |------|------------|----------------|
 | 🌐 Application Programming Interface (API) | A set of rules and protocols that allows different software applications to communicate with each other. | Your trivia game uses the OpenTrivia Database API to fetch real questions, transforming static zones into dynamic content. |
-| 📨 HTTP request | A message sent from your application to a server asking for specific data or resources. | Each zone click triggers an HTTP request to OpenTrivia Database with your zone's specific parameters. |
 | 📋 JSON | JavaScript Object Notation — a text format for exchanging structured data between applications. | OpenTrivia Database returns question data in JSON format, which your transformQuestion function converts to game format. |
+| 📨 HTTP request | A message sent from your application to a server asking for specific data or resources. | Each zone click triggers an HTTP request to OpenTrivia Database with your zone's specific parameters. |
+| 📡 Fetch API | A modern JavaScript interface for making HTTP requests to servers and APIs. | Your fetchQuestions function uses fetch to request trivia data based on each zone's category and difficulty settings. |
 | 🔗 Uniform Resource Identifier (URI) | A string that uniquely identifies a resource on the internet, which can be the same as or part of a URL. | Your buildApiUrl function creates URIs that uniquely identify the OpenTrivia API endpoint with specific parameters for each zone. |
 | 🔐 URL encoding | A method of converting characters into a format safe for transmission over the internet. | Question text comes URL-encoded from the API — your decodeText function converts it to readable game text. |
-| 📡 Fetch API | A modern JavaScript interface for making HTTP requests to servers and APIs. | Your fetchQuestions function uses fetch to request trivia data based on each zone's category and difficulty settings. |
 | ⏰ asynchronous programming | Code execution that doesn't block while waiting for operations to complete, allowing other code to run. | Your game stays responsive while fetching questions — users can still interact with the UI during network requests. |
 | 🔄 async/await | JavaScript syntax that makes asynchronous code look and behave like synchronous code. | Your fetchQuestions function uses async/await to handle API requests in a readable, step-by-step manner. |
 | 🤝 promise | A JavaScript object representing the eventual completion or failure of an asynchronous operation. | Every fetch call returns a promise — your game will eventually get questions or handle the error gracefully. |

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SESSION-01-architecture - Wizcamp Session Guide</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+
+@page {
+margin: 0.6in 0.75in 0.6in 0.75in;
+size: letter;
+}
+body {
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.4;
+color: #1f2328;
+margin: 0;
+padding: 0;
+max-width: none;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 600;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px;
+}
+h1 {
+font-size: 1.75em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 0;
+}
+h2 {
+font-size: 1.5em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 24px;
+margin-bottom: 16px;
+}
+
+h1 + * h2:first-of-type,
+h2:first-of-type {
+margin-top: 24px;
+}
+
+a[id] {
+scroll-margin-top: 20px;
+}
+h3 {
+font-size: 1.25em;
+margin-top: 24px;
+margin-bottom: 12px;
+page-break-after: avoid;
+break-after: avoid;
+}
+
+h2, h3 {
+page-break-after: avoid;
+}
+
+ol, ul, li, p {
+page-break-inside: auto;
+}
+code {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-size: 13px !important;
+font-weight: 500 !important;
+background-color: #f1f3f4 !important;
+color: #c7254e !important;
+padding: 2px 4px !important;
+border-radius: 3px !important;
+border: 1px solid #d1d5da !important;
+white-space: nowrap;
+word-break: break-word;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+pre {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+background-color: #f8f9fa !important;
+border: 1px solid #e1e4e8 !important;
+border-radius: 6px !important;
+padding: 16px !important;
+overflow: visible !important;
+white-space: pre !important;
+word-wrap: normal !important;
+page-break-inside: avoid !important;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+font-size: 14px !important;
+line-height: 1.4 !important;
+display: block !important;
+width: 100% !important;
+}
+
+@media print {
+pre {
+white-space: pre !important;
+font-family: "JetBrains Mono", monospace !important;
+display: block !important;
+}
+pre * {
+white-space: pre !important;
+}
+}
+pre code {
+background-color: transparent !important;
+border: none !important;
+padding: 0 !important;
+color: #24292f !important;
+}
+ul, ol {
+padding-left: 1.8em;
+margin-bottom: 12px;
+}
+li {
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
+@media print {
+ul, ol {
+display: block !important;
+}
+li {
+display: list-item !important;
+margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
+}
+
+* {
+box-sizing: border-box !important;
+}
+}
+p {
+margin-bottom: 12px;
+}
+a {
+color: #0969da;
+text-decoration: none;
+}
+strong {
+font-weight: 600;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+margin: 16px 0;
+font-size: 16px;
+line-height: 1.5;
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+vertical-align: top;
+border: 1px solid #d0d7de;
+}
+th {
+font-weight: 600;
+background-color: #f6f8fa;
+color: #24292f;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+tbody tr:nth-child(even) {
+background-color: #f8f9fa;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+
+table code {
+font-size: 14px !important;
+padding: 2px 4px !important;
+}
+
+table td:first-child {
+min-width: 150px;
+}
+
+table {
+page-break-inside: auto !important;
+}
+th {
+page-break-after: avoid !important;
+}
+tbody tr {
+page-break-inside: avoid !important;
+page-break-after: auto !important;
+}
+
+thead {
+display: table-header-group !important;
+}
+@media print {
+thead {
+display: table-row-group !important;
+}
+table {
+page-break-inside: auto !important;
+}
+tr {
+page-break-inside: avoid !important;
+}
+}
+</style>
+</head>
+<body>
+<!-- filepath: /home/bobleeswagger/wizcamp-realms-demo/session-guides/SESSION-01-architecture.md -->
+<h1 id="session-01-dev-environment-architecture">🏗️ Session 01 — Dev Environment Architecture</h1>
+<p>A visual diagram showing relationships between GitHub Codespaces, OS, runtimes, dev tools, and the browser preview.</p>
+<h2 id="mermaid-diagram-preferred">Mermaid diagram (preferred)</h2>
+<pre class="mermaid"><code>flowchart TB
+  %% Actors
+  Dev[&quot;Developer\n(Browser or VS Code Desktop)&quot;]
+  Browser((&quot;Browser Preview&quot;))
+
+  %% Codespace container (contains OS + DevTools + editor config)
+  subgraph Codespace[&quot;GitHub Codespace 🧭&quot;]
+    direction TB
+    DevContainer[&quot;.devcontainer\n(config)&quot;]
+    subgraph OS[&quot;Ubuntu (container OS) 🐧&quot;]
+      direction TB
+      Node[&quot;Node.js\n(runtime) ⚙️&quot;]
+      NPM[&quot;npm / package manager 📦&quot;]
+    end
+    subgraph DevTools[&quot;Dev tools &amp; App&quot;]
+      direction TB
+      Vite[&quot;Vite\n(dev server) ⚡&quot;]
+      HMR[&quot;HMR\n(Hot Module Replacement) 🔁&quot;]
+      React[&quot;React App\n(src/*.jsx / components) ⚛️&quot;]
+      Files[&quot;Project files\n(src/, public/) 🗂️&quot;]
+    end
+    VSCode[&quot;VS Code\n(remote editor) 🖥️&quot;]
+  end
+
+  %% Relationships
+  Dev --&gt;|opens remote session| VSCode
+  VSCode --&gt;|remote connection| Codespace
+  Dev --&gt;|open preview| Browser
+
+  DevContainer --&gt; OS
+  OS --&gt; Node
+  Node --&gt; NPM
+  NPM --&gt; Vite
+  NPM --&gt; React
+  Files --&gt; React
+  React --&gt;|built / served by| Vite
+  Vite --&gt; HMR
+  HMR --&gt; Browser
+  Vite --&gt;|serves on localhost| Browser
+
+  %% Classes (styling)
+  class Dev,Browser actorClass
+  class Node,NPM osClass
+  class Vite,HMR,React devtoolsClass
+  class VSCode codespaceToolClass
+  class DevContainer,Files diagNotes
+
+  %% Visual style definitions
+  classDef actorClass fill:#ffffff,stroke:#94a3b8,stroke-width:1px,color:#0f172a;
+  classDef osClass fill:#ecfdf5,stroke:#34d399,stroke-width:1px,color:#065f46;
+  classDef devtoolsClass fill:#fff7ed,stroke:#fb923c,stroke-width:1px,color:#92400e;
+  classDef codespaceToolClass fill:#eef2ff,stroke:#7c3aed,stroke-width:1px,color:#3730a3;
+  classDef diagNotes fill:#f8fafc,stroke:#e2e8f0,stroke-width:1px,color:#0f172a;
+
+  %% Optional styling for clarity (some renderers support &#39;style&#39; for nodes)
+  style Codespace fill:#f0f9ff,stroke:#60a5fa,stroke-width:2px</code></pre>
+<h3 id="legend-notes">Legend / Notes</h3>
+<ul>
+<li>Codespace = remote container running Ubuntu with your project’s config (.devcontainer).</li>
+<li>Node + npm = runtime + package manager used to install/run Vite and the React app.</li>
+<li>Vite = dev server with HMR; serves the app on localhost to the Browser preview.</li>
+<li>VS Code (remote) = editor connected to the Codespace for live editing.</li>
+</ul>
+<h2 id="ascii-fallback-for-plaintext-renderers">ASCII fallback (for plaintext renderers)</h2>
+<pre><code>Developer (Browser / VS Code)
+        |
+  -------------------
+  |                 |
+VS Code (remote)  Browser (preview)
+  |                 ^
+  |                 |
+  |   ┌───────── GitHub Codespace ─────────┐
+  |   |  .devcontainer  (config)           |
+  |   |      |                              |
+  |   |   Ubuntu (container OS)             |
+  |   |      |                              |
+  |   |   Node.js (runtime)                 |
+  |   |      |                              |
+  |   |    npm (package manager)            |
+  |   |     /      \                        |
+  |   |    /        \                       |
+  |   | Vite (dev server)  React (source)   |
+  |   |    |   \        /   ^               |
+  |   |    |    \      /    |               |
+  |   |    |     HMR updates/patches        |
+  |   |    |            |                   |
+  |   |    |            v                   |
+  |   |    |        Browser &lt;--- serves on localhost
+  |   └─────────────────────────────────────┘</code></pre>
+</body>
+</html>

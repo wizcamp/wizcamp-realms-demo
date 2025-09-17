@@ -81,7 +81,7 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
 color: #1f2328;
@@ -90,7 +90,7 @@ padding: 0;
 max-width: none;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-weight: 600;
 line-height: 1.25;
 margin-bottom: 16px;
@@ -106,9 +106,8 @@ h2 {
 font-size: 1.5em;
 border-bottom: 1px solid #d0d7de;
 padding-bottom: 0.3em;
-margin-top: 36px;
-margin-bottom: 18px;
-page-break-after: avoid;
+margin-top: 24px;
+margin-bottom: 16px;
 }
 
 h1 + * h2:first-of-type,
@@ -127,21 +126,12 @@ page-break-after: avoid;
 break-after: avoid;
 }
 
-h3 + ol,
-h3 + ul,
-h3 + p {
-page-break-before: avoid;
-break-before: avoid;
+h2, h3 {
+page-break-after: avoid;
 }
 
-ol, ul {
-page-break-inside: avoid;
-break-inside: avoid;
-}
-
-h3 {
-orphans: 2;
-widows: 2;
+ol, ul, li, p {
+page-break-inside: auto;
 }
 code {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
@@ -200,15 +190,32 @@ margin-bottom: 6px;
 line-height: 1.4;
 }
 
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
 @media print {
 ul, ol {
-page-break-inside: avoid;
 display: block !important;
 }
 li {
-page-break-inside: avoid;
 display: list-item !important;
 margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
 }
 
 * {
@@ -451,21 +458,21 @@ page-break-inside: avoid !important;
 <li><strong>Good Solution:</strong> React Fragments <code>&lt;&gt;...&lt;/&gt;</code></li>
 </ul>
 <p><strong>Before (Messy):</strong></p>
-<pre class="jsx"><code>return (
-  &lt;div&gt; {/* Unnecessary wrapper */}
-    &lt;GameMap /&gt;
-    &lt;HUD /&gt;
-    &lt;CoordinateDisplay /&gt;
-  &lt;/div&gt;
-);</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="op">&lt;</span>div<span class="op">&gt;</span> <span class="op">{</span><span class="co">/* Unnecessary wrapper */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="op">&lt;</span>GameMap /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-4" title="4">    <span class="op">&lt;</span>HUD /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-5" title="5">    <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-6" title="6">  &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-7" title="7">)<span class="op">;</span></a></code></pre></div>
 <p><strong>After (Clean):</strong></p>
-<pre class="jsx"><code>return (
-  &lt;&gt;
-    &lt;GameMap /&gt;
-    &lt;HUD /&gt;
-    &lt;CoordinateDisplay /&gt;
-  &lt;/&gt;
-);</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="op">&lt;&gt;</span></a>
+<a class="sourceLine" id="cb4-3" title="3">    <span class="op">&lt;</span>GameMap /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="op">&lt;</span>HUD /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-6" title="6">  &lt;/<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-7" title="7">)<span class="op">;</span></a></code></pre></div>
 <ul>
 <li><strong>Benefits:</strong> Clean HTML output, no styling conflicts from wrapper divs</li>
 <li><strong>Alternative Syntax:</strong> <code>&lt;React.Fragment&gt;...&lt;/React.Fragment&gt;</code> (same result)</li>
