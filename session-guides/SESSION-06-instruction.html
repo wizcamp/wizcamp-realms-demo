@@ -81,7 +81,7 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
 color: #1f2328;
@@ -90,7 +90,7 @@ padding: 0;
 max-width: none;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-weight: 600;
 line-height: 1.25;
 margin-bottom: 16px;
@@ -311,18 +311,17 @@ page-break-inside: avoid !important;
 <li><strong>Detect and handle cache hits and misses</strong> with appropriate logging and user feedback</li>
 <li><strong>Use the ternary operator</strong> for concise conditional logic in cache retrieval functions</li>
 <li><strong>Inspect browser storage</strong> using DevTools to verify cache operations and debug storage issues</li>
-<li><strong>Apply helper functions</strong> to abstract localStorage complexity and improve code maintainability</li>
+<li><strong>Implement helper functions</strong> to abstract localStorage complexity and improve code maintainability</li>
 <li><strong>Implement and test a working cache system</strong> that improves game performance and handles network scenarios</li>
 </ol>
 <h2 id="instruction">Instruction</h2>
 <p><strong>Instructor introduces key concepts students need to succeed:</strong></p>
 <ol type="1">
 <li><strong>Performance and User Experience</strong> - Introduce caching as a professional strategy that transforms slow, network-dependent apps into fast, responsive experiences—just like the ones students use every day (e.g., YouTube, Instagram)</li>
-<li><strong>Browser Storage Fundamentals</strong> - Define localStorage as persistent key-value storage with CRUD operations</li>
 <li><strong>Rate Limiting and API Constraints</strong> - Explain why APIs limit request frequency and how caching helps avoid these limits</li>
+<li><strong>Browser Storage Fundamentals</strong> - Define localStorage as persistent key-value storage with CRUD operations</li>
 <li><strong>Cache-Aside Pattern</strong> - Introduce the professional caching strategy: check cache, fetch on miss, store result</li>
 <li><strong>Serialization for Storage</strong> - Show how JSON.stringify/parse enables complex data storage in text-only localStorage</li>
-<li><strong>Helper Functions for Abstraction</strong> - Demonstrate how focused functions manage complexity and improve maintainability</li>
 <li><strong>Dynamic Cache Key Generation</strong> - Use template literals to create unique, descriptive cache identifiers</li>
 <li><strong>Ternary Operator Mastery</strong> - Introduce concise conditional syntax for clean cache retrieval logic</li>
 <li><strong>DevTools for Cache Inspection</strong> - Guide students through inspecting localStorage in DevTools: locate the Application tab, find your domain, view stored keys, and test cache hits/misses by manually deleting entries</li>
@@ -354,7 +353,7 @@ page-break-inside: avoid !important;
 <li><strong>Current User Experience:</strong>
 <ul>
 <li><strong>Every zone click</strong> → Network request to OpenTrivia DB</li>
-<li><strong>Loading time</strong> → 500ms-2000ms per request</li>
+<li><strong>Loading time</strong> → 200ms-800ms per request</li>
 <li><strong>Repeated requests</strong> → Same questions downloaded multiple times</li>
 <li><strong>Rate limiting</strong> → API blocks frequent requests</li>
 <li><strong>Poor UX</strong> → Users wait for content they’ve seen before</li>
@@ -365,7 +364,31 @@ page-break-inside: avoid !important;
 <li><strong>Student Motivation:</strong> &quot;Your game will feel as responsive as professional apps&quot;</li>
 <li><strong>Student Connection:</strong> &quot;You’ll eliminate delays and make your game feel instant for repeat players&quot;</li>
 </ul>
-<h3 id="slide-3-browser-storage---your-local-data-warehouse-️"><strong>Slide 3: Browser Storage - Your Local Data Warehouse 🗄️</strong></h3>
+<h3 id="slide-3-rate-limiting---why-apis-restrict-access"><strong>Slide 3: Rate Limiting - Why APIs Restrict Access 🚦</strong></h3>
+<ul>
+<li><strong>Title:</strong> &quot;Understanding API Rate Limits&quot;</li>
+<li><strong>What is Rate Limiting?</strong>
+<ul>
+<li><strong>Request frequency limits</strong> - Maximum requests per time period</li>
+<li><strong>OpenTrivia DB limit</strong> - One request per IP every 5 seconds</li>
+<li><strong>Response code 5</strong> - &quot;Too many requests have occurred&quot;</li>
+</ul></li>
+<li><strong>Why APIs Use Rate Limiting:</strong>
+<ul>
+<li><strong>Server protection</strong> - Prevents overload and crashes</li>
+<li><strong>Fair usage</strong> - Ensures all users get reasonable access</li>
+<li><strong>Cost management</strong> - Reduces bandwidth and server costs</li>
+<li><strong>Quality of service</strong> - Maintains consistent performance</li>
+</ul></li>
+<li><strong>How Caching Helps:</strong>
+<ul>
+<li><strong>Reduces API calls</strong> - Serve cached data instead of fetching</li>
+<li><strong>Avoids rate limits</strong> - No repeated requests for same data</li>
+<li><strong>Improves reliability</strong> - Works even when API is temporarily down</li>
+</ul></li>
+<li><strong>Professional Insight:</strong> &quot;All major APIs have rate limits — caching is essential&quot;</li>
+</ul>
+<h3 id="slide-4-browser-storage---your-browsers-built-in-database-️"><strong>Slide 4: Browser Storage - Your Browser’s Built-in Database 🗄️</strong></h3>
 <ul>
 <li><strong>Title:</strong> &quot;localStorage: Persistent Storage in the Browser&quot;</li>
 <li><strong>What is localStorage?</strong>
@@ -391,52 +414,37 @@ page-break-inside: avoid !important;
 <li><strong>Student Connection:</strong> &quot;Perfect for caching your trivia questions&quot;</li>
 <li><strong>Professional Context:</strong> &quot;Web apps use localStorage to persist user preferences, game progress, and cached content for offline access&quot;</li>
 </ul>
-<h3 id="slide-4-crud-operations---managing-stored-data"><strong>Slide 4: CRUD Operations - Managing Stored Data 📋</strong></h3>
+<h3 id="slide-5-crud-operations---managing-stored-data"><strong>Slide 5: CRUD Operations - Managing Stored Data 📋</strong></h3>
 <ul>
 <li><strong>Title:</strong> &quot;localStorage CRUD: Create, Read, Update, Delete&quot;</li>
-<li><strong>Visual:</strong> Code examples with syntax highlighting</li>
+<li><strong>The Web Storage API:</strong> Browser’s built-in interface for persistent data storage</li>
+<li><strong>CRUD Pattern:</strong> Universal data management operations used in all databases
+<ul>
+<li><strong>Create/Update</strong> - Store new data or modify existing data</li>
+<li><strong>Read</strong> - Retrieve stored data for use in your app</li>
+<li><strong>Delete</strong> - Remove data that’s no longer needed</li>
+</ul></li>
+<li><strong>Why CRUD Matters:</strong> Every cache system needs these four operations to manage data lifecycle</li>
+<li><p><strong>Visual:</strong> localStorage Lifecycle diagram</p>
+<pre class="text"><code>┌─────────────────────────────────────────────────────────────────┐
+│                    localStorage Lifecycle                       │
+├─────────────────────────────────────────────────────────────────┤
+│ CREATE/UPDATE: localStorage.setItem(&#39;key&#39;, &#39;value&#39;)             │
+│ READ:          const value = localStorage.getItem(&#39;key&#39;)        │
+│ CHECK:         if (localStorage.getItem(&#39;key&#39;)) { ... }         │
+│ DELETE:        localStorage.removeItem(&#39;key&#39;)                   │
+└─────────────────────────────────────────────────────────────────┘</code></pre></li>
 </ul>
-<p><strong>CREATE/UPDATE:</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;key&#39;</span><span class="op">,</span> <span class="st">&#39;value&#39;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;questions-0&#39;</span><span class="op">,</span> <span class="va">JSON</span>.<span class="at">stringify</span>(questions))<span class="op">;</span></a></code></pre></div>
-<p><strong>READ:</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">const</span> value <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;key&#39;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">JSON</span>.<span class="at">parse</span>(<span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;questions-0&#39;</span>))<span class="op">;</span></a></code></pre></div>
-<p><strong>DELETE:</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="va">localStorage</span>.<span class="at">removeItem</span>(<span class="st">&#39;key&#39;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="va">localStorage</span>.<span class="at">removeItem</span>(<span class="st">&#39;questions-0&#39;</span>)<span class="op">;</span></a></code></pre></div>
-<p><strong>CHECK EXISTENCE:</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="cf">if</span> (<span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;key&#39;</span>)) <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="co">// Key exists</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="op">}</span></a></code></pre></div>
+<p><strong>Example Usage:</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="co">// Store questions for zone 0</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="at">setCachedQuestions</span>(<span class="dv">0</span><span class="op">,</span> questions)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">// Get questions for zone 0 (or null if none)</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">const</span> cached <span class="op">=</span> <span class="at">getCachedQuestions</span>(<span class="dv">0</span>)<span class="op">;</span></a></code></pre></div>
 <ul>
 <li><strong>Key Insight:</strong> &quot;localStorage only stores strings — use JSON.stringify/parse for objects&quot;</li>
-<li><strong>Demo:</strong> Quick console demonstration of setItem/getItem with a sample object&quot;</li>
+<li><strong>Demo:</strong> Quick console demonstration of setItem/getItem with a sample object</li>
 <li><strong>Student Preview:</strong> &quot;You’ll use all these operations in your cache system&quot;</li>
-</ul>
-<h3 id="slide-5-rate-limiting---why-apis-restrict-access"><strong>Slide 5: Rate Limiting - Why APIs Restrict Access 🚦</strong></h3>
-<ul>
-<li><strong>Title:</strong> &quot;Understanding API Rate Limits&quot;</li>
-<li><strong>What is Rate Limiting?</strong>
-<ul>
-<li><strong>Request frequency limits</strong> - Maximum requests per time period</li>
-<li><strong>OpenTrivia DB limit</strong> - One request per IP every 5 seconds</li>
-<li><strong>Response code 5</strong> - &quot;Too many requests have occurred&quot;</li>
-</ul></li>
-<li><strong>Why APIs Use Rate Limiting:</strong>
-<ul>
-<li><strong>Server protection</strong> - Prevents overload and crashes</li>
-<li><strong>Fair usage</strong> - Ensures all users get reasonable access</li>
-<li><strong>Cost management</strong> - Reduces bandwidth and server costs</li>
-<li><strong>Quality of service</strong> - Maintains consistent performance</li>
-</ul></li>
-<li><strong>How Caching Helps:</strong>
-<ul>
-<li><strong>Reduces API calls</strong> - Serve cached data instead of fetching</li>
-<li><strong>Avoids rate limits</strong> - No repeated requests for same data</li>
-<li><strong>Improves reliability</strong> - Works even when API is temporarily down</li>
-</ul></li>
-<li><strong>Professional Insight:</strong> &quot;All major APIs have rate limits — caching is essential&quot;</li>
 </ul>
 <h3 id="slide-6-serialization---storing-complex-data"><strong>Slide 6: Serialization - Storing Complex Data 📦</strong></h3>
 <ul>
@@ -445,15 +453,24 @@ page-break-inside: avoid !important;
 <li><strong>The Solution:</strong> JSON serialization and deserialization</li>
 </ul>
 <p><strong>Serialization (Object → String):</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> questions <span class="op">=</span> [</a>
-<a class="sourceLine" id="cb5-2" title="2">  <span class="op">{</span> <span class="dt">question</span><span class="op">:</span> \<span class="st">&quot;What is React?</span><span class="sc">\&quot;</span><span class="st">, answers: [...], correct: 1 }</span></a>
-<a class="sourceLine" id="cb5-3" title="3">]<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="kw">const</span> serialized <span class="op">=</span> <span class="va">JSON</span>.<span class="at">stringify</span>(questions)<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;questions-0&#39;</span><span class="op">,</span> serialized)<span class="op">;</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">const</span> questions <span class="op">=</span> [</a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="op">{</span> <span class="dt">question</span><span class="op">:</span> \<span class="st">&quot;What is React?</span><span class="sc">\&quot;</span><span class="st">, answers: [...], correct: 1 }</span></a>
+<a class="sourceLine" id="cb3-3" title="3">]<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw">const</span> serialized <span class="op">=</span> <span class="va">JSON</span>.<span class="at">stringify</span>(questions)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;questions-0&#39;</span><span class="op">,</span> serialized)<span class="op">;</span></a></code></pre></div>
+<p><strong>Visual:</strong> Screenshot showing DevTools localStorage with serialized JSON string</p>
 <p><strong>Deserialization (String → Object):</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> serialized <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;questions-0&#39;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">JSON</span>.<span class="at">parse</span>(serialized)<span class="op">;</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="co">// Now you can use questions[0].question</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">const</span> serialized <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;questions-0&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">JSON</span>.<span class="at">parse</span>(serialized)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">// Now you can use questions[0].question</span></a></code></pre></div>
+<p><strong>What Happens Without Serialization?</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="co">// BAD: Storing object directly</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;questions&#39;</span><span class="op">,</span> questions)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co">// Result: \&quot;[object Object]\&quot; - useless string!</span></a>
+<a class="sourceLine" id="cb5-4" title="4"></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">// GOOD: Serialize first</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;questions&#39;</span><span class="op">,</span> <span class="va">JSON</span>.<span class="at">stringify</span>(questions))<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co">// Result: Proper JSON string that can be parsed back</span></a></code></pre></div>
 <ul>
 <li><strong>Key Methods:</strong>
 <ul>
@@ -461,84 +478,66 @@ page-break-inside: avoid !important;
 <li><strong>JSON.parse()</strong> - String to object</li>
 </ul></li>
 <li><strong>Error Handling:</strong> Always check if data exists before parsing</li>
-<li><strong>Safe Pattern:</strong> <code>const data = localStorage.getItem(&#39;key&#39;); return data ? JSON.parse(data) : null;</code></li>
+<li><p><strong>Safe Pattern Function:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">function</span> <span class="at">getCachedQuestions</span>(zoneId) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="kw">const</span> data <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;key&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-3" title="3">  <span class="cf">return</span> data <span class="op">?</span> <span class="va">JSON</span>.<span class="at">parse</span>(data) : <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="op">}</span></a></code></pre></div></li>
+<li><strong>Demo:</strong> Show localStorage storing &quot;[object Object]&quot; vs proper JSON</li>
 <li><strong>Student Application:</strong> &quot;Your cache functions will handle serialization automatically&quot;</li>
-<li><strong>Student Connection:</strong> &quot;You’ll serialize and deserialize trivia questions to store them in localStorage&quot;</li>
+<li><p><strong>Student Connection:</strong> &quot;You’ll serialize and deserialize trivia questions to store them in localStorage&quot;</p></li>
 </ul>
 <h3 id="slide-7-cache-aside-pattern---professional-caching-strategy"><strong>Slide 7: Cache-Aside Pattern - Professional Caching Strategy 🎯</strong></h3>
 <ul>
 <li><strong>Title:</strong> &quot;The Industry-Standard Caching Pattern&quot;</li>
-<li><strong>Visual:</strong> Flowchart showing cache-aside logic</li>
-</ul>
-<pre><code>Request Data
-     ↓
-Check Cache
-     ↓
-Cache Hit? ──Yes──→ Return Cached Data
-     ↓
-    No
-     ↓
-Fetch from Source (API)
-     ↓
-Store in Cache
-     ↓
-Return Fresh Data</code></pre>
-<ul>
+<li><p><strong>Visual:</strong> Cache-aside flowchart diagram</p>
+<pre class="mermaid"><code>---
+config:
+  layout: elk
+  look: neo
+---
+flowchart TD
+    A[Request Data] --&gt; B[Generate Key]
+    B --&gt; C[Check Cache with Key]
+    C --&gt; D{Cache Hit?}
+    D -- Yes --&gt; E[Return Cached Data]
+    D -- No --&gt; F[Fetch from Source API]
+    F --&gt; G[Store in Cache with Key]
+    G --&gt; H[Return Fresh Data]</code></pre></li>
+<li><strong>Pattern Steps:</strong>
+<ol type="1">
+<li><strong>Generate unique cache key</strong> for the request</li>
+<li><strong>Check cache</strong> using the generated key</li>
+<li><strong>Cache hit?</strong> Decision point determines next action</li>
+<li><strong>Return cached data</strong> if found (instant response)</li>
+<li><strong>Fetch from API</strong> if cache miss occurs</li>
+<li><strong>Store in cache</strong> with the same key for future requests</li>
+<li><strong>Return fresh data</strong> to complete the request</li>
+</ol></li>
 <li><strong>Pattern Benefits:</strong>
 <ul>
 <li><strong>Performance</strong> - Cache hits are instant</li>
 <li><strong>Reliability</strong> - Fallback to source on cache miss</li>
 <li><strong>Freshness</strong> - New data automatically cached</li>
-<li><strong>Simplicity</strong> - Easy to understand and implement</li>
+<li><strong>Key-based organization</strong> - Unique identifiers prevent conflicts</li>
 </ul></li>
 <li><strong>Professional Usage:</strong> &quot;Used by Redis, Memcached, and all major caching systems&quot;</li>
-<li><strong>Student Implementation:</strong> &quot;Your fetchQuestions will follow this exact pattern&quot;</li>
+<li><p><strong>Student Implementation:</strong> &quot;Your fetchQuestions will follow this exact pattern&quot;</p></li>
 </ul>
-<h3 id="slide-8-helper-functions---managing-complexity"><strong>Slide 8: Helper Functions - Managing Complexity 🧩</strong></h3>
-<ul>
-<li><strong>Title:</strong> “Breaking Cache Logic into Focused Functions”</li>
-<li><strong>Why Helper Functions?</strong>
-<ul>
-<li><strong>Abstraction</strong> - Hide localStorage complexity</li>
-<li><strong>Reusability</strong> - Use same logic in multiple places</li>
-<li><strong>Maintainability</strong> - Changes in one place update everywhere</li>
-<li><strong>Testability</strong> - Easy to test small, focused functions</li>
-</ul></li>
-<li><strong>Today’s Helper Functions:</strong>
-<ul>
-<li><strong>getCacheKey(zoneId)</strong> - Generate consistent cache keys</li>
-<li><strong>getCachedQuestions(zoneId)</strong> - Retrieve and deserialize cached data</li>
-<li><strong>setCachedQuestions(zoneId, questions)</strong> - Serialize and store data</li>
-</ul></li>
-<li><strong>Function Composition:</strong> “Small functions combine to solve complex problems”</li>
-<li><strong>Professional Context:</strong> “Clean architecture relies on helper functions to keep logic modular and testable”*Title:** &quot;Breaking Cache Logic into Focused Functions&quot;</li>
-<li><strong>Why Helper Functions?</strong>
-<ul>
-<li><strong>Abstraction</strong> - Hide localStorage complexity</li>
-<li><strong>Reusability</strong> - Use same logic in multiple places</li>
-<li><strong>Maintainability</strong> - Changes in one place update everywhere</li>
-<li><strong>Testability</strong> - Easy to test small, focused functions</li>
-</ul></li>
-<li><strong>Today’s Helper Functions:</strong>
-<ul>
-<li><strong>getCacheKey(zoneId)</strong> - Generate consistent cache keys</li>
-<li><strong>getCachedQuestions(zoneId)</strong> - Retrieve and deserialize cached data</li>
-<li><strong>setCachedQuestions(zoneId, questions)</strong> - Serialize and store data</li>
-</ul></li>
-<li><strong>Function Composition:</strong> &quot;Small functions combine to solve complex problems&quot;</li>
-<li><strong>Professional Pattern:</strong> &quot;Real apps have hundreds of helper functions for clean architecture&quot;</li>
-</ul>
-<h3 id="slide-9-dynamic-cache-keys---unique-identifiers"><strong>Slide 9: Dynamic Cache Keys - Unique Identifiers 🔑</strong></h3>
+<h3 id="slide-8-dynamic-cache-keys---unique-identifiers"><strong>Slide 8: Dynamic Cache Keys - Unique Identifiers 🔑</strong></h3>
 <ul>
 <li><strong>Title:</strong> &quot;Generating Descriptive, Unique Cache Keys&quot;</li>
 <li><strong>The Challenge:</strong> Each zone needs its own cache space</li>
-<li><strong>Template Literal Solution:</strong></li>
-</ul>
+<li><p><strong>Template Literal Solution:</strong></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">function</span> <span class="at">getCacheKey</span>(zoneId) <span class="op">{</span></a>
 <a class="sourceLine" id="cb8-2" title="2">  <span class="cf">return</span> <span class="vs">`trivia_questions_zone_</span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb8-3" title="3"><span class="op">}</span></a></code></pre></div>
-<p><strong>Generated Keys:</strong> - Zone 0: <code>trivia_questions_zone_0</code> - Zone 1: <code>trivia_questions_zone_1</code> - Zone 2: <code>trivia_questions_zone_2</code></p>
+<a class="sourceLine" id="cb8-3" title="3"><span class="op">}</span></a></code></pre></div></li>
+</ul>
+<p><strong>Generated Keys:</strong></p>
 <ul>
+<li>Zone 0: <code>trivia_questions_zone_0</code></li>
+<li>Zone 1: <code>trivia_questions_zone_1</code></li>
+<li><p>Zone 2: <code>trivia_questions_zone_2</code></p></li>
 <li><strong>Key Benefits:</strong>
 <ul>
 <li><strong>Descriptive</strong> - Clear what data is stored</li>
@@ -546,22 +545,20 @@ Return Fresh Data</code></pre>
 <li><strong>Consistent</strong> - Same pattern everywhere</li>
 <li><strong>Debuggable</strong> - Easy to identify in DevTools</li>
 </ul></li>
-<li><strong>Professional Practice:</strong> &quot;Good cache keys are self-documenting&quot;</li>
+<li><p><strong>Professional Practice:</strong> &quot;Good cache keys are self-documenting&quot;</p></li>
 </ul>
-<h3 id="slide-10-ternary-operator---concise-conditional-logic"><strong>Slide 10: Ternary Operator - Concise Conditional Logic ❓</strong></h3>
+<h3 id="slide-9-ternary-operator---concise-conditional-logic"><strong>Slide 9: Ternary Operator - Concise Conditional Logic ❓</strong></h3>
 <ul>
 <li><strong>Title:</strong> &quot;The Ternary Operator: Elegant Conditional Expressions&quot;</li>
 <li><strong>Syntax:</strong> <code>condition ? valueIfTrue : valueIfFalse</code></li>
-<li><strong>Cache Example:</strong></li>
-</ul>
+<li><p><strong>Cache Example:</strong></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="cf">return</span> cached <span class="op">?</span> <span class="va">JSON</span>.<span class="at">parse</span>(cached) : <span class="kw">null</span><span class="op">;</span></a></code></pre></div>
 <p><strong>Equivalent if/else:</strong></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="cf">if</span> (cached) <span class="op">{</span></a>
 <a class="sourceLine" id="cb10-2" title="2">  <span class="cf">return</span> <span class="va">JSON</span>.<span class="at">parse</span>(cached)<span class="op">;</span></a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb10-4" title="4">  <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="op">}</span></a></code></pre></div>
-<ul>
+<a class="sourceLine" id="cb10-5" title="5"><span class="op">}</span></a></code></pre></div></li>
 <li><strong>When to Use Ternary:</strong>
 <ul>
 <li><strong>Simple conditions</strong> with two outcomes</li>
@@ -573,9 +570,9 @@ Return Fresh Data</code></pre>
 <li><strong>Complex logic</strong> with multiple statements</li>
 <li><strong>Multiple conditions</strong> that hurt readability</li>
 </ul></li>
-<li><strong>Student Application:</strong> &quot;Perfect for cache retrieval logic&quot;</li>
+<li><p><strong>Student Application:</strong> &quot;Perfect for cache retrieval logic&quot;</p></li>
 </ul>
-<h3 id="slide-11-devtools-storage-inspector---cache-debugging"><strong>Slide 11: DevTools Storage Inspector - Cache Debugging 🔍</strong></h3>
+<h3 id="slide-10-devtools-storage-inspector---cache-debugging"><strong>Slide 10: DevTools Storage Inspector - Cache Debugging 🔍</strong></h3>
 <ul>
 <li><strong>Title:</strong> &quot;Inspecting Your Cache with Browser DevTools&quot;</li>
 <li><strong>Live Demo:</strong> Show Application tab localStorage inspection</li>
@@ -595,7 +592,7 @@ Return Fresh Data</code></pre>
 </ol></li>
 <li><strong>Professional Usage:</strong> &quot;Essential for debugging storage issues in production apps&quot;</li>
 </ul>
-<h3 id="slide-12-lets-cache-todays-implementation-journey"><strong>Slide 12: Let’s Cache! Today’s Implementation Journey 🚀</strong></h3>
+<h3 id="slide-11-lets-cache-todays-implementation-journey"><strong>Slide 11: Let’s Cache! Today’s Implementation Journey 🚀</strong></h3>
 <ul>
 <li><strong>Today’s Coding Mission:</strong>
 <ol type="1">
@@ -616,27 +613,11 @@ Return Fresh Data</code></pre>
 <li><strong>Professional Workflow:</strong> &quot;Build incrementally, test frequently, debug with tools&quot;</li>
 </ul>
 <h3 id="hands-on-work-happens-here"><strong>[HANDS-ON WORK HAPPENS HERE]</strong></h3>
-<h3 id="slide-13-cache-performance-impact---before-and-after"><strong>Slide 13: Cache Performance Impact - Before and After 📊</strong></h3>
-<ul>
-<li><strong>Title:</strong> &quot;Measuring the Performance Difference&quot;</li>
-<li><strong>Visual:</strong> Side-by-side comparison with timing data</li>
-</ul>
-<p><strong>Without Caching:</strong> - <strong>First request:</strong> 800ms (network + processing) - <strong>Second request:</strong> 750ms (network + processing) - <strong>Third request:</strong> 900ms (network + processing) - <strong>User experience:</strong> Waiting for every interaction</p>
-<p><strong>With Caching:</strong> - <strong>First request:</strong> 800ms (network + processing + cache storage) - <strong>Second request:</strong> 2ms (cache retrieval only) - <strong>Third request:</strong> 1ms (cache retrieval only) - <strong>User experience:</strong> Instant responses after first load</p>
-<ul>
-<li><strong>Performance Metrics:</strong>
-<ul>
-<li><strong>400x faster</strong> cache hits vs network requests</li>
-<li><strong>Zero network usage</strong> for cached data</li>
-<li><strong>Improved reliability</strong> - works offline for cached zones</li>
-</ul></li>
-<li><strong>Professional Context:</strong> &quot;This performance difference is why every major app uses caching&quot;</li>
-</ul>
-<h3 id="slide-14-whats-next---interactive-quiz-components"><strong>Slide 14: What’s Next - Interactive Quiz Components 🎮</strong></h3>
+<h3 id="slide-12-whats-next---interactive-quiz-components"><strong>Slide 12: What’s Next - Interactive Quiz Components 🎮</strong></h3>
 <ul>
 <li><strong>Title:</strong> &quot;Preview of Session 7&quot;</li>
 <li><strong>Today’s Achievement:</strong> &quot;You built a professional caching system that makes your game lightning-fast&quot;</li>
-<li><strong>Next Challenge:</strong> &quot;Create interactive quiz components with scaffolded modal functionality&quot;</li>
+<li><strong>Next Challenge:</strong> &quot;Create interactive quiz components with modal overlays&quot;</li>
 <li><strong>Concepts Coming:</strong>
 <ul>
 <li><strong>Modal components</strong> - Overlay interfaces for quiz interactions</li>

@@ -26,7 +26,14 @@ For each SESSION-XX-instruction.md (except the final session):
 - Verify it mentions the correct upcoming topics/activities
 - Ensure it creates appropriate anticipation without over-promising
 
-### Step 4: Check Session Boundaries
+### Step 4: Check Section Ordering Consistency
+For each SESSION-XX-instruction.md:
+- Verify Learning Outcomes, Instruction overview, and Slide Deck Outline sections follow the same logical order
+- Check that concepts are introduced in consistent sequence across all three sections
+- Ensure slide order matches the learning progression outlined in Learning Outcomes
+- Flag any sections where topics appear in different orders or are missing from one section
+
+### Step 5: Check Session Boundaries
 Identify any:
 - Missing connections between sessions
 - Contradictory information across sessions
@@ -36,7 +43,7 @@ Identify any:
 ## Output Format
 For each issue found, provide:
 ```
-SESSION-XX-instruction.md - [RECAP/NEXT/TONE] - Line X
+SESSION-XX-instruction.md - [RECAP/NEXT/TONE/ORDER] - Line X
 Issue: [Description of the problem]
 Should be: [Suggested correction]
 ```
@@ -48,7 +55,8 @@ Should be: [Suggested correction]
 - **Completeness**: Are all major outcomes/previews covered?
 - **Essential Terms Ordering**: Are terms ordered by logical learning progression rather than alphabetically?
 - **Code Block Consistency**: Do all multi-line code blocks include language qualifiers (```javascript, ```bash, ```json, etc.)?
-- **Numbered List Indentation**: Is all content following numbered list items properly indented with 3 spaces to maintain grouping under the bullet point?
+- **List Indentation**: Is all content following numbered and non-numbered list items properly indented with 3 spaces to maintain grouping under the bullet point?
+- **Section Ordering Consistency**: Do Learning Outcomes, Instruction, and Slide Deck Outline sections follow the same logical order?
 - **Tone and Audience Appropriateness**: Is content engaging and relatable for 13-18 year olds?
   - Check "Why This Matters" sections use conversational, empowering language
   - Verify metaphors and examples resonate with teenage experiences
@@ -56,21 +64,21 @@ Should be: [Suggested correction]
   - Confirm genuine excitement and capability-building focus rather than abstract professional development
   - Flag overly cheesy language or excessive use of "awesome/super/amazing" without substance
 
-### Numbered List Indentation Check
-For each SESSION-XX.md student guide:
-- Verify that code blocks, explanatory text, "Test" paragraphs, and any other content following numbered list items are indented with exactly 3 spaces
-- Check that this indentation maintains proper visual grouping under the numbered bullet point
-- Ensure consistent indentation across all numbered sections in each guide
+### List Indentation Check
+For each SESSION-XX.md student guide and SESSION-XX-instruction.md instructor guide:
+- Verify that code blocks, explanatory text, "Test" paragraphs, and any other content following numbered and non-numbered list items are indented with exactly 3 spaces
+- Check that this indentation maintains proper visual grouping under the bullet point
+- Ensure consistent indentation across all list sections in each guide
 - Report any instances where content is not properly aligned with the list item structure
 
-### Step 5: Verify Essential Terms Ordering
+### Step 6: Verify Essential Terms Ordering
 For each SESSION-XX.md student guide:
 - Check if Essential Terms table follows logical learning progression
 - Verify terms are grouped by related concepts (foundational → data formats → tools → implementation)
 - Ensure ordering matches the conceptual flow from "what" to "how" to "implementation details"
 - Confirm ordering aligns with how concepts are introduced in the session content
 
-### Step 6: Evaluate Tone and Audience Appropriateness
+### Step 7: Evaluate Tone and Audience Appropriateness
 For each SESSION-XX.md student guide:
 - Review "Why This Matters" sections for engaging, conversational tone appropriate for teenagers
 - Check for relatable metaphors and examples (detective work, X-ray vision, digital breadcrumbs, etc.)

@@ -10,8 +10,8 @@
 4. **Build JavaScript objects** using curly brace syntax with key-value properties
 5. **Apply different data types** including strings, numbers, booleans, and objects in object properties
 6. **Combine data structures** through nesting arrays of objects and objects with object properties
-7. **Configure zone metadata** by updating the ZONES array with custom game content
-8. **Use React Fragments** to return multiple elements without extra DOM nodes
+7. **Use React Fragments** to return multiple elements without extra DOM nodes
+8. **Configure zone metadata** by updating the ZONES array with custom game content
 9. **Position UI elements** using coordinate systems and real-time feedback tools
 10. **Explore OpenTrivia DB documentation** to identify category IDs for zone configuration
 11. **Test configuration changes** using React DevTools to manipulate state and observe effects

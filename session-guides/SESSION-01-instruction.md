@@ -11,11 +11,11 @@
 5. **Compare development approaches** by building the same counter functionality using both Vanilla JavaScript and React
 6. **Distinguish React's component-based architecture** from traditional HTML/CSS/JS approaches
 7. **Launch a professional development environment** using GitHub Codespaces and VS Code
-8. **Start a React development server** and understand the basic development workflow
-9. **Navigate project structure** and identify key folders and files
+8. **Navigate project structure** and identify key folders and files
+9. **Start a React development server** and understand the basic development workflow
 10. **Modify React components** and experience Hot Module Replacement
-11. **Trace the React startup flow** and describe how a React app is bootstrapped
-12. **Identify development tools** and customize basic project settings
+11. **Identify development tools** and customize basic project settings
+12. **Trace the React startup flow** and describe how a React app is bootstrapped
 
 ## Instruction
 

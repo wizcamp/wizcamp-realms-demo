@@ -14,7 +14,7 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - Include "Ask the AI" section with 5-7 high-impact questions for deeper learning
 - End with "Pro Tip" section
 - Use practical, hands-on approach with clear numbered steps
-- **All content following numbered list items must be properly indented** - indent code blocks, Test paragraphs, explanatory text, and any other content with 3 spaces to align with list item content and maintain proper grouping under the numbered bullet point
+- **All content following numbered and non-numbered list items must be properly indented** - indent code blocks, Test paragraphs, explanatory text, and any other content with 3 spaces to align with list item content and maintain proper grouping under the bullet point
 - **All multi-line code blocks must include language qualifiers** - use ```javascript, ```bash, ```json, etc. for proper syntax highlighting and consistency. Use `javascript` for all React/JSX code blocks as `jsx` provides poor syntax highlighting in PDF output
 
 ### Essential Terms Table Standards
@@ -40,6 +40,10 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - Follow SESSION-01-instruction.md structure: Learning Outcomes, Instruction overview, detailed Slide Deck Outline
 - Include "[HANDS-ON WORK HAPPENS HERE]" marker
 - No time estimates or management details
+- **Section Ordering Consistency**: Ensure Learning Outcomes, Instruction overview, and Slide Deck Outline sections follow the same logical order
+  - Concepts should be introduced in consistent sequence across all three sections
+  - Slide order must match the learning progression outlined in Learning Outcomes
+  - Each section should build upon the previous in a coherent flow
 
 ## Learning Outcomes Standards
 Format learning outcomes to match SESSION-01 and SESSION-02 standards:
@@ -102,3 +106,4 @@ Consistency check: Compare new learning outcomes against SESSION-01-instruction.
 - Practical examples students can relate to (apps they use, problems they've solved)
 - Real-world applications framed as exciting opportunities and skill-building rather than abstract career preparation
 - "Why This Matters" sections should inspire and empower, using metaphors and language that resonates with teenagers
+- **Consistent section ordering** across Learning Outcomes, Instruction, and Slide Deck Outline for maximum comprehensibility
