@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SESSION-07 - Wizcamp Session Guide</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style type="text/css">
+
+@page {
+margin: 0.6in 0.75in 0.6in 0.75in;
+size: letter;
+}
+body {
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.4;
+color: #1f2328;
+margin: 0;
+padding: 0;
+max-width: none;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 600;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px;
+}
+h1 {
+font-size: 1.75em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 0;
+}
+h2 {
+font-size: 1.5em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 24px;
+margin-bottom: 16px;
+}
+
+h1 + * h2:first-of-type,
+h2:first-of-type {
+margin-top: 24px;
+}
+
+a[id] {
+scroll-margin-top: 20px;
+}
+h3 {
+font-size: 1.25em;
+margin-top: 24px;
+margin-bottom: 12px;
+page-break-after: avoid;
+break-after: avoid;
+}
+
+h2, h3 {
+page-break-after: avoid;
+}
+
+ol, ul, li, p {
+page-break-inside: auto;
+}
+code {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-size: 13px !important;
+font-weight: 500 !important;
+background-color: #f1f3f4 !important;
+color: #c7254e !important;
+padding: 2px 4px !important;
+border-radius: 3px !important;
+border: 1px solid #d1d5da !important;
+white-space: nowrap;
+word-break: break-word;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+pre {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+background-color: #f8f9fa !important;
+border: 1px solid #e1e4e8 !important;
+border-radius: 6px !important;
+padding: 16px !important;
+overflow: visible !important;
+white-space: pre !important;
+word-wrap: normal !important;
+page-break-inside: avoid !important;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+font-size: 14px !important;
+line-height: 1.4 !important;
+display: block !important;
+width: 100% !important;
+}
+
+@media print {
+pre {
+white-space: pre !important;
+font-family: "JetBrains Mono", monospace !important;
+display: block !important;
+}
+pre * {
+white-space: pre !important;
+}
+}
+pre code {
+background-color: transparent !important;
+border: none !important;
+padding: 0 !important;
+color: #24292f !important;
+}
+ul, ol {
+padding-left: 1.8em;
+margin-bottom: 12px;
+}
+li {
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
+@media print {
+ul, ol {
+display: block !important;
+}
+li {
+display: list-item !important;
+margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
+}
+
+* {
+box-sizing: border-box !important;
+}
+}
+p {
+margin-bottom: 12px;
+}
+a {
+color: #0969da;
+text-decoration: none;
+}
+strong {
+font-weight: 600;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+margin: 16px 0;
+font-size: 16px;
+line-height: 1.5;
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+vertical-align: top;
+border: 1px solid #d0d7de;
+}
+th {
+font-weight: 600;
+background-color: #f6f8fa;
+color: #24292f;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+tbody tr:nth-child(even) {
+background-color: #f8f9fa;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+
+table code {
+font-size: 14px !important;
+padding: 2px 4px !important;
+}
+
+table td:first-child {
+min-width: 150px;
+}
+
+table {
+page-break-inside: auto !important;
+}
+th {
+page-break-after: avoid !important;
+}
+tbody tr {
+page-break-inside: avoid !important;
+page-break-after: auto !important;
+}
+
+thead {
+display: table-header-group !important;
+}
+@media print {
+thead {
+display: table-row-group !important;
+}
+table {
+page-break-inside: auto !important;
+}
+tr {
+page-break-inside: avoid !important;
+}
+}
+</style>
+</head>
+<body>
+<h1 id="session-7-building-complex-interactive-components">Session 7 — Building Complex Interactive Components</h1>
+<p>Creating the Quiz Experience 🎯</p>
+<p>You’re about to build the heart of your trivia game — interactive quiz components that bring your cached questions to life! This guide walks you through component composition, array mapping patterns, and creating dynamic user feedback systems. Ready to transform your static zones into engaging quiz experiences? Let’s go!</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#access-your-codespace">Access Your Codespace</a></li>
+<li><a href="#understanding-component-composition">Understanding Component Composition</a></li>
+<li><a href="#adding-the-quizmodal-to-your-game">Adding the QuizModal to Your Game</a></li>
+<li><a href="#building-the-answerchoices-component">Building the AnswerChoices Component</a></li>
+<li><a href="#understanding-array-mapping-patterns">Understanding Array Mapping Patterns</a></li>
+<li><a href="#adding-dynamic-styling-with-conditional-classes">Adding Dynamic Styling with Conditional Classes</a></li>
+<li><a href="#creating-custom-feedback-messages">Creating Custom Feedback Messages</a></li>
+<li><a href="#implementing-random-message-selection">Implementing Random Message Selection</a></li>
+<li><a href="#testing-your-complete-quiz-experience">Testing Your Complete Quiz Experience</a></li>
+<li><a href="#essential-terms">Essential Terms</a></li>
+<li><a href="#ask-the-ai">Ask the AI</a></li>
+</ul>
+<p><a id="access-your-codespace"></a></p>
+<h2 id="access-your-codespace">☁️ Access Your Codespace</h2>
+<p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 6.</p>
+<p><a id="understanding-component-composition"></a></p>
+<h2 id="understanding-component-composition">🧩 Understanding Component Composition</h2>
+<p>Before we start coding, let’s understand how complex components are built from smaller pieces — the foundation of scalable React architecture.</p>
+<p><strong>Component composition</strong> is like building with LEGO blocks — you create complex structures by snapping together smaller, focused pieces. Your QuizModal is actually composed of five smaller components working together:</p>
+<pre><code>QuizModal (the container)
+├── ProgressHeader (shows question progress)
+├── QuestionHeader (displays the question)
+├── AnswerChoices (interactive answer buttons)
+├── AnswerFeedback (shows results)
+└── ContinueButton (navigation control)</code></pre>
+<h3 id="why-this-matters">💡 Why This Matters</h3>
+<p><strong>Component composition</strong> is how professional React apps stay organized and maintainable. Instead of one massive component doing everything, you break functionality into focused pieces. Each component has a single responsibility, making your code easier to understand, test, and modify.</p>
+<p><a id="adding-the-quizmodal-to-your-game"></a></p>
+<h2 id="adding-the-quizmodal-to-your-game">🎮 Adding the QuizModal to Your Game</h2>
+<p>Let’s connect your quiz modal to the game flow so clicking zones actually shows quiz questions.</p>
+<ol type="1">
+<li><p><strong>Open <code>src/App.jsx</code></strong> and add the QuizModal import at the top:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="im">import</span> QuizModal <span class="im">from</span> <span class="st">&quot;./components/QuizModal&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Access the quiz visibility state</strong> by updating the useGame destructuring:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">const</span> <span class="op">{</span> screen<span class="op">,</span> isQuizVisible <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Add conditional rendering</strong> for the QuizModal inside the PLAYING screen section:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> (</a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="op">&lt;&gt;</span></a>
+<a class="sourceLine" id="cb4-3" title="3">    <span class="op">&lt;</span>GameMap /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="op">&lt;</span>HUD /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="op">{</span>isQuizVisible <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>QuizModal /<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb4-6" title="6">    <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-7" title="7">  &lt;/<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-8" title="8">)<span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Open <code>src/components/GameMap.jsx</code></strong> and add the quiz visibility setter:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> <span class="op">{</span> activeZone<span class="op">,</span> loadQuestionsForZone<span class="op">,</span> setIsQuizVisible<span class="op">,</span> zoneProgress <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Update the handleZoneClick function</strong> to show the quiz modal after loading questions:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="cf">await</span> <span class="at">loadQuestionsForZone</span>(zoneId)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="at">setIsQuizVisible</span>(<span class="kw">true</span>)<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Test the connection</strong>: Click a zone → QuizModal should appear with your cached questions!</p></li>
+</ol>
+<h3 id="why-this-matters-1">💡 Why This Matters</h3>
+<p><strong>Conditional rendering</strong> with <code>&amp;&amp;</code> is a React pattern that shows components only when certain conditions are true. When <code>isQuizVisible</code> is true, the QuizModal renders; when false, nothing renders. This pattern controls what users see based on app state.</p>
+<p><a id="building-the-answerchoices-component"></a></p>
+<h2 id="building-the-answerchoices-component">🔘 Building the AnswerChoices Component</h2>
+<p>Now let’s build the interactive answer buttons that transform your question data into clickable choices.</p>
+<ol type="1">
+<li><p><strong>Open <code>src/components/QuizModal.jsx</code></strong> and find the QuestionHeader function</p></li>
+<li><p><strong>Add the AnswerChoices component</strong> after the QuestionHeader function:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="cf">return</span> <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span>&lt;/div<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Add the component to the JSX</strong> (right after <code>&lt;QuestionHeader question={question} /&gt;</code>):</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="op">&lt;</span>AnswerChoices answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> /&gt;</a></code></pre></div></li>
+<li><p><strong>Test the basic structure</strong>: Click zone → React DevTools → Find AnswerChoices → Confirm answers prop is populated</p></li>
+</ol>
+<h3 id="why-this-matters-2">💡 Why This Matters</h3>
+<p>Starting with a simple component structure and testing early helps you catch issues before adding complexity. The <strong>answers prop</strong> contains the array of possible choices that you’ll transform into interactive buttons.</p>
+<p><a id="understanding-array-mapping-patterns"></a></p>
+<h2 id="understanding-array-mapping-patterns">🗺️ Understanding Array Mapping Patterns</h2>
+<p>Let’s understand how to transform arrays of data into arrays of JSX elements — a fundamental React pattern.</p>
+<p><strong>Array mapping</strong> is the process of transforming each item in an array into something else. In React, you often map data arrays into JSX element arrays:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// Data array</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">const</span> answers <span class="op">=</span> [<span class="st">&quot;React&quot;</span><span class="op">,</span> <span class="st">&quot;Vue&quot;</span><span class="op">,</span> <span class="st">&quot;Angular&quot;</span><span class="op">,</span> <span class="st">&quot;Svelte&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co">// Map to JSX elements</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="kw">const</span> buttons <span class="op">=</span> <span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb9-6" title="6">  <span class="op">&lt;</span>button key<span class="op">={</span>index<span class="op">}&gt;{</span>answer<span class="op">}</span>&lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-7" title="7">))<span class="op">;</span></a></code></pre></div>
+<h3 id="the-key-prop-requirement">The Key Prop Requirement</h3>
+<p>React needs a unique <strong>key prop</strong> for each mapped element to track changes efficiently:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="op">&lt;</span>button key<span class="op">={</span>index<span class="op">}</span> className<span class="op">=</span><span class="st">&quot;answer-button&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb10-3" title="3">    <span class="op">{</span>answer<span class="op">}</span></a>
+<a class="sourceLine" id="cb10-4" title="4">  &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb10-5" title="5">))<span class="op">}</span></a></code></pre></div>
+<h3 id="why-this-matters-3">💡 Why This Matters</h3>
+<p><strong>Array mapping</strong> is everywhere in React — any time you have a list of data that becomes a list of components, you use <code>map()</code>. The <strong>key prop</strong> helps React optimize updates by tracking which items changed, moved, or were added/removed.</p>
+<ol type="1">
+<li><p><strong>Update AnswerChoices</strong> to render buttons for each answer:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-2" title="2">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb11-3" title="3">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-4" title="4">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb11-5" title="5">        <span class="op">&lt;</span>button key<span class="op">={</span>index<span class="op">}</span> className<span class="op">=</span><span class="st">&quot;answer-button&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-6" title="6">          <span class="op">{</span>answer<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-7" title="7">        &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-8" title="8">      ))<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-9" title="9">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-10" title="10">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-11" title="11"><span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Test the mapping</strong>: Click zone → You should see answer buttons appear in the modal</p></li>
+</ol>
+<p><a id="adding-dynamic-styling-with-conditional-classes"></a></p>
+<h2 id="adding-dynamic-styling-with-conditional-classes">🎨 Adding Dynamic Styling with Conditional Classes</h2>
+<p>Let’s add click functionality and dynamic styling that shows correct/incorrect answers with visual feedback.</p>
+<ol type="1">
+<li><p><strong>Add click handling and props</strong> to AnswerChoices:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers<span class="op">,</span> onAnswerClick<span class="op">,</span> chosenAnswer<span class="op">,</span> correctAnswer <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="kw">const</span> getButtonStyle <span class="op">=</span> (answerIndex) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-3" title="3">    <span class="cf">if</span> (chosenAnswer <span class="op">===</span> <span class="kw">null</span>) <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb12-4" title="4">    <span class="cf">if</span> (answerIndex <span class="op">===</span> correctAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button correct&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb12-5" title="5">    <span class="cf">if</span> (answerIndex <span class="op">===</span> chosenAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button incorrect&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb12-6" title="6">    <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb12-7" title="7">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb12-8" title="8"></a>
+<a class="sourceLine" id="cb12-9" title="9">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb12-10" title="10">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb12-11" title="11">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb12-12" title="12">        <span class="op">&lt;</span>button</a>
+<a class="sourceLine" id="cb12-13" title="13">          key<span class="op">={</span>index<span class="op">}</span></a>
+<a class="sourceLine" id="cb12-14" title="14">          className<span class="op">={</span><span class="at">getButtonStyle</span>(index)<span class="op">}</span></a>
+<a class="sourceLine" id="cb12-15" title="15">          onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">onAnswerClick</span>(index)<span class="op">}</span></a>
+<a class="sourceLine" id="cb12-16" title="16">          disabled<span class="op">={</span>chosenAnswer <span class="op">!==</span> <span class="kw">null</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb12-17" title="17">        <span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb12-18" title="18">          <span class="op">{</span>answer<span class="op">}</span></a>
+<a class="sourceLine" id="cb12-19" title="19">        &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb12-20" title="20">      ))<span class="op">}</span></a>
+<a class="sourceLine" id="cb12-21" title="21">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb12-22" title="22">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-23" title="23"><span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Update the component usage</strong> with all required props:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="op">&lt;</span>AnswerChoices </a>
+<a class="sourceLine" id="cb13-2" title="2">  answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> </a>
+<a class="sourceLine" id="cb13-3" title="3">  onAnswerClick<span class="op">={</span>handleAnswerClick<span class="op">}</span></a>
+<a class="sourceLine" id="cb13-4" title="4">  chosenAnswer<span class="op">={</span>chosenAnswer<span class="op">}</span></a>
+<a class="sourceLine" id="cb13-5" title="5">  correctAnswer<span class="op">={</span><span class="va">question</span>.<span class="at">correct</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb13-6" title="6">/&gt;</a></code></pre></div></li>
+<li><p><strong>Test the interactivity</strong>: Click zone → Click answer → Different styling for correct vs incorrect</p></li>
+</ol>
+<h3 id="why-this-matters-4">💡 Why This Matters</h3>
+<p><strong>Conditional styling</strong> provides immediate visual feedback to users. The <code>getButtonStyle</code> function returns different CSS classes based on the current state, and the <code>disabled</code> attribute prevents multiple clicks after an answer is selected.</p>
+<p><a id="creating-custom-feedback-messages"></a></p>
+<h2 id="creating-custom-feedback-messages">💬 Creating Custom Feedback Messages</h2>
+<p>Let’s add personality to your game with custom feedback messages that celebrate correct answers and encourage players after mistakes.</p>
+<ol type="1">
+<li><p><strong>Create the messages file</strong>: Right-click <code>src/constants</code> → New File → name it <code>messages.js</code></p></li>
+<li><p><strong>Add feedback message arrays</strong>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="im">export</span> <span class="kw">const</span> CORRECT_FEEDBACK <span class="op">=</span> [</a>
+<a class="sourceLine" id="cb14-2" title="2">  <span class="st">&quot;🎉 Nailed it!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-3" title="3">  <span class="st">&quot;🔥 You got it!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-4" title="4">  <span class="st">&quot;✨ Awesome!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-5" title="5">  <span class="st">&quot;🏆 Perfect!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-6" title="6">  <span class="st">&quot;💯 Brilliant!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-7" title="7">  <span class="st">&quot;⭐ Outstanding!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-8" title="8">  <span class="st">&quot;🚀 Amazing!&quot;</span></a>
+<a class="sourceLine" id="cb14-9" title="9">]<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-10" title="10"></a>
+<a class="sourceLine" id="cb14-11" title="11"><span class="im">export</span> <span class="kw">const</span> INCORRECT_FEEDBACK <span class="op">=</span> [</a>
+<a class="sourceLine" id="cb14-12" title="12">  <span class="st">&quot;😬 Missed it!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-13" title="13">  <span class="st">&quot;💥 Not quite!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-14" title="14">  <span class="st">&quot;🤔 Close one!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-15" title="15">  <span class="st">&quot;😅 Try again!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-16" title="16">  <span class="st">&quot;🎯 Almost there!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-17" title="17">  <span class="st">&quot;💪 Keep going!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-18" title="18">  <span class="st">&quot;🧠 Learning time!&quot;</span></a>
+<a class="sourceLine" id="cb14-19" title="19">]<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Import the constants</strong> into QuizModal.jsx:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="im">import</span> <span class="op">{</span> CORRECT_FEEDBACK<span class="op">,</span> INCORRECT_FEEDBACK <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/messages&quot;</span><span class="op">;</span></a></code></pre></div></li>
+</ol>
+<h3 id="why-this-matters-5">💡 Why This Matters</h3>
+<p><strong>Constants</strong> keep your feedback messages organized and easy to modify. By storing them in a separate file, you can easily add new messages or change the tone without hunting through component code.</p>
+<h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
+<p>Add more feedback messages to each array to increase variety! Try different emojis and encouraging phrases.</p>
+<p><a id="implementing-random-message-selection"></a></p>
+<h2 id="implementing-random-message-selection">🎲 Implementing Random Message Selection</h2>
+<p>Now let’s make your feedback dynamic by randomly selecting messages from your arrays using JavaScript’s built-in Math methods.</p>
+<ol type="1">
+<li><p><strong>Find the AnswerFeedback function</strong> in QuizModal.jsx</p></li>
+<li><p><strong>Replace the placeholder message</strong> with random selection logic:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">function</span> <span class="at">AnswerFeedback</span>(<span class="op">{</span> hasAnswered<span class="op">,</span> isCorrect<span class="op">,</span> correctAnswerText <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-2" title="2">  <span class="cf">if</span> (<span class="op">!</span>hasAnswered) <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-3" title="3">    <span class="cf">return</span> <span class="op">&lt;</span>AnswerPlaceholder /<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb16-4" title="4">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb16-5" title="5"></a>
+<a class="sourceLine" id="cb16-6" title="6">  <span class="kw">const</span> messages <span class="op">=</span> isCorrect <span class="op">?</span> CORRECT_FEEDBACK : INCORRECT_FEEDBACK<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-7" title="7">  <span class="kw">const</span> message <span class="op">=</span> messages[<span class="va">Math</span>.<span class="at">floor</span>(<span class="va">Math</span>.<span class="at">random</span>() <span class="op">*</span> <span class="va">messages</span>.<span class="at">length</span>)]<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-8" title="8"></a>
+<a class="sourceLine" id="cb16-9" title="9">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb16-10" title="10">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;result&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-11" title="11">      <span class="op">&lt;</span>strong<span class="op">&gt;{</span>message<span class="op">}</span>&lt;/strong<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-12" title="12">      <span class="op">{!</span>isCorrect <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>The answer <span class="dt">was</span><span class="op">:</span> <span class="op">{</span>correctAnswerText<span class="op">}</span>&lt;/div<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb16-13" title="13">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-14" title="14">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-15" title="15"><span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Test the randomization</strong>: Click zone → Click answers → See different messages each time</p></li>
+</ol>
+<h3 id="random-selection-breakdown">Random Selection Breakdown</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">const</span> messages <span class="op">=</span> isCorrect <span class="op">?</span> CORRECT_FEEDBACK : INCORRECT_FEEDBACK<span class="op">;</span></a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="co">// Choose the right array based on whether answer was correct</span></a>
+<a class="sourceLine" id="cb17-3" title="3"></a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="kw">const</span> message <span class="op">=</span> messages[<span class="va">Math</span>.<span class="at">floor</span>(<span class="va">Math</span>.<span class="at">random</span>() <span class="op">*</span> <span class="va">messages</span>.<span class="at">length</span>)]<span class="op">;</span></a>
+<a class="sourceLine" id="cb17-5" title="5"><span class="co">// Math.random() → 0 to 0.999...</span></a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="co">// * messages.length → 0 to array length</span></a>
+<a class="sourceLine" id="cb17-7" title="7"><span class="co">// Math.floor() → Round down to whole number</span></a>
+<a class="sourceLine" id="cb17-8" title="8"><span class="co">// messages[index] → Get message at that position</span></a></code></pre></div>
+<h3 id="why-this-matters-6">💡 Why This Matters</h3>
+<p><strong>Random selection</strong> adds variety and personality to your game. <code>Math.random()</code> generates decimal numbers between 0 and 1, <code>Math.floor()</code> rounds down to integers, and array indexing selects the message. This pattern is used in games, animations, and any app that needs variety.</p>
+<p><a id="testing-your-complete-quiz-experience"></a></p>
+<h2 id="testing-your-complete-quiz-experience">🧪 Testing Your Complete Quiz Experience</h2>
+<p>Let’s test your complete quiz system and verify all the interactive pieces work together.</p>
+<h3 id="complete-quiz-flow-test">Complete Quiz Flow Test</h3>
+<ol type="1">
+<li><strong>Navigate to game</strong>: Click “Start Adventure”</li>
+<li><strong>Click a zone</strong>: Modal should appear with question and answers</li>
+<li><strong>Click an answer</strong>:
+<ul>
+<li>Button should show correct/incorrect styling</li>
+<li>Random feedback message should appear</li>
+<li>Other buttons should be disabled</li>
+<li>Continue button should become enabled</li>
+</ul></li>
+<li><strong>Click Continue</strong>: Next question should load</li>
+<li><strong>Complete all questions</strong>: Modal should close and zone should be marked complete</li>
+</ol>
+<h3 id="react-devtools-inspection">React DevTools Inspection</h3>
+<ol type="1">
+<li><strong>Open DevTools</strong>: Press F12 → Components tab</li>
+<li><strong>Find QuizModal</strong>: Examine the component tree</li>
+<li><strong>Inspect AnswerChoices</strong>: Check answers prop and chosenAnswer state</li>
+<li><strong>Watch state changes</strong>: Click answers and observe chosenAnswer updates</li>
+</ol>
+<h3 id="why-this-matters-7">💡 Why This Matters</h3>
+<p><strong>End-to-end testing</strong> ensures all your components work together correctly. By testing the complete user flow, you catch integration issues that might not appear when testing individual components.</p>
+<p><a id="essential-terms"></a></p>
+<h2 id="essential-terms">📚 Essential Terms</h2>
+<p><em>Quick reference for all the component composition and interaction concepts you just learned:</em></p>
+<table>
+<colgroup>
+<col style="width: 17%"></col>
+<col style="width: 35%"></col>
+<col style="width: 47%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Definition</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🧩 component composition</td>
+<td>Building complex components by combining smaller, focused components together.</td>
+<td>Your QuizModal is composed of five smaller components, making it easier to understand and maintain.</td>
+</tr>
+<tr class="even">
+<td>🗺️ Array.map()</td>
+<td>JavaScript method that transforms each item in an array into something else, returning a new array.</td>
+<td>Essential for converting your answers array into JSX button elements in React.</td>
+</tr>
+<tr class="odd">
+<td>🔑 key prop</td>
+<td>Unique identifier React needs for each element in a mapped array to track changes efficiently.</td>
+<td>Helps React optimize updates when answer lists change or reorder.</td>
+</tr>
+<tr class="even">
+<td>🎨 conditional rendering</td>
+<td>Showing different components or content based on state or props using JavaScript expressions.</td>
+<td>Controls when the QuizModal appears and what styling buttons receive.</td>
+</tr>
+<tr class="odd">
+<td>🎯 conditional styling</td>
+<td>Applying different CSS classes based on component state or props.</td>
+<td>Provides visual feedback showing correct/incorrect answers with different colors.</td>
+</tr>
+<tr class="even">
+<td>🎲 Math.floor()</td>
+<td>JavaScript method that rounds decimal numbers down to the nearest integer.</td>
+<td>Used with Math.random() to select random array indices for feedback messages.</td>
+</tr>
+<tr class="odd">
+<td>🎲 Math.random()</td>
+<td>JavaScript method that generates random decimal numbers between 0 and 1.</td>
+<td>Creates variety in feedback messages by selecting random array elements.</td>
+</tr>
+<tr class="even">
+<td>📋 constants</td>
+<td>Static values stored in separate files to prevent typos and improve maintainability.</td>
+<td>Your feedback message arrays are constants that can be easily modified without touching component code.</td>
+</tr>
+<tr class="odd">
+<td>🔄 event handling</td>
+<td>Managing user interactions like clicks, form submissions, and keyboard input in React components.</td>
+<td>Your answer buttons use onClick handlers to trigger state changes and provide interactivity.</td>
+</tr>
+</tbody>
+</table>
+<p><a id="ask-the-ai"></a></p>
+<h2 id="ask-the-ai-component-composition-mastery">🤖 Ask the AI — Component Composition Mastery</h2>
+<p>You just built a complex interactive quiz system using component composition, array mapping, and dynamic styling — excellent work!</p>
+<p>Now let’s deepen your understanding of React patterns, component architecture, and user interaction design. Here are the most impactful questions to ask your AI assistant about today’s session:</p>
+<ul>
+<li><strong>How does component composition make React apps more maintainable than monolithic components?</strong></li>
+<li><strong>Why does React require key props when mapping arrays to JSX elements?</strong></li>
+<li><strong>How do conditional classes provide better user experience than static styling?</strong></li>
+<li><strong>What makes Math.random() and Math.floor() work together for array selection?</strong></li>
+<li><strong>How does the disabled attribute improve the user experience in quiz interfaces?</strong></li>
+<li><strong>Why is it better to store feedback messages in constants rather than hardcoding them?</strong></li>
+<li><strong>How does the AnswerChoices component demonstrate the single responsibility principle?</strong></li>
+</ul>
+<hr />
+<h3 id="pro-tip">💬 Pro Tip:</h3>
+<p>Component composition is the secret to building scalable React applications. Think of each component as having one clear job — AnswerChoices handles answer display, AnswerFeedback handles result messaging. This separation makes your code easier to test, debug, and extend.</p>
+</body>
+</html>

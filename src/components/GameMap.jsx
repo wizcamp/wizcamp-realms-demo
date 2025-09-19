@@ -4,7 +4,7 @@ import { useGame } from "../hooks/useGame";
 /**
  * GAME MAP - Interactive Zone Selection
  *
- * TODO: Session 7 - Add quiz modal functionality
+ * TODO: Session 7 - Show quiz modal
  */
 
 export default function GameMap() {

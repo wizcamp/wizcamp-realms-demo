@@ -35,15 +35,16 @@ import { fetchQuestions } from "../services/trivia";
  * │ currentQuestions    │ array         │ Questions for current quiz        │
  * │ currentQuestion     │ number        │ Which question (0,1,2...)         │
  * │ correctAnswers      │ number        │ Correct answers this quiz         │
+ * │ isQuizVisible       │ boolean       │ Is quiz modal open?               │
  * └─────────────────────┴───────────────┴───────────────────────────────────┘
  *
  * ┌─────────────────────────────────────┬───────────────────────────────────┐
  * │             ACTIONS                 │ What It Does                      │
  * ├─────────────────────────────────────┼───────────────────────────────────┤
  * │ loadQuestionsForZone(zoneId)        │ Prepare questions for a zone      │
- * │ nextQuestion()                      │ Move to next question             │
  * │ recordCorrectAnswer()               │ Player got it right!              │
  * │ recordIncorrectAnswer()             │ Player got it wrong               │
+ * │ nextQuestion()                      │ Move to next question             │
  * │ checkZoneCompletion()               │ Did player pass the zone?         │
  * │ resetGame()                         │ Start completely over             │
  * └─────────────────────────────────────┴───────────────────────────────────┘
@@ -52,6 +53,7 @@ import { fetchQuestions } from "../services/trivia";
  * │            CONTROLS                 │ What It Does                      │
  * ├─────────────────────────────────────┼───────────────────────────────────┤
  * │ setScreen(screenName)               │ Switch to different screen        │
+ * │ setIsQuizVisible(boolean)           │ Show/hide quiz modal              │
  * └─────────────────────────────────────┴───────────────────────────────────┘
  */
 
@@ -76,10 +78,13 @@ export function GameProvider({ children }) {
     2: { completed: false },
   });
 
-  // Current quiz state - resets for each new quiz
+  // ============================================================================
+  // QUIZ STATE - Current quiz data and UI state
+  // ============================================================================
   const [currentQuestions, setCurrentQuestions] = useState([]); // Array of questions
   const [currentQuestion, setCurrentQuestion] = useState(0); // Which question (0, 1, 2...)
   const [correctAnswers, setCorrectAnswers] = useState(0); // How many correct so far
+  const [isQuizVisible, setIsQuizVisible] = useState(false); // Is quiz open?
 
   // Find the first zone that isn't completed yet
   const activeZone = useMemo(() => {
@@ -101,17 +106,15 @@ export function GameProvider({ children }) {
     return Object.values(zoneProgress).filter((zone) => zone.completed).length;
   }, [zoneProgress]);
 
+  // ============================================================================
+  // ACTIONS - Game logic functions
+  // ============================================================================
   // Load questions for a specific zone
   const loadQuestionsForZone = async (zoneId) => {
     const questions = await fetchQuestions(zoneId);
     setCurrentQuestions(questions);
     setCurrentQuestion(0);
     setCorrectAnswers(0);
-  };
-
-  // Move to the next question
-  const nextQuestion = () => {
-    setCurrentQuestion((prev) => prev + 1);
   };
 
   // Handle correct answer: add points and track it
@@ -123,6 +126,11 @@ export function GameProvider({ children }) {
   // Handle wrong answer: subtract points (but don't go below 0)
   const recordIncorrectAnswer = () => {
     // TODO: Session 8 - Add score decrement
+  };
+
+  // Move to the next question
+  const nextQuestion = () => {
+    setCurrentQuestion((prev) => prev + 1);
   };
 
   // Check if player passed the current zone (needs 60% correct)
@@ -157,7 +165,7 @@ export function GameProvider({ children }) {
       1: { completed: false },
       2: { completed: false },
     });
-    // TODO: Session 7 - Add setIsQuizVisible(false)
+    setIsQuizVisible(false);
     setCurrentQuestions([]);
     setCurrentQuestion(0);
     setCorrectAnswers(0);
@@ -177,15 +185,17 @@ export function GameProvider({ children }) {
         currentQuestions,
         currentQuestion,
         correctAnswers,
+        isQuizVisible,
         // ACTIONS
         loadQuestionsForZone,
-        nextQuestion,
         recordCorrectAnswer,
         recordIncorrectAnswer,
+        nextQuestion,
         checkZoneCompletion,
         resetGame,
         // CONTROLS
         setScreen,
+        setIsQuizVisible,
       }}
     >
       {children}

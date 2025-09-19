@@ -25,8 +25,7 @@ function decodeText(encodedText) {
 }
 
 // Transform API question into game format
-function transformQuestion(apiQuestion) {
-}
+function transformQuestion(apiQuestion) {}
 
 // Load questions for a specific zone
 export async function fetchQuestions(zoneId, count = null) {
