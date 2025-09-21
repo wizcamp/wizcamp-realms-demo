@@ -5,15 +5,15 @@
 **By the end of Session 7, students will be able to:**
 
 1. **Explain component composition** as a strategy for building complex UIs from smaller, focused components
-2. **Create component hierarchies** that demonstrate single responsibility and separation of concerns
+2. **Design component hierarchies** that follow single responsibility and separation of concerns principles
 3. **Use conditional rendering** to control component visibility based on shared state
-4. **Apply array mapping patterns** to transform data arrays into JSX element arrays
-5. **Implement key props** correctly when rendering lists to optimize React's reconciliation process
+4. **Use array mapping** to transform data into dynamic JSX elements
+5. **Use unique key props** to ensure efficient rendering of dynamic lists
 6. **Build interactive components** that handle user events and update visual state
-7. **Create conditional styling systems** that provide immediate visual feedback to users
-8. **Use Math methods** for random selection and array indexing in user interfaces
-9. **Organize constants** in separate files for maintainable message systems
-10. **Handle component state** through props and event handlers for complex user interactions
+7. **Apply conditional styling** to give users immediate visual feedback
+8. **Use Math.random and Math.floor** to implement random selection from arrays
+9. **Organize static data** as constants in separate files for maintainability
+10. **Manage component state** using props and event handlers to support interactive behavior
 11. **Test component integration** using React DevTools and end-to-end user flows
 
 ## Instruction
@@ -26,9 +26,9 @@
 4. **Conditional Rendering Patterns** - Explain how && operator and ternary expressions control what users see based on state
 5. **Event Handling and State Updates** - Show how user interactions trigger state changes that cascade through the component tree
 6. **Dynamic Styling Techniques** - Demonstrate conditional CSS classes that provide immediate visual feedback
-7. **JavaScript Math Methods** - Introduce Math.random() and Math.floor() for creating variety in user experiences
-8. **Constants and Code Organization** - Emphasize separating data from logic for maintainable, scalable applications
-9. **Professional Testing Workflow** - Guide students through systematic testing using both manual interaction and React DevTools
+7. **Constants and Code Organization** - Emphasize separating data from logic for maintainable, scalable applications
+8. **Random Selection Patterns** - Introduce Math.random() and Math.floor() for implementing random selection from arrays
+9. **Professional Testing Workflow** - Guide students through testing their quiz using React DevTools to inspect component behavior
 10. **Integration Patterns** - Show how individual components work together to create cohesive user experiences
 11. **Let's Build Interactive!** - Launch the hands-on mission: create the complete quiz experience with all interactive components
 
@@ -38,8 +38,8 @@
 
 ### **Slide 1: Welcome to Interactive Component Design! 🎯**
 
-- **Title:** "Session 7: Building Complex Interactive Components"
-- **Session 6 Recap:** "Last time: You implemented professional caching with localStorage for lightning-fast question loading"
+- **Title:** "Session 7: Building Complex Interactive Components — Creating the Quiz Experience"
+- **Session 6 Recap:** "Last time: You added question caching with localStorage for lightning-fast loading"
 - **Hook:** "Your questions are cached — now let's make them interactive!"
 - **Today's Mission:**
   - **Build** complex components using composition patterns
@@ -114,6 +114,7 @@ const answers = ["React", "Vue", "Angular", "Svelte"];
   - **Index parameter** - Provides position information for interactions
   - **Event handlers** - Connect user actions to component logic
 - **Why Keys Matter:** React uses keys to track which items changed, moved, or were added/removed
+- **Key Best Practice:** Index keys work here because answer arrays are randomized once per question, making indices stable during each render
 - **Student Application:** "Your answer choices will be generated this way from question data"
 
 ### **Slide 5: Event Handling - Making Components Interactive 🖱️**
@@ -150,25 +151,7 @@ const answers = ["React", "Vue", "Angular", "Svelte"];
 - **User Experience:** Immediate visual feedback without waiting for network requests
 - **Professional Usage:** "Games, forms, and interactive apps all use conditional styling"
 
-### **Slide 7: JavaScript Math Methods - Adding Variety 🎲**
-
-- **Title:** "Math.random() and Math.floor() for Dynamic Experiences"
-- **The Goal:** Random feedback messages for engaging user experience
-- **Random Selection Pattern:**
-  ```javascript
-  const messages = ["Great!", "Awesome!", "Perfect!"];
-  const randomIndex = Math.floor(Math.random() * messages.length);
-  const selectedMessage = messages[randomIndex];
-  ```
-- **How It Works:**
-  - **Math.random()** - Generates 0 to 0.999...
-  - **× messages.length** - Scales to array size
-  - **Math.floor()** - Rounds down to integer
-  - **Array indexing** - Selects message at that position
-- **Professional Applications:** Games, animations, A/B testing, content rotation
-- **Student Connection:** "Your quiz will show different encouragement messages each time"
-
-### **Slide 8: Constants and Code Organization 📋**
+### **Slide 7: Constants and Code Organization 📋**
 
 - **Title:** "Separating Data from Logic for Maintainable Code"
 - **The Problem:** Hardcoded strings scattered throughout components
@@ -184,6 +167,27 @@ const answers = ["React", "Vue", "Angular", "Svelte"];
 - **Benefits:**
   - **Easy updates** - Change messages in one place
   - **Consistency** - Same messages used everywhere
+  - **Collaboration** - Non-developers can update content
+  - **Localization** - Easy to translate for different languages
+- **Professional Practice:** "Large apps have hundreds of constants for maintainability"
+
+### **Slide 8: Random Selection Patterns - Adding Variety 🎲**
+
+- **Title:** "Math.random() and Math.floor() for Random Array Selection"
+- **The Goal:** Random feedback messages for engaging user experience
+- **Random Selection Pattern:**
+  ```javascript
+  const messages = ["Great!", "Awesome!", "Perfect!"];
+  const randomIndex = Math.floor(Math.random() * messages.length);
+  const selectedMessage = messages[randomIndex];
+  ```
+- **How It Works:**
+  - **Math.random()** - Generates 0 to 0.999...
+  - **× messages.length** - Scales to array size
+  - **Math.floor()** - Rounds down to integer
+  - **Array indexing** - Selects message at that position
+- **Professional Applications:** Games, animations, A/B testing, content rotation
+- **Student Connection:** "Your quiz will show different encouragement messages each time"tency** - Same messages used everywhere
   - **Collaboration** - Non-developers can update content
   - **Localization** - Easy to translate for different languages
 - **Professional Practice:** "Large apps have hundreds of constants for maintainability"

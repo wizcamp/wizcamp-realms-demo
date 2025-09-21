@@ -38,8 +38,8 @@
 
 ### **Slide 1: Welcome to Performance Optimization! ⚡**
 
-- **Title:** \"Session 6: Browser Storage & Caching\"
-- **Session 5 Recap:** \"Last time: You connected to real APIs, mastered async/await, and transformed external data into game-ready format\"
+- **Title:** \"Session 6: Browser Storage & Caching — Adding Question Caching\"
+- **Session 5 Recap:** \"Last time: You generated dynamic questions from real APIs, mastered async/await, and transformed external data into game-ready format\"
 - **Hook:** \"Your game fetches real data — now let's make it lightning fast!\"
 - **Today's Mission:**
    - **Implement** localStorage caching for instant question loading

@@ -40,7 +40,7 @@
 
 ### **Slide 1: Welcome to Fullstack Explorer: Trivia Game Edition! 🎉**
 
-- **Title:** "Welcome to Wizcamp Enterprises"
+- **Title:** "Session 1: Welcome to React Development — Setting Up Your Trivia Game"
 - **Student Scenario:**
   - **You've just been hired** as a Junior Fullstack Developer at Wizcamp Enterprises
   - **Creative tech company** known for bold ideas and playful spirit

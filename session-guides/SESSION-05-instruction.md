@@ -38,8 +38,8 @@
 
 ### **Slide 1: Welcome to the Real Internet! 🌐**
 
-- **Title:** "Session 5: Generating Dynamic Questions"
-- **Session 4 Recap:** "Last time: You configured themed zones using metadata and JavaScript data structures"
+- **Title:** "Session 5: Connecting to External APIs — Generating Dynamic Questions"
+- **Session 4 Recap:** "Last time: You configured game zones using metadata and JavaScript data structures"
 - **Hook:** "Your zones have themes — now let's fill them with real questions from the internet!"
 - **Today's Mission:**
   - **Connect** to external APIs for live data

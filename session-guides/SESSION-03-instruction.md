@@ -38,8 +38,8 @@
 
 ### **Slide 1: Welcome to State Management! 🧠**
 
-- **Title:** "Session 3: Managing Game Flow"
-- **Session 2 Recap:** "Last time: Built reusable GameButton with props, styling, and click handlers"
+- **Title:** "Session 3: Shared State with Context — Managing Game Flow"
+- **Session 2 Recap:** "Last time: You built game components with props, styling, and click handlers"
 - **Hook:** "Your app's been static — today it starts reacting."
 - **Today's Mission:**
   - **Understand** the difference between state and props

@@ -39,8 +39,8 @@
 
 ### **Slide 1: Welcome to Game Architecture! 🏗️**
 
-- **Title:** "Session 4: Configuring Game Zones"
-- **Session 3 Recap:** "Last time: You built screen navigation using shared state, implemented local state for modals, and gained React DevTools expertise"
+- **Title:** "Session 4: Data-Driven Design — Configuring Game Zones"
+- **Session 3 Recap:** "Last time: You managed game flow with shared state, implemented local state for modals, and gained React DevTools expertise"
 - **Hook:** "Your game has structure — now you're the architect of its content!"
 - **Today's Mission:**
   - **Design** cohesive zone themes that create immersive experiences

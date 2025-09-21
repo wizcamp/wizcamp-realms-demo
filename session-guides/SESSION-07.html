@@ -81,7 +81,7 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
 color: #1f2328;
@@ -90,7 +90,7 @@ padding: 0;
 max-width: none;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-weight: 600;
 line-height: 1.25;
 margin-bottom: 16px;
@@ -297,8 +297,8 @@ page-break-inside: avoid !important;
 </style>
 </head>
 <body>
-<h1 id="session-7-building-complex-interactive-components">Session 7 — Building Complex Interactive Components</h1>
-<p>Creating the Quiz Experience 🎯</p>
+<h1 id="session-7-creating-the-quiz-experience">Session 7 — Creating the Quiz Experience</h1>
+<p>Building Complex Interactive Components 🎯</p>
 <p>You’re about to build the heart of your trivia game — interactive quiz components that bring your cached questions to life! This guide walks you through component composition, array mapping patterns, and creating dynamic user feedback systems. Ready to transform your static zones into engaging quiz experiences? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
@@ -569,31 +569,6 @@ page-break-inside: avoid !important;
 <td>Helps React optimize updates when answer lists change or reorder.</td>
 </tr>
 <tr class="even">
-<td>🎨 conditional rendering</td>
-<td>Showing different components or content based on state or props using JavaScript expressions.</td>
-<td>Controls when the QuizModal appears and what styling buttons receive.</td>
-</tr>
-<tr class="odd">
-<td>🎯 conditional styling</td>
-<td>Applying different CSS classes based on component state or props.</td>
-<td>Provides visual feedback showing correct/incorrect answers with different colors.</td>
-</tr>
-<tr class="even">
-<td>🎲 Math.floor()</td>
-<td>JavaScript method that rounds decimal numbers down to the nearest integer.</td>
-<td>Used with Math.random() to select random array indices for feedback messages.</td>
-</tr>
-<tr class="odd">
-<td>🎲 Math.random()</td>
-<td>JavaScript method that generates random decimal numbers between 0 and 1.</td>
-<td>Creates variety in feedback messages by selecting random array elements.</td>
-</tr>
-<tr class="even">
-<td>📋 constants</td>
-<td>Static values stored in separate files to prevent typos and improve maintainability.</td>
-<td>Your feedback message arrays are constants that can be easily modified without touching component code.</td>
-</tr>
-<tr class="odd">
 <td>🔄 event handling</td>
 <td>Managing user interactions like clicks, form submissions, and keyboard input in React components.</td>
 <td>Your answer buttons use onClick handlers to trigger state changes and provide interactivity.</td>

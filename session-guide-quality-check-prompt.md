@@ -1,39 +1,68 @@
 # Session Guide Quality Check Prompt
 
 ## Task
-Review all SESSION-XX-instruction.md files to verify accuracy of session continuity elements. Focus on two critical areas that depend on other sessions' content:
+Review all SESSION-XX.md and SESSION-XX-instruction.md files to verify accuracy of session continuity elements and naming conventions. Focus on critical areas that depend on other sessions' content:
 
-1. **Previous Session Recap** (Slide 2 in each session)
-2. **What's Next** (Final slide in each session)
+1. **Session Naming Convention** (Titles and references)
+2. **Previous Session Recap** (Slide 2 in each session)
+3. **What's Next** (Final slide in each session)
 
 ## Instructions
 
-### Step 1: Map Session Flow
+### Step 1: Verify Session Naming Convention
+For each SESSION-XX.md student guide:
+- Check title format: `# Session X — [Student-Friendly Name]`
+- Check subtitle format: `[Technical Concept] 🎯`
+- Verify student-friendly name emphasizes what students are building/achieving
+- Verify technical concept provides educational context without overwhelming
+
+For each SESSION-XX-instruction.md instructor guide:
+- Check slide titles include both names: `"Session X: [Technical Name] — [Student-Friendly Name]"`
+- Verify session recaps reference student-friendly names from previous sessions
+- Ensure dual naming provides complete pedagogical context
+
+**Session Name Reference:**
+| Session | Technical Name | Student-Friendly Name |
+|---------|---------------|----------------------|
+| 1 | Welcome to React Development | Setting Up Your Trivia Game |
+| 2 | Creating Reusable Components | Building Game Components |
+| 3 | Shared State with Context | Managing Game Flow |
+| 4 | Data-Driven Design | Configuring Game Zones |
+| 5 | Connecting to External APIs | Generating Dynamic Questions |
+| 6 | Browser Storage & Caching | Adding Question Caching |
+| 7 | Building Complex Interactive Components | Creating the Quiz Experience |
+| 8 | Application State Management | Implementing Scoring & Victory |
+| 9 | Custom Hooks & Browser APIs | Adding Theme Music |
+| 10 | Version Control & Deployment | Publishing Your Game |
+| 11 | Choose Your Adventure | Extending Your Game |
+| 12 | Project Showcase & Next Steps | Celebrating Your Achievement |
+
+### Step 2: Map Session Flow
 Create a table showing:
 - Session number
 - Main topic/focus
 - Key deliverables/outcomes
 
-### Step 2: Verify Previous Session Recaps
+### Step 3: Verify Previous Session Recaps
 For each SESSION-XX-instruction.md (starting with SESSION-02):
 - Check if Slide 2 "Previous Session Recap" accurately reflects the previous session's main outcomes
 - Verify the recap mentions the correct deliverables from the prior session
 - Ensure the recap sets up the current session logically
 
-### Step 3: Verify What's Next Slides
+### Step 4: Verify What's Next Slides
 For each SESSION-XX-instruction.md (except the final session):
 - Check if the "What's Next" slide accurately previews the next session's focus
 - Verify it mentions the correct upcoming topics/activities
 - Ensure it creates appropriate anticipation without over-promising
 
-### Step 4: Check Section Ordering Consistency
+### Step 5: Check Section Ordering Consistency
 For each SESSION-XX-instruction.md:
 - Verify Learning Outcomes, Instruction overview, and Slide Deck Outline sections follow the same logical order
 - Check that concepts are introduced in consistent sequence across all three sections
 - Ensure slide order matches the learning progression outlined in Learning Outcomes
 - Flag any sections where topics appear in different orders or are missing from one section
 
-### Step 5: Check Session Boundaries
+### Step 6: Check Session Boundaries
 Identify any:
 - Missing connections between sessions
 - Contradictory information across sessions
@@ -43,7 +72,7 @@ Identify any:
 ## Output Format
 For each issue found, provide:
 ```
-SESSION-XX-instruction.md - [RECAP/NEXT/TONE/ORDER] - Line X
+SESSION-XX[-instruction].md - [NAMING/RECAP/NEXT/TONE/ORDER] - Line X
 Issue: [Description of the problem]
 Should be: [Suggested correction]
 ```
@@ -71,14 +100,14 @@ For each SESSION-XX.md student guide and SESSION-XX-instruction.md instructor gu
 - Ensure consistent indentation across all list sections in each guide
 - Report any instances where content is not properly aligned with the list item structure
 
-### Step 6: Verify Essential Terms Ordering
+### Step 7: Verify Essential Terms Ordering
 For each SESSION-XX.md student guide:
 - Check if Essential Terms table follows logical learning progression
 - Verify terms are grouped by related concepts (foundational → data formats → tools → implementation)
 - Ensure ordering matches the conceptual flow from "what" to "how" to "implementation details"
 - Confirm ordering aligns with how concepts are introduced in the session content
 
-### Step 7: Evaluate Tone and Audience Appropriateness
+### Step 8: Evaluate Tone and Audience Appropriateness
 For each SESSION-XX.md student guide:
 - Review "Why This Matters" sections for engaging, conversational tone appropriate for teenagers
 - Check for relatable metaphors and examples (detective work, X-ray vision, digital breadcrumbs, etc.)

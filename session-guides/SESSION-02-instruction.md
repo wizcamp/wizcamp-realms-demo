@@ -40,8 +40,8 @@
 
 ### **Slide 1: Welcome Back to Component Land! 🧩**
 
-- **Title:** "Session 2: Building Game Components"
-- **Session 1 Recap:** "Last time: Launched Codespace, swapped components, experienced HMR"
+- **Title:** "Session 2: Creating Reusable Components — Building Game Components"
+- **Session 1 Recap:** "Last time: You set up your trivia game and experienced React's component system"
 - **Hook:** "You've experienced React's magic — now let's build your own custom components!"
 - **Today's Mission:**
   - **Create** your first reusable React component

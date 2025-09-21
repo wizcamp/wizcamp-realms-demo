@@ -1,6 +1,6 @@
-# Session 6 — Browser Storage & Caching
+# Session 6 — Adding Question Caching
 
-Adding Question Caching 💾
+Browser Storage & Caching 💾
 
 You're about to supercharge your trivia game with browser storage and caching! This guide walks you through implementing localStorage to store API responses, understanding performance optimization techniques, and building a robust caching system that makes your game lightning-fast. Ready to experience the magic of instant loading? Let's go!
 

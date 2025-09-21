@@ -7,9 +7,38 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 1. First read SESSION-01.md and SESSION-01-instruction.md to understand the exact format, structure, voice, and style
 2. Generate both files following the established patterns exactly
 
+## Session Naming Convention
+**Student Guides (SESSION-XX.md):**
+- **Primary Title**: Student-friendly, game-centric name that emphasizes what students are building/achieving
+- **Format**: `# Session X — [Student-Friendly Name]`
+- **Subtitle**: Technical concept (smaller text, provides educational context)
+- **Subtitle Format**: `[Technical Concept] 🎯`
+
+**Instructor Guides (SESSION-XX-instruction.md):**
+- **Slide Titles**: Include both names for complete pedagogical context
+- **Format**: `"Session X: [Technical Name] — [Student-Friendly Name]"`
+- **Session Recaps**: Reference student-friendly names from previous sessions
+
+**Session Name Reference:**
+| Session | Technical Name | Student-Friendly Name |
+|---------|---------------|----------------------|
+| 1 | Welcome to React Development | Setting Up Your Trivia Game |
+| 2 | Creating Reusable Components | Building Game Components |
+| 3 | Shared State with Context | Managing Game Flow |
+| 4 | Data-Driven Design | Configuring Game Zones |
+| 5 | Connecting to External APIs | Generating Dynamic Questions |
+| 6 | Browser Storage & Caching | Adding Question Caching |
+| 7 | Building Complex Interactive Components | Creating the Quiz Experience |
+| 8 | Application State Management | Implementing Scoring & Victory |
+| 9 | Custom Hooks & Browser APIs | Adding Theme Music |
+| 10 | Version Control & Deployment | Publishing Your Game |
+| 11 | Choose Your Adventure | Extending Your Game |
+| 12 | Project Showcase & Next Steps | Celebrating Your Achievement |
+
 ## Student Guide Requirements (SESSION-XX.md)
 - Follow SESSION-01.md structure: Table of Contents with anchor links, step-by-step sections, "Why This Matters" explanations, "Bonus Challenge" sections
 - Use the same engaging, conversational tone and emoji usage
+- **Apply naming convention**: Use student-friendly name as primary title, technical concept as subtitle
 - Include Essential Terms table with consistent definitions (match previous sessions exactly, "Why it matters" can vary for context)
 - Include "Ask the AI" section with 5-7 high-impact questions for deeper learning
 - End with "Pro Tip" section
@@ -40,6 +69,7 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - Follow SESSION-01-instruction.md structure: Learning Outcomes, Instruction overview, detailed Slide Deck Outline
 - Include "[HANDS-ON WORK HAPPENS HERE]" marker
 - No time estimates or management details
+- **Apply naming convention**: Use dual naming in slide titles, reference student-friendly names in session recaps
 - **Section Ordering Consistency**: Ensure Learning Outcomes, Instruction overview, and Slide Deck Outline sections follow the same logical order
   - Concepts should be introduced in consistent sequence across all three sections
   - Slide order must match the learning progression outlined in Learning Outcomes

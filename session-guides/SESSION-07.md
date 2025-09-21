@@ -1,6 +1,6 @@
-# Session 7 — Building Complex Interactive Components
+# Session 7 — Creating the Quiz Experience
 
-Creating the Quiz Experience 🎯
+Building Complex Interactive Components 🎯
 
 You're about to build the heart of your trivia game — interactive quiz components that bring your cached questions to life! This guide walks you through component composition, array mapping patterns, and creating dynamic user feedback systems. Ready to transform your static zones into engaging quiz experiences? Let's go!
 
@@ -359,11 +359,6 @@ _Quick reference for all the component composition and interaction concepts you 
 | 🧩 component composition | Building complex components by combining smaller, focused components together. | Your QuizModal is composed of five smaller components, making it easier to understand and maintain. |
 | 🗺️ Array.map() | JavaScript method that transforms each item in an array into something else, returning a new array. | Essential for converting your answers array into JSX button elements in React. |
 | 🔑 key prop | Unique identifier React needs for each element in a mapped array to track changes efficiently. | Helps React optimize updates when answer lists change or reorder. |
-| 🎨 conditional rendering | Showing different components or content based on state or props using JavaScript expressions. | Controls when the QuizModal appears and what styling buttons receive. |
-| 🎯 conditional styling | Applying different CSS classes based on component state or props. | Provides visual feedback showing correct/incorrect answers with different colors. |
-| 🎲 Math.floor() | JavaScript method that rounds decimal numbers down to the nearest integer. | Used with Math.random() to select random array indices for feedback messages. |
-| 🎲 Math.random() | JavaScript method that generates random decimal numbers between 0 and 1. | Creates variety in feedback messages by selecting random array elements. |
-| 📋 constants | Static values stored in separate files to prevent typos and improve maintainability. | Your feedback message arrays are constants that can be easily modified without touching component code. |
 | 🔄 event handling | Managing user interactions like clicks, form submissions, and keyboard input in React components. | Your answer buttons use onClick handlers to trigger state changes and provide interactivity. |
 
 <a id="ask-the-ai"></a>

@@ -302,15 +302,15 @@ page-break-inside: avoid !important;
 <p><strong>By the end of Session 7, students will be able to:</strong></p>
 <ol type="1">
 <li><strong>Explain component composition</strong> as a strategy for building complex UIs from smaller, focused components</li>
-<li><strong>Create component hierarchies</strong> that demonstrate single responsibility and separation of concerns</li>
+<li><strong>Design component hierarchies</strong> that follow single responsibility and separation of concerns principles</li>
 <li><strong>Use conditional rendering</strong> to control component visibility based on shared state</li>
-<li><strong>Apply array mapping patterns</strong> to transform data arrays into JSX element arrays</li>
-<li><strong>Implement key props</strong> correctly when rendering lists to optimize React’s reconciliation process</li>
+<li><strong>Use array mapping</strong> to transform data into dynamic JSX elements</li>
+<li><strong>Use unique key props</strong> to ensure efficient rendering of dynamic lists</li>
 <li><strong>Build interactive components</strong> that handle user events and update visual state</li>
-<li><strong>Create conditional styling systems</strong> that provide immediate visual feedback to users</li>
-<li><strong>Use Math methods</strong> for random selection and array indexing in user interfaces</li>
-<li><strong>Organize constants</strong> in separate files for maintainable message systems</li>
-<li><strong>Handle component state</strong> through props and event handlers for complex user interactions</li>
+<li><strong>Apply conditional styling</strong> to give users immediate visual feedback</li>
+<li><strong>Use Math.random and Math.floor</strong> to implement random selection from arrays</li>
+<li><strong>Organize static data</strong> as constants in separate files for maintainability</li>
+<li><strong>Manage component state</strong> using props and event handlers to support interactive behavior</li>
 <li><strong>Test component integration</strong> using React DevTools and end-to-end user flows</li>
 </ol>
 <h2 id="instruction">Instruction</h2>
@@ -322,9 +322,9 @@ page-break-inside: avoid !important;
 <li><strong>Conditional Rendering Patterns</strong> - Explain how &amp;&amp; operator and ternary expressions control what users see based on state</li>
 <li><strong>Event Handling and State Updates</strong> - Show how user interactions trigger state changes that cascade through the component tree</li>
 <li><strong>Dynamic Styling Techniques</strong> - Demonstrate conditional CSS classes that provide immediate visual feedback</li>
-<li><strong>JavaScript Math Methods</strong> - Introduce Math.random() and Math.floor() for creating variety in user experiences</li>
 <li><strong>Constants and Code Organization</strong> - Emphasize separating data from logic for maintainable, scalable applications</li>
-<li><strong>Professional Testing Workflow</strong> - Guide students through systematic testing using both manual interaction and React DevTools</li>
+<li><strong>Random Selection Patterns</strong> - Introduce Math.random() and Math.floor() for implementing random selection from arrays</li>
+<li><strong>Professional Testing Workflow</strong> - Guide students through testing their quiz using React DevTools to inspect component behavior</li>
 <li><strong>Integration Patterns</strong> - Show how individual components work together to create cohesive user experiences</li>
 <li><strong>Let’s Build Interactive!</strong> - Launch the hands-on mission: create the complete quiz experience with all interactive components</li>
 </ol>
@@ -332,8 +332,8 @@ page-break-inside: avoid !important;
 <h2 id="slide-deck-outline">Slide Deck Outline</h2>
 <h3 id="slide-1-welcome-to-interactive-component-design"><strong>Slide 1: Welcome to Interactive Component Design! 🎯</strong></h3>
 <ul>
-<li><strong>Title:</strong> “Session 7: Building Complex Interactive Components”</li>
-<li><strong>Session 6 Recap:</strong> “Last time: You implemented professional caching with localStorage for lightning-fast question loading”</li>
+<li><strong>Title:</strong> “Session 7: Building Complex Interactive Components — Creating the Quiz Experience”</li>
+<li><strong>Session 6 Recap:</strong> “Last time: You added question caching with localStorage for lightning-fast loading”</li>
 <li><strong>Hook:</strong> “Your questions are cached — now let’s make them interactive!”</li>
 <li><strong>Today’s Mission:</strong>
 <ul>
@@ -405,6 +405,7 @@ page-break-inside: avoid !important;
 <li><strong>Event handlers</strong> - Connect user actions to component logic</li>
 </ul></li>
 <li><strong>Why Keys Matter:</strong> React uses keys to track which items changed, moved, or were added/removed</li>
+<li><strong>Key Best Practice:</strong> Index keys work here because answer arrays are randomized once per question, making indices stable during each render</li>
 <li><strong>Student Application:</strong> “Your answer choices will be generated this way from question data”</li>
 </ul>
 <h3 id="slide-5-event-handling---making-components-interactive-️"><strong>Slide 5: Event Handling - Making Components Interactive 🖱️</strong></h3>
@@ -437,14 +438,34 @@ page-break-inside: avoid !important;
 <li><strong>User Experience:</strong> Immediate visual feedback without waiting for network requests</li>
 <li><p><strong>Professional Usage:</strong> “Games, forms, and interactive apps all use conditional styling”</p></li>
 </ul>
-<h3 id="slide-7-javascript-math-methods---adding-variety"><strong>Slide 7: JavaScript Math Methods - Adding Variety 🎲</strong></h3>
+<h3 id="slide-7-constants-and-code-organization"><strong>Slide 7: Constants and Code Organization 📋</strong></h3>
 <ul>
-<li><strong>Title:</strong> “Math.random() and Math.floor() for Dynamic Experiences”</li>
+<li><strong>Title:</strong> “Separating Data from Logic for Maintainable Code”</li>
+<li><strong>The Problem:</strong> Hardcoded strings scattered throughout components</li>
+<li><strong>The Solution:</strong> Centralized constants in dedicated files</li>
+<li><p><strong>Message Constants:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="im">export</span> <span class="kw">const</span> CORRECT_FEEDBACK <span class="op">=</span> [</a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="st">&quot;🎉 Nailed it!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb7-3" title="3">  <span class="st">&quot;🔥 You got it!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb7-4" title="4">  <span class="st">&quot;✨ Awesome!&quot;</span></a>
+<a class="sourceLine" id="cb7-5" title="5">]<span class="op">;</span></a></code></pre></div></li>
+<li><strong>Benefits:</strong>
+<ul>
+<li><strong>Easy updates</strong> - Change messages in one place</li>
+<li><strong>Consistency</strong> - Same messages used everywhere</li>
+<li><strong>Collaboration</strong> - Non-developers can update content</li>
+<li><strong>Localization</strong> - Easy to translate for different languages</li>
+</ul></li>
+<li><p><strong>Professional Practice:</strong> “Large apps have hundreds of constants for maintainability”</p></li>
+</ul>
+<h3 id="slide-8-random-selection-patterns---adding-variety"><strong>Slide 8: Random Selection Patterns - Adding Variety 🎲</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Math.random() and Math.floor() for Random Array Selection”</li>
 <li><strong>The Goal:</strong> Random feedback messages for engaging user experience</li>
 <li><p><strong>Random Selection Pattern:</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">const</span> messages <span class="op">=</span> [<span class="st">&quot;Great!&quot;</span><span class="op">,</span> <span class="st">&quot;Awesome!&quot;</span><span class="op">,</span> <span class="st">&quot;Perfect!&quot;</span>]<span class="op">;</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="kw">const</span> randomIndex <span class="op">=</span> <span class="va">Math</span>.<span class="at">floor</span>(<span class="va">Math</span>.<span class="at">random</span>() <span class="op">*</span> <span class="va">messages</span>.<span class="at">length</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="kw">const</span> selectedMessage <span class="op">=</span> messages[randomIndex]<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">const</span> messages <span class="op">=</span> [<span class="st">&quot;Great!&quot;</span><span class="op">,</span> <span class="st">&quot;Awesome!&quot;</span><span class="op">,</span> <span class="st">&quot;Perfect!&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">const</span> randomIndex <span class="op">=</span> <span class="va">Math</span>.<span class="at">floor</span>(<span class="va">Math</span>.<span class="at">random</span>() <span class="op">*</span> <span class="va">messages</span>.<span class="at">length</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="kw">const</span> selectedMessage <span class="op">=</span> messages[randomIndex]<span class="op">;</span></a></code></pre></div></li>
 <li><strong>How It Works:</strong>
 <ul>
 <li><strong>Math.random()</strong> - Generates 0 to 0.999…</li>
@@ -453,23 +474,8 @@ page-break-inside: avoid !important;
 <li><strong>Array indexing</strong> - Selects message at that position</li>
 </ul></li>
 <li><strong>Professional Applications:</strong> Games, animations, A/B testing, content rotation</li>
-<li><p><strong>Student Connection:</strong> “Your quiz will show different encouragement messages each time”</p></li>
-</ul>
-<h3 id="slide-8-constants-and-code-organization"><strong>Slide 8: Constants and Code Organization 📋</strong></h3>
+<li><strong>Student Connection:</strong> “Your quiz will show different encouragement messages each time”tency** - Same messages used everywhere
 <ul>
-<li><strong>Title:</strong> “Separating Data from Logic for Maintainable Code”</li>
-<li><strong>The Problem:</strong> Hardcoded strings scattered throughout components</li>
-<li><strong>The Solution:</strong> Centralized constants in dedicated files</li>
-<li><p><strong>Message Constants:</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="im">export</span> <span class="kw">const</span> CORRECT_FEEDBACK <span class="op">=</span> [</a>
-<a class="sourceLine" id="cb8-2" title="2">  <span class="st">&quot;🎉 Nailed it!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb8-3" title="3">  <span class="st">&quot;🔥 You got it!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb8-4" title="4">  <span class="st">&quot;✨ Awesome!&quot;</span></a>
-<a class="sourceLine" id="cb8-5" title="5">]<span class="op">;</span></a></code></pre></div></li>
-<li><strong>Benefits:</strong>
-<ul>
-<li><strong>Easy updates</strong> - Change messages in one place</li>
-<li><strong>Consistency</strong> - Same messages used everywhere</li>
 <li><strong>Collaboration</strong> - Non-developers can update content</li>
 <li><strong>Localization</strong> - Easy to translate for different languages</li>
 </ul></li>
