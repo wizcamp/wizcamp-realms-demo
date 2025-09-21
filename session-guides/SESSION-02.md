@@ -222,7 +222,6 @@ Now let's deepen your understanding of components, props, and the React developm
 
 - **What makes React components reusable and why is that important?**
 - **How do props work in React and why are they read-only?**
-- **Why do we use className instead of class in React?**
 - **How do template literals work and why are they perfect for dynamic CSS classes?**
 - **What is interpolation in JSX and can you show me examples?**
 - **How does JSX let me write HTML-like code inside JavaScript?**

@@ -336,7 +336,7 @@ page-break-inside: avoid !important;
 <h3 id="why-this-matters">💡 Why This Matters</h3>
 <p><strong>React Fragments</strong> (<code>&lt;&gt;...&lt;/&gt;</code>) are like invisible containers — they let you snap together multiple components without clutter. React components must return a single root element, so fragments solve this requirement cleanly. The <strong>HUD</strong> shows game progress, while <strong>CoordinateDisplay</strong> helps you position zone labels precisely.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
-<p>Try removing the fragment and see what error React gives you when trying to return multiple elements!</p>
+<p>Try removing the fragment tags (<code>&lt;&gt;</code> and <code>&lt;/&gt;</code>) and see what error React gives you when trying to return multiple elements!</p>
 <p><a id="understanding-metadata-and-configuration"></a></p>
 <h2 id="understanding-metadata-and-configuration">📋 Understanding Metadata and Configuration</h2>
 <p>Now let’s understand what makes your game tick — <strong>metadata</strong> and <strong>configuration files</strong> that define your entire game experience.</p>
@@ -407,8 +407,8 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb3-15" title="15">    <span class="dt">alignment</span><span class="op">:</span> <span class="st">&quot;left&quot;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb3-16" title="16">  <span class="op">},</span></a>
 <a class="sourceLine" id="cb3-17" title="17"><span class="op">},</span></a></code></pre></div></li>
-<li><strong>Add Zone 1 and Zone 2</strong> by copying the structure and updating all properties (keep the mapLabel coordinates for now — we’ll position them precisely in the next section)</li>
-<li><p><strong>Save the file</strong> — note that changes to <code>zones.js</code> will trigger a full page reload (not HMR-friendly)</p></li>
+<li><p><strong>Add Zone 1 and Zone 2</strong> by copying the structure and updating all properties (keep the mapLabel coordinates for now — we’ll position them precisely in the next section)</p>
+<p>Note: Changes to <code>zones.js</code> will trigger a full page reload (not HMR-friendly)</p></li>
 </ol>
 <h3 id="why-this-matters-4">💡 Why This Matters</h3>
 <p><strong>Object properties</strong> use colon syntax (<code>name: &quot;value&quot;</code>) and are separated by commas. Each zone object contains different <strong>data types</strong>: strings for text, numbers for IDs, and nested objects for complex styling. This structure makes your game data organized and easy to modify.</p>
@@ -511,7 +511,6 @@ page-break-inside: avoid !important;
 <li><strong>What are the benefits of using configuration files like zones.js?</strong></li>
 <li><strong>How do React Fragments solve the single root element requirement?</strong></li>
 <li><strong>What is metadata and why is it important in application design?</strong></li>
-<li><strong>How does the CoordinateDisplay component help with UI positioning?</strong></li>
 </ul>
 <hr />
 <h3 id="pro-tip">💬 Pro Tip:</h3>

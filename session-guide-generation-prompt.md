@@ -43,6 +43,7 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - Include "Ask the AI" section with 5-7 high-impact questions for deeper learning
 - End with "Pro Tip" section
 - Use practical, hands-on approach with clear numbered steps
+- **Do not instruct students to save files** - files are automatically saved in Codespaces
 - **All content following numbered and non-numbered list items must be properly indented** - indent code blocks, Test paragraphs, explanatory text, and any other content with 3 spaces to align with list item content and maintain proper grouping under the bullet point
 - **All multi-line code blocks must include language qualifiers** - use ```javascript, ```bash, ```json, etc. for proper syntax highlighting and consistency. Use `javascript` for all React/JSX code blocks as `jsx` provides poor syntax highlighting in PDF output
 

@@ -56,7 +56,7 @@ Let's add the game's **HUD** (Heads Up Display) and a coordinate helper to assis
 
 ### 🏆 Bonus Challenge
 
-Try removing the fragment and see what error React gives you when trying to return multiple elements!
+Try removing the fragment tags (`<>` and `</>`) and see what error React gives you when trying to return multiple elements!
 
 <a id="understanding-metadata-and-configuration"></a>
 
@@ -141,7 +141,8 @@ Time to implement your zone designs by updating the `ZONES` array with your cust
    ```
 
 3. **Add Zone 1 and Zone 2** by copying the structure and updating all properties (keep the mapLabel coordinates for now — we'll position them precisely in the next section)
-4. **Save the file** — note that changes to `zones.js` will trigger a full page reload (not HMR-friendly)
+
+   Note: Changes to `zones.js` will trigger a full page reload (not HMR-friendly)
 
 ### 💡 Why This Matters
 
@@ -225,7 +226,6 @@ Now let's deepen your understanding of data structures, configuration patterns, 
 - **What are the benefits of using configuration files like zones.js?**
 - **How do React Fragments solve the single root element requirement?**
 - **What is metadata and why is it important in application design?**
-- **How does the CoordinateDisplay component help with UI positioning?**
 
 ---
 

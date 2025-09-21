@@ -370,9 +370,7 @@ You just built a complex interactive quiz system using component composition, ar
 Now let's deepen your understanding of React patterns, component architecture, and user interaction design. Here are the most impactful questions to ask your AI assistant about today's session:
 
 - **How does component composition make React apps more maintainable than monolithic components?**
-- **Why does React require key props when mapping arrays to JSX elements?**
 - **How do conditional classes provide better user experience than static styling?**
-- **What makes Math.random() and Math.floor() work together for array selection?**
 - **How does the disabled attribute improve the user experience in quiz interfaces?**
 - **Why is it better to store feedback messages in constants rather than hardcoding them?**
 - **How does the AnswerChoices component demonstrate the single responsibility principle?**

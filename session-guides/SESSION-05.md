@@ -130,10 +130,9 @@ When you make changes to `trivia.js`, you may see these behaviors:
 
 **How to fix and continue:**
 
-1. **Save your changes** in `trivia.js`
-2. **Refresh the browser page** manually (Ctrl+R or Cmd+R)
-3. **Navigate back to the game** (click "Start Game")
-4. **Click a zone** to test your updated code
+1. **Refresh the browser page** manually (Ctrl+R or Cmd+R)
+2. **Navigate back to the game** (click "Start Game")
+3. **Click a zone** to test your updated code
 
 **Pro tip:** Make several changes to your code, then refresh once to test them all together!
 
@@ -159,7 +158,6 @@ Time to connect your game to the real internet! Let's implement the core **fetch
 
 3. **Test your changes**:
 
-   - **Save the file**
    - **Open DevTools**: Press F12 or right-click → Inspect
    - **Navigate back to the game** (click "Start Game")
    - **Click a zone** to test your updated code
@@ -337,7 +335,7 @@ Let's test your complete **API** integration and clean up the debugging code.
 
 2. **Test the final integration**:
 
-   - **Save your changes** → Game resets to splash screen
+   - Game resets to splash screen
    - **Navigate to the game** (click "Start Game")
    - **Click different zones** to test various categories and difficulties
    - **Verify the data flow** using React DevTools:
@@ -438,12 +436,12 @@ You just built a complete API integration with data fetching, transformation, an
 Now let's deepen your understanding of APIs, asynchronous programming, and data transformation patterns. Here are the most impactful questions to ask your AI assistant about today's session:
 
 - **What makes APIs so important in modern web development?**
-- **How does async/await make asynchronous code easier to work with?**
 - **Why do APIs often return data in formats that need transformation?**
 - **What are the benefits of separating data fetching from data transformation?**
 - **How does the Fetch API handle network errors and what should developers do about them?**
-- **What is JSON and why is it the standard format for API communication?**
 - **How do helper functions like `decodeText` and `shuffleAnswers` improve code quality?**
+- **How does the return keyword work in JavaScript functions, and can you explain it with a non-tech example?**
+- **What is functional programming?**
 
 ---
 

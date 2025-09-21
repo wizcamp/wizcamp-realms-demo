@@ -255,10 +255,8 @@ You just built your first caching system with localStorage and helper functions 
 Here are some key questions to ask your AI assistant to deepen your understanding of what you just built:
 
 - **Why is caching so important for web apps and user experience?**
-- **How does localStorage work and why does it only store strings?**
 - **What happens when I use JSON.stringify and JSON.parse with my question data?**
 - **Why do we need helper functions like getCacheKey and getCachedQuestions?**
-- **How does the cache-aside pattern work in my fetchQuestions function?**
 - **What would happen if I didn't have caching in my trivia game?**
 - **How can I use the browser DevTools to debug localStorage issues?**
 

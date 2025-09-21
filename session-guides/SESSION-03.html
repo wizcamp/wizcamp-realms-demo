@@ -387,8 +387,7 @@ page-break-inside: avoid !important;
 <li><p><strong>Open <code>src/App.jsx</code></strong> and add the necessary imports at the top:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./hooks/useGame&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;./constants/screens&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="im">import</span> GameMap <span class="im">from</span> <span class="st">&quot;./components/GameMap&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="im">import</span> SplashScreen <span class="im">from</span> <span class="st">&quot;./components/SplashScreen&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<a class="sourceLine" id="cb5-3" title="3"><span class="im">import</span> GameMap <span class="im">from</span> <span class="st">&quot;./components/GameMap&quot;</span><span class="op">;</span></a></code></pre></div></li>
 <li><p><strong>Access the shared state</strong> by adding this line inside the App function (before the return):</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> <span class="op">{</span> screen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
 <li><p><strong>Add conditional rendering</strong> by replacing the current JSX with:</p>
@@ -509,7 +508,6 @@ page-break-inside: avoid !important;
 <p>You just implemented both local and shared state, created screen navigation, and experienced the power of React’s Context API — excellent work!</p>
 <p>Now let’s deepen your understanding of state management, hooks, and the React data flow. Here are the most impactful questions to ask your AI assistant about today’s session:</p>
 <ul>
-<li><strong>How does conditional rendering with &amp;&amp; work in React?</strong></li>
 <li><strong>What makes hooks special and why do they all start with “use”?</strong></li>
 <li><strong>Explain <code>const [showCredits, setShowCredits] = useState(false);</code> in regular English.</strong></li>
 <li><strong>Explain state setter functions like <code>setScreen</code>, but in a non-tech example.</strong></li>

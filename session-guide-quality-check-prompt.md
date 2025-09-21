@@ -86,6 +86,13 @@ Should be: [Suggested correction]
 - **Code Block Consistency**: Do all multi-line code blocks include language qualifiers (```javascript, ```bash, ```json, etc.)?
 - **List Indentation**: Is all content following numbered and non-numbered list items properly indented with 3 spaces to maintain grouping under the bullet point?
 - **Section Ordering Consistency**: Do Learning Outcomes, Instruction, and Slide Deck Outline sections follow the same logical order?
+- **File Saving References**: Are students directed to save files?
+  - Flag any instructions telling students to "Save the file" or "Save your changes"
+  - Files are automatically saved in Codespaces
+- **Ask the AI Question Novelty**: Are Ask the AI questions already answered in the session content?
+  - Flag questions where the answer is explicitly provided in the preceding material
+  - Example: Don't ask "How does async/await make code easier to work with?" if the session already states "async/await makes asynchronous code easier to read and debug"
+  - Questions should explore concepts beyond what's directly explained in the guide
 - **Tone and Audience Appropriateness**: Is content engaging and relatable for 13-18 year olds?
   - Check "Why This Matters" sections use conversational, empowering language
   - Verify metaphors and examples resonate with teenage experiences

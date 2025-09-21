@@ -112,7 +112,6 @@ Now let's implement the core navigation system that will control which screen us
    import { useGame } from './hooks/useGame';
    import { SCREENS } from "./constants/screens";
    import GameMap from "./components/GameMap";
-   import SplashScreen from "./components/SplashScreen";
    ```
 
 2. **Access the shared state** by adding this line inside the App function (before the return):
@@ -228,7 +227,6 @@ You just implemented both local and shared state, created screen navigation, and
 
 Now let's deepen your understanding of state management, hooks, and the React data flow. Here are the most impactful questions to ask your AI assistant about today's session:
 
-- **How does conditional rendering with && work in React?**
 - **What makes hooks special and why do they all start with "use"?**
 - **Explain `const [showCredits, setShowCredits] = useState(false);` in regular English.**
 - **Explain state setter functions like `setScreen`, but in a non-tech example.**
