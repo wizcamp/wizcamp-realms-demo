@@ -352,18 +352,18 @@ page-break-inside: avoid !important;
 <p>Let’s implement <strong>local state</strong> for the credits modal to see how components can manage their own data.</p>
 <ol type="1">
 <li><p><strong>Add imports</strong> at the top of SplashScreen.jsx:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> <span class="op">{</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> CreditsModal <span class="im">from</span> <span class="st">&quot;./CreditsModal&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> <span class="op">{</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> CreditsModal <span class="im">from</span> <span class="st">&quot;./CreditsModal&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a></code></pre></div></li>
 <li><p><strong>Add local state</strong> inside the SplashScreen function (before the return):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span> <span class="co">// Add state</span></a></code></pre></div></li>
 <li><p><strong>Update the Credits button</strong>:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&lt;</span>GameButton</a>
 <a class="sourceLine" id="cb3-2" title="2">  text<span class="op">=</span><span class="st">&quot;Credits&quot;</span></a>
-<a class="sourceLine" id="cb3-3" title="3">  onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">setShowCredits</span>(<span class="kw">true</span>)<span class="op">}</span></a>
+<a class="sourceLine" id="cb3-3" title="3">  onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">setShowCredits</span>(<span class="kw">true</span>)<span class="op">}</span> <span class="co">// Update onClick</span></a>
 <a class="sourceLine" id="cb3-4" title="4">  variant<span class="op">=</span><span class="st">&quot;secondary&quot;</span></a>
 <a class="sourceLine" id="cb3-5" title="5">/&gt;</a></code></pre></div></li>
 <li><p><strong>Add the modal</strong> before the closing <code>&lt;/div&gt;</code> tag:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">{</span>showCredits <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>CreditsModal onClose<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">setShowCredits</span>(<span class="kw">false</span>)<span class="op">}</span> /&gt;<span class="op">}</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">{</span>showCredits <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>CreditsModal onClose<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">setShowCredits</span>(<span class="kw">false</span>)<span class="op">}</span> /&gt;<span class="op">}</span> <span class="co">// Add modal</span></a></code></pre></div></li>
 <li><p><strong>Test the credits modal</strong>: Click the Credits button to see the modal appear</p></li>
 </ol>
 <h3 id="why-this-matters-1">💡 Why This Matters</h3>
@@ -385,16 +385,16 @@ page-break-inside: avoid !important;
 <p>Now let’s implement the core navigation system that will control which screen users see. This is where <strong>shared state</strong> really shines!</p>
 <ol type="1">
 <li><p><strong>Open <code>src/App.jsx</code></strong> and add the necessary imports at the top:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./hooks/useGame&#39;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;./constants/screens&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="im">import</span> GameMap <span class="im">from</span> <span class="st">&quot;./components/GameMap&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./hooks/useGame&#39;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;./constants/screens&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="im">import</span> GameMap <span class="im">from</span> <span class="st">&quot;./components/GameMap&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a></code></pre></div></li>
 <li><p><strong>Access the shared state</strong> by adding this line inside the App function (before the return):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> <span class="op">{</span> screen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> <span class="op">{</span> screen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span> <span class="co">// Add shared state</span></a></code></pre></div></li>
 <li><p><strong>Add conditional rendering</strong> by replacing the current JSX with:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="cf">return</span> (</a>
 <a class="sourceLine" id="cb7-2" title="2">  <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb7-3" title="3">    <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;}</span></a>
-<a class="sourceLine" id="cb7-4" title="4">    <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>GameMap /<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb7-3" title="3">    <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;}</span> <span class="co">// Add conditional rendering</span></a>
+<a class="sourceLine" id="cb7-4" title="4">    <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>GameMap /<span class="op">&gt;}</span> <span class="co">// Add conditional rendering</span></a>
 <a class="sourceLine" id="cb7-5" title="5">  &lt;/div<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb7-6" title="6">)<span class="op">;</span></a></code></pre></div></li>
 <li><p><strong>Test the setup</strong>: Run <code>npm run dev</code> to make sure everything still works</p></li>
@@ -421,18 +421,18 @@ page-break-inside: avoid !important;
 <p>Now let’s make your “Start Adventure” button actually start the game by updating the <strong>shared state</strong>!</p>
 <ol type="1">
 <li><p><strong>Open <code>src/components/SplashScreen.jsx</code></strong> and add imports at the top:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/screens&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../hooks/useGame&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/screens&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../hooks/useGame&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a></code></pre></div></li>
 <li><p><strong>Access the state setter</strong> by adding this inside the SplashScreen function (before the return):</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span> <span class="co">// Add state setter</span></a></code></pre></div></li>
 <li><p><strong>Create the start game function</strong> (before the return):</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">const</span> startGame <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">const</span> startGame <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span> <span class="co">// Add this function</span></a>
 <a class="sourceLine" id="cb10-2" title="2">  <span class="at">setScreen</span>(<span class="va">SCREENS</span>.<span class="at">PLAYING</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="op">};</span></a></code></pre></div></li>
 <li><p><strong>Update the first GameButton</strong> to use the real function:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="op">&lt;</span>GameButton</a>
 <a class="sourceLine" id="cb11-2" title="2">  text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
-<a class="sourceLine" id="cb11-3" title="3">  onClick<span class="op">={</span>startGame<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-3" title="3">  onClick<span class="op">={</span>startGame<span class="op">}</span> <span class="co">// Update onClick</span></a>
 <a class="sourceLine" id="cb11-4" title="4">  variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
 <a class="sourceLine" id="cb11-5" title="5">/&gt;</a></code></pre></div></li>
 <li><p><strong>Test it</strong>: Click the “Start Adventure” button and watch the screen change to GameMap!</p></li>

@@ -42,11 +42,8 @@ function AnswerFeedback({ hasAnswered, isCorrect, correctAnswerText }) {
     return <AnswerPlaceholder />;
   }
 
-  const message = "RANDOM MESSAGE GOES HERE"; // Replace with random message selection
-
   return (
     <div className="result">
-      <strong>{message}</strong>
       {!isCorrect && <div>The answer was: {correctAnswerText}</div>}
     </div>
   );

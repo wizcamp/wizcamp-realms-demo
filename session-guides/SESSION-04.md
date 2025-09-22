@@ -32,18 +32,18 @@ Let's add the game's **HUD** (Heads Up Display) and a coordinate helper to assis
 1. **Open `src/App.jsx`** and add the new imports at the top:
 
    ```javascript
-   import HUD from "./components/HUD";
-   import CoordinateDisplay from "./components/CoordinateDisplay";
+   import HUD from "./components/HUD"; // Add this import
+   import CoordinateDisplay from "./components/CoordinateDisplay"; // Add this import
    ```
 
 2. **Update the PLAYING screen section** to use a **React Fragment** and include both components:
 
    ```javascript
    {screen === SCREENS.PLAYING && (
-     <>
+     <> // Add Fragment
        <GameMap />
-       <HUD />
-       <CoordinateDisplay />
+       <HUD /> // Add HUD
+       <CoordinateDisplay /> // Add CoordinateDisplay
      </>
    )}
    ```
@@ -123,10 +123,10 @@ Time to implement your zone designs by updating the `ZONES` array with your cust
    ```javascript
    {
      id: 0,
-     name: "Your Zone Name",
-     subtitle: "Your Zone Subtitle", 
-     categoryId: 18, // Your chosen category
-     difficulty: "easy",
+     name: "Your Zone Name", // Update name
+     subtitle: "Your Zone Subtitle", // Update subtitle
+     categoryId: 18, // Update category
+     difficulty: "easy", // Update difficulty
      questionCount: 4,
      mapLabel: {
        x: 225,
@@ -161,8 +161,8 @@ Use the `CoordinateDisplay` component to find optimal positions for your zone la
 
    ```javascript
    mapLabel: {
-     x: 225, // Your chosen x coordinate
-     y: 140, // Your chosen y coordinate
+     x: 225, // Update x coordinate
+     y: 140, // Update y coordinate
      // ... other styling properties
    }
    ```

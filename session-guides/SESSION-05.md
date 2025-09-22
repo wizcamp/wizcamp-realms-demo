@@ -144,12 +144,11 @@ Time to connect your game to the real internet! Let's implement the core **fetch
 2. **Replace the alert** with basic **fetch** logic:
 
    ```javascript
-   try {
+   try { // Add fetch logic
      console.log("Fetching from:", url);
      const response = await fetch(url);
      const data = await response.json();
      console.log("Raw API data:", data);
-     // We'll process this data in the next steps
    } catch (error) {
      console.log("Failed to fetch questions:", error);
      return [];
@@ -167,7 +166,7 @@ Time to connect your game to the real internet! Let's implement the core **fetch
 4. **Add data validation** immediately after getting the data:
 
    ```javascript
-   if (!data.results || data.results.length === 0) {
+   if (!data.results || data.results.length === 0) { // Add validation
      console.log("No questions received from API");
      return [];
    }
@@ -186,8 +185,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
 1. **Add transformation testing** after the validation check:
 
    ```javascript
-   // After the validation check
-   const firstQuestion = data.results[0];
+   const firstQuestion = data.results[0]; // Add test code
    console.log("Before transform:", firstQuestion);
    
    const transformed = transformQuestion(firstQuestion);
@@ -199,7 +197,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
 2. **Extract object properties** in the `transformQuestion` function:
 
    ```javascript
-   function transformQuestion(apiQuestion) {
+   function transformQuestion(apiQuestion) { // Add extraction
      const question = apiQuestion.question;
      const incorrectAnswers = apiQuestion.incorrect_answers;
      const correctAnswer = apiQuestion.correct_answer;
@@ -214,9 +212,9 @@ Now let's transform the **API** data into game-ready format. This is where the r
 
    ```javascript
    function transformQuestion(apiQuestion) {
-     const question = decodeText(apiQuestion.question);
-     const incorrectAnswers = apiQuestion.incorrect_answers.map(answer => decodeText(answer));
-     const correctAnswer = decodeText(apiQuestion.correct_answer);
+     const question = decodeText(apiQuestion.question); // Add decoding
+     const incorrectAnswers = apiQuestion.incorrect_answers.map(answer => decodeText(answer)); // Add decoding
+     const correctAnswer = decodeText(apiQuestion.correct_answer); // Add decoding
      
      console.log("Decoded data:", { question, incorrectAnswers, correctAnswer });
    }
@@ -240,8 +238,8 @@ Now let's transform the **API** data into game-ready format. This is where the r
      const question = decodeText(apiQuestion.question);
      const incorrectAnswers = apiQuestion.incorrect_answers.map(answer => decodeText(answer));
      const correctAnswer = decodeText(apiQuestion.correct_answer);
-     const shuffledAnswers = shuffleAnswers(correctAnswer, incorrectAnswers);
-     const correctIndex = shuffledAnswers.indexOf(correctAnswer);
+     const shuffledAnswers = shuffleAnswers(correctAnswer, incorrectAnswers); // Add shuffling
+     const correctIndex = shuffledAnswers.indexOf(correctAnswer); // Find correct index
      
      console.log("Shuffled answers:", shuffledAnswers);
      console.log("Correct answer is at index:", correctIndex);
@@ -260,7 +258,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
      const shuffledAnswers = shuffleAnswers(correctAnswer, incorrectAnswers);
      const correctIndex = shuffledAnswers.indexOf(correctAnswer);
    
-     return {
+     return { // Return game object
        question: question,
        answers: shuffledAnswers,
        correct: correctIndex
@@ -287,8 +285,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
 6. **Complete the fetchQuestions integration** by replacing the test logging:
 
    ```javascript
-   // Replace the test logging with full transformation
-   const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion));
+   const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion)); // Transform all questions
    console.log("All transformed questions:", questions);
    return questions;
    ```

@@ -50,14 +50,14 @@ Let's implement **local state** for the credits modal to see how components can 
 1. **Add imports** at the top of SplashScreen.jsx:
 
    ```javascript
-   import { useState } from "react";
-   import CreditsModal from "./CreditsModal";
+   import { useState } from "react"; // Add this import
+   import CreditsModal from "./CreditsModal"; // Add this import
    ```
 
 2. **Add local state** inside the SplashScreen function (before the return):
 
    ```javascript
-   const [showCredits, setShowCredits] = useState(false);
+   const [showCredits, setShowCredits] = useState(false); // Add state
    ```
 
 3. **Update the Credits button**:
@@ -65,7 +65,7 @@ Let's implement **local state** for the credits modal to see how components can 
    ```javascript
    <GameButton
      text="Credits"
-     onClick={() => setShowCredits(true)}
+     onClick={() => setShowCredits(true)} // Update onClick
      variant="secondary"
    />
    ```
@@ -73,7 +73,7 @@ Let's implement **local state** for the credits modal to see how components can 
 4. **Add the modal** before the closing `</div>` tag:
 
    ```javascript
-   {showCredits && <CreditsModal onClose={() => setShowCredits(false)} />}
+   {showCredits && <CreditsModal onClose={() => setShowCredits(false)} />} // Add modal
    ```
 
 5. **Test the credits modal**: Click the Credits button to see the modal appear
@@ -109,15 +109,15 @@ Now let's implement the core navigation system that will control which screen us
 1. **Open `src/App.jsx`** and add the necessary imports at the top:
 
    ```javascript
-   import { useGame } from './hooks/useGame';
-   import { SCREENS } from "./constants/screens";
-   import GameMap from "./components/GameMap";
+   import { useGame } from './hooks/useGame'; // Add this import
+   import { SCREENS } from "./constants/screens"; // Add this import
+   import GameMap from "./components/GameMap"; // Add this import
    ```
 
 2. **Access the shared state** by adding this line inside the App function (before the return):
 
    ```javascript
-   const { screen } = useGame();
+   const { screen } = useGame(); // Add shared state
    ```
 
 3. **Add conditional rendering** by replacing the current JSX with:
@@ -125,8 +125,8 @@ Now let's implement the core navigation system that will control which screen us
    ```javascript
    return (
      <div className="app-container">
-       {screen === SCREENS.SPLASH && <SplashScreen />}
-       {screen === SCREENS.PLAYING && <GameMap />}
+       {screen === SCREENS.SPLASH && <SplashScreen />} // Add conditional rendering
+       {screen === SCREENS.PLAYING && <GameMap />} // Add conditional rendering
      </div>
    );
    ```
@@ -167,20 +167,20 @@ Now let's make your "Start Adventure" button actually start the game by updating
 1. **Open `src/components/SplashScreen.jsx`** and add imports at the top:
 
    ```javascript
-   import { SCREENS } from "../constants/screens";
-   import { useGame } from "../hooks/useGame";
+   import { SCREENS } from "../constants/screens"; // Add this import
+   import { useGame } from "../hooks/useGame"; // Add this import
    ```
 
 2. **Access the state setter** by adding this inside the SplashScreen function (before the return):
 
    ```javascript
-   const { setScreen } = useGame();
+   const { setScreen } = useGame(); // Add state setter
    ```
 
 3. **Create the start game function** (before the return):
 
    ```javascript
-   const startGame = () => {
+   const startGame = () => { // Add this function
      setScreen(SCREENS.PLAYING);
    };
    ```
@@ -190,7 +190,7 @@ Now let's make your "Start Adventure" button actually start the game by updating
    ```javascript
    <GameButton
      text="Start Adventure"
-     onClick={startGame}
+     onClick={startGame} // Update onClick
      variant="primary"
    />
    ```

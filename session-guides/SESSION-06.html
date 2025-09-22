@@ -381,23 +381,20 @@ page-break-inside: avoid !important;
 <ol type="1">
 <li><strong>Open <code>src/services/trivia.js</code></strong></li>
 <li><p><strong>Add all three cache helper functions</strong> after the existing helper functions:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="co">// Generate cache key for localStorage</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">function</span> <span class="at">getCacheKey</span>(zoneId) <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-3" title="3">  <span class="cf">return</span> <span class="vs">`trivia_questions_zone_</span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="op">}</span></a>
-<a class="sourceLine" id="cb2-5" title="5"></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">// Get cached questions for a zone</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="kw">function</span> <span class="at">getCachedQuestions</span>(zoneId) <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-8" title="8">  <span class="kw">const</span> cacheKey <span class="op">=</span> <span class="at">getCacheKey</span>(zoneId)<span class="op">;</span></a>
-<a class="sourceLine" id="cb2-9" title="9">  <span class="kw">const</span> cached <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(cacheKey)<span class="op">;</span></a>
-<a class="sourceLine" id="cb2-10" title="10">  <span class="cf">return</span> cached <span class="op">?</span> <span class="va">JSON</span>.<span class="at">parse</span>(cached) : <span class="kw">null</span><span class="op">;</span>  <span class="co">// Deserialization happens here</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="op">}</span></a>
-<a class="sourceLine" id="cb2-12" title="12"></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">// Save questions to cache</span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="kw">function</span> <span class="at">setCachedQuestions</span>(zoneId<span class="op">,</span> questions) <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-15" title="15">  <span class="kw">const</span> cacheKey <span class="op">=</span> <span class="at">getCacheKey</span>(zoneId)<span class="op">;</span></a>
-<a class="sourceLine" id="cb2-16" title="16">  <span class="va">localStorage</span>.<span class="at">setItem</span>(cacheKey<span class="op">,</span> <span class="va">JSON</span>.<span class="at">stringify</span>(questions))<span class="op">;</span>  <span class="co">// Serialization happens here</span></a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="op">}</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">function</span> <span class="at">getCacheKey</span>(zoneId) <span class="op">{</span> <span class="co">// Add this function</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="cf">return</span> <span class="vs">`trivia_questions_zone_</span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">function</span> <span class="at">getCachedQuestions</span>(zoneId) <span class="op">{</span> <span class="co">// Add this function</span></a>
+<a class="sourceLine" id="cb2-6" title="6">  <span class="kw">const</span> cacheKey <span class="op">=</span> <span class="at">getCacheKey</span>(zoneId)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-7" title="7">  <span class="kw">const</span> cached <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(cacheKey)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-8" title="8">  <span class="cf">return</span> cached <span class="op">?</span> <span class="va">JSON</span>.<span class="at">parse</span>(cached) : <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-10" title="10"></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="kw">function</span> <span class="at">setCachedQuestions</span>(zoneId<span class="op">,</span> questions) <span class="op">{</span> <span class="co">// Add this function</span></a>
+<a class="sourceLine" id="cb2-12" title="12">  <span class="kw">const</span> cacheKey <span class="op">=</span> <span class="at">getCacheKey</span>(zoneId)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-13" title="13">  <span class="va">localStorage</span>.<span class="at">setItem</span>(cacheKey<span class="op">,</span> <span class="va">JSON</span>.<span class="at">stringify</span>(questions))<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="op">}</span></a></code></pre></div></li>
 </ol>
 <h3 id="example-usage">Example Usage:</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="co">// This is what your functions do:</span></a>
@@ -412,26 +409,22 @@ page-break-inside: avoid !important;
 <ol type="1">
 <li><p><strong>Add cache checking</strong> at the beginning of <code>fetchQuestions</code> (before the zone lookup):</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="im">export</span> <span class="kw">async</span> <span class="kw">function</span> <span class="at">fetchQuestions</span>(zoneId<span class="op">,</span> count <span class="op">=</span> <span class="kw">null</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="co">// Check cache first - try to get questions from localStorage</span></a>
-<a class="sourceLine" id="cb4-3" title="3">  <span class="kw">const</span> cachedQuestions <span class="op">=</span> <span class="at">getCachedQuestions</span>(zoneId)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-4" title="4">  <span class="cf">if</span> (cachedQuestions) <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-5" title="5">    <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`Cache hit for zone </span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-6" title="6">    <span class="cf">return</span> cachedQuestions<span class="op">;</span> <span class="co">// Return cached data immediately</span></a>
-<a class="sourceLine" id="cb4-7" title="7">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb4-8" title="8"></a>
-<a class="sourceLine" id="cb4-9" title="9">  <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`Cache miss for zone </span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs"> - fetching from API`</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-10" title="10"></a>
-<a class="sourceLine" id="cb4-11" title="11">  <span class="co">// Cache miss - proceed with API fetch</span></a>
-<a class="sourceLine" id="cb4-12" title="12">  <span class="kw">const</span> zone <span class="op">=</span> <span class="at">getZoneById</span>(zoneId)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-13" title="13">  <span class="co">// ... rest of existing code</span></a></code></pre></div></li>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="kw">const</span> cachedQuestions <span class="op">=</span> <span class="at">getCachedQuestions</span>(zoneId)<span class="op">;</span> <span class="co">// Add cache check</span></a>
+<a class="sourceLine" id="cb4-3" title="3">  <span class="cf">if</span> (cachedQuestions) <span class="op">{</span> <span class="co">// Add this condition</span></a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`Cache hit for zone </span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="cf">return</span> cachedQuestions<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-6" title="6">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-7" title="7"></a>
+<a class="sourceLine" id="cb4-8" title="8">  <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`Cache miss for zone </span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs"> - fetching from API`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-9" title="9"></a>
+<a class="sourceLine" id="cb4-10" title="10">  <span class="kw">const</span> zone <span class="op">=</span> <span class="at">getZoneById</span>(zoneId)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-11" title="11">  <span class="co">// ... rest of existing code</span></a></code></pre></div></li>
 <li><p><strong>Add cache storage</strong> after successful data transformation (before the return statement):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="co">// Transform each API question into our game format</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">map</span>(apiQuestion <span class="kw">=&gt;</span> <span class="at">transformQuestion</span>(apiQuestion))<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-3" title="3"></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">// Store in cache after successful fetch and transformation</span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="at">setCachedQuestions</span>(zoneId<span class="op">,</span> questions)<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-6" title="6"></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="cf">return</span> questions<span class="op">;</span> <span class="co">// Return fresh data from API</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">map</span>(apiQuestion <span class="kw">=&gt;</span> <span class="at">transformQuestion</span>(apiQuestion))<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="at">setCachedQuestions</span>(zoneId<span class="op">,</span> questions)<span class="op">;</span> <span class="co">// Add cache storage</span></a>
+<a class="sourceLine" id="cb5-4" title="4"></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="cf">return</span> questions<span class="op">;</span></a></code></pre></div></li>
 </ol>
 <h3 id="why-this-matters-3">💡 Why This Matters</h3>
 <p>This implements the classic <strong>cache-aside pattern</strong> used in professional applications: check cache first, fetch from source on miss, store result in cache. The console logging helps you understand when cache hits and misses occur, which is valuable for debugging and performance monitoring.</p>

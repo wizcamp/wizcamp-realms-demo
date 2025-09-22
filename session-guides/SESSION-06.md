@@ -89,22 +89,19 @@ Time to build the foundation of your caching system! Helper functions abstract t
 2. **Add all three cache helper functions** after the existing helper functions:
 
    ```javascript
-   // Generate cache key for localStorage
-   function getCacheKey(zoneId) {
+   function getCacheKey(zoneId) { // Add this function
      return `trivia_questions_zone_${zoneId}`;
    }
 
-   // Get cached questions for a zone
-   function getCachedQuestions(zoneId) {
+   function getCachedQuestions(zoneId) { // Add this function
      const cacheKey = getCacheKey(zoneId);
      const cached = localStorage.getItem(cacheKey);
-     return cached ? JSON.parse(cached) : null;  // Deserialization happens here
+     return cached ? JSON.parse(cached) : null;
    }
 
-   // Save questions to cache
-   function setCachedQuestions(zoneId, questions) {
+   function setCachedQuestions(zoneId, questions) { // Add this function
      const cacheKey = getCacheKey(zoneId);
-     localStorage.setItem(cacheKey, JSON.stringify(questions));  // Serialization happens here
+     localStorage.setItem(cacheKey, JSON.stringify(questions));
    }
    ```
 
@@ -131,16 +128,14 @@ Now let's integrate your cache functions into the main `fetchQuestions` function
 
    ```javascript
    export async function fetchQuestions(zoneId, count = null) {
-     // Check cache first - try to get questions from localStorage
-     const cachedQuestions = getCachedQuestions(zoneId);
-     if (cachedQuestions) {
+     const cachedQuestions = getCachedQuestions(zoneId); // Add cache check
+     if (cachedQuestions) { // Add this condition
        console.log(`Cache hit for zone ${zoneId}`);
-       return cachedQuestions; // Return cached data immediately
+       return cachedQuestions;
      }
 
      console.log(`Cache miss for zone ${zoneId} - fetching from API`);
 
-     // Cache miss - proceed with API fetch
      const zone = getZoneById(zoneId);
      // ... rest of existing code
    ```
@@ -148,13 +143,11 @@ Now let's integrate your cache functions into the main `fetchQuestions` function
 2. **Add cache storage** after successful data transformation (before the return statement):
 
    ```javascript
-   // Transform each API question into our game format
    const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion));
    
-   // Store in cache after successful fetch and transformation
-   setCachedQuestions(zoneId, questions);
+   setCachedQuestions(zoneId, questions); // Add cache storage
    
-   return questions; // Return fresh data from API
+   return questions;
    ```
 
 ### 💡 Why This Matters

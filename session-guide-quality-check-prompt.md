@@ -93,6 +93,13 @@ Should be: [Suggested correction]
   - Flag questions where the answer is explicitly provided in the preceding material
   - Example: Don't ask "How does async/await make code easier to work with?" if the session already states "async/await makes asynchronous code easier to read and debug"
   - Questions should explore concepts beyond what's directly explained in the guide
+- **Code Block Commenting Standards**: Do code blocks follow proper commenting guidelines?
+  - Use terse, action-based inline comments with standard `//` format
+  - Avoid confusing `{/* */}` style comments in JSX
+  - Only comment new lines to add or existing lines to change
+  - Do not include comments solely to explain code or concepts
+  - Comments should indicate what students will actually do: `// Add this function`, `// Add cache check`, `// Update this line`
+  - Flag explanatory comments that don't guide student actions
 - **Tone and Audience Appropriateness**: Is content engaging and relatable for 13-18 year olds?
   - Check "Why This Matters" sections use conversational, empowering language
   - Verify metaphors and examples resonate with teenage experiences

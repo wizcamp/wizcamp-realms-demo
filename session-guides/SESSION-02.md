@@ -33,16 +33,16 @@ When you create a component, export it with `export default` so it can be shared
 1. **Create the file**: Right-click `src/components` → New File → name it `GameButton.jsx`
 2. **Type the component structure**:
    ```javascript
-   export default function GameButton() {
+   export default function GameButton() { // Add this function
      return <button>Start Adventure</button>;
    }
    ```
 
-3. **Import into SplashScreen**: Add `import GameButton from "./GameButton"` at the top
+3. **Import into SplashScreen**: Add `import GameButton from "./GameButton"` at the top // Add this import
 
 4. **Add your button**: Place your button within `div.splash-buttons`:
    ```javascript
-   <GameButton />
+   <GameButton /> // Add this component
    ```
 5. **Test it**: Run `npm run dev` and you should see your custom button!
 
@@ -63,7 +63,7 @@ Props are how you pass data from parent components to child components. They're 
 1. **Add text prop to GameButton**:
 
    ```javascript
-   export default function GameButton({ text }) {
+   export default function GameButton({ text }) { // Add text prop
      return <button>{text}</button>;
    }
    ```
@@ -71,7 +71,7 @@ Props are how you pass data from parent components to child components. They're 
 2. **Update SplashScreen to pass text**:
 
    ```javascript
-   <GameButton text="Start Adventure" />
+   <GameButton text="Start Adventure" /> // Add text prop
    ```
 
 3. **Watch the magic**: Your button now shows custom text!
@@ -89,8 +89,8 @@ Let's make your buttons actually do something when clicked. In React, you can pa
 1. **Add onClick prop to GameButton**:
 
    ```javascript
-   export default function GameButton({ text, onClick }) {
-     return <button onClick={onClick}>{text}</button>;
+   export default function GameButton({ text, onClick }) { // Add onClick prop
+     return <button onClick={onClick}>{text}</button>; // Add onClick handler
    }
    ```
 
@@ -99,7 +99,7 @@ Let's make your buttons actually do something when clicked. In React, you can pa
    ```javascript
    <GameButton
      text="Start Adventure"
-     onClick={() => alert('Start Game!')}
+     onClick={() => alert('Start Game!')} // Add onClick prop
    />
    ```
 
@@ -118,11 +118,11 @@ Let's add visual variety to your buttons using CSS classes, default parameters, 
 1. **Add variant prop with default value and create buttonClass variable**:
 
    ```javascript
-   export default function GameButton({ text, onClick, variant = "primary" }) {
-     const buttonClass = `game-button ${variant}`;
+   export default function GameButton({ text, onClick, variant = "primary" }) { // Add variant prop
+     const buttonClass = `game-button ${variant}`; // Add buttonClass variable
 
      return (
-       <button className={buttonClass} onClick={onClick}>
+       <button className={buttonClass} onClick={onClick}> // Use buttonClass
          {text}
        </button>
      );
@@ -135,7 +135,7 @@ Let's add visual variety to your buttons using CSS classes, default parameters, 
    <GameButton
      text="Start Adventure"
      onClick={() => alert('Start Game!')}
-     variant="primary"
+     variant="primary" // Add variant prop
    />
    ```
 
@@ -153,7 +153,7 @@ Now that you've built a complete, fully-featured GameButton component, let's exp
 
 1. **Add a second button**: Below your existing GameButton in SplashScreen, add one that will show credits when clicked:
    ```javascript
-   <GameButton
+   <GameButton // Add second button
      text="Credits"
      onClick={() => alert('Show Credits')}
      variant="secondary"

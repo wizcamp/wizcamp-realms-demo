@@ -9,28 +9,25 @@
 3. **Use conditional rendering** to control component visibility based on shared state
 4. **Use array mapping** to transform data into dynamic JSX elements
 5. **Use unique key props** to ensure efficient rendering of dynamic lists
-6. **Build interactive components** that handle user events and update visual state
+6. **Build interactive components** that handle user events, manage state through props, and update visual feedback
 7. **Apply conditional styling** to give users immediate visual feedback
-8. **Use Math.random and Math.floor** to implement random selection from arrays
-9. **Organize static data** as constants in separate files for maintainability
-10. **Manage component state** using props and event handlers to support interactive behavior
-11. **Test component integration** using React DevTools and end-to-end user flows
+8. **Implement random selection algorithms** using mathematical functions for dynamic content
+9. **Organize application data** using constants and modular file structures
+10. **Test component integration** using React DevTools and end-to-end user flows
 
 ## Instruction
 
 **Instructor introduces key concepts students need to succeed:**
 
 1. **Component Composition Architecture** - Introduce the concept of building complex components from smaller, focused pieces using the QuizModal as a real example
-2. **React's Component Tree** - Show how the QuizModal fits into the overall app hierarchy and how data flows through props
+2. **Conditional Rendering Patterns** - Explain how && operator and ternary expressions control what users see based on state
 3. **Array Mapping in React** - Demonstrate the fundamental pattern of transforming data arrays into JSX arrays with proper key usage
-4. **Conditional Rendering Patterns** - Explain how && operator and ternary expressions control what users see based on state
-5. **Event Handling and State Updates** - Show how user interactions trigger state changes that cascade through the component tree
-6. **Dynamic Styling Techniques** - Demonstrate conditional CSS classes that provide immediate visual feedback
-7. **Constants and Code Organization** - Emphasize separating data from logic for maintainable, scalable applications
-8. **Random Selection Patterns** - Introduce Math.random() and Math.floor() for implementing random selection from arrays
-9. **Professional Testing Workflow** - Guide students through testing their quiz using React DevTools to inspect component behavior
-10. **Integration Patterns** - Show how individual components work together to create cohesive user experiences
-11. **Let's Build Interactive!** - Launch the hands-on mission: create the complete quiz experience with all interactive components
+4. **Event Handling and State Updates** - Show how user interactions trigger state changes that cascade through the component tree
+5. **Dynamic Styling Techniques** - Demonstrate conditional CSS classes that provide immediate visual feedback
+6. **Constants and Code Organization** - Emphasize separating data from logic for maintainable, scalable applications
+7. **Random Selection Patterns** - Introduce Math.random() and Math.floor() for implementing random selection from arrays
+8. **Professional Testing Workflow** - Guide students through testing their quiz using React DevTools to inspect component behavior
+9. **Let's Build Interactive!** - Launch the hands-on mission: create the complete quiz experience with all interactive components
 
 ---
 
@@ -50,7 +47,7 @@
 - **Visual:** QuizModal component tree showing composition hierarchy
 - **Connection:** "From cached data to engaging, interactive quiz experiences!"
 
-### **Slide 2: Component Composition - Building with LEGO Blocks 🧩**
+### **Slide 3: Component Composition - Building with LEGO Blocks 🧩**
 
 - **Title:** "Breaking Complex UIs into Manageable Pieces"
 - **The Problem:** Monolithic components that try to do everything
@@ -74,7 +71,7 @@ QuizModal (container & state management)
 - **Professional Context:** "Large React apps have hundreds of components organized this way"
 - **Student Preview:** "You'll connect these pre-built components into a working quiz system"
 
-### **Slide 3: Conditional Rendering - Controlling User Experience 🔀**
+### **Slide 2: Conditional Rendering - Controlling User Experience 🔀**
 
 - **Title:** "Show the Right Component at the Right Time"
 - **Pattern Review:** `{condition && <Component />}` from Session 3
@@ -187,10 +184,7 @@ const answers = ["React", "Vue", "Angular", "Svelte"];
   - **Math.floor()** - Rounds down to integer
   - **Array indexing** - Selects message at that position
 - **Professional Applications:** Games, animations, A/B testing, content rotation
-- **Student Connection:** "Your quiz will show different encouragement messages each time"tency** - Same messages used everywhere
-  - **Collaboration** - Non-developers can update content
-  - **Localization** - Easy to translate for different languages
-- **Professional Practice:** "Large apps have hundreds of constants for maintainability"
+- **Student Connection:** "Your quiz will show different encouragement messages each time"
 
 ### **Slide 9: React DevTools - Component Debugging 🔍**
 

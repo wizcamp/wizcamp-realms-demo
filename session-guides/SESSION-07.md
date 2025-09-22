@@ -8,13 +8,11 @@ You're about to build the heart of your trivia game — interactive quiz compone
 
 - [Access Your Codespace](#access-your-codespace)
 - [Understanding Component Composition](#understanding-component-composition)
-- [Adding the QuizModal to Your Game](#adding-the-quizmodal-to-your-game)
-- [Building the AnswerChoices Component](#building-the-answerchoices-component)
-- [Understanding Array Mapping Patterns](#understanding-array-mapping-patterns)
-- [Adding Dynamic Styling with Conditional Classes](#adding-dynamic-styling-with-conditional-classes)
-- [Creating Custom Feedback Messages](#creating-custom-feedback-messages)
-- [Implementing Random Message Selection](#implementing-random-message-selection)
-- [Testing Your Complete Quiz Experience](#testing-your-complete-quiz-experience)
+- [Connecting the Quiz Modal](#connecting-the-quiz-modal)
+- [Building Answer Buttons](#building-answer-buttons)
+- [Making Buttons Interactive](#making-buttons-interactive)
+- [Adding Feedback Messages](#creating-feedback-messages)
+- [Testing Your Quiz System](#testing-your-quiz-system)
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
 
@@ -45,22 +43,22 @@ QuizModal (the container)
 
 **Component composition** is how professional React apps stay organized and maintainable. Instead of one massive component doing everything, you break functionality into focused pieces. Each component has a single responsibility, making your code easier to understand, test, and modify.
 
-<a id="adding-the-quizmodal-to-your-game"></a>
+<a id="connecting-the-quiz-modal"></a>
 
-## 🎮 Adding the QuizModal to Your Game
+## 🎮 Connecting the Quiz Modal
 
 Let's connect your quiz modal to the game flow so clicking zones actually shows quiz questions.
 
 1. **Open `src/App.jsx`** and add the QuizModal import at the top:
 
    ```javascript
-   import QuizModal from "./components/QuizModal";
+   import QuizModal from "./components/QuizModal"; // Add this import
    ```
 
-2. **Access the quiz visibility state** by updating the useGame destructuring:
+2. **Access the quiz visibility state** by adding `isQuizVisible` to the `useGame` destructuring:
 
    ```javascript
-   const { screen, isQuizVisible } = useGame();
+   const { screen, isQuizVisible } = useGame(); // Add isQuizVisible
    ```
 
 3. **Add conditional rendering** for the QuizModal inside the PLAYING screen section:
@@ -70,34 +68,36 @@ Let's connect your quiz modal to the game flow so clicking zones actually shows 
      <>
        <GameMap />
        <HUD />
-       {isQuizVisible && <QuizModal />}
+       {isQuizVisible && <QuizModal />} // Add this line
        <CoordinateDisplay />
      </>
    )}
    ```
 
-4. **Open `src/components/GameMap.jsx`** and add the quiz visibility setter:
+   **Conditional rendering** with `&&` is a React pattern that shows components only when certain conditions are true. When `isQuizVisible` is true, the QuizModal renders; when false, nothing renders.
+
+4. **Open `src/components/GameMap.jsx`** and add `setIsQuizVisible` to the `useGame` destructuring:
 
    ```javascript
-   const { activeZone, loadQuestionsForZone, setIsQuizVisible, zoneProgress } = useGame();
+   const { activeZone, loadQuestionsForZone, setIsQuizVisible, zoneProgress } = useGame(); // Add setIsQuizVisible
    ```
 
 5. **Update the handleZoneClick function** to show the quiz modal after loading questions:
 
    ```javascript
    await loadQuestionsForZone(zoneId);
-   setIsQuizVisible(true);
+   setIsQuizVisible(true); // Add this line
    ```
 
-6. **Test the connection**: Click a zone → QuizModal should appear with your cached questions!
+   **Test**: Click a zone → QuizModal should appear with your cached questions!
 
 ### 💡 Why This Matters
 
-**Conditional rendering** with `&&` is a React pattern that shows components only when certain conditions are true. When `isQuizVisible` is true, the QuizModal renders; when false, nothing renders. This pattern controls what users see based on app state.
+This pattern controls what users see based on app state. Your quiz modal will appear and disappear based on user actions, creating a smooth interactive experience.
 
-<a id="building-the-answerchoices-component"></a>
+<a id="building-answer-buttons"></a>
 
-## 🔘 Building the AnswerChoices Component
+## 🔘 Building Answer Buttons
 
 Now let's build the interactive answer buttons that transform your question data into clickable choices.
 
@@ -106,7 +106,7 @@ Now let's build the interactive answer buttons that transform your question data
 2. **Add the AnswerChoices component** after the QuestionHeader function:
 
    ```javascript
-   function AnswerChoices({ answers }) {
+   function AnswerChoices({ answers }) { // Add this component
      return <div className="answers-grid"></div>;
    }
    ```
@@ -114,56 +114,18 @@ Now let's build the interactive answer buttons that transform your question data
 3. **Add the component to the JSX** (right after `<QuestionHeader question={question} />`):
 
    ```javascript
-   <AnswerChoices answers={question.answers} />
+   <AnswerChoices answers={question.answers} /> // Add this line
    ```
 
-4. **Test the basic structure**: Click zone → React DevTools → Find AnswerChoices → Confirm answers prop is populated
+   **Test**: Click zone → React DevTools → Find AnswerChoices → Confirm answers prop is populated
 
-### 💡 Why This Matters
-
-Starting with a simple component structure and testing early helps you catch issues before adding complexity. The **answers prop** contains the array of possible choices that you'll transform into interactive buttons.
-
-<a id="understanding-array-mapping-patterns"></a>
-
-## 🗺️ Understanding Array Mapping Patterns
-
-Let's understand how to transform arrays of data into arrays of JSX elements — a fundamental React pattern.
-
-**Array mapping** is the process of transforming each item in an array into something else. In React, you often map data arrays into JSX element arrays:
-
-```javascript
-// Data array
-const answers = ["React", "Vue", "Angular", "Svelte"];
-
-// Map to JSX elements
-const buttons = answers.map((answer, index) => (
-  <button key={index}>{answer}</button>
-));
-```
-
-### The Key Prop Requirement
-
-React needs a unique **key prop** for each mapped element to track changes efficiently:
-
-```javascript
-{answers.map((answer, index) => (
-  <button key={index} className="answer-button">
-    {answer}
-  </button>
-))}
-```
-
-### 💡 Why This Matters
-
-**Array mapping** is everywhere in React — any time you have a list of data that becomes a list of components, you use `map()`. The **key prop** helps React optimize updates by tracking which items changed, moved, or were added/removed.
-
-1. **Update AnswerChoices** to render buttons for each answer:
+4. **Transform the answers array into buttons** using React's mapping pattern:
 
    ```javascript
    function AnswerChoices({ answers }) {
      return (
        <div className="answers-grid">
-         {answers.map((answer, index) => (
+         {answers.map((answer, index) => ( // Turn answers into buttons
            <button key={index} className="answer-button">
              {answer}
            </button>
@@ -173,15 +135,88 @@ React needs a unique **key prop** for each mapped element to track changes effic
    }
    ```
 
-2. **Test the mapping**: Click zone → You should see answer buttons appear in the modal
+   **Array mapping** transforms each item in an array into something else. Here, each answer string becomes a button element. React needs a unique **key prop** for each mapped element to track changes efficiently.
 
-<a id="adding-dynamic-styling-with-conditional-classes"></a>
+   **Test**: Click zone → You should see answer buttons appear in the modal
 
-## 🎨 Adding Dynamic Styling with Conditional Classes
+### 💡 Why This Matters
+
+By starting with a simple structure and then adding the mapping logic, you followed a professional development pattern: build incrementally and test each step. **Array mapping** is everywhere in React — any time you have a list of data that becomes a list of components, you use `map()`. The **key prop** helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.
+
+<a id="making-buttons-interactive"></a>
+
+## 🎨 Making Buttons Interactive
 
 Let's add click functionality and dynamic styling that shows correct/incorrect answers with visual feedback.
 
-1. **Add click handling and props** to AnswerChoices:
+1. **Add click handling** by updating AnswerChoices and JSX:
+
+   ```javascript
+   function AnswerChoices({ answers, onAnswerClick }) { // Add onAnswerClick prop
+     return (
+       <div className="answers-grid">
+         {answers.map((answer, index) => (
+           <button
+             key={index}
+             className="answer-button"
+             onClick={() => onAnswerClick(index)} // Add click handler
+           >
+             {answer}
+           </button>
+         ))}
+       </div>
+     );
+   }
+   ```
+
+   ```javascript
+   <AnswerChoices 
+     answers={question.answers} 
+     onAnswerClick={handleAnswerClick} // Add this prop
+   />
+   ```
+
+   **Test**: Click zone → Click answer button → Next Question should be enabled allowing you to move to next question
+
+2. **Add conditional styling** by updating AnswerChoices and JSX:
+
+   ```javascript
+   function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) { // Add new props
+     const getButtonStyle = (answerIndex) => { // Add styling function
+       if (chosenAnswer === null) return "answer-button";
+       if (answerIndex === correctAnswer) return "answer-button correct";
+       if (answerIndex === chosenAnswer) return "answer-button incorrect";
+       return "answer-button";
+     };
+
+     return (
+       <div className="answers-grid">
+         {answers.map((answer, index) => (
+           <button
+             key={index}
+             className={getButtonStyle(index)} // Use styling function
+             onClick={() => onAnswerClick(index)}
+           >
+             {answer}
+           </button>
+         ))}
+       </div>
+     );
+   }
+   ```
+
+   ```javascript
+   <AnswerChoices 
+     answers={question.answers} 
+     onAnswerClick={handleAnswerClick}
+     chosenAnswer={chosenAnswer} // Add these props
+     correctAnswer={question.correct}
+   />
+   ```
+
+   **Test**: Click zone → Click answer → Different styling for correct vs incorrect
+
+3. **Prevent multiple clicks** by updating AnswerChoices:
 
    ```javascript
    function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) {
@@ -199,7 +234,7 @@ Let's add click functionality and dynamic styling that shows correct/incorrect a
              key={index}
              className={getButtonStyle(index)}
              onClick={() => onAnswerClick(index)}
-             disabled={chosenAnswer !== null}
+             disabled={chosenAnswer !== null} // Add disabled state
            >
              {answer}
            </button>
@@ -209,34 +244,24 @@ Let's add click functionality and dynamic styling that shows correct/incorrect a
    }
    ```
 
-2. **Update the component usage** with all required props:
-
-   ```javascript
-   <AnswerChoices 
-     answers={question.answers} 
-     onAnswerClick={handleAnswerClick}
-     chosenAnswer={chosenAnswer}
-     correctAnswer={question.correct}
-   />
-   ```
-
-3. **Test the interactivity**: Click zone → Click answer → Different styling for correct vs incorrect
+   **Test**: Click zone → Click answer → Try clicking other buttons → Other buttons should be unclickable
 
 ### 💡 Why This Matters
 
-**Conditional styling** provides immediate visual feedback to users. The `getButtonStyle` function returns different CSS classes based on the current state, and the `disabled` attribute prevents multiple clicks after an answer is selected.
+**Event handlers** like `onClick` connect user actions to your app's logic, making static components come alive with interactivity. **Conditional styling** then provides immediate visual feedback to users through the `getButtonStyle` function, which returns different CSS classes based on the current state. The `disabled` attribute prevents multiple clicks after an answer is selected, creating a polished user experience where buttons respond intelligently to user interactions.
 
-<a id="creating-custom-feedback-messages"></a>
+<a id="creating-feedback-messages"></a>
 
-## 💬 Creating Custom Feedback Messages
+## 💬 Adding Feedback Messages
 
-Let's add personality to your game with custom feedback messages that celebrate correct answers and encourage players after mistakes.
+Let's add personality to your game with custom feedback messages that celebrate correct answers and encourage players after mistakes, then make them dynamic with random selection.
 
 1. **Create the messages file**: Right-click `src/constants` → New File → name it `messages.js`
 
 2. **Add feedback message arrays**:
 
    ```javascript
+   // Add these message arrays
    export const CORRECT_FEEDBACK = [
      "🎉 Nailed it!",
      "🔥 You got it!",
@@ -261,26 +286,10 @@ Let's add personality to your game with custom feedback messages that celebrate 
 3. **Import the constants** into QuizModal.jsx:
 
    ```javascript
-   import { CORRECT_FEEDBACK, INCORRECT_FEEDBACK } from "../constants/messages";
+   import { CORRECT_FEEDBACK, INCORRECT_FEEDBACK } from "../constants/messages"; // Add this import
    ```
 
-### 💡 Why This Matters
-
-**Constants** keep your feedback messages organized and easy to modify. By storing them in a separate file, you can easily add new messages or change the tone without hunting through component code.
-
-### 🏆 Bonus Challenge
-
-Add more feedback messages to each array to increase variety! Try different emojis and encouraging phrases.
-
-<a id="implementing-random-message-selection"></a>
-
-## 🎲 Implementing Random Message Selection
-
-Now let's make your feedback dynamic by randomly selecting messages from your arrays using JavaScript's built-in Math methods.
-
-1. **Find the AnswerFeedback function** in QuizModal.jsx
-
-2. **Replace the placeholder message** with random selection logic:
+4. **Find the AnswerFeedback function** in QuizModal.jsx and replace the placeholder message with random selection logic:
 
    ```javascript
    function AnswerFeedback({ hasAnswered, isCorrect, correctAnswerText }) {
@@ -288,19 +297,29 @@ Now let's make your feedback dynamic by randomly selecting messages from your ar
        return <AnswerPlaceholder />;
      }
 
-     const messages = isCorrect ? CORRECT_FEEDBACK : INCORRECT_FEEDBACK;
-     const message = messages[Math.floor(Math.random() * messages.length)];
+     const messages = isCorrect ? CORRECT_FEEDBACK : INCORRECT_FEEDBACK; // Choose message array
+     const message = messages[Math.floor(Math.random() * messages.length)]; // Select random message
 
      return (
        <div className="result">
-         <strong>{message}</strong>
+         <strong>{message}</strong> // Display random message
          {!isCorrect && <div>The answer was: {correctAnswerText}</div>}
        </div>
      );
    }
    ```
 
-3. **Test the randomization**: Click zone → Click answers → See different messages each time
+5. **Add AnswerFeedback component** to JSX (right after QuestionHeader):
+
+   ```jsx
+   <AnswerFeedback
+     hasAnswered={chosenAnswer !== null}
+     isCorrect={chosenAnswer === question.correct}
+     correctAnswerText={question.answers[question.correct]}
+   />
+   ```
+
+   **Test**: Click zone → Click answers → See different messages each time
 
 ### Random Selection Breakdown
 
@@ -317,32 +336,36 @@ const message = messages[Math.floor(Math.random() * messages.length)];
 
 ### 💡 Why This Matters
 
-**Random selection** adds variety and personality to your game. `Math.random()` generates decimal numbers between 0 and 1, `Math.floor()` rounds down to integers, and array indexing selects the message. This pattern is used in games, animations, and any app that needs variety.
+**Constants** keep your feedback messages organized and easy to modify. By storing them in a separate file, you can easily add new messages or change the tone without hunting through component code. **Random selection** adds variety and personality to your game using `Math.random()` and `Math.floor()` — the same pattern used in games, animations, and any app that needs variety.
 
-<a id="testing-your-complete-quiz-experience"></a>
+### 🏆 Bonus Challenge
 
-## 🧪 Testing Your Complete Quiz Experience
+Add more feedback messages to each array to increase variety! Try different emojis and encouraging phrases.
+
+<a id="testing-your-quiz-system"></a>
+
+## 🧪 Testing Your Quiz System
 
 Let's test your complete quiz system and verify all the interactive pieces work together.
 
 ### Complete Quiz Flow Test
 
-1. **Navigate to game**: Click "Start Adventure"
-2. **Click a zone**: Modal should appear with question and answers
-3. **Click an answer**: 
-   - Button should show correct/incorrect styling
-   - Random feedback message should appear
-   - Other buttons should be disabled
-   - Continue button should become enabled
-4. **Click Continue**: Next question should load
-5. **Complete all questions**: Modal should close and zone should be marked complete
+- **Navigate to game**: Click "Start Adventure"
+- **Click a zone**: Modal should appear with question and answers
+- **Click an answer**: 
+  - Button should show correct/incorrect styling
+  - Random feedback message should appear
+  - Other buttons should be disabled
+  - Continue button should become enabled
+- **Click Continue**: Next question should load
+- **Complete all questions**: Modal should close and zone should be marked complete
 
 ### React DevTools Inspection
 
-1. **Open DevTools**: Press F12 → Components tab
-2. **Find QuizModal**: Examine the component tree
-3. **Inspect AnswerChoices**: Check answers prop and chosenAnswer state
-4. **Watch state changes**: Click answers and observe chosenAnswer updates
+- **Open DevTools**: Press F12 → Components tab
+- **Find QuizModal**: Examine the component tree
+- **Inspect AnswerChoices**: Check answers prop and chosenAnswer state
+- **Watch state changes**: Click answers and observe chosenAnswer updates
 
 ### 💡 Why This Matters
 

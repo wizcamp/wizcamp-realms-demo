@@ -47,6 +47,15 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - **All content following numbered and non-numbered list items must be properly indented** - indent code blocks, Test paragraphs, explanatory text, and any other content with 3 spaces to align with list item content and maintain proper grouping under the bullet point
 - **All multi-line code blocks must include language qualifiers** - use ```javascript, ```bash, ```json, etc. for proper syntax highlighting and consistency. Use `javascript` for all React/JSX code blocks as `jsx` provides poor syntax highlighting in PDF output
 
+### Code Block Commenting Standards
+- Use terse, action-based inline comments with standard `//` format
+- **AVOID** confusing `{/* */}` style comments in JSX
+- **ONLY** comment new lines to add or existing lines to change
+- **DO NOT** include comments solely to explain code or concepts
+- Focus on reducing cognitive load while providing clear, simple, unambiguous guidance
+- Comments should indicate what students will actually do: `// Add this function`, `// Add cache check`, `// Update this line`
+- Remove explanatory comments that don't guide student actions
+
 ### Essential Terms Table Standards
 - Terms use proper capitalization: lowercase for common terms, proper case for product names (e.g., "component", "Codespace", "Vite", "Node.js")
 - Acronyms should be spelled out in full (e.g., "Hot Module Replacement (HMR)", "Document Object Model (DOM)")

@@ -306,26 +306,23 @@ page-break-inside: avoid !important;
 <li><strong>Use conditional rendering</strong> to control component visibility based on shared state</li>
 <li><strong>Use array mapping</strong> to transform data into dynamic JSX elements</li>
 <li><strong>Use unique key props</strong> to ensure efficient rendering of dynamic lists</li>
-<li><strong>Build interactive components</strong> that handle user events and update visual state</li>
+<li><strong>Build interactive components</strong> that handle user events, manage state through props, and update visual feedback</li>
 <li><strong>Apply conditional styling</strong> to give users immediate visual feedback</li>
-<li><strong>Use Math.random and Math.floor</strong> to implement random selection from arrays</li>
-<li><strong>Organize static data</strong> as constants in separate files for maintainability</li>
-<li><strong>Manage component state</strong> using props and event handlers to support interactive behavior</li>
+<li><strong>Implement random selection algorithms</strong> using mathematical functions for dynamic content</li>
+<li><strong>Organize application data</strong> using constants and modular file structures</li>
 <li><strong>Test component integration</strong> using React DevTools and end-to-end user flows</li>
 </ol>
 <h2 id="instruction">Instruction</h2>
 <p><strong>Instructor introduces key concepts students need to succeed:</strong></p>
 <ol type="1">
 <li><strong>Component Composition Architecture</strong> - Introduce the concept of building complex components from smaller, focused pieces using the QuizModal as a real example</li>
-<li><strong>React’s Component Tree</strong> - Show how the QuizModal fits into the overall app hierarchy and how data flows through props</li>
-<li><strong>Array Mapping in React</strong> - Demonstrate the fundamental pattern of transforming data arrays into JSX arrays with proper key usage</li>
 <li><strong>Conditional Rendering Patterns</strong> - Explain how &amp;&amp; operator and ternary expressions control what users see based on state</li>
+<li><strong>Array Mapping in React</strong> - Demonstrate the fundamental pattern of transforming data arrays into JSX arrays with proper key usage</li>
 <li><strong>Event Handling and State Updates</strong> - Show how user interactions trigger state changes that cascade through the component tree</li>
 <li><strong>Dynamic Styling Techniques</strong> - Demonstrate conditional CSS classes that provide immediate visual feedback</li>
 <li><strong>Constants and Code Organization</strong> - Emphasize separating data from logic for maintainable, scalable applications</li>
 <li><strong>Random Selection Patterns</strong> - Introduce Math.random() and Math.floor() for implementing random selection from arrays</li>
 <li><strong>Professional Testing Workflow</strong> - Guide students through testing their quiz using React DevTools to inspect component behavior</li>
-<li><strong>Integration Patterns</strong> - Show how individual components work together to create cohesive user experiences</li>
 <li><strong>Let’s Build Interactive!</strong> - Launch the hands-on mission: create the complete quiz experience with all interactive components</li>
 </ol>
 <hr />
@@ -346,7 +343,7 @@ page-break-inside: avoid !important;
 <li><strong>Visual:</strong> QuizModal component tree showing composition hierarchy</li>
 <li><strong>Connection:</strong> “From cached data to engaging, interactive quiz experiences!”</li>
 </ul>
-<h3 id="slide-2-component-composition---building-with-lego-blocks"><strong>Slide 2: Component Composition - Building with LEGO Blocks 🧩</strong></h3>
+<h3 id="slide-3-component-composition---building-with-lego-blocks"><strong>Slide 3: Component Composition - Building with LEGO Blocks 🧩</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Breaking Complex UIs into Manageable Pieces”</li>
 <li><strong>The Problem:</strong> Monolithic components that try to do everything</li>
@@ -370,7 +367,7 @@ page-break-inside: avoid !important;
 <li><strong>Professional Context:</strong> “Large React apps have hundreds of components organized this way”</li>
 <li><strong>Student Preview:</strong> “You’ll connect these pre-built components into a working quiz system”</li>
 </ul>
-<h3 id="slide-3-conditional-rendering---controlling-user-experience"><strong>Slide 3: Conditional Rendering - Controlling User Experience 🔀</strong></h3>
+<h3 id="slide-2-conditional-rendering---controlling-user-experience"><strong>Slide 2: Conditional Rendering - Controlling User Experience 🔀</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Show the Right Component at the Right Time”</li>
 <li><strong>Pattern Review:</strong> <code>{condition &amp;&amp; &lt;Component /&gt;}</code> from Session 3</li>
@@ -474,12 +471,7 @@ page-break-inside: avoid !important;
 <li><strong>Array indexing</strong> - Selects message at that position</li>
 </ul></li>
 <li><strong>Professional Applications:</strong> Games, animations, A/B testing, content rotation</li>
-<li><strong>Student Connection:</strong> “Your quiz will show different encouragement messages each time”tency** - Same messages used everywhere
-<ul>
-<li><strong>Collaboration</strong> - Non-developers can update content</li>
-<li><strong>Localization</strong> - Easy to translate for different languages</li>
-</ul></li>
-<li><p><strong>Professional Practice:</strong> “Large apps have hundreds of constants for maintainability”</p></li>
+<li><p><strong>Student Connection:</strong> “Your quiz will show different encouragement messages each time”</p></li>
 </ul>
 <h3 id="slide-9-react-devtools---component-debugging"><strong>Slide 9: React DevTools - Component Debugging 🔍</strong></h3>
 <ul>

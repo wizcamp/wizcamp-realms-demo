@@ -394,16 +394,15 @@ page-break-inside: avoid !important;
 <ol type="1">
 <li><strong>Open <code>src/services/trivia.js</code></strong></li>
 <li><p><strong>Replace the alert</strong> with basic <strong>fetch</strong> logic:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="cf">try</span> <span class="op">{</span></a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="cf">try</span> <span class="op">{</span> <span class="co">// Add fetch logic</span></a>
 <a class="sourceLine" id="cb5-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Fetching from:&quot;</span><span class="op">,</span> url)<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-3" title="3">  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="at">fetch</span>(url)<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-4" title="4">  <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="va">response</span>.<span class="at">json</span>()<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-5" title="5">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Raw API data:&quot;</span><span class="op">,</span> data)<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-6" title="6">  <span class="co">// We&#39;ll process this data in the next steps</span></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="op">}</span> <span class="cf">catch</span> (error) <span class="op">{</span></a>
-<a class="sourceLine" id="cb5-8" title="8">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Failed to fetch questions:&quot;</span><span class="op">,</span> error)<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-9" title="9">  <span class="cf">return</span> []<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="op">}</span></a></code></pre></div></li>
+<a class="sourceLine" id="cb5-6" title="6"><span class="op">}</span> <span class="cf">catch</span> (error) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-7" title="7">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Failed to fetch questions:&quot;</span><span class="op">,</span> error)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-8" title="8">  <span class="cf">return</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="op">}</span></a></code></pre></div></li>
 <li><p><strong>Test your changes</strong>:</p>
 <ul>
 <li><strong>Open DevTools</strong>: Press F12 or right-click → Inspect</li>
@@ -413,7 +412,7 @@ page-break-inside: avoid !important;
 <li><strong>Check the Network tab</strong> to see the actual HTTP request</li>
 </ul></li>
 <li><p><strong>Add data validation</strong> immediately after getting the data:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="cf">if</span> (<span class="op">!</span><span class="va">data</span>.<span class="at">results</span> <span class="op">||</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="op">{</span></a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="cf">if</span> (<span class="op">!</span><span class="va">data</span>.<span class="at">results</span> <span class="op">||</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="op">{</span> <span class="co">// Add validation</span></a>
 <a class="sourceLine" id="cb6-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;No questions received from API&quot;</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb6-3" title="3">  <span class="cf">return</span> []<span class="op">;</span></a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="op">}</span></a></code></pre></div></li>
@@ -425,15 +424,14 @@ page-break-inside: avoid !important;
 <p>Now let’s transform the <strong>API</strong> data into game-ready format. This is where the real magic happens!</p>
 <ol type="1">
 <li><p><strong>Add transformation testing</strong> after the validation check:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="co">// After the validation check</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="kw">const</span> firstQuestion <span class="op">=</span> <span class="va">data</span>.<span class="at">results</span>[<span class="dv">0</span>]<span class="op">;</span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Before transform:&quot;</span><span class="op">,</span> firstQuestion)<span class="op">;</span></a>
-<a class="sourceLine" id="cb7-4" title="4"></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="kw">const</span> transformed <span class="op">=</span> <span class="at">transformQuestion</span>(firstQuestion)<span class="op">;</span></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;After transform:&quot;</span><span class="op">,</span> transformed)<span class="op">;</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">const</span> firstQuestion <span class="op">=</span> <span class="va">data</span>.<span class="at">results</span>[<span class="dv">0</span>]<span class="op">;</span> <span class="co">// Add test code</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Before transform:&quot;</span><span class="op">,</span> firstQuestion)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="kw">const</span> transformed <span class="op">=</span> <span class="at">transformQuestion</span>(firstQuestion)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;After transform:&quot;</span><span class="op">,</span> transformed)<span class="op">;</span></a></code></pre></div>
 <p><strong>Test</strong>: Save → Start Game → Click zone → See <code>undefined</code> in console → “We need to implement transformQuestion”</p></li>
 <li><p><strong>Extract object properties</strong> in the <code>transformQuestion</code> function:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span></a>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span> <span class="co">// Add extraction</span></a>
 <a class="sourceLine" id="cb8-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="at">question</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb8-3" title="3">  <span class="kw">const</span> incorrectAnswers <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="at">incorrect_answers</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb8-4" title="4">  <span class="kw">const</span> correctAnswer <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="at">correct_answer</span><span class="op">;</span></a>
@@ -443,9 +441,9 @@ page-break-inside: avoid !important;
 <p><strong>Test</strong>: Save → Start Game → Click zone → See extracted properties in console</p></li>
 <li><p><strong>Add helper functions for decoding</strong>:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span></a>
-<a class="sourceLine" id="cb9-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">question</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb9-3" title="3">  <span class="kw">const</span> incorrectAnswers <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="va">incorrect_answers</span>.<span class="at">map</span>(answer <span class="kw">=&gt;</span> <span class="at">decodeText</span>(answer))<span class="op">;</span></a>
-<a class="sourceLine" id="cb9-4" title="4">  <span class="kw">const</span> correctAnswer <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">correct_answer</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">question</span>)<span class="op">;</span> <span class="co">// Add decoding</span></a>
+<a class="sourceLine" id="cb9-3" title="3">  <span class="kw">const</span> incorrectAnswers <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="va">incorrect_answers</span>.<span class="at">map</span>(answer <span class="kw">=&gt;</span> <span class="at">decodeText</span>(answer))<span class="op">;</span> <span class="co">// Add decoding</span></a>
+<a class="sourceLine" id="cb9-4" title="4">  <span class="kw">const</span> correctAnswer <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">correct_answer</span>)<span class="op">;</span> <span class="co">// Add decoding</span></a>
 <a class="sourceLine" id="cb9-5" title="5"></a>
 <a class="sourceLine" id="cb9-6" title="6">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Decoded data:&quot;</span><span class="op">,</span> <span class="op">{</span> question<span class="op">,</span> incorrectAnswers<span class="op">,</span> correctAnswer <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb9-7" title="7"><span class="op">}</span></a></code></pre></div>
@@ -461,8 +459,8 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb11-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">question</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-3" title="3">  <span class="kw">const</span> incorrectAnswers <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="va">incorrect_answers</span>.<span class="at">map</span>(answer <span class="kw">=&gt;</span> <span class="at">decodeText</span>(answer))<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-4" title="4">  <span class="kw">const</span> correctAnswer <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">correct_answer</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb11-5" title="5">  <span class="kw">const</span> shuffledAnswers <span class="op">=</span> <span class="at">shuffleAnswers</span>(correctAnswer<span class="op">,</span> incorrectAnswers)<span class="op">;</span></a>
-<a class="sourceLine" id="cb11-6" title="6">  <span class="kw">const</span> correctIndex <span class="op">=</span> <span class="va">shuffledAnswers</span>.<span class="at">indexOf</span>(correctAnswer)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-5" title="5">  <span class="kw">const</span> shuffledAnswers <span class="op">=</span> <span class="at">shuffleAnswers</span>(correctAnswer<span class="op">,</span> incorrectAnswers)<span class="op">;</span> <span class="co">// Add shuffling</span></a>
+<a class="sourceLine" id="cb11-6" title="6">  <span class="kw">const</span> correctIndex <span class="op">=</span> <span class="va">shuffledAnswers</span>.<span class="at">indexOf</span>(correctAnswer)<span class="op">;</span> <span class="co">// Find correct index</span></a>
 <a class="sourceLine" id="cb11-7" title="7"></a>
 <a class="sourceLine" id="cb11-8" title="8">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Shuffled answers:&quot;</span><span class="op">,</span> shuffledAnswers)<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-9" title="9">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Correct answer is at index:&quot;</span><span class="op">,</span> correctIndex)<span class="op">;</span></a>
@@ -476,7 +474,7 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb12-5" title="5">  <span class="kw">const</span> shuffledAnswers <span class="op">=</span> <span class="at">shuffleAnswers</span>(correctAnswer<span class="op">,</span> incorrectAnswers)<span class="op">;</span></a>
 <a class="sourceLine" id="cb12-6" title="6">  <span class="kw">const</span> correctIndex <span class="op">=</span> <span class="va">shuffledAnswers</span>.<span class="at">indexOf</span>(correctAnswer)<span class="op">;</span></a>
 <a class="sourceLine" id="cb12-7" title="7"></a>
-<a class="sourceLine" id="cb12-8" title="8">  <span class="cf">return</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-8" title="8">  <span class="cf">return</span> <span class="op">{</span> <span class="co">// Return game object</span></a>
 <a class="sourceLine" id="cb12-9" title="9">    <span class="dt">question</span><span class="op">:</span> question<span class="op">,</span></a>
 <a class="sourceLine" id="cb12-10" title="10">    <span class="dt">answers</span><span class="op">:</span> shuffledAnswers<span class="op">,</span></a>
 <a class="sourceLine" id="cb12-11" title="11">    <span class="dt">correct</span><span class="op">:</span> correctIndex</a>
@@ -495,10 +493,9 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb13-9" title="9">  <span class="dt">&quot;correct&quot;</span><span class="fu">:</span> <span class="dv">2</span></a>
 <a class="sourceLine" id="cb13-10" title="10"><span class="fu">}</span></a></code></pre></div></li>
 <li><p><strong>Complete the fetchQuestions integration</strong> by replacing the test logging:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="co">// Replace the test logging with full transformation</span></a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">map</span>(apiQuestion <span class="kw">=&gt;</span> <span class="at">transformQuestion</span>(apiQuestion))<span class="op">;</span></a>
-<a class="sourceLine" id="cb14-3" title="3"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;All transformed questions:&quot;</span><span class="op">,</span> questions)<span class="op">;</span></a>
-<a class="sourceLine" id="cb14-4" title="4"><span class="cf">return</span> questions<span class="op">;</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">map</span>(apiQuestion <span class="kw">=&gt;</span> <span class="at">transformQuestion</span>(apiQuestion))<span class="op">;</span> <span class="co">// Transform all questions</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;All transformed questions:&quot;</span><span class="op">,</span> questions)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="cf">return</span> questions<span class="op">;</span></a></code></pre></div>
 <p><strong>Test</strong>: Click zone → see array of properly formatted questions!</p></li>
 </ol>
 <h3 id="why-this-matters-4">💡 Why This Matters</h3>

@@ -88,7 +88,7 @@ Try stopping and restarting the dev server:
 With the development server still running, replace the placeholder component with the game's splash screen component to experience live updates in action.
 
 1. **Open `src/App.jsx`**
-2. **Add the import**: `import SplashScreen from './components/SplashScreen';`
+2. **Add the import**: `import SplashScreen from './components/SplashScreen';` // Add this import
 3. **Replace `<StartHere />` with `<SplashScreen />`**
 4. **Watch the screen update instantly** — no save needed!
 
@@ -107,9 +107,8 @@ The live update "magic" you experienced is actually powered by a build tool we a
 Even though React apps are built with components, they still use a standard HTML file as the entry point. Let's update the page title to reflect our project name.
 
 1. **Open `index.html`**
-2. **Identify where the HTML head/title is defined**
-3. **Update the `title` tag** to the name of our project: `Wizcamp Realms - Legends of Trivia`
-4. **Confirm the browser tab** displays the new title.
+2. **Update the `title` tag** to: `Wizcamp Realms - Legends of Trivia` // Change this line
+3. **Confirm the browser tab** displays the new title.
 
 ### 💡 Why This Matters
 
