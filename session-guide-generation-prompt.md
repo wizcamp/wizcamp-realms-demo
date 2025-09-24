@@ -4,7 +4,7 @@
 Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-instruction.md) for the specified session.
 
 ## Required Steps
-1. First read SESSION-01.md and SESSION-01-instruction.md to understand the exact format, structure, voice, and style
+1. First read all existing session guides (both student and instructor versions) to understand the exact format, structure, voice, and style
 2. Generate both files following the established patterns exactly
 
 ## Session Naming Convention
