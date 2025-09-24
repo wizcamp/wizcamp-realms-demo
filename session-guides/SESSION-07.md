@@ -6,7 +6,6 @@ You're about to build the heart of your trivia game — interactive quiz compone
 
 ## Table of Contents
 
-- [Access Your Codespace](#access-your-codespace)
 - [Understanding Component Composition](#understanding-component-composition)
 - [Connecting the Quiz Modal](#connecting-the-quiz-modal)
 - [Building Answer Buttons](#building-answer-buttons)
@@ -398,8 +397,3 @@ Now let's deepen your understanding of React patterns, component architecture, a
 - **Why is it better to store feedback messages in constants rather than hardcoding them?**
 - **How does the AnswerChoices component demonstrate the single responsibility principle?**
 
----
-
-### 💬 Pro Tip:
-
-Component composition is the secret to building scalable React applications. Think of each component as having one clear job — AnswerChoices handles answer display, AnswerFeedback handles result messaging. This separation makes your code easier to test, debug, and extend.

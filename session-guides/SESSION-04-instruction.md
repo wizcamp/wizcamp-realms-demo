@@ -105,7 +105,7 @@ zone.name // Access property with dot notation
   - **Together** - Arrays of objects combine both strengths
 - **Nesting Power:** Arrays of objects, objects with object properties
 - **Student Preview:** "Your ZONES array contains three zone objects, each with multiple properties"
-- **🎯 Instructor Demo (90s):** Open `zones.js`, edit `ZONES[0].name` from current value to "My Custom Zone", save file, and show UI update in browser
+- **🎯 Instructor Demo (90s):** Open `zones.js`, edit `ZONES[0].name` from current value to "My Custom Zone", and show UI update in browser
 
 ### **Slide 5: Data Types in JavaScript 📊**
 

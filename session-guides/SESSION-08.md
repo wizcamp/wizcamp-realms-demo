@@ -6,7 +6,6 @@ You're about to add the most satisfying part of any game — scoring and victory
 
 ## Table of Contents
 
-- [Access Your Codespace](#access-your-codespace)
 - [Understanding Application State](#understanding-application-state)
 - [Adding Score Tracking](#adding-score-tracking)
 - [Implementing Score Updates](#implementing-score-updates)
@@ -305,8 +304,3 @@ Now let's deepen your understanding of state management patterns, component arch
 - **What makes a component follow the single responsibility principle?**
 - **How do you decide what props a new component needs when building it from scratch?**
 
----
-
-### 💬 Pro Tip:
-
-Building your first component with guided steps is a major milestone! You just proved you can apply React patterns by following requirements and references. This problem-solving approach — analyzing requirements, identifying patterns, and implementing solutions — is exactly how professional developers work every day.

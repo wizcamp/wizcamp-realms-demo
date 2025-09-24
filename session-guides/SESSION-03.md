@@ -6,7 +6,6 @@ You're about to unlock one of React's most powerful features — shared state th
 
 ## Table of Contents
 
-- [Access Your Codespace](#access-your-codespace)
 - [Understanding State vs Props](#understanding-state-vs-props)
 - [Adding Local State for Credits](#adding-local-state-for-credits)
 - [Exploring Game Constants](#exploring-game-constants)
@@ -254,8 +253,3 @@ Now let's deepen your understanding of state management, hooks, and the React da
 - **What is "prop drilling" and how does the Context API prevent it? Give me non-tech examples.**
 - **How does the GameProvider make state available to all components?**
 
----
-
-### 💬 Pro Tip:
-
-State management is the heart of React apps. Think of local state as a component's private memory and shared state as the app's global memory. Choose local state when only one component needs the data, and shared state when multiple components need to coordinate.

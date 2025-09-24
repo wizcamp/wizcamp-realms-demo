@@ -6,7 +6,6 @@ You're about to build your first custom React component and unlock the power of 
 
 ## Table of Contents
 
-- [Access Your Codespace](#access-your-codespace)
 - [Create Your First Component](#create-your-first-component)
 - [Understanding Props](#understanding-props)
 - [Adding Click Functionality](#adding-click-functionality)
@@ -38,7 +37,7 @@ When you create a component, export it with `export default` so it can be shared
    }
    ```
 
-3. **Import into SplashScreen**: Add `import GameButton from "./GameButton"` at the top // Add this import
+3. **Import into SplashScreen**: Add `import GameButton from "./GameButton";` at the top // Add this import
 
 4. **Add your button**: Place your button within `div.splash-buttons`:
    ```javascript
@@ -228,8 +227,4 @@ Now let's deepen your understanding of components, props, and the React developm
 - **Can I pass functions as props? How does that work and why is it powerful?**
 - **What can I do with React DevTools that I can't do with regular browser DevTools?**
 
----
 
-### 💬 Pro Tip:
-
-Components are everywhere in React — every piece of UI you see is a component. Start thinking in components: "What reusable pieces could I break this UI into?" This mindset will make you a better React developer.

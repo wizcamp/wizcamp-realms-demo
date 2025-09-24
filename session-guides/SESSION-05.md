@@ -6,7 +6,6 @@ You're about to connect your trivia game to the real internet! This guide walks 
 
 ## Table of Contents
 
-- [Access Your Codespace](#access-your-codespace)
 - [Understanding APIs and External Data](#understanding-apis-and-external-data)
 - [Exploring the OpenTrivia Database](#exploring-the-opentrivia-database)
 - [Understanding Asynchronous Programming](#understanding-asynchronous-programming)
@@ -192,7 +191,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
    console.log("After transform:", transformed);
    ```
 
-   **Test**: Save → Start Game → Click zone → See `undefined` in console → "We need to implement transformQuestion"
+   **Test**: Start Game → Click zone → See `undefined` in console → "We need to implement transformQuestion"
 
 2. **Extract object properties** in the `transformQuestion` function:
 
@@ -206,7 +205,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
    }
    ```
 
-   **Test**: Save → Start Game → Click zone → See extracted properties in console
+   **Test**: Start Game → Click zone → See extracted properties in console
 
 3. **Add helper functions for decoding**:
 
@@ -220,7 +219,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
    }
    ```
 
-   **Test**: Save → Start Game → Click zone → See decoded, formatted data
+   **Test**: Start Game → Click zone → See decoded, formatted data
 
    You should now see formatted game data like:
    ```json
@@ -246,7 +245,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
    }
    ```
 
-   **Test**: Save → Start Game → Click zone → See shuffled answers
+   **Test**: Start Game → Click zone → See shuffled answers
 
 5. **Return the final game object**:
 
@@ -266,7 +265,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
    }
    ```
 
-   **Test**: Save → Start Game → Click zone → See complete transformed object!
+   **Test**: Start Game → Click zone → See complete transformed object!
 
    You should now see complete game data like:
    ```json
@@ -440,8 +439,3 @@ Now let's deepen your understanding of APIs, asynchronous programming, and data 
 - **How does the return keyword work in JavaScript functions, and can you explain it with a non-tech example?**
 - **What is functional programming?**
 
----
-
-### 💬 Pro Tip:
-
-API integration is a core skill for modern developers. The pattern you learned today — fetch data, validate response, transform format, handle errors — applies to almost every external API you'll work with. Master this flow and you can integrate with any service on the internet!

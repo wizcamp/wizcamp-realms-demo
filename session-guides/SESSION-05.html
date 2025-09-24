@@ -317,7 +317,6 @@ page-break-inside: avoid !important;
 <p>You’re about to connect your trivia game to the real internet! This guide walks you through fetching live trivia questions from external APIs, transforming API data into game-ready format, and experiencing the power of asynchronous programming. Ready to make your zones come alive with real questions? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#access-your-codespace">Access Your Codespace</a></li>
 <li><a href="#understanding-apis-and-external-data">Understanding APIs and External Data</a></li>
 <li><a href="#exploring-the-opentrivia-database">Exploring the OpenTrivia Database</a></li>
 <li><a href="#understanding-asynchronous-programming">Understanding Asynchronous Programming</a></li>
@@ -444,7 +443,7 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb7-3" title="3"></a>
 <a class="sourceLine" id="cb7-4" title="4"><span class="kw">const</span> transformed <span class="op">=</span> <span class="at">transformQuestion</span>(firstQuestion)<span class="op">;</span></a>
 <a class="sourceLine" id="cb7-5" title="5"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;After transform:&quot;</span><span class="op">,</span> transformed)<span class="op">;</span></a></code></pre></div>
-<p><strong>Test</strong>: Save → Start Game → Click zone → See <code>undefined</code> in console → “We need to implement transformQuestion”</p></li>
+<p><strong>Test</strong>: Start Game → Click zone → See <code>undefined</code> in console → “We need to implement transformQuestion”</p></li>
 <li><p><strong>Extract object properties</strong> in the <code>transformQuestion</code> function:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span> <span class="co">// Add extraction</span></a>
 <a class="sourceLine" id="cb8-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="at">question</span><span class="op">;</span></a>
@@ -453,7 +452,7 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb8-5" title="5"></a>
 <a class="sourceLine" id="cb8-6" title="6">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Extracted properties:&quot;</span><span class="op">,</span> <span class="op">{</span> question<span class="op">,</span> incorrectAnswers<span class="op">,</span> correctAnswer <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb8-7" title="7"><span class="op">}</span></a></code></pre></div>
-<p><strong>Test</strong>: Save → Start Game → Click zone → See extracted properties in console</p></li>
+<p><strong>Test</strong>: Start Game → Click zone → See extracted properties in console</p></li>
 <li><p><strong>Add helper functions for decoding</strong>:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span></a>
 <a class="sourceLine" id="cb9-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">question</span>)<span class="op">;</span> <span class="co">// Add decoding</span></a>
@@ -462,7 +461,7 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb9-5" title="5"></a>
 <a class="sourceLine" id="cb9-6" title="6">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Decoded data:&quot;</span><span class="op">,</span> <span class="op">{</span> question<span class="op">,</span> incorrectAnswers<span class="op">,</span> correctAnswer <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb9-7" title="7"><span class="op">}</span></a></code></pre></div>
-<p><strong>Test</strong>: Save → Start Game → Click zone → See decoded, formatted data</p>
+<p><strong>Test</strong>: Start Game → Click zone → See decoded, formatted data</p>
 <p>You should now see formatted game data like:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">{</span></a>
 <a class="sourceLine" id="cb10-2" title="2">  <span class="dt">&quot;question&quot;</span><span class="fu">:</span> <span class="st">&quot;What does GHz stand for?&quot;</span><span class="fu">,</span></a>
@@ -480,7 +479,7 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb11-8" title="8">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Shuffled answers:&quot;</span><span class="op">,</span> shuffledAnswers)<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-9" title="9">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Correct answer is at index:&quot;</span><span class="op">,</span> correctIndex)<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-10" title="10"><span class="op">}</span></a></code></pre></div>
-<p><strong>Test</strong>: Save → Start Game → Click zone → See shuffled answers</p></li>
+<p><strong>Test</strong>: Start Game → Click zone → See shuffled answers</p></li>
 <li><p><strong>Return the final game object</strong>:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span></a>
 <a class="sourceLine" id="cb12-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">question</span>)<span class="op">;</span></a>
@@ -495,7 +494,7 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb12-11" title="11">    <span class="dt">correct</span><span class="op">:</span> correctIndex</a>
 <a class="sourceLine" id="cb12-12" title="12">  <span class="op">};</span></a>
 <a class="sourceLine" id="cb12-13" title="13"><span class="op">}</span></a></code></pre></div>
-<p><strong>Test</strong>: Save → Start Game → Click zone → See complete transformed object!</p>
+<p><strong>Test</strong>: Start Game → Click zone → See complete transformed object!</p>
 <p>You should now see complete game data like:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">{</span></a>
 <a class="sourceLine" id="cb13-2" title="2">  <span class="dt">&quot;question&quot;</span><span class="fu">:</span> <span class="st">&quot;What does CPU stand for?&quot;</span><span class="fu">,</span></a>
@@ -685,8 +684,5 @@ page-break-inside: avoid !important;
 <li><strong>How does the return keyword work in JavaScript functions, and can you explain it with a non-tech example?</strong></li>
 <li><strong>What is functional programming?</strong></li>
 </ul>
-<hr />
-<h3 id="pro-tip">💬 Pro Tip:</h3>
-<p>API integration is a core skill for modern developers. The pattern you learned today — fetch data, validate response, transform format, handle errors — applies to almost every external API you’ll work with. Master this flow and you can integrate with any service on the internet!</p>
 </body>
 </html>

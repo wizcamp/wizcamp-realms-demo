@@ -81,7 +81,7 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
 color: #1f2328;
@@ -90,7 +90,7 @@ padding: 0;
 max-width: none;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-weight: 600;
 line-height: 1.25;
 margin-bottom: 16px;
@@ -317,7 +317,6 @@ page-break-inside: avoid !important;
 <p>You’re about to supercharge your trivia game with browser storage and caching! This guide walks you through implementing localStorage to store API responses, understanding performance optimization techniques, and building a robust caching system that makes your game lightning-fast. Ready to experience the magic of instant loading? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#access-your-codespace">Access Your Codespace</a></li>
 <li><a href="#why-caching-matters">Why Caching Matters</a></li>
 <li><a href="#exploring-browser-storage">Exploring Browser Storage</a></li>
 <li><a href="#building-cache-helper-functions">Building Cache Helper Functions</a></li>
@@ -340,7 +339,6 @@ page-break-inside: avoid !important;
 <li><strong>Poor user experience</strong> - Users wait for content they’ve already seen</li>
 </ul>
 <p><strong>The Solution:</strong> Store API responses locally in the browser so subsequent requests are instant.</p>
-<h3 id="why-this-matters">💡 Why This Matters</h3>
 <p><strong>Caching</strong> is a fundamental performance optimization technique used in some form by every major website and app. When you visit YouTube, Netflix, or Instagram, they cache images, videos, and data locally so your experience is fast and smooth.</p>
 <p><a id="exploring-browser-storage"></a></p>
 <h2 id="exploring-browser-storage">🗄️ Exploring Browser Storage</h2>
@@ -362,7 +360,7 @@ page-break-inside: avoid !important;
 │ DELETE:        localStorage.removeItem(&#39;key&#39;)                   │
 │ CHECK:         if (localStorage.getItem(&#39;key&#39;)) { ... }         │
 └─────────────────────────────────────────────────────────────────┘</code></pre>
-<h3 id="why-this-matters-1">💡 Why This Matters</h3>
+<h3 id="why-this-matters">💡 Why This Matters</h3>
 <p>localStorage provides persistent storage that survives browser refreshes and even computer restarts. It’s <strong>synchronous</strong> (blocking), and ideally with small to medium amounts of data. For your trivia game, it’s perfect for caching question sets that are relatively small but expensive to fetch over the network.</p>
 <p><a id="building-cache-helper-functions"></a></p>
 <h2 id="building-cache-helper-functions">🔧 Building Cache Helper Functions</h2>
@@ -416,7 +414,7 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb3-2" title="2"><span class="at">setCachedQuestions</span>(<span class="dv">0</span><span class="op">,</span> questions)<span class="op">;</span>  <span class="co">// Store questions for zone 0</span></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="kw">const</span> cached <span class="op">=</span> <span class="at">getCachedQuestions</span>(<span class="dv">0</span>)<span class="op">;</span>  <span class="co">// Get questions for zone 0 (or null if none)</span></a></code></pre></div>
 <p>Notice the <strong>ternary operator</strong> <code>cached ? JSON.parse(cached) : null</code> in <code>getCachedQuestions</code> — this concise syntax means “If cached data exists, parse it; otherwise return null.”</p>
-<h3 id="why-this-matters-2">💡 Why This Matters</h3>
+<h3 id="why-this-matters-1">💡 Why This Matters</h3>
 <p>These helper functions represent a fundamental software engineering principle: <strong>abstraction</strong>. By wrapping localStorage complexity in simple functions, you’re building the same kind of modular, maintainable code architecture used in professional applications. This pattern makes your caching system easy to test, debug, and extend.</p>
 <p><a id="updating-fetchquestions-with-caching"></a></p>
 <h2 id="updating-fetchquestions-with-caching">🔄 Updating fetchQuestions with Caching</h2>
@@ -441,7 +439,7 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb5-4" title="4"></a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="cf">return</span> questions<span class="op">;</span></a></code></pre></div></li>
 </ol>
-<h3 id="why-this-matters-3">💡 Why This Matters</h3>
+<h3 id="why-this-matters-2">💡 Why This Matters</h3>
 <p>This implements the classic <strong>cache-aside pattern</strong> used in professional applications: check cache first, fetch from source on miss, store result in cache. The console logging helps you understand when cache hits and misses occur, which is valuable for debugging and performance monitoring.</p>
 <p><a id="testing-your-cache"></a></p>
 <h2 id="testing-your-cache">🧪 Testing Your Cache</h2>
@@ -506,7 +504,7 @@ page-break-inside: avoid !important;
 <li>Entry repopulates with fresh data</li>
 </ul></li>
 </ul>
-<h3 id="why-this-matters-4">💡 Why This Matters</h3>
+<h3 id="why-this-matters-3">💡 Why This Matters</h3>
 <p>You’re basically becoming a detective! By watching console logs, peeking into browser storage, and tracking network requests, you’re learning to <strong>follow the digital breadcrumbs</strong> your code leaves behind. This is exactly how real developers figure out why apps crash, why websites load slowly, or why that “it worked yesterday” bug suddenly appeared. These debugging superpowers will make you unstoppable when building your own projects.</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>
@@ -583,8 +581,5 @@ page-break-inside: avoid !important;
 <li><strong>What would happen if I didn’t have caching in my trivia game?</strong></li>
 <li><strong>How can I use the browser DevTools to debug localStorage issues?</strong></li>
 </ul>
-<hr />
-<h3 id="pro-tip">💬 Pro Tip:</h3>
-<p>Caching is everywhere in professional development — from browser caches to CDNs to database query caches. The patterns you learned today (check cache first, store on miss, handle serialization) apply to caching systems at every scale. Master these fundamentals and you’ll understand how the entire internet stays fast!</p>
 </body>
 </html>

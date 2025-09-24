@@ -6,7 +6,6 @@ You're about to supercharge your trivia game with browser storage and caching! T
 
 ## Table of Contents
 
-- [Access Your Codespace](#access-your-codespace)
 - [Why Caching Matters](#why-caching-matters)
 - [Exploring Browser Storage](#exploring-browser-storage)
 - [Building Cache Helper Functions](#building-cache-helper-functions)
@@ -35,8 +34,6 @@ Before we dive into code, let's understand why **caching** is crucial for modern
 - **Poor user experience** - Users wait for content they've already seen
 
 **The Solution:** Store API responses locally in the browser so subsequent requests are instant.
-
-### 💡 Why This Matters
 
 **Caching** is a fundamental performance optimization technique used in some form by every major website and app. When you visit YouTube, Netflix, or Instagram, they cache images, videos, and data locally so your experience is fast and smooth.
 
@@ -253,8 +250,3 @@ Here are some key questions to ask your AI assistant to deepen your understandin
 - **What would happen if I didn't have caching in my trivia game?**
 - **How can I use the browser DevTools to debug localStorage issues?**
 
----
-
-### 💬 Pro Tip:
-
-Caching is everywhere in professional development — from browser caches to CDNs to database query caches. The patterns you learned today (check cache first, store on miss, handle serialization) apply to caching systems at every scale. Master these fundamentals and you'll understand how the entire internet stays fast!

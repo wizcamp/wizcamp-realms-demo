@@ -1,6 +1,6 @@
 # Session 1 — Setting Up Your Trivia Game
 
-Welcome to React Development! 🎉
+Welcome to **React** Development! 🎉
 
 You're about to launch your dev setup and start building like a pro. This guide breaks everything down into bite-sized tasks so you can move fast, learn by doing, and see results right away. Ready to dive in? Let's go!
 
@@ -22,13 +22,13 @@ Let's get your cloud coding environment up and running so you can start building
 
 1. Head over to [github.com](https://github.com) and log in using the account you set up during pre-camp.
 2. Go to [github.com/wizcamp/wizcamp-realms-demo](https://github.com/wizcamp/wizcamp-realms-demo) and click **Use this template → Open in codespace**.
-3. Wait a bit while your **Codespace** builds. You'll see a **VS Code** editor pop up in your browser.
+3. Wait a bit while your Codespace builds. You'll see a VS Code editor pop up in your browser.
 4. Once it loads, make sure you can see the project files in the file explorer on the left.
 5. **Customize your theme**: Click the gear icon in the bottom left, go to **Themes -> Color Theme**, and pick your favorite (Dark+ is popular for coding).
 
 ### 💡 Why This Matters
 
-**Codespaces** give everyone the same setup — no more "it works on my machine" drama. If you mess something up, just delete and start fresh. It's like having a reset button for your entire dev environment. You will use this Codespace for all sessions.
+Codespaces give everyone the same setup — no more "it works on my machine" drama. If you mess something up, just delete and start fresh. It's like having a reset button for your entire dev environment. You will use this Codespace for all sessions.
 
 ### 🏆 Bonus Challenge
 
@@ -88,7 +88,7 @@ Try stopping and restarting the dev server:
 With the development server still running, replace the placeholder component with the game's splash screen component to experience live updates in action.
 
 1. **Open `src/App.jsx`**
-2. **Add the import**: `import SplashScreen from './components/SplashScreen';` // Add this import
+2. **Add the import**: `import SplashScreen from "./components/SplashScreen";`
 3. **Replace `<StartHere />` with `<SplashScreen />`**
 4. **Watch the screen update instantly** — no save needed!
 
@@ -107,7 +107,7 @@ The live update "magic" you experienced is actually powered by a build tool we a
 Even though React apps are built with components, they still use a standard HTML file as the entry point. Let's update the page title to reflect our project name.
 
 1. **Open `index.html`**
-2. **Update the `title` tag** to: `Wizcamp Realms - Legends of Trivia` // Change this line
+2. **Update the `<title>` tag** to: `Wizcamp Realms - Legends of Trivia`
 3. **Confirm the browser tab** displays the new title.
 
 ### 💡 Why This Matters
@@ -148,9 +148,3 @@ Now let's make sure you understand what you did and why it matters. Here are the
 - **How and why do I import a component in React? Where am I importing all that from?**
 - **What does import SplashScreen from './components/SplashScreen' mean?**
 - **In a React app, what does the index.html file do?**
-
----
-
-### 💬 Pro Tip:
-
-You don't have to memorize everything — just ask your AI assistant when you're curious or stuck. Think of it as your trusty AI sidekick, always ready to help.
