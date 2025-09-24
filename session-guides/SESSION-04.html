@@ -137,15 +137,15 @@ code {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
 font-size: 13px !important;
 font-weight: 500 !important;
-background-color: #f1f3f4 !important;
-color: #c7254e !important;
-padding: 2px 4px !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
 border-radius: 3px !important;
-border: 1px solid #d1d5da !important;
 white-space: nowrap;
 word-break: break-word;
 -webkit-print-color-adjust: exact !important;
 print-color-adjust: exact !important;
+text-decoration: none !important;
 }
 pre {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
@@ -163,6 +163,9 @@ font-size: 14px !important;
 line-height: 1.4 !important;
 display: block !important;
 width: 100% !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 
 @media print {
@@ -170,9 +173,20 @@ pre {
 white-space: pre !important;
 font-family: "JetBrains Mono", monospace !important;
 display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 pre * {
 white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 }
 pre code {
@@ -180,6 +194,7 @@ background-color: transparent !important;
 border: none !important;
 padding: 0 !important;
 color: #24292f !important;
+text-decoration: none !important;
 }
 ul, ol {
 padding-left: 1.8em;
@@ -323,7 +338,7 @@ page-break-inside: avoid !important;
 <li><p><strong>Open <code>src/App.jsx</code></strong> and add the new imports at the top:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> HUD <span class="im">from</span> <span class="st">&quot;./components/HUD&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> CoordinateDisplay <span class="im">from</span> <span class="st">&quot;./components/CoordinateDisplay&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a></code></pre></div></li>
-<li><p><strong>Update the PLAYING screen section</strong> to use a <strong>React Fragment</strong> and include both components:</p>
+<li><p><strong>Update the PLAYING screen to render multiple components</strong> using a <strong>React Fragment</strong>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> (</a>
 <a class="sourceLine" id="cb2-2" title="2">  <span class="op">&lt;&gt;</span> <span class="co">// Add Fragment</span></a>
 <a class="sourceLine" id="cb2-3" title="3">    <span class="op">&lt;</span>GameMap /<span class="op">&gt;</span></a>
@@ -334,7 +349,7 @@ page-break-inside: avoid !important;
 <li><p><strong>Test the changes</strong>: Run <code>npm run dev</code> and navigate to the game screen to see the new HUD and coordinate display</p></li>
 </ol>
 <h3 id="why-this-matters">💡 Why This Matters</h3>
-<p><strong>React Fragments</strong> (<code>&lt;&gt;...&lt;/&gt;</code>) are like invisible containers — they let you snap together multiple components without clutter. React components must return a single root element, so fragments solve this requirement cleanly. The <strong>HUD</strong> shows game progress, while <strong>CoordinateDisplay</strong> helps you position zone labels precisely.</p>
+<p><strong>React Fragments</strong> (<code>&lt;&gt;...&lt;/&gt;</code>) are like invisible containers — they let you snap together multiple components without clutter. React components must return a single root element, so fragments solve this requirement cleanly. The <code>HUD</code> shows game progress, while <code>CoordinateDisplay</code> helps you position zone labels precisely.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
 <p>Try removing the fragment tags (<code>&lt;&gt;</code> and <code>&lt;/&gt;</code>) and see what error React gives you when trying to return multiple elements!</p>
 <p><a id="understanding-metadata-and-configuration"></a></p>
@@ -428,7 +443,7 @@ page-break-inside: avoid !important;
 <li><p><strong>Test each zone</strong> by navigating to the game screen and confirming label placement</p></li>
 </ol>
 <h3 id="why-this-matters-5">💡 Why This Matters</h3>
-<p><strong>Coordinate positioning</strong> requires precise <strong>number</strong> values to place UI elements exactly where you want them. The <strong>CoordinateDisplay</strong> component gives you real-time feedback, making it easy to find perfect positions without guessing.</p>
+<p><strong>Coordinate positioning</strong> requires precise <strong>number</strong> values to place UI elements exactly where you want them. The <code>CoordinateDisplay</code> component gives you real-time feedback, making it easy to find perfect positions without guessing.</p>
 <h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
 <p>Try different <code>fontSize</code> and <code>color</code> values to customize your zone labels’ appearance!</p>
 <p><a id="testing-with-react-devtools"></a></p>
@@ -476,7 +491,7 @@ page-break-inside: avoid !important;
 <tr class="odd">
 <td>📦 object</td>
 <td>A collection of key-value pairs using curly brace syntax <code>{}</code> with colon-separated properties.</td>
-<td>Ideal for zone properties like name, difficulty, and styling — each zone is an object with multiple attributes.</td>
+<td>Ideal for zone properties like <code>name</code>, <code>difficulty</code>, and styling — each zone is an object with multiple attributes.</td>
 </tr>
 <tr class="even">
 <td>🔤 string</td>
@@ -491,7 +506,7 @@ page-break-inside: avoid !important;
 <tr class="even">
 <td>🏷️ property</td>
 <td>A key-value pair within an object, accessed using dot notation like <code>zone.name</code>.</td>
-<td>Each zone object has properties like name, categoryId, and mapLabel that define its characteristics.</td>
+<td>Each zone object has properties like <code>name</code>, <code>categoryId</code>, and <code>mapLabel</code> that define its characteristics.</td>
 </tr>
 <tr class="odd">
 <td>⚛️ React Fragment</td>

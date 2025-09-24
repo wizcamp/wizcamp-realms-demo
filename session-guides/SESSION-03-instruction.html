@@ -137,15 +137,15 @@ code {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
 font-size: 13px !important;
 font-weight: 500 !important;
-background-color: #f1f3f4 !important;
-color: #c7254e !important;
-padding: 2px 4px !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
 border-radius: 3px !important;
-border: 1px solid #d1d5da !important;
 white-space: nowrap;
 word-break: break-word;
 -webkit-print-color-adjust: exact !important;
 print-color-adjust: exact !important;
+text-decoration: none !important;
 }
 pre {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
@@ -163,6 +163,9 @@ font-size: 14px !important;
 line-height: 1.4 !important;
 display: block !important;
 width: 100% !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 
 @media print {
@@ -170,9 +173,20 @@ pre {
 white-space: pre !important;
 font-family: "JetBrains Mono", monospace !important;
 display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 pre * {
 white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 }
 pre code {
@@ -180,6 +194,7 @@ background-color: transparent !important;
 border: none !important;
 padding: 0 !important;
 color: #24292f !important;
+text-decoration: none !important;
 }
 ul, ol {
 padding-left: 1.8em;
@@ -306,7 +321,7 @@ page-break-inside: avoid !important;
 <li><strong>Distinguish</strong> between local and shared state and choose the right type for different scenarios</li>
 <li><strong>Define hooks</strong> as functions starting with “use” that provide React features</li>
 <li><strong>Use</strong> built-in React hooks like useState and useContext to manage local and shared state</li>
-<li><strong>Navigate Context Provider pattern</strong> and explain how custom hooks access shared state</li>
+<li><strong>Navigate Context pattern</strong> and explain how custom hooks access shared state</li>
 <li><strong>Trigger</strong> state changes through user interactions and event handlers</li>
 <li><strong>Use constants</strong> to organize code and prevent errors</li>
 <li><strong>Inspect</strong> state changes using React DevTools for real-time debugging</li>
@@ -478,7 +493,7 @@ Any component can access screen directly</code></pre>
 <li><strong>Live Demo:</strong> Show GameProvider in DevTools with state inspection</li>
 <li><strong>Key Features for State:</strong>
 <ul>
-<li><strong>Component tree</strong> - See Provider/Consumer relationships</li>
+<li><strong>Component tree</strong> - See Context relationships</li>
 <li><strong>Hooks section</strong> - View current state values</li>
 <li><strong>Real-time updates</strong> - Watch state change as you interact</li>
 <li><strong>Manual editing</strong> - Change state values directly for testing</li>
@@ -529,7 +544,7 @@ Any component can access screen directly</code></pre>
 </ul></li>
 <li><p><strong>Professional Pattern:</strong> “Custom hooks are how pros organize complex state logic”</p></li>
 </ul>
-<h3 id="slide-11-lets-navigate-todays-coding-mission"><strong>Slide 11: Let’s Navigate! Today’s Coding Mission 🚀</strong></h3>
+<h3 id="slide-11-build-screen-navigation"><strong>Slide 11: Build Screen Navigation! 🚀</strong></h3>
 <ul>
 <li><strong>Today’s Implementation Journey:</strong>
 <ol type="1">

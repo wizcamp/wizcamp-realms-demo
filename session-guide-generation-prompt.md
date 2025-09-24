@@ -46,6 +46,7 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - **Do not instruct students to save files** - files are automatically saved in Codespaces
 - **All content following numbered and non-numbered list items must be properly indented** - indent code blocks, Test paragraphs, explanatory text, and any other content with 3 spaces to align with list item content and maintain proper grouping under the bullet point
 - **All multi-line code blocks must include language qualifiers** - use ```javascript, ```bash, ```json, etc. for proper syntax highlighting and consistency. Use `javascript` for all React/JSX code blocks as `jsx` provides poor syntax highlighting in PDF output
+- **Apply code formatting rule consistently** - always use backticks for code elements, even inside bold text, following industry documentation standards
 
 ### Code Block Commenting Standards
 - Use terse, action-based inline comments with standard `//` format
@@ -55,6 +56,27 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - Focus on reducing cognitive load while providing clear, simple, unambiguous guidance
 - Comments should indicate what students will actually do: `// Add this function`, `// Add cache check`, `// Update this line`
 - Remove explanatory comments that don't guide student actions
+
+### Code Formatting Rule
+**Use backticks only for actual code identifiers that students type in their codebase:**
+
+- **Code identifiers get backticks**: Component names, function names, props, constants that appear in code
+  - ✅ "Use the `GameButton` component with `variant="primary"`"
+  - ✅ "Access `score` from the `useGame` hook"
+  - ✅ "Import `SCREENS` constant"
+  - ✅ "Add `className="game-over"`"
+
+- **Conceptual terms and technologies stay as regular text**: Even when emphasized
+  - ✅ "**Components** are reusable UI elements" (concept, not code)
+  - ✅ "**React** uses a virtual DOM" (technology name)
+  - ✅ "**State** lets components remember information" (concept)
+  - ✅ "**APIs** provide data" (concept)
+
+- **File references**: Always use backticks
+  - ✅ "Open `src/components/GameOver.jsx`"
+  - ✅ "Look at `SplashScreen.jsx` for patterns"
+
+**Rationale**: Backticks should only mark things students literally type in code. Conceptual terms, technology names, and general programming concepts should use regular emphasis to avoid confusion between code and concepts.
 
 ### Essential Terms Table Standards
 - Terms use proper capitalization: lowercase for common terms, proper case for product names (e.g., "component", "Codespace", "Vite", "Node.js")
@@ -140,6 +162,25 @@ Consistency check: Compare new learning outcomes against SESSION-01-instruction.
 - Add new terms following the established emoji + definition + relevance format
 - Order terms by logical learning progression, not alphabetically
 
+## Term Definition Consistency Standard
+**Critical Requirement**: Ensure identical technical terms use consistent definitions between student and instructor guides.
+
+### Implementation Guidelines:
+- **Primary Source**: Student guide Essential Terms definitions are authoritative
+- **Instructor Guide Alignment**: All concept explanations in SESSION-XX-instruction.md must align with corresponding Essential Terms definitions from SESSION-XX.md
+- **Learning Outcomes Consistency**: Use terminology that matches Essential Terms definitions exactly
+- **Slide Content Alignment**: Instructor slide explanations should reflect the same conceptual understanding as student Essential Terms
+- **Cross-Reference Check**: When writing instructor guides, reference the student guide's Essential Terms to ensure definitional consistency
+
+### Quality Check Process:
+1. Write student guide Essential Terms first with clear, comprehensive definitions
+2. Use those definitions as the foundation for instructor guide concept explanations
+3. Ensure Learning Outcomes use identical terminology and conceptual framing
+4. Verify slide content aligns with established definitions
+5. Flag any definitional discrepancies for resolution
+
+**Example**: If student guide defines "application state" as "the complete condition of an application at a specific moment in time, encompassing all the information it needs to function correctly," the instructor guide must use compatible language and not introduce conflicting definitions.
+
 ## Quality Standards
 - Engaging and age-appropriate for 13-18 year olds with conversational, relatable tone
 - Clear progression from simple to complex concepts
@@ -147,3 +188,4 @@ Consistency check: Compare new learning outcomes against SESSION-01-instruction.
 - Real-world applications framed as exciting opportunities and skill-building rather than abstract career preparation
 - "Why This Matters" sections should inspire and empower, using metaphors and language that resonates with teenagers
 - **Consistent section ordering** across Learning Outcomes, Instruction, and Slide Deck Outline for maximum comprehensibility
+- **Term definition consistency** between student and instructor guides to prevent confusion and ensure coherent learning experience

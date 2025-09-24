@@ -137,15 +137,15 @@ code {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
 font-size: 13px !important;
 font-weight: 500 !important;
-background-color: #f1f3f4 !important;
-color: #c7254e !important;
-padding: 2px 4px !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
 border-radius: 3px !important;
-border: 1px solid #d1d5da !important;
 white-space: nowrap;
 word-break: break-word;
 -webkit-print-color-adjust: exact !important;
 print-color-adjust: exact !important;
+text-decoration: none !important;
 }
 pre {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
@@ -163,6 +163,9 @@ font-size: 14px !important;
 line-height: 1.4 !important;
 display: block !important;
 width: 100% !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 
 @media print {
@@ -170,9 +173,20 @@ pre {
 white-space: pre !important;
 font-family: "JetBrains Mono", monospace !important;
 display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 pre * {
 white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 }
 pre code {
@@ -180,6 +194,7 @@ background-color: transparent !important;
 border: none !important;
 padding: 0 !important;
 color: #24292f !important;
+text-decoration: none !important;
 }
 ul, ol {
 padding-left: 1.8em;
@@ -318,7 +333,7 @@ page-break-inside: avoid !important;
 <p><a id="understanding-component-composition"></a></p>
 <h2 id="understanding-component-composition">🧩 Understanding Component Composition</h2>
 <p>Before we start coding, let’s understand how complex components are built from smaller pieces — the foundation of scalable React architecture.</p>
-<p><strong>Component composition</strong> is like building with LEGO blocks — you create complex structures by snapping together smaller, focused pieces. Your QuizModal is actually composed of five smaller components working together:</p>
+<p><strong>Component composition</strong> is like building with LEGO blocks — you create complex structures by snapping together smaller, focused pieces. Your <code>QuizModal</code> is actually composed of five smaller components working together:</p>
 <pre><code>QuizModal (the container)
 ├── ProgressHeader (shows question progress)
 ├── QuestionHeader (displays the question)
@@ -344,7 +359,7 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb4-6" title="6">    <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb4-7" title="7">  &lt;/<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb4-8" title="8">)<span class="op">}</span></a></code></pre></div>
-<p><strong>Conditional rendering</strong> with <code>&amp;&amp;</code> is a React pattern that shows components only when certain conditions are true. When <code>isQuizVisible</code> is true, the QuizModal renders; when false, nothing renders.</p></li>
+<p><strong>Conditional rendering</strong> with <code>&amp;&amp;</code> is a React pattern that shows components only when certain conditions are true. When <code>isQuizVisible</code> is true, the <code>QuizModal</code> renders; when false, nothing renders.</p></li>
 <li><p><strong>Open <code>src/components/GameMap.jsx</code></strong> and add <code>setIsQuizVisible</code> to the <code>useGame</code> destructuring:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> <span class="op">{</span> activeZone<span class="op">,</span> loadQuestionsForZone<span class="op">,</span> setIsQuizVisible<span class="op">,</span> zoneProgress <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span> <span class="co">// Add setIsQuizVisible</span></a></code></pre></div></li>
 <li><p><strong>Update the handleZoneClick function</strong> to show the quiz modal after loading questions:</p>
@@ -577,7 +592,7 @@ page-break-inside: avoid !important;
 <tr class="odd">
 <td>🧩 component composition</td>
 <td>Building complex components by combining smaller, focused components together.</td>
-<td>Your QuizModal is composed of five smaller components, making it easier to understand and maintain.</td>
+<td>Your <code>QuizModal</code> is composed of five smaller components, making it easier to understand and maintain.</td>
 </tr>
 <tr class="even">
 <td>🗺️ Array.map()</td>
@@ -592,7 +607,7 @@ page-break-inside: avoid !important;
 <tr class="even">
 <td>🔄 event handling</td>
 <td>Managing user interactions like clicks, form submissions, and keyboard input in React components.</td>
-<td>Your answer buttons use onClick handlers to trigger state changes and provide interactivity.</td>
+<td>Your answer buttons use <code>onClick</code> handlers to trigger state changes and provide interactivity.</td>
 </tr>
 </tbody>
 </table>

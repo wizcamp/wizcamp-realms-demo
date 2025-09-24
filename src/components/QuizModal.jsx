@@ -8,6 +8,7 @@ import { useGame } from "../hooks/useGame";
  * TODO: Session 7 - Create AnswerChoices component and add custom feedback messages
  */
 
+// Shows current question progress and zone subtitle
 function ProgressHeader({ currentQuestion, totalQuestions, subtitle }) {
   return (
     <div className="progress-header">
@@ -19,6 +20,7 @@ function ProgressHeader({ currentQuestion, totalQuestions, subtitle }) {
   );
 }
 
+// Displays the current question text
 function QuestionHeader({ question }) {
   return (
     <div className="question-header">
@@ -27,6 +29,7 @@ function QuestionHeader({ question }) {
   );
 }
 
+// Placeholder shown before user selects an answer
 function AnswerPlaceholder() {
   return (
     <div className="result">
@@ -37,6 +40,7 @@ function AnswerPlaceholder() {
   );
 }
 
+// Shows feedback after user answers
 function AnswerFeedback({ hasAnswered, isCorrect, correctAnswerText }) {
   if (!hasAnswered) {
     return <AnswerPlaceholder />;
@@ -49,6 +53,7 @@ function AnswerFeedback({ hasAnswered, isCorrect, correctAnswerText }) {
   );
 }
 
+// Button to proceed to next question or finish quiz
 function ContinueButton({ hasAnswered, isOnFinalQuestion, onContinue }) {
   return (
     <button
@@ -61,6 +66,7 @@ function ContinueButton({ hasAnswered, isOnFinalQuestion, onContinue }) {
   );
 }
 
+// Main quiz modal component
 export default function QuizModal() {
   const {
     isQuizVisible,

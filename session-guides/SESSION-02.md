@@ -107,7 +107,7 @@ Let's make your buttons actually do something when clicked. In React, you can pa
 
 ### 💡 Why This Matters
 
-**Functions as props** are like giving your components different personalities. Your GameButton can do different things depending on where you use it — same button, different actions. It's a key pattern in React for building interactive apps.
+**Functions as props** are like giving your components different personalities. Your `GameButton` can do different things depending on where you use it — same button, different actions. It's a key pattern in React for building interactive apps.
 
 <a id="styling-with-variants"></a>
 
@@ -143,7 +143,7 @@ Let's add visual variety to your buttons using CSS classes, default parameters, 
 
 ### 💡 Why This Matters
 
-**className** is React's version of the HTML `class` attribute. We use a **template literal** to build a dynamic class name like `game-button primary`. This matches the styles already defined in your project. The `variant` prop lets you switch between styles like `primary` and `secondary`, and **default parameters** like `variant = "primary"` ensure your component still works even if no variant is passed.
+**`className`** is React's version of the HTML `class` attribute. We use a **template literal** to build a dynamic class name like `game-button primary`. This matches the styles already defined in your project. The `variant` prop lets you switch between styles like `primary` and `secondary`, and **default parameters** like `variant = "primary"` ensure your component still works even if no variant is passed.
 
 <a id="reusing-your-component"></a>
 
@@ -163,7 +163,7 @@ Now that you've built a complete, fully-featured GameButton component, let's exp
 
 ### 💡 Why This Matters
 
-**Component reusability** is React's superpower. You wrote the GameButton code once, but now you can use it anywhere in your app with different props. Thanks to your stylesheet, each variant (`primary`, `secondary`) automatically applies the right look — no extra styling needed.
+**Component reusability** is React's superpower. You wrote the `GameButton` code once, but now you can use it anywhere in your app with different props. Thanks to your stylesheet, each variant (`primary`, `secondary`) automatically applies the right look — no extra styling needed.
 
 ### 🏆 Bonus Challenge
 
@@ -205,8 +205,8 @@ _Quick reference for all the React concepts you just learned:_
 | ------------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
 | 🧩 component          | A reusable piece of UI that can include markup, styles, and logic (example: `<SplashScreen />`). | You'll build your entire app by composing components together — they're React's building blocks.      |
 | 📦 props              | Data passed from parent to child components.       | Props let you customize components and pass data around your app — essential for reusable components. |
-| ✨ JSX                | JavaScript syntax that looks like HTML — used to describe UI in React components (`.jsx`).       | You'll write JSX in your GameButton component to describe what the button should look like.                      |
-| 🎨 className          | React's version of the HTML `class` attribute for applying CSS styles.                           | Use className instead of class because class is a reserved word in JavaScript.                        |
+| ✨ JSX                | JavaScript syntax that looks like HTML — used to describe UI in React components (`.jsx`).       | You'll write JSX in your `GameButton` component to describe what the button should look like.                      |
+| 🎨 className          | React's version of the HTML `class` attribute for applying CSS styles.                           | Use `className` instead of `class` because `class` is a reserved word in JavaScript.                        |
 | 📤 destructuring      | Extracting values from objects/arrays into variables, like `{ text, onClick }` from props.       | Makes your code cleaner by avoiding repetitive `props.text`, `props.onClick` syntax.                  |
 | 🔤 template literals  | String interpolation using backticks and `${}` for dynamic strings.                              | Perfect for creating dynamic CSS classes like `` `game-button ${variant}` ``.                  |
 | ⚙️ default parameters | Fallback values for function parameters, like `variant = "primary"`.                             | Ensures your components work even when some props aren't provided.                                    |

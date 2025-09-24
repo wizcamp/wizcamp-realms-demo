@@ -137,15 +137,15 @@ code {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
 font-size: 13px !important;
 font-weight: 500 !important;
-background-color: #f1f3f4 !important;
-color: #c7254e !important;
-padding: 2px 4px !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
 border-radius: 3px !important;
-border: 1px solid #d1d5da !important;
 white-space: nowrap;
 word-break: break-word;
 -webkit-print-color-adjust: exact !important;
 print-color-adjust: exact !important;
+text-decoration: none !important;
 }
 pre {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
@@ -163,6 +163,9 @@ font-size: 14px !important;
 line-height: 1.4 !important;
 display: block !important;
 width: 100% !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 
 @media print {
@@ -170,9 +173,20 @@ pre {
 white-space: pre !important;
 font-family: "JetBrains Mono", monospace !important;
 display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 pre * {
 white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 }
 pre code {
@@ -180,6 +194,7 @@ background-color: transparent !important;
 border: none !important;
 padding: 0 !important;
 color: #24292f !important;
+text-decoration: none !important;
 }
 ul, ol {
 padding-left: 1.8em;
@@ -418,7 +433,7 @@ page-break-inside: avoid !important;
 <a class="sourceLine" id="cb6-4" title="4"><span class="op">}</span></a></code></pre></div></li>
 </ol>
 <h3 id="why-this-matters-3">💡 Why This Matters</h3>
-<p><strong>Error handling</strong> and <strong>data validation</strong> are crucial when working with external <strong>APIs</strong>. Networks can fail, <strong>APIs</strong> can be down, or responses might be empty. Professional developers always plan for these scenarios to create robust applications.</p>
+<p><strong>Error handling</strong> and <strong>data validation</strong> are crucial when working with external <strong>APIs</strong>. Networks can fail, APIs can be down, or responses might be empty. Professional developers always plan for these scenarios to create robust applications.</p>
 <p><a id="transforming-api-data"></a></p>
 <h2 id="transforming-api-data">🔄 Transforming API Data</h2>
 <p>Now let’s transform the <strong>API</strong> data into game-ready format. This is where the real magic happens!</p>
@@ -618,7 +633,7 @@ page-break-inside: avoid !important;
 <tr class="even">
 <td>📋 JSON</td>
 <td>JavaScript Object Notation — a text format for exchanging structured data between applications.</td>
-<td>OpenTrivia Database returns question data in JSON format, which your transformQuestion function converts to game format.</td>
+<td>OpenTrivia Database returns question data in JSON format, which your <code>transformQuestion</code> function converts to game format.</td>
 </tr>
 <tr class="odd">
 <td>📨 HTTP request</td>
@@ -628,17 +643,17 @@ page-break-inside: avoid !important;
 <tr class="even">
 <td>📡 Fetch API</td>
 <td>A modern JavaScript interface for making HTTP requests to servers and APIs.</td>
-<td>Your fetchQuestions function uses fetch to request trivia data based on each zone’s category and difficulty settings.</td>
+<td>Your <code>fetchQuestions</code> function uses <code>fetch</code> to request trivia data based on each zone’s category and difficulty settings.</td>
 </tr>
 <tr class="odd">
 <td>🔗 Uniform Resource Identifier (URI)</td>
 <td>A string that uniquely identifies a resource on the internet, which can be the same as or part of a URL.</td>
-<td>Your buildApiUrl function creates URIs that uniquely identify the OpenTrivia API endpoint with specific parameters for each zone.</td>
+<td>Your <code>buildApiUrl</code> function creates URIs that uniquely identify the OpenTrivia API endpoint with specific parameters for each zone.</td>
 </tr>
 <tr class="even">
 <td>🔐 URL encoding</td>
 <td>A method of converting characters into a format safe for transmission over the internet.</td>
-<td>Question text comes URL-encoded from the API — your decodeText function converts it to readable game text.</td>
+<td>Question text comes URL-encoded from the API — your <code>decodeText</code> function converts it to readable game text.</td>
 </tr>
 <tr class="odd">
 <td>⏰ asynchronous programming</td>
@@ -648,12 +663,12 @@ page-break-inside: avoid !important;
 <tr class="even">
 <td>🔄 async/await</td>
 <td>JavaScript syntax that makes asynchronous code look and behave like synchronous code.</td>
-<td>Your fetchQuestions function uses async/await to handle API requests in a readable, step-by-step manner.</td>
+<td>Your <code>fetchQuestions</code> function uses <code>async/await</code> to handle API requests in a readable, step-by-step manner.</td>
 </tr>
 <tr class="odd">
 <td>🤝 promise</td>
 <td>A JavaScript object representing the eventual completion or failure of an asynchronous operation.</td>
-<td>Every fetch call returns a promise — your game will eventually get questions or handle the error gracefully.</td>
+<td>Every <code>fetch</code> call returns a promise — your game will eventually get questions or handle the error gracefully.</td>
 </tr>
 </tbody>
 </table>

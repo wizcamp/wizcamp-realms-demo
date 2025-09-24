@@ -36,7 +36,7 @@ Let's add the game's **HUD** (Heads Up Display) and a coordinate helper to assis
    import CoordinateDisplay from "./components/CoordinateDisplay"; // Add this import
    ```
 
-2. **Update the PLAYING screen section** to use a **React Fragment** and include both components:
+2. **Update the PLAYING screen to render multiple components** using a **React Fragment**:
 
    ```javascript
    {screen === SCREENS.PLAYING && (
@@ -52,7 +52,7 @@ Let's add the game's **HUD** (Heads Up Display) and a coordinate helper to assis
 
 ### 💡 Why This Matters
 
-**React Fragments** (`<>...</>`) are like invisible containers — they let you snap together multiple components without clutter. React components must return a single root element, so fragments solve this requirement cleanly. The **HUD** shows game progress, while **CoordinateDisplay** helps you position zone labels precisely.
+**React Fragments** (`<>...</>`) are like invisible containers — they let you snap together multiple components without clutter. React components must return a single root element, so fragments solve this requirement cleanly. The `HUD` shows game progress, while `CoordinateDisplay` helps you position zone labels precisely.
 
 ### 🏆 Bonus Challenge
 
@@ -171,7 +171,7 @@ Use the `CoordinateDisplay` component to find optimal positions for your zone la
 
 ### 💡 Why This Matters
 
-**Coordinate positioning** requires precise **number** values to place UI elements exactly where you want them. The **CoordinateDisplay** component gives you real-time feedback, making it easy to find perfect positions without guessing.
+**Coordinate positioning** requires precise **number** values to place UI elements exactly where you want them. The `CoordinateDisplay` component gives you real-time feedback, making it easy to find perfect positions without guessing.
 
 ### 🏆 Bonus Challenge
 
@@ -206,10 +206,10 @@ _Quick reference for all the data structure and configuration concepts you just 
 |------|------------|----------------|
 | 📋 metadata | Data that describes other data — information about information. | Your zone configuration describes how to get and display trivia questions without being the questions themselves. |
 | 🏗️ array | An ordered list of items using bracket syntax `[]` with zero-based indexing. | Perfect for storing your three game zones in a specific order that matches the game progression. |
-| 📦 object | A collection of key-value pairs using curly brace syntax `{}` with colon-separated properties. | Ideal for zone properties like name, difficulty, and styling — each zone is an object with multiple attributes. |
+| 📦 object | A collection of key-value pairs using curly brace syntax `{}` with colon-separated properties. | Ideal for zone properties like `name`, `difficulty`, and styling — each zone is an object with multiple attributes. |
 | 🔤 string | Text data enclosed in quotes, used for names, descriptions, and categories. | Zone names, subtitles, and difficulty levels are all strings that display to users. |
 | 🔢 number | Numeric data without quotes, used for IDs, counts, and coordinates. | Category IDs, question counts, and map coordinates are numbers used for calculations and positioning. |
-| 🏷️ property | A key-value pair within an object, accessed using dot notation like `zone.name`. | Each zone object has properties like name, categoryId, and mapLabel that define its characteristics. |
+| 🏷️ property | A key-value pair within an object, accessed using dot notation like `zone.name`. | Each zone object has properties like `name`, `categoryId`, and `mapLabel` that define its characteristics. |
 | ⚛️ React Fragment | JSX syntax `<>...</>` that groups elements without adding extra DOM nodes. | Lets you return multiple components from the PLAYING screen without wrapper divs cluttering your HTML. |
 
 <a id="ask-the-ai"></a>

@@ -11,9 +11,7 @@ import { GameProvider } from "./context/GameContext";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <GameProvider>
-      {" "}
-      {/* Provides game state to all components */}
-      <App /> {/* Our main app component */}
+      <App />
     </GameProvider>
   </React.StrictMode>
 );

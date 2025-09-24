@@ -257,7 +257,7 @@
 - **Professional Mindset:** "Always assume external services might fail"
 - **Student Application:** "Your game will gracefully handle network issues"
 
-### **Slide 11: Let's Connect! Today's Implementation Journey 🚀**
+### **Slide 11: Fetch Dynamic Trivia Questions! 🚀**
 
 - **Today's Mission: Connect your game to the internet**
   1. **Replace alert** with basic fetch request and response logging

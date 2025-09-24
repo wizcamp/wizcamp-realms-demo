@@ -199,7 +199,7 @@ const answers = ["React", "Vue", "Angular", "Svelte"];
   3. **Debug systematically** - Use DevTools to understand data flow
 - **Student Empowerment:** "You can inspect any component to understand how it works"
 
-### **Slide 10: Let's Build Interactive! Today's Implementation Journey 🚀**
+### **Slide 10: Create Engaging Quiz Interactions! 🚀**
 
 - **Today's Coding Mission:**
   1. **Connect QuizModal** - Add conditional rendering to App.jsx and GameMap.jsx

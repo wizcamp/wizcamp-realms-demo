@@ -9,7 +9,7 @@
 3. **Distinguish** between local and shared state and choose the right type for different scenarios
 4. **Define hooks** as functions starting with "use" that provide React features
 5. **Use** built-in React hooks like useState and useContext to manage local and shared state
-6. **Navigate Context Provider pattern** and explain how custom hooks access shared state
+6. **Navigate Context pattern** and explain how custom hooks access shared state
 7. **Trigger** state changes through user interactions and event handlers
 8. **Use constants** to organize code and prevent errors
 9. **Inspect** state changes using React DevTools for real-time debugging
@@ -169,7 +169,7 @@ Any component can access screen directly
 - **Title:** "X-Ray Vision for Your App's State"
 - **Live Demo:** Show GameProvider in DevTools with state inspection
 - **Key Features for State:**
-  - **Component tree** - See Provider/Consumer relationships
+  - **Component tree** - See Context relationships
   - **Hooks section** - View current state values
   - **Real-time updates** - Watch state change as you interact
   - **Manual editing** - Change state values directly for testing
@@ -221,7 +221,7 @@ SPLASH ───► PLAYING ───► QUIZ ───► GAME_OVER
   - **Reusability** - Same hook used everywhere
 - **Professional Pattern:** "Custom hooks are how pros organize complex state logic"
 
-### **Slide 11: Let's Navigate! Today's Coding Mission 🚀**
+### **Slide 11: Build Screen Navigation! 🚀**
 
 - **Today's Implementation Journey:**
   1. **Explore** SCREENS constants for maintainable navigation

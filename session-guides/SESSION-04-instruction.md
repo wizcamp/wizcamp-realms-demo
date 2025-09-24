@@ -239,7 +239,7 @@ ZONES = [                    // Array of zones
   4. **Design cohesively** - Names and subtitles that fit themes
 - **Professional Insight:** "Game designers spend significant time on thematic coherence"
 
-### **Slide 11: Let's Configure! Today's Implementation Journey 🚀**
+### **Slide 11: Design Your Game World! 🚀**
 
 - **Today's Coding Mission:**
   1. **Add HUD components** - Import and use React Fragments

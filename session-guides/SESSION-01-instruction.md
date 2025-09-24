@@ -139,7 +139,7 @@
 - **Student Expectation:** "**You'll experience this** in the next 5 minutes"
 - **Preview:** "It's pretty cool when you see it in action"
 
-### **Slide 10: Let's Code! 🚀**
+### **Slide 10: Launch Your Development Journey! 🚀**
 
 - **Your Mission Today:**
   1. **Launch** your cloud coding setup

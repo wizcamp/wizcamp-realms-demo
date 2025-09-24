@@ -28,7 +28,7 @@ Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Co
 
 Before we start coding, let's understand how complex components are built from smaller pieces — the foundation of scalable React architecture.
 
-**Component composition** is like building with LEGO blocks — you create complex structures by snapping together smaller, focused pieces. Your QuizModal is actually composed of five smaller components working together:
+**Component composition** is like building with LEGO blocks — you create complex structures by snapping together smaller, focused pieces. Your `QuizModal` is actually composed of five smaller components working together:
 
 ```
 QuizModal (the container)
@@ -74,7 +74,7 @@ Let's connect your quiz modal to the game flow so clicking zones actually shows 
    )}
    ```
 
-   **Conditional rendering** with `&&` is a React pattern that shows components only when certain conditions are true. When `isQuizVisible` is true, the QuizModal renders; when false, nothing renders.
+   **Conditional rendering** with `&&` is a React pattern that shows components only when certain conditions are true. When `isQuizVisible` is true, the `QuizModal` renders; when false, nothing renders.
 
 4. **Open `src/components/GameMap.jsx`** and add `setIsQuizVisible` to the `useGame` destructuring:
 
@@ -379,10 +379,10 @@ _Quick reference for all the component composition and interaction concepts you 
 
 | Term | Definition | Why it matters |
 |------|------------|----------------|
-| 🧩 component composition | Building complex components by combining smaller, focused components together. | Your QuizModal is composed of five smaller components, making it easier to understand and maintain. |
+| 🧩 component composition | Building complex components by combining smaller, focused components together. | Your `QuizModal` is composed of five smaller components, making it easier to understand and maintain. |
 | 🗺️ Array.map() | JavaScript method that transforms each item in an array into something else, returning a new array. | Essential for converting your answers array into JSX button elements in React. |
 | 🔑 key prop | Unique identifier React needs for each element in a mapped array to track changes efficiently. | Helps React optimize updates when answer lists change or reorder. |
-| 🔄 event handling | Managing user interactions like clicks, form submissions, and keyboard input in React components. | Your answer buttons use onClick handlers to trigger state changes and provide interactivity. |
+| 🔄 event handling | Managing user interactions like clicks, form submissions, and keyboard input in React components. | Your answer buttons use `onClick` handlers to trigger state changes and provide interactivity. |
 
 <a id="ask-the-ai"></a>
 

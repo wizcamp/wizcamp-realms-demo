@@ -137,15 +137,15 @@ code {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
 font-size: 13px !important;
 font-weight: 500 !important;
-background-color: #f1f3f4 !important;
-color: #c7254e !important;
-padding: 2px 4px !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
 border-radius: 3px !important;
-border: 1px solid #d1d5da !important;
 white-space: nowrap;
 word-break: break-word;
 -webkit-print-color-adjust: exact !important;
 print-color-adjust: exact !important;
+text-decoration: none !important;
 }
 pre {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
@@ -163,6 +163,9 @@ font-size: 14px !important;
 line-height: 1.4 !important;
 display: block !important;
 width: 100% !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 
 @media print {
@@ -170,9 +173,20 @@ pre {
 white-space: pre !important;
 font-family: "JetBrains Mono", monospace !important;
 display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 pre * {
 white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 }
 pre code {
@@ -180,6 +194,7 @@ background-color: transparent !important;
 border: none !important;
 padding: 0 !important;
 color: #24292f !important;
+text-decoration: none !important;
 }
 ul, ol {
 padding-left: 1.8em;
@@ -367,7 +382,7 @@ page-break-inside: avoid !important;
 <li><p><strong>Test the credits modal</strong>: Click the Credits button to see the modal appear</p></li>
 </ol>
 <h3 id="why-this-matters-1">💡 Why This Matters</h3>
-<p><strong>Local state</strong> with <code>useState</code> belongs to a single component and gives it its own memory. The credits modal only affects SplashScreen, so it uses local state to track whether the modal should be visible. This pattern keeps component data isolated and manageable.</p>
+<p><strong>Local state</strong> with <code>useState</code> belongs to a single component and gives it its own memory. The credits modal only affects <code>SplashScreen</code>, so it uses local state to track whether the modal should be visible. This pattern keeps component data isolated and manageable.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
 <p>Use React DevTools to inspect the SplashScreen component and watch the <code>showCredits</code> state change as you interact with the Credits button.</p>
 <p><a id="exploring-game-constants"></a></p>
@@ -378,6 +393,18 @@ page-break-inside: avoid !important;
 <li><strong>Notice the structure</strong>: Each screen has a key (like <code>SPLASH</code>) and a descriptive value</li>
 <li><strong>Understand the purpose</strong>: Instead of using strings like <code>&quot;splash&quot;</code> everywhere, we use <code>SCREENS.SPLASH</code></li>
 </ol>
+<h3 id="what-is-prop-drilling">What is Prop Drilling?</h3>
+<p><strong>Prop drilling</strong> is when you have to pass data through multiple component levels, even when the middle components don’t need that data. It’s like having to ask your friend to ask their friend to ask their friend for something — inefficient and annoying.</p>
+<p><strong>Example of prop drilling:</strong></p>
+<pre><code>App (has screen state)
+ ↓ passes screen as prop
+SplashScreen (doesn&#39;t need screen, just passes it along)
+ ↓ passes screen as prop  
+GameButton (finally uses screen)</code></pre>
+<p><strong>With Context (no prop drilling):</strong></p>
+<pre><code>GameProvider (provides screen state)
+ ↓ any component can access directly
+GameButton (uses useGame hook to get screen)</code></pre>
 <h3 id="why-this-matters-2">💡 Why This Matters</h3>
 <p><strong>Constants</strong> prevent typos and make your code more maintainable. Instead of typing <code>&quot;splash&quot;</code> in multiple places (and risking typos like <code>&quot;spalsh&quot;</code>), you use <code>SCREENS.SPLASH</code> once and get autocomplete everywhere. If you need to change the value later, you only change it in one place.</p>
 <p><a id="adding-screen-navigation"></a></p>
@@ -385,22 +412,22 @@ page-break-inside: avoid !important;
 <p>Now let’s implement the core navigation system that will control which screen users see. This is where <strong>shared state</strong> really shines!</p>
 <ol type="1">
 <li><p><strong>Open <code>src/App.jsx</code></strong> and add the necessary imports at the top:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./hooks/useGame&#39;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;./constants/screens&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="im">import</span> GameMap <span class="im">from</span> <span class="st">&quot;./components/GameMap&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./hooks/useGame&#39;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;./constants/screens&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="im">import</span> GameMap <span class="im">from</span> <span class="st">&quot;./components/GameMap&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a></code></pre></div></li>
 <li><p><strong>Access the shared state</strong> by adding this line inside the App function (before the return):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> <span class="op">{</span> screen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span> <span class="co">// Add shared state</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">const</span> <span class="op">{</span> screen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span> <span class="co">// Add shared state</span></a></code></pre></div></li>
 <li><p><strong>Add conditional rendering</strong> by replacing the current JSX with:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb7-2" title="2">  <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb7-3" title="3">    <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;}</span> <span class="co">// Add conditional rendering</span></a>
-<a class="sourceLine" id="cb7-4" title="4">    <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>GameMap /<span class="op">&gt;}</span> <span class="co">// Add conditional rendering</span></a>
-<a class="sourceLine" id="cb7-5" title="5">  &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb7-6" title="6">)<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-3" title="3">    <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;}</span> <span class="co">// Add conditional rendering</span></a>
+<a class="sourceLine" id="cb9-4" title="4">    <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>GameMap /<span class="op">&gt;}</span> <span class="co">// Add conditional rendering</span></a>
+<a class="sourceLine" id="cb9-5" title="5">  &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-6" title="6">)<span class="op">;</span></a></code></pre></div></li>
 <li><p><strong>Test the setup</strong>: Run <code>npm run dev</code> to make sure everything still works</p></li>
 </ol>
 <h3 id="why-this-matters-3">💡 Why This Matters</h3>
-<p><strong>Conditional rendering</strong> using <code>&amp;&amp;</code> is a React pattern that shows components only when certain conditions are true. When <code>screen</code> equals <code>SCREENS.SPLASH</code>, the SplashScreen component renders. When it equals <code>SCREENS.PLAYING</code>, GameMap renders instead. This single piece of <strong>shared state</strong> controls what your entire app displays!</p>
+<p><strong>Conditional rendering</strong> using <code>&amp;&amp;</code> is a React pattern that shows components only when certain conditions are true. When <code>screen</code> equals <code>SCREENS.SPLASH</code>, the <code>SplashScreen</code> component renders. When it equals <code>SCREENS.PLAYING</code>, <code>GameMap</code> renders instead. This single piece of <strong>shared state</strong> controls what your entire app displays!</p>
 <p><a id="using-react-devtools-to-explore-state"></a></p>
 <h2 id="using-react-devtools-to-explore-state">🔍 Using React DevTools to Explore State</h2>
 <p>Let’s use React DevTools to see how <strong>shared state</strong> works behind the scenes and experiment with changing it manually.</p>
@@ -413,7 +440,7 @@ page-break-inside: avoid !important;
 <li><strong>Change it back</strong>: Set it back to “splash” to see the SplashScreen return</li>
 </ol>
 <h3 id="why-this-matters-4">💡 Why This Matters</h3>
-<p>React DevTools gives you X-ray vision into your app’s <strong>state</strong>. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how <strong>shared state</strong> affects your entire app. Notice how changing one value in GameProvider instantly changes what component renders!</p>
+<p>React DevTools gives you X-ray vision into your app’s <strong>state</strong>. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how <strong>shared state</strong> affects your entire app. Notice how changing one value in <code>GameProvider</code> instantly changes what component renders!</p>
 <h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
 <p>Try changing the screen state to different values and see what happens. What occurs when you set it to a value that doesn’t match any of your conditions?</p>
 <p><a id="implementing-start-game-functionality"></a></p>
@@ -421,20 +448,20 @@ page-break-inside: avoid !important;
 <p>Now let’s make your “Start Adventure” button actually start the game by updating the <strong>shared state</strong>!</p>
 <ol type="1">
 <li><p><strong>Open <code>src/components/SplashScreen.jsx</code></strong> and add imports at the top:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/screens&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../hooks/useGame&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/screens&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../hooks/useGame&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a></code></pre></div></li>
 <li><p><strong>Access the state setter</strong> by adding this inside the SplashScreen function (before the return):</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span> <span class="co">// Add state setter</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span> <span class="co">// Add state setter</span></a></code></pre></div></li>
 <li><p><strong>Create the start game function</strong> (before the return):</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">const</span> startGame <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span> <span class="co">// Add this function</span></a>
-<a class="sourceLine" id="cb10-2" title="2">  <span class="at">setScreen</span>(<span class="va">SCREENS</span>.<span class="at">PLAYING</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-3" title="3"><span class="op">};</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">const</span> startGame <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span> <span class="co">// Add this function</span></a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="at">setScreen</span>(<span class="va">SCREENS</span>.<span class="at">PLAYING</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="op">};</span></a></code></pre></div></li>
 <li><p><strong>Update the first GameButton</strong> to use the real function:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="op">&lt;</span>GameButton</a>
-<a class="sourceLine" id="cb11-2" title="2">  text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
-<a class="sourceLine" id="cb11-3" title="3">  onClick<span class="op">={</span>startGame<span class="op">}</span> <span class="co">// Update onClick</span></a>
-<a class="sourceLine" id="cb11-4" title="4">  variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
-<a class="sourceLine" id="cb11-5" title="5">/&gt;</a></code></pre></div></li>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="op">&lt;</span>GameButton</a>
+<a class="sourceLine" id="cb13-2" title="2">  text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
+<a class="sourceLine" id="cb13-3" title="3">  onClick<span class="op">={</span>startGame<span class="op">}</span> <span class="co">// Update onClick</span></a>
+<a class="sourceLine" id="cb13-4" title="4">  variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
+<a class="sourceLine" id="cb13-5" title="5">/&gt;</a></code></pre></div></li>
 <li><p><strong>Test it</strong>: Click the “Start Adventure” button and watch the screen change to GameMap!</p></li>
 </ol>
 <h3 id="why-this-matters-5">💡 Why This Matters</h3>
@@ -464,45 +491,33 @@ page-break-inside: avoid !important;
 <tr class="even">
 <td>🪝 hook</td>
 <td>Functions starting with “use” that let you use React features like state and context.</td>
-<td>Hooks like useState and useContext are your tools for managing data and behavior in components.</td>
+<td>Hooks like <code>useState</code> are your tools for managing data and behavior in components.</td>
 </tr>
 <tr class="odd">
 <td>🌐 Context</td>
-<td>Lets a component receive information from distant parents without passing it as props.</td>
+<td>React’s solution to prop drilling — lets components access shared data without passing props through multiple levels.</td>
 <td>Context prevents “prop drilling” and provides shared state accessible from any component.</td>
 </tr>
 <tr class="even">
+<td>🔗 prop drilling</td>
+<td>Passing data through multiple component levels, even when intermediate components don’t need that data.</td>
+<td>Context eliminates prop drilling by letting any component access shared data directly.</td>
+</tr>
+<tr class="odd">
 <td>📦 props</td>
 <td>Data passed from parent to child components.</td>
 <td>Props flow data down the component tree, while state manages data within components.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>🔄 useState</td>
 <td>A React hook that adds local state to functional components.</td>
-<td>useState gives individual components their own memory for data that only they need to track.</td>
-</tr>
-<tr class="even">
-<td>🎯 useContext</td>
-<td>A React hook that accesses shared data from a Context Provider.</td>
-<td>useContext lets any component access shared state without prop drilling through multiple levels.</td>
-</tr>
-<tr class="odd">
-<td>📋 constants</td>
-<td>Static values that don’t change, used to prevent typos and make code more maintainable.</td>
-<td>Constants like SCREENS.SPLASH prevent typos and make refactoring easier.</td>
-</tr>
-<tr class="even">
-<td>🔀 conditional rendering</td>
-<td>Showing different components based on state or props using JavaScript expressions.</td>
-<td>Conditional rendering with &amp;&amp; lets you control what users see based on app state.</td>
-</tr>
-<tr class="odd">
-<td>🏪 Provider</td>
-<td>A Context component that makes shared state available to all child components.</td>
-<td>The Provider pattern wraps your app and gives all components access to shared data.</td>
+<td><code>useState</code> gives individual components their own memory for data that only they need to track.</td>
 </tr>
 </tbody>
 </table>
+<div class="line-block">📋 constants | Static values that don’t change, used to prevent typos and make code more maintainable. | Constants like <code>SCREENS.SPLASH</code> prevent typos and make refactoring easier. |<br />
+🔀 conditional rendering | Showing different components based on state or props using JavaScript expressions. | Conditional rendering with <code>&amp;&amp;</code> lets you control what users see based on app state. |<br />
+🏪 Provider | A Context component that makes shared state available to all child components. | The Provider pattern wraps your app and gives all components access to shared data. |</div>
 <p><a id="ask-the-ai"></a></p>
 <h2 id="ask-the-ai-state-management-mastery">🤖 Ask the AI — State Management Mastery</h2>
 <p>You just implemented both local and shared state, created screen navigation, and experienced the power of React’s Context API — excellent work!</p>

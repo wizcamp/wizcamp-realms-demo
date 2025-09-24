@@ -201,7 +201,7 @@ export default function GameButton({ text, onClick, variant = "primary" }) {
 - **Live Demo:** Inspect GameButton props in DevTools
 - **Professional Context:** "Every React developer uses this daily"
 
-### **Slide 9: Let's Build! Your GameButton Component 🚀**
+### **Slide 9: Build Your First Custom Component! 🚀**
 
 - **Today's Coding Journey:**
   1. **Create** GameButton.jsx with export default function structure

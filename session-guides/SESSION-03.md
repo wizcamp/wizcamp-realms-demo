@@ -80,7 +80,7 @@ Let's implement **local state** for the credits modal to see how components can 
 
 ### 💡 Why This Matters
 
-**Local state** with `useState` belongs to a single component and gives it its own memory. The credits modal only affects SplashScreen, so it uses local state to track whether the modal should be visible. This pattern keeps component data isolated and manageable.
+**Local state** with `useState` belongs to a single component and gives it its own memory. The credits modal only affects `SplashScreen`, so it uses local state to track whether the modal should be visible. This pattern keeps component data isolated and manageable.
 
 ### 🏆 Bonus Challenge
 
@@ -95,6 +95,26 @@ Let's understand how our game screens are organized using **constants** — stat
 1. **Explore the screens constant**: Open `src/constants/screens.js` and examine the SCREENS object
 2. **Notice the structure**: Each screen has a key (like `SPLASH`) and a descriptive value
 3. **Understand the purpose**: Instead of using strings like `"splash"` everywhere, we use `SCREENS.SPLASH`
+
+### What is Prop Drilling?
+
+**Prop drilling** is when you have to pass data through multiple component levels, even when the middle components don't need that data. It's like having to ask your friend to ask their friend to ask their friend for something — inefficient and annoying.
+
+**Example of prop drilling:**
+```
+App (has screen state)
+ ↓ passes screen as prop
+SplashScreen (doesn't need screen, just passes it along)
+ ↓ passes screen as prop  
+GameButton (finally uses screen)
+```
+
+**With Context (no prop drilling):**
+```
+GameProvider (provides screen state)
+ ↓ any component can access directly
+GameButton (uses useGame hook to get screen)
+```
 
 ### 💡 Why This Matters
 
@@ -135,7 +155,7 @@ Now let's implement the core navigation system that will control which screen us
 
 ### 💡 Why This Matters
 
-**Conditional rendering** using `&&` is a React pattern that shows components only when certain conditions are true. When `screen` equals `SCREENS.SPLASH`, the SplashScreen component renders. When it equals `SCREENS.PLAYING`, GameMap renders instead. This single piece of **shared state** controls what your entire app displays!
+**Conditional rendering** using `&&` is a React pattern that shows components only when certain conditions are true. When `screen` equals `SCREENS.SPLASH`, the `SplashScreen` component renders. When it equals `SCREENS.PLAYING`, `GameMap` renders instead. This single piece of **shared state** controls what your entire app displays!
 
 <a id="using-react-devtools-to-explore-state"></a>
 
@@ -152,7 +172,7 @@ Let's use React DevTools to see how **shared state** works behind the scenes and
 
 ### 💡 Why This Matters
 
-React DevTools gives you X-ray vision into your app's **state**. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how **shared state** affects your entire app. Notice how changing one value in GameProvider instantly changes what component renders!
+React DevTools gives you X-ray vision into your app's **state**. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how **shared state** affects your entire app. Notice how changing one value in `GameProvider` instantly changes what component renders!
 
 ### 🏆 Bonus Challenge
 
@@ -210,13 +230,14 @@ _Quick reference for all the state management concepts you just learned:_
 | Term | Definition | Why it matters |
 |------|------------|----------------|
 | 🧠 state | Data that can change over time and causes components to re-render when it changes. | State lets components "remember" information and respond to user interactions dynamically. |
-| 🪝 hook | Functions starting with "use" that let you use React features like state and context. | Hooks like useState and useContext are your tools for managing data and behavior in components. |
-| 🌐 Context | Lets a component receive information from distant parents without passing it as props. | Context prevents "prop drilling" and provides shared state accessible from any component. |
+| 🪝 hook | Functions starting with "use" that let you use React features like state and context. | Hooks like `useState` are your tools for managing data and behavior in components. |
+| 🌐 Context | React's solution to prop drilling — lets components access shared data without passing props through multiple levels. | Context prevents "prop drilling" and provides shared state accessible from any component. |
+| 🔗 prop drilling | Passing data through multiple component levels, even when intermediate components don't need that data. | Context eliminates prop drilling by letting any component access shared data directly. |
 | 📦 props | Data passed from parent to child components. | Props flow data down the component tree, while state manages data within components. |
-| 🔄 useState | A React hook that adds local state to functional components. | useState gives individual components their own memory for data that only they need to track. |
-| 🎯 useContext | A React hook that accesses shared data from a Context Provider. | useContext lets any component access shared state without prop drilling through multiple levels. |
-| 📋 constants | Static values that don't change, used to prevent typos and make code more maintainable. | Constants like SCREENS.SPLASH prevent typos and make refactoring easier. |
-| 🔀 conditional rendering | Showing different components based on state or props using JavaScript expressions. | Conditional rendering with && lets you control what users see based on app state. |
+| 🔄 useState | A React hook that adds local state to functional components. | `useState` gives individual components their own memory for data that only they need to track. |
+
+| 📋 constants | Static values that don't change, used to prevent typos and make code more maintainable. | Constants like `SCREENS.SPLASH` prevent typos and make refactoring easier. |
+| 🔀 conditional rendering | Showing different components based on state or props using JavaScript expressions. | Conditional rendering with `&&` lets you control what users see based on app state. |
 | 🏪 Provider | A Context component that makes shared state available to all child components. | The Provider pattern wraps your app and gives all components access to shared data. |
 
 <a id="ask-the-ai"></a>

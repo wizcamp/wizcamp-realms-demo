@@ -137,15 +137,15 @@ code {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
 font-size: 13px !important;
 font-weight: 500 !important;
-background-color: #f1f3f4 !important;
-color: #c7254e !important;
-padding: 2px 4px !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
 border-radius: 3px !important;
-border: 1px solid #d1d5da !important;
 white-space: nowrap;
 word-break: break-word;
 -webkit-print-color-adjust: exact !important;
 print-color-adjust: exact !important;
+text-decoration: none !important;
 }
 pre {
 font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
@@ -163,6 +163,9 @@ font-size: 14px !important;
 line-height: 1.4 !important;
 display: block !important;
 width: 100% !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 
 @media print {
@@ -170,9 +173,20 @@ pre {
 white-space: pre !important;
 font-family: "JetBrains Mono", monospace !important;
 display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 pre * {
 white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
 }
 }
 pre code {
@@ -180,6 +194,7 @@ background-color: transparent !important;
 border: none !important;
 padding: 0 !important;
 color: #24292f !important;
+text-decoration: none !important;
 }
 ul, ol {
 padding-left: 1.8em;
@@ -364,7 +379,7 @@ page-break-inside: avoid !important;
 <li><p><strong>Test it</strong>: Click your button and see the alert!</p></li>
 </ol>
 <h3 id="why-this-matters-2">💡 Why This Matters</h3>
-<p><strong>Functions as props</strong> are like giving your components different personalities. Your GameButton can do different things depending on where you use it — same button, different actions. It’s a key pattern in React for building interactive apps.</p>
+<p><strong>Functions as props</strong> are like giving your components different personalities. Your <code>GameButton</code> can do different things depending on where you use it — same button, different actions. It’s a key pattern in React for building interactive apps.</p>
 <p><a id="styling-with-variants"></a></p>
 <h2 id="styling-with-variants">🎨 Styling with Variants</h2>
 <p>Let’s add visual variety to your buttons using CSS classes, default parameters, and a clean variable approach.</p>
@@ -388,7 +403,7 @@ page-break-inside: avoid !important;
 <li><p><strong>Admire your styled button</strong>: Your button now has the primary styling!</p></li>
 </ol>
 <h3 id="why-this-matters-3">💡 Why This Matters</h3>
-<p><strong>className</strong> is React’s version of the HTML <code>class</code> attribute. We use a <strong>template literal</strong> to build a dynamic class name like <code>game-button primary</code>. This matches the styles already defined in your project. The <code>variant</code> prop lets you switch between styles like <code>primary</code> and <code>secondary</code>, and <strong>default parameters</strong> like <code>variant = &quot;primary&quot;</code> ensure your component still works even if no variant is passed.</p>
+<p><strong><code>className</code></strong> is React’s version of the HTML <code>class</code> attribute. We use a <strong>template literal</strong> to build a dynamic class name like <code>game-button primary</code>. This matches the styles already defined in your project. The <code>variant</code> prop lets you switch between styles like <code>primary</code> and <code>secondary</code>, and <strong>default parameters</strong> like <code>variant = &quot;primary&quot;</code> ensure your component still works even if no variant is passed.</p>
 <p><a id="reusing-your-component"></a></p>
 <h2 id="reusing-your-component">🔄 Reusing Your Component</h2>
 <p>Now that you’ve built a complete, fully-featured GameButton component, let’s experience the power of reusability by adding a second button for the game’s credits.</p>
@@ -402,7 +417,7 @@ page-break-inside: avoid !important;
 <li><p><strong>Admire your work</strong>: You now have two different buttons using the same component!</p></li>
 </ol>
 <h3 id="why-this-matters-4">💡 Why This Matters</h3>
-<p><strong>Component reusability</strong> is React’s superpower. You wrote the GameButton code once, but now you can use it anywhere in your app with different props. Thanks to your stylesheet, each variant (<code>primary</code>, <code>secondary</code>) automatically applies the right look — no extra styling needed.</p>
+<p><strong>Component reusability</strong> is React’s superpower. You wrote the <code>GameButton</code> code once, but now you can use it anywhere in your app with different props. Thanks to your stylesheet, each variant (<code>primary</code>, <code>secondary</code>) automatically applies the right look — no extra styling needed.</p>
 <h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
 <p>Try adding a third GameButton with <code>variant=&quot;primary&quot;</code> and <code>text=&quot;Instructions&quot;</code> to see how easy it is to scale your UI!</p>
 <p><a id="install-react-devtools"></a></p>
@@ -479,12 +494,12 @@ page-break-inside: avoid !important;
 <tr class="odd">
 <td>✨ JSX</td>
 <td>JavaScript syntax that looks like HTML — used to describe UI in React components (<code>.jsx</code>).</td>
-<td>You’ll write JSX in your GameButton component to describe what the button should look like.</td>
+<td>You’ll write JSX in your <code>GameButton</code> component to describe what the button should look like.</td>
 </tr>
 <tr class="even">
 <td>🎨 className</td>
 <td>React’s version of the HTML <code>class</code> attribute for applying CSS styles.</td>
-<td>Use className instead of class because class is a reserved word in JavaScript.</td>
+<td>Use <code>className</code> instead of <code>class</code> because <code>class</code> is a reserved word in JavaScript.</td>
 </tr>
 <tr class="odd">
 <td>📤 destructuring</td>

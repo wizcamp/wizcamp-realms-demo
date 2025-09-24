@@ -135,15 +135,15 @@ code {
   font-family: "$CODE_FONT", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
   font-size: 13px !important;
   font-weight: 500 !important;
-  background-color: #f1f3f4 !important;
-  color: #c7254e !important;
-  padding: 2px 4px !important;
+  background-color: #f6f8fa !important;
+  color: #24292f !important;
+  padding: 1px 3px !important;
   border-radius: 3px !important;
-  border: 1px solid #d1d5da !important;
   white-space: nowrap;
   word-break: break-word;
   -webkit-print-color-adjust: exact !important;
   print-color-adjust: exact !important;
+  text-decoration: none !important;
 }
 
 pre {
@@ -162,6 +162,9 @@ pre {
   line-height: 1.4 !important;
   display: block !important;
   width: 100% !important;
+  text-decoration: none !important;
+  -webkit-text-decorations-in-effect: none !important;
+  font-variant-ligatures: none !important;
 }
 
 /* Force Chrome to preserve whitespace in PDF */
@@ -170,10 +173,22 @@ pre {
     white-space: pre !important;
     font-family: "$CODE_FONT", monospace !important;
     display: block !important;
+    text-decoration: none !important;
+    -webkit-text-decorations-in-effect: none !important;
+    font-variant-ligatures: none !important;
   }
   
   pre * {
     white-space: pre !important;
+    text-decoration: none !important;
+    -webkit-text-decorations-in-effect: none !important;
+    font-variant-ligatures: none !important;
+  }
+  
+  code {
+    text-decoration: none !important;
+    -webkit-text-decorations-in-effect: none !important;
+    font-variant-ligatures: none !important;
   }
 }
 
@@ -182,6 +197,7 @@ pre code {
   border: none !important;
   padding: 0 !important;
   color: #24292f !important;
+  text-decoration: none !important;
 }
 ul, ol {
   padding-left: 1.8em;

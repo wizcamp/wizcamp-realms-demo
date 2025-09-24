@@ -100,12 +100,25 @@ Should be: [Suggested correction]
   - Do not include comments solely to explain code or concepts
   - Comments should indicate what students will actually do: `// Add this function`, `// Add cache check`, `// Update this line`
   - Flag explanatory comments that don't guide student actions
+- **Code Formatting Consistency**: Is the code formatting rule applied consistently?
+  - Use backticks only for actual code identifiers that students type in their codebase
+  - Code identifiers: Use backticks (`GameButton`, `useGame`, `SCREENS.SPLASH`, `className="game-over"`)
+  - Conceptual terms: No backticks ("**Components** are reusable", "**React** uses virtual DOM", "**state** management")
+  - Technology names: No backticks ("**APIs**", "**JSON**", "**HTTP**")
+  - File references: Always use backticks (`src/components/GameOver.jsx`)
+  - Flag incorrect backticks on concepts like **`Components`** that should be **Components**
 - **Tone and Audience Appropriateness**: Is content engaging and relatable for 13-18 year olds?
   - Check "Why This Matters" sections use conversational, empowering language
   - Verify metaphors and examples resonate with teenage experiences
   - Ensure tone avoids corporate jargon, academic dryness, and excessive exclamations
   - Confirm genuine excitement and capability-building focus rather than abstract professional development
   - Flag overly cheesy language or excessive use of "awesome/super/amazing" without substance
+- **Term Definition Consistency**: Are technical terms defined consistently between student and instructor guides?
+  - Compare Essential Terms definitions in SESSION-XX.md with corresponding concept explanations in SESSION-XX-instruction.md
+  - Ensure the same term uses identical or compatible definitions across both guides
+  - Flag cases where student guide has superior definition clarity that should be adopted in instructor guide
+  - Verify that instructor slide content aligns with student Essential Terms definitions
+  - Check that Learning Outcomes use terminology consistent with Essential Terms definitions
 
 ### List Indentation Check
 For each SESSION-XX.md student guide and SESSION-XX-instruction.md instructor guide:
@@ -131,4 +144,13 @@ For each SESSION-XX.md student guide:
 - Flag excessive exclamations, overuse of "awesome/super/amazing", or language that feels forced or cheesy
 - Ensure enthusiasm feels natural and respects the audience's intelligence
 
-Review all session guides and report any continuity, ordering, or tone issues found.
+### Step 9: Verify Term Definition Consistency
+For each SESSION-XX pair (student guide and instructor guide):
+- Compare Essential Terms definitions in SESSION-XX.md with concept explanations in SESSION-XX-instruction.md
+- Verify identical terms use consistent definitions across both guides
+- Check that instructor slide content aligns with student Essential Terms definitions
+- Flag superior definitions in student guides that should be adopted in instructor guides
+- Ensure Learning Outcomes terminology matches Essential Terms definitions
+- Report any definitional inconsistencies that could confuse students or instructors
+
+Review all session guides and report any continuity, ordering, tone, or definitional consistency issues found.

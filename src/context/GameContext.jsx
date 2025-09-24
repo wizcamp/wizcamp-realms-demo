@@ -23,6 +23,7 @@ import { fetchQuestions } from "../services/trivia";
  * │     GAME STATE      │ Type          │ Description                       │
  * ├─────────────────────┼───────────────┼───────────────────────────────────┤
  * │ screen              │ string        │ Current screen to display         │
+ * │ score               │ number        │ Player's current points           │
  * │ zoneProgress        │ object        │ Which zones are completed         │
  * │ activeZone          │ number/null   │ Current unlocked zone ID          │
  * │ currentZone         │ object/null   │ Full data for active zone         │
@@ -119,14 +120,11 @@ export function GameProvider({ children }) {
 
   // Handle correct answer: add points and track it
   const recordCorrectAnswer = () => {
-    // TODO: Session 8 - Add score increment
     setCorrectAnswers((prev) => prev + 1);
   };
 
   // Handle wrong answer: subtract points (but don't go below 0)
-  const recordIncorrectAnswer = () => {
-    // TODO: Session 8 - Add score decrement
-  };
+  const recordIncorrectAnswer = () => {};
 
   // Move to the next question
   const nextQuestion = () => {
@@ -148,7 +146,6 @@ export function GameProvider({ children }) {
         ...prev,
         [activeZone]: { completed: true },
       }));
-      // TODO: Session 8 - Add clearQuestionCache call
 
       // Check if this was the final zone
       if (activeZone === ZONES.length - 1) {
@@ -159,7 +156,6 @@ export function GameProvider({ children }) {
 
   // Reset everything to start over
   const resetGame = () => {
-    // TODO: Session 8 - Add score reset
     setZoneProgress({
       0: { completed: false },
       1: { completed: false },
@@ -169,11 +165,10 @@ export function GameProvider({ children }) {
     setCurrentQuestions([]);
     setCurrentQuestion(0);
     setCorrectAnswers(0);
-    // TODO: Session X - Add clearAllQuestionCache call
   };
 
   return (
-    <GameContext.Provider
+    <GameContext
       value={{
         // GAME STATE
         screen,
@@ -199,7 +194,7 @@ export function GameProvider({ children }) {
       }}
     >
       {children}
-    </GameContext.Provider>
+    </GameContext>
   );
 }
 

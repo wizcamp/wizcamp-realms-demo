@@ -1,8 +1,13 @@
 import { useGame } from "../hooks/useGame";
 
 /**
- * Current Zone Display - Shows active zone information
+ * HUD - Heads Up Display
+ *
+ * TODO: Session 8 - Add Scoreboard component
+ * TODO: Session 9 - Add MusicToggle component
  */
+
+// Current Zone Display - Shows active zone information
 function CurrentZone() {
   const { currentZone } = useGame();
 
@@ -16,12 +21,7 @@ function CurrentZone() {
   );
 }
 
-/**
- * HUD - Heads Up Display
- *
- * TODO: Session 8 - Add Scoreboard component
- * TODO: Session 9 - Add MusicToggle component
- */
+// Main HUD component
 export default function HUD() {
   return <CurrentZone />;
 }
