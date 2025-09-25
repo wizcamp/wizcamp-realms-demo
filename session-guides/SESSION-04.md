@@ -1,6 +1,6 @@
 # Session 4 — Configuring Game Zones
 
-Data-Driven Architecture 🗺️
+Data-Driven Design 📊
 
 You're about to design the heart of your trivia game — the zone configuration that defines your entire game experience! This guide walks you through creating cohesive zone themes, understanding JavaScript data structures, and building the metadata that powers your adventure. Ready to architect your game world? Let's go!
 

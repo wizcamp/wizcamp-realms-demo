@@ -1,6 +1,6 @@
 # Session 7 — Creating the Quiz Experience
 
-Building Complex Interactive Components 🎯
+Building Complex Interactive Components 🎛️
 
 You're about to build the heart of your trivia game — interactive quiz components that bring your cached questions to life! This guide walks you through component composition, array mapping patterns, and creating dynamic user feedback systems. Ready to transform your static zones into engaging quiz experiences? Let's go!
 

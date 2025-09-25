@@ -14,7 +14,7 @@ Verify session continuity, naming conventions, and content quality across all SE
 ### Step 1: Verify Session Naming Convention
 For each SESSION-XX.md student guide:
 - Check title format: `# Session X — [Student-Friendly Name]`
-- Check subtitle format: `[Technical Concept] 🎯`
+- Check subtitle format: `[Technical Concept] [emoji]` (emoji should match instructor guide)
 - Verify student-friendly name emphasizes what students are building/achieving
 - Verify technical concept provides educational context without overwhelming
 
@@ -22,7 +22,7 @@ For each SESSION-XX-instruction.md instructor guide:
 - Check file title format: `# Session X Instructor Guide: [Technical Name]`
 - Check Slide 1 heading format: `### **Slide 1: [Technical Name] [emoji]**` (technical name with topic emoji)
 - Check last slide heading format: `### **Slide X: What's Next - [Next Session Technical Name] [emoji]**`
-- Verify emojis match session topics (🧩 components, 🧠 state, 🌐 APIs, ⚡ caching, etc.)
+- Verify emojis are consistent between student and instructor guides for each session
 - Check slide titles include both names: `"Session X: [Technical Name] — [Student-Friendly Name]"`
 - Verify session recaps reference student-friendly names from previous sessions
 - Ensure dual naming provides complete pedagogical context
@@ -93,7 +93,7 @@ Should be: [Suggested correction]
 
 ### 2. Technical Formatting
 - **File titles**: Instructor guides use `# Session X Instructor Guide: [Technical Name]`
-- **Slide headings**: Slide 1 and last slide follow correct format with topic-appropriate emojis
+- **Slide headings**: Slide 1 and last slide follow correct format with emojis matching student guides
 - **Code blocks**: Include language qualifiers (```javascript, ```bash, ```json)
 - **List indentation**: 3-space indentation for content following list items
 - **Code formatting**: Backticks only for code identifiers, not concepts
@@ -112,6 +112,7 @@ Should be: [Suggested correction]
 - **Accept**: "Best Practice" as standard nomenclature
 
 ### 5. Cross-Guide Consistency
+- **Emoji alignment**: Student guide emojis match corresponding instructor guide emojis
 - **Term definitions**: Student Essential Terms align with instructor explanations
 - **Section ordering**: Learning Outcomes, Instruction, Slides follow same sequence
 - **Terminology**: Consistent usage across all guides

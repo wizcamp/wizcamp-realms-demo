@@ -37,7 +37,7 @@
 
 ## Slide Deck Outline
 
-### **Slide 1: Data-Driven Design 🏗️**
+### **Slide 1: Data-Driven Design 📊**
 
 - **Title:** "Session 4: Data-Driven Design — Configuring Game Zones"
 - **Session 3 Recap:** "Last time: You managed game flow with shared state, implemented local state for modals, and gained React DevTools expertise"

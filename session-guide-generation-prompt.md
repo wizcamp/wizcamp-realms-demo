@@ -12,7 +12,7 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 - **Primary Title**: Student-friendly, game-centric name that emphasizes what students are building/achieving
 - **Format**: `# Session X — [Student-Friendly Name]`
 - **Subtitle**: Technical concept (smaller text, provides educational context)
-- **Subtitle Format**: `[Technical Concept] 🎯`
+- **Subtitle Format**: `[Technical Concept] [emoji]` (emoji should match corresponding instructor guide)
 
 **Instructor Guides (SESSION-XX-instruction.md):**
 - **File Title**: Use technical name: `# Session X Instructor Guide: [Technical Name]`
@@ -21,7 +21,7 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 - **Slide Titles**: Include both names for complete pedagogical context
 - **Format**: `"Session X: [Technical Name] — [Student-Friendly Name]"`
 - **Session Recaps**: Reference student-friendly names from previous sessions
-- **Emoji Usage**: Match emoji to session topic (🧩 components, 🧠 state, 🌐 APIs, ⚡ caching, etc.)
+- **Emoji Usage**: Use topic-appropriate emojis that match between student and instructor guides (🎉 welcome, 🧩 components, 🧠 state, 📊 data, 🌐 APIs, 💾 storage, 🎛️ interactive, 🏆 scoring, 🎵 audio)
 
 **Session Name Reference:**
 | Session | Technical Name | Student-Friendly Name |

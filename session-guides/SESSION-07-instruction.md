@@ -33,7 +33,7 @@
 
 ## Slide Deck Outline
 
-### **Slide 1: Building Complex Interactive Components 🎯**
+### **Slide 1: Building Complex Interactive Components 🎛️**
 
 - **Title:** "Session 7: Building Complex Interactive Components — Creating the Quiz Experience"
 - **Session 6 Recap:** "Last time: You added question caching with localStorage for lightning-fast loading"

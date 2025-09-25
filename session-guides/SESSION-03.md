@@ -1,6 +1,6 @@
 # Session 3 — Managing Game Flow
 
-Shared State with Context 🎮
+Shared State with Context 🧠
 
 You're about to unlock one of React's most powerful features — shared state that controls your entire app! This guide walks you through implementing screen navigation, understanding the difference between local and shared state, and using React's Context API to manage game flow. Ready to make your buttons actually navigate? Let's go!
 

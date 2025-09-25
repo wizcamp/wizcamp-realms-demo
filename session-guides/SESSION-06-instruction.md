@@ -36,7 +36,7 @@
 
 ## Slide Deck Outline
 
-### **Slide 1: Browser Storage & Caching ⚡**
+### **Slide 1: Browser Storage & Caching 💾**
 
 - **Title:** \"Session 6: Browser Storage & Caching — Adding Question Caching\"
 - **Session 5 Recap:** \"Last time: You generated dynamic questions from real APIs, mastered async/await, and transformed external data into game-ready format\"
