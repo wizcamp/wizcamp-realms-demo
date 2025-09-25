@@ -381,20 +381,20 @@ overflow-x: hidden !important;
 <h2 id="instruction">Instruction</h2>
 <p><strong>Instructor introduces key concepts students need to succeed:</strong></p>
 <ol type="1">
-<li><strong>Performance and User Experience</strong> - Introduce caching as a professional strategy that transforms slow, network-dependent apps into fast, responsive experiences—just like the ones students use every day (e.g., YouTube, Instagram)</li>
+<li><strong>Performance and User Experience</strong> - Introduce caching as a smart strategy that transforms slow, network-dependent apps into fast, responsive experiences—just like the apps students use every day</li>
 <li><strong>Rate Limiting and API Constraints</strong> - Explain why APIs limit request frequency and how caching helps avoid these limits</li>
 <li><strong>Browser Storage Fundamentals</strong> - Define localStorage as persistent key-value storage with CRUD operations</li>
-<li><strong>Cache-Aside Pattern</strong> - Introduce the professional caching strategy: check cache, fetch on miss, store result</li>
+<li><strong>Cache-Aside Pattern</strong> - Introduce the widely-used caching strategy: check cache, fetch on miss, store result</li>
 <li><strong>Serialization for Storage</strong> - Show how JSON.stringify/parse enables complex data storage in text-only localStorage</li>
 <li><strong>Dynamic Cache Key Generation</strong> - Use template literals to create unique, descriptive cache identifiers</li>
 <li><strong>Ternary Operator Mastery</strong> - Introduce concise conditional syntax for clean cache retrieval logic</li>
 <li><strong>DevTools for Cache Inspection</strong> - Guide students through inspecting localStorage in DevTools: locate the Application tab, find your domain, view stored keys, and test cache hits/misses by manually deleting entries</li>
-<li><strong>Professional Caching Patterns</strong> - Connect today’s implementation to real-world caching strategies</li>
+<li><strong>Real-World Caching Patterns</strong> - Connect today’s implementation to real-world caching strategies</li>
 <li><strong>Let’s Cache!</strong> - Launch hands-on mission: implement complete caching system with helper functions and testing</li>
 </ol>
 <hr />
 <h2 id="slide-deck-outline">Slide Deck Outline</h2>
-<h3 id="slide-1-welcome-to-performance-optimization"><strong>Slide 1: Welcome to Performance Optimization! ⚡</strong></h3>
+<h3 id="slide-1-browser-storage-caching"><strong>Slide 1: Browser Storage &amp; Caching ⚡</strong></h3>
 <ul>
 <li><strong>Title:</strong> &quot;Session 6: Browser Storage &amp; Caching — Adding Question Caching&quot;</li>
 <li><strong>Session 5 Recap:</strong> &quot;Last time: You generated dynamic questions from real APIs, mastered async/await, and transformed external data into game-ready format&quot;</li>
@@ -405,7 +405,7 @@ overflow-x: hidden !important;
 <li><strong>Master</strong> browser storage with CRUD operations</li>
 <li><strong>Build</strong> helper functions for clean cache management</li>
 <li><strong>Experience</strong> the performance difference caching makes</li>
-<li><strong>Handle</strong> rate limiting and network constraints professionally</li>
+<li><strong>Handle</strong> rate limiting and network constraints effectively</li>
 </ul></li>
 <li><strong>Visual:</strong> Performance comparison showing cached vs uncached loading times</li>
 <li><strong>Demo:</strong> Show network tab with repeated requests vs instant cache retrieval</li>
@@ -424,8 +424,8 @@ overflow-x: hidden !important;
 </ul></li>
 <li><strong>Visual:</strong> Timeline showing multiple slow network requests</li>
 <li><strong>The Solution Preview:</strong> &quot;Caching stores API responses locally for instant access&quot;</li>
-<li><strong>Professional Context:</strong> &quot;Every major app uses caching — YouTube, Netflix, Instagram all cache content locally&quot;</li>
-<li><strong>Student Motivation:</strong> &quot;Your game will feel as responsive as professional apps&quot;</li>
+<li><strong>Real-World Context:</strong> &quot;Every major app uses caching — social media, streaming, and gaming apps all cache content locally&quot;</li>
+<li><strong>Student Motivation:</strong> &quot;Your game will feel as responsive as the apps you use every day&quot;</li>
 <li><strong>Student Connection:</strong> &quot;You’ll eliminate delays and make your game feel instant for repeat players&quot;</li>
 </ul>
 <h3 id="slide-3-rate-limiting---why-apis-restrict-access"><strong>Slide 3: Rate Limiting - Why APIs Restrict Access 🚦</strong></h3>
@@ -450,7 +450,7 @@ overflow-x: hidden !important;
 <li><strong>Avoids rate limits</strong> - No repeated requests for same data</li>
 <li><strong>Improves reliability</strong> - Works even when API is temporarily down</li>
 </ul></li>
-<li><strong>Professional Insight:</strong> &quot;All major APIs have rate limits — caching is essential&quot;</li>
+<li><strong>Key Insight:</strong> &quot;All major APIs have rate limits — caching is essential&quot;</li>
 </ul>
 <h3 id="slide-4-browser-storage---your-browsers-built-in-database-️"><strong>Slide 4: Browser Storage - Your Browser’s Built-in Database 🗄️</strong></h3>
 <ul>
@@ -476,7 +476,7 @@ overflow-x: hidden !important;
 <li><strong>Synchronous operations</strong> - Can block main thread with large data</li>
 </ul></li>
 <li><strong>Student Connection:</strong> &quot;Perfect for caching your trivia questions&quot;</li>
-<li><strong>Professional Context:</strong> &quot;Web apps use localStorage to persist user preferences, game progress, and cached content for offline access&quot;</li>
+<li><strong>Real-World Context:</strong> &quot;Web apps use localStorage to persist user preferences, game progress, and cached content for offline access&quot;</li>
 </ul>
 <h3 id="slide-5-crud-operations---managing-stored-data"><strong>Slide 5: CRUD Operations - Managing Stored Data 📋</strong></h3>
 <ul>
@@ -551,7 +551,7 @@ overflow-x: hidden !important;
 <li><strong>Student Application:</strong> &quot;Your cache functions will handle serialization automatically&quot;</li>
 <li><p><strong>Student Connection:</strong> &quot;You’ll serialize and deserialize trivia questions to store them in localStorage&quot;</p></li>
 </ul>
-<h3 id="slide-7-cache-aside-pattern---professional-caching-strategy"><strong>Slide 7: Cache-Aside Pattern - Professional Caching Strategy 🎯</strong></h3>
+<h3 id="slide-7-cache-aside-pattern---widely-used-caching-strategy"><strong>Slide 7: Cache-Aside Pattern - Widely-Used Caching Strategy 🎯</strong></h3>
 <ul>
 <li><strong>Title:</strong> &quot;The Industry-Standard Caching Pattern&quot;</li>
 <li><p><strong>Visual:</strong> Cache-aside flowchart diagram</p>
@@ -585,7 +585,7 @@ flowchart TD
 <li><strong>Freshness</strong> - New data automatically cached</li>
 <li><strong>Key-based organization</strong> - Unique identifiers prevent conflicts</li>
 </ul></li>
-<li><strong>Professional Usage:</strong> &quot;Used by Redis, Memcached, and all major caching systems&quot;</li>
+<li><strong>Real-World Usage:</strong> &quot;Used by Redis, Memcached, and all major caching systems&quot;</li>
 <li><p><strong>Student Implementation:</strong> &quot;Your fetchQuestions will follow this exact pattern&quot;</p></li>
 </ul>
 <h3 id="slide-8-dynamic-cache-keys---unique-identifiers"><strong>Slide 8: Dynamic Cache Keys - Unique Identifiers 🔑</strong></h3>
@@ -609,7 +609,7 @@ flowchart TD
 <li><strong>Consistent</strong> - Same pattern everywhere</li>
 <li><strong>Debuggable</strong> - Easy to identify in DevTools</li>
 </ul></li>
-<li><p><strong>Professional Practice:</strong> &quot;Good cache keys are self-documenting&quot;</p></li>
+<li><p><strong>Best Practice:</strong> &quot;Good cache keys are self-documenting&quot;</p></li>
 </ul>
 <h3 id="slide-9-ternary-operator---concise-conditional-logic"><strong>Slide 9: Ternary Operator - Concise Conditional Logic ❓</strong></h3>
 <ul>
@@ -654,7 +654,7 @@ flowchart TD
 <li><strong>Delete cache entry</strong> to test cache miss</li>
 <li><strong>Click zone again</strong> to verify re-caching</li>
 </ol></li>
-<li><strong>Professional Usage:</strong> &quot;Essential for debugging storage issues in production apps&quot;</li>
+<li><strong>Real-World Usage:</strong> &quot;Essential for debugging storage issues in real apps&quot;</li>
 </ul>
 <h3 id="slide-11-add-question-caching"><strong>Slide 11: Add Question Caching! 🚀</strong></h3>
 <ul>
@@ -674,13 +674,13 @@ flowchart TD
 <li>Cache persists across browser refreshes</li>
 <li>DevTools shows stored question data</li>
 </ul></li>
-<li><strong>Professional Workflow:</strong> &quot;Build incrementally, test frequently, debug with tools&quot;</li>
+<li><strong>Development Workflow:</strong> &quot;Build incrementally, test frequently, debug with tools&quot;</li>
 </ul>
 <h3 id="hands-on-work-happens-here"><strong>[HANDS-ON WORK HAPPENS HERE]</strong></h3>
-<h3 id="slide-12-whats-next---interactive-quiz-components"><strong>Slide 12: What’s Next - Interactive Quiz Components 🎮</strong></h3>
+<h3 id="slide-12-whats-next---building-complex-interactive-components"><strong>Slide 12: What’s Next - Building Complex Interactive Components 🎯</strong></h3>
 <ul>
 <li><strong>Title:</strong> &quot;Preview of Session 7&quot;</li>
-<li><strong>Today’s Achievement:</strong> &quot;You built a professional caching system that makes your game lightning-fast&quot;</li>
+<li><strong>Today’s Achievement:</strong> &quot;You built a robust caching system that makes your game lightning-fast&quot;</li>
 <li><strong>Next Challenge:</strong> &quot;Create interactive quiz components with modal overlays&quot;</li>
 <li><strong>Concepts Coming:</strong>
 <ul>

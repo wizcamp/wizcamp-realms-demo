@@ -361,7 +361,7 @@ overflow-x: hidden !important;
 </style>
 </head>
 <body>
-<h1 id="session-4-instructor-guide-configuring-game-zones">Session 4 Instructor Guide: Configuring Game Zones</h1>
+<h1 id="session-4-instructor-guide-data-driven-design">Session 4 Instructor Guide: Data-Driven Design</h1>
 <h2 id="learning-outcomes">Learning Outcomes</h2>
 <p><strong>By the end of Session 4, students will be able to:</strong></p>
 <ol type="1">
@@ -388,14 +388,14 @@ overflow-x: hidden !important;
 <li><strong>React Fragments</strong> - Solve the single root element requirement when returning multiple components</li>
 <li><strong>Coordinate Positioning</strong> - Use the CoordinateDisplay tool to find exact (x, y) positions for your zone labels — and see them update in real time</li>
 <li><strong>Nested Data Structures</strong> - Show how arrays of objects with object properties represent complex game data</li>
-<li><strong>Professional Development Patterns</strong> - Emphasize configuration-driven design as an industry best practice</li>
+<li><strong>Development Patterns</strong> - Emphasize configuration-driven design as a widely-used best practice</li>
 <li><strong>State Management Testing</strong> - Use React DevTools to simulate zone completion and test game behavior — without needing to play through each level</li>
 <li><strong>Zone Theme Planning</strong> - Guide students through cohesive theme creation that matches visual and content elements</li>
 <li><strong>Let’s Configure!</strong> - Launch the coding mission: design zones, update metadata, position labels, and test your game world</li>
 </ol>
 <hr />
 <h2 id="slide-deck-outline">Slide Deck Outline</h2>
-<h3 id="slide-1-welcome-to-game-architecture-️"><strong>Slide 1: Welcome to Game Architecture! 🏗️</strong></h3>
+<h3 id="slide-1-data-driven-design-️"><strong>Slide 1: Data-Driven Design 🏗️</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Session 4: Data-Driven Design — Configuring Game Zones”</li>
 <li><strong>Session 3 Recap:</strong> “Last time: You managed game flow with shared state, implemented local state for modals, and gained React DevTools expertise”</li>
@@ -411,7 +411,7 @@ overflow-x: hidden !important;
 <li><strong>Visual:</strong> Game map with three distinct themed zones</li>
 <li><strong>Connection:</strong> “You’ve built the navigation system — now you’ll populate it with rich, configurable content!”</li>
 </ul>
-<h3 id="slide-2-data-driven-architecture---the-professional-approach"><strong>Slide 2: Data-Driven Architecture - The Professional Approach 📋</strong></h3>
+<h3 id="slide-2-data-driven-architecture---the-modern-approach"><strong>Slide 2: Data-Driven Architecture - The Modern Approach 📋</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Separating Data from Code”</li>
 <li><strong>The Problem:</strong> Hardcoded game content scattered throughout components</li>
@@ -424,7 +424,7 @@ overflow-x: hidden !important;
 <li><strong>Testing</strong> - Easy to test different configurations</li>
 </ul></li>
 <li><strong>Real Example:</strong> <code>zones.js</code> defines all zone properties in one place</li>
-<li><strong>Professional Context:</strong> “Netflix, Spotify, and gaming companies use this pattern for content management”</li>
+<li><strong>Real-World Context:</strong> “Streaming apps and gaming companies use this pattern for content management”</li>
 <li><strong>Student Preview:</strong> “Your zones.js file is the DNA of your game experience”</li>
 </ul>
 <h3 id="slide-3-metadata---data-about-data-️"><strong>Slide 3: Metadata - Data About Data 🏷️</strong></h3>
@@ -559,7 +559,7 @@ overflow-x: hidden !important;
 <li><strong>Note category IDs</strong> - Numbers you’ll use in configuration</li>
 <li><strong>Plan cohesive themes</strong> - You choose the trivia categories that shape your zone themes</li>
 </ol></li>
-<li><strong>Professional Context:</strong> “Real apps integrate with external APIs for dynamic content”</li>
+<li><strong>Real-World Context:</strong> “Real apps integrate with external APIs for dynamic content”</li>
 <li><strong>Student Mission:</strong> “Choose categories that create immersive, themed experiences”</li>
 <li><strong>🎯 Student Activity (2-3 min):</strong> Have students browse the API categories and write down 3 category IDs that match their planned zone themes (Forest/easy, Desert/medium, Ice Castle/hard)</li>
 </ul>
@@ -578,7 +578,7 @@ overflow-x: hidden !important;
 <li><strong>Precise placement</strong> - Find exact coordinates for zone labels</li>
 <li><strong>Visual testing</strong> - See immediately where elements will appear</li>
 </ul></li>
-<li><strong>Professional Usage:</strong> “Game developers and UI designers use coordinate systems for precise layouts”</li>
+<li><strong>Real-World Usage:</strong> “Game developers and UI designers use coordinate systems for precise layouts”</li>
 <li><strong>Student Workflow:</strong>
 <ol type="1">
 <li>Move mouse around game map</li>
@@ -637,7 +637,7 @@ overflow-x: hidden !important;
 <li><strong>Plan progression</strong> - Easy to hard difficulty curve</li>
 <li><strong>Design cohesively</strong> - Names and subtitles that fit themes</li>
 </ol></li>
-<li><strong>Professional Insight:</strong> “Game designers spend significant time on thematic coherence”</li>
+<li><strong>Key Insight:</strong> “Game designers spend significant time on thematic coherence”</li>
 </ul>
 <h3 id="slide-11-design-your-game-world"><strong>Slide 11: Design Your Game World! 🚀</strong></h3>
 <ul>
@@ -656,7 +656,7 @@ overflow-x: hidden !important;
 <li>Properly positioned zone labels on the game map</li>
 <li>HUD displaying current zone information</li>
 </ul></li>
-<li><strong>Professional Workflow:</strong> “Plan first, implement systematically, test thoroughly”</li>
+<li><strong>Development Workflow:</strong> “Plan first, implement systematically, test thoroughly”</li>
 </ul>
 <h3 id="hands-on-work-happens-here"><strong>[HANDS-ON WORK HAPPENS HERE]</strong></h3>
 <h3 id="slide-12-react-devtools---configuration-testing"><strong>Slide 12: React DevTools - Configuration Testing 🔍</strong></h3>
@@ -670,7 +670,7 @@ overflow-x: hidden !important;
 <li><strong>Observe cascading effects</strong> - Watch activeZone and currentZone update</li>
 <li><strong>Check UI updates</strong> - See HUD reflect new game state</li>
 </ol></li>
-<li><strong>Professional Benefits:</strong>
+<li><strong>Key Benefits:</strong>
 <ul>
 <li><strong>Rapid testing</strong> - No need to play through entire game</li>
 <li><strong>Edge case exploration</strong> - Test unusual game states</li>
@@ -678,7 +678,7 @@ overflow-x: hidden !important;
 </ul></li>
 <li><strong>Student Empowerment:</strong> “You can test any game scenario instantly”</li>
 </ul>
-<h3 id="slide-13-whats-next---api-integration"><strong>Slide 13: What’s Next - API Integration 🌐</strong></h3>
+<h3 id="slide-13-whats-next---connecting-to-external-apis"><strong>Slide 13: What’s Next - Connecting to External APIs 🌐</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Preview of Session 5”</li>
 <li><strong>Today’s Achievement:</strong> “You designed game content using data-driven architecture”</li>

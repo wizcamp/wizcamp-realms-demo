@@ -1,16 +1,16 @@
-# Session 1 Instructor Guide: Setting Up Your Trivia Game
+# Session 1 Instructor Guide: Welcome to React Development
 
 ## Learning Outcomes
 
 **By the end of Session 1, students will be able to:**
 
-1. **Embrace the developer role** at Wizcamp Enterprises and understand the course scope including the 12-session exploration and hands-on approach
+1. **Embrace the developer role** at Wizcamp and understand the course scope including the 12-session exploration and hands-on approach
 2. **Explain what they are building** throughout the course including the trivia game features and development journey
 3. **Define modern web development and fullstack** including component-based architecture, API integration, and frontend-focused fullstack approach
 4. **Identify React's role** as a JavaScript library for building user interfaces with reusable components
 5. **Compare development approaches** by building the same counter functionality using both Vanilla JavaScript and React
 6. **Distinguish React's component-based architecture** from traditional HTML/CSS/JS approaches
-7. **Launch a professional development environment** using GitHub Codespaces and VS Code
+7. **Launch a modern development environment** using GitHub Codespaces and VS Code
 8. **Navigate project structure** and identify key folders and files
 9. **Start a React development server** and understand the basic development workflow
 10. **Modify React components** and experience Hot Module Replacement
@@ -21,7 +21,7 @@
 
 **Instructor introduces key concepts students need to succeed:**
 
-1. **Welcome to Wizcamp Enterprises** - Student scenario, developer role-play, and what students will experience as Junior Fullstack Developers
+1. **Welcome to Wizcamp** - Student scenario, developer role-play, and what students will experience as Junior Fullstack Developers
 2. **What We're Building** - Walkthrough of the finished trivia game to show the end goal
 3. **Modern Web Development & The Fullstack Approach** - Define modern web development and explain fullstack in context, including backend/frontend distinction
 4. **Meet React** - The 5 W's of React: what it is, who created/uses it, when it was released, where it's used, and why it matters
@@ -38,20 +38,20 @@
 
 ## Slide Deck Outline
 
-### **Slide 1: Welcome to Fullstack Explorer: Trivia Game Edition! 🎉**
+### **Slide 1: Welcome to React Development 🎉**
 
 - **Title:** "Session 1: Welcome to React Development — Setting Up Your Trivia Game"
 - **Student Scenario:**
-  - **You've just been hired** as a Junior Fullstack Developer at Wizcamp Enterprises
+  - **You've just been hired** as a Junior Fullstack Developer at Wizcamp
   - **Creative tech company** known for bold ideas and playful spirit
   - **Your first assignment:** Join the Gaming Division to build Wizcamp's newest open-world trivia adventure
   - **Role-playing experience:** Step into the shoes of a real developer
 - **What You'll Experience:**
   - **Modern developer workflow** with GitHub Codespaces, VS Code, Vite, npm
-  - **Real coding challenges** using React, JavaScript, and professional tools
+  - **Real coding challenges** using React, JavaScript, and modern tools
   - **Problem-solving mindset** that defines modern web development
   - **AI-powered assistance** with tools like GitHub Copilot
-- **Visual:** Wizcamp Enterprises logo with game screenshot and developer workspace
+- **Visual:** Wizcamp logo with game screenshot and developer workspace
 - **Hook:** "Experience what it's like to think and work like a developer while building something amazing"
 
 ### **Slide 2: What We're Building 🎮**
@@ -59,7 +59,7 @@
 - **Live Demo:** 2-minute walkthrough of completed trivia game
 - **Key Points:**
   - **Interactive trivia game** across multiple themed zones
-  - **Professional UI** that looks like apps you actually use
+  - **Polished UI** that looks like apps you actually use
   - **Real trivia questions** pulled live from the internet
   - **Instant feedback** - know if you're getting it right or need to level up
 - **Hook:** "You'll build this entire game over 12 sessions - step by step"
@@ -71,7 +71,7 @@
   - **Component-based architecture** - Reusable, maintainable code
   - **Real-time interactivity** - Dynamic user experiences
   - **API-driven design** - Data from multiple sources
-  - **Professional tooling** - Automated workflows and deployment
+  - **Modern tooling** - Automated workflows and deployment
 - **Fullstack in Context:**
   - **Frontend** - User interface and experience (our focus)
   - **Backend** - Servers, databases, APIs (we'll consume existing ones)
@@ -163,26 +163,35 @@
 
 ### **Slide 12: Behind the Scenes: From HTML to React 🎪**
 
-- **Title:** "Curious how React brings apps to life? This diagram walks you through the bootstrapping process—from loading a barebones HTML file to rendering a fully interactive app."
-- **Visual:** React bootstrap flowchart diagram + Carnival analogy
-- **Purpose:** "Once initialized, React takes over and manages the DOM for your entire app"
+- **Title:** "The Carnival Analogy - How React Apps Come to Life"
+- **Teaching Focus:** Use carnival metaphor to explain React bootstrap process
+- **Visual:** Split view showing carnival setup alongside React technical process
 
-**The Journey in a Nutshell (with walkthrough):**
+**🎪 The Carnival Setup Process:**
 
-1. **HTML Entry Point** - A single browser DOM node—an empty container—is defined in index.html. Think of it as a blank canvas.
-2. **React Root Injection** - In main.jsx, a script creates a React root element (the top-level UI manager) and injects it into that empty container.
-3. **Component Tree Rendering** - The App component—wrapped in a GameProvider (shared memory for game state)—along with its child components (buttons, text, images, etc.), is rendered into the root. This is where your UI and user interactions come to life.
-4. **Boom! Your Game Appears** - Your interactive trivia game is now visible on the page. From this moment on, React handles all updates, interactions, and DOM changes seamlessly.
+1. **Empty Field** (`<div id='root'>` in index.html)
+   - Just like a carnival needs an empty field to set up
+   - React needs an empty DOM container to build your app
 
-**🎪 Think of it Like Setting Up a Carnival:**
+2. **Carnival Trucks Arrive** (main.jsx loads)
+   - Equipment and workers show up with everything needed
+   - React's main script loads with all the components and logic
 
-- `<div id='root'>` in index.html = Empty field
-- main.jsx = Carnival trucks arrive
-- Bootstrapping = Rides go up, booths get built, lights get wired
-- GameProvider = Main power grid powering all attractions
-- App renders = Gates open—carnival is live and buzzing
+3. **Setting Up the Infrastructure** (React root creation)
+   - Power grid gets installed, foundations laid
+   - React creates the root element that will manage everything
 
-- **Student Approach:** "**Focus on the carnival analogy today** - the technical diagram is there when you're ready to dive deeper"
+4. **Building Attractions** (Component tree rendering)
+   - Rides go up, booths get built, lights get wired
+   - App component and all child components get rendered
+
+5. **Gates Open!** (Your game appears)
+   - Carnival is live and buzzing with activity
+   - Your interactive trivia game is ready for users
+
+- **Key Insight:** "Just like a carnival transforms an empty field into an entertainment experience, React transforms an empty div into your interactive game"
+- **Student Connection:** "Every time you refresh your browser, you're watching this carnival setup happen in milliseconds"
+- **Technical Note:** "The detailed technical diagram is available for when you want to understand the code-level details"
 
 ```
 ---
@@ -215,7 +224,7 @@ flowchart TB
     classDef bootstrap fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
 ```
 
-### **Slide 13: What's Next - Building Your Own Components 🧩**
+### **Slide 13: What's Next - Creating Reusable Components 🧩**
 
 - **Title:** "Preview of Session 2"
 - **Today's Foundation:** "You experienced React's component system by swapping existing components"

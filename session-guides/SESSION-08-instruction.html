@@ -361,7 +361,7 @@ overflow-x: hidden !important;
 </style>
 </head>
 <body>
-<h1 id="session-8-instructor-guide-implementing-scoring-victory">Session 8 Instructor Guide: Implementing Scoring &amp; Victory</h1>
+<h1 id="session-8-instructor-guide-application-state-management">Session 8 Instructor Guide: Application State Management</h1>
 <h2 id="learning-outcomes">Learning Outcomes</h2>
 <p><strong>By the end of Session 8, students will be able to:</strong></p>
 <ol type="1">
@@ -383,18 +383,18 @@ overflow-x: hidden !important;
 <li><strong>Application State Architecture</strong> - Define application state as persistent, app-wide data and distinguish it from local component state like modal visibility or form inputs</li>
 <li><strong>State Coordination Patterns</strong> - Show how multiple state pieces coordinate to create seamless user experiences—e.g., user actions trigger state updates that affect multiple components</li>
 <li><strong>Updater Functions and State Dependencies</strong> - Explain why <code>setState((prev) =&gt; prev + value)</code> ensures accurate updates when state changes depend on previous values</li>
-<li><strong>Cache Lifecycle Management</strong> - Demonstrate professional patterns for maintaining data freshness—e.g., clearing cached data when it becomes outdated or irrelevant</li>
+<li><strong>Cache Lifecycle Management</strong> - Demonstrate smart patterns for maintaining data freshness—e.g., clearing cached data when it becomes outdated or irrelevant</li>
 <li><strong>Single Responsibility Principle</strong> - Reinforce component design patterns through the Scoreboard component example</li>
 <li><strong>Complex State Updates</strong> - Guide students through coordinated updates that affect multiple pieces of application state</li>
 <li><strong>Independent Component Development</strong> - Prepare students for the GameOver component challenge using learned patterns</li>
-<li><strong>Professional State Management</strong> - Connect today’s patterns to real-world application development practices</li>
+<li><strong>State Management</strong> - Connect today’s patterns to real-world application development practices</li>
 <li><strong>React DevTools for Complex State</strong> - Show advanced debugging techniques for multi-component state interactions</li>
 <li><strong>Victory Challenge Preparation</strong> - Set up students for independent component creation using established patterns</li>
 <li><strong>Let’s Score!</strong> - Launch the hands-on mission by summarizing the implementation steps students will perform: add score to context, update answer handlers to use updater functions, create Scoreboard component, implement cache clearing, and build GameOver component independently</li>
 </ol>
 <hr />
 <h2 id="slide-deck-outline">Slide Deck Outline</h2>
-<h3 id="slide-1-welcome-to-application-state-management"><strong>Slide 1: Welcome to Application State Management! 🏆</strong></h3>
+<h3 id="slide-1-application-state-management"><strong>Slide 1: Application State Management 🏆</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Session 8: Application State Management — Implementing Scoring &amp; Victory”</li>
 <li><strong>Session 7 Recap:</strong> “Last time: You built interactive quiz components and feedback systems”</li>
@@ -422,7 +422,7 @@ overflow-x: hidden !important;
 <li><strong>Management:</strong> Context API, custom hooks</li>
 <li><p><strong>Lifetime:</strong> App initialization to termination</p></li>
 <li><strong>Today’s Focus:</strong> Application state that coordinates scoring, progress, and cache management</li>
-<li><strong>Professional Insight:</strong> “Choosing the right state type is crucial for maintainable applications”</li>
+<li><strong>Key Insight:</strong> “Choosing the right state type is crucial for maintainable applications”</li>
 <li><p><strong>Student Connection:</strong> “You’ll decide which state type to use when building your scoring and GameOver logic”</p></li>
 </ul>
 <h3 id="slide-3-state-coordination---the-games-memory-system"><strong>Slide 3: State Coordination - The Game’s Memory System 🎮</strong></h3>
@@ -470,7 +470,7 @@ overflow-x: hidden !important;
 <ul>
 <li><strong>Coordination Example:</strong> Correct answer → Update score → Update quiz progress → Check zone completion → Possibly change screen</li>
 <li><strong>Visual Flow:</strong> “Correct answer → score updates → zone progress → screen change”</li>
-<li><strong>Professional Pattern:</strong> “Complex apps coordinate dozens of state pieces this way”</li>
+<li><strong>Common Pattern:</strong> “Complex apps coordinate dozens of state pieces this way”</li>
 <li><strong>Student Preview:</strong> “You’ll see how scoring integrates with existing game systems”</li>
 </ul>
 <h3 id="slide-4-updater-functions---safe-state-calculations"><strong>Slide 4: Updater Functions - Safe State Calculations 🔢</strong></h3>
@@ -489,7 +489,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb2-3" title="3"><span class="at">setScore</span>((prev) <span class="kw">=&gt;</span> prev <span class="op">+</span> <span class="dv">100</span>)<span class="op">;</span> <span class="co">// Guaranteed to add 200</span></a></code></pre></div>
 <ul>
 <li><strong>Why It Matters:</strong> React batches state updates for performance, so multiple updates might use stale values</li>
-<li><strong>Professional Usage:</strong> “Always use updater functions when new state depends on previous state”</li>
+<li><strong>Best Practice:</strong> “Always use updater functions when new state depends on previous state”</li>
 <li><strong>Student Application:</strong> “Your scoring system will use this pattern for accurate point calculations”</li>
 </ul>
 <h3 id="slide-5-scoring-system-architecture"><strong>Slide 5: Scoring System Architecture 📊</strong></h3>
@@ -511,12 +511,12 @@ overflow-x: hidden !important;
 <li><strong>Scoreboard component</strong> - Dedicated display following single responsibility</li>
 <li><strong>HUD placement</strong> - Prominent position for constant awareness</li>
 <li><p><strong>React Fragment</strong> - Clean component composition</p></li>
-<li><strong>Professional Insight:</strong> “Good scoring systems balance challenge with encouragement”</li>
+<li><strong>Key Insight:</strong> “Good scoring systems balance challenge with encouragement”</li>
 <li><p><strong>Student Connection:</strong> “Your score will update instantly with every answer”</p></li>
 </ul>
 <h3 id="slide-6-cache-management---data-lifecycle-control-️"><strong>Slide 6: Cache Management - Data Lifecycle Control 🗄️</strong></h3>
 <ul>
-<li><strong>Title:</strong> “Professional Cache Management Patterns”</li>
+<li><strong>Title:</strong> “Cache Management Patterns”</li>
 <li><p><strong>The Challenge:</strong> Knowing when to keep, refresh, or remove cached data <strong>Cache Lifecycle Events:</strong></p></li>
 <li><strong>Zone completion</strong> - Clear completed zone cache for fresh replay</li>
 <li><strong>Game reset</strong> - Clear all caches for clean start</li>
@@ -525,7 +525,7 @@ overflow-x: hidden !important;
 <p><strong>Cache Management Functions:</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="at">clearQuestionCache</span>(zoneId)     <span class="co">// Remove specific zone cache</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="at">clearAllQuestionCache</span>()        <span class="co">// Remove all trivia caches</span></a></code></pre></div>
-<p><strong>Professional Patterns:</strong></p>
+<p><strong>Best Practices:</strong></p>
 <ul>
 <li><strong>Selective clearing</strong> - Remove only what’s needed</li>
 <li><strong>Bulk operations</strong> - Efficient cleanup for reset scenarios</li>
@@ -576,7 +576,7 @@ overflow-x: hidden !important;
 <li><strong>Without:</strong> <code>&lt;div&gt;&lt;h3&gt;Score&lt;/h3&gt;&lt;p&gt;1200&lt;/p&gt;&lt;/div&gt;</code></li>
 <li><p><strong>With:</strong> <code>&lt;h3&gt;Score&lt;/h3&gt;&lt;p&gt;1200&lt;/p&gt;</code></p></li>
 <li><strong>Benefits:</strong> Cleaner HTML, better CSS styling, improved accessibility</li>
-<li><strong>Professional Usage:</strong> “Fragments prevent div soup in complex component trees”</li>
+<li><strong>Real-World Usage:</strong> “Fragments prevent div soup in complex component trees”</li>
 <li><p><strong>Student Application:</strong> “Your Scoreboard will use fragments for clean HTML output”</p></li>
 </ul>
 <h3 id="slide-9-independent-component-development---your-solo-challenge"><strong>Slide 9: Independent Component Development - Your Solo Challenge 🎯</strong></h3>
@@ -586,7 +586,7 @@ overflow-x: hidden !important;
 <li><strong>Context access</strong> - useGame hook for state and actions</li>
 <li><strong>Component structure</strong> - JSX, props, and event handling</li>
 <li><strong>Styling patterns</strong> - CSS classes and conditional rendering</li>
-<li><p><strong>Professional practices</strong> - Single responsibility and clean code</p></li>
+<li><p><strong>Best practices</strong> - Single responsibility and clean code</p></li>
 </ul>
 <p><strong>Success Indicators:</strong></p>
 <ul>
@@ -594,7 +594,7 @@ overflow-x: hidden !important;
 <li><strong>Provides restart option</strong> - Button to reset game state</li>
 <li><strong>Follows design patterns</strong> - Consistent with existing components</li>
 <li><strong>Student Empowerment:</strong> “This is your chance to build a component from scratch using everything you’ve learned”</li>
-<li><strong>Professional Context:</strong> “Independent component development is a core React skill”</li>
+<li><strong>Real-World Context:</strong> “Independent component development is a core React skill”</li>
 </ul>
 <h3 id="slide-10-add-scoring-victory"><strong>Slide 10: Add Scoring &amp; Victory! 🚀</strong></h3>
 <ul>
@@ -614,7 +614,7 @@ overflow-x: hidden !important;
 <li>Cache clears on reset</li>
 <li>GameOver component works independently</li>
 </ul></li>
-<li><strong>Professional Workflow:</strong> “Complex state management + systematic testing = robust game experiences”</li>
+<li><strong>Development Workflow:</strong> “Complex state management + systematic testing = robust game experiences”</li>
 </ul>
 <h3 id="hands-on-work-happens-here"><strong>[HANDS-ON WORK HAPPENS HERE]</strong></h3>
 <h3 id="slide-11-integration-testing---verifying-the-complete-flow"><strong>Slide 11: Integration Testing - Verifying the Complete Flow 🧪</strong></h3>
@@ -633,10 +633,10 @@ overflow-x: hidden !important;
 <li><strong>State inspection</strong> - Monitor score and progress values</li>
 <li><strong>Component hierarchy</strong> - Verify proper rendering conditions</li>
 <li><p><strong>Manual state editing</strong> - Test edge cases and transitions</p></li>
-<li><strong>Professional Testing:</strong> “Integration testing catches issues that unit tests miss”</li>
+<li><strong>Integration Testing:</strong> “Integration testing catches issues that unit tests miss”</li>
 <li><p><strong>Student Empowerment:</strong> “Use DevTools to validate your complete game flow”</p></li>
 </ul>
-<h3 id="slide-12-whats-next---audio-integration-polish"><strong>Slide 12: What’s Next - Audio Integration &amp; Polish 🎵</strong></h3>
+<h3 id="slide-12-whats-next---custom-hooks-browser-apis"><strong>Slide 12: What’s Next - Custom Hooks &amp; Browser APIs 🎵</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Preview of Session 9”</li>
 <li><strong>Today’s Achievement:</strong> “You built complete game state management with scoring and independent component development”</li>
@@ -648,7 +648,7 @@ overflow-x: hidden !important;
 <li><strong>Browser APIs</strong> - HTML5 Audio API integration</li>
 <li><strong>User preferences</strong> - Music toggle and volume controls</li>
 <li><p><strong>Component integration</strong> - Audio controls in game interface</p></li>
-<li><p><strong>Motivation:</strong> “Your complete game will have professional audio features!”</p></li>
+<li><p><strong>Motivation:</strong> “Your complete game will have awesome audio features!”</p></li>
 </ul>
 </body>
 </html>

@@ -386,24 +386,17 @@ overflow-x: hidden !important;
 <li><strong>Dynamic Styling Techniques</strong> - Demonstrate conditional CSS classes that provide immediate visual feedback</li>
 <li><strong>Constants and Code Organization</strong> - Emphasize separating data from logic for maintainable, scalable applications</li>
 <li><strong>Random Selection Patterns</strong> - Introduce Math.random() and Math.floor() for implementing random selection from arrays</li>
-<li><strong>Professional Testing Workflow</strong> - Guide students through testing their quiz using React DevTools to inspect component behavior</li>
+<li><strong>Testing Workflow</strong> - Guide students through testing their quiz using React DevTools to inspect component behavior</li>
 <li><strong>Let’s Build Interactive!</strong> - Launch the hands-on mission: create the complete quiz experience with all interactive components</li>
 </ol>
 <hr />
 <h2 id="slide-deck-outline">Slide Deck Outline</h2>
-<h3 id="slide-1-welcome-to-interactive-component-design"><strong>Slide 1: Welcome to Interactive Component Design! 🎯</strong></h3>
+<h3 id="slide-1-building-complex-interactive-components"><strong>Slide 1: Building Complex Interactive Components 🎯</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Session 7: Building Complex Interactive Components — Creating the Quiz Experience”</li>
 <li><strong>Session 6 Recap:</strong> “Last time: You added question caching with localStorage for lightning-fast loading”</li>
 <li><strong>Hook:</strong> “Your questions are cached — now let’s make them interactive!”</li>
-<li><strong>Today’s Mission:</strong>
-<ul>
-<li><strong>Build</strong> complex components using composition patterns</li>
-<li><strong>Master</strong> array mapping for dynamic UI generation</li>
-<li><strong>Create</strong> interactive feedback systems with conditional styling</li>
-<li><strong>Implement</strong> random message selection for engaging user experience</li>
-<li><strong>Test</strong> complete quiz functionality with professional debugging tools</li>
-</ul></li>
+<li><strong>Today’s Mission:</strong> Build complex interactive components using composition patterns and array mapping</li>
 <li><strong>Visual:</strong> QuizModal component tree showing composition hierarchy</li>
 <li><strong>Connection:</strong> “From cached data to engaging, interactive quiz experiences!”</li>
 </ul>
@@ -428,7 +421,7 @@ overflow-x: hidden !important;
 <li><strong>Maintainability</strong> - Changes are isolated to specific components</li>
 <li><strong>Testability</strong> - Small components are easier to test and debug</li>
 </ul></li>
-<li><strong>Professional Context:</strong> “Large React apps have hundreds of components organized this way”</li>
+<li><strong>Real-World Context:</strong> “Large React apps have hundreds of components organized this way”</li>
 <li><strong>Student Preview:</strong> “You’ll connect these pre-built components into a working quiz system”</li>
 </ul>
 <h3 id="slide-2-conditional-rendering---controlling-user-experience"><strong>Slide 2: Conditional Rendering - Controlling User Experience 🔀</strong></h3>
@@ -441,7 +434,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb2-3" title="3"><span class="op">{</span>hasAnswered <span class="op">?</span> <span class="op">&lt;</span>ContinueButton /<span class="op">&gt;</span> : <span class="op">&lt;</span>AnswerPlaceholder /<span class="op">&gt;}</span></a></code></pre></div></li>
 <li><strong>State-Driven UI:</strong> Single state changes control entire user experience</li>
 <li><strong>User Flow:</strong> Zone click → <code>setIsQuizVisible(true)</code> → Modal appears</li>
-<li><strong>Professional Pattern:</strong> “Modern apps use state to control what users see”</li>
+<li><strong>Common Pattern:</strong> “Modern apps use state to control what users see”</li>
 <li><p><strong>Student Connection:</strong> “Your quiz modal will appear and disappear based on user actions”</p></li>
 </ul>
 <h3 id="slide-4-array-mapping---data-to-ui-transformation-️"><strong>Slide 4: Array Mapping - Data to UI Transformation 🗺️</strong></h3>
@@ -480,7 +473,7 @@ overflow-x: hidden !important;
 <li><strong>Props as Functions:</strong> Parent components pass behavior to children</li>
 <li><strong>State Updates:</strong> Event handlers trigger state changes that cascade through the app</li>
 <li><strong>Disabled State:</strong> Prevent multiple interactions after user makes choice</li>
-<li><strong>Professional Pattern:</strong> “Separation of concerns - components handle UI, parents handle logic”</li>
+<li><strong>Best Practice:</strong> “Separation of concerns - components handle UI, parents handle logic”</li>
 <li><p><strong>Student Preview:</strong> “Your answer buttons will trigger state changes that affect the entire quiz”</p></li>
 </ul>
 <h3 id="slide-6-conditional-styling---visual-feedback-systems"><strong>Slide 6: Conditional Styling - Visual Feedback Systems 🎨</strong></h3>
@@ -497,7 +490,7 @@ overflow-x: hidden !important;
 <li><strong>CSS Classes:</strong> Pre-defined styles for different button states</li>
 <li><strong>State-Driven Styling:</strong> Component state determines which classes apply</li>
 <li><strong>User Experience:</strong> Immediate visual feedback without waiting for network requests</li>
-<li><p><strong>Professional Usage:</strong> “Games, forms, and interactive apps all use conditional styling”</p></li>
+<li><p><strong>Real-World Usage:</strong> “Games, forms, and interactive apps all use conditional styling”</p></li>
 </ul>
 <h3 id="slide-7-constants-and-code-organization"><strong>Slide 7: Constants and Code Organization 📋</strong></h3>
 <ul>
@@ -517,7 +510,7 @@ overflow-x: hidden !important;
 <li><strong>Collaboration</strong> - Non-developers can update content</li>
 <li><strong>Localization</strong> - Easy to translate for different languages</li>
 </ul></li>
-<li><p><strong>Professional Practice:</strong> “Large apps have hundreds of constants for maintainability”</p></li>
+<li><p><strong>Best Practice:</strong> “Large apps have hundreds of constants for maintainability”</p></li>
 </ul>
 <h3 id="slide-8-random-selection-patterns---adding-variety"><strong>Slide 8: Random Selection Patterns - Adding Variety 🎲</strong></h3>
 <ul>
@@ -534,17 +527,17 @@ overflow-x: hidden !important;
 <li><strong>Math.floor()</strong> - Rounds down to integer</li>
 <li><strong>Array indexing</strong> - Selects message at that position</li>
 </ul></li>
-<li><strong>Professional Applications:</strong> Games, animations, A/B testing, content rotation</li>
+<li><strong>Real-World Applications:</strong> Games, animations, A/B testing, content rotation</li>
 <li><p><strong>Student Connection:</strong> “Your quiz will show different encouragement messages each time”</p></li>
 </ul>
 <h3 id="slide-9-react-devtools---component-debugging"><strong>Slide 9: React DevTools - Component Debugging 🔍</strong></h3>
 <ul>
-<li><strong>Title:</strong> “Professional Debugging for Complex Component Trees”</li>
+<li><strong>Title:</strong> “Debugging Complex Component Trees”</li>
 <li><strong>Component Tree Navigation:</strong> Find QuizModal and its children in the Components tab</li>
 <li><strong>Props Inspection:</strong> View data flowing between parent and child components</li>
 <li><strong>State Monitoring:</strong> Watch chosenAnswer and other state values change in real-time</li>
 <li><strong>Integration Testing:</strong> Verify that clicking answers updates state correctly</li>
-<li><strong>Professional Workflow:</strong>
+<li><strong>Development Workflow:</strong>
 <ol type="1">
 <li><strong>Build incrementally</strong> - Add one feature at a time</li>
 <li><strong>Test frequently</strong> - Verify each change works</li>
@@ -570,7 +563,7 @@ overflow-x: hidden !important;
 <li>Random encouragement messages appear</li>
 <li>Quiz progresses through all questions correctly</li>
 </ul></li>
-<li><strong>Professional Workflow:</strong> “Component composition + systematic testing = robust interactive experiences”</li>
+<li><strong>Development Workflow:</strong> “Component composition + systematic testing = robust interactive experiences”</li>
 </ul>
 <h3 id="hands-on-work-happens-here"><strong>[HANDS-ON WORK HAPPENS HERE]</strong></h3>
 <h3 id="slide-11-integration-testing---verifying-component-interactions"><strong>Slide 11: Integration Testing - Verifying Component Interactions 🧪</strong></h3>
@@ -590,12 +583,12 @@ overflow-x: hidden !important;
 <li><strong>Props inspection</strong> - Verify data is passed correctly</li>
 <li><strong>State monitoring</strong> - Watch values change during interaction</li>
 </ul></li>
-<li><strong>Professional Skills:</strong> “Integration testing catches issues that unit tests miss”</li>
+<li><strong>Key Skills:</strong> “Integration testing catches issues that unit tests miss”</li>
 </ul>
-<h3 id="slide-12-whats-next---scoring-and-game-completion"><strong>Slide 12: What’s Next - Scoring and Game Completion 🏆</strong></h3>
+<h3 id="slide-12-whats-next---application-state-management"><strong>Slide 12: What’s Next - Application State Management 🏆</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Preview of Session 8”</li>
-<li><strong>Today’s Achievement:</strong> “You built complex interactive components using professional composition patterns”</li>
+<li><strong>Today’s Achievement:</strong> “You built complex interactive components using smart composition patterns”</li>
 <li><strong>Next Challenge:</strong> “Add scoring systems and game completion logic”</li>
 <li><strong>Concepts Coming:</strong>
 <ul>

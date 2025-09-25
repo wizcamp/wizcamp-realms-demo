@@ -26,24 +26,19 @@
 5. **Dynamic Styling Techniques** - Demonstrate conditional CSS classes that provide immediate visual feedback
 6. **Constants and Code Organization** - Emphasize separating data from logic for maintainable, scalable applications
 7. **Random Selection Patterns** - Introduce Math.random() and Math.floor() for implementing random selection from arrays
-8. **Professional Testing Workflow** - Guide students through testing their quiz using React DevTools to inspect component behavior
+8. **Testing Workflow** - Guide students through testing their quiz using React DevTools to inspect component behavior
 9. **Let's Build Interactive!** - Launch the hands-on mission: create the complete quiz experience with all interactive components
 
 ---
 
 ## Slide Deck Outline
 
-### **Slide 1: Welcome to Interactive Component Design! 🎯**
+### **Slide 1: Building Complex Interactive Components 🎯**
 
 - **Title:** "Session 7: Building Complex Interactive Components — Creating the Quiz Experience"
 - **Session 6 Recap:** "Last time: You added question caching with localStorage for lightning-fast loading"
 - **Hook:** "Your questions are cached — now let's make them interactive!"
-- **Today's Mission:**
-  - **Build** complex components using composition patterns
-  - **Master** array mapping for dynamic UI generation
-  - **Create** interactive feedback systems with conditional styling
-  - **Implement** random message selection for engaging user experience
-  - **Test** complete quiz functionality with professional debugging tools
+- **Today's Mission:** Build complex interactive components using composition patterns and array mapping
 - **Visual:** QuizModal component tree showing composition hierarchy
 - **Connection:** "From cached data to engaging, interactive quiz experiences!"
 
@@ -68,7 +63,7 @@ QuizModal (container & state management)
   - **Reusability** - Components can be used in different contexts
   - **Maintainability** - Changes are isolated to specific components
   - **Testability** - Small components are easier to test and debug
-- **Professional Context:** "Large React apps have hundreds of components organized this way"
+- **Real-World Context:** "Large React apps have hundreds of components organized this way"
 - **Student Preview:** "You'll connect these pre-built components into a working quiz system"
 
 ### **Slide 2: Conditional Rendering - Controlling User Experience 🔀**
@@ -83,7 +78,7 @@ QuizModal (container & state management)
   ```
 - **State-Driven UI:** Single state changes control entire user experience
 - **User Flow:** Zone click → `setIsQuizVisible(true)` → Modal appears
-- **Professional Pattern:** "Modern apps use state to control what users see"
+- **Common Pattern:** "Modern apps use state to control what users see"
 - **Student Connection:** "Your quiz modal will appear and disappear based on user actions"
 
 ### **Slide 4: Array Mapping - Data to UI Transformation 🗺️**
@@ -127,7 +122,7 @@ const answers = ["React", "Vue", "Angular", "Svelte"];
 - **Props as Functions:** Parent components pass behavior to children
 - **State Updates:** Event handlers trigger state changes that cascade through the app
 - **Disabled State:** Prevent multiple interactions after user makes choice
-- **Professional Pattern:** "Separation of concerns - components handle UI, parents handle logic"
+- **Best Practice:** "Separation of concerns - components handle UI, parents handle logic"
 - **Student Preview:** "Your answer buttons will trigger state changes that affect the entire quiz"
 
 ### **Slide 6: Conditional Styling - Visual Feedback Systems 🎨**
@@ -146,7 +141,7 @@ const answers = ["React", "Vue", "Angular", "Svelte"];
 - **CSS Classes:** Pre-defined styles for different button states
 - **State-Driven Styling:** Component state determines which classes apply
 - **User Experience:** Immediate visual feedback without waiting for network requests
-- **Professional Usage:** "Games, forms, and interactive apps all use conditional styling"
+- **Real-World Usage:** "Games, forms, and interactive apps all use conditional styling"
 
 ### **Slide 7: Constants and Code Organization 📋**
 
@@ -166,7 +161,7 @@ const answers = ["React", "Vue", "Angular", "Svelte"];
   - **Consistency** - Same messages used everywhere
   - **Collaboration** - Non-developers can update content
   - **Localization** - Easy to translate for different languages
-- **Professional Practice:** "Large apps have hundreds of constants for maintainability"
+- **Best Practice:** "Large apps have hundreds of constants for maintainability"
 
 ### **Slide 8: Random Selection Patterns - Adding Variety 🎲**
 
@@ -183,17 +178,17 @@ const answers = ["React", "Vue", "Angular", "Svelte"];
   - **× messages.length** - Scales to array size
   - **Math.floor()** - Rounds down to integer
   - **Array indexing** - Selects message at that position
-- **Professional Applications:** Games, animations, A/B testing, content rotation
+- **Real-World Applications:** Games, animations, A/B testing, content rotation
 - **Student Connection:** "Your quiz will show different encouragement messages each time"
 
 ### **Slide 9: React DevTools - Component Debugging 🔍**
 
-- **Title:** "Professional Debugging for Complex Component Trees"
+- **Title:** "Debugging Complex Component Trees"
 - **Component Tree Navigation:** Find QuizModal and its children in the Components tab
 - **Props Inspection:** View data flowing between parent and child components
 - **State Monitoring:** Watch chosenAnswer and other state values change in real-time
 - **Integration Testing:** Verify that clicking answers updates state correctly
-- **Professional Workflow:**
+- **Development Workflow:**
   1. **Build incrementally** - Add one feature at a time
   2. **Test frequently** - Verify each change works
   3. **Debug systematically** - Use DevTools to understand data flow
@@ -213,7 +208,7 @@ const answers = ["React", "Vue", "Angular", "Svelte"];
   - Answer buttons provide immediate visual feedback
   - Random encouragement messages appear
   - Quiz progresses through all questions correctly
-- **Professional Workflow:** "Component composition + systematic testing = robust interactive experiences"
+- **Development Workflow:** "Component composition + systematic testing = robust interactive experiences"
 
 ### **[HANDS-ON WORK HAPPENS HERE]**
 
@@ -230,12 +225,12 @@ const answers = ["React", "Vue", "Angular", "Svelte"];
   - **Component tree** - Navigate QuizModal hierarchy
   - **Props inspection** - Verify data is passed correctly
   - **State monitoring** - Watch values change during interaction
-- **Professional Skills:** "Integration testing catches issues that unit tests miss"
+- **Key Skills:** "Integration testing catches issues that unit tests miss"
 
-### **Slide 12: What's Next - Scoring and Game Completion 🏆**
+### **Slide 12: What's Next - Application State Management 🏆**
 
 - **Title:** "Preview of Session 8"
-- **Today's Achievement:** "You built complex interactive components using professional composition patterns"
+- **Today's Achievement:** "You built complex interactive components using smart composition patterns"
 - **Next Challenge:** "Add scoring systems and game completion logic"
 - **Concepts Coming:**
   - **Score calculation** - Track correct answers and performance

@@ -1,4 +1,4 @@
-# Session 2 Instructor Guide: Building Game Components
+# Session 2 Instructor Guide: Creating Reusable Components
 
 ## Learning Outcomes
 
@@ -14,7 +14,7 @@
 8. **Leverage VS Code built-in features** to accelerate component development
 9. **Inspect component structure and props** using React DevTools for debugging
 10. **Compose components together** to build scalable, maintainable UIs
-11. **Follow a professional development workflow** including incremental testing and Hot Module Replacement
+11. **Follow a smart development workflow** including incremental testing and Hot Module Replacement
 
 ## Instruction
 
@@ -28,17 +28,17 @@
 6. **Styling with Variants** - Use template literals and dynamic class names to style components based on props
 7. **Functions as Props** - Show how components can trigger actions by receiving functions as props (e.g., onClick)
 8. **Default Parameters and Destructuring** - Introduce fallback values and cleaner syntax for handling props
-9. **VS Code Built-in Features** - Reinforce professional tooling with IntelliSense, auto-completion, and formatting
+9. **VS Code Built-in Features** - Reinforce modern tooling with IntelliSense, auto-completion, and formatting
 10. **React DevTools: Inspect Like a Pro** - Install and use DevTools to explore component trees and props in real time
 11. **Component Composition** - Illustrate how small components combine to form complex UIs, reinforcing the LEGO analogy
-12. **Professional Workflow** - Emphasize incremental development, Hot Module Replacement, and debugging best practices
+12. **Development Workflow** - Emphasize incremental development, Hot Module Replacement, and debugging best practices
 13. **Let's Build!** - Kick off the hands-on coding mission: create, style, and test your own GameButton component
 
 ---
 
 ## Slide Deck Outline
 
-### **Slide 1: Welcome Back to Component Land! 🧩**
+### **Slide 1: Creating Reusable Components 🧩**
 
 - **Title:** "Session 2: Creating Reusable Components — Building Game Components"
 - **Session 1 Recap:** "Last time: You set up your trivia game and experienced React's component system"
@@ -47,7 +47,7 @@
   - **Create** your first reusable React component
   - **Master** props for component communication
   - **Style** components with variants
-  - **Install** professional developer tools
+  - **Install** essential developer tools
   - **Experience** component composition in action
 - **Visual:** LEGO blocks assembling into a complex structure
 - **Connection:** "Remember swapping `<StartHere />` for `<SplashScreen />`? Today you'll create your own components to swap in!"
@@ -156,10 +156,10 @@ export default function GameButton({ text, onClick, variant = "primary" }) {
 
 ### **Slide 6: VS Code Built-in Features - Accelerate Your Development ⚡**
 
-- **Title:** "Professional Developers Use Smart Tools"
+- **Title:** "React Developers Use Powerful Tools"
 - **Core Concept:** "VS Code has powerful built-in features for React development — IntelliSense, auto-completion, and formatting"
 - **Key Features You'll Use Today:**
-  - **IntelliSense** - Smart code completion and suggestions
+  - **IntelliSense** - Intelligent code completion and suggestions
   - **Auto-formatting** - Consistent code style on save
   - **Error detection** - Real-time syntax checking
   - **Import assistance** - Automatic import suggestions
@@ -169,7 +169,7 @@ export default function GameButton({ text, onClick, variant = "primary" }) {
   - **Speed** - Built-in suggestions accelerate coding
   - **Consistency** - Auto-formatting ensures clean code
   - **Less errors** - Real-time error detection
-  - **Professional workflow** - Industry standard editor
+  - **Modern workflow** - Widely-used editor
 - **Student Encouragement:** "VS Code's built-in features are powerful — explore extensions later to customize your workflow!"
 
 ### **Slide 7: Functions as Props - Passing Behavior 🎯**
@@ -186,7 +186,7 @@ export default function GameButton({ text, onClick, variant = "primary" }) {
 
 ### **Slide 8: React DevTools - X-Ray Vision for Your App 🔍**
 
-- **Title:** "Professional Debugging Tools"
+- **Title:** "Essential Debugging Tools"
 - **Installation Demo:** Show browser extension installation
 - **Key Features:**
   - **Component tree** - See your app's structure
@@ -199,7 +199,7 @@ export default function GameButton({ text, onClick, variant = "primary" }) {
   - ✅ Click on components to see props
   - ✅ Watch props update in real-time
 - **Live Demo:** Inspect GameButton props in DevTools
-- **Professional Context:** "Every React developer uses this daily"
+- **Real-World Context:** "Every React developer uses this daily"
 
 ### **Slide 9: Build Your First Custom Component! 🚀**
 
@@ -229,12 +229,12 @@ App
 ```
 
 - **Key Insight:** "Your entire trivia game is just components all the way down"
-- **Professional Perspective:** "Large apps have hundreds of components working together"
+- **Real-World Perspective:** "Large apps have hundreds of components working together"
 - **Student Motivation:** "You're building the foundation for your entire game"
 
-### **Slide 11: Development Workflow - The Professional Way 💼**
+### **Slide 11: Development Workflow 💼**
 
-- **Title:** "How Real Developers Build Components"
+- **Title:** "How React Developers Build Components"
 - **Workflow Steps:**
   1. **Plan** the component's purpose and props
   2. **Create** the basic structure with VS Code IntelliSense
@@ -246,9 +246,9 @@ App
   - **Start simple** - Add complexity gradually
   - **Test often** - Catch issues early
   - **Use tools** - Snippets, DevTools, HMR
-- **Student Empowerment:** "You're learning professional development practices"
+- **Student Empowerment:** "You're learning real development practices"
 
-### **Slide 12: What's Next - State and Navigation 🗺️**
+### **Slide 12: What's Next - Shared State with Context 🧠**
 
 - **Title:** "Preview of Session 3"
 - **Today's Foundation:** "You built reusable components with props"

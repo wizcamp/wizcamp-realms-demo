@@ -21,22 +21,22 @@
 
 **Instructor introduces key concepts students need to succeed:**
 
-1. **Performance and User Experience** - Introduce caching as a professional strategy that transforms slow, network-dependent apps into fast, responsive experiences—just like the ones students use every day (e.g., YouTube, Instagram)
+1. **Performance and User Experience** - Introduce caching as a smart strategy that transforms slow, network-dependent apps into fast, responsive experiences—just like the apps students use every day
 2. **Rate Limiting and API Constraints** - Explain why APIs limit request frequency and how caching helps avoid these limits
 3. **Browser Storage Fundamentals** - Define localStorage as persistent key-value storage with CRUD operations
-4. **Cache-Aside Pattern** - Introduce the professional caching strategy: check cache, fetch on miss, store result
+4. **Cache-Aside Pattern** - Introduce the widely-used caching strategy: check cache, fetch on miss, store result
 5. **Serialization for Storage** - Show how JSON.stringify/parse enables complex data storage in text-only localStorage
 6. **Dynamic Cache Key Generation** - Use template literals to create unique, descriptive cache identifiers
 8. **Ternary Operator Mastery** - Introduce concise conditional syntax for clean cache retrieval logic
 9. **DevTools for Cache Inspection** - Guide students through inspecting localStorage in DevTools: locate the Application tab, find your domain, view stored keys, and test cache hits/misses by manually deleting entries
-10. **Professional Caching Patterns** - Connect today's implementation to real-world caching strategies
+10. **Real-World Caching Patterns** - Connect today's implementation to real-world caching strategies
 11. **Let's Cache!** - Launch hands-on mission: implement complete caching system with helper functions and testing
 
 ---
 
 ## Slide Deck Outline
 
-### **Slide 1: Welcome to Performance Optimization! ⚡**
+### **Slide 1: Browser Storage & Caching ⚡**
 
 - **Title:** \"Session 6: Browser Storage & Caching — Adding Question Caching\"
 - **Session 5 Recap:** \"Last time: You generated dynamic questions from real APIs, mastered async/await, and transformed external data into game-ready format\"
@@ -46,7 +46,7 @@
    - **Master** browser storage with CRUD operations
    - **Build** helper functions for clean cache management
    - **Experience** the performance difference caching makes
-   - **Handle** rate limiting and network constraints professionally
+   - **Handle** rate limiting and network constraints effectively
 - **Visual:** Performance comparison showing cached vs uncached loading times
 - **Demo:** Show network tab with repeated requests vs instant cache retrieval
 - **Connection:** \"From network-dependent to lightning-fast local storage!\"
@@ -62,8 +62,8 @@
    - **Poor UX** → Users wait for content they've seen before
 - **Visual:** Timeline showing multiple slow network requests
 - **The Solution Preview:** \"Caching stores API responses locally for instant access\"
-- **Professional Context:** \"Every major app uses caching — YouTube, Netflix, Instagram all cache content locally\"
-- **Student Motivation:** \"Your game will feel as responsive as professional apps"
+- **Real-World Context:** \"Every major app uses caching — social media, streaming, and gaming apps all cache content locally\"
+- **Student Motivation:** \"Your game will feel as responsive as the apps you use every day"
 - **Student Connection:** "You'll eliminate delays and make your game feel instant for repeat players\"
 
 ### **Slide 3: Rate Limiting - Why APIs Restrict Access 🚦**
@@ -82,7 +82,7 @@
    - **Reduces API calls** - Serve cached data instead of fetching
    - **Avoids rate limits** - No repeated requests for same data
    - **Improves reliability** - Works even when API is temporarily down
-- **Professional Insight:** \"All major APIs have rate limits — caching is essential\"
+- **Key Insight:** \"All major APIs have rate limits — caching is essential\"
 
 ### **Slide 4: Browser Storage - Your Browser's Built-in Database 🗄️**
 
@@ -102,7 +102,7 @@
    - **String-only storage** - Must serialize complex data
    - **Synchronous operations** - Can block main thread with large data
 - **Student Connection:** \"Perfect for caching your trivia questions"
-- **Professional Context:** "Web apps use localStorage to persist user preferences, game progress, and cached content for offline access\"
+- **Real-World Context:** "Web apps use localStorage to persist user preferences, game progress, and cached content for offline access\"
 
 ### **Slide 5: CRUD Operations - Managing Stored Data 📋**
 
@@ -190,7 +190,7 @@ localStorage.setItem('questions', JSON.stringify(questions));
 - **Student Application:** \"Your cache functions will handle serialization automatically\"
 - **Student Connection:** \"You'll serialize and deserialize trivia questions to store them in localStorage\"
 
-### **Slide 7: Cache-Aside Pattern - Professional Caching Strategy 🎯**
+### **Slide 7: Cache-Aside Pattern - Widely-Used Caching Strategy 🎯**
 
 - **Title:** \"The Industry-Standard Caching Pattern\"
 - **Visual:** Cache-aside flowchart diagram
@@ -224,7 +224,7 @@ localStorage.setItem('questions', JSON.stringify(questions));
    - **Reliability** - Fallback to source on cache miss
    - **Freshness** - New data automatically cached
    - **Key-based organization** - Unique identifiers prevent conflicts
-- **Professional Usage:** \"Used by Redis, Memcached, and all major caching systems\"
+- **Real-World Usage:** \"Used by Redis, Memcached, and all major caching systems\"
 - **Student Implementation:** \"Your fetchQuestions will follow this exact pattern\"
 
 ### **Slide 8: Dynamic Cache Keys - Unique Identifiers 🔑**
@@ -250,7 +250,7 @@ localStorage.setItem('questions', JSON.stringify(questions));
    - **Unique** - No conflicts between zones
    - **Consistent** - Same pattern everywhere
    - **Debuggable** - Easy to identify in DevTools
-- **Professional Practice:** \"Good cache keys are self-documenting\"
+- **Best Practice:** \"Good cache keys are self-documenting\"
 
 ### **Slide 9: Ternary Operator - Concise Conditional Logic ❓**
 
@@ -295,7 +295,7 @@ localStorage.setItem('questions', JSON.stringify(questions));
    2. **Inspect storage** to verify data is stored
    3. **Delete cache entry** to test cache miss
    4. **Click zone again** to verify re-caching
-- **Professional Usage:** \"Essential for debugging storage issues in production apps\"
+- **Real-World Usage:** \"Essential for debugging storage issues in real apps\"
 
 ### **Slide 11: Add Question Caching! 🚀**
 
@@ -311,14 +311,14 @@ localStorage.setItem('questions', JSON.stringify(questions));
    - Second zone click shows \"Cache hit\" and no network request
    - Cache persists across browser refreshes
    - DevTools shows stored question data
-- **Professional Workflow:** \"Build incrementally, test frequently, debug with tools\"
+- **Development Workflow:** \"Build incrementally, test frequently, debug with tools\"
 
 ### **[HANDS-ON WORK HAPPENS HERE]**
 
-### **Slide 12: What's Next - Interactive Quiz Components 🎮**
+### **Slide 12: What's Next - Building Complex Interactive Components 🎯**
 
 - **Title:** \"Preview of Session 7\"
-- **Today's Achievement:** \"You built a professional caching system that makes your game lightning-fast\"
+- **Today's Achievement:** \"You built a robust caching system that makes your game lightning-fast\"
 - **Next Challenge:** \"Create interactive quiz components with modal overlays\"
 - **Concepts Coming:**
    - **Modal components** - Overlay interfaces for quiz interactions

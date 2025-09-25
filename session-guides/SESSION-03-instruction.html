@@ -361,7 +361,7 @@ overflow-x: hidden !important;
 </style>
 </head>
 <body>
-<h1 id="session-3-instructor-guide-managing-game-flow">Session 3 Instructor Guide: Managing Game Flow</h1>
+<h1 id="session-3-instructor-guide-shared-state-with-context">Session 3 Instructor Guide: Shared State with Context</h1>
 <h2 id="learning-outcomes">Learning Outcomes</h2>
 <p><strong>By the end of Session 3, students will be able to:</strong></p>
 <ol type="1">
@@ -389,12 +389,12 @@ overflow-x: hidden !important;
 <li><strong>Event Handlers</strong> - Connect user interactions to state changes</li>
 <li><strong>React DevTools</strong> - Demonstrate state inspection and manipulation</li>
 <li><strong>Game Flow Architecture</strong> - Walk through screen navigation system</li>
-<li><strong>Professional Patterns</strong> - Introduce scalable state management approaches</li>
+<li><strong>Best Practices</strong> - Introduce scalable state management approaches</li>
 <li><strong>Let’s Navigate!</strong> - Kick off hands-on mission: screen navigation and modal state</li>
 </ol>
 <hr />
 <h2 id="slide-deck-outline">Slide Deck Outline</h2>
-<h3 id="slide-1-welcome-to-state-management"><strong>Slide 1: Welcome to State Management! 🧠</strong></h3>
+<h3 id="slide-1-shared-state-with-context"><strong>Slide 1: Shared State with Context 🧠</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Session 3: Shared State with Context — Managing Game Flow”</li>
 <li><strong>Session 2 Recap:</strong> “Last time: You built game components with props, styling, and click handlers”</li>
@@ -459,7 +459,7 @@ overflow-x: hidden !important;
 <li><strong>Shared:</strong> <code>screen</code> state (affects entire app navigation)</li>
 <li><strong>Local:</strong> <code>showCredits</code> state (only affects SplashScreen modal)</li>
 </ul></li>
-<li><strong>Professional Insight:</strong> “Choosing the right state type is a key React skill”</li>
+<li><strong>Key Insight:</strong> “Choosing the right state type is a key React skill”</li>
 </ul>
 <h3 id="slide-4-react-hooks---your-state-management-toolkit"><strong>Slide 4: React Hooks - Your State Management Toolkit 🪝</strong></h3>
 <ul>
@@ -471,30 +471,44 @@ overflow-x: hidden !important;
 <li>Only call at the top level of components</li>
 <li>Can’t be called inside loops or conditions</li>
 </ul></li>
+<li><p><strong>useState Syntax Breakdown:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">//     ^current value  ^setter function    ^initial value</span></a></code></pre></div>
+<ul>
+<li><strong>Array destructuring</strong> pulls out current value and setter function</li>
+<li><strong>Naming convention:</strong> <code>[thing, setThing]</code> pattern</li>
+<li><strong>Initial value</strong> can be any data type</li>
+</ul></li>
 <li><strong>Today’s Hooks:</strong>
 <ul>
 <li><strong>useState</strong> - Adds local state to components</li>
 <li><strong>useContext</strong> - Accesses shared state from Context</li>
 <li><strong>useGame</strong> - Custom hook that wraps useContext for cleaner code</li>
 </ul></li>
-<li><strong>Visual:</strong> Hook examples with syntax highlighting</li>
 <li><strong>Live Demo Preview:</strong> “We’ll write our first useState hook together — and see it change the UI instantly”</li>
-<li><strong>Student Connection:</strong> “Hooks are your tools for making components dynamic and interactive”</li>
+<li><p><strong>Student Connection:</strong> “Hooks are your tools for making components dynamic and interactive”</p></li>
 </ul>
 <h3 id="slide-5-context-api---shared-state-without-prop-drilling"><strong>Slide 5: Context API - Shared State Without Prop Drilling 🌐</strong></h3>
 <ul>
 <li><strong>Title:</strong> “How Context Solves the Prop Drilling Problem”</li>
-<li><strong>The Problem:</strong> Passing props through multiple component levels</li>
+<li><strong>What is Prop Drilling?</strong>
+<ul>
+<li><strong>Definition:</strong> Passing data through multiple component levels, even when intermediate components don’t need that data</li>
+<li><strong>Problem:</strong> Like having to ask your friend to ask their friend to ask their friend for something</li>
+<li><strong>Result:</strong> Inefficient, annoying, and hard to maintain</li>
+</ul></li>
 <li><strong>Visual:</strong> Before/After diagram showing prop drilling vs Context</li>
 </ul>
 <p><strong>Without Context (Prop Drilling):</strong></p>
-<pre><code>App → SplashScreen → GameButton
-  ↓       ↓           ↓
-screen  screen      screen</code></pre>
+<pre><code>App (has screen state)
+ ↓ passes screen as prop
+SplashScreen (doesn&#39;t need screen, just passes it along)
+ ↓ passes screen as prop  
+GameButton (finally uses screen)</code></pre>
 <p><strong>With Context:</strong></p>
-<pre><code>GameProvider (wraps entire app)
-    ↓
-Any component can access screen directly</code></pre>
+<pre><code>GameProvider (provides screen state)
+ ↓ any component can access directly
+GameButton (uses useGame hook to get screen)</code></pre>
 <ul>
 <li><strong>Context Benefits:</strong>
 <ul>
@@ -506,7 +520,7 @@ Any component can access screen directly</code></pre>
 <li><strong>Today’s Context:</strong> GameProvider provides screen state to entire app</li>
 <li><strong>Student Preview:</strong> “Your useGame hook accesses this shared state from anywhere”</li>
 </ul>
-<h3 id="slide-6-constants---professional-code-organization"><strong>Slide 6: Constants - Professional Code Organization 📋</strong></h3>
+<h3 id="slide-6-constants---clean-code-organization"><strong>Slide 6: Constants - Clean Code Organization 📋</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Why Constants Matter for Maintainable Code”</li>
 <li><strong>The Problem:</strong> Magic strings scattered throughout code</li>
@@ -516,7 +530,7 @@ Any component can access screen directly</code></pre>
 <p><strong>Constants Checklist:</strong> - ✅ <strong>Prevent typos</strong> - Autocomplete catches errors - ✅ <strong>Single source of truth</strong> - Change once, updates everywhere - ✅ <strong>Better refactoring</strong> - IDE can find all usages - ✅ <strong>Self-documenting</strong> - Clear intent and available options</p>
 <ul>
 <li><strong>Today’s Constants:</strong> SCREENS object with SPLASH, PLAYING, GAME_OVER</li>
-<li><strong>Professional Practice:</strong> “Real apps have hundreds of constants for maintainability”</li>
+<li><strong>Best Practice:</strong> “Real apps have hundreds of constants for maintainability”</li>
 </ul>
 <h3 id="slide-7-conditional-rendering---controlling-what-users-see"><strong>Slide 7: Conditional Rendering - Controlling What Users See 🔀</strong></h3>
 <ul>
@@ -528,9 +542,9 @@ Any component can access screen directly</code></pre>
 <li>If condition is <code>false</code> → Nothing renders</li>
 </ul></li>
 <li><p><strong>Examples:</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;}</span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>GameMap /<span class="op">&gt;}</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="op">{</span>showCredits <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>CreditsModal /<span class="op">&gt;}</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>GameMap /<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="op">{</span>showCredits <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>CreditsModal /<span class="op">&gt;}</span></a></code></pre></div></li>
 <li><strong>Visual:</strong> State diagram showing screen transitions</li>
 <li><strong>Key Insight:</strong> “One piece of state controls your entire app’s display”</li>
 <li><strong>Conditional Rendering Gotcha:</strong> “Remember: <code>false &amp;&amp; &lt;Component /&gt;</code> renders nothing — not an error!”</li>
@@ -554,7 +568,7 @@ Any component can access screen directly</code></pre>
 <li>Manually change screen from “splash” to “playing”</li>
 <li>Watch UI update instantly</li>
 </ul></li>
-<li><strong>Professional Usage:</strong> “Essential for debugging state-related issues”</li>
+<li><strong>Real-World Usage:</strong> “Essential for debugging state-related issues”</li>
 </ul>
 <h3 id="slide-9-game-flow-architecture---the-big-picture-️"><strong>Slide 9: Game Flow Architecture - The Big Picture 🗺️</strong></h3>
 <ul>
@@ -580,10 +594,10 @@ Any component can access screen directly</code></pre>
 <ul>
 <li><strong>Title:</strong> “useGame: Wrapping Context for Better Developer Experience”</li>
 <li><p><strong>Raw Context Usage:</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> context <span class="op">=</span> <span class="at">useContext</span>(GameContext)<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="kw">const</span> <span class="op">{</span> screen<span class="op">,</span> setScreen <span class="op">}</span> <span class="op">=</span> context<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> context <span class="op">=</span> <span class="at">useContext</span>(GameContext)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">const</span> <span class="op">{</span> screen<span class="op">,</span> setScreen <span class="op">}</span> <span class="op">=</span> context<span class="op">;</span></a></code></pre></div></li>
 <li><p><strong>Custom Hook Usage:</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> <span class="op">{</span> screen<span class="op">,</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">const</span> <span class="op">{</span> screen<span class="op">,</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
 <li><strong>Benefits:</strong>
 <ul>
 <li><strong>Cleaner syntax</strong> - Less boilerplate code</li>
@@ -591,7 +605,7 @@ Any component can access screen directly</code></pre>
 <li><strong>Abstraction</strong> - Hide implementation details</li>
 <li><strong>Reusability</strong> - Same hook used everywhere</li>
 </ul></li>
-<li><p><strong>Professional Pattern:</strong> “Custom hooks are how pros organize complex state logic”</p></li>
+<li><p><strong>Best Practice:</strong> “Custom hooks are how developers organize complex state logic”</p></li>
 </ul>
 <h3 id="slide-11-build-screen-navigation"><strong>Slide 11: Build Screen Navigation! 🚀</strong></h3>
 <ul>
@@ -610,10 +624,10 @@ Any component can access screen directly</code></pre>
 <li>Credits button shows/hides modal</li>
 <li>React DevTools shows state changes</li>
 </ul></li>
-<li><strong>Professional Workflow:</strong> “Build incrementally, test frequently, debug with tools”</li>
+<li><strong>Development Workflow:</strong> “Build incrementally, test frequently, debug with tools”</li>
 </ul>
 <h3 id="hands-on-work-happens-here"><strong>[HANDS-ON WORK HAPPENS HERE]</strong></h3>
-<h3 id="slide-12-state-management-patterns---professional-insights"><strong>Slide 12: State Management Patterns - Professional Insights 💼</strong></h3>
+<h3 id="slide-12-state-management-patterns---key-insights"><strong>Slide 12: State Management Patterns - Key Insights 💼</strong></h3>
 <ul>
 <li><strong>Title:</strong> “How Real Apps Organize State”</li>
 <li><strong>Today’s Patterns:</strong>
@@ -629,9 +643,9 @@ Any component can access screen directly</code></pre>
 <li><strong>Medium apps</strong> - Add useReducer for complex state logic</li>
 <li><strong>Large apps</strong> - External libraries like Redux or Zustand</li>
 </ul></li>
-<li><strong>Student Empowerment:</strong> “You’re learning patterns used in production apps”</li>
+<li><strong>Student Empowerment:</strong> “You’re learning patterns used in real apps”</li>
 </ul>
-<h3 id="slide-13-whats-next---configuring-game-content"><strong>Slide 13: What’s Next - Configuring Game Content 🎮</strong></h3>
+<h3 id="slide-13-whats-next---data-driven-design-️"><strong>Slide 13: What’s Next - Data-Driven Design 🏗️</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Preview of Session 4”</li>
 <li><strong>Today’s Achievement:</strong> “You built navigation with shared and local state”</li>

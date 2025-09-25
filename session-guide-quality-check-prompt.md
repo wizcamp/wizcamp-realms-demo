@@ -1,13 +1,15 @@
 # Session Guide Quality Check Prompt
 
-## Task
-Review all SESSION-XX.md and SESSION-XX-instruction.md files to verify accuracy of session continuity elements and naming conventions. Focus on critical areas that depend on other sessions' content:
+## Objective
+Verify session continuity, naming conventions, and content quality across all SESSION-XX.md and SESSION-XX-instruction.md files.
 
-1. **Session Naming Convention** (Titles and references)
-2. **Previous Session Recap** (Slide 2 in each session)
-3. **What's Next** (Final slide in each session)
+## Critical Areas
+1. Session naming conventions and references
+2. Previous session recaps and next session previews
+3. Content consistency and tone appropriateness
+4. Technical formatting and standards compliance
 
-## Instructions
+## Review Process
 
 ### Step 1: Verify Session Naming Convention
 For each SESSION-XX.md student guide:
@@ -17,6 +19,10 @@ For each SESSION-XX.md student guide:
 - Verify technical concept provides educational context without overwhelming
 
 For each SESSION-XX-instruction.md instructor guide:
+- Check file title format: `# Session X Instructor Guide: [Technical Name]`
+- Check Slide 1 heading format: `### **Slide 1: [Technical Name] [emoji]**` (technical name with topic emoji)
+- Check last slide heading format: `### **Slide X: What's Next - [Next Session Technical Name] [emoji]**`
+- Verify emojis match session topics (🧩 components, 🧠 state, 🌐 APIs, ⚡ caching, etc.)
 - Check slide titles include both names: `"Session X: [Technical Name] — [Student-Friendly Name]"`
 - Verify session recaps reference student-friendly names from previous sessions
 - Ensure dual naming provides complete pedagogical context
@@ -77,94 +83,58 @@ Issue: [Description of the problem]
 Should be: [Suggested correction]
 ```
 
-## Focus Areas
-- **Accuracy**: Does the recap/preview match actual session content?
-- **Continuity**: Do sessions flow logically from one to the next?
-- **Consistency**: Are similar concepts described the same way across sessions?
-- **Completeness**: Are all major outcomes/previews covered?
-- **Essential Terms Ordering**: Are terms ordered by logical learning progression rather than alphabetically?
-- **Code Block Consistency**: Do all multi-line code blocks include language qualifiers (```javascript, ```bash, ```json, etc.)?
-  - **Check opening triple backticks only** - Look for ```[language] format
-  - **Common qualifiers**: javascript, bash, json, text, html, css
-  - **Flag only blocks without any qualifier** - ```text is valid for directory structures and plain text
-- **List Indentation**: Is all content following numbered and non-numbered list items properly indented with 3 spaces to maintain grouping under the bullet point?
-- **Section Ordering Consistency**: Do Learning Outcomes, Instruction, and Slide Deck Outline sections follow the same logical order?
-- **File Saving Commands**: Are students given file saving commands?
-  - Flag imperative instructions: "Save →", "Save the file", "Save your changes", "Save and refresh"
-  - Allow descriptive references: "save file", "saved data", "file saving"
-  - Files auto-save in Codespaces - no manual saving needed
-- **Ask the AI Question Novelty**: Are Ask the AI questions already answered in the session content?
-  - Flag questions where the answer is explicitly provided in the preceding material
-  - Example: Don't ask "How does async/await make code easier to work with?" if the session already states "async/await makes asynchronous code easier to read and debug"
-  - Questions should explore concepts beyond what's directly explained in the guide
-- **Code Block Commenting Standards**: Do multi-line code blocks follow proper commenting guidelines?
-  - Use terse, action-based inline comments with standard `//` format
-  - Avoid confusing `{/* */}` style comments in JSX
-  - Only comment new lines to add or existing lines to change
-  - Do not include comments solely to explain code or concepts
-  - Comments should indicate what students will actually do: `// Add this function`, `// Add cache check`, `// Update this line`
-  - Flag explanatory comments that don't guide student actions
-  - **Apply comments ONLY to multi-line code blocks using triple backticks (```) with 3+ lines of complex logic**
-  - **DO NOT flag comments added to single-line code or simple examples within instructional text**
-- **Code Formatting Consistency**: Is the code formatting rule applied consistently?
-  - Use backticks only for actual code identifiers that students type in their codebase
-  - Code identifiers: Use backticks (`GameButton`, `useGame`, `SCREENS.SPLASH`, `className="game-over"`)
-  - Conceptual terms: No backticks ("**Components** are reusable", "**React** uses virtual DOM", "**state** management")
-  - Technology names: No backticks ("**APIs**", "**JSON**", "**HTTP**")
-  - File references: Always use backticks (`src/components/GameOver.jsx`)
-  - Flag incorrect backticks on concepts like **`Components`** that should be **Components**
-- **Tone and Audience Appropriateness**: Is content engaging and relatable for 13-18 year olds?
-  - Check "Why This Matters" sections use conversational, empowering language
-  - Verify metaphors and examples resonate with teenage experiences
-  - Ensure tone avoids corporate jargon, academic dryness, and excessive exclamations
-  - Confirm genuine excitement and capability-building focus rather than abstract professional development
-  - Flag overly cheesy language or excessive use of "awesome/super/amazing" without substance
-- **Term Definition Consistency**: Are technical terms defined consistently between student and instructor guides?
-  - Compare Essential Terms definitions in SESSION-XX.md with corresponding concept explanations in SESSION-XX-instruction.md
-  - Ensure the same term uses identical or compatible definitions across both guides
-  - Flag cases where student guide has superior definition clarity that should be adopted in instructor guide
-  - Verify that instructor slide content aligns with student Essential Terms definitions
-  - Check that Learning Outcomes use terminology consistent with Essential Terms definitions
-- **Prettier Formatting**: Do standalone multi-line code blocks using triple backticks follow Prettier formatting standards?
-  - **Apply ONLY to standalone code blocks using triple backticks (```), not inline code**
-  - **Semicolons**: All JavaScript statements end with semicolons (`import React from "react";`)
-  - **Quotes**: Use double quotes for strings (`"./components/SplashScreen"`)
-  - **Arrow functions**: Always use parentheses around parameters (`(props) => {}`)
-  - **Trailing commas**: Use ES5 trailing commas in objects and arrays
-  - **Import statements**: When import commands appear in inline instructional text, they must be complete and end with semicolons (e.g., `import GameButton from "./GameButton";`)
-  - **DO NOT flag inline code within numbered steps or instructional text**
+## Quality Check Categories
 
-### List Indentation Check
-For each SESSION-XX.md student guide and SESSION-XX-instruction.md instructor guide:
-- Verify that code blocks, explanatory text, "Test" paragraphs, and any other content following numbered and non-numbered list items are indented with exactly 3 spaces
-- Check that this indentation maintains proper visual grouping under the bullet point
-- Ensure consistent indentation across all list sections in each guide
-- Report any instances where content is not properly aligned with the list item structure
+### 1. Content Continuity
+- **Accuracy**: Recaps/previews match actual session content
+- **Flow**: Sessions connect logically
+- **Consistency**: Similar concepts described identically across sessions
+- **Completeness**: All major outcomes/previews covered
 
-### Step 7: Verify Essential Terms Ordering
-For each SESSION-XX.md student guide:
-- Check if Essential Terms table follows logical learning progression
-- Verify terms are grouped by related concepts (foundational → data formats → tools → implementation)
-- Ensure ordering matches the conceptual flow from "what" to "how" to "implementation details"
-- Confirm ordering aligns with how concepts are introduced in the session content
+### 2. Technical Formatting
+- **File titles**: Instructor guides use `# Session X Instructor Guide: [Technical Name]`
+- **Slide headings**: Slide 1 and last slide follow correct format with topic-appropriate emojis
+- **Code blocks**: Include language qualifiers (```javascript, ```bash, ```json)
+- **List indentation**: 3-space indentation for content following list items
+- **Code formatting**: Backticks only for code identifiers, not concepts
+- **Prettier standards**: Semicolons, double quotes, proper arrow function syntax
 
-### Step 8: Evaluate Tone and Audience Appropriateness
-For each SESSION-XX.md student guide:
-- Review "Why This Matters" sections for engaging, conversational tone appropriate for teenagers
-- Check for relatable metaphors and examples (detective work, X-ray vision, digital breadcrumbs, etc.)
-- Verify language is empowering and capability-focused rather than abstract or corporate
-- Ensure content connects to familiar teenage experiences and builds genuine excitement about technology
-- Flag overly formal, academic, or dry explanations that could be made more engaging
-- Flag excessive exclamations, overuse of "awesome/super/amazing", or language that feels forced or cheesy
-- Ensure enthusiasm feels natural and respects the audience's intelligence
+### 3. Content Standards
+- **File saving**: No manual save instructions (auto-saved in Codespaces)
+- **Ask the AI**: Questions explore beyond what's directly explained
+- **Code comments**: Action-based guidance only, not explanatory
+- **Essential terms**: Logical learning progression order
 
-### Step 9: Verify Term Definition Consistency
-For each SESSION-XX pair (student guide and instructor guide):
-- Compare Essential Terms definitions in SESSION-XX.md with concept explanations in SESSION-XX-instruction.md
-- Verify identical terms use consistent definitions across both guides
-- Check that instructor slide content aligns with student Essential Terms definitions
-- Flag superior definitions in student guides that should be adopted in instructor guides
-- Ensure Learning Outcomes terminology matches Essential Terms definitions
-- Report any definitional inconsistencies that could confuse students or instructors
+### 4. Tone and Audience
+- **Voice**: Conversational, empowering for 13-18 year olds
+- **Language**: Direct terms without empty adjectives ("Development Workflow" not "Effective Workflow")
+- **Avoid**: "professional," "enterprise," "industry-standard," "production-ready"
+- **Accept**: "Best Practice" as standard nomenclature
 
-Review all session guides and report any continuity, ordering, tone, or definitional consistency issues found.
+### 5. Cross-Guide Consistency
+- **Term definitions**: Student Essential Terms align with instructor explanations
+- **Section ordering**: Learning Outcomes, Instruction, Slides follow same sequence
+- **Terminology**: Consistent usage across all guides
+
+## Execution Steps
+
+### Step 1-6: Core Verification
+(Follow existing steps 1-6 for naming conventions, session flow, recaps, previews, ordering, and boundaries)
+
+### Step 7: Technical Standards Check
+- **Code formatting**: Language qualifiers, indentation, backtick usage
+- **Content standards**: File saving commands, comment guidelines, Essential Terms ordering
+- **Prettier compliance**: Semicolons, quotes, arrow functions (standalone code blocks only)
+
+### Step 8: Tone and Consistency Review
+- **Audience appropriateness**: Age-appropriate language and examples
+- **Term consistency**: Student Essential Terms align with instructor explanations
+- **Language quality**: Direct terms without empty adjectives or formal jargon
+
+## Output
+Report issues using format:
+```
+SESSION-XX[-instruction].md - [CATEGORY] - Line X
+Issue: [Description]
+Should be: [Correction]
+```

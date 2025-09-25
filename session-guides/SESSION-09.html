@@ -81,7 +81,7 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
 color: #1f2328;
@@ -105,7 +105,7 @@ width: 100% !important;
 max-width: 100% !important;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-weight: 600;
 line-height: 1.25;
 margin-bottom: 16px;
@@ -372,6 +372,7 @@ overflow-x: hidden !important;
 <li><a href="#building-the-musictoggle-component">Building the MusicToggle Component</a></li>
 <li><a href="#adding-audio-reference-to-useaudio">Adding Audio Reference to useAudio</a></li>
 <li><a href="#implementing-audio-playback">Implementing Audio Playback</a></li>
+<li><a href="#github-copilot-workflow">GitHub Copilot Workflow</a></li>
 <li><a href="#solo-mission-complete-useaudio-hook">Solo Mission: Complete useAudio Hook</a></li>
 <li><a href="#essential-terms">Essential Terms</a></li>
 <li><a href="#ask-the-ai">Ask the AI</a></li>
@@ -496,7 +497,7 @@ overflow-x: hidden !important;
 <p><strong>Refs</strong> are perfect for storing audio elements because the audio object doesn’t need to trigger re-renders — it just needs to be remembered between function calls. The <code>current</code> property holds the actual value you stored.</p>
 <p><a id="building-the-musictoggle-component"></a></p>
 <h2 id="building-the-musictoggle-component">🎛️ Building the MusicToggle Component</h2>
-<p>Let’s add audio controls to your game’s HUD so users can toggle the theme music on and off.</p>
+<p>Before we implement the audio functionality, let’s add the UI controls you’ll need to test it. This music toggle will provide the interface for testing the <code>useAudio</code> hook as you build it in the next sections.</p>
 <ol type="1">
 <li><p><strong>Open <code>src/components/HUD.jsx</code></strong> and add the <code>MusicToggle</code> component after the <code>CurrentZone</code> function:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">function</span> <span class="at">MusicToggle</span>() <span class="op">{</span> <span class="co">// Add MusicToggle component</span></a>
@@ -525,7 +526,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb7-5" title="5">    <span class="op">&lt;</span>MusicToggle /<span class="op">&gt;</span> <span class="co">// Add MusicToggle</span></a>
 <a class="sourceLine" id="cb7-6" title="6">  &lt;/<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb7-7" title="7">)<span class="op">;</span></a></code></pre></div></li>
-<li><p><strong>Test</strong>: Start Game → Audio controls visible, but inoperable when clicked</p></li>
+<li><p><strong>Test</strong>: Start Game → Music toggle visible, but inoperable when clicked</p></li>
 </ol>
 <h3 id="why-this-matters-3">💡 Why This Matters</h3>
 <p>The <strong><code>MusicToggle</code> component</strong> demonstrates conditional rendering with dynamic images and tooltips. The <code>music.isPlaying</code> state controls both the icon and the tooltip text, providing clear visual feedback to users.</p>
@@ -541,13 +542,13 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb8-5" title="5"><span class="op">}</span></a></code></pre></div></li>
 <li><p><strong>Add the useRef import</strong> at the top of the file:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="im">import</span> <span class="op">{</span> useRef<span class="op">,</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span> <span class="co">// Add useRef import</span></a></code></pre></div></li>
-<li><p><strong>Test</strong>: No visible changes yet, but the hook can now store audio elements</p></li>
 </ol>
+<p>Your hook now has a ref that can store and remember the audio element we’ll create in the <code>play</code> function. The ref starts as <code>null</code> and will hold our audio element once it’s created.</p>
 <h3 id="audio-reference-flow">Audio Reference Flow</h3>
 <pre class="text"><code>useAudio hook called → audioRef.current is null → play() creates new Audio() → 
 audioRef.current stores Audio element → future calls reuse same element</code></pre>
 <h3 id="why-this-matters-4">💡 Why This Matters</h3>
-<p>The <strong>audioRef</strong> provides persistent storage for the audio element across component re-renders. Without refs, you’d create a new audio element every time the component updates, causing audio to restart unexpectedly.</p>
+<p>The <code>audioRef</code> you just created provides persistent storage for the audio element across component re-renders. Without refs, you’d create a new audio element every time the component updates, causing audio to restart unexpectedly.</p>
 <p><a id="implementing-audio-playback"></a></p>
 <h2 id="implementing-audio-playback">🎵 Implementing Audio Playback</h2>
 <p>Let’s implement the core audio functionality by updating the <code>play</code> function to create and control audio elements.</p>
@@ -561,14 +562,31 @@ audioRef.current stores Audio element → future calls reuse same element</code>
 <a class="sourceLine" id="cb11-6" title="6">  <span class="op">}</span></a>
 <a class="sourceLine" id="cb11-7" title="7">  <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">play</span>()<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-8" title="8">  <span class="at">setIsPlaying</span>(<span class="kw">true</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb11-9" title="9"><span class="op">};</span></a></code></pre></div></li>
+<a class="sourceLine" id="cb11-9" title="9"><span class="op">};</span></a></code></pre></div>
+<p>The <code>if (!audioRef.current)</code> check is an example of <strong>lazy initialization</strong> — creating a resource only when it’s first needed. Since <code>audioRef.current</code> starts as <code>null</code>, the first time <code>play()</code> runs it creates the audio element. Every time after that, <code>audioRef.current</code> contains the audio element, so the <code>if</code> condition is false and it skips creating a new one.</p></li>
 <li><p><strong>Test</strong>: Click music toggle → Game theme plays and button shows playing state</p></li>
 </ol>
 <h3 id="audio-creation-logic">Audio Creation Logic</h3>
 <pre class="text"><code>Check if audio exists → If not, create new Audio(src) → Configure loop and volume → 
 Call play() method → Update isPlaying state → UI reflects playing state</code></pre>
 <h3 id="why-this-matters-5">💡 Why This Matters</h3>
-<p>This pattern ensures audio elements are created only once and reused. The <code>if (!audioRef.current)</code> check prevents creating multiple audio elements, which would cause overlapping sounds and memory leaks.</p>
+<p>Creating audio elements only once and reusing them prevents overlapping sounds, memory leaks, and performance issues. Without this pattern, clicking the music toggle rapidly would create multiple audio elements playing simultaneously, causing audio chaos and slowing down your browser.</p>
+<p><a id="github-copilot-workflow"></a></p>
+<h2 id="github-copilot-workflow">⚡ GitHub Copilot Workflow</h2>
+<p>You’re now working with production-quality code. GitHub Copilot can help you write, fix, and understand code faster — but only if you know how to guide it.</p>
+<h3 id="how-to-use-copilot-chat-effectively">How to Use Copilot Chat Effectively</h3>
+<ol type="1">
+<li>Use a Copilot chat command like <code>/fix</code>, <code>/explain</code>, or <code>/test</code></li>
+<li>Write a clear, focused prompt describing what you want</li>
+<li>Review the suggestion Copilot generates</li>
+<li>Apply the change if it meets your needs</li>
+<li>Test the update to confirm it works</li>
+</ol>
+<h3 id="example-prompt">Example Prompt</h3>
+<pre><code>/fix Add error handling to the play function in the useAudio hook so that 
+if the audio fails to play, it catches the error, logs a warning, and 
+updates isPlaying to false</code></pre>
+<p>Use this workflow during your Solo Mission and anytime you’re stuck or want to improve your code.</p>
 <p><a id="solo-mission-complete-useaudio-hook"></a></p>
 <h2 id="solo-mission-complete-useaudio-hook">🎖️ Solo Mission: Complete useAudio Hook</h2>
 <p>Now for your independent challenge — complete the <code>useAudio</code> hook with pause functionality, error handling, and cleanup! You’ll use AI assistance for the advanced parts.</p>
@@ -577,18 +595,10 @@ Call play() method → Update isPlaying state → UI reflects playing state</cod
 <li>Update the <code>pause</code> function to pause audio and update state</li>
 <li>Use <code>audioRef.current.pause()</code> to stop playback</li>
 <li>Set <code>isPlaying</code> to <code>false</code> when paused</li>
-<li><strong>Test</strong>: Click music toggle while playing → Music stops and button shows paused state</li>
+<li><strong>Test</strong>: Click music toggle while playing → Music stops and music toggle shows paused state</li>
 </ul>
 <h3 id="add-error-handling-with-ai-assistance">2. Add Error Handling with AI Assistance</h3>
-<p>With <code>useAudio.js</code> open, use GitHub Copilot following this workflow:</p>
-<p><strong>⚡ GitHub Copilot Workflow:</strong></p>
-<ol type="1">
-<li>Use a Copilot chat command like <code>/fix</code>, <code>/explain</code>, or <code>/test</code></li>
-<li>Write a clear, focused prompt describing what you want</li>
-<li>Review the suggestion Copilot generates</li>
-<li>Apply the change if it meets your needs</li>
-<li>Test the update to confirm it works</li>
-</ol>
+<p>With <code>useAudio.js</code> open, use the GitHub Copilot workflow you just learned:</p>
 <p><strong>Prompt</strong>:</p>
 <pre><code>/fix Add error handling to the play function in the useAudio hook so that 
 if the audio fails to play, it catches the error, logs a warning, and 
@@ -647,7 +657,7 @@ the audio and clears the reference when the component unmounts</code></pre>
 </tr>
 <tr class="odd">
 <td>🔊 HTMLAudioElement</td>
-<td>Browser’s built-in interface for controlling audio playback, providing methods like play(), pause(), and properties like volume and loop.</td>
+<td>Part of the Web API that provides an interface for controlling audio playback, with methods like play(), pause(), and properties like volume and loop.</td>
 <td>Gives you programmatic control over audio files in web applications.</td>
 </tr>
 <tr class="even">
@@ -665,6 +675,11 @@ the audio and clears the reference when the component unmounts</code></pre>
 <td>Data that can be changed or modified after it’s created, as opposed to immutable data that cannot be changed.</td>
 <td>Refs store mutable values that can be updated without triggering re-renders, perfect for audio objects that change state.</td>
 </tr>
+<tr class="odd">
+<td>⏳ lazy initialization</td>
+<td>A pattern where resources are created only when first needed, rather than upfront.</td>
+<td>Avoids unnecessary setup and ensures efficient resource reuse, like creating audio elements only when play() is first called.</td>
+</tr>
 </tbody>
 </table>
 <p><a id="ask-the-ai"></a></p>
@@ -674,9 +689,9 @@ the audio and clears the reference when the component unmounts</code></pre>
 <ul>
 <li><strong>What makes custom hooks different from regular functions, and why do they need to start with “use”?</strong></li>
 <li><strong>How do refs differ from state, and when should I use each one?</strong></li>
+<li><strong>Why do I need to use ref.current instead of just ref?</strong></li>
 <li><strong>What are the benefits of wrapping browser APIs in custom hooks?</strong></li>
-<li><strong>How does the HTMLAudioElement API work, and what other browser APIs are commonly used?</strong></li>
-<li><strong>What are some best practices for error handling in custom hooks?</strong></li>
+<li><strong>How does HTMLAudioElement work, and what other Web APIs are commonly used in web development?</strong></li>
 <li><strong>How can AI assistants help with coding, and what should I watch out for?</strong></li>
 </ul>
 </body>

@@ -1,4 +1,4 @@
-# Session 3 Instructor Guide: Managing Game Flow
+# Session 3 Instructor Guide: Shared State with Context
 
 ## Learning Outcomes
 
@@ -29,14 +29,14 @@
 7. **Event Handlers** - Connect user interactions to state changes
 8. **React DevTools** - Demonstrate state inspection and manipulation
 9. **Game Flow Architecture** - Walk through screen navigation system
-10. **Professional Patterns** - Introduce scalable state management approaches
+10. **Best Practices** - Introduce scalable state management approaches
 11. **Let's Navigate!** - Kick off hands-on mission: screen navigation and modal state
 
 ---
 
 ## Slide Deck Outline
 
-### **Slide 1: Welcome to State Management! 🧠**
+### **Slide 1: Shared State with Context 🧠**
 
 - **Title:** "Session 3: Shared State with Context — Managing Game Flow"
 - **Session 2 Recap:** "Last time: You built game components with props, styling, and click handlers"
@@ -84,7 +84,7 @@
 - **Today's Examples:**
   - **Shared:** `screen` state (affects entire app navigation)
   - **Local:** `showCredits` state (only affects SplashScreen modal)
-- **Professional Insight:** "Choosing the right state type is a key React skill"
+- **Key Insight:** "Choosing the right state type is a key React skill"
 
 ### **Slide 4: React Hooks - Your State Management Toolkit 🪝**
 
@@ -94,32 +94,44 @@
   - Always start with "use" (useState, useContext, useEffect)
   - Only call at the top level of components
   - Can't be called inside loops or conditions
+- **useState Syntax Breakdown:**
+  ```javascript
+  const [showCredits, setShowCredits] = useState(false);
+  //     ^current value  ^setter function    ^initial value
+  ```
+  - **Array destructuring** pulls out current value and setter function
+  - **Naming convention:** `[thing, setThing]` pattern
+  - **Initial value** can be any data type
 - **Today's Hooks:**
   - **useState** - Adds local state to components
   - **useContext** - Accesses shared state from Context
   - **useGame** - Custom hook that wraps useContext for cleaner code
-- **Visual:** Hook examples with syntax highlighting
 - **Live Demo Preview:** "We'll write our first useState hook together — and see it change the UI instantly"
 - **Student Connection:** "Hooks are your tools for making components dynamic and interactive"
 
 ### **Slide 5: Context API - Shared State Without Prop Drilling 🌐**
 
 - **Title:** "How Context Solves the Prop Drilling Problem"
-- **The Problem:** Passing props through multiple component levels
+- **What is Prop Drilling?**
+  - **Definition:** Passing data through multiple component levels, even when intermediate components don't need that data
+  - **Problem:** Like having to ask your friend to ask their friend to ask their friend for something
+  - **Result:** Inefficient, annoying, and hard to maintain
 - **Visual:** Before/After diagram showing prop drilling vs Context
 
 **Without Context (Prop Drilling):**
 ```
-App → SplashScreen → GameButton
-  ↓       ↓           ↓
-screen  screen      screen
+App (has screen state)
+ ↓ passes screen as prop
+SplashScreen (doesn't need screen, just passes it along)
+ ↓ passes screen as prop  
+GameButton (finally uses screen)
 ```
 
 **With Context:**
 ```
-GameProvider (wraps entire app)
-    ↓
-Any component can access screen directly
+GameProvider (provides screen state)
+ ↓ any component can access directly
+GameButton (uses useGame hook to get screen)
 ```
 
 - **Context Benefits:**
@@ -130,7 +142,7 @@ Any component can access screen directly
 - **Today's Context:** GameProvider provides screen state to entire app
 - **Student Preview:** "Your useGame hook accesses this shared state from anywhere"
 
-### **Slide 6: Constants - Professional Code Organization 📋**
+### **Slide 6: Constants - Clean Code Organization 📋**
 
 - **Title:** "Why Constants Matter for Maintainable Code"
 - **The Problem:** Magic strings scattered throughout code
@@ -144,7 +156,7 @@ Any component can access screen directly
 - ✅ **Self-documenting** - Clear intent and available options
 
 - **Today's Constants:** SCREENS object with SPLASH, PLAYING, GAME_OVER
-- **Professional Practice:** "Real apps have hundreds of constants for maintainability"
+- **Best Practice:** "Real apps have hundreds of constants for maintainability"
 
 ### **Slide 7: Conditional Rendering - Controlling What Users See 🔀**
 
@@ -178,7 +190,7 @@ Any component can access screen directly
   - Inspect screen state value
   - Manually change screen from "splash" to "playing"
   - Watch UI update instantly
-- **Professional Usage:** "Essential for debugging state-related issues"
+- **Real-World Usage:** "Essential for debugging state-related issues"
 
 ### **Slide 9: Game Flow Architecture - The Big Picture 🗺️**
 
@@ -219,7 +231,7 @@ SPLASH ───► PLAYING ───► QUIZ ───► GAME_OVER
   - **Error handling** - Can add validation and error messages
   - **Abstraction** - Hide implementation details
   - **Reusability** - Same hook used everywhere
-- **Professional Pattern:** "Custom hooks are how pros organize complex state logic"
+- **Best Practice:** "Custom hooks are how developers organize complex state logic"
 
 ### **Slide 11: Build Screen Navigation! 🚀**
 
@@ -234,11 +246,11 @@ SPLASH ───► PLAYING ───► QUIZ ───► GAME_OVER
   - Start Adventure button navigates to GameMap
   - Credits button shows/hides modal
   - React DevTools shows state changes
-- **Professional Workflow:** "Build incrementally, test frequently, debug with tools"
+- **Development Workflow:** "Build incrementally, test frequently, debug with tools"
 
 ### **[HANDS-ON WORK HAPPENS HERE]**
 
-### **Slide 12: State Management Patterns - Professional Insights 💼**
+### **Slide 12: State Management Patterns - Key Insights 💼**
 
 - **Title:** "How Real Apps Organize State"
 - **Today's Patterns:**
@@ -250,9 +262,9 @@ SPLASH ───► PLAYING ───► QUIZ ───► GAME_OVER
   - **Small apps** - Context + useState (what you're using)
   - **Medium apps** - Add useReducer for complex state logic
   - **Large apps** - External libraries like Redux or Zustand
-- **Student Empowerment:** "You're learning patterns used in production apps"
+- **Student Empowerment:** "You're learning patterns used in real apps"
 
-### **Slide 13: What's Next - Configuring Game Content 🎮**
+### **Slide 13: What's Next - Data-Driven Design 🏗️**
 
 - **Title:** "Preview of Session 4"
 - **Today's Achievement:** "You built navigation with shared and local state"

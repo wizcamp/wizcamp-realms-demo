@@ -361,7 +361,7 @@ overflow-x: hidden !important;
 </style>
 </head>
 <body>
-<h1 id="session-5-instructor-guide-generating-dynamic-questions">Session 5 Instructor Guide: Generating Dynamic Questions</h1>
+<h1 id="session-5-instructor-guide-connecting-to-external-apis">Session 5 Instructor Guide: Connecting to External APIs</h1>
 <h2 id="learning-outcomes">Learning Outcomes</h2>
 <p><strong>By the end of Session 5, students will be able to:</strong></p>
 <ol type="1">
@@ -389,12 +389,12 @@ overflow-x: hidden !important;
 <li><strong>Data Transformation Patterns</strong> - Demonstrate the ability to transform API data into the format your application needs</li>
 <li><strong>Error Handling and Validation</strong> - Emphasize robust code that handles network failures gracefully</li>
 <li><strong>Helper Functions and Managing Complexity</strong> - Show how breaking complex problems into focused functions makes code maintainable and easier to understand</li>
-<li><strong>Professional Development Workflow</strong> - Incremental implementation with testing at each step</li>
+<li><strong>Development Workflow</strong> - Incremental implementation with testing at each step</li>
 <li><strong>Let’s Connect!</strong> - Launch the hands-on mission: complete the API integration to add dynamic questions to the game</li>
 </ol>
 <hr />
 <h2 id="slide-deck-outline">Slide Deck Outline</h2>
-<h3 id="slide-1-welcome-to-the-real-internet"><strong>Slide 1: Welcome to the Real Internet! 🌐</strong></h3>
+<h3 id="slide-1-connecting-to-external-apis"><strong>Slide 1: Connecting to External APIs 🌐</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Session 5: Connecting to External APIs — Generating Dynamic Questions”</li>
 <li><strong>Session 4 Recap:</strong> “Last time: You configured game zones using metadata and JavaScript data structures”</li>
@@ -404,7 +404,7 @@ overflow-x: hidden !important;
 <li><strong>Connect</strong> to external APIs for live data</li>
 <li><strong>Master</strong> asynchronous programming with async/await</li>
 <li><strong>Transform</strong> API responses into game-ready data</li>
-<li><strong>Handle</strong> network errors like a professional developer</li>
+<li><strong>Handle</strong> network errors like a skilled developer</li>
 <li><strong>Experience</strong> the power of real-time data integration</li>
 </ul></li>
 <li><strong>Visual:</strong> Data flow diagram showing API → Transform → Game</li>
@@ -422,12 +422,12 @@ overflow-x: hidden !important;
 </ul></li>
 <li><strong>Real-World Examples:</strong>
 <ul>
-<li><strong>Instagram</strong> - Photo API, user API, messaging API</li>
-<li><strong>Spotify</strong> - Music streaming API, playlist API, search API</li>
+<li><strong>Social media apps</strong> - Photo API, user API, messaging API</li>
+<li><strong>Music streaming apps</strong> - Music API, playlist API, search API</li>
 <li><strong>Weather apps</strong> - Forecast API, location API, alerts API</li>
 </ul></li>
 <li><strong>Your Game:</strong> OpenTrivia Database API provides thousands of trivia questions</li>
-<li><strong>Professional Context:</strong> “Modern apps are built by connecting multiple APIs together”</li>
+<li><strong>Real-World Context:</strong> “Modern apps are built by connecting multiple APIs together”</li>
 <li><strong>Student Preview:</strong> “You’ll request real trivia questions and transform them for your game”</li>
 </ul>
 <h3 id="slide-3-opentrivia-database---your-question-source"><strong>Slide 3: OpenTrivia Database - Your Question Source 🎯</strong></h3>
@@ -490,9 +490,9 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb2-4" title="4"><span class="op">}</span> <span class="cf">catch</span> (error) <span class="op">{</span></a>
 <a class="sourceLine" id="cb2-5" title="5">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Request failed:&quot;</span><span class="op">,</span> error)<span class="op">;</span></a>
 <a class="sourceLine" id="cb2-6" title="6"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Professional Pattern:</strong> “Always wrap fetch in try/catch for robust error handling”</p></li>
+<li><p><strong>Best Practice:</strong> “Always wrap fetch in try/catch for robust error handling”</p></li>
 </ul>
-<h3 id="slide-6-json---the-universal-data-language"><strong>Slide 6: JSON - The Universal Data Language 📋</strong></h3>
+<h3 id="slide-6-json-processing---from-text-to-objects"><strong>Slide 6: JSON Processing - From Text to Objects 📋</strong></h3>
 <ul>
 <li><strong>Title:</strong> “JavaScript Object Notation - How APIs Communicate”</li>
 <li><strong>What is JSON?</strong>
@@ -507,33 +507,107 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb3-3" title="3"></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="co">// JavaScript Object (in memory)</span></a>
 <a class="sourceLine" id="cb3-5" title="5"><span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Alice&quot;</span><span class="op">,</span> <span class="dt">age</span><span class="op">:</span> <span class="dv">25</span><span class="op">}</span></a></code></pre></div></li>
-<li><strong>Parsing Process:</strong> <code>JSON.parse()</code> converts text to objects, <code>response.json()</code> does this automatically</li>
+<li><strong>The Parsing Process:</strong>
+<ul>
+<li><strong>fetch()</strong> returns a Response object</li>
+<li><strong>response.json()</strong> reads the response body and parses JSON automatically</li>
+<li><strong>Result:</strong> JavaScript objects ready to use in your code</li>
+</ul></li>
 <li><strong>Why APIs Use JSON:</strong> Language-independent, lightweight, widely supported</li>
 <li><p><strong>Student Connection:</strong> “OpenTrivia DB sends JSON — your code converts it to JavaScript objects”</p></li>
 </ul>
-<h3 id="slide-7-asyncawait---making-asynchronous-code-readable"><strong>Slide 7: Async/Await - Making Asynchronous Code Readable 🎭</strong></h3>
+<h3 id="slide-7-data-transformation-philosophy---making-apis-work-for-you"><strong>Slide 7: Data Transformation Philosophy - Making APIs Work for You 🔄</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Why APIs Rarely Return Data in the Format You Need”</li>
+<li><strong>The Reality:</strong> APIs serve many different applications with different needs</li>
+<li><strong>Your Challenge:</strong> Transform API data into your game’s specific format</li>
+<li><strong>Transformation Benefits:</strong>
+<ul>
+<li><strong>Consistency</strong> - Same data structure throughout your app</li>
+<li><strong>Simplicity</strong> - Easier to work with in your components</li>
+<li><strong>Flexibility</strong> - Change API without changing your entire app</li>
+</ul></li>
+<li><strong>Helper Functions Philosophy:</strong>
+<ul>
+<li><strong>Single responsibility</strong> - Each function does one thing well</li>
+<li><strong>Reusability</strong> - Write once, use multiple times</li>
+<li><strong>Testability</strong> - Easy to verify each transformation step</li>
+</ul></li>
+<li><strong>Today’s Helpers:</strong>
+<ul>
+<li><strong>decodeText()</strong> - Converts URL encoding to readable text</li>
+<li><strong>shuffleAnswers()</strong> - Randomizes answer order for fairness</li>
+<li><strong>transformQuestion()</strong> - Orchestrates the complete transformation</li>
+</ul></li>
+<li><strong>Best Practice:</strong> “Break complex transformations into simple, composable functions”</li>
+</ul>
+<h3 id="slide-8-array-methods---processing-collections-of-data-️"><strong>Slide 8: Array Methods - Processing Collections of Data 🗺️</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Transforming Arrays with map() and Finding Items with indexOf()”</li>
+<li><strong>The map() Method:</strong>
+<ul>
+<li><strong>Purpose:</strong> Transform each item in an array into something new</li>
+<li><strong>Pattern:</strong> <code>array.map(item =&gt; transformedItem)</code></li>
+<li><strong>Returns:</strong> New array with same length, transformed items</li>
+</ul></li>
+<li><p><strong>API Use Case:</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// Transform each API question into game format</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">map</span>(apiQuestion <span class="kw">=&gt;</span> <span class="at">transformQuestion</span>(apiQuestion))<span class="op">;</span></a></code></pre></div></li>
+<li><strong>The indexOf() Method:</strong>
+<ul>
+<li><strong>Purpose:</strong> Find the position of an item in an array</li>
+<li><strong>Pattern:</strong> <code>array.indexOf(searchItem)</code></li>
+<li><strong>Returns:</strong> Index number (or -1 if not found)</li>
+</ul></li>
+<li><p><strong>Game Use Case:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="co">// Find where the correct answer ended up after shuffling</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">const</span> correctIndex <span class="op">=</span> <span class="va">shuffledAnswers</span>.<span class="at">indexOf</span>(correctAnswer)<span class="op">;</span></a></code></pre></div></li>
+<li><strong>Why These Matter:</strong> Essential for processing API responses and organizing game data</li>
+<li><p><strong>Student Application:</strong> “You’ll use map() to transform all questions and indexOf() to track correct answers”</p></li>
+</ul>
+<h3 id="slide-9-url-encoding-and-decoding---handling-special-characters"><strong>Slide 9: URL Encoding and Decoding - Handling Special Characters 🔐</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Why API Text Looks Weird and How to Fix It”</li>
+<li><strong>The Problem:</strong> URLs can’t contain spaces, colons, or special characters safely</li>
+<li><strong>URL Encoding Examples:</strong>
+<ul>
+<li>Space becomes <code>%20</code></li>
+<li>Colon becomes <code>%3A</code></li>
+<li>Question mark becomes <code>%3F</code></li>
+</ul></li>
+<li><strong>Why APIs Use Encoding:</strong> Ensures text transmits safely over the internet</li>
+<li><strong>The Solution:</strong> <code>decodeURIComponent()</code> converts encoded text back to readable format</li>
+<li><p><strong>Before/After Example:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="co">// Encoded (from API)</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="st">&quot;What%20does%20GHz%20stand%20for%3F&quot;</span></a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">// Decoded (for your game)</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="st">&quot;What does GHz stand for?&quot;</span></a></code></pre></div></li>
+<li><p><strong>Student Implementation:</strong> “Your decodeText helper function handles this conversion automatically”</p></li>
+</ul>
+<h3 id="slide-10-asyncawait---making-asynchronous-code-readable"><strong>Slide 10: Async/Await - Making Asynchronous Code Readable 🎭</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Async/Await: Asynchronous Code That Looks Synchronous”</li>
 <li><p><strong>The Problem with Callbacks:</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// Hard to read and debug</span></a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="at">fetch</span>(url).<span class="at">then</span>(response <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-3" title="3">  <span class="cf">return</span> <span class="va">response</span>.<span class="at">json</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="op">}</span>).<span class="at">then</span>(data <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-5" title="5">  <span class="va">console</span>.<span class="at">log</span>(data)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="op">}</span>).<span class="at">catch</span>(error <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-7" title="7">  <span class="va">console</span>.<span class="at">log</span>(error)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="co">// Hard to read and debug</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="at">fetch</span>(url).<span class="at">then</span>(response <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-3" title="3">  <span class="cf">return</span> <span class="va">response</span>.<span class="at">json</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="op">}</span>).<span class="at">then</span>(data <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-5" title="5">  <span class="va">console</span>.<span class="at">log</span>(data)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="op">}</span>).<span class="at">catch</span>(error <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-7" title="7">  <span class="va">console</span>.<span class="at">log</span>(error)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div></li>
 <li><p><strong>The Async/Await Solution:</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="co">// Easy to read and debug</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="kw">async</span> <span class="kw">function</span> <span class="at">fetchData</span>() <span class="op">{</span></a>
-<a class="sourceLine" id="cb5-3" title="3">  <span class="cf">try</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb5-4" title="4">    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="at">fetch</span>(url)<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-5" title="5">    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="va">response</span>.<span class="at">json</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-6" title="6">    <span class="va">console</span>.<span class="at">log</span>(data)<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-7" title="7">  <span class="op">}</span> <span class="cf">catch</span> (error) <span class="op">{</span></a>
-<a class="sourceLine" id="cb5-8" title="8">    <span class="va">console</span>.<span class="at">log</span>(error)<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-9" title="9">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="op">}</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="co">// Easy to read and debug</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">async</span> <span class="kw">function</span> <span class="at">fetchData</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-3" title="3">  <span class="cf">try</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-4" title="4">    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="at">fetch</span>(url)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-5" title="5">    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="va">response</span>.<span class="at">json</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-6" title="6">    <span class="va">console</span>.<span class="at">log</span>(data)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-7" title="7">  <span class="op">}</span> <span class="cf">catch</span> (error) <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-8" title="8">    <span class="va">console</span>.<span class="at">log</span>(error)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-9" title="9">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="op">}</span></a></code></pre></div></li>
 <li><strong>Key Rules:</strong>
 <ul>
 <li><strong>async</strong> keyword before function declaration</li>
@@ -542,23 +616,23 @@ overflow-x: hidden !important;
 </ul></li>
 <li><p><strong>Student Benefit:</strong> “Your API code will be clean and easy to understand”</p></li>
 </ul>
-<h3 id="slide-8-data-transformation---api-to-game-format"><strong>Slide 8: Data Transformation - API to Game Format 🔄</strong></h3>
+<h3 id="slide-11-data-transformation---api-to-game-format"><strong>Slide 11: Data Transformation - API to Game Format 🔄</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Transforming API Data for Your Game”</li>
 <li><strong>Visual:</strong> Before/After comparison showing data transformation</li>
 </ul>
 <p><strong>API Response (Raw Format):</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb6-2" title="2">  <span class="dt">&quot;question&quot;</span><span class="fu">:</span> <span class="st">&quot;What%20does%20GHz%20stand%20for%3F&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb6-3" title="3">  <span class="dt">&quot;correct_answer&quot;</span><span class="fu">:</span> <span class="st">&quot;Gigahertz&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb6-4" title="4">  <span class="dt">&quot;incorrect_answers&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;Gigahotz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahetz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahatz&quot;</span><span class="ot">]</span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="fu">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="dt">&quot;question&quot;</span><span class="fu">:</span> <span class="st">&quot;What%20does%20GHz%20stand%20for%3F&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb9-3" title="3">  <span class="dt">&quot;correct_answer&quot;</span><span class="fu">:</span> <span class="st">&quot;Gigahertz&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb9-4" title="4">  <span class="dt">&quot;incorrect_answers&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;Gigahotz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahetz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahatz&quot;</span><span class="ot">]</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="fu">}</span></a></code></pre></div>
 <p><strong>Game Format (Transformed):</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb7-2" title="2">  <span class="dt">&quot;question&quot;</span><span class="fu">:</span> <span class="st">&quot;What does GHz stand for?&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb7-3" title="3">  <span class="dt">&quot;answers&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;Gigahotz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahertz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahetz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahatz&quot;</span><span class="ot">]</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb7-4" title="4">  <span class="dt">&quot;correct&quot;</span><span class="fu">:</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="fu">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">{</span></a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="dt">&quot;question&quot;</span><span class="fu">:</span> <span class="st">&quot;What does GHz stand for?&quot;</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb10-3" title="3">  <span class="dt">&quot;answers&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;Gigahotz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahertz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahetz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahatz&quot;</span><span class="ot">]</span><span class="fu">,</span></a>
+<a class="sourceLine" id="cb10-4" title="4">  <span class="dt">&quot;correct&quot;</span><span class="fu">:</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="fu">}</span></a></code></pre></div>
 <ul>
 <li><strong>Transformation Steps:</strong>
 <ol type="1">
@@ -567,9 +641,9 @@ overflow-x: hidden !important;
 <li><strong>Shuffle</strong> answer order randomly</li>
 <li><strong>Find</strong> correct answer index in shuffled array</li>
 </ol></li>
-<li><strong>Professional Pattern:</strong> “APIs rarely return data in exactly the format you need”</li>
+<li><strong>Common Reality:</strong> “APIs rarely return data in exactly the format you need”</li>
 </ul>
-<h3 id="slide-9-helper-functions---managing-complexity"><strong>Slide 9: Helper Functions - Managing Complexity 🧩</strong></h3>
+<h3 id="slide-12-helper-functions---managing-complexity"><strong>Slide 12: Helper Functions - Managing Complexity 🧩</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Breaking Complex Problems into Manageable Pieces”</li>
 <li><strong>Core Concept:</strong> “Decompose complex tasks into smaller, focused functions that can be combined”</li>
@@ -588,9 +662,9 @@ overflow-x: hidden !important;
 <li><strong>shuffleAnswers()</strong> - Randomizes answer order</li>
 <li><strong>transformQuestion()</strong> - Converts API format to game format</li>
 </ul></li>
-<li><strong>Professional Insight:</strong> “Good developers break complex problems into simple, composable pieces”</li>
+<li><strong>Key Approach:</strong> “Good developers break complex problems into simple, composable pieces”</li>
 </ul>
-<h3 id="slide-10-error-handling---building-robust-applications-️"><strong>Slide 10: Error Handling - Building Robust Applications 🛡️</strong></h3>
+<h3 id="slide-13-error-handling---building-robust-applications-️"><strong>Slide 13: Error Handling - Building Robust Applications 🛡️</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Planning for When Things Go Wrong”</li>
 <li><strong>Common API Failures:</strong>
@@ -601,23 +675,23 @@ overflow-x: hidden !important;
 <li><strong>Rate limiting</strong> - Too many requests too quickly</li>
 </ul></li>
 <li><p><strong>Error Handling Strategy:</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="cf">try</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb8-2" title="2">  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="at">fetch</span>(url)<span class="op">;</span></a>
-<a class="sourceLine" id="cb8-3" title="3">  <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="va">response</span>.<span class="at">json</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb8-4" title="4"></a>
-<a class="sourceLine" id="cb8-5" title="5">  <span class="cf">if</span> (<span class="op">!</span><span class="va">data</span>.<span class="at">results</span> <span class="op">||</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb8-6" title="6">    <span class="cf">return</span> []<span class="op">;</span> <span class="co">// Handle empty response</span></a>
-<a class="sourceLine" id="cb8-7" title="7">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb8-8" title="8"></a>
-<a class="sourceLine" id="cb8-9" title="9">  <span class="cf">return</span> <span class="at">processData</span>(data)<span class="op">;</span></a>
-<a class="sourceLine" id="cb8-10" title="10"><span class="op">}</span> <span class="cf">catch</span> (error) <span class="op">{</span></a>
-<a class="sourceLine" id="cb8-11" title="11">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Failed to fetch questions:&quot;</span><span class="op">,</span> error)<span class="op">;</span></a>
-<a class="sourceLine" id="cb8-12" title="12">  <span class="cf">return</span> []<span class="op">;</span> <span class="co">// Return safe fallback</span></a>
-<a class="sourceLine" id="cb8-13" title="13"><span class="op">}</span></a></code></pre></div></li>
-<li><strong>Professional Mindset:</strong> “Always assume external services might fail”</li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="cf">try</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-2" title="2">  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="at">fetch</span>(url)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-3" title="3">  <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="va">response</span>.<span class="at">json</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-4" title="4"></a>
+<a class="sourceLine" id="cb11-5" title="5">  <span class="cf">if</span> (<span class="op">!</span><span class="va">data</span>.<span class="at">results</span> <span class="op">||</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-6" title="6">    <span class="cf">return</span> []<span class="op">;</span> <span class="co">// Handle empty response</span></a>
+<a class="sourceLine" id="cb11-7" title="7">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb11-8" title="8"></a>
+<a class="sourceLine" id="cb11-9" title="9">  <span class="cf">return</span> <span class="at">processData</span>(data)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-10" title="10"><span class="op">}</span> <span class="cf">catch</span> (error) <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-11" title="11">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Failed to fetch questions:&quot;</span><span class="op">,</span> error)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-12" title="12">  <span class="cf">return</span> []<span class="op">;</span> <span class="co">// Return safe fallback</span></a>
+<a class="sourceLine" id="cb11-13" title="13"><span class="op">}</span></a></code></pre></div></li>
+<li><strong>Key Mindset:</strong> “Always assume external services might fail”</li>
 <li><p><strong>Student Application:</strong> “Your game will gracefully handle network issues”</p></li>
 </ul>
-<h3 id="slide-11-fetch-dynamic-trivia-questions"><strong>Slide 11: Fetch Dynamic Trivia Questions! 🚀</strong></h3>
+<h3 id="slide-14-fetch-dynamic-trivia-questions"><strong>Slide 14: Fetch Dynamic Trivia Questions! 🚀</strong></h3>
 <ul>
 <li><strong>Today’s Mission: Connect your game to the internet</strong>
 <ol type="1">
@@ -626,7 +700,7 @@ overflow-x: hidden !important;
 <li><strong>Implement transformQuestion</strong> step-by-step with console logging</li>
 <li><strong>Complete fetchQuestions</strong> integration with full data transformation</li>
 <li><strong>Test API integration</strong> using React DevTools state inspection</li>
-<li><strong>Clean up debugging code</strong> for production-ready implementation</li>
+<li><strong>Clean up debugging code</strong> for a polished implementation</li>
 </ol></li>
 <li><strong>Success Criteria:</strong>
 <ul>
@@ -635,10 +709,10 @@ overflow-x: hidden !important;
 <li>Answers are shuffled with correct index tracking</li>
 <li>Error handling prevents crashes on network failures</li>
 </ul></li>
-<li><strong>Professional Workflow:</strong> “Build incrementally, test frequently, handle errors gracefully”</li>
+<li><strong>Development Workflow:</strong> “Build incrementally, test frequently, handle errors gracefully”</li>
 </ul>
 <h3 id="hands-on-work-happens-here"><strong>[HANDS-ON WORK HAPPENS HERE]</strong></h3>
-<h3 id="slide-12-data-flow-architecture---the-complete-picture"><strong>Slide 12: Data Flow Architecture - The Complete Picture 🔄</strong></h3>
+<h3 id="slide-15-data-flow-architecture---the-complete-picture"><strong>Slide 15: Data Flow Architecture - The Complete Picture 🔄</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Tracing Data from Click to Questions”</li>
 <li><strong>Visual:</strong> Complete data flow diagram</li>
@@ -658,10 +732,10 @@ React state updates ← Clean game objects ← transformQuestion ← API respons
 <li><strong>trivia.js</strong> - Handles API communication and data transformation</li>
 <li><strong>OpenTrivia DB</strong> - External data source</li>
 </ul></li>
-<li><strong>Professional Architecture:</strong> “Separation of concerns — each component has a specific responsibility”</li>
+<li><strong>Clean Architecture:</strong> “Separation of concerns — each component has a specific responsibility”</li>
 <li><strong>Student Achievement:</strong> “You built a complete data pipeline from user interaction to external API”</li>
 </ul>
-<h3 id="slide-13-whats-next---caching-and-performance"><strong>Slide 13: What’s Next - Caching and Performance 💾</strong></h3>
+<h3 id="slide-16-whats-next---browser-storage-caching"><strong>Slide 16: What’s Next - Browser Storage &amp; Caching ⚡</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Preview of Session 6”</li>
 <li><strong>Today’s Achievement:</strong> “You connected your game to real internet data with complete API integration”</li>

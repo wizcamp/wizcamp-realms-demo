@@ -1,4 +1,4 @@
-# Session 5 Instructor Guide: Generating Dynamic Questions
+# Session 5 Instructor Guide: Connecting to External APIs
 
 ## Learning Outcomes
 
@@ -29,14 +29,14 @@
 7. **Data Transformation Patterns** - Demonstrate the ability to transform API data into the format your application needs
 8. **Error Handling and Validation** - Emphasize robust code that handles network failures gracefully
 9. **Helper Functions and Managing Complexity** - Show how breaking complex problems into focused functions makes code maintainable and easier to understand
-10. **Professional Development Workflow** - Incremental implementation with testing at each step
+10. **Development Workflow** - Incremental implementation with testing at each step
 11. **Let's Connect!** - Launch the hands-on mission: complete the API integration to add dynamic questions to the game
 
 ---
 
 ## Slide Deck Outline
 
-### **Slide 1: Welcome to the Real Internet! 🌐**
+### **Slide 1: Connecting to External APIs 🌐**
 
 - **Title:** "Session 5: Connecting to External APIs — Generating Dynamic Questions"
 - **Session 4 Recap:** "Last time: You configured game zones using metadata and JavaScript data structures"
@@ -45,7 +45,7 @@
   - **Connect** to external APIs for live data
   - **Master** asynchronous programming with async/await
   - **Transform** API responses into game-ready data
-  - **Handle** network errors like a professional developer
+  - **Handle** network errors like a skilled developer
   - **Experience** the power of real-time data integration
 - **Visual:** Data flow diagram showing API → Transform → Game
 - **Connection:** "From static configuration to dynamic, internet-powered content!"
@@ -59,11 +59,11 @@
   - **Food** = JSON response (the actual data you receive)
   - **Waiter** = API endpoint (handles the communication)
 - **Real-World Examples:**
-  - **Instagram** - Photo API, user API, messaging API
-  - **Spotify** - Music streaming API, playlist API, search API
+  - **Social media apps** - Photo API, user API, messaging API
+  - **Music streaming apps** - Music API, playlist API, search API
   - **Weather apps** - Forecast API, location API, alerts API
 - **Your Game:** OpenTrivia Database API provides thousands of trivia questions
-- **Professional Context:** "Modern apps are built by connecting multiple APIs together"
+- **Real-World Context:** "Modern apps are built by connecting multiple APIs together"
 - **Student Preview:** "You'll request real trivia questions and transform them for your game"
 
 ### **Slide 3: OpenTrivia Database - Your Question Source 🎯**
@@ -129,9 +129,9 @@
     console.log("Request failed:", error);
   }
   ```
-- **Professional Pattern:** "Always wrap fetch in try/catch for robust error handling"
+- **Best Practice:** "Always wrap fetch in try/catch for robust error handling"
 
-### **Slide 6: JSON - The Universal Data Language 📋**
+### **Slide 6: JSON Processing - From Text to Objects 📋**
 
 - **Title:** "JavaScript Object Notation - How APIs Communicate"
 - **What is JSON?**
@@ -146,11 +146,77 @@
   // JavaScript Object (in memory)
   {name: "Alice", age: 25}
   ```
-- **Parsing Process:** `JSON.parse()` converts text to objects, `response.json()` does this automatically
+- **The Parsing Process:**
+  - **fetch()** returns a Response object
+  - **response.json()** reads the response body and parses JSON automatically
+  - **Result:** JavaScript objects ready to use in your code
 - **Why APIs Use JSON:** Language-independent, lightweight, widely supported
 - **Student Connection:** "OpenTrivia DB sends JSON — your code converts it to JavaScript objects"
 
-### **Slide 7: Async/Await - Making Asynchronous Code Readable 🎭**
+### **Slide 7: Data Transformation Philosophy - Making APIs Work for You 🔄**
+
+- **Title:** "Why APIs Rarely Return Data in the Format You Need"
+- **The Reality:** APIs serve many different applications with different needs
+- **Your Challenge:** Transform API data into your game's specific format
+- **Transformation Benefits:**
+  - **Consistency** - Same data structure throughout your app
+  - **Simplicity** - Easier to work with in your components
+  - **Flexibility** - Change API without changing your entire app
+- **Helper Functions Philosophy:**
+  - **Single responsibility** - Each function does one thing well
+  - **Reusability** - Write once, use multiple times
+  - **Testability** - Easy to verify each transformation step
+- **Today's Helpers:**
+  - **decodeText()** - Converts URL encoding to readable text
+  - **shuffleAnswers()** - Randomizes answer order for fairness
+  - **transformQuestion()** - Orchestrates the complete transformation
+- **Best Practice:** "Break complex transformations into simple, composable functions"
+
+### **Slide 8: Array Methods - Processing Collections of Data 🗺️**
+
+- **Title:** "Transforming Arrays with map() and Finding Items with indexOf()"
+- **The map() Method:**
+  - **Purpose:** Transform each item in an array into something new
+  - **Pattern:** `array.map(item => transformedItem)`
+  - **Returns:** New array with same length, transformed items
+- **API Use Case:**
+  ```javascript
+  // Transform each API question into game format
+  const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion));
+  ```
+- **The indexOf() Method:**
+  - **Purpose:** Find the position of an item in an array
+  - **Pattern:** `array.indexOf(searchItem)`
+  - **Returns:** Index number (or -1 if not found)
+- **Game Use Case:**
+  ```javascript
+  // Find where the correct answer ended up after shuffling
+  const correctIndex = shuffledAnswers.indexOf(correctAnswer);
+  ```
+- **Why These Matter:** Essential for processing API responses and organizing game data
+- **Student Application:** "You'll use map() to transform all questions and indexOf() to track correct answers"
+
+### **Slide 9: URL Encoding and Decoding - Handling Special Characters 🔐**
+
+- **Title:** "Why API Text Looks Weird and How to Fix It"
+- **The Problem:** URLs can't contain spaces, colons, or special characters safely
+- **URL Encoding Examples:**
+  - Space becomes `%20`
+  - Colon becomes `%3A`
+  - Question mark becomes `%3F`
+- **Why APIs Use Encoding:** Ensures text transmits safely over the internet
+- **The Solution:** `decodeURIComponent()` converts encoded text back to readable format
+- **Before/After Example:**
+  ```javascript
+  // Encoded (from API)
+  "What%20does%20GHz%20stand%20for%3F"
+  
+  // Decoded (for your game)
+  "What does GHz stand for?"
+  ```
+- **Student Implementation:** "Your decodeText helper function handles this conversion automatically"
+
+### **Slide 10: Async/Await - Making Asynchronous Code Readable 🎭**
 
 - **Title:** "Async/Await: Asynchronous Code That Looks Synchronous"
 - **The Problem with Callbacks:**
@@ -183,7 +249,7 @@
   - **try/catch** for error handling
 - **Student Benefit:** "Your API code will be clean and easy to understand"
 
-### **Slide 8: Data Transformation - API to Game Format 🔄**
+### **Slide 11: Data Transformation - API to Game Format 🔄**
 
 - **Title:** "Transforming API Data for Your Game"
 - **Visual:** Before/After comparison showing data transformation
@@ -211,9 +277,9 @@
   2. **Combine** correct and incorrect answers
   3. **Shuffle** answer order randomly
   4. **Find** correct answer index in shuffled array
-- **Professional Pattern:** "APIs rarely return data in exactly the format you need"
+- **Common Reality:** "APIs rarely return data in exactly the format you need"
 
-### **Slide 9: Helper Functions - Managing Complexity 🧩**
+### **Slide 12: Helper Functions - Managing Complexity 🧩**
 
 - **Title:** "Breaking Complex Problems into Manageable Pieces"
 - **Core Concept:** "Decompose complex tasks into smaller, focused functions that can be combined"
@@ -228,9 +294,9 @@
   - **decodeText()** - Converts URL encoding to readable text
   - **shuffleAnswers()** - Randomizes answer order
   - **transformQuestion()** - Converts API format to game format
-- **Professional Insight:** "Good developers break complex problems into simple, composable pieces"
+- **Key Approach:** "Good developers break complex problems into simple, composable pieces"
 
-### **Slide 10: Error Handling - Building Robust Applications 🛡️**
+### **Slide 13: Error Handling - Building Robust Applications 🛡️**
 
 - **Title:** "Planning for When Things Go Wrong"
 - **Common API Failures:**
@@ -254,10 +320,10 @@
     return []; // Return safe fallback
   }
   ```
-- **Professional Mindset:** "Always assume external services might fail"
+- **Key Mindset:** "Always assume external services might fail"
 - **Student Application:** "Your game will gracefully handle network issues"
 
-### **Slide 11: Fetch Dynamic Trivia Questions! 🚀**
+### **Slide 14: Fetch Dynamic Trivia Questions! 🚀**
 
 - **Today's Mission: Connect your game to the internet**
   1. **Replace alert** with basic fetch request and response logging
@@ -265,17 +331,17 @@
   3. **Implement transformQuestion** step-by-step with console logging
   4. **Complete fetchQuestions** integration with full data transformation
   5. **Test API integration** using React DevTools state inspection
-  6. **Clean up debugging code** for production-ready implementation
+  6. **Clean up debugging code** for a polished implementation
 - **Success Criteria:**
   - Zones load real trivia questions from OpenTrivia DB
   - Questions are properly decoded and formatted
   - Answers are shuffled with correct index tracking
   - Error handling prevents crashes on network failures
-- **Professional Workflow:** "Build incrementally, test frequently, handle errors gracefully"
+- **Development Workflow:** "Build incrementally, test frequently, handle errors gracefully"
 
 ### **[HANDS-ON WORK HAPPENS HERE]**
 
-### **Slide 12: Data Flow Architecture - The Complete Picture 🔄**
+### **Slide 15: Data Flow Architecture - The Complete Picture 🔄**
 
 - **Title:** "Tracing Data from Click to Questions"
 - **Visual:** Complete data flow diagram
@@ -295,10 +361,10 @@ React state updates ← Clean game objects ← transformQuestion ← API respons
   - **GameContext** - Manages application state
   - **trivia.js** - Handles API communication and data transformation
   - **OpenTrivia DB** - External data source
-- **Professional Architecture:** "Separation of concerns — each component has a specific responsibility"
+- **Clean Architecture:** "Separation of concerns — each component has a specific responsibility"
 - **Student Achievement:** "You built a complete data pipeline from user interaction to external API"
 
-### **Slide 13: What's Next - Caching and Performance 💾**
+### **Slide 16: What's Next - Browser Storage & Caching ⚡**
 
 - **Title:** "Preview of Session 6"
 - **Today's Achievement:** "You connected your game to real internet data with complete API integration"

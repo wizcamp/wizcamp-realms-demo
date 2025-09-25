@@ -1,4 +1,4 @@
-# Session 8 Instructor Guide: Implementing Scoring & Victory
+# Session 8 Instructor Guide: Application State Management
 
 ## Learning Outcomes
 
@@ -23,11 +23,11 @@
 1. **Application State Architecture** - Define application state as persistent, app-wide data and distinguish it from local component state like modal visibility or form inputs
 2. **State Coordination Patterns** - Show how multiple state pieces coordinate to create seamless user experiences—e.g., user actions trigger state updates that affect multiple components
 3. **Updater Functions and State Dependencies** - Explain why `setState((prev) => prev + value)` ensures accurate updates when state changes depend on previous values
-4. **Cache Lifecycle Management** - Demonstrate professional patterns for maintaining data freshness—e.g., clearing cached data when it becomes outdated or irrelevant
+4. **Cache Lifecycle Management** - Demonstrate smart patterns for maintaining data freshness—e.g., clearing cached data when it becomes outdated or irrelevant
 5. **Single Responsibility Principle** - Reinforce component design patterns through the Scoreboard component example
 6. **Complex State Updates** - Guide students through coordinated updates that affect multiple pieces of application state
 7. **Independent Component Development** - Prepare students for the GameOver component challenge using learned patterns
-8. **Professional State Management** - Connect today's patterns to real-world application development practices
+8. **State Management** - Connect today's patterns to real-world application development practices
 9. **React DevTools for Complex State** - Show advanced debugging techniques for multi-component state interactions
 10. **Victory Challenge Preparation** - Set up students for independent component creation using established patterns
 11. **Let's Score!** - Launch the hands-on mission by summarizing the implementation steps students will perform: add score to context, update answer handlers to use updater functions, create Scoreboard component, implement cache clearing, and build GameOver component independently
@@ -36,7 +36,7 @@
 
 ## Slide Deck Outline
 
-### **Slide 1: Welcome to Application State Management! 🏆**
+### **Slide 1: Application State Management 🏆**
 
 - **Title:** "Session 8: Application State Management — Implementing Scoring & Victory"
 - **Session 7 Recap:** "Last time: You built interactive quiz components and feedback systems"
@@ -65,7 +65,7 @@
 - **Lifetime:** App initialization to termination
 
 - **Today's Focus:** Application state that coordinates scoring, progress, and cache management
-- **Professional Insight:** "Choosing the right state type is crucial for maintainable applications"
+- **Key Insight:** "Choosing the right state type is crucial for maintainable applications"
 - **Student Connection:** "You'll decide which state type to use when building your scoring and GameOver logic"
 
 ### **Slide 3: State Coordination - The Game's Memory System 🎮**
@@ -85,7 +85,7 @@
 
 - **Coordination Example:** Correct answer → Update score → Update quiz progress → Check zone completion → Possibly change screen
 - **Visual Flow:** "Correct answer → score updates → zone progress → screen change"
-- **Professional Pattern:** "Complex apps coordinate dozens of state pieces this way"
+- **Common Pattern:** "Complex apps coordinate dozens of state pieces this way"
 - **Student Preview:** "You'll see how scoring integrates with existing game systems"
 
 ### **Slide 4: Updater Functions - Safe State Calculations 🔢**
@@ -109,7 +109,7 @@ setScore((prev) => prev + 100); // Guaranteed to add 200
 ```
 
 - **Why It Matters:** React batches state updates for performance, so multiple updates might use stale values
-- **Professional Usage:** "Always use updater functions when new state depends on previous state"
+- **Best Practice:** "Always use updater functions when new state depends on previous state"
 - **Student Application:** "Your scoring system will use this pattern for accurate point calculations"
 
 ### **Slide 5: Scoring System Architecture 📊**
@@ -134,12 +134,12 @@ setScore((prev) => prev + 100); // Guaranteed to add 200
 - **HUD placement** - Prominent position for constant awareness
 - **React Fragment** - Clean component composition
 
-- **Professional Insight:** "Good scoring systems balance challenge with encouragement"
+- **Key Insight:** "Good scoring systems balance challenge with encouragement"
 - **Student Connection:** "Your score will update instantly with every answer"
 
 ### **Slide 6: Cache Management - Data Lifecycle Control 🗄️**
 
-- **Title:** "Professional Cache Management Patterns"
+- **Title:** "Cache Management Patterns"
 - **The Challenge:** Knowing when to keep, refresh, or remove cached data
 **Cache Lifecycle Events:**
 
@@ -153,7 +153,7 @@ clearQuestionCache(zoneId)     // Remove specific zone cache
 clearAllQuestionCache()        // Remove all trivia caches
 ```
 
-**Professional Patterns:**
+**Best Practices:**
 
 - **Selective clearing** - Remove only what's needed
 - **Bulk operations** - Efficient cleanup for reset scenarios
@@ -214,7 +214,7 @@ function Scoreboard() {
 - **With:** `<h3>Score</h3><p>1200</p>`
 
 - **Benefits:** Cleaner HTML, better CSS styling, improved accessibility
-- **Professional Usage:** "Fragments prevent div soup in complex component trees"
+- **Real-World Usage:** "Fragments prevent div soup in complex component trees"
 - **Student Application:** "Your Scoreboard will use fragments for clean HTML output"
 
 ### **Slide 9: Independent Component Development - Your Solo Challenge 🎯**
@@ -226,7 +226,7 @@ function Scoreboard() {
 - **Context access** - useGame hook for state and actions
 - **Component structure** - JSX, props, and event handling
 - **Styling patterns** - CSS classes and conditional rendering
-- **Professional practices** - Single responsibility and clean code
+- **Best practices** - Single responsibility and clean code
 
 **Success Indicators:**
 
@@ -234,7 +234,7 @@ function Scoreboard() {
 - **Provides restart option** - Button to reset game state
 - **Follows design patterns** - Consistent with existing components
 - **Student Empowerment:** "This is your chance to build a component from scratch using everything you've learned"
-- **Professional Context:** "Independent component development is a core React skill"
+- **Real-World Context:** "Independent component development is a core React skill"
 
 ### **Slide 10: Add Scoring & Victory! 🚀**
 
@@ -250,7 +250,7 @@ function Scoreboard() {
   - Scoreboard displays current score
   - Cache clears on reset
   - GameOver component works independently
-- **Professional Workflow:** "Complex state management + systematic testing = robust game experiences"
+- **Development Workflow:** "Complex state management + systematic testing = robust game experiences"
 
 ### **[HANDS-ON WORK HAPPENS HERE]**
 
@@ -271,10 +271,10 @@ function Scoreboard() {
 - **Component hierarchy** - Verify proper rendering conditions
 - **Manual state editing** - Test edge cases and transitions
 
-- **Professional Testing:** "Integration testing catches issues that unit tests miss"
+- **Integration Testing:** "Integration testing catches issues that unit tests miss"
 - **Student Empowerment:** "Use DevTools to validate your complete game flow"
 
-### **Slide 12: What's Next - Audio Integration & Polish 🎵**
+### **Slide 12: What's Next - Custom Hooks & Browser APIs 🎵**
 
 - **Title:** "Preview of Session 9"
 - **Today's Achievement:** "You built complete game state management with scoring and independent component development"
@@ -287,4 +287,4 @@ function Scoreboard() {
 - **User preferences** - Music toggle and volume controls
 - **Component integration** - Audio controls in game interface
 
-- **Motivation:** "Your complete game will have professional audio features!"
+- **Motivation:** "Your complete game will have awesome audio features!"

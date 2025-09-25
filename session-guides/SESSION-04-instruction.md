@@ -1,4 +1,4 @@
-# Session 4 Instructor Guide: Configuring Game Zones
+# Session 4 Instructor Guide: Data-Driven Design
 
 ## Learning Outcomes
 
@@ -28,7 +28,7 @@
 5. **React Fragments** - Solve the single root element requirement when returning multiple components
 6. **Coordinate Positioning** - Use the CoordinateDisplay tool to find exact (x, y) positions for your zone labels — and see them update in real time
 7. **Nested Data Structures** - Show how arrays of objects with object properties represent complex game data
-8. **Professional Development Patterns** - Emphasize configuration-driven design as an industry best practice
+8. **Development Patterns** - Emphasize configuration-driven design as a widely-used best practice
 9. **State Management Testing** - Use React DevTools to simulate zone completion and test game behavior — without needing to play through each level
 10. **Zone Theme Planning** - Guide students through cohesive theme creation that matches visual and content elements
 11. **Let's Configure!** - Launch the coding mission: design zones, update metadata, position labels, and test your game world
@@ -37,7 +37,7 @@
 
 ## Slide Deck Outline
 
-### **Slide 1: Welcome to Game Architecture! 🏗️**
+### **Slide 1: Data-Driven Design 🏗️**
 
 - **Title:** "Session 4: Data-Driven Design — Configuring Game Zones"
 - **Session 3 Recap:** "Last time: You managed game flow with shared state, implemented local state for modals, and gained React DevTools expertise"
@@ -51,7 +51,7 @@
 - **Visual:** Game map with three distinct themed zones
 - **Connection:** "You've built the navigation system — now you'll populate it with rich, configurable content!"
 
-### **Slide 2: Data-Driven Architecture - The Professional Approach 📋**
+### **Slide 2: Data-Driven Architecture - The Modern Approach 📋**
 
 - **Title:** "Separating Data from Code"
 - **The Problem:** Hardcoded game content scattered throughout components
@@ -62,7 +62,7 @@
   - **Collaboration** - Designers can modify content without coding
   - **Testing** - Easy to test different configurations
 - **Real Example:** `zones.js` defines all zone properties in one place
-- **Professional Context:** "Netflix, Spotify, and gaming companies use this pattern for content management"
+- **Real-World Context:** "Streaming apps and gaming companies use this pattern for content management"
 - **Student Preview:** "Your zones.js file is the DNA of your game experience"
 
 ### **Slide 3: Metadata - Data About Data 🏷️**
@@ -171,7 +171,7 @@ return (
   1. **Browse categories** - Find topics that match your zone themes
   2. **Note category IDs** - Numbers you'll use in configuration
   3. **Plan cohesive themes** - You choose the trivia categories that shape your zone themes
-- **Professional Context:** "Real apps integrate with external APIs for dynamic content"
+- **Real-World Context:** "Real apps integrate with external APIs for dynamic content"
 - **Student Mission:** "Choose categories that create immersive, themed experiences"
 - **🎯 Student Activity (2-3 min):** Have students browse the API categories and write down 3 category IDs that match their planned zone themes (Forest/easy, Desert/medium, Ice Castle/hard)
 
@@ -186,7 +186,7 @@ return (
   - **Real-time feedback** - Shows mouse position as you move
   - **Precise placement** - Find exact coordinates for zone labels
   - **Visual testing** - See immediately where elements will appear
-- **Professional Usage:** "Game developers and UI designers use coordinate systems for precise layouts"
+- **Real-World Usage:** "Game developers and UI designers use coordinate systems for precise layouts"
 - **Student Workflow:**
   1. Move mouse around game map
   2. Note coordinates for good label positions
@@ -237,7 +237,7 @@ ZONES = [                    // Array of zones
   2. **Research categories** - Browse OpenTrivia DB for options
   3. **Plan progression** - Easy to hard difficulty curve
   4. **Design cohesively** - Names and subtitles that fit themes
-- **Professional Insight:** "Game designers spend significant time on thematic coherence"
+- **Key Insight:** "Game designers spend significant time on thematic coherence"
 
 ### **Slide 11: Design Your Game World! 🚀**
 
@@ -252,7 +252,7 @@ ZONES = [                    // Array of zones
   - Three complete zone configurations with unique themes
   - Properly positioned zone labels on the game map
   - HUD displaying current zone information
-- **Professional Workflow:** "Plan first, implement systematically, test thoroughly"
+- **Development Workflow:** "Plan first, implement systematically, test thoroughly"
 
 ### **[HANDS-ON WORK HAPPENS HERE]**
 
@@ -265,13 +265,13 @@ ZONES = [                    // Array of zones
   3. **Modify completion status** - Change `completed: false` to `true`
   4. **Observe cascading effects** - Watch activeZone and currentZone update
   5. **Check UI updates** - See HUD reflect new game state
-- **Professional Benefits:**
+- **Key Benefits:**
   - **Rapid testing** - No need to play through entire game
   - **Edge case exploration** - Test unusual game states
   - **Debug assistance** - Understand state relationships
 - **Student Empowerment:** "You can test any game scenario instantly"
 
-### **Slide 13: What's Next - API Integration 🌐**
+### **Slide 13: What's Next - Connecting to External APIs 🌐**
 
 - **Title:** "Preview of Session 5"
 - **Today's Achievement:** "You designed game content using data-driven architecture"
