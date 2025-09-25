@@ -82,6 +82,24 @@ body {
   margin: 0;
   padding: 0;
   max-width: none;
+  overflow-x: hidden !important;
+}
+
+/* Hide all scrollbars */
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Prevent horizontal overflow */
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: "$BODY_FONT", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -152,9 +170,9 @@ pre {
   border: 1px solid #e1e4e8 !important;
   border-radius: 6px !important;
   padding: 16px !important;
-  overflow: visible !important;
-  white-space: pre !important;
-  word-wrap: normal !important;
+  overflow: hidden !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
   page-break-inside: avoid !important;
   -webkit-print-color-adjust: exact !important;
   print-color-adjust: exact !important;
@@ -162,6 +180,8 @@ pre {
   line-height: 1.4 !important;
   display: block !important;
   width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
   text-decoration: none !important;
   -webkit-text-decorations-in-effect: none !important;
   font-variant-ligatures: none !important;
@@ -264,9 +284,12 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
+  max-width: 100%;
   margin: 16px 0;
   font-size: 16px;
   line-height: 1.5;
+  table-layout: auto;
+  word-wrap: break-word;
 }
 
 th, td {
@@ -274,6 +297,9 @@ th, td {
   text-align: left;
   vertical-align: top;
   border: 1px solid #d0d7de;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 th {
@@ -294,11 +320,28 @@ tbody tr:nth-child(even) {
 table code {
   font-size: 14px !important;
   padding: 2px 4px !important;
+  word-break: break-all;
 }
 
-/* Set minimum width for first column (terms) but allow wrapping */
+/* Default column widths for 3-column tables (Essential Terms) */
 table td:first-child {
-  min-width: 150px;
+  width: 200px;
+  max-width: 250px;
+}
+
+table td:nth-child(2) {
+  width: auto;
+}
+
+table td:nth-child(3) {
+  width: auto;
+}
+
+/* 2-column tables get 50/50 split */
+table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:nth-child(2) {
+  width: 50% !important;
+  max-width: none !important;
 }
 
 /* PDF-specific table styling */
@@ -331,6 +374,21 @@ thead {
   
   tr {
     page-break-inside: avoid !important;
+  }
+  
+  /* Hide scrollbars in print */
+  * {
+    overflow: visible !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  
+  *::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  html, body {
+    overflow-x: hidden !important;
   }
 }
 EOF

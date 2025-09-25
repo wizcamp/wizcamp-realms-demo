@@ -2,6 +2,7 @@ import { createContext, useMemo, useState } from "react";
 
 import { SCREENS } from "../constants/screens";
 import { getZoneById, ZONES } from "../data/zones";
+import { useAudio } from "../hooks/useAudio";
 import { fetchQuestions } from "../services/trivia";
 
 /**
@@ -10,14 +11,11 @@ import { fetchQuestions } from "../services/trivia";
  * This manages all the game's state and logic:
  * - 📊 GAME STATE: Core game data (screens, zone progress)
  * - ❓ QUIZ STATE: Quiz-specific data (questions, progress)
+ * - 🎵 AUDIO STATE: Music and sound controls
  * - ⚡ ACTIONS: Game logic functions (load questions, record answers, check completion)
  * - 🎛️ CONTROLS: Simple UI state setters (show/hide screens and modals)
  *
  * Think of this as the "save file" for our game - it remembers everything!
- *
- * TODO: Session 8 - Add scoring system and cache clearing
- * TODO: Session 9 - Add audio integration
- * TODO: Session X - Add score reset
  *
  * ┌─────────────────────┬───────────────┬───────────────────────────────────┐
  * │     GAME STATE      │ Type          │ Description                       │
@@ -37,6 +35,12 @@ import { fetchQuestions } from "../services/trivia";
  * │ currentQuestion     │ number        │ Which question (0,1,2...)         │
  * │ correctAnswers      │ number        │ Correct answers this quiz         │
  * │ isQuizVisible       │ boolean       │ Is quiz modal open?               │
+ * └─────────────────────┴───────────────┴───────────────────────────────────┘
+ *
+ * ┌─────────────────────┬───────────────┬───────────────────────────────────┐
+ * │    AUDIO STATE      │ Type          │ Description                       │
+ * ├─────────────────────┼───────────────┼───────────────────────────────────┤
+ * │ music               │ object        │ Audio controls (play, pause, etc) │
  * └─────────────────────┴───────────────┴───────────────────────────────────┘
  *
  * ┌─────────────────────────────────────┬───────────────────────────────────┐
@@ -86,6 +90,11 @@ export function GameProvider({ children }) {
   const [currentQuestion, setCurrentQuestion] = useState(0); // Which question (0, 1, 2...)
   const [correctAnswers, setCorrectAnswers] = useState(0); // How many correct so far
   const [isQuizVisible, setIsQuizVisible] = useState(false); // Is quiz open?
+
+  // ============================================================================
+  // AUDIO STATE - Music and sound controls
+  // ============================================================================
+  const music = useAudio("/audio/dramatic-action.mp3");
 
   // Find the first zone that isn't completed yet
   const activeZone = useMemo(() => {
@@ -181,6 +190,8 @@ export function GameProvider({ children }) {
         currentQuestion,
         correctAnswers,
         isQuizVisible,
+        // AUDIO STATE
+        music,
         // ACTIONS
         loadQuestionsForZone,
         recordCorrectAnswer,

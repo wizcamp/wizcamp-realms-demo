@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SESSION-09-instruction - Wizcamp Session Guide</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style type="text/css">
+
+@page {
+margin: 0.6in 0.75in 0.6in 0.75in;
+size: letter;
+}
+body {
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.4;
+color: #1f2328;
+margin: 0;
+padding: 0;
+max-width: none;
+overflow-x: hidden !important;
+}
+
+* {
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+
+html, body {
+overflow-x: hidden !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 600;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px;
+}
+h1 {
+font-size: 1.75em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 0;
+}
+h2 {
+font-size: 1.5em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 24px;
+margin-bottom: 16px;
+}
+
+h1 + * h2:first-of-type,
+h2:first-of-type {
+margin-top: 24px;
+}
+
+a[id] {
+scroll-margin-top: 20px;
+}
+h3 {
+font-size: 1.25em;
+margin-top: 24px;
+margin-bottom: 12px;
+page-break-after: avoid;
+break-after: avoid;
+}
+
+h2, h3 {
+page-break-after: avoid;
+}
+
+ol, ul, li, p {
+page-break-inside: auto;
+}
+code {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-size: 13px !important;
+font-weight: 500 !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
+border-radius: 3px !important;
+white-space: nowrap;
+word-break: break-word;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+text-decoration: none !important;
+}
+pre {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+background-color: #f8f9fa !important;
+border: 1px solid #e1e4e8 !important;
+border-radius: 6px !important;
+padding: 16px !important;
+overflow: hidden !important;
+white-space: pre-wrap !important;
+word-wrap: break-word !important;
+page-break-inside: avoid !important;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+font-size: 14px !important;
+line-height: 1.4 !important;
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+box-sizing: border-box !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+
+@media print {
+pre {
+white-space: pre !important;
+font-family: "JetBrains Mono", monospace !important;
+display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+pre * {
+white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+}
+pre code {
+background-color: transparent !important;
+border: none !important;
+padding: 0 !important;
+color: #24292f !important;
+text-decoration: none !important;
+}
+ul, ol {
+padding-left: 1.8em;
+margin-bottom: 12px;
+}
+li {
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
+@media print {
+ul, ol {
+display: block !important;
+}
+li {
+display: list-item !important;
+margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
+}
+
+* {
+box-sizing: border-box !important;
+}
+}
+p {
+margin-bottom: 12px;
+}
+a {
+color: #0969da;
+text-decoration: none;
+}
+strong {
+font-weight: 600;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+max-width: 100%;
+margin: 16px 0;
+font-size: 16px;
+line-height: 1.5;
+table-layout: auto;
+word-wrap: break-word;
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+vertical-align: top;
+border: 1px solid #d0d7de;
+word-wrap: break-word;
+overflow-wrap: break-word;
+hyphens: auto;
+}
+th {
+font-weight: 600;
+background-color: #f6f8fa;
+color: #24292f;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+tbody tr:nth-child(even) {
+background-color: #f8f9fa;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+
+table code {
+font-size: 14px !important;
+padding: 2px 4px !important;
+word-break: break-all;
+}
+
+table td:first-child {
+width: 200px;
+max-width: 250px;
+}
+table td:nth-child(2) {
+width: auto;
+}
+table td:nth-child(3) {
+width: auto;
+}
+
+table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:nth-child(2) {
+width: 50% !important;
+max-width: none !important;
+}
+
+table {
+page-break-inside: auto !important;
+}
+th {
+page-break-after: avoid !important;
+}
+tbody tr {
+page-break-inside: avoid !important;
+page-break-after: auto !important;
+}
+
+thead {
+display: table-header-group !important;
+}
+@media print {
+thead {
+display: table-row-group !important;
+}
+table {
+page-break-inside: auto !important;
+}
+tr {
+page-break-inside: avoid !important;
+}
+
+* {
+overflow: visible !important;
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+html, body {
+overflow-x: hidden !important;
+}
+}
+</style>
+</head>
+<body>
+<h1 id="session-9-instructor-guide-adding-theme-music">Session 9 Instructor Guide: Adding Theme Music</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p><strong>By the end of Session 9, students will be able to:</strong></p>
+<ol type="1">
+<li><strong>Define custom hooks</strong> as reusable functions that encapsulate component logic and start with “use”</li>
+<li><strong>Apply the DRY principle</strong> (Don’t Repeat Yourself) to eliminate code duplication through custom hooks</li>
+<li><strong>Distinguish between built-in and custom hooks</strong> and identify common use cases for each type</li>
+<li><strong>Explain the HTMLAudioElement interface</strong> and its role in programmatic audio control</li>
+<li><strong>Compare refs and state</strong> to understand when each should be used for data storage</li>
+<li><strong>Use the useRef hook</strong> to create persistent references that don’t trigger re-renders</li>
+<li><strong>Access ref values</strong> using the current property to interact with stored objects</li>
+<li><strong>Create custom hooks</strong> that combine multiple React features for complex functionality</li>
+<li><strong>Integrate browser APIs</strong> with React hooks for seamless component integration</li>
+<li><strong>Implement error handling</strong> in custom hooks to create robust, production-ready code</li>
+<li><strong>Use AI assistance</strong> effectively for code generation while maintaining code quality</li>
+<li><strong>Build audio controls</strong> that provide intuitive user interfaces for media playback</li>
+<li><strong>Apply cleanup patterns</strong> using useEffect to prevent memory leaks and resource conflicts</li>
+</ol>
+<h2 id="instruction">Instruction</h2>
+<p><strong>Instructor introduces key concepts students need to succeed:</strong></p>
+<ol type="1">
+<li><strong>Custom Hooks Philosophy</strong> - Define custom hooks as React’s solution for logic reuse, emphasizing the DRY principle (Don’t Repeat Yourself) and “write once, use often” approach</li>
+<li><strong>Browser Audio APIs</strong> - Introduce HTMLAudioElement as the browser’s built-in audio interface, demonstrating basic audio control methods</li>
+<li><strong>Refs vs State Distinction</strong> - Explain when to use refs for non-rendering data versus state for UI-affecting data</li>
+<li><strong>useRef Hook Mechanics</strong> - Show how useRef creates persistent storage with the current property pattern, demonstrating common patterns like storing mutable values and accessing DOM elements</li>
+<li><strong>Audio Integration Patterns</strong> - Demonstrate how to wrap browser APIs in React hooks for clean component interfaces</li>
+<li><strong>AI-Assisted Development</strong> - Introduce GitHub Copilot workflow for complex functionality like error handling and cleanup</li>
+<li><strong>Component Integration</strong> - Show how custom hooks integrate with existing components through the useGame pattern</li>
+<li><strong>Professional Error Handling</strong> - Emphasize robust code that handles audio loading failures gracefully</li>
+<li><strong>Memory Management</strong> - Explain cleanup patterns to prevent audio conflicts and memory leaks</li>
+<li><strong>User Experience Design</strong> - Guide students through building intuitive audio controls with visual feedback</li>
+<li><strong>Let’s Add Music!</strong> - Launch the hands-on mission: build complete audio system with custom hooks and AI assistance</li>
+</ol>
+<hr />
+<h2 id="slide-deck-outline">Slide Deck Outline</h2>
+<h3 id="slide-1-welcome-to-advanced-react-patterns"><strong>Slide 1: Welcome to Advanced React Patterns! 🎵</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Session 9: Custom Hooks &amp; Browser APIs — Adding Theme Music”</li>
+<li><strong>Session 8 Recap:</strong> “Last time: You implemented scoring and victory with complex state management and built your first independent component”</li>
+<li><strong>Hook:</strong> “Your game tracks progress — now let’s make it sound professional!”</li>
+<li><strong>Today’s Mission:</strong>
+<ul>
+<li><strong>Create</strong> custom hooks for reusable audio functionality</li>
+<li><strong>Master</strong> browser APIs with HTMLAudioElement integration</li>
+<li><strong>Understand</strong> refs vs state for different data storage needs</li>
+<li><strong>Use</strong> AI assistance for complex error handling and cleanup</li>
+<li><strong>Build</strong> professional audio controls with visual feedback</li>
+</ul></li>
+<li><strong>Visual:</strong> Audio waveform with React hook icons</li>
+<li><strong>Connection:</strong> “From interactive components to immersive audio experiences!”</li>
+</ul>
+<h3 id="slide-2-custom-hooks---reacts-logic-reuse-system"><strong>Slide 2: Custom Hooks - React’s Logic Reuse System 🪝</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Building Your Own React Features”</li>
+<li><strong>What Are Custom Hooks?</strong>
+<ul>
+<li><strong>Functions starting with “use”</strong> that encapsulate component logic</li>
+<li><strong>Embody DRY principle</strong> - “Don’t Repeat Yourself” through reusable logic</li>
+<li><strong>“Write once, use often”</strong> - eliminate code duplication across components</li>
+<li><strong>Combine built-in hooks</strong> to create complex functionality</li>
+<li><strong>Follow React rules</strong> - only call at component top level</li>
+</ul></li>
+</ul>
+<p><strong>Built-in vs Custom Hooks:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Built-in Hooks</strong></th>
+<th><strong>Custom Hooks</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>useState</code>, <code>useEffect</code>, <code>useRef</code></td>
+<td><code>useGame</code>, <code>useAudio</code></td>
+</tr>
+<tr class="even">
+<td>Provided by React</td>
+<td>Created by you</td>
+</tr>
+<tr class="odd">
+<td>Basic React features</td>
+<td>Complex, app-specific logic</td>
+</tr>
+<tr class="even">
+<td>Universal use cases</td>
+<td>Tailored to your needs</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Real-World Examples:</strong>
+<ul>
+<li><strong>useLocalStorage</strong> - Persist data in browser storage</li>
+<li><strong>useFetch</strong> - Handle API requests with loading states</li>
+<li><strong>useTimer</strong> - Manage countdown and interval logic</li>
+</ul></li>
+<li><strong>Today’s Hook:</strong> <code>useAudio</code> - Complete audio playback control</li>
+<li><strong>Professional Context:</strong> “Custom hooks are how React developers share complex logic across teams”</li>
+</ul>
+<h3 id="slide-3-htmlaudioelement---browsers-built-in-music-player"><strong>Slide 3: HTMLAudioElement - Browser’s Built-in Music Player 🔊</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Programmatic Audio Control in the Browser”</li>
+<li><strong>What is HTMLAudioElement?</strong>
+<ul>
+<li><strong>Browser’s native audio interface</strong> - no external libraries needed</li>
+<li><strong>JavaScript API</strong> for controlling audio playback</li>
+<li><strong>Rich feature set</strong> - play, pause, volume, looping, and more</li>
+</ul></li>
+</ul>
+<p><strong>Core Audio Methods:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> audio <span class="op">=</span> <span class="kw">new</span> <span class="at">Audio</span>(<span class="st">&#39;/path/to/music.mp3&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="va">audio</span>.<span class="at">play</span>()<span class="op">;</span>        <span class="co">// Start playback</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="va">audio</span>.<span class="at">pause</span>()<span class="op">;</span>       <span class="co">// Stop playback</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="va">audio</span>.<span class="at">volume</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span>  <span class="co">// Set volume (0-1)</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="va">audio</span>.<span class="at">loop</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span>   <span class="co">// Enable looping</span></a></code></pre></div>
+<p><strong>Audio Properties:</strong> - <strong>currentTime</strong> - Playback position in seconds - <strong>duration</strong> - Total audio length - <strong>paused</strong> - Boolean playback state - <strong>volume</strong> - Audio level (0.0 to 1.0)</p>
+<ul>
+<li><strong>Promise-Based Play:</strong> <code>audio.play()</code> returns a promise for error handling</li>
+<li><strong>Event System:</strong> Listen for ‘ended’, ‘error’, ‘loadstart’ events</li>
+<li><strong>Student Application:</strong> “Your useAudio hook will wrap this API in a clean React interface”</li>
+</ul>
+<h3 id="slide-4-refs-vs-state---choosing-the-right-storage"><strong>Slide 4: Refs vs State - Choosing the Right Storage 🔗</strong></h3>
+<ul>
+<li><strong>Title:</strong> “When to Use Refs Instead of State”</li>
+<li><strong>Visual:</strong> Split comparison showing different use cases</li>
+</ul>
+<p><strong>State (useState):</strong> - <strong>Triggers re-renders</strong> when changed - <strong>For UI-affecting data</strong> - what users see - <strong>Examples:</strong> Current screen, score, quiz progress - <strong>Pattern:</strong> <code>const [value, setValue] = useState()</code></p>
+<p><strong>Refs (useRef):</strong> - <strong>No re-renders</strong> when changed - <strong>For non-UI data</strong> - behind-the-scenes storage - <strong>Examples:</strong> DOM elements, timers, audio objects - <strong>Pattern:</strong> <code>const ref = useRef(); ref.current = value</code></p>
+<p><strong>Audio Storage Decision:</strong> - <strong>Audio object</strong> doesn’t affect what’s rendered - <strong>Playback state</strong> (<code>isPlaying</code>) does affect UI - <strong>Solution:</strong> Store audio in ref, playback state in state</p>
+<ul>
+<li><strong>Key Insight:</strong> “Refs are perfect for browser API objects that need to persist but don’t change the UI”</li>
+<li><strong>Student Preview:</strong> “Your audio element will live in a ref, while isPlaying will be state”</li>
+</ul>
+<h3 id="slide-5-useref-hook---persistent-storage-without-re-renders"><strong>Slide 5: useRef Hook - Persistent Storage Without Re-renders 📍</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Creating References That Survive Component Updates”</li>
+<li><strong>useRef Mechanics:</strong>
+<ul>
+<li><strong>Container for mutable data</strong> - holds values that can change</li>
+<li><strong>No re-renders</strong> - updates don’t trigger component re-renders</li>
+<li><strong>Persistent</strong> - survives component updates</li>
+<li><strong>Access via current</strong> - <code>ref.current</code> holds the actual value</li>
+</ul></li>
+</ul>
+<p><strong>Common useRef Patterns:</strong></p>
+<p><strong>Storing Mutable Values (Audio Use Case):</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">function</span> <span class="at">useAudio</span>(src) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">const</span> audioRef <span class="op">=</span> <span class="at">useRef</span>(<span class="kw">null</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3">  </a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="kw">const</span> play <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="cf">if</span> (<span class="op">!</span><span class="va">audioRef</span>.<span class="at">current</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-6" title="6">      <span class="va">audioRef</span>.<span class="at">current</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">Audio</span>(src)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">play</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-9" title="9">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="op">}</span></a></code></pre></div>
+<p><strong>Accessing DOM Elements:</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">function</span> <span class="at">MyComponent</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="kw">const</span> inputRef <span class="op">=</span> <span class="at">useRef</span>(<span class="kw">null</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" title="3">  </a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="kw">const</span> focusInput <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-5" title="5">    <span class="va">inputRef</span>.<span class="va">current</span>.<span class="at">focus</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-6" title="6">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb3-7" title="7">  </a>
+<a class="sourceLine" id="cb3-8" title="8">  <span class="cf">return</span> <span class="op">&lt;</span>input ref<span class="op">={</span>inputRef<span class="op">}</span> /&gt;<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="op">}</span></a></code></pre></div>
+<ul>
+<li><strong>Memory Management:</strong> Refs persist until component unmounts</li>
+<li><strong>Professional Usage:</strong> “Essential for integrating with browser APIs and third-party libraries”</li>
+</ul>
+<h3 id="slide-6-component-integration---adding-audio-controls-️"><strong>Slide 6: Component Integration - Adding Audio Controls 🎛️</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Building User-Friendly Audio Interfaces”</li>
+<li><strong>MusicToggle Component Design:</strong>
+<ul>
+<li><strong>Visual feedback</strong> - Different icons for play/pause states</li>
+<li><strong>Accessibility</strong> - Proper alt text and tooltips</li>
+<li><strong>State-driven UI</strong> - Appearance changes based on <code>music.isPlaying</code></li>
+</ul></li>
+</ul>
+<p><strong>Conditional Rendering Pattern:</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&lt;</span>img </a>
+<a class="sourceLine" id="cb4-2" title="2">  src<span class="op">={</span><span class="va">music</span>.<span class="at">isPlaying</span> <span class="op">?</span> <span class="st">&quot;/images/playing.svg&quot;</span> : <span class="st">&quot;/images/paused.svg&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-3" title="3">  alt<span class="op">={</span><span class="va">music</span>.<span class="at">isPlaying</span> <span class="op">?</span> <span class="st">&quot;Pause&quot;</span> : <span class="st">&quot;Play&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-4" title="4">/&gt;</a></code></pre></div>
+<p><strong>User Experience Principles:</strong> - <strong>Clear visual states</strong> - Users know if music is playing - <strong>Intuitive controls</strong> - Standard play/pause iconography - <strong>Immediate feedback</strong> - UI updates instantly on interaction</p>
+<ul>
+<li><strong>HUD Integration:</strong> Audio controls fit naturally in game interface</li>
+<li><strong>Professional Polish:</strong> “Good audio controls feel invisible when working correctly”</li>
+</ul>
+<h3 id="slide-7-ai-assisted-development---github-copilot-workflow"><strong>Slide 7: AI-Assisted Development - GitHub Copilot Workflow 🤖</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Using AI to Handle Complex Implementation Details”</li>
+<li><strong>When to Use AI Assistance:</strong>
+<ul>
+<li><strong>Complex error handling</strong> - Promise rejection, network failures</li>
+<li><strong>Cleanup patterns</strong> - useEffect cleanup functions</li>
+<li><strong>Edge cases</strong> - Scenarios you might not think of</li>
+<li><strong>Boilerplate code</strong> - Repetitive patterns</li>
+</ul></li>
+</ul>
+<p><strong>Effective AI Prompts:</strong> - <strong>Be specific</strong> - “Add error handling to the play function” - <strong>Include context</strong> - “in the useAudio hook” - <strong>Specify behavior</strong> - “catch errors, log warnings, update state”</p>
+<p><strong>AI Workflow:</strong> 1. <strong>Write clear prompt</strong> describing what you want 2. <strong>Review generated code</strong> - understand what it does 3. <strong>Test functionality</strong> - verify it works as expected 4. <strong>Iterate if needed</strong> - refine prompts for better results</p>
+<ul>
+<li><strong>Professional Skills:</strong> “AI assistance accelerates development while you maintain code quality control”</li>
+<li><strong>Student Empowerment:</strong> “You’re learning to collaborate with AI tools like professional developers”</li>
+</ul>
+<h3 id="slide-8-error-handling---building-robust-audio-systems-️"><strong>Slide 8: Error Handling - Building Robust Audio Systems 🛡️</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Planning for When Audio Fails to Load”</li>
+<li><strong>Common Audio Failures:</strong>
+<ul>
+<li><strong>File not found</strong> - Invalid audio path</li>
+<li><strong>Network issues</strong> - Slow or failed downloads</li>
+<li><strong>Format problems</strong> - Unsupported audio formats</li>
+<li><strong>Browser restrictions</strong> - Autoplay policies</li>
+</ul></li>
+</ul>
+<p><strong>Promise-Based Error Handling:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="va">audio</span>.<span class="at">play</span>()</a>
+<a class="sourceLine" id="cb5-2" title="2">  .<span class="at">then</span>(() <span class="kw">=&gt;</span> <span class="at">setIsPlaying</span>(<span class="kw">true</span>))</a>
+<a class="sourceLine" id="cb5-3" title="3">  .<span class="at">catch</span>(error <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-4" title="4">    <span class="va">console</span>.<span class="at">warn</span>(<span class="st">&quot;Audio failed to play:&quot;</span><span class="op">,</span> error)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-5" title="5">    <span class="at">setIsPlaying</span>(<span class="kw">false</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-6" title="6">  <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p><strong>Graceful Degradation:</strong> - <strong>Log warnings</strong> instead of crashing - <strong>Update UI state</strong> to reflect reality - <strong>Continue game functionality</strong> even without audio</p>
+<ul>
+<li><strong>Professional Mindset:</strong> “Always assume external resources might fail”</li>
+<li><strong>User Experience:</strong> “Games should work even when audio doesn’t load”</li>
+</ul>
+<h3 id="slide-9-memory-management---cleanup-and-resource-management"><strong>Slide 9: Memory Management - Cleanup and Resource Management 🧹</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Preventing Memory Leaks with useEffect Cleanup”</li>
+<li><strong>The Problem:</strong> Audio elements can continue playing after components unmount</li>
+<li><strong>The Solution:</strong> useEffect cleanup functions</li>
+</ul>
+<p><strong>Cleanup Pattern:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="at">useEffect</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="cf">return</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-3" title="3">    <span class="cf">if</span> (<span class="va">audioRef</span>.<span class="at">current</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-4" title="4">      <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">pause</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-5" title="5">      <span class="va">audioRef</span>.<span class="at">current</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb6-6" title="6">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb6-7" title="7">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="op">},</span> [])<span class="op">;</span></a></code></pre></div>
+<p><strong>Why Cleanup Matters:</strong> - <strong>Prevents memory leaks</strong> - Audio objects are garbage collected - <strong>Stops background audio</strong> - No music playing after navigation - <strong>Resource management</strong> - Proper browser resource cleanup</p>
+<ul>
+<li><strong>Professional Practice:</strong> “Always clean up resources in useEffect”</li>
+<li><strong>Student Application:</strong> “Your audio will stop cleanly when navigating between screens”</li>
+</ul>
+<h3 id="slide-10-build-professional-audio-controls"><strong>Slide 10: Build Professional Audio Controls! 🚀</strong></h3>
+<ul>
+<li><strong>Today’s Coding Mission:</strong>
+<ol type="1">
+<li><strong>Add MusicToggle component</strong> - Build audio controls in HUD with conditional rendering</li>
+<li><strong>Implement useRef storage</strong> - Add audio reference to useAudio hook</li>
+<li><strong>Create audio playback</strong> - Implement play function with HTMLAudioElement</li>
+<li><strong>Complete pause functionality</strong> - Add pause method to stop audio playback</li>
+<li><strong>Add AI-assisted error handling</strong> - Use Copilot for robust error management</li>
+<li><strong>Implement cleanup</strong> - Add useEffect cleanup to prevent memory leaks</li>
+</ol></li>
+<li><strong>Success Criteria:</strong>
+<ul>
+<li>Music toggle button appears in HUD</li>
+<li>Clicking toggle starts/stops theme music</li>
+<li>Audio controls show correct visual state</li>
+<li>Error handling prevents crashes on invalid files</li>
+</ul></li>
+<li><strong>Professional Workflow:</strong> “Custom hooks + browser APIs + AI assistance = production-quality features”</li>
+</ul>
+<h3 id="hands-on-work-happens-here"><strong>[HANDS-ON WORK HAPPENS HERE]</strong></h3>
+<h3 id="slide-11-custom-hook-architecture---professional-patterns-️"><strong>Slide 11: Custom Hook Architecture - Professional Patterns 🏗️</strong></h3>
+<ul>
+<li><strong>Title:</strong> “How useAudio Demonstrates Professional Hook Design”</li>
+<li><strong>Hook Responsibilities:</strong>
+<ul>
+<li><strong>State management</strong> - Track playing/paused state</li>
+<li><strong>Resource management</strong> - Create and store audio elements</li>
+<li><strong>API integration</strong> - Wrap HTMLAudioElement in React interface</li>
+<li><strong>Error handling</strong> - Gracefully handle failures</li>
+<li><strong>Cleanup</strong> - Prevent memory leaks</li>
+</ul></li>
+</ul>
+<p><strong>Interface Design:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">const</span> <span class="op">{</span> play<span class="op">,</span> pause<span class="op">,</span> toggle<span class="op">,</span> isPlaying <span class="op">}</span> <span class="op">=</span> <span class="at">useAudio</span>(src)<span class="op">;</span></a></code></pre></div>
+<p><strong>Benefits of This Pattern:</strong> - <strong>Simple interface</strong> - Components don’t need to know about audio complexity - <strong>Reusable</strong> - Any component can add audio with one line - <strong>Testable</strong> - Hook logic is isolated and testable - <strong>Maintainable</strong> - Audio logic centralized in one place</p>
+<ul>
+<li><strong>Professional Context:</strong> “This is how React teams build scalable, maintainable applications”</li>
+</ul>
+<h3 id="slide-12-whats-next---deployment-and-sharing"><strong>Slide 12: What’s Next - Deployment and Sharing 🚀</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Preview of Session 10”</li>
+<li><strong>Today’s Achievement:</strong> “You built custom hooks with browser API integration and AI-assisted development”</li>
+<li><strong>Next Challenge:</strong> “Deploy your complete game to the internet for others to play”</li>
+<li><strong>Concepts Coming:</strong>
+<ul>
+<li><strong>Git workflow</strong> - Version control and commit practices</li>
+<li><strong>GitHub Pages</strong> - Free hosting for React applications</li>
+<li><strong>Build process</strong> - Optimizing your app for production</li>
+<li><strong>Deployment automation</strong> - CI/CD with GitHub Actions</li>
+</ul></li>
+<li><strong>Motivation:</strong> “Your complete trivia game will be live on the internet!”</li>
+<li><strong>Visual:</strong> Preview of deployed game with public URL</li>
+</ul>
+</body>
+</html>

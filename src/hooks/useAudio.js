@@ -5,29 +5,24 @@ import { useRef, useState } from "react";
  *
  * TODO: Session 9 - Students will implement this custom hook
  *
- * This hook should return an object with:
- * - play: Function to start audio
- * - pause: Function to stop audio
- * - toggle: Function to play/pause
- * - isPlaying: Boolean state
- * - isLoaded: Boolean state
+ * A hook that lets you play audio files in your React app
+ * @param {string} src - Path to the audio file (like "/audio/music.mp3")
+ * @returns {Object} An object with play, pause, toggle functions and isPlaying status
  */
-
-export function useAudio(audioSrc) {
-  // TODO: Session 9 - Students implement audio functionality
-  const audioRef = useRef(null);
+export function useAudio(src) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  // TODO: Create audio element and event listeners
-  // TODO: Implement play, pause, toggle functions
-  // TODO: Return audio controls object
+  const play = () => {};
 
-  return {
-    play: () => console.log("TODO: Implement play"),
-    pause: () => console.log("TODO: Implement pause"),
-    toggle: () => console.log("TODO: Implement toggle"),
-    isPlaying,
-    isLoaded,
+  const pause = () => {};
+
+  const toggle = () => {
+    if (isPlaying) {
+      pause();
+    } else {
+      play();
+    }
   };
+
+  return { play, pause, toggle, isPlaying };
 }

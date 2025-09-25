@@ -84,22 +84,28 @@ Should be: [Suggested correction]
 - **Completeness**: Are all major outcomes/previews covered?
 - **Essential Terms Ordering**: Are terms ordered by logical learning progression rather than alphabetically?
 - **Code Block Consistency**: Do all multi-line code blocks include language qualifiers (```javascript, ```bash, ```json, etc.)?
+  - **Check opening triple backticks only** - Look for ```[language] format
+  - **Common qualifiers**: javascript, bash, json, text, html, css
+  - **Flag only blocks without any qualifier** - ```text is valid for directory structures and plain text
 - **List Indentation**: Is all content following numbered and non-numbered list items properly indented with 3 spaces to maintain grouping under the bullet point?
 - **Section Ordering Consistency**: Do Learning Outcomes, Instruction, and Slide Deck Outline sections follow the same logical order?
-- **File Saving References**: Are students directed to save files?
-  - Flag any instructions telling students to "Save the file" or "Save your changes"
-  - Files are automatically saved in Codespaces
+- **File Saving Commands**: Are students given file saving commands?
+  - Flag imperative instructions: "Save →", "Save the file", "Save your changes", "Save and refresh"
+  - Allow descriptive references: "save file", "saved data", "file saving"
+  - Files auto-save in Codespaces - no manual saving needed
 - **Ask the AI Question Novelty**: Are Ask the AI questions already answered in the session content?
   - Flag questions where the answer is explicitly provided in the preceding material
   - Example: Don't ask "How does async/await make code easier to work with?" if the session already states "async/await makes asynchronous code easier to read and debug"
   - Questions should explore concepts beyond what's directly explained in the guide
-- **Code Block Commenting Standards**: Do code blocks follow proper commenting guidelines?
+- **Code Block Commenting Standards**: Do multi-line code blocks follow proper commenting guidelines?
   - Use terse, action-based inline comments with standard `//` format
   - Avoid confusing `{/* */}` style comments in JSX
   - Only comment new lines to add or existing lines to change
   - Do not include comments solely to explain code or concepts
   - Comments should indicate what students will actually do: `// Add this function`, `// Add cache check`, `// Update this line`
   - Flag explanatory comments that don't guide student actions
+  - **Apply comments ONLY to multi-line code blocks using triple backticks (```) with 3+ lines of complex logic**
+  - **DO NOT flag comments added to single-line code or simple examples within instructional text**
 - **Code Formatting Consistency**: Is the code formatting rule applied consistently?
   - Use backticks only for actual code identifiers that students type in their codebase
   - Code identifiers: Use backticks (`GameButton`, `useGame`, `SCREENS.SPLASH`, `className="game-over"`)
@@ -119,6 +125,14 @@ Should be: [Suggested correction]
   - Flag cases where student guide has superior definition clarity that should be adopted in instructor guide
   - Verify that instructor slide content aligns with student Essential Terms definitions
   - Check that Learning Outcomes use terminology consistent with Essential Terms definitions
+- **Prettier Formatting**: Do standalone multi-line code blocks using triple backticks follow Prettier formatting standards?
+  - **Apply ONLY to standalone code blocks using triple backticks (```), not inline code**
+  - **Semicolons**: All JavaScript statements end with semicolons (`import React from "react";`)
+  - **Quotes**: Use double quotes for strings (`"./components/SplashScreen"`)
+  - **Arrow functions**: Always use parentheses around parameters (`(props) => {}`)
+  - **Trailing commas**: Use ES5 trailing commas in objects and arrays
+  - **Import statements**: When import commands appear in inline instructional text, they must be complete and end with semicolons (e.g., `import GameButton from "./GameButton";`)
+  - **DO NOT flag inline code within numbered steps or instructional text**
 
 ### List Indentation Check
 For each SESSION-XX.md student guide and SESSION-XX-instruction.md instructor guide:

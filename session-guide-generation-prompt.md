@@ -39,9 +39,9 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - Follow SESSION-01.md structure: Table of Contents with anchor links, step-by-step sections, "Why This Matters" explanations, "Bonus Challenge" sections
 - Use the same engaging, conversational tone and emoji usage
 - **Apply naming convention**: Use student-friendly name as primary title, technical concept as subtitle
+- **Table of Contents**: Include all named sections with anchor links EXCEPT "Access Your Codespace" - exclude this from TOC while keeping the section in the content
 - Include Essential Terms table with consistent definitions (match previous sessions exactly, "Why it matters" can vary for context)
 - Include "Ask the AI" section with 5-7 high-impact questions for deeper learning
-- End with "Pro Tip" section
 - Use practical, hands-on approach with clear numbered steps
 - **Do not instruct students to save files** - files are automatically saved in Codespaces
 - **All content following numbered and non-numbered list items must be properly indented** - indent code blocks, Test paragraphs, explanatory text, and any other content with 3 spaces to align with list item content and maintain proper grouping under the bullet point
@@ -55,7 +55,8 @@ Generate both student guide (SESSION-XX.md) and instructor guide (SESSION-XX-ins
 - **DO NOT** include comments solely to explain code or concepts
 - Focus on reducing cognitive load while providing clear, simple, unambiguous guidance
 - Comments should indicate what students will actually do: `// Add this function`, `// Add cache check`, `// Update this line`
-- Remove explanatory comments that don't guide student actions
+- **Apply comments ONLY to multi-line code blocks using triple backticks (```) with 3+ lines of complex logic**
+- **DO NOT add comments to single-line code or simple examples within instructional text**
 
 ### Code Formatting Rule
 **Use backticks only for actual code identifiers that students type in their codebase:**
