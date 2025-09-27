@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SESSION-10-instruction - Wizcamp Session Guide</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+
+@page {
+margin: 0.6in 0.75in 0.6in 0.75in;
+size: letter;
+}
+body {
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.4;
+color: #1f2328;
+margin: 0;
+padding: 0;
+max-width: none;
+overflow-x: hidden !important;
+}
+
+* {
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+
+html, body {
+overflow-x: hidden !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 600;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px;
+}
+h1 {
+font-size: 1.75em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 0;
+}
+h2 {
+font-size: 1.5em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 24px;
+margin-bottom: 16px;
+}
+
+h1 + * h2:first-of-type,
+h2:first-of-type {
+margin-top: 24px;
+}
+
+a[id] {
+scroll-margin-top: 20px;
+}
+h3 {
+font-size: 1.25em;
+margin-top: 24px;
+margin-bottom: 12px;
+page-break-after: avoid;
+break-after: avoid;
+}
+
+h2, h3 {
+page-break-after: avoid;
+}
+
+ol, ul, li, p {
+page-break-inside: auto;
+}
+code {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-size: 13px !important;
+font-weight: 500 !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
+border-radius: 3px !important;
+white-space: nowrap;
+word-break: break-word;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+text-decoration: none !important;
+}
+pre {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+background-color: #f8f9fa !important;
+border: 1px solid #e1e4e8 !important;
+border-radius: 6px !important;
+padding: 16px !important;
+overflow: hidden !important;
+white-space: pre-wrap !important;
+word-wrap: break-word !important;
+page-break-inside: avoid !important;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+font-size: 14px !important;
+line-height: 1.4 !important;
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+box-sizing: border-box !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+
+@media print {
+pre {
+white-space: pre !important;
+font-family: "JetBrains Mono", monospace !important;
+display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+pre * {
+white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+}
+pre code {
+background-color: transparent !important;
+border: none !important;
+padding: 0 !important;
+color: #24292f !important;
+text-decoration: none !important;
+}
+ul, ol {
+padding-left: 1.8em;
+margin-bottom: 12px;
+}
+li {
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
+@media print {
+ul, ol {
+display: block !important;
+}
+li {
+display: list-item !important;
+margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
+}
+
+* {
+box-sizing: border-box !important;
+}
+}
+p {
+margin-bottom: 12px;
+}
+a {
+color: #0969da;
+text-decoration: none;
+}
+strong {
+font-weight: 600;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+max-width: 100%;
+margin: 16px 0;
+font-size: 16px;
+line-height: 1.5;
+table-layout: auto;
+word-wrap: break-word;
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+vertical-align: top;
+border: 1px solid #d0d7de;
+word-wrap: break-word;
+overflow-wrap: break-word;
+hyphens: auto;
+}
+th {
+font-weight: 600;
+background-color: #f6f8fa;
+color: #24292f;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+tbody tr:nth-child(even) {
+background-color: #f8f9fa;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+
+table code {
+font-size: 14px !important;
+padding: 2px 4px !important;
+word-break: break-all;
+}
+
+table td:first-child {
+width: 200px;
+max-width: 250px;
+}
+table td:nth-child(2) {
+width: auto;
+}
+table td:nth-child(3) {
+width: auto;
+}
+
+table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:nth-child(2) {
+width: 50% !important;
+max-width: none !important;
+}
+
+table {
+page-break-inside: auto !important;
+}
+th {
+page-break-after: avoid !important;
+}
+tbody tr {
+page-break-inside: avoid !important;
+page-break-after: auto !important;
+}
+
+thead {
+display: table-header-group !important;
+}
+@media print {
+thead {
+display: table-row-group !important;
+}
+table {
+page-break-inside: auto !important;
+}
+tr {
+page-break-inside: avoid !important;
+}
+
+* {
+overflow: visible !important;
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+html, body {
+overflow-x: hidden !important;
+}
+}
+</style>
+</head>
+<body>
+<h1 id="session-10-instructor-guide-version-control-deployment">Session 10 Instructor Guide: Version Control &amp; Deployment</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p><strong>By the end of Session 10, students will be able to:</strong></p>
+<ol type="1">
+<li><strong>Define version control</strong> as a system for tracking file changes over time and explain the problems it solves</li>
+<li><strong>Identify key version control terminology</strong> including repository, commit, branch, and push</li>
+<li><strong>Explain Git’s role</strong> as the most popular version control system used by developers worldwide</li>
+<li><strong>Demonstrate repository setup</strong> by disconnecting from starter repos and creating personal repositories</li>
+<li><strong>Execute the Git workflow</strong> using add, commit, and push commands to save and share changes</li>
+<li><strong>Write meaningful commit messages</strong> that describe changes clearly and concisely</li>
+<li><strong>Configure GitHub authentication</strong> using the GitHub CLI for secure repository access</li>
+<li><strong>Define CI/CD concepts</strong> including Continuous Integration and Continuous Deployment</li>
+<li><strong>Explain GitHub Actions</strong> as GitHub’s automation platform for running workflows</li>
+<li><strong>Configure GitHub Pages</strong> to host static websites from repository content</li>
+<li><strong>Navigate GitHub interface</strong> including repository settings, Actions tab, and Pages configuration</li>
+<li><strong>Implement automated deployment</strong> using pre-configured GitHub Actions workflows</li>
+<li><strong>Verify deployment success</strong> by testing live applications and monitoring build processes</li>
+<li><strong>Share deployed applications</strong> using public URLs and understand the deployment lifecycle</li>
+</ol>
+<h2 id="instruction">Instruction</h2>
+<p><strong>Instructor introduces key concepts students need to succeed:</strong></p>
+<ol type="1">
+<li><strong>Version Control Philosophy</strong> - Define version control as essential infrastructure for software development, emphasizing safety, collaboration, and history tracking</li>
+<li><strong>Git Ecosystem Overview</strong> - Introduce Git as the industry standard, GitHub as the hosting platform, and the relationship between local and remote repositories</li>
+<li><strong>Repository Ownership</strong> - Guide students through disconnecting from starter repos and creating personal repositories for project ownership</li>
+<li><strong>Git Workflow Fundamentals</strong> - Demonstrate the add, commit, push cycle as the foundation of version control workflows</li>
+<li><strong>Commit Message Best Practices</strong> - Teach clear, descriptive commit messages as professional communication</li>
+<li><strong>Authentication Setup</strong> - Show GitHub CLI authentication for secure repository access</li>
+<li><strong>CI/CD Introduction</strong> - Explain automated processes as modern development practice for efficiency and reliability</li>
+<li><strong>GitHub Actions Overview</strong> - Describe GitHub’s automation platform and its role in deployment workflows</li>
+<li><strong>GitHub Pages Configuration</strong> - Set up free static site hosting with automated deployment integration</li>
+<li><strong>Deployment Verification</strong> - Guide students through testing and monitoring deployment processes</li>
+<li><strong>Project Configuration</strong> - Review build settings and environment variables for deployment compatibility</li>
+<li><strong>Let’s Go Live!</strong> - Launch the hands-on mission to publish student games to the internet using professional development workflows</li>
+</ol>
+<hr />
+<h2 id="slide-deck-outline">Slide Deck Outline</h2>
+<h3 id="slide-1-version-control-deployment"><strong>Slide 1: Version Control &amp; Deployment 🚀</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Session 10: Version Control &amp; Deployment — Publishing Your Game”</li>
+<li><strong>Session 9 Recap:</strong> “Last time: You built custom hooks with browser API integration and AI assistance”</li>
+<li><strong>Hook:</strong> “Your game has awesome features — now let’s share it with the world!”</li>
+<li><strong>Today’s Mission:</strong> Learn version control concepts, implement Git workflows, and deploy to the internet using automated CI/CD</li>
+<li><strong>Visual:</strong> Git workflow diagram with deployment pipeline</li>
+<li><strong>Connection:</strong> “From local development to live web application!”</li>
+</ul>
+<h3 id="slide-2-version-control---your-codes-time-machine"><strong>Slide 2: Version Control - Your Code’s Time Machine 📚</strong></h3>
+<ul>
+<li><strong>Teaching Focus:</strong> Why version control is essential for any serious development</li>
+<li><strong>Key Concepts:</strong>
+<ul>
+<li><strong>Version control</strong> as a system tracking file changes over time</li>
+<li><strong>Problem-solving tool</strong> for “it worked yesterday” and collaboration challenges</li>
+<li><strong>Git</strong> as the industry-standard version control system</li>
+<li><strong>Repository</strong> as project home containing code and complete history</li>
+</ul></li>
+<li><strong>Problems Version Control Solves:</strong>
+<ul>
+<li><strong>Lost work</strong> - Complete change history prevents data loss</li>
+<li><strong>Breaking changes</strong> - Rollback to any previous working version</li>
+<li><strong>Collaboration conflicts</strong> - Multiple developers can work simultaneously</li>
+<li><strong>Change tracking</strong> - See exactly what changed, when, and why</li>
+</ul></li>
+<li><strong>Real-World Context:</strong> “Every professional developer uses version control daily”</li>
+<li><strong>Student Connection:</strong> “You’ll use Git to save your progress and enable deployment”</li>
+</ul>
+<h3 id="slide-3-git-workflow---the-developers-daily-routine"><strong>Slide 3: Git Workflow - The Developer’s Daily Routine 🔄</strong></h3>
+<ul>
+<li><strong>Teaching Focus:</strong> The fundamental workflow that powers all software development</li>
+<li><strong>Visual:</strong> Git workflow diagram showing working directory → staging → local repo → remote repo</li>
+<li><strong>Staging Area Explanation:</strong> The staging area is Git’s “preparation zone” where you collect changes before making a permanent commit</li>
+</ul>
+<pre class="mermaid"><code>---
+config:
+  layout: elk
+  look: neo
+---
+flowchart LR
+    Working[&quot;🖥️ Working Directory&lt;br&gt;(Your code files)&quot;] 
+    Staging[&quot;📦 Staging Area&lt;br&gt;(Changes ready to commit)&quot;]
+    Local[&quot;💾 Local Repository&lt;br&gt;(Your commit history)&quot;]
+    Remote[&quot;☁️ Remote Repository&lt;br&gt;(GitHub)&quot;]
+    
+    Working --&quot;git add&quot;--&gt; Staging
+    Staging --&quot;git commit&quot;--&gt; Local
+    Local --&quot;git push&quot;--&gt; Remote
+    
+    Working:::workspace
+    Staging:::staging
+    Local:::local
+    Remote:::remote
+    
+    classDef workspace fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    classDef staging fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+    classDef local fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    classDef remote fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px</code></pre>
+<ul>
+<li><strong>Key Commands and Staging Concept:</strong>
+<ul>
+<li><strong><code>git add .</code></strong> - Stage all changes for commit
+<ul>
+<li><strong>Staging Area Purpose:</strong> Acts as a “preparation area” between your working files and permanent commits</li>
+<li><strong>Why Staging Exists:</strong> Lets you choose exactly which changes to include in each commit</li>
+<li><strong>Conceptual Flow:</strong> Working Directory → Staging Area → Local Repository → Remote Repository</li>
+</ul></li>
+<li><strong><code>git commit -m &quot;message&quot;</code></strong> - Create snapshot with description</li>
+<li><strong><code>git push</code></strong> - Upload commits to remote repository</li>
+</ul></li>
+<li><strong>Conventional Commits Pattern:</strong> Students learn the structured format <code>type(scope): description</code>
+<ul>
+<li><strong>Type examples:</strong> <code>feat</code> (new feature), <code>fix</code> (bug fix), <code>style</code> (visual changes), <code>docs</code> (documentation)</li>
+<li><strong>Scope examples:</strong> <code>(quiz)</code>, <code>(scoring)</code>, <code>(logo)</code> - indicates what part of the app changed</li>
+<li><strong>Description:</strong> Clear, concise explanation of what the commit does</li>
+<li><strong>Example:</strong> <code>feat(logo): customize game title to Trivia Quest</code></li>
+</ul></li>
+<li><strong>Why This Structure Matters:</strong>
+<ul>
+<li><strong>Searchable history</strong> - Easy to find specific types of changes</li>
+<li><strong>Automated tools</strong> - Many tools parse this format for release notes</li>
+<li><strong>Team communication</strong> - Consistent format improves collaboration</li>
+</ul></li>
+<li><strong>Student Application:</strong> “This workflow becomes automatic with practice”</li>
+</ul>
+<h3 id="slide-4-repository-ownership---making-it-yours"><strong>Slide 4: Repository Ownership - Making It Yours 🏠</strong></h3>
+<ul>
+<li><strong>Teaching Focus:</strong> Transitioning from starter template to personal project</li>
+<li><strong>Local vs Remote Repository Architecture:</strong>
+<ul>
+<li><strong>Local Repository:</strong> Lives on student’s computer (Codespace), contains full project history</li>
+<li><strong>Remote Repository:</strong> Lives on GitHub servers, serves as backup and collaboration hub</li>
+<li><strong>Relationship:</strong> Local and remote repositories sync via push/pull operations</li>
+<li><strong>Data Flow:</strong> Changes start local, get pushed to remote, others can pull from remote</li>
+</ul></li>
+<li><strong>The Challenge:</strong> Students start with Wizcamp’s repository but need their own for deployment</li>
+<li><strong>Key Steps:</strong>
+<ol type="1">
+<li><strong>Disconnect</strong> from starter repo (<code>git remote remove origin</code>)</li>
+<li><strong>Create</strong> new GitHub repository (public for free Pages hosting)</li>
+<li><strong>Connect</strong> to personal repo (<code>git remote add origin</code>)</li>
+<li><strong>Verify</strong> connection (<code>git remote -v</code>)</li>
+</ol></li>
+<li><strong>Important Notes:</strong>
+<ul>
+<li><strong>Don’t initialize</strong> new repo with README (project already has one)</li>
+<li><strong>Keep public</strong> for free GitHub Pages hosting</li>
+<li><strong>Choose meaningful names</strong> like “trivia-quest” or “wizcamp-game”</li>
+</ul></li>
+<li><strong>Repository Ownership Impact:</strong> Students transition from using someone else’s remote repository to owning their complete local/remote repository pair</li>
+<li><strong>Empowerment:</strong> “This makes the project truly yours to control and share”</li>
+</ul>
+<h3 id="slide-5-cicd---automation-that-changes-everything-️"><strong>Slide 5: CI/CD - Automation That Changes Everything ⚙️</strong></h3>
+<ul>
+<li><strong>Teaching Focus:</strong> How automation transforms development workflows</li>
+<li><strong>Key Concepts:</strong>
+<ul>
+<li><strong>Continuous Integration (CI)</strong> - Automatically test and build code changes</li>
+<li><strong>Continuous Deployment (CD)</strong> - Automatically deploy successful builds</li>
+<li><strong>GitHub Actions</strong> - GitHub’s automation platform for running workflows</li>
+<li><strong>GitHub Pages</strong> - Free hosting service for static websites</li>
+</ul></li>
+<li><strong>The Magic:</strong> Push code → Automatic build → Automatic deployment → Live website</li>
+</ul>
+<pre class="mermaid"><code>---
+config:
+  layout: elk
+  look: neo
+---
+flowchart LR
+    Push[&quot;🚀 git push&quot;] 
+    Actions[&quot;🤖 GitHub Actions&lt;br&gt;(Build Process)&quot;]
+    Pages[&quot;🌐 GitHub Pages&lt;br&gt;(Live Website)&quot;]
+    Users[&quot;👥 Users Access&lt;br&gt;Your Game&quot;]
+    
+    Push --&gt; Actions
+    Actions --&gt; Pages
+    Pages --&gt; Users
+    
+    Push:::action
+    Actions:::automation
+    Pages:::hosting
+    Users:::audience
+    
+    classDef action fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    classDef automation fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+    classDef hosting fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    classDef audience fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px</code></pre>
+<ul>
+<li><strong>Benefits:</strong>
+<ul>
+<li><strong>No manual work</strong> - Deployment happens automatically</li>
+<li><strong>Consistent process</strong> - Same steps every time, no human error</li>
+<li><strong>Fast iteration</strong> - Push changes, see results in minutes</li>
+</ul></li>
+<li><strong>Professional Context:</strong> “This is how modern teams deploy apps dozens of times per day”</li>
+<li><strong>Student Impact:</strong> “Your game updates automatically whenever you push code”</li>
+</ul>
+<h3 id="slide-6-github-actions---your-deployment-robot"><strong>Slide 6: GitHub Actions - Your Deployment Robot 🤖</strong></h3>
+<ul>
+<li><strong>Teaching Focus:</strong> Understanding automated workflows and build processes</li>
+<li><strong>Key Concepts:</strong>
+<ul>
+<li><strong>Workflow files</strong> - YAML configurations defining automation steps</li>
+<li><strong>Triggers</strong> - Events that start workflows (like pushing code)</li>
+<li><strong>Build process</strong> - Converting React source code into deployable files</li>
+<li><strong>Deployment steps</strong> - Publishing built files to hosting platform</li>
+</ul></li>
+<li><strong>What Happens During Build:</strong>
+<ol type="1">
+<li><strong>Install dependencies</strong> - Download required packages</li>
+<li><strong>Run build command</strong> - Vite bundles React app for production</li>
+<li><strong>Optimize assets</strong> - Compress images, minify code</li>
+<li><strong>Deploy files</strong> - Upload to GitHub Pages hosting</li>
+</ol></li>
+<li><strong>Monitoring Builds:</strong>
+<ul>
+<li><strong>Actions tab</strong> shows workflow runs and status</li>
+<li><strong>Green checkmarks</strong> indicate successful deployments</li>
+<li><strong>Red X marks</strong> show failed builds with error details</li>
+</ul></li>
+<li><strong>Student Guidance:</strong> “You’ll watch your first deployment happen in real-time”</li>
+</ul>
+<h3 id="slide-7-github-pages---free-hosting-for-your-projects"><strong>Slide 7: GitHub Pages - Free Hosting for Your Projects 🌐</strong></h3>
+<ul>
+<li><strong>Teaching Focus:</strong> Understanding static site hosting and configuration</li>
+<li><strong>Key Concepts:</strong>
+<ul>
+<li><strong>Static site hosting</strong> - Serves HTML, CSS, and JavaScript files</li>
+<li><strong>Perfect for React apps</strong> - Built React apps are static files</li>
+<li><strong>Free tier</strong> - Unlimited public repositories get free hosting</li>
+<li><strong>Custom domains</strong> - Can use your own domain name (advanced)</li>
+</ul></li>
+<li><strong>Configuration Steps:</strong>
+<ul>
+<li><strong>Repository Settings</strong> → <strong>Pages</strong> section</li>
+<li><strong>Source: GitHub Actions</strong> (not legacy branch-based deployment)</li>
+<li><strong>Automatic SSL</strong> - HTTPS enabled by default</li>
+</ul></li>
+<li><strong>URL Structure:</strong> <code>https://username.github.io/repository-name/</code></li>
+<li><strong>Build Configuration:</strong> Update <code>package.json</code> build script for correct base path</li>
+<li><strong>Student Outcome:</strong> “Your game will have a real web address that anyone can visit”</li>
+</ul>
+<h3 id="slide-8-project-configuration---making-it-deployment-ready"><strong>Slide 8: Project Configuration - Making It Deployment-Ready 🔧</strong></h3>
+<ul>
+<li><strong>Teaching Focus:</strong> Understanding build configuration for deployment environments</li>
+<li><strong>Key Configuration:</strong>
+<ul>
+<li><strong>Base path setting</strong> in <code>package.json</code> for GitHub Pages subdirectory hosting</li>
+<li><strong>Build script update</strong> - <code>&quot;vite build --base=/repo-name/&quot;</code></li>
+<li><strong>Asset path resolution</strong> - Ensures images and files load correctly</li>
+</ul></li>
+<li><strong>Build Path Rationale - Why This Configuration Matters:</strong>
+<ul>
+<li><strong>Local Development Environment:</strong> Vite dev server serves from root path (<code>http://localhost:5173/</code>)</li>
+<li><strong>GitHub Pages Hosting:</strong> Serves from user subdirectory (<code>https://username.github.io/repo-name/</code>)</li>
+<li><strong>Path Resolution Problem:</strong> Without base path configuration, the app looks for assets in wrong locations</li>
+<li><strong>Build Configuration Solution:</strong> <code>--base=/repo-name/</code> tells Vite to generate correct asset paths for subdirectory hosting</li>
+<li><strong>Automatic Handling:</strong> Once configured, Vite handles all path resolution differences between environments</li>
+</ul></li>
+<li><strong>Common Issues:</strong>
+<ul>
+<li><strong>Blank page</strong> - Usually incorrect base path configuration</li>
+<li><strong>Missing assets</strong> - Images/files not loading due to path issues</li>
+<li><strong>404 errors</strong> - Routing problems in single-page applications</li>
+</ul></li>
+<li><strong>Conceptual Understanding:</strong> Students learn that deployment environments often differ from development environments, requiring build-time configuration</li>
+<li><strong>Student Preparation:</strong> “This one configuration change makes deployment work correctly”</li>
+</ul>
+<h3 id="slide-9-authentication-security---connecting-safely"><strong>Slide 9: Authentication &amp; Security - Connecting Safely 🔐</strong></h3>
+<ul>
+<li><strong>Teaching Focus:</strong> Secure authentication for repository access</li>
+<li><strong>GitHub CLI Authentication:</strong>
+<ul>
+<li><strong>Pre-installed</strong> in Codespaces environment</li>
+<li><strong>Browser-based flow</strong> - Secure token generation</li>
+<li><strong>One-time setup</strong> - Credentials persist across sessions</li>
+</ul></li>
+<li><strong>Authentication Steps:</strong>
+<ol type="1">
+<li><strong><code>gh auth login</code></strong> - Start authentication process</li>
+<li><strong>Choose GitHub.com</strong> - Select hosting platform</li>
+<li><strong>Choose HTTPS</strong> - Secure connection protocol</li>
+<li><strong>Authenticate via browser</strong> - Complete OAuth flow</li>
+<li><strong>Copy/paste code</strong> - Verify identity</li>
+</ol></li>
+<li><strong>Security Benefits:</strong>
+<ul>
+<li><strong>No password storage</strong> - Uses secure tokens</li>
+<li><strong>Scoped permissions</strong> - Limited access to necessary operations</li>
+<li><strong>Revocable access</strong> - Can be disabled from GitHub settings</li>
+</ul></li>
+<li><strong>Student Assurance:</strong> “This setup is more secure than username/password”</li>
+</ul>
+<h3 id="slide-10-deployment-verification---testing-your-live-game"><strong>Slide 10: Deployment Verification - Testing Your Live Game 🧪</strong></h3>
+<ul>
+<li><strong>Teaching Focus:</strong> Systematic testing and monitoring of deployed applications</li>
+<li><strong>Verification Checklist:</strong>
+<ul>
+<li><strong>Repository files</strong> - Confirm all code uploaded to GitHub</li>
+<li><strong>Actions workflow</strong> - Monitor build process completion</li>
+<li><strong>Pages deployment</strong> - Verify hosting configuration</li>
+<li><strong>Live site testing</strong> - Confirm all features work in production</li>
+</ul></li>
+<li><strong>Testing Strategy:</strong>
+<ul>
+<li><strong>All game features</strong> - Zones, questions, scoring, audio</li>
+<li><strong>Different devices</strong> - Desktop, mobile, tablet compatibility</li>
+<li><strong>Performance</strong> - Loading speed and responsiveness</li>
+<li><strong>Error handling</strong> - Graceful failure modes</li>
+</ul></li>
+<li><strong>Troubleshooting Common Issues:</strong>
+<ul>
+<li><strong>Build failures</strong> - Check Actions tab for error details</li>
+<li><strong>Deployment delays</strong> - First deployment takes 2-3 minutes</li>
+<li><strong>Caching issues</strong> - Hard refresh to see latest changes</li>
+</ul></li>
+<li><strong>Student Empowerment:</strong> “You’ll verify your game works perfectly for all users”</li>
+</ul>
+<h3 id="slide-11-go-live"><strong>Slide 11: Go Live! 🚀</strong></h3>
+<ul>
+<li><strong>Today’s Coding Mission:</strong>
+<ol type="1">
+<li><strong>Disconnect from starter repo</strong> - Remove Wizcamp remote connection</li>
+<li><strong>Create personal repository</strong> - Set up your own GitHub repo</li>
+<li><strong>Configure build settings</strong> - Update package.json for deployment</li>
+<li><strong>Execute Git workflow</strong> - Add, commit, and push your code</li>
+<li><strong>Set up GitHub Pages</strong> - Configure automated hosting</li>
+<li><strong>Monitor deployment</strong> - Watch your game go live</li>
+<li><strong>Test and share</strong> - Verify functionality and get your public URL</li>
+</ol></li>
+<li><strong>Success Criteria:</strong>
+<ul>
+<li>Personal repository with all your code</li>
+<li>Successful automated deployment</li>
+<li>Live game accessible via public URL</li>
+<li>All features working in production</li>
+</ul></li>
+<li><strong>Achievement:</strong> “Your trivia game will be live on the internet for anyone to play!”</li>
+</ul>
+<h3 id="hands-on-work-happens-here"><strong>[HANDS-ON WORK HAPPENS HERE]</strong></h3>
+<h3 id="slide-12-deployment-success---youre-live"><strong>Slide 12: Deployment Success - You’re Live! 🌍</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Celebrating Your Achievement”</li>
+<li><strong>What You’ve Accomplished:</strong>
+<ul>
+<li><strong>Professional workflow</strong> - Used industry-standard Git and CI/CD</li>
+<li><strong>Live web application</strong> - Your game exists on the internet</li>
+<li><strong>Automated deployment</strong> - Updates happen automatically</li>
+<li><strong>Shareable project</strong> - Others can play your creation</li>
+</ul></li>
+<li><strong>Your Public URL:</strong> <code>https://username.github.io/repository-name/</code></li>
+<li><strong>Sharing Your Work:</strong>
+<ul>
+<li><strong>Social media</strong> - Screenshot and share your game</li>
+<li><strong>Portfolio addition</strong> - Professional project for your resume</li>
+<li><strong>Friends and family</strong> - Let others experience your creation</li>
+</ul></li>
+<li><strong>Future Updates:</strong> “Every time you push code, your live site updates automatically”</li>
+<li><strong>Professional Context:</strong> “You’ve used the same deployment process as major tech companies”</li>
+</ul>
+<h3 id="slide-13-whats-next---choose-your-adventure"><strong>Slide 13: What’s Next - Choose Your Adventure 🎯</strong></h3>
+<ul>
+<li><strong>Title:</strong> “Preview of Session 11”</li>
+<li><strong>Today’s Achievement:</strong> “You published a complete React application using professional development workflows”</li>
+<li><strong>Next Challenge:</strong> “Extend your game with personal features using AI assistance”</li>
+<li><strong>Concepts Coming:</strong>
+<ul>
+<li><strong>Self-directed learning</strong> - Choose your own features to add</li>
+<li><strong>AI collaboration</strong> - Use GitHub Copilot for advanced development</li>
+<li><strong>Feature planning</strong> - Design and implement custom enhancements</li>
+<li><strong>Code quality</strong> - Refactoring and optimization techniques</li>
+</ul></li>
+<li><strong>Extension Options Preview:</strong>
+<ul>
+<li><strong>Starter Mods:</strong> Custom fonts, character themes, instruction modals</li>
+<li><strong>Power Mods:</strong> Progress indicators, CSS variables, sound effects</li>
+<li><strong>Beast Mods:</strong> Player selection, character movement, theme toggles</li>
+</ul></li>
+<li><strong>Motivation:</strong> “Your deployed game is the perfect canvas for creative experimentation!”</li>
+</ul>
+</body>
+</html>

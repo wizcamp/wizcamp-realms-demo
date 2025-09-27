@@ -86,7 +86,6 @@ export default function GameLogo() {
         fontFamily="Pirata One"
         fontSize="60"
       >
-        {/* TODO: Session 1 - Students can customize these text elements */}
         <text
           id="title-first-line"
           x="200"

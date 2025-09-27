@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SESSION-10 - Wizcamp Session Guide</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style type="text/css">
+
+@page {
+margin: 0.6in 0.75in 0.6in 0.75in;
+size: letter;
+}
+body {
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.4;
+color: #1f2328;
+margin: 0;
+padding: 0;
+max-width: none;
+overflow-x: hidden !important;
+}
+
+* {
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+
+html, body {
+overflow-x: hidden !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 600;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px;
+}
+h1 {
+font-size: 1.75em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 0;
+}
+h2 {
+font-size: 1.5em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 24px;
+margin-bottom: 16px;
+}
+
+h1 + * h2:first-of-type,
+h2:first-of-type {
+margin-top: 24px;
+}
+
+a[id] {
+scroll-margin-top: 20px;
+}
+h3 {
+font-size: 1.25em;
+margin-top: 24px;
+margin-bottom: 12px;
+page-break-after: avoid;
+break-after: avoid;
+}
+
+h2, h3 {
+page-break-after: avoid;
+}
+
+ol, ul, li, p {
+page-break-inside: auto;
+}
+code {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-size: 13px !important;
+font-weight: 500 !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
+border-radius: 3px !important;
+white-space: nowrap;
+word-break: break-word;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+text-decoration: none !important;
+}
+pre {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+background-color: #f8f9fa !important;
+border: 1px solid #e1e4e8 !important;
+border-radius: 6px !important;
+padding: 16px !important;
+overflow: hidden !important;
+white-space: pre-wrap !important;
+word-wrap: break-word !important;
+page-break-inside: avoid !important;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+font-size: 14px !important;
+line-height: 1.4 !important;
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+box-sizing: border-box !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+
+@media print {
+pre {
+white-space: pre !important;
+font-family: "JetBrains Mono", monospace !important;
+display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+pre * {
+white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+}
+pre code {
+background-color: transparent !important;
+border: none !important;
+padding: 0 !important;
+color: #24292f !important;
+text-decoration: none !important;
+}
+ul, ol {
+padding-left: 1.8em;
+margin-bottom: 12px;
+}
+li {
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
+@media print {
+ul, ol {
+display: block !important;
+}
+li {
+display: list-item !important;
+margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
+}
+
+* {
+box-sizing: border-box !important;
+}
+}
+p {
+margin-bottom: 12px;
+}
+a {
+color: #0969da;
+text-decoration: none;
+}
+strong {
+font-weight: 600;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+max-width: 100%;
+margin: 16px 0;
+font-size: 16px;
+line-height: 1.5;
+table-layout: auto;
+word-wrap: break-word;
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+vertical-align: top;
+border: 1px solid #d0d7de;
+word-wrap: break-word;
+overflow-wrap: break-word;
+hyphens: auto;
+}
+th {
+font-weight: 600;
+background-color: #f6f8fa;
+color: #24292f;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+tbody tr:nth-child(even) {
+background-color: #f8f9fa;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+
+table code {
+font-size: 14px !important;
+padding: 2px 4px !important;
+word-break: break-all;
+}
+
+table td:first-child {
+width: 200px;
+max-width: 250px;
+}
+table td:nth-child(2) {
+width: auto;
+}
+table td:nth-child(3) {
+width: auto;
+}
+
+table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:nth-child(2) {
+width: 50% !important;
+max-width: none !important;
+}
+
+table {
+page-break-inside: auto !important;
+}
+th {
+page-break-after: avoid !important;
+}
+tbody tr {
+page-break-inside: avoid !important;
+page-break-after: auto !important;
+}
+
+thead {
+display: table-header-group !important;
+}
+@media print {
+thead {
+display: table-row-group !important;
+}
+table {
+page-break-inside: auto !important;
+}
+tr {
+page-break-inside: avoid !important;
+}
+
+* {
+overflow: visible !important;
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+html, body {
+overflow-x: hidden !important;
+}
+}
+</style>
+</head>
+<body>
+<h1 id="session-10-publishing-your-game">Session 10 — Publishing Your Game</h1>
+<p>Version Control &amp; Deployment 🚀</p>
+<p>You’re about to take your trivia game from local development to the live internet! This guide walks you through version control concepts, Git workflows, and automated deployment using GitHub Pages. Ready to share your creation with the world? Let’s go!</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#understanding-version-control">Understanding Version Control</a></li>
+<li><a href="#understanding-cicd">Understanding CI/CD</a></li>
+<li><a href="#make-this-project-yours">Make This Project Yours</a></li>
+<li><a href="#the-git-workflow">The Git Workflow</a></li>
+<li><a href="#watch-your-deployment">Watch Your Deployment</a></li>
+<li><a href="#share-your-live-game">Share Your Live Game</a></li>
+<li><a href="#essential-terms">Essential Terms</a></li>
+<li><a href="#ask-the-ai">Ask the AI</a></li>
+</ul>
+<p><a id="access-your-codespace"></a></p>
+<h2 id="access-your-codespace">☁️ Access Your Codespace</h2>
+<p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 9.</p>
+<p><a id="understanding-version-control"></a></p>
+<h2 id="understanding-version-control">📚 Understanding Version Control</h2>
+<p>Before we publish your game, let’s understand <strong>version control</strong> — the system that tracks every change to your code and lets you collaborate safely with other developers.</p>
+<p><strong>Version control</strong> is like having a detailed history book for your project. Every time you make changes, you can create a snapshot (called a <strong>commit</strong>) that you can return to later. Think of it as “save points” in a video game — you can always go back to a previous state if something goes wrong.</p>
+<h3 id="why-version-control-exists">Why Version Control Exists</h3>
+<table>
+<colgroup>
+<col style="width: 47%"></col>
+<col style="width: 52%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>“My code worked yesterday!”</strong></td>
+<td><strong>Git history</strong> shows exactly what changed</td>
+</tr>
+<tr class="even">
+<td><strong>“I broke everything!”</strong></td>
+<td><strong>Rollback</strong> to any previous working version</td>
+</tr>
+<tr class="odd">
+<td><strong>“Who changed this file?”</strong></td>
+<td><strong>Blame/history</strong> shows author and reason</td>
+</tr>
+<tr class="even">
+<td><strong>“How do we work together?”</strong></td>
+<td><strong>Branches</strong> let multiple people code simultaneously</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-version-control-works">How Version Control Works</h3>
+<p><strong>Version control</strong> systems like <strong>Git</strong> work by tracking changes to files in a special folder called a <strong>repository</strong>. When you’re ready to save your progress, you create a <strong>commit</strong> — a permanent snapshot of your project at that moment.</p>
+<p>Think of <strong>Git</strong> as your project’s memory system. It remembers every change you’ve ever made, who made it, and when. If you need to work on a new feature without breaking your main code, you can create a <strong>branch</strong> — like a parallel universe where you can experiment safely.</p>
+<p>When you’re ready to share your work or back it up online, you <strong>push</strong> your commits to a remote repository on platforms like GitHub. This uploads your entire project history, not just the current files.</p>
+<h3 id="why-this-matters">💡 Why This Matters</h3>
+<p><strong>Version control</strong> is essential for any serious development work. It’s like having a time machine for your code — you can experiment fearlessly knowing you can always return to a working state. This safety net transforms how you approach coding, making you more willing to try new ideas and refactor existing code.</p>
+<p><a id="understanding-cicd"></a></p>
+<h2 id="understanding-cicd">⚙️ Understanding CI/CD</h2>
+<p>Now let’s understand <strong>CI/CD</strong> — the automated processes that build and deploy your code whenever you push changes.</p>
+<p><strong>CI/CD</strong> stands for <strong>Continuous Integration/Continuous Deployment</strong>. It’s like having a robot assistant that automatically builds and publishes your app every time you save changes to GitHub.</p>
+<h3 id="cicd-components">CI/CD Components</h3>
+<table>
+<colgroup>
+<col style="width: 34%"></col>
+<col style="width: 28%"></col>
+<col style="width: 37%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Purpose</th>
+<th>Your Setup</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Continuous Integration (CI)</strong></td>
+<td>Automatically test and build code when changes are pushed</td>
+<td><strong>GitHub Actions</strong> runs your build process</td>
+</tr>
+<tr class="even">
+<td><strong>Continuous Deployment (CD)</strong></td>
+<td>Automatically deploy successful builds to production</td>
+<td><strong>GitHub Pages</strong> hosts your built app</td>
+</tr>
+<tr class="odd">
+<td><strong>Build Process</strong></td>
+<td>Convert source code into deployable files</td>
+<td><strong>Vite</strong> bundles your React app</td>
+</tr>
+<tr class="even">
+<td><strong>Hosting Platform</strong></td>
+<td>Serve your app to users on the internet</td>
+<td><strong>GitHub Pages</strong> provides free hosting</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-it-works">📊 How It Works</h3>
+<pre class="mermaid"><code>flowchart LR
+    A[You push code] --&gt; B[GitHub Actions detects change]
+    B --&gt; C[Runs build process]
+    C --&gt; D[Deploys to GitHub Pages]
+    D --&gt; E[Your game is live!]</code></pre>
+<h3 id="why-this-matters-1">💡 Why This Matters</h3>
+<p><strong>CI/CD</strong> eliminates manual deployment work. Instead of building and uploading files yourself, the system automatically handles everything when you push code. This is how teams deploy apps multiple times per day.</p>
+<p><a id="make-this-project-yours"></a></p>
+<h2 id="make-this-project-yours">🏠 Make This Project Yours</h2>
+<p>All <code>git</code> commands should be run in your Codespace terminal</p>
+<h3 id="disconnect-from-the-starter-repo">1. Disconnect from the Starter Repo</h3>
+<p>This disconnects your project from the original Wizcamp repo, making way for your own!</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">git</span> remote remove origin</a></code></pre></div>
+<h3 id="create-a-new-repo-on-github">2. Create a New Repo on GitHub</h3>
+<ul>
+<li><strong>Go to</strong>: <a href="https://github.com/new">github.com/new</a></li>
+<li><strong>Name your repo</strong>, e.g., <code>trivia-quest</code></li>
+<li><strong>Do not initialize</strong> with a README or .gitignore — your project already has those!</li>
+<li><strong>Click “Create repository”</strong></li>
+</ul>
+<h3 id="connect-your-project-to-your-new-repo">3. Connect Your Project to Your New Repo</h3>
+<p>Replace <code>your-username</code> and <code>your-repo-name</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">git</span> remote add origin https://github.com/your-username/your-repo-name.git</a></code></pre></div>
+<p><strong>Example</strong>: <code>git remote add origin https://github.com/babalugats76/trivia-quest.git</code></p>
+<p>You can always use <code>git remote -v</code> to verify this connection</p>
+<h3 id="update-the-vite-build-path">4. Update the Vite Build Path</h3>
+<p>Open <code>package.json</code> and update the <code>build</code> script to match your repo name:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="st">&quot;build&quot;</span><span class="op">:</span> <span class="st">&quot;vite build --base=/your-repo-name/&quot;</span> <span class="co">// e.g. --base=/trivia-quest/</span></a></code></pre></div>
+<p>This ensures your site works correctly when deployed to GitHub Pages.</p>
+<h3 id="enable-github-pages">5. Enable GitHub Pages</h3>
+<ul>
+<li><strong>Go to your repo</strong> → <strong>Settings</strong> → <strong>Pages</strong></li>
+<li><strong>Under “Source”</strong>, choose <strong>GitHub Actions</strong></li>
+<li><strong>Save</strong> the settings</li>
+</ul>
+<h3 id="authenticate-with-github-recommended">6. Authenticate with GitHub (Recommended)</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">gh</span> auth login</a></code></pre></div>
+<p>This uses the GitHub CLI (gh), pre-installed in Codespaces, to authenticate you.</p>
+<ul>
+<li><strong>Choose</strong>: GitHub.com</li>
+<li><strong>Choose</strong>: HTTPS</li>
+<li><strong>Choose</strong>: Authenticate via browser</li>
+<li><strong>GitHub opens a browser tab</strong> with a one-time code</li>
+<li><strong>Copy and paste the code</strong> to confirm</li>
+</ul>
+<h3 id="push-your-code-to-github">7. Push Your Code to GitHub</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">git</span> push -u origin main</a></code></pre></div>
+<h3 id="verify-your-code-is-on-github">8. Verify Your Code Is On GitHub</h3>
+<ul>
+<li><strong>Go to your GitHub profile</strong>: <code>https://github.com/your-username</code></li>
+<li><strong>Click on your new repo</strong> (e.g., trivia-quest)</li>
+<li><strong>If you see your files</strong>, your push worked! You now officially own your project!</li>
+</ul>
+<h3 id="find-your-live-site">9. Find Your Live Site</h3>
+<p>Once deployed, your site will be live at <code>https://your-username.github.io/your-repo-name/</code></p>
+<h3 id="why-this-matters-2">💡 Why This Matters</h3>
+<p>These steps transform your project from a shared template into your personal creation. Now you can make updates, publish changes to the web, and share your unique version with the world. Your trivia game is officially yours to customize and deploy!</p>
+<p><a id="the-git-workflow"></a></p>
+<h2 id="the-git-workflow">🔄 The Git Workflow</h2>
+<p>Let’s learn the essential daily workflow by making a real change to your game. We’ll customize your game’s title and see how every change follows the same pattern.</p>
+<h3 id="make-a-change-customize-your-game-title">Make a Change: Customize Your Game Title</h3>
+<p>Let’s personalize your game by changing the title that appears on the splash screen:</p>
+<ol type="1">
+<li><strong>Open</strong> <code>src/components/GameLogo.jsx</code></li>
+<li><p><strong>Find</strong> these two text elements:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-first-line&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  Wizcamp</a>
+<a class="sourceLine" id="cb7-3" title="3">&lt;/text<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-second-line&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-5" title="5">  Realms</a>
+<a class="sourceLine" id="cb7-6" title="6">&lt;/text<span class="op">&gt;</span></a></code></pre></div></li>
+<li><p><strong>Change</strong> them to something that matches your game:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-first-line&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-2" title="2">  Trivia</a>
+<a class="sourceLine" id="cb8-3" title="3">&lt;/text<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-second-line&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-5" title="5">  Quest</a>
+<a class="sourceLine" id="cb8-6" title="6">&lt;/text<span class="op">&gt;</span></a></code></pre></div></li>
+<li><p><strong>Check your browser</strong> - you should see the new title!</p></li>
+</ol>
+<h3 id="your-daily-git-workflow">📊 Your Daily Git Workflow</h3>
+<pre class="mermaid"><code>flowchart TD
+    A[Edit code in VS Code] --&gt; B[Test changes in browser]
+    B --&gt; C[Stage with git add .]
+    C --&gt; D[Commit with descriptive message]
+    D --&gt; E[Push to share and deploy]
+    E --&gt; F[GitHub Actions builds and deploys]
+    F --&gt; A</code></pre>
+<h3 id="the-essential-git-commands">The Essential Git Commands</h3>
+<p>Now let’s commit and share this change:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># 1. Stage your changes (prepare them for committing)</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="fu">git</span> add .</a>
+<a class="sourceLine" id="cb10-3" title="3"></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="co"># 2. Commit your changes (create a permanent snapshot)</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="fu">git</span> commit -m <span class="st">&quot;feat(logo): customize game title to Trivia Quest&quot;</span></a>
+<a class="sourceLine" id="cb10-6" title="6"></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="co"># 3. Push your changes (share with the world and trigger deployment)</span></a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="fu">git</span> push</a></code></pre></div>
+<h3 id="understanding-commit-messages">Understanding Commit Messages</h3>
+<p>Every commit requires a message that explains what changed. These messages create a readable history - like a diary of your project’s evolution.</p>
+<p>The message <code>feat(logo): customize game title to Trivia Quest</code> follows a helpful pattern: - <strong>feat</strong>: Type of change (other types: <code>fix</code>, <code>style</code>, <code>docs</code>) - <strong>(logo)</strong>: What part of the app changed - <strong>customize game title</strong>: What you actually did</p>
+<h3 id="common-message-types">Common Message Types</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Example</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>feat</strong></td>
+<td><code>feat(quiz): add timer</code></td>
+<td>New feature</td>
+</tr>
+<tr class="even">
+<td><strong>fix</strong></td>
+<td><code>fix(scoring): resolve bug</code></td>
+<td>Bug fix</td>
+</tr>
+<tr class="odd">
+<td><strong>style</strong></td>
+<td><code>style(button): update colors</code></td>
+<td>Visual changes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-this-matters-3">💡 Why This Matters</h3>
+<p>This workflow stays consistent across all development - games, websites, mobile apps. The predictable pattern helps you build good habits and work confidently with any codebase.ld good habits and work confidently with any codebase. <a id="watch-your-deployment"></a></p>
+<h2 id="watch-your-deployment">👀 Watch Your Deployment</h2>
+<p>Now let’s trace your GameLogo title change through the entire deployment pipeline!</p>
+<h3 id="monitor-github-actions">1. Monitor GitHub Actions</h3>
+<ul>
+<li><strong>Go to your repository</strong> on GitHub</li>
+<li><strong>Click the “Actions” tab</strong> to see the build process</li>
+<li><strong>Find your latest workflow run</strong> (should show “feat(logo): customize game title to Trivia Quest”)</li>
+<li><strong>Click on the workflow</strong> to see the build process in real-time</li>
+<li><strong>Wait for the green checkmark</strong> — this means deployment succeeded!</li>
+</ul>
+<h3 id="verify-your-code-changes">2. Verify Your Code Changes</h3>
+<ul>
+<li><strong>Check your repository</strong> — you should see your latest commit</li>
+<li><strong>Look at the commit history</strong> — your GameLogo change is now part of the project’s permanent record</li>
+<li><strong>Browse the code</strong> — click on <code>src/components/GameLogo.jsx</code> to see your title changes in the repository</li>
+</ul>
+<h3 id="test-your-live-game">3. Test Your Live Game</h3>
+<ul>
+<li><strong>Go to Settings</strong> → <strong>Pages</strong> to find your live URL</li>
+<li><strong>Visit your live game</strong> at <code>https://your-username.github.io/your-repo-name/</code></li>
+<li><strong>Check the splash screen</strong> — you should see “Trivia Quest” instead of “Wizcamp Realms”!</li>
+<li><strong>Test all features</strong> — zones, questions, scoring, music</li>
+</ul>
+<h3 id="why-this-matters-4">💡 Why This Matters</h3>
+<p>You just traced a complete change from your local development environment through version control, automated building, and live deployment. This end-to-end visibility is crucial for understanding how modern web applications are built and maintained. <a id="share-your-live-game"></a></p>
+<h2 id="share-your-live-game">🌍 Share Your Live Game</h2>
+<p>Congratulations! Your trivia game is now live on the internet. Here’s how to share it with others.</p>
+<h3 id="your-games-public-url">Your Game’s Public URL</h3>
+<p>Your game is available at:</p>
+<pre><code>https://your-username.github.io/your-repo-name/</code></pre>
+<p><strong>Example</strong>: <code>https://babalugats76.github.io/trivia-quest/</code></p>
+<h3 id="sharing-your-achievement">Sharing Your Achievement</h3>
+<ul>
+<li><strong>Copy the URL</strong> and share it with friends and family</li>
+<li><strong>Test on different devices</strong> — phones, tablets, computers</li>
+<li><strong>Share on social media</strong> with screenshots of your game</li>
+<li><strong>Add the URL to your GitHub profile</strong> or portfolio</li>
+</ul>
+<h3 id="why-this-matters-5">💡 Why This Matters</h3>
+<p>Having your game live on the internet transforms it from a learning exercise into something real that others can actually use. You’ve built something that exists on the web — that’s a genuine accomplishment!</p>
+<p><a id="essential-terms"></a></p>
+<h2 id="essential-terms">📚 Essential Terms</h2>
+<p><em>Quick reference for all the version control and deployment concepts you just learned:</em></p>
+<table>
+<colgroup>
+<col style="width: 17%"></col>
+<col style="width: 35%"></col>
+<col style="width: 47%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Definition</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>📚 version control</td>
+<td>A system that tracks changes to files over time, allowing you to see history, revert changes, and collaborate safely.</td>
+<td>Essential for any serious development work — lets you experiment fearlessly and work with others.</td>
+</tr>
+<tr class="even">
+<td>📁 repository</td>
+<td>A folder containing your project files and their complete change history, managed by Git.</td>
+<td>Your project’s home base where all code and history live — can be local (on your computer) or remote (on GitHub).</td>
+</tr>
+<tr class="odd">
+<td>📝 commit</td>
+<td>A snapshot of your project at a specific point in time, with a message describing what changed.</td>
+<td>Creates permanent save points you can return to — like checkpoints in a video game.</td>
+</tr>
+<tr class="even">
+<td>🌿 branch</td>
+<td>A separate copy of your code where you can experiment with new features without breaking your main code.</td>
+<td>Lets you try new ideas safely — if something goes wrong, your main code stays untouched.</td>
+</tr>
+<tr class="odd">
+<td>⬆️ push</td>
+<td>Upload your local commits to a remote repository like GitHub, making them available to others.</td>
+<td>How you share your work and trigger automated deployments — essential for collaboration and publishing.</td>
+</tr>
+<tr class="even">
+<td>⚙️ CI/CD</td>
+<td>Continuous Integration/Continuous Deployment — automated processes that build and deploy code when changes are made.</td>
+<td>Eliminates manual deployment work — your code automatically becomes a live website when you push changes.</td>
+</tr>
+<tr class="odd">
+<td>🤖 GitHub Actions</td>
+<td>GitHub’s automation platform that runs workflows (like building and deploying) when you push code.</td>
+<td>Powers your automated deployment — builds your React app and publishes it without manual work.</td>
+</tr>
+<tr class="even">
+<td>🌐 GitHub Pages</td>
+<td>Free web hosting service that automatically publishes websites from GitHub repositories.</td>
+<td>Turns your repository into a live website — perfect for React apps and portfolio projects.</td>
+</tr>
+</tbody>
+</table>
+<p><a id="ask-the-ai"></a></p>
+<h2 id="ask-the-ai-version-control-deployment">🤖 Ask the AI — Version Control &amp; Deployment</h2>
+<p>You just published your trivia game to the internet using development workflows — excellent work!</p>
+<p>Now let’s deepen your understanding of version control, Git workflows, and deployment automation. Here are the most impactful questions to ask your AI assistant about today’s session:out today’s session:</p>
+<ul>
+<li><strong>Why is version control essential for software development, and what problems does it solve?</strong></li>
+<li><strong>What makes a good commit message, and why do they matter?</strong></li>
+<li><strong>How does the Git workflow (add, commit, push) relate to saving files on my computer?</strong></li>
+<li><strong>What are the benefits of automated deployment over manual file uploads?</strong></li>
+<li><strong>How do GitHub Actions and GitHub Pages work together to deploy websites?</strong></li>
+<li><strong>What’s the difference between local repositories and remote repositories?</strong></li>
+<li><strong>How can I use version control for future projects and collaboration?</strong></li>
+</ul>
+</body>
+</html>
