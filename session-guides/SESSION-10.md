@@ -10,6 +10,7 @@ You're about to take your trivia game from local development to the live interne
 - [Understanding CI/CD](#understanding-cicd)
 - [Make This Project Yours](#make-this-project-yours)
 - [The Git Workflow](#the-git-workflow)
+- [Customize Your Game Title](#customize-your-game-title)
 - [Watch Your Deployment](#watch-your-deployment)
 - [Share Your Live Game](#share-your-live-game)
 - [Essential Terms](#essential-terms)
@@ -67,14 +68,31 @@ Now let's understand **CI/CD** — the automated processes that build and deploy
 | **Build Process** | Convert source code into deployable files | **Vite** bundles your React app |
 | **Hosting Platform** | Serve your app to users on the internet | **GitHub Pages** provides free hosting |
 
-### 📊 How It Works
+### 📊 Automated Deployment Pipeline
 
 ```mermaid
+---
+config:
+  layout: elk
+  look: neo
+---
 flowchart LR
-    A[You push code] --> B[GitHub Actions detects change]
-    B --> C[Runs build process]
-    C --> D[Deploys to GitHub Pages]
-    D --> E[Your game is live!]
+    A["🚀 You push code"] --> B["🤖 GitHub Actions detects change"]
+    B --> C["⚙️ Runs build process"]
+    C --> D["🌐 Deploys to GitHub Pages"]
+    D --> E["✨ Your game is live!"]
+    
+    A:::push
+    B:::detect
+    C:::build
+    D:::deploy
+    E:::live
+    
+    classDef push fill:#fce4ec,stroke:#e91e63,stroke-width:2px
+    classDef detect fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    classDef build fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    classDef deploy fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+    classDef live fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
 ```
 
 ### 💡 Why This Matters
@@ -87,9 +105,15 @@ flowchart LR
 
 All `git` commands should be run in your Codespace terminal
 
-### 1. Disconnect from the Starter Repo
+### 1. Check Your Git Remote Status
 
-This disconnects your project from the original Wizcamp repo, making way for your own!
+First, let's see if your Codespace has any remote connections:
+
+```bash
+git remote -v
+```
+
+If this returns nothing (which is typical for Codespaces), you can skip to step 2. If it shows a remote, you'll need to remove it first:
 
 ```bash
 git remote remove origin
@@ -99,117 +123,164 @@ git remote remove origin
 
 - **Go to**: [github.com/new](https://github.com/new)
 - **Name your repo**, e.g., `trivia-quest`
-- **Do not initialize** with a README or .gitignore — your project already has those!
+- **Do not add** a `README` or `.gitignore` — your project already has those!
 - **Click "Create repository"**
 
-### 3. Connect Your Project to Your New Repo
+Upon completion, you will be redirected to your new repo page.
 
-Replace `your-username` and `your-repo-name`:
-
-```bash
-git remote add origin https://github.com/your-username/your-repo-name.git
-```
-
-**Example**: `git remote add origin https://github.com/babalugats76/trivia-quest.git`
-
-You can always use `git remote -v` to verify this connection
-
-### 4. Update the Vite Build Path
+### 3. Update the Vite Build Path
 
 Open `package.json` and update the `build` script to match your repo name:
 
 ```javascript
-"build": "vite build --base=/your-repo-name/" // e.g. --base=/trivia-quest/
+"build": "vite build --base=/your-repo-name/" // Update with your repo name
 ```
 
-This ensures your site works correctly when deployed to GitHub Pages.
+**Example**:
 
-### 5. Enable GitHub Pages
+```javascript
+"build": "vite build --base=/trivia-quest/"
+```
 
-- **Go to your repo** → **Settings** → **Pages**
-- **Under "Source"**, choose **GitHub Actions**
-- **Save** the settings
+This ensures your site works correctly when deployed to GitHub Pages by matching the repo's name to the URL path.
 
-### 6. Authenticate with GitHub (Recommended)
+### 4. Create a Personal Access Token
+
+Since GitHub requires authentication, you need to create a Personal Access Token (PAT):
+
+- **Go to**: [github.com/settings/tokens](https://github.com/settings/tokens)
+- **Click "Generate new token"** → **"Generate new token (classic)"**
+- **Note**: Enter "Codespace Git Access" or similar
+- **Expiration**: Choose "30 days" (or longer if preferred)
+- **Scopes**: Check both **"repo"** and **"workflow"** (needed to push GitHub Actions files)
+- **Click "Generate token"**
+- **Copy the token immediately** - you won't see it again!
+
+### 5. Connect Your Project with Authentication
+
+Replace the placeholders with your actual values:
 
 ```bash
-gh auth login
+git remote add origin \
+  https://USERNAME:TOKEN@github.com/USERNAME/REPO-NAME.git
 ```
 
-This uses the GitHub CLI (gh), pre-installed in Codespaces, to authenticate you.
+**Example**:
+```bash
+git remote add origin \
+  https://babalugats76:ghp_abc123xyz@github.com/babalugats76/trivia-quest.git
+```
 
-- **Choose**: GitHub.com
-- **Choose**: HTTPS
-- **Choose**: Authenticate via browser
-- **GitHub opens a browser tab** with a one-time code
-- **Copy and paste the code** to confirm
+Make a mistake typing the URL? Just remove it using `git remote remove origin` and try again. You can always use `git remote -v` to verify this connection.
 
-### 7. Push Your Code to GitHub
+**Important**: Keep your token private! Don't share it with anyone.
+
+### 6. Push Your Code to GitHub
 
 ```bash
 git push -u origin main
 ```
 
-### 8. Verify Your Code Is On GitHub
+**You should see output like this:**
+```
+Enumerating objects: 80, done.
+Counting objects: 100% (80/80), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (73/73), done.
+Writing objects: 100% (80/80), 1.80 MiB | 7.07 MiB/s, done.
+Total 80 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (5/5), done.
+To https://github.com/your-username/your-repo-name.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+```
+
+**Note**: This first push will trigger GitHub Actions, but deployment will fail because Pages isn't enabled yet. That's expected!
+
+### 7. Verify Your Code Is On GitHub
 
 - **Go to your GitHub profile**: `https://github.com/your-username`
 - **Click on your new repo** (e.g., trivia-quest)
 - **If you see your files**, your push worked! You now officially own your project!
 
-### 9. Find Your Live Site
+### 8. Enable GitHub Pages
 
-Once deployed, your site will be live at `https://your-username.github.io/your-repo-name/`
+- **Go to your repo** → **Settings** → **Pages**
+- **Under "Build and deployment"**, find the **"Source"** dropdown
+- **Select "GitHub Actions"**
+- **Save** (this happens automatically)
+
+### 9. Commit Your Course Progress
+
+Now let's commit all the amazing work you've done throughout the course! You likely have changes from previous sessions that need to be saved:
+
+```bash
+# Stage all your changes from the entire course
+git add .
+
+# Commit your progress with a meaningful message
+git commit -m "feat: complete trivia game with all course features"
+
+# Push your complete game to trigger deployment
+git push
+```
+
+**This will trigger a successful deployment with all your course work since Pages is now enabled!**
+
+### 10. Find Your Live Site
+
+Your site should now be live at `https://your-username.github.io/your-repo-name/`
+
+**Note**: It may take a few minutes for the deployment to complete. Check the Actions tab to monitor progress.
+
+Once you complete the Git workflow in the next section, your site will be live at `https://your-username.github.io/your-repo-name/`
 
 ### 💡 Why This Matters
 
 These steps transform your project from a shared template into your personal creation. Now you can make updates, publish changes to the web, and share your unique version with the world. Your trivia game is officially yours to customize and deploy!
 
+**Note**: Your game uses a special `getAssetPath()` utility function to ensure images and audio work correctly both in development and when deployed to GitHub Pages. This automatically handles the different URL paths needed for deployment.
+
 <a id="the-git-workflow"></a>
 
 ## 🔄 The Git Workflow
 
-Let's learn the essential daily workflow by making a real change to your game. We'll customize your game's title and see how every change follows the same pattern.
+Before making changes, let's understand the essential daily workflow that every developer uses. This pattern stays consistent across all development work.
 
-### Make a Change: Customize Your Game Title
-
-Let's personalize your game by changing the title that appears on the splash screen:
-
-1. **Open** `src/components/GameLogo.jsx`
-2. **Find** these two text elements:
-   ```javascript
-   <text id="title-first-line">
-     Wizcamp
-   </text>
-   <text id="title-second-line">
-     Realms
-   </text>
-   ```
-3. **Change** them to something that matches your game:
-   ```javascript
-   <text id="title-first-line">
-     Trivia
-   </text>
-   <text id="title-second-line">
-     Quest
-   </text>
-   ```
-4. **Check your browser** - you should see the new title!
-
-### 📊 Your Daily Git Workflow
+### 📊 The Git Workflow
 
 ```mermaid
+---
+config:
+  layout: elk
+  look: neo
+---
 flowchart TD
-    A[Edit code in VS Code] --> B[Test changes in browser]
-    B --> C[Stage with git add .]
-    C --> D[Commit with descriptive message]
-    D --> E[Push to share and deploy]
-    E --> F[GitHub Actions builds and deploys]
+    A["✏️ Edit code in VS Code"] --> B["🌐 Test changes in browser"]
+    B --> C["📦 Stage with git add ."]
+    C --> D["💾 Commit with descriptive message"]
+    D --> E["🚀 Push to share and deploy"]
+    E --> F["🤖 GitHub Actions builds and deploys"]
     F --> A
+    
+    A:::edit
+    B:::test
+    C:::stage
+    D:::commit
+    E:::push
+    F:::deploy
+    
+    classDef edit fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    classDef test fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+    classDef stage fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    classDef commit fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    classDef push fill:#fce4ec,stroke:#e91e63,stroke-width:2px
+    classDef deploy fill:#e0f2f1,stroke:#009688,stroke-width:2px
 ```
 
 ### The Essential Git Commands
 
-Now let's commit and share this change:
+Every change follows this three-step pattern:
 
 ```bash
 # 1. Stage your changes (prepare them for committing)
@@ -241,37 +312,80 @@ The message `feat(logo): customize game title to Trivia Quest` follows a helpful
 
 ### 💡 Why This Matters
 
-This workflow stays consistent across all development - games, websites, mobile apps. The predictable pattern helps you build good habits and work confidently with any codebase.ld good habits and work confidently with any codebase.
+This workflow stays consistent across all development - games, websites, mobile apps. The predictable pattern helps you build good habits and work confidently with any codebase.
+
+<a id="customize-your-game-title"></a>
+
+## ✏️ Customize Your Game Title
+
+Now let's practice the Git workflow by making a real change to your game. We'll personalize your game's title and see the complete process in action.
+
+### Make Your Change
+
+Let's personalize your game by changing the title that appears on the splash screen:
+
+1. **Open** `src/components/GameLogo.jsx`
+2. **Find** these two text elements:
+   ```javascript
+   <text id="title-first-line">
+     Wizcamp
+   </text>
+   <text id="title-second-line">
+     Realms
+   </text>
+   ```
+3. **Change** them to something that matches your game:
+   ```javascript
+   <text id="title-first-line">
+     Trivia
+   </text>
+   <text id="title-second-line">
+     Quest
+   </text>
+   ```
+4. **Check your browser** - you should see the new title!
+
+### Apply the Git Workflow
+
+Now let's commit and share this change using the workflow you just learned:
+
+```bash
+# 1. Stage your changes (prepare them for committing)
+git add .
+
+# 2. Commit your changes (create a permanent snapshot)
+git commit -m "feat(logo): customize game title to Trivia Quest"
+
+# 3. Push your changes (share with the world and trigger deployment)
+git push
+```
+
+### 💡 Why This Matters
+
+You just experienced the complete developer workflow - from making a change to deploying it live. This same pattern applies whether you're fixing a bug, adding a feature, or updating styles.
 <a id="watch-your-deployment"></a>
 
 ## 👀 Watch Your Deployment
 
-Now let's trace your GameLogo title change through the entire deployment pipeline!
+Now let's track your title change through the automated deployment process!
 
-### 1. Monitor GitHub Actions
+### Monitor the Build Process
 
-- **Go to your repository** on GitHub
-- **Click the "Actions" tab** to see the build process
-- **Find your latest workflow run** (should show "feat(logo): customize game title to Trivia Quest")
-- **Click on the workflow** to see the build process in real-time
-- **Wait for the green checkmark** — this means deployment succeeded!
+1. **Go to your repository** on GitHub
+2. **Click the "Actions" tab**
+3. **Click on your latest workflow run** (should show your commit message)
+4. **Click on "build-and-deploy"** to see the deployment steps
+5. **Watch the status** - wait for the green checkmark!
 
-### 2. Verify Your Code Changes
+### Test Your Live Game
 
-- **Check your repository** — you should see your latest commit
-- **Look at the commit history** — your GameLogo change is now part of the project's permanent record
-- **Browse the code** — click on `src/components/GameLogo.jsx` to see your title changes in the repository
-
-### 3. Test Your Live Game
-
-- **Go to Settings** → **Pages** to find your live URL
 - **Visit your live game** at `https://your-username.github.io/your-repo-name/`
-- **Check the splash screen** — you should see "Trivia Quest" instead of "Wizcamp Realms"!
-- **Test all features** — zones, questions, scoring, music
+- **Check the splash screen** - you should see your new title!
+- **Test the game** - make sure everything still works
 
 ### 💡 Why This Matters
 
-You just traced a complete change from your local development environment through version control, automated building, and live deployment. This end-to-end visibility is crucial for understanding how modern web applications are built and maintained.
+You just experienced the complete developer workflow - from code change to live deployment. This automation is how teams ship updates multiple times per day.
 <a id="share-your-live-game"></a>
 
 ## 🌍 Share Your Live Game

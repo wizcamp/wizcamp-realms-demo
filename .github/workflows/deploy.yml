@@ -1,6 +1,4 @@
 # Deploy Trivia Game to GitHub Pages
-# This workflow will NOT run in the template repo (wizcamp/wizcamp-realms-demo)
-# It will only run when students create their own repositories from this template
 
 name: Deploy Trivia Game to GitHub Pages
 

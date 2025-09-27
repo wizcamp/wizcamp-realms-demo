@@ -4,6 +4,7 @@ import { SCREENS } from "../constants/screens";
 import { getZoneById, ZONES } from "../data/zones";
 import { useAudio } from "../hooks/useAudio";
 import { fetchQuestions } from "../services/trivia";
+import { getAssetPath } from "../utils/assets";
 
 /**
  * GAME CONTEXT - The Brain of Our Quiz Game
@@ -94,7 +95,7 @@ export function GameProvider({ children }) {
   // ============================================================================
   // AUDIO STATE - Music and sound controls
   // ============================================================================
-  const music = useAudio("/audio/dramatic-action.mp3");
+  const music = useAudio(getAssetPath("audio/dramatic-action.mp3"));
 
   // Find the first zone that isn't completed yet
   const activeZone = useMemo(() => {

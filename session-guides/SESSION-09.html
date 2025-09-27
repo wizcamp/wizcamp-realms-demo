@@ -81,7 +81,7 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
 color: #1f2328;
@@ -105,7 +105,7 @@ width: 100% !important;
 max-width: 100% !important;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-weight: 600;
 line-height: 1.25;
 margin-bottom: 16px;
@@ -423,7 +423,7 @@ overflow-x: hidden !important;
 <p>You might be familiar with HTML audio elements like <code>&lt;audio src=&quot;music.mp3&quot;&gt;&lt;/audio&gt;</code> that you write in HTML files. <strong>HTMLAudioElement</strong> is the JavaScript version of the same thing — it’s like a digital music player that you create and control entirely with JavaScript code. Instead of writing HTML tags, you use <code>new Audio()</code> to create the player, then control it with methods like <code>play()</code> and <code>pause()</code>.</p>
 <h3 id="creating-audio-elements">Creating Audio Elements</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="co">// Create new audio element</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">const</span> audio <span class="op">=</span> <span class="kw">new</span> <span class="at">Audio</span>(<span class="st">&#39;/audio/theme-music.mp3&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">const</span> audio <span class="op">=</span> <span class="kw">new</span> <span class="at">Audio</span>(<span class="at">getAssetPath</span>(<span class="st">&#39;audio/theme-music.mp3&#39;</span>))<span class="op">;</span></a>
 <a class="sourceLine" id="cb2-3" title="3"></a>
 <a class="sourceLine" id="cb2-4" title="4"><span class="co">// Configure audio properties</span></a>
 <a class="sourceLine" id="cb2-5" title="5"><span class="va">audio</span>.<span class="at">loop</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span>        <span class="co">// Repeat when finished</span></a>
@@ -499,33 +499,37 @@ overflow-x: hidden !important;
 <h2 id="building-the-musictoggle-component">🎛️ Building the MusicToggle Component</h2>
 <p>Before we implement the audio functionality, let’s add the UI controls you’ll need to test it. This music toggle will provide the interface for testing the <code>useAudio</code> hook as you build it in the next sections.</p>
 <ol type="1">
-<li><p><strong>Open <code>src/components/HUD.jsx</code></strong> and add the <code>MusicToggle</code> component after the <code>CurrentZone</code> function:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">function</span> <span class="at">MusicToggle</span>() <span class="op">{</span> <span class="co">// Add MusicToggle component</span></a>
-<a class="sourceLine" id="cb6-2" title="2">  <span class="kw">const</span> <span class="op">{</span> music <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb6-3" title="3">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb6-4" title="4">    <span class="op">&lt;</span>button </a>
-<a class="sourceLine" id="cb6-5" title="5">      onClick<span class="op">={</span><span class="va">music</span>.<span class="at">toggle</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb6-6" title="6">      className<span class="op">=</span><span class="st">&quot;music-toggle&quot;</span></a>
-<a class="sourceLine" id="cb6-7" title="7">      title<span class="op">={</span><span class="va">music</span>.<span class="at">isPlaying</span> <span class="op">?</span> <span class="st">&quot;Pause Music&quot;</span> : <span class="st">&quot;Play Music&quot;</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb6-8" title="8">    <span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb6-9" title="9">      <span class="op">&lt;</span>img </a>
-<a class="sourceLine" id="cb6-10" title="10">        src<span class="op">={</span><span class="va">music</span>.<span class="at">isPlaying</span> <span class="op">?</span> <span class="st">&quot;/images/playing.svg&quot;</span> : <span class="st">&quot;/images/paused.svg&quot;</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb6-11" title="11">        alt<span class="op">={</span><span class="va">music</span>.<span class="at">isPlaying</span> <span class="op">?</span> <span class="st">&quot;Pause&quot;</span> : <span class="st">&quot;Play&quot;</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb6-12" title="12">        className<span class="op">=</span><span class="st">&quot;music-icon&quot;</span></a>
-<a class="sourceLine" id="cb6-13" title="13">        width<span class="op">={</span><span class="dv">24</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb6-14" title="14">        height<span class="op">={</span><span class="dv">24</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb6-15" title="15">      /&gt;</a>
-<a class="sourceLine" id="cb6-16" title="16">    &lt;/button<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb6-17" title="17">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb6-18" title="18"><span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Add the asset utility import</strong> at the top of <code>src/components/HUD.jsx</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> <span class="op">{</span> getAssetPath <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../utils/assets&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a></code></pre></div></li>
+<li><p><strong>Add the <code>MusicToggle</code> component</strong> after the <code>CurrentZone</code> function:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">function</span> <span class="at">MusicToggle</span>() <span class="op">{</span> <span class="co">// Add MusicToggle component</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="kw">const</span> <span class="op">{</span> music <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-3" title="3">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb7-4" title="4">    <span class="op">&lt;</span>button </a>
+<a class="sourceLine" id="cb7-5" title="5">      onClick<span class="op">={</span><span class="va">music</span>.<span class="at">toggle</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-6" title="6">      className<span class="op">=</span><span class="st">&quot;music-toggle&quot;</span></a>
+<a class="sourceLine" id="cb7-7" title="7">      title<span class="op">={</span><span class="va">music</span>.<span class="at">isPlaying</span> <span class="op">?</span> <span class="st">&quot;Pause Music&quot;</span> : <span class="st">&quot;Play Music&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-8" title="8">    <span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-9" title="9">      <span class="op">&lt;</span>img </a>
+<a class="sourceLine" id="cb7-10" title="10">        src<span class="op">={</span><span class="at">getAssetPath</span>(</a>
+<a class="sourceLine" id="cb7-11" title="11">          <span class="va">music</span>.<span class="at">isPlaying</span> <span class="op">?</span> <span class="st">&quot;images/playing.svg&quot;</span> : <span class="st">&quot;images/paused.svg&quot;</span></a>
+<a class="sourceLine" id="cb7-12" title="12">        )<span class="op">}</span></a>
+<a class="sourceLine" id="cb7-13" title="13">        alt<span class="op">={</span><span class="va">music</span>.<span class="at">isPlaying</span> <span class="op">?</span> <span class="st">&quot;Pause&quot;</span> : <span class="st">&quot;Play&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-14" title="14">        className<span class="op">=</span><span class="st">&quot;music-icon&quot;</span></a>
+<a class="sourceLine" id="cb7-15" title="15">        width<span class="op">={</span><span class="dv">24</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-16" title="16">        height<span class="op">={</span><span class="dv">24</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-17" title="17">      /&gt;</a>
+<a class="sourceLine" id="cb7-18" title="18">    &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-19" title="19">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-20" title="20"><span class="op">}</span></a></code></pre></div></li>
 <li><p><strong>Add <code>MusicToggle</code> to the HUD</strong> by updating the JSX return:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb7-2" title="2">  <span class="op">&lt;&gt;</span></a>
-<a class="sourceLine" id="cb7-3" title="3">    <span class="op">&lt;</span>Scoreboard /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb7-4" title="4">    <span class="op">&lt;</span>CurrentZone /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb7-5" title="5">    <span class="op">&lt;</span>MusicToggle /<span class="op">&gt;</span> <span class="co">// Add MusicToggle</span></a>
-<a class="sourceLine" id="cb7-6" title="6">  &lt;/<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb7-7" title="7">)<span class="op">;</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="op">&lt;&gt;</span></a>
+<a class="sourceLine" id="cb8-3" title="3">    <span class="op">&lt;</span>Scoreboard /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-4" title="4">    <span class="op">&lt;</span>CurrentZone /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-5" title="5">    <span class="op">&lt;</span>MusicToggle /<span class="op">&gt;</span> <span class="co">// Add MusicToggle</span></a>
+<a class="sourceLine" id="cb8-6" title="6">  &lt;/<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-7" title="7">)<span class="op">;</span></a></code></pre></div></li>
 <li><p><strong>Test</strong>: Start Game → Music toggle visible, but inoperable when clicked</p></li>
 </ol>
 <h3 id="why-this-matters-3">💡 Why This Matters</h3>
@@ -535,13 +539,13 @@ overflow-x: hidden !important;
 <p>Now let’s add the audio reference to your <code>useAudio</code> hook so it can store the HTMLAudioElement.</p>
 <ol type="1">
 <li><p><strong>Open <code>src/hooks/useAudio.js</code></strong> and add the audio reference:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="im">export</span> <span class="kw">function</span> <span class="at">useAudio</span>(src) <span class="op">{</span></a>
-<a class="sourceLine" id="cb8-2" title="2">  <span class="kw">const</span> audioRef <span class="op">=</span> <span class="at">useRef</span>(<span class="kw">null</span>)<span class="op">;</span> <span class="co">// Add audio ref</span></a>
-<a class="sourceLine" id="cb8-3" title="3">  <span class="kw">const</span> [isPlaying<span class="op">,</span> setIsPlaying] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb8-4" title="4">  <span class="co">// ... rest of hook</span></a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="op">}</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="im">export</span> <span class="kw">function</span> <span class="at">useAudio</span>(src) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="kw">const</span> audioRef <span class="op">=</span> <span class="at">useRef</span>(<span class="kw">null</span>)<span class="op">;</span> <span class="co">// Add audio ref</span></a>
+<a class="sourceLine" id="cb9-3" title="3">  <span class="kw">const</span> [isPlaying<span class="op">,</span> setIsPlaying] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-4" title="4">  <span class="co">// ... rest of hook</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="op">}</span></a></code></pre></div></li>
 <li><p><strong>Add the useRef import</strong> at the top of the file:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="im">import</span> <span class="op">{</span> useRef<span class="op">,</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span> <span class="co">// Add useRef import</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="im">import</span> <span class="op">{</span> useRef<span class="op">,</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span> <span class="co">// Add useRef import</span></a></code></pre></div></li>
 </ol>
 <p>Your hook now has a ref that can store and remember the audio element we’ll create in the <code>play</code> function. The ref starts as <code>null</code> and will hold our audio element once it’s created.</p>
 <h3 id="audio-reference-flow">Audio Reference Flow</h3>
@@ -554,15 +558,15 @@ audioRef.current stores Audio element → future calls reuse same element</code>
 <p>Let’s implement the core audio functionality by updating the <code>play</code> function to create and control audio elements.</p>
 <ol type="1">
 <li><p><strong>Update the play function</strong> in <code>src/hooks/useAudio.js</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">const</span> play <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span> <span class="co">// Update play function</span></a>
-<a class="sourceLine" id="cb11-2" title="2">  <span class="cf">if</span> (<span class="op">!</span><span class="va">audioRef</span>.<span class="at">current</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb11-3" title="3">    <span class="va">audioRef</span>.<span class="at">current</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">Audio</span>(src)<span class="op">;</span></a>
-<a class="sourceLine" id="cb11-4" title="4">    <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">loop</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb11-5" title="5">    <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">volume</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb11-6" title="6">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb11-7" title="7">  <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">play</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb11-8" title="8">  <span class="at">setIsPlaying</span>(<span class="kw">true</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb11-9" title="9"><span class="op">};</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">const</span> play <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span> <span class="co">// Update play function</span></a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="cf">if</span> (<span class="op">!</span><span class="va">audioRef</span>.<span class="at">current</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-3" title="3">    <span class="va">audioRef</span>.<span class="at">current</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">Audio</span>(src)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-4" title="4">    <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">loop</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb12-5" title="5">    <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">volume</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb12-6" title="6">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb12-7" title="7">  <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">play</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-8" title="8">  <span class="at">setIsPlaying</span>(<span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-9" title="9"><span class="op">};</span></a></code></pre></div>
 <p>The <code>if (!audioRef.current)</code> check is an example of <strong>lazy initialization</strong> — creating a resource only when it’s first needed. Since <code>audioRef.current</code> starts as <code>null</code>, the first time <code>play()</code> runs it creates the audio element. Every time after that, <code>audioRef.current</code> contains the audio element, so the <code>if</code> condition is false and it skips creating a new one.</p></li>
 <li><p><strong>Test</strong>: Click music toggle → Game theme plays and button shows playing state</p></li>
 </ol>
@@ -606,7 +610,14 @@ updates isPlaying to false</code></pre>
 <ul>
 <li>Review the generated code</li>
 <li>Apply the changes if they look correct</li>
-<li><strong>Test</strong>: Open <code>src/context/GameContext.jsx</code> and change <code>const music = useAudio(&quot;/audio/dramatic-action.mp3&quot;);</code> to an invalid path like <code>&quot;/audio/nonexistent.mp3&quot;</code> → Click music toggle → Check console for error handling</li>
+<li><strong>Test</strong>: To verify error handling works, temporarily break the audio path:
+<ul>
+<li>Open <code>src/context/GameContext.jsx</code></li>
+<li>Find the line: <code>const music = useAudio(getAssetPath(&quot;audio/dramatic-action.mp3&quot;));</code></li>
+<li>Change <code>&quot;audio/dramatic-action.mp3&quot;</code> to <code>&quot;audio/nonexistent.mp3&quot;</code> (keep the <code>getAssetPath()</code> wrapper)</li>
+<li>Save the file → Click music toggle → Check browser console for error message</li>
+<li><strong>Important</strong>: Change the path back to <code>&quot;audio/dramatic-action.mp3&quot;</code> when done testing</li>
+</ul></li>
 </ul>
 <h3 id="add-cleanup-with-ai-assistance">3. Add Cleanup with AI Assistance</h3>
 <p><strong>Prompt</strong>:</p>

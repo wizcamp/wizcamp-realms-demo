@@ -66,7 +66,7 @@ You might be familiar with HTML audio elements like `<audio src="music.mp3"></au
 
 ```javascript
 // Create new audio element
-const audio = new Audio('/audio/theme-music.mp3');
+const audio = new Audio(getAssetPath('audio/theme-music.mp3'));
 
 // Configure audio properties
 audio.loop = true;        // Repeat when finished
@@ -149,7 +149,13 @@ The ref creates a direct connection to the actual HTML input element. When you c
 
 Before we implement the audio functionality, let's add the UI controls you'll need to test it. This music toggle will provide the interface for testing the `useAudio` hook as you build it in the next sections.
 
-1. **Open `src/components/HUD.jsx`** and add the `MusicToggle` component after the `CurrentZone` function:
+1. **Add the asset utility import** at the top of `src/components/HUD.jsx`:
+
+   ```javascript
+   import { getAssetPath } from "../utils/assets"; // Add this import
+   ```
+
+2. **Add the `MusicToggle` component** after the `CurrentZone` function:
 
    ```javascript
    function MusicToggle() { // Add MusicToggle component
@@ -161,7 +167,9 @@ Before we implement the audio functionality, let's add the UI controls you'll ne
          title={music.isPlaying ? "Pause Music" : "Play Music"}
        >
          <img 
-           src={music.isPlaying ? "/images/playing.svg" : "/images/paused.svg"}
+           src={getAssetPath(
+             music.isPlaying ? "images/playing.svg" : "images/paused.svg"
+           )}
            alt={music.isPlaying ? "Pause" : "Play"}
            className="music-icon"
            width={24}
@@ -172,7 +180,7 @@ Before we implement the audio functionality, let's add the UI controls you'll ne
    }
    ```
 
-2. **Add `MusicToggle` to the HUD** by updating the JSX return:
+3. **Add `MusicToggle` to the HUD** by updating the JSX return:
 
    ```javascript
    return (
@@ -184,7 +192,7 @@ Before we implement the audio functionality, let's add the UI controls you'll ne
    );
    ```
 
-3. **Test**: Start Game → Music toggle visible, but inoperable when clicked
+4. **Test**: Start Game → Music toggle visible, but inoperable when clicked
 
 ### 💡 Why This Matters
 
@@ -310,7 +318,12 @@ updates isPlaying to false
 
 - Review the generated code
 - Apply the changes if they look correct
-- **Test**: Open `src/context/GameContext.jsx` and change `const music = useAudio("/audio/dramatic-action.mp3");` to an invalid path like `"/audio/nonexistent.mp3"` → Click music toggle → Check console for error handling
+- **Test**: To verify error handling works, temporarily break the audio path:
+  - Open `src/context/GameContext.jsx`
+  - Find the line: `const music = useAudio(getAssetPath("audio/dramatic-action.mp3"));`
+  - Change `"audio/dramatic-action.mp3"` to `"audio/nonexistent.mp3"` (keep the `getAssetPath()` wrapper)
+  - Save the file → Click music toggle → Check browser console for error message
+  - **Important**: Change the path back to `"audio/dramatic-action.mp3"` when done testing
 
 ### 3. Add Cleanup with AI Assistance
 

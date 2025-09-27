@@ -4,34 +4,34 @@
 
 **By the end of Session 10, students will be able to:**
 
-1. **Define version control** as a system for tracking file changes over time and explain the problems it solves
+1. **Define version control** as a system for tracking file changes over time and describe common development challenges it solves
 2. **Identify key version control terminology** including repository, commit, branch, and push
 3. **Explain Git's role** as the most popular version control system used by developers worldwide
-4. **Demonstrate repository setup** by disconnecting from starter repos and creating personal repositories
+4. **Demonstrate repository setup** by disconnecting from starter repos and establishing personal project ownership
 5. **Execute the Git workflow** using add, commit, and push commands to save and share changes
 6. **Write meaningful commit messages** that describe changes clearly and concisely
 7. **Configure GitHub authentication** using the GitHub CLI for secure repository access
-8. **Define CI/CD concepts** including Continuous Integration and Continuous Deployment
+8. **Define CI/CD concepts** and explain the role of automation in modern development workflows
 9. **Explain GitHub Actions** as GitHub's automation platform for running workflows
 10. **Configure GitHub Pages** to host static websites from repository content
 11. **Navigate GitHub interface** including repository settings, Actions tab, and Pages configuration
-12. **Implement automated deployment** using pre-configured GitHub Actions workflows
+12. **Implement automated deployment** using GitHub Actions and understand how workflows manage build and release steps
 13. **Verify deployment success** by testing live applications and monitoring build processes
-14. **Share deployed applications** using public URLs and understand the deployment lifecycle
+14. **Share deployed applications** using public URLs and describe the full deployment lifecycle from push to live site
 
 ## Instruction
 
 **Instructor introduces key concepts students need to succeed:**
 
 1. **Version Control Philosophy** - Define version control as essential infrastructure for software development, emphasizing safety, collaboration, and history tracking
-2. **Git Ecosystem Overview** - Introduce Git as the industry standard, GitHub as the hosting platform, and the relationship between local and remote repositories
+2. **Git vs GitHub Distinction** - Explain Git as the version control tool and GitHub as the cloud-based hosting platform. Clarify how local repositories (in Codespaces) sync with remote repositories (on GitHub) via push/pull operations
 3. **Repository Ownership** - Guide students through disconnecting from starter repos and creating personal repositories for project ownership
 4. **Git Workflow Fundamentals** - Demonstrate the add, commit, push cycle as the foundation of version control workflows
-5. **Commit Message Best Practices** - Teach clear, descriptive commit messages as professional communication
+5. **Commit Message Structure** - Teach students the type(scope): description format for professional commit messages. Reinforce how this improves collaboration, history tracking, and automated tooling
 6. **Authentication Setup** - Show GitHub CLI authentication for secure repository access
 7. **CI/CD Introduction** - Explain automated processes as modern development practice for efficiency and reliability
-8. **GitHub Actions Overview** - Describe GitHub's automation platform and its role in deployment workflows
-9. **GitHub Pages Configuration** - Set up free static site hosting with automated deployment integration
+8. **GitHub Pages Configuration** - Set up free static site hosting with automated deployment integration
+9. **GitHub Actions Overview** - Describe GitHub's automation platform and its role in deployment workflows
 10. **Deployment Verification** - Guide students through testing and monitoring deployment processes
 11. **Project Configuration** - Review build settings and environment variables for deployment compatibility
 12. **Let's Go Live!** - Launch the hands-on mission to publish student games to the internet using professional development workflows
@@ -44,7 +44,7 @@
 
 - **Title:** "Session 10: Version Control & Deployment — Publishing Your Game"
 - **Session 9 Recap:** "Last time: You built custom hooks with browser API integration and AI assistance"
-- **Hook:** "Your game has awesome features — now let's share it with the world!"
+- **Hook:** "Your game is awesome — now make it live!"
 - **Today's Mission:** Learn version control concepts, implement Git workflows, and deploy to the internet using automated CI/CD
 - **Visual:** Git workflow diagram with deployment pipeline
 - **Connection:** "From local development to live web application!"
@@ -114,6 +114,7 @@ flowchart LR
   - **Searchable history** - Easy to find specific types of changes
   - **Automated tools** - Many tools parse this format for release notes
   - **Team communication** - Consistent format improves collaboration
+- **Why It Matters:** "This workflow powers every professional software project — mastering it sets you apart"
 - **Student Application:** "This workflow becomes automatic with practice"
 
 ### **Slide 4: Repository Ownership - Making It Yours 🏠**
@@ -126,7 +127,7 @@ flowchart LR
   - **Data Flow:** Changes start local, get pushed to remote, others can pull from remote
 - **The Challenge:** Students start with Wizcamp's repository but need their own for deployment
 - **Key Steps:**
-  1. **Disconnect** from starter repo (`git remote remove origin`)
+  1. **Check remote status** (`git remote -v` - typically empty in Codespaces)
   2. **Create** new GitHub repository (public for free Pages hosting)
   3. **Connect** to personal repo (`git remote add origin`)
   4. **Verify** connection (`git remote -v`)
@@ -323,4 +324,4 @@ flowchart LR
   - **Starter Mods:** Custom fonts, character themes, instruction modals
   - **Power Mods:** Progress indicators, CSS variables, sound effects
   - **Beast Mods:** Player selection, character movement, theme toggles
-- **Motivation:** "Your deployed game is the perfect canvas for creative experimentation!"
+- **Motivation:** "Your live game is now your playground — let's make it epic"

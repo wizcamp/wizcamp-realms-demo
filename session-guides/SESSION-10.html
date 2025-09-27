@@ -370,6 +370,7 @@ overflow-x: hidden !important;
 <li><a href="#understanding-cicd">Understanding CI/CD</a></li>
 <li><a href="#make-this-project-yours">Make This Project Yours</a></li>
 <li><a href="#the-git-workflow">The Git Workflow</a></li>
+<li><a href="#customize-your-game-title">Customize Your Game Title</a></li>
 <li><a href="#watch-your-deployment">Watch Your Deployment</a></li>
 <li><a href="#share-your-live-game">Share Your Live Game</a></li>
 <li><a href="#essential-terms">Essential Terms</a></li>
@@ -460,105 +461,158 @@ overflow-x: hidden !important;
 </tr>
 </tbody>
 </table>
-<h3 id="how-it-works">📊 How It Works</h3>
-<pre class="mermaid"><code>flowchart LR
-    A[You push code] --&gt; B[GitHub Actions detects change]
-    B --&gt; C[Runs build process]
-    C --&gt; D[Deploys to GitHub Pages]
-    D --&gt; E[Your game is live!]</code></pre>
+<h3 id="automated-deployment-pipeline">📊 Automated Deployment Pipeline</h3>
+<pre class="mermaid"><code>---
+config:
+  layout: elk
+  look: neo
+---
+flowchart LR
+    A[&quot;🚀 You push code&quot;] --&gt; B[&quot;🤖 GitHub Actions detects change&quot;]
+    B --&gt; C[&quot;⚙️ Runs build process&quot;]
+    C --&gt; D[&quot;🌐 Deploys to GitHub Pages&quot;]
+    D --&gt; E[&quot;✨ Your game is live!&quot;]
+    
+    A:::push
+    B:::detect
+    C:::build
+    D:::deploy
+    E:::live
+    
+    classDef push fill:#fce4ec,stroke:#e91e63,stroke-width:2px
+    classDef detect fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    classDef build fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    classDef deploy fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+    classDef live fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px</code></pre>
 <h3 id="why-this-matters-1">💡 Why This Matters</h3>
 <p><strong>CI/CD</strong> eliminates manual deployment work. Instead of building and uploading files yourself, the system automatically handles everything when you push code. This is how teams deploy apps multiple times per day.</p>
 <p><a id="make-this-project-yours"></a></p>
 <h2 id="make-this-project-yours">🏠 Make This Project Yours</h2>
 <p>All <code>git</code> commands should be run in your Codespace terminal</p>
-<h3 id="disconnect-from-the-starter-repo">1. Disconnect from the Starter Repo</h3>
-<p>This disconnects your project from the original Wizcamp repo, making way for your own!</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">git</span> remote remove origin</a></code></pre></div>
+<h3 id="check-your-git-remote-status">1. Check Your Git Remote Status</h3>
+<p>First, let’s see if your Codespace has any remote connections:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">git</span> remote -v</a></code></pre></div>
+<p>If this returns nothing (which is typical for Codespaces), you can skip to step 2. If it shows a remote, you’ll need to remove it first:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">git</span> remote remove origin</a></code></pre></div>
 <h3 id="create-a-new-repo-on-github">2. Create a New Repo on GitHub</h3>
 <ul>
 <li><strong>Go to</strong>: <a href="https://github.com/new">github.com/new</a></li>
 <li><strong>Name your repo</strong>, e.g., <code>trivia-quest</code></li>
-<li><strong>Do not initialize</strong> with a README or .gitignore — your project already has those!</li>
+<li><strong>Do not add</strong> a <code>README</code> or <code>.gitignore</code> — your project already has those!</li>
 <li><strong>Click “Create repository”</strong></li>
 </ul>
-<h3 id="connect-your-project-to-your-new-repo">3. Connect Your Project to Your New Repo</h3>
-<p>Replace <code>your-username</code> and <code>your-repo-name</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">git</span> remote add origin https://github.com/your-username/your-repo-name.git</a></code></pre></div>
-<p><strong>Example</strong>: <code>git remote add origin https://github.com/babalugats76/trivia-quest.git</code></p>
-<p>You can always use <code>git remote -v</code> to verify this connection</p>
-<h3 id="update-the-vite-build-path">4. Update the Vite Build Path</h3>
+<p>Upon completion, you will be redirected to your new repo page.</p>
+<h3 id="update-the-vite-build-path">3. Update the Vite Build Path</h3>
 <p>Open <code>package.json</code> and update the <code>build</code> script to match your repo name:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="st">&quot;build&quot;</span><span class="op">:</span> <span class="st">&quot;vite build --base=/your-repo-name/&quot;</span> <span class="co">// e.g. --base=/trivia-quest/</span></a></code></pre></div>
-<p>This ensures your site works correctly when deployed to GitHub Pages.</p>
-<h3 id="enable-github-pages">5. Enable GitHub Pages</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="st">&quot;build&quot;</span><span class="op">:</span> <span class="st">&quot;vite build --base=/your-repo-name/&quot;</span> <span class="co">// Update with your repo name</span></a></code></pre></div>
+<p><strong>Example</strong>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="st">&quot;build&quot;</span><span class="op">:</span> <span class="st">&quot;vite build --base=/trivia-quest/&quot;</span></a></code></pre></div>
+<p>This ensures your site works correctly when deployed to GitHub Pages by matching the repo’s name to the URL path.</p>
+<h3 id="create-a-personal-access-token">4. Create a Personal Access Token</h3>
+<p>Since GitHub requires authentication, you need to create a Personal Access Token (PAT):</p>
 <ul>
-<li><strong>Go to your repo</strong> → <strong>Settings</strong> → <strong>Pages</strong></li>
-<li><strong>Under “Source”</strong>, choose <strong>GitHub Actions</strong></li>
-<li><strong>Save</strong> the settings</li>
+<li><strong>Go to</strong>: <a href="https://github.com/settings/tokens">github.com/settings/tokens</a></li>
+<li><strong>Click “Generate new token”</strong> → <strong>“Generate new token (classic)”</strong></li>
+<li><strong>Note</strong>: Enter “Codespace Git Access” or similar</li>
+<li><strong>Expiration</strong>: Choose “30 days” (or longer if preferred)</li>
+<li><strong>Scopes</strong>: Check both <strong>“repo”</strong> and <strong>“workflow”</strong> (needed to push GitHub Actions files)</li>
+<li><strong>Click “Generate token”</strong></li>
+<li><strong>Copy the token immediately</strong> - you won’t see it again!</li>
 </ul>
-<h3 id="authenticate-with-github-recommended">6. Authenticate with GitHub (Recommended)</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">gh</span> auth login</a></code></pre></div>
-<p>This uses the GitHub CLI (gh), pre-installed in Codespaces, to authenticate you.</p>
-<ul>
-<li><strong>Choose</strong>: GitHub.com</li>
-<li><strong>Choose</strong>: HTTPS</li>
-<li><strong>Choose</strong>: Authenticate via browser</li>
-<li><strong>GitHub opens a browser tab</strong> with a one-time code</li>
-<li><strong>Copy and paste the code</strong> to confirm</li>
-</ul>
-<h3 id="push-your-code-to-github">7. Push Your Code to GitHub</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">git</span> push -u origin main</a></code></pre></div>
-<h3 id="verify-your-code-is-on-github">8. Verify Your Code Is On GitHub</h3>
+<h3 id="connect-your-project-with-authentication">5. Connect Your Project with Authentication</h3>
+<p>Replace the placeholders with your actual values:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">git</span> remote add origin \</a>
+<a class="sourceLine" id="cb6-2" title="2">  https://USERNAME:TOKEN@github.com/USERNAME/REPO-NAME.git</a></code></pre></div>
+<p><strong>Example</strong>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">git</span> remote add origin \</a>
+<a class="sourceLine" id="cb7-2" title="2">  https://babalugats76:ghp_abc123xyz@github.com/babalugats76/trivia-quest.git</a></code></pre></div>
+<p>Make a mistake typing the URL? Just remove it using <code>git remote remove origin</code> and try again. You can always use <code>git remote -v</code> to verify this connection.</p>
+<p><strong>Important</strong>: Keep your token private! Don’t share it with anyone.</p>
+<h3 id="push-your-code-to-github">6. Push Your Code to GitHub</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="fu">git</span> push -u origin main</a></code></pre></div>
+<p><strong>You should see output like this:</strong></p>
+<pre><code>Enumerating objects: 80, done.
+Counting objects: 100% (80/80), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (73/73), done.
+Writing objects: 100% (80/80), 1.80 MiB | 7.07 MiB/s, done.
+Total 80 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (5/5), done.
+To https://github.com/your-username/your-repo-name.git
+ * [new branch]      main -&gt; main
+branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
+<p><strong>Note</strong>: This first push will trigger GitHub Actions, but deployment will fail because Pages isn’t enabled yet. That’s expected!</p>
+<h3 id="verify-your-code-is-on-github">7. Verify Your Code Is On GitHub</h3>
 <ul>
 <li><strong>Go to your GitHub profile</strong>: <code>https://github.com/your-username</code></li>
 <li><strong>Click on your new repo</strong> (e.g., trivia-quest)</li>
 <li><strong>If you see your files</strong>, your push worked! You now officially own your project!</li>
 </ul>
-<h3 id="find-your-live-site">9. Find Your Live Site</h3>
-<p>Once deployed, your site will be live at <code>https://your-username.github.io/your-repo-name/</code></p>
-<h3 id="why-this-matters-2">💡 Why This Matters</h3>
-<p>These steps transform your project from a shared template into your personal creation. Now you can make updates, publish changes to the web, and share your unique version with the world. Your trivia game is officially yours to customize and deploy!</p>
-<p><a id="the-git-workflow"></a></p>
-<h2 id="the-git-workflow">🔄 The Git Workflow</h2>
-<p>Let’s learn the essential daily workflow by making a real change to your game. We’ll customize your game’s title and see how every change follows the same pattern.</p>
-<h3 id="make-a-change-customize-your-game-title">Make a Change: Customize Your Game Title</h3>
-<p>Let’s personalize your game by changing the title that appears on the splash screen:</p>
-<ol type="1">
-<li><strong>Open</strong> <code>src/components/GameLogo.jsx</code></li>
-<li><p><strong>Find</strong> these two text elements:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-first-line&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb7-2" title="2">  Wizcamp</a>
-<a class="sourceLine" id="cb7-3" title="3">&lt;/text<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-second-line&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb7-5" title="5">  Realms</a>
-<a class="sourceLine" id="cb7-6" title="6">&lt;/text<span class="op">&gt;</span></a></code></pre></div></li>
-<li><p><strong>Change</strong> them to something that matches your game:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-first-line&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb8-2" title="2">  Trivia</a>
-<a class="sourceLine" id="cb8-3" title="3">&lt;/text<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-second-line&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb8-5" title="5">  Quest</a>
-<a class="sourceLine" id="cb8-6" title="6">&lt;/text<span class="op">&gt;</span></a></code></pre></div></li>
-<li><p><strong>Check your browser</strong> - you should see the new title!</p></li>
-</ol>
-<h3 id="your-daily-git-workflow">📊 Your Daily Git Workflow</h3>
-<pre class="mermaid"><code>flowchart TD
-    A[Edit code in VS Code] --&gt; B[Test changes in browser]
-    B --&gt; C[Stage with git add .]
-    C --&gt; D[Commit with descriptive message]
-    D --&gt; E[Push to share and deploy]
-    E --&gt; F[GitHub Actions builds and deploys]
-    F --&gt; A</code></pre>
-<h3 id="the-essential-git-commands">The Essential Git Commands</h3>
-<p>Now let’s commit and share this change:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># 1. Stage your changes (prepare them for committing)</span></a>
+<h3 id="enable-github-pages">8. Enable GitHub Pages</h3>
+<ul>
+<li><strong>Go to your repo</strong> → <strong>Settings</strong> → <strong>Pages</strong></li>
+<li><strong>Under “Build and deployment”</strong>, find the <strong>“Source”</strong> dropdown</li>
+<li><strong>Select “GitHub Actions”</strong></li>
+<li><strong>Save</strong> (this happens automatically)</li>
+</ul>
+<h3 id="commit-your-course-progress">9. Commit Your Course Progress</h3>
+<p>Now let’s commit all the amazing work you’ve done throughout the course! You likely have changes from previous sessions that need to be saved:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># Stage all your changes from the entire course</span></a>
 <a class="sourceLine" id="cb10-2" title="2"><span class="fu">git</span> add .</a>
 <a class="sourceLine" id="cb10-3" title="3"></a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="co"># 2. Commit your changes (create a permanent snapshot)</span></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="fu">git</span> commit -m <span class="st">&quot;feat(logo): customize game title to Trivia Quest&quot;</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="co"># Commit your progress with a meaningful message</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="fu">git</span> commit -m <span class="st">&quot;feat: complete trivia game with all course features&quot;</span></a>
 <a class="sourceLine" id="cb10-6" title="6"></a>
-<a class="sourceLine" id="cb10-7" title="7"><span class="co"># 3. Push your changes (share with the world and trigger deployment)</span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="co"># Push your complete game to trigger deployment</span></a>
 <a class="sourceLine" id="cb10-8" title="8"><span class="fu">git</span> push</a></code></pre></div>
+<p><strong>This will trigger a successful deployment with all your course work since Pages is now enabled!</strong></p>
+<h3 id="find-your-live-site">10. Find Your Live Site</h3>
+<p>Your site should now be live at <code>https://your-username.github.io/your-repo-name/</code></p>
+<p><strong>Note</strong>: It may take a few minutes for the deployment to complete. Check the Actions tab to monitor progress.</p>
+<p>Once you complete the Git workflow in the next section, your site will be live at <code>https://your-username.github.io/your-repo-name/</code></p>
+<h3 id="why-this-matters-2">💡 Why This Matters</h3>
+<p>These steps transform your project from a shared template into your personal creation. Now you can make updates, publish changes to the web, and share your unique version with the world. Your trivia game is officially yours to customize and deploy!</p>
+<p><strong>Note</strong>: Your game uses a special <code>getAssetPath()</code> utility function to ensure images and audio work correctly both in development and when deployed to GitHub Pages. This automatically handles the different URL paths needed for deployment.</p>
+<p><a id="the-git-workflow"></a></p>
+<h2 id="the-git-workflow">🔄 The Git Workflow</h2>
+<p>Before making changes, let’s understand the essential daily workflow that every developer uses. This pattern stays consistent across all development work.</p>
+<h3 id="the-git-workflow-1">📊 The Git Workflow</h3>
+<pre class="mermaid"><code>---
+config:
+  layout: elk
+  look: neo
+---
+flowchart TD
+    A[&quot;✏️ Edit code in VS Code&quot;] --&gt; B[&quot;🌐 Test changes in browser&quot;]
+    B --&gt; C[&quot;📦 Stage with git add .&quot;]
+    C --&gt; D[&quot;💾 Commit with descriptive message&quot;]
+    D --&gt; E[&quot;🚀 Push to share and deploy&quot;]
+    E --&gt; F[&quot;🤖 GitHub Actions builds and deploys&quot;]
+    F --&gt; A
+    
+    A:::edit
+    B:::test
+    C:::stage
+    D:::commit
+    E:::push
+    F:::deploy
+    
+    classDef edit fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    classDef test fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
+    classDef stage fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    classDef commit fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    classDef push fill:#fce4ec,stroke:#e91e63,stroke-width:2px
+    classDef deploy fill:#e0f2f1,stroke:#009688,stroke-width:2px</code></pre>
+<h3 id="the-essential-git-commands">The Essential Git Commands</h3>
+<p>Every change follows this three-step pattern:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># 1. Stage your changes (prepare them for committing)</span></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="fu">git</span> add .</a>
+<a class="sourceLine" id="cb12-3" title="3"></a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="co"># 2. Commit your changes (create a permanent snapshot)</span></a>
+<a class="sourceLine" id="cb12-5" title="5"><span class="fu">git</span> commit -m <span class="st">&quot;feat(logo): customize game title to Trivia Quest&quot;</span></a>
+<a class="sourceLine" id="cb12-6" title="6"></a>
+<a class="sourceLine" id="cb12-7" title="7"><span class="co"># 3. Push your changes (share with the world and trigger deployment)</span></a>
+<a class="sourceLine" id="cb12-8" title="8"><span class="fu">git</span> push</a></code></pre></div>
 <h3 id="understanding-commit-messages">Understanding Commit Messages</h3>
 <p>Every commit requires a message that explains what changed. These messages create a readable history - like a diary of your project’s evolution.</p>
 <p>The message <code>feat(logo): customize game title to Trivia Quest</code> follows a helpful pattern: - <strong>feat</strong>: Type of change (other types: <code>fix</code>, <code>style</code>, <code>docs</code>) - <strong>(logo)</strong>: What part of the app changed - <strong>customize game title</strong>: What you actually did</p>
@@ -590,32 +644,60 @@ overflow-x: hidden !important;
 </tbody>
 </table>
 <h3 id="why-this-matters-3">💡 Why This Matters</h3>
-<p>This workflow stays consistent across all development - games, websites, mobile apps. The predictable pattern helps you build good habits and work confidently with any codebase.ld good habits and work confidently with any codebase. <a id="watch-your-deployment"></a></p>
-<h2 id="watch-your-deployment">👀 Watch Your Deployment</h2>
-<p>Now let’s trace your GameLogo title change through the entire deployment pipeline!</p>
-<h3 id="monitor-github-actions">1. Monitor GitHub Actions</h3>
-<ul>
-<li><strong>Go to your repository</strong> on GitHub</li>
-<li><strong>Click the “Actions” tab</strong> to see the build process</li>
-<li><strong>Find your latest workflow run</strong> (should show “feat(logo): customize game title to Trivia Quest”)</li>
-<li><strong>Click on the workflow</strong> to see the build process in real-time</li>
-<li><strong>Wait for the green checkmark</strong> — this means deployment succeeded!</li>
-</ul>
-<h3 id="verify-your-code-changes">2. Verify Your Code Changes</h3>
-<ul>
-<li><strong>Check your repository</strong> — you should see your latest commit</li>
-<li><strong>Look at the commit history</strong> — your GameLogo change is now part of the project’s permanent record</li>
-<li><strong>Browse the code</strong> — click on <code>src/components/GameLogo.jsx</code> to see your title changes in the repository</li>
-</ul>
-<h3 id="test-your-live-game">3. Test Your Live Game</h3>
-<ul>
-<li><strong>Go to Settings</strong> → <strong>Pages</strong> to find your live URL</li>
-<li><strong>Visit your live game</strong> at <code>https://your-username.github.io/your-repo-name/</code></li>
-<li><strong>Check the splash screen</strong> — you should see “Trivia Quest” instead of “Wizcamp Realms”!</li>
-<li><strong>Test all features</strong> — zones, questions, scoring, music</li>
-</ul>
+<p>This workflow stays consistent across all development - games, websites, mobile apps. The predictable pattern helps you build good habits and work confidently with any codebase.</p>
+<p><a id="customize-your-game-title"></a></p>
+<h2 id="customize-your-game-title">✏️ Customize Your Game Title</h2>
+<p>Now let’s practice the Git workflow by making a real change to your game. We’ll personalize your game’s title and see the complete process in action.</p>
+<h3 id="make-your-change">Make Your Change</h3>
+<p>Let’s personalize your game by changing the title that appears on the splash screen:</p>
+<ol type="1">
+<li><strong>Open</strong> <code>src/components/GameLogo.jsx</code></li>
+<li><p><strong>Find</strong> these two text elements:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-first-line&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb13-2" title="2">  Wizcamp</a>
+<a class="sourceLine" id="cb13-3" title="3">&lt;/text<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-second-line&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb13-5" title="5">  Realms</a>
+<a class="sourceLine" id="cb13-6" title="6">&lt;/text<span class="op">&gt;</span></a></code></pre></div></li>
+<li><p><strong>Change</strong> them to something that matches your game:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-first-line&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-2" title="2">  Trivia</a>
+<a class="sourceLine" id="cb14-3" title="3">&lt;/text<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="op">&lt;</span>text id<span class="op">=</span><span class="st">&quot;title-second-line&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-5" title="5">  Quest</a>
+<a class="sourceLine" id="cb14-6" title="6">&lt;/text<span class="op">&gt;</span></a></code></pre></div></li>
+<li><p><strong>Check your browser</strong> - you should see the new title!</p></li>
+</ol>
+<h3 id="apply-the-git-workflow">Apply the Git Workflow</h3>
+<p>Now let’s commit and share this change using the workflow you just learned:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># 1. Stage your changes (prepare them for committing)</span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="fu">git</span> add .</a>
+<a class="sourceLine" id="cb15-3" title="3"></a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="co"># 2. Commit your changes (create a permanent snapshot)</span></a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="fu">git</span> commit -m <span class="st">&quot;feat(logo): customize game title to Trivia Quest&quot;</span></a>
+<a class="sourceLine" id="cb15-6" title="6"></a>
+<a class="sourceLine" id="cb15-7" title="7"><span class="co"># 3. Push your changes (share with the world and trigger deployment)</span></a>
+<a class="sourceLine" id="cb15-8" title="8"><span class="fu">git</span> push</a></code></pre></div>
 <h3 id="why-this-matters-4">💡 Why This Matters</h3>
-<p>You just traced a complete change from your local development environment through version control, automated building, and live deployment. This end-to-end visibility is crucial for understanding how modern web applications are built and maintained. <a id="share-your-live-game"></a></p>
+<p>You just experienced the complete developer workflow - from making a change to deploying it live. This same pattern applies whether you’re fixing a bug, adding a feature, or updating styles. <a id="watch-your-deployment"></a></p>
+<h2 id="watch-your-deployment">👀 Watch Your Deployment</h2>
+<p>Now let’s track your title change through the automated deployment process!</p>
+<h3 id="monitor-the-build-process">Monitor the Build Process</h3>
+<ol type="1">
+<li><strong>Go to your repository</strong> on GitHub</li>
+<li><strong>Click the “Actions” tab</strong></li>
+<li><strong>Click on your latest workflow run</strong> (should show your commit message)</li>
+<li><strong>Click on “build-and-deploy”</strong> to see the deployment steps</li>
+<li><strong>Watch the status</strong> - wait for the green checkmark!</li>
+</ol>
+<h3 id="test-your-live-game">Test Your Live Game</h3>
+<ul>
+<li><strong>Visit your live game</strong> at <code>https://your-username.github.io/your-repo-name/</code></li>
+<li><strong>Check the splash screen</strong> - you should see your new title!</li>
+<li><strong>Test the game</strong> - make sure everything still works</li>
+</ul>
+<h3 id="why-this-matters-5">💡 Why This Matters</h3>
+<p>You just experienced the complete developer workflow - from code change to live deployment. This automation is how teams ship updates multiple times per day. <a id="share-your-live-game"></a></p>
 <h2 id="share-your-live-game">🌍 Share Your Live Game</h2>
 <p>Congratulations! Your trivia game is now live on the internet. Here’s how to share it with others.</p>
 <h3 id="your-games-public-url">Your Game’s Public URL</h3>
@@ -629,7 +711,7 @@ overflow-x: hidden !important;
 <li><strong>Share on social media</strong> with screenshots of your game</li>
 <li><strong>Add the URL to your GitHub profile</strong> or portfolio</li>
 </ul>
-<h3 id="why-this-matters-5">💡 Why This Matters</h3>
+<h3 id="why-this-matters-6">💡 Why This Matters</h3>
 <p>Having your game live on the internet transforms it from a learning exercise into something real that others can actually use. You’ve built something that exists on the web — that’s a genuine accomplishment!</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>

@@ -18,7 +18,7 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
 color: #1f2328;
@@ -42,7 +42,7 @@ width: 100% !important;
 max-width: 100% !important;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-weight: 600;
 line-height: 1.25;
 margin-bottom: 16px;
@@ -302,33 +302,33 @@ overflow-x: hidden !important;
 <h2 id="learning-outcomes">Learning Outcomes</h2>
 <p><strong>By the end of Session 10, students will be able to:</strong></p>
 <ol type="1">
-<li><strong>Define version control</strong> as a system for tracking file changes over time and explain the problems it solves</li>
+<li><strong>Define version control</strong> as a system for tracking file changes over time and describe common development challenges it solves</li>
 <li><strong>Identify key version control terminology</strong> including repository, commit, branch, and push</li>
 <li><strong>Explain Git’s role</strong> as the most popular version control system used by developers worldwide</li>
-<li><strong>Demonstrate repository setup</strong> by disconnecting from starter repos and creating personal repositories</li>
+<li><strong>Demonstrate repository setup</strong> by disconnecting from starter repos and establishing personal project ownership</li>
 <li><strong>Execute the Git workflow</strong> using add, commit, and push commands to save and share changes</li>
 <li><strong>Write meaningful commit messages</strong> that describe changes clearly and concisely</li>
 <li><strong>Configure GitHub authentication</strong> using the GitHub CLI for secure repository access</li>
-<li><strong>Define CI/CD concepts</strong> including Continuous Integration and Continuous Deployment</li>
+<li><strong>Define CI/CD concepts</strong> and explain the role of automation in modern development workflows</li>
 <li><strong>Explain GitHub Actions</strong> as GitHub’s automation platform for running workflows</li>
 <li><strong>Configure GitHub Pages</strong> to host static websites from repository content</li>
 <li><strong>Navigate GitHub interface</strong> including repository settings, Actions tab, and Pages configuration</li>
-<li><strong>Implement automated deployment</strong> using pre-configured GitHub Actions workflows</li>
+<li><strong>Implement automated deployment</strong> using GitHub Actions and understand how workflows manage build and release steps</li>
 <li><strong>Verify deployment success</strong> by testing live applications and monitoring build processes</li>
-<li><strong>Share deployed applications</strong> using public URLs and understand the deployment lifecycle</li>
+<li><strong>Share deployed applications</strong> using public URLs and describe the full deployment lifecycle from push to live site</li>
 </ol>
 <h2 id="instruction">Instruction</h2>
 <p><strong>Instructor introduces key concepts students need to succeed:</strong></p>
 <ol type="1">
 <li><strong>Version Control Philosophy</strong> - Define version control as essential infrastructure for software development, emphasizing safety, collaboration, and history tracking</li>
-<li><strong>Git Ecosystem Overview</strong> - Introduce Git as the industry standard, GitHub as the hosting platform, and the relationship between local and remote repositories</li>
+<li><strong>Git vs GitHub Distinction</strong> - Explain Git as the version control tool and GitHub as the cloud-based hosting platform. Clarify how local repositories (in Codespaces) sync with remote repositories (on GitHub) via push/pull operations</li>
 <li><strong>Repository Ownership</strong> - Guide students through disconnecting from starter repos and creating personal repositories for project ownership</li>
 <li><strong>Git Workflow Fundamentals</strong> - Demonstrate the add, commit, push cycle as the foundation of version control workflows</li>
-<li><strong>Commit Message Best Practices</strong> - Teach clear, descriptive commit messages as professional communication</li>
+<li><strong>Commit Message Structure</strong> - Teach students the type(scope): description format for professional commit messages. Reinforce how this improves collaboration, history tracking, and automated tooling</li>
 <li><strong>Authentication Setup</strong> - Show GitHub CLI authentication for secure repository access</li>
 <li><strong>CI/CD Introduction</strong> - Explain automated processes as modern development practice for efficiency and reliability</li>
-<li><strong>GitHub Actions Overview</strong> - Describe GitHub’s automation platform and its role in deployment workflows</li>
 <li><strong>GitHub Pages Configuration</strong> - Set up free static site hosting with automated deployment integration</li>
+<li><strong>GitHub Actions Overview</strong> - Describe GitHub’s automation platform and its role in deployment workflows</li>
 <li><strong>Deployment Verification</strong> - Guide students through testing and monitoring deployment processes</li>
 <li><strong>Project Configuration</strong> - Review build settings and environment variables for deployment compatibility</li>
 <li><strong>Let’s Go Live!</strong> - Launch the hands-on mission to publish student games to the internet using professional development workflows</li>
@@ -339,7 +339,7 @@ overflow-x: hidden !important;
 <ul>
 <li><strong>Title:</strong> “Session 10: Version Control &amp; Deployment — Publishing Your Game”</li>
 <li><strong>Session 9 Recap:</strong> “Last time: You built custom hooks with browser API integration and AI assistance”</li>
-<li><strong>Hook:</strong> “Your game has awesome features — now let’s share it with the world!”</li>
+<li><strong>Hook:</strong> “Your game is awesome — now make it live!”</li>
 <li><strong>Today’s Mission:</strong> Learn version control concepts, implement Git workflows, and deploy to the internet using automated CI/CD</li>
 <li><strong>Visual:</strong> Git workflow diagram with deployment pipeline</li>
 <li><strong>Connection:</strong> “From local development to live web application!”</li>
@@ -419,6 +419,7 @@ flowchart LR
 <li><strong>Automated tools</strong> - Many tools parse this format for release notes</li>
 <li><strong>Team communication</strong> - Consistent format improves collaboration</li>
 </ul></li>
+<li><strong>Why It Matters:</strong> “This workflow powers every professional software project — mastering it sets you apart”</li>
 <li><strong>Student Application:</strong> “This workflow becomes automatic with practice”</li>
 </ul>
 <h3 id="slide-4-repository-ownership---making-it-yours"><strong>Slide 4: Repository Ownership - Making It Yours 🏠</strong></h3>
@@ -434,7 +435,7 @@ flowchart LR
 <li><strong>The Challenge:</strong> Students start with Wizcamp’s repository but need their own for deployment</li>
 <li><strong>Key Steps:</strong>
 <ol type="1">
-<li><strong>Disconnect</strong> from starter repo (<code>git remote remove origin</code>)</li>
+<li><strong>Check remote status</strong> (<code>git remote -v</code> - typically empty in Codespaces)</li>
 <li><strong>Create</strong> new GitHub repository (public for free Pages hosting)</li>
 <li><strong>Connect</strong> to personal repo (<code>git remote add origin</code>)</li>
 <li><strong>Verify</strong> connection (<code>git remote -v</code>)</li>
@@ -675,7 +676,7 @@ flowchart LR
 <li><strong>Power Mods:</strong> Progress indicators, CSS variables, sound effects</li>
 <li><strong>Beast Mods:</strong> Player selection, character movement, theme toggles</li>
 </ul></li>
-<li><strong>Motivation:</strong> “Your deployed game is the perfect canvas for creative experimentation!”</li>
+<li><strong>Motivation:</strong> “Your live game is now your playground — let’s make it epic”</li>
 </ul>
 </body>
 </html>
