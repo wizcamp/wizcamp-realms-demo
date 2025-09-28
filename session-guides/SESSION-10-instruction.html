@@ -302,36 +302,28 @@ overflow-x: hidden !important;
 <h2 id="learning-outcomes">Learning Outcomes</h2>
 <p><strong>By the end of Session 10, students will be able to:</strong></p>
 <ol type="1">
-<li><strong>Define version control</strong> as a system for tracking file changes over time and describe common development challenges it solves</li>
-<li><strong>Identify key version control terminology</strong> including repository, commit, branch, and push</li>
-<li><strong>Explain Git’s role</strong> as the most popular version control system used by developers worldwide</li>
-<li><strong>Demonstrate repository setup</strong> by disconnecting from starter repos and establishing personal project ownership</li>
-<li><strong>Execute the Git workflow</strong> using add, commit, and push commands to save and share changes</li>
-<li><strong>Write meaningful commit messages</strong> that describe changes clearly and concisely</li>
-<li><strong>Configure GitHub authentication</strong> using the GitHub CLI for secure repository access</li>
-<li><strong>Define CI/CD concepts</strong> and explain the role of automation in modern development workflows</li>
-<li><strong>Explain GitHub Actions</strong> as GitHub’s automation platform for running workflows</li>
-<li><strong>Configure GitHub Pages</strong> to host static websites from repository content</li>
-<li><strong>Navigate GitHub interface</strong> including repository settings, Actions tab, and Pages configuration</li>
-<li><strong>Implement automated deployment</strong> using GitHub Actions and understand how workflows manage build and release steps</li>
-<li><strong>Verify deployment success</strong> by testing live applications and monitoring build processes</li>
-<li><strong>Share deployed applications</strong> using public URLs and describe the full deployment lifecycle from push to live site</li>
+<li><strong>Define version control</strong> as a system for tracking file changes over time and describe development challenges it solves (lost work, breaking changes, collaboration conflicts)</li>
+<li><strong>Execute the Git workflow</strong> using add, commit, and push commands to save and share code changes</li>
+<li><strong>Distinguish between Git and GitHub</strong> as local version control tool versus remote hosting platform</li>
+<li><strong>Write meaningful commit messages</strong> using the type(scope): description convention for readable project history</li>
+<li><strong>Explain CI/CD automation</strong> and how it transforms development workflows through continuous integration and deployment</li>
+<li><strong>Implement automated deployment</strong> using pre-configured GitHub Actions and GitHub Pages to publish React applications</li>
+<li><strong>Monitor deployment processes</strong> through GitHub’s Actions tab and verify successful builds</li>
+<li><strong>Establish project ownership</strong> by creating personal repositories and configuring deployment settings</li>
+<li><strong>Share live applications</strong> using public URLs and test functionality across different environments</li>
 </ol>
 <h2 id="instruction">Instruction</h2>
 <p><strong>Instructor introduces key concepts students need to succeed:</strong></p>
 <ol type="1">
 <li><strong>Version Control Philosophy</strong> - Define version control as essential infrastructure for software development, emphasizing safety, collaboration, and history tracking</li>
-<li><strong>Git vs GitHub Distinction</strong> - Explain Git as the version control tool and GitHub as the cloud-based hosting platform. Clarify how local repositories (in Codespaces) sync with remote repositories (on GitHub) via push/pull operations</li>
-<li><strong>Repository Ownership</strong> - Guide students through disconnecting from starter repos and creating personal repositories for project ownership</li>
 <li><strong>Git Workflow Fundamentals</strong> - Demonstrate the add, commit, push cycle as the foundation of version control workflows</li>
-<li><strong>Commit Message Structure</strong> - Teach students the type(scope): description format for professional commit messages. Reinforce how this improves collaboration, history tracking, and automated tooling</li>
-<li><strong>Authentication Setup</strong> - Show GitHub CLI authentication for secure repository access</li>
+<li><strong>Git vs GitHub Distinction</strong> - Explain Git as the version control tool and GitHub as the cloud-based hosting platform. Clarify how local repositories (in Codespaces) sync with remote repositories (on GitHub) via push/pull operations</li>
+<li><strong>Commit Message Convention</strong> - Introduce students to a common commit message format: type(scope): description. Explain that while commit messages can be any string, this convention improves collaboration, history tracking, and automated tooling</li>
 <li><strong>CI/CD Introduction</strong> - Explain automated processes as modern development practice for efficiency and reliability</li>
-<li><strong>GitHub Pages Configuration</strong> - Set up free static site hosting with automated deployment integration</li>
 <li><strong>GitHub Actions Overview</strong> - Describe GitHub’s automation platform and its role in deployment workflows</li>
-<li><strong>Deployment Verification</strong> - Guide students through testing and monitoring deployment processes</li>
-<li><strong>Project Configuration</strong> - Review build settings and environment variables for deployment compatibility</li>
+<li><strong>GitHub Pages Configuration</strong> - Set up free static site hosting with automated deployment integration</li>
 <li><strong>Let’s Go Live!</strong> - Launch the hands-on mission to publish student games to the internet using professional development workflows</li>
+<li><strong>Repository Ownership</strong> - Guide students through disconnecting from starter repos and creating personal repositories for project ownership</li>
 </ol>
 <hr />
 <h2 id="slide-deck-outline">Slide Deck Outline</h2>
@@ -344,7 +336,7 @@ overflow-x: hidden !important;
 <li><strong>Visual:</strong> Git workflow diagram with deployment pipeline</li>
 <li><strong>Connection:</strong> “From local development to live web application!”</li>
 </ul>
-<h3 id="slide-2-version-control---your-codes-time-machine"><strong>Slide 2: Version Control - Your Code’s Time Machine 📚</strong></h3>
+<h3 id="slide-2-version-control---tracking-your-changes"><strong>Slide 2: Version Control - Tracking Your Changes 📋</strong></h3>
 <ul>
 <li><strong>Teaching Focus:</strong> Why version control is essential for any serious development</li>
 <li><strong>Key Concepts:</strong>
@@ -353,6 +345,7 @@ overflow-x: hidden !important;
 <li><strong>Problem-solving tool</strong> for “it worked yesterday” and collaboration challenges</li>
 <li><strong>Git</strong> as the industry-standard version control system</li>
 <li><strong>Repository</strong> as project home containing code and complete history</li>
+<li><strong>Branch</strong> as a separate copy of your code for safe experimentation</li>
 </ul></li>
 <li><strong>Problems Version Control Solves:</strong>
 <ul>
@@ -360,11 +353,12 @@ overflow-x: hidden !important;
 <li><strong>Breaking changes</strong> - Rollback to any previous working version</li>
 <li><strong>Collaboration conflicts</strong> - Multiple developers can work simultaneously</li>
 <li><strong>Change tracking</strong> - See exactly what changed, when, and why</li>
+<li><strong>Safe experimentation</strong> - Branches let you try new features without breaking main code</li>
 </ul></li>
 <li><strong>Real-World Context:</strong> “Every professional developer uses version control daily”</li>
 <li><strong>Student Connection:</strong> “You’ll use Git to save your progress and enable deployment”</li>
 </ul>
-<h3 id="slide-3-git-workflow---the-developers-daily-routine"><strong>Slide 3: Git Workflow - The Developer’s Daily Routine 🔄</strong></h3>
+<h3 id="slide-3-git-workflow---how-to-save-and-share-code"><strong>Slide 3: Git Workflow - How to Save and Share Code 💾</strong></h3>
 <ul>
 <li><strong>Teaching Focus:</strong> The fundamental workflow that powers all software development</li>
 <li><strong>Visual:</strong> Git workflow diagram showing working directory → staging → local repo → remote repo</li>
@@ -406,50 +400,82 @@ flowchart LR
 <li><strong><code>git commit -m &quot;message&quot;</code></strong> - Create snapshot with description</li>
 <li><strong><code>git push</code></strong> - Upload commits to remote repository</li>
 </ul></li>
-<li><strong>Conventional Commits Pattern:</strong> Students learn the structured format <code>type(scope): description</code>
+<li><strong>Why It Matters:</strong> “This workflow powers every professional software project — mastering it sets you apart”</li>
+<li><strong>Student Application:</strong> “This workflow becomes automatic with practice”</li>
+</ul>
+<h3 id="slide-4-git-vs-github---local-and-remote"><strong>Slide 4: Git vs GitHub - Local and Remote 🌐</strong></h3>
+<ul>
+<li><strong>Teaching Focus:</strong> Understanding the distinction between Git (local) and GitHub (remote)</li>
+<li><strong>Key Concepts:</strong>
+<ul>
+<li><strong>Git</strong> - Version control tool that runs on your computer (local)</li>
+<li><strong>GitHub</strong> - Cloud-based platform that hosts your repositories (remote)</li>
+<li><strong>Local Repository</strong> - Your project’s version history stored on your computer</li>
+<li><strong>Remote Repository</strong> - Your project’s version history stored on GitHub’s servers</li>
+</ul></li>
+<li><strong>How They Work Together:</strong>
+<ul>
+<li><strong>Local work</strong> - You edit, stage, and commit changes on your computer using Git</li>
+<li><strong>Remote sharing</strong> - You push commits to GitHub to share and back up your work</li>
+<li><strong>Synchronization</strong> - Local and remote repositories stay in sync through push/pull operations</li>
+</ul></li>
+<li><strong>Why Both Matter:</strong>
+<ul>
+<li><strong>Local</strong> - Fast, works offline, your personal workspace</li>
+<li><strong>Remote</strong> - Backup, sharing, collaboration, deployment triggers</li>
+</ul></li>
+<li><strong>Student Connection:</strong> “Your Codespace has Git installed locally, and you’ll push to GitHub remotely”</li>
+</ul>
+<h3 id="slide-5-commit-messages---creating-readable-history"><strong>Slide 5: Commit Messages - Creating Readable History 📝</strong></h3>
+<ul>
+<li><strong>Teaching Focus:</strong> How commit messages create a readable project history</li>
+<li><strong>Key Concept:</strong> Every commit requires a message (any string) that explains what changed - these messages create a readable history like a diary of your project’s evolution</li>
+<li><strong>Common Convention:</strong> While commit messages can be any text, we’ll introduce a popular format: <code>type(scope): description</code>
 <ul>
 <li><strong>Type examples:</strong> <code>feat</code> (new feature), <code>fix</code> (bug fix), <code>style</code> (visual changes), <code>docs</code> (documentation)</li>
 <li><strong>Scope examples:</strong> <code>(quiz)</code>, <code>(scoring)</code>, <code>(logo)</code> - indicates what part of the app changed</li>
-<li><strong>Description:</strong> Clear, concise explanation of what the commit does</li>
+<li><strong>Description:</strong> Clear, concise explanation of what you actually did</li>
 <li><strong>Example:</strong> <code>feat(logo): customize game title to Trivia Quest</code></li>
 </ul></li>
-<li><strong>Why This Structure Matters:</strong>
+<li><strong>Why This Convention Helps:</strong>
 <ul>
 <li><strong>Searchable history</strong> - Easy to find specific types of changes</li>
 <li><strong>Automated tools</strong> - Many tools parse this format for release notes</li>
 <li><strong>Team communication</strong> - Consistent format improves collaboration</li>
+<li><strong>Optional but valuable</strong> - Teams choose conventions that work for them</li>
 </ul></li>
-<li><strong>Why It Matters:</strong> “This workflow powers every professional software project — mastering it sets you apart”</li>
-<li><strong>Student Application:</strong> “This workflow becomes automatic with practice”</li>
+<li><strong>Common Message Types:</strong></li>
 </ul>
-<h3 id="slide-4-repository-ownership---making-it-yours"><strong>Slide 4: Repository Ownership - Making It Yours 🏠</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Example</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>feat</strong></td>
+<td><code>feat(quiz): add timer</code></td>
+<td>New feature</td>
+</tr>
+<tr class="even">
+<td><strong>fix</strong></td>
+<td><code>fix(scoring): resolve bug</code></td>
+<td>Bug fix</td>
+</tr>
+<tr class="odd">
+<td><strong>style</strong></td>
+<td><code>style(button): update colors</code></td>
+<td>Visual changes</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><strong>Teaching Focus:</strong> Transitioning from starter template to personal project</li>
-<li><strong>Local vs Remote Repository Architecture:</strong>
-<ul>
-<li><strong>Local Repository:</strong> Lives on student’s computer (Codespace), contains full project history</li>
-<li><strong>Remote Repository:</strong> Lives on GitHub servers, serves as backup and collaboration hub</li>
-<li><strong>Relationship:</strong> Local and remote repositories sync via push/pull operations</li>
-<li><strong>Data Flow:</strong> Changes start local, get pushed to remote, others can pull from remote</li>
-</ul></li>
-<li><strong>The Challenge:</strong> Students start with Wizcamp’s repository but need their own for deployment</li>
-<li><strong>Key Steps:</strong>
-<ol type="1">
-<li><strong>Check remote status</strong> (<code>git remote -v</code> - typically empty in Codespaces)</li>
-<li><strong>Create</strong> new GitHub repository (public for free Pages hosting)</li>
-<li><strong>Connect</strong> to personal repo (<code>git remote add origin</code>)</li>
-<li><strong>Verify</strong> connection (<code>git remote -v</code>)</li>
-</ol></li>
-<li><strong>Important Notes:</strong>
-<ul>
-<li><strong>Don’t initialize</strong> new repo with README (project already has one)</li>
-<li><strong>Keep public</strong> for free GitHub Pages hosting</li>
-<li><strong>Choose meaningful names</strong> like “trivia-quest” or “wizcamp-game”</li>
-</ul></li>
-<li><strong>Repository Ownership Impact:</strong> Students transition from using someone else’s remote repository to owning their complete local/remote repository pair</li>
-<li><strong>Empowerment:</strong> “This makes the project truly yours to control and share”</li>
+<li><strong>Student Connection:</strong> “Good commit messages help you and your team understand what changed and why”</li>
 </ul>
-<h3 id="slide-5-cicd---automation-that-changes-everything-️"><strong>Slide 5: CI/CD - Automation That Changes Everything ⚙️</strong></h3>
+<h3 id="slide-6-cicd---automation-that-changes-everything-️"><strong>Slide 6: CI/CD - Automation That Changes Everything ⚙️</strong></h3>
 <ul>
 <li><strong>Teaching Focus:</strong> How automation transforms development workflows</li>
 <li><strong>Key Concepts:</strong>
@@ -495,7 +521,7 @@ flowchart LR
 <li><strong>Professional Context:</strong> “This is how modern teams deploy apps dozens of times per day”</li>
 <li><strong>Student Impact:</strong> “Your game updates automatically whenever you push code”</li>
 </ul>
-<h3 id="slide-6-github-actions---your-deployment-robot"><strong>Slide 6: GitHub Actions - Your Deployment Robot 🤖</strong></h3>
+<h3 id="slide-7-github-actions---your-deployment-robot"><strong>Slide 7: GitHub Actions - Your Deployment Robot 🤖</strong></h3>
 <ul>
 <li><strong>Teaching Focus:</strong> Understanding automated workflows and build processes</li>
 <li><strong>Key Concepts:</strong>
@@ -520,7 +546,7 @@ flowchart LR
 </ul></li>
 <li><strong>Student Guidance:</strong> “You’ll watch your first deployment happen in real-time”</li>
 </ul>
-<h3 id="slide-7-github-pages---free-hosting-for-your-projects"><strong>Slide 7: GitHub Pages - Free Hosting for Your Projects 🌐</strong></h3>
+<h3 id="slide-8-github-pages---free-hosting-for-your-projects"><strong>Slide 8: GitHub Pages - Free Hosting for Your Projects 🌐</strong></h3>
 <ul>
 <li><strong>Teaching Focus:</strong> Understanding static site hosting and configuration</li>
 <li><strong>Key Concepts:</strong>
@@ -540,89 +566,11 @@ flowchart LR
 <li><strong>Build Configuration:</strong> Update <code>package.json</code> build script for correct base path</li>
 <li><strong>Student Outcome:</strong> “Your game will have a real web address that anyone can visit”</li>
 </ul>
-<h3 id="slide-8-project-configuration---making-it-deployment-ready"><strong>Slide 8: Project Configuration - Making It Deployment-Ready 🔧</strong></h3>
-<ul>
-<li><strong>Teaching Focus:</strong> Understanding build configuration for deployment environments</li>
-<li><strong>Key Configuration:</strong>
-<ul>
-<li><strong>Base path setting</strong> in <code>package.json</code> for GitHub Pages subdirectory hosting</li>
-<li><strong>Build script update</strong> - <code>&quot;vite build --base=/repo-name/&quot;</code></li>
-<li><strong>Asset path resolution</strong> - Ensures images and files load correctly</li>
-</ul></li>
-<li><strong>Build Path Rationale - Why This Configuration Matters:</strong>
-<ul>
-<li><strong>Local Development Environment:</strong> Vite dev server serves from root path (<code>http://localhost:5173/</code>)</li>
-<li><strong>GitHub Pages Hosting:</strong> Serves from user subdirectory (<code>https://username.github.io/repo-name/</code>)</li>
-<li><strong>Path Resolution Problem:</strong> Without base path configuration, the app looks for assets in wrong locations</li>
-<li><strong>Build Configuration Solution:</strong> <code>--base=/repo-name/</code> tells Vite to generate correct asset paths for subdirectory hosting</li>
-<li><strong>Automatic Handling:</strong> Once configured, Vite handles all path resolution differences between environments</li>
-</ul></li>
-<li><strong>Common Issues:</strong>
-<ul>
-<li><strong>Blank page</strong> - Usually incorrect base path configuration</li>
-<li><strong>Missing assets</strong> - Images/files not loading due to path issues</li>
-<li><strong>404 errors</strong> - Routing problems in single-page applications</li>
-</ul></li>
-<li><strong>Conceptual Understanding:</strong> Students learn that deployment environments often differ from development environments, requiring build-time configuration</li>
-<li><strong>Student Preparation:</strong> “This one configuration change makes deployment work correctly”</li>
-</ul>
-<h3 id="slide-9-authentication-security---connecting-safely"><strong>Slide 9: Authentication &amp; Security - Connecting Safely 🔐</strong></h3>
-<ul>
-<li><strong>Teaching Focus:</strong> Secure authentication for repository access</li>
-<li><strong>GitHub CLI Authentication:</strong>
-<ul>
-<li><strong>Pre-installed</strong> in Codespaces environment</li>
-<li><strong>Browser-based flow</strong> - Secure token generation</li>
-<li><strong>One-time setup</strong> - Credentials persist across sessions</li>
-</ul></li>
-<li><strong>Authentication Steps:</strong>
-<ol type="1">
-<li><strong><code>gh auth login</code></strong> - Start authentication process</li>
-<li><strong>Choose GitHub.com</strong> - Select hosting platform</li>
-<li><strong>Choose HTTPS</strong> - Secure connection protocol</li>
-<li><strong>Authenticate via browser</strong> - Complete OAuth flow</li>
-<li><strong>Copy/paste code</strong> - Verify identity</li>
-</ol></li>
-<li><strong>Security Benefits:</strong>
-<ul>
-<li><strong>No password storage</strong> - Uses secure tokens</li>
-<li><strong>Scoped permissions</strong> - Limited access to necessary operations</li>
-<li><strong>Revocable access</strong> - Can be disabled from GitHub settings</li>
-</ul></li>
-<li><strong>Student Assurance:</strong> “This setup is more secure than username/password”</li>
-</ul>
-<h3 id="slide-10-deployment-verification---testing-your-live-game"><strong>Slide 10: Deployment Verification - Testing Your Live Game 🧪</strong></h3>
-<ul>
-<li><strong>Teaching Focus:</strong> Systematic testing and monitoring of deployed applications</li>
-<li><strong>Verification Checklist:</strong>
-<ul>
-<li><strong>Repository files</strong> - Confirm all code uploaded to GitHub</li>
-<li><strong>Actions workflow</strong> - Monitor build process completion</li>
-<li><strong>Pages deployment</strong> - Verify hosting configuration</li>
-<li><strong>Live site testing</strong> - Confirm all features work in production</li>
-</ul></li>
-<li><strong>Testing Strategy:</strong>
-<ul>
-<li><strong>All game features</strong> - Zones, questions, scoring, audio</li>
-<li><strong>Different devices</strong> - Desktop, mobile, tablet compatibility</li>
-<li><strong>Performance</strong> - Loading speed and responsiveness</li>
-<li><strong>Error handling</strong> - Graceful failure modes</li>
-</ul></li>
-<li><strong>Troubleshooting Common Issues:</strong>
-<ul>
-<li><strong>Build failures</strong> - Check Actions tab for error details</li>
-<li><strong>Deployment delays</strong> - First deployment takes 2-3 minutes</li>
-<li><strong>Caching issues</strong> - Hard refresh to see latest changes</li>
-</ul></li>
-<li><strong>Student Empowerment:</strong> “You’ll verify your game works perfectly for all users”</li>
-</ul>
-<h3 id="slide-11-go-live"><strong>Slide 11: Go Live! 🚀</strong></h3>
+<h3 id="slide-9-go-live"><strong>Slide 9: Go Live! 🚀</strong></h3>
 <ul>
 <li><strong>Today’s Coding Mission:</strong>
 <ol type="1">
-<li><strong>Disconnect from starter repo</strong> - Remove Wizcamp remote connection</li>
-<li><strong>Create personal repository</strong> - Set up your own GitHub repo</li>
-<li><strong>Configure build settings</strong> - Update package.json for deployment</li>
+<li><strong>Make project yours</strong> - Disconnect from starter repo, create personal repository, and configure build settings</li>
 <li><strong>Execute Git workflow</strong> - Add, commit, and push your code</li>
 <li><strong>Set up GitHub Pages</strong> - Configure automated hosting</li>
 <li><strong>Monitor deployment</strong> - Watch your game go live</li>
@@ -638,7 +586,7 @@ flowchart LR
 <li><strong>Achievement:</strong> “Your trivia game will be live on the internet for anyone to play!”</li>
 </ul>
 <h3 id="hands-on-work-happens-here"><strong>[HANDS-ON WORK HAPPENS HERE]</strong></h3>
-<h3 id="slide-12-deployment-success---youre-live"><strong>Slide 12: Deployment Success - You’re Live! 🌍</strong></h3>
+<h3 id="slide-10-deployment-success---youre-live"><strong>Slide 10: Deployment Success - You’re Live! 🌍</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Celebrating Your Achievement”</li>
 <li><strong>What You’ve Accomplished:</strong>
@@ -658,7 +606,7 @@ flowchart LR
 <li><strong>Future Updates:</strong> “Every time you push code, your live site updates automatically”</li>
 <li><strong>Professional Context:</strong> “You’ve used the same deployment process as major tech companies”</li>
 </ul>
-<h3 id="slide-13-whats-next---choose-your-adventure"><strong>Slide 13: What’s Next - Choose Your Adventure 🎯</strong></h3>
+<h3 id="slide-11-whats-next---choose-your-adventure"><strong>Slide 11: What’s Next - Choose Your Adventure 🎯</strong></h3>
 <ul>
 <li><strong>Title:</strong> “Preview of Session 11”</li>
 <li><strong>Today’s Achievement:</strong> “You published a complete React application using professional development workflows”</li>

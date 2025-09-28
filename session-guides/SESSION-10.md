@@ -28,7 +28,7 @@ Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Co
 
 Before we publish your game, let's understand **version control** — the system that tracks every change to your code and lets you collaborate safely with other developers.
 
-**Version control** is like having a detailed history book for your project. Every time you make changes, you can create a snapshot (called a **commit**) that you can return to later. Think of it as "save points" in a video game — you can always go back to a previous state if something goes wrong.
+**Version control** is a system that tracks every change you make to your project files. Every time you make changes, you can create a snapshot (called a **commit**) that records exactly what you did and when. This creates a complete history of your project's evolution — you can always see what changed and when.
 
 ### Why Version Control Exists
 
@@ -49,7 +49,7 @@ When you're ready to share your work or back it up online, you **push** your com
 
 ### 💡 Why This Matters
 
-**Version control** is essential for any serious development work. It's like having a time machine for your code — you can experiment fearlessly knowing you can always return to a working state. This safety net transforms how you approach coding, making you more willing to try new ideas and refactor existing code.
+**Version control** is essential for any real development work. It tracks every decision and change you make — you can experiment confidently knowing you can always reference or return to any previous state. This tracking transforms how you approach development, making you more willing to try new ideas and refactor existing code.
 
 <a id="understanding-cicd"></a>
 
@@ -245,7 +245,7 @@ These steps transform your project from a shared template into your personal cre
 
 ## 🔄 The Git Workflow
 
-Before making changes, let's understand the essential daily workflow that every developer uses. This pattern stays consistent across all development work.
+Before making changes, let's understand the essential workflow for saving and sharing your code. This pattern stays consistent across all development work.
 
 ### 📊 The Git Workflow
 
@@ -295,12 +295,15 @@ git push
 
 ### Understanding Commit Messages
 
-Every commit requires a message that explains what changed. These messages create a readable history - like a diary of your project's evolution.
+Every commit requires a message (any text string) that explains what changed. These messages create a readable history - like a diary of your project's evolution.
 
-The message `feat(logo): customize game title to Trivia Quest` follows a helpful pattern:
-- **feat**: Type of change (other types: `fix`, `style`, `docs`)
-- **(logo)**: What part of the app changed
-- **customize game title**: What you actually did
+While you can write any message you want, we'll use a common convention that many teams find helpful: `type(scope): description`
+
+The message `feat(logo): customize game title to Trivia Quest` follows this format:
+
+- `feat`: Type of change (other types: `fix`, `style`, `docs`)
+- `logo`: What part of the app changed
+- `customize game title to Trivia Quest`: What you actually did
 
 ### Common Message Types
 
@@ -312,7 +315,7 @@ The message `feat(logo): customize game title to Trivia Quest` follows a helpful
 
 ### 💡 Why This Matters
 
-This workflow stays consistent across all development - games, websites, mobile apps. The predictable pattern helps you build good habits and work confidently with any codebase.
+This workflow stays consistent across all development - games, websites, mobile apps. This predictable process helps you build good habits and work confidently with any codebase.
 
 <a id="customize-your-game-title"></a>
 
