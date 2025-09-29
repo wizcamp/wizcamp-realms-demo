@@ -375,8 +375,7 @@ overflow-x: hidden !important;
 <p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 10.</p>
 <p><a id="choose-your-own-adventure"></a></p>
 <h2 id="choose-your-own-adventure">🎯 Choose Your Own Adventure</h2>
-<p>You’ve reached a major milestone — your game is live! Now it’s time to level up by choosing your own path. This session introduces self-directed learning, where you decide what to build next using AI assistance and your growing developer skills.</p>
-<p>Choose <strong>up to 4 extensions</strong> to implement — we recommend 2 Starter + 1 Power + 1 Beast, but feel free to mix and match based on your interests.</p>
+<p>Choose <strong>up to 4 extensions</strong> to implement — try 2 Starter + 1 Power + 1 Beast, or mix and match based on your interests.</p>
 <p>Use the <a href="#github-copilot-workflow">GitHub Copilot Workflow</a> to get AI help with implementation, and the <a href="#git-workflow">Git Workflow</a> to save and deploy your changes.</p>
 <h3 id="starter-mods-fast-wins">🚀 Starter Mods: Fast Wins</h3>
 <table>
@@ -485,29 +484,31 @@ overflow-x: hidden !important;
 <li>Apply the change if it meets your needs</li>
 <li>Test the update to confirm it works</li>
 </ol>
-<h3 id="example-prompt">Example Prompt</h3>
-<pre><code>/fix Help me replace fonts in my React trivia game. I want &quot;Orbitron&quot; 
-for the game logo title, &quot;Roboto&quot; for zone map labels, and &quot;Inter&quot; for 
-UI elements. Update fonts.css imports and all fontFamily references.</code></pre>
-<p><strong>Good Prompts Include:</strong></p>
+<h3 id="example-prompt-sequence">Example Prompt Sequence</h3>
+<pre class="text"><code>/fix Import Orbitron, Roboto, and Inter from Google Fonts into fonts.css.</code></pre>
+<p>followed by</p>
+<pre class="text"><code>/fix Update all fontFamily references:
+- Orbitron for game logo title
+- Roboto for zone map labels
+- Inter for UI elements</code></pre>
+<p><strong>Good Prompts Follow the 3S’s:</strong></p>
 <ul>
-<li><strong>Context:</strong> “In my React trivia game…”</li>
-<li><strong>Specific goal:</strong> “Add a progress indicator that shows…”</li>
-<li><strong>Constraints:</strong> “Using existing CSS classes and…”</li>
-<li><strong>Expected behavior:</strong> “When a question is answered correctly…”</li>
+<li><strong>Simple:</strong> Use clear, direct language</li>
+<li><strong>Specific:</strong> Say exactly what you want</li>
+<li><strong>Short:</strong> Focus on one task at a time</li>
 </ul>
 <p><a id="git-workflow"></a></p>
 <h2 id="git-workflow">🔄 Git Workflow</h2>
 <p>Every time you finish an extension, use this Git workflow to save and deploy your changes:</p>
 <h3 id="the-essential-commands">The Essential Commands</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># 1. Stage your changes (prepare them for committing)</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="fu">git</span> add .</a>
-<a class="sourceLine" id="cb2-3" title="3"></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="co"># 2. Commit your changes (create a permanent snapshot)</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="fu">git</span> commit -m <span class="st">&quot;feat(extension): add custom fonts to game logo&quot;</span></a>
-<a class="sourceLine" id="cb2-6" title="6"></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co"># 3. Push your changes (share with the world and trigger deployment)</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="fu">git</span> push</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># 1. Stage your changes (prepare them for committing)</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="fu">git</span> add .</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co"># 2. Commit your changes (create a permanent snapshot)</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="fu">git</span> commit -m <span class="st">&quot;feat(extension): add custom fonts to game logo&quot;</span></a>
+<a class="sourceLine" id="cb3-6" title="6"></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co"># 3. Push your changes (share with the world and trigger deployment)</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="fu">git</span> push</a></code></pre></div>
 <h3 id="commit-message-examples">Commit Message Examples</h3>
 <table>
 <colgroup>

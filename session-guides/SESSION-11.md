@@ -20,9 +20,7 @@ Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Co
 
 ## 🎯 Choose Your Own Adventure
 
-You've reached a major milestone — your game is live! Now it's time to level up by choosing your own path. This session introduces self-directed learning, where you decide what to build next using AI assistance and your growing developer skills.
-
-Choose **up to 4 extensions** to implement — we recommend 2 Starter + 1 Power + 1 Beast, but feel free to mix and match based on your interests.
+Choose **up to 4 extensions** to implement — try 2 Starter + 1 Power + 1 Beast, or mix and match based on your interests.
 
 Use the [GitHub Copilot Workflow](#github-copilot-workflow) to get AI help with implementation, and the [Git Workflow](#git-workflow) to save and deploy your changes.
 
@@ -64,20 +62,26 @@ Use this workflow from Session 9 for each extension:
 4. Apply the change if it meets your needs
 5. Test the update to confirm it works
 
-### Example Prompt
+### Example Prompt Sequence
 
-```
-/fix Help me replace fonts in my React trivia game. I want "Orbitron" 
-for the game logo title, "Roboto" for zone map labels, and "Inter" for 
-UI elements. Update fonts.css imports and all fontFamily references.
+```text
+/fix Import Orbitron, Roboto, and Inter from Google Fonts into fonts.css.
 ```
 
-**Good Prompts Include:**
+followed by
 
-- **Context:** "In my React trivia game..."
-- **Specific goal:** "Add a progress indicator that shows..."
-- **Constraints:** "Using existing CSS classes and..."
-- **Expected behavior:** "When a question is answered correctly..."
+```text
+/fix Update all fontFamily references:
+- Orbitron for game logo title
+- Roboto for zone map labels
+- Inter for UI elements
+```
+
+**Good Prompts Follow the 3S's:**
+
+- **Simple:** Use clear, direct language
+- **Specific:** Say exactly what you want
+- **Short:** Focus on one task at a time
 
 <a id="git-workflow"></a>
 
