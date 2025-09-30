@@ -83,6 +83,13 @@
 | **Actions** | Game logic functions | `recordCorrectAnswer`, `resetGame` |
 | **Controls** | UI state management | `setScreen`, `setIsQuizVisible` |
 
+**Visualizing Application State:**
+
+This mind map shows the structure and organization of state within `GameContext`:
+
+![GameContext Mind Map](images/session-08/game-context-mind-map.png)
+*Figure 1: Mind Map of the GameContext*
+
 - **Coordination Example:** Correct answer → Update score → Update quiz progress → Check zone completion → Possibly change screen
 - **Visual Flow:** "Correct answer → score updates → zone progress → screen change"
 - **Common Pattern:** "Complex apps coordinate dozens of state pieces this way"

@@ -31,7 +31,7 @@ Before we dive into scoring, let's understand how **application state** differs 
 
 ### State Categories in Your Game
 
-Your GameContext manages five categories of state:
+Your `GameContext` manages five categories of state:
 
 | Category | Purpose | Examples |
 |----------|---------|----------|
@@ -40,6 +40,13 @@ Your GameContext manages five categories of state:
 | **Audio** | Sound controls | `music` settings |
 | **Actions** | Game logic functions | `recordCorrectAnswer`, `resetGame` |
 | **Controls** | UI state setters | `setScreen`, `setIsQuizVisible` |
+
+### Visualizing Application State
+
+This mind map shows the structure and organization of state within `GameContext`:
+
+![GameContext Mind Map](images/session-08/game-context-mind-map.png)
+*Figure 1: Mind Map of the GameContext*
 
 ### 💡 Why This Matters
 

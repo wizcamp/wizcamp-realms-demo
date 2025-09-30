@@ -363,6 +363,26 @@ thead {
   display: table-header-group !important;
 }
 
+/* Image styling */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 16px auto;
+  page-break-inside: avoid;
+}
+
+/* Figure captions (italic text after images) */
+em {
+  display: block;
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
+  color: #666;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
 @media print {
   thead {
     display: table-row-group !important;
@@ -393,7 +413,7 @@ thead {
 }
 EOF
 
-# Step 2: Convert markdown to HTML with embedded CSS
+# Step 2: Convert markdown to HTML with embedded CSS (images auto-embedded as base64)
 pandoc ${SESSION_NAME}.md -o ${SESSION_NAME}.html \
     --standalone \
     --self-contained \
