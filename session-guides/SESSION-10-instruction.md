@@ -133,32 +133,10 @@
   - **GitHub Pages** - Free hosting service for static websites
 - **The Magic:** Push code → Automatic build → Automatic deployment → Live website
 
-```mermaid
----
-config:
-  layout: elk
-  look: neo
----
-flowchart LR
-    Push["🚀 git push"] 
-    Actions["🤖 GitHub Actions<br>(Build Process)"]
-    Pages["🌐 GitHub Pages<br>(Live Website)"]
-    Users["👥 Users Access<br>Your Game"]
-    
-    Push --> Actions
-    Actions --> Pages
-    Pages --> Users
-    
-    Push:::action
-    Actions:::automation
-    Pages:::hosting
-    Users:::audience
-    
-    classDef action fill:#fff3e0,stroke:#ff9800,stroke-width:2px
-    classDef automation fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    classDef hosting fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
-    classDef audience fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
-```
+- **From Push to Publish:** "This diagram shows what happens behind the scenes when you push code. GitHub detects the change, runs your build process, and deploys your updated game automatically:"
+
+<img src="images/session-10/cicd-pipeline-flowchart.png" alt="CI/CD Pipeline" style="max-width: 300px; width: 100%;">
+*Figure: CI/CD Pipeline — GitHub Actions builds and deploys your app automatically*
 
 - **Benefits:**
   - **No manual work** - Deployment happens automatically

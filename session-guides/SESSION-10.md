@@ -68,32 +68,12 @@ Now let's understand **CI/CD** — the automated processes that build and deploy
 | **Build Process** | Convert source code into deployable files | **Vite** bundles your React app |
 | **Hosting Platform** | Serve your app to users on the internet | **GitHub Pages** provides free hosting |
 
-### 📊 Automated Deployment Pipeline
+### 📊 From Push to Publish
 
-```mermaid
----
-config:
-  layout: elk
-  look: neo
----
-flowchart LR
-    A["🚀 You push code"] --> B["🤖 GitHub Actions detects change"]
-    B --> C["⚙️ Runs build process"]
-    C --> D["🌐 Deploys to GitHub Pages"]
-    D --> E["✨ Your game is live!"]
-    
-    A:::push
-    B:::detect
-    C:::build
-    D:::deploy
-    E:::live
-    
-    classDef push fill:#fce4ec,stroke:#e91e63,stroke-width:2px
-    classDef detect fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
-    classDef build fill:#fff3e0,stroke:#ff9800,stroke-width:2px
-    classDef deploy fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    classDef live fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
-```
+This diagram shows what happens behind the scenes when you push code. GitHub detects the change, runs your build process, and deploys your updated game automatically:
+
+<img src="images/session-10/cicd-pipeline-flowchart.png" alt="CI/CD Pipeline" style="max-width: 300px; width: 100%;">
+*Figure: CI/CD Pipeline — GitHub Actions builds and deploys your app automatically*
 
 ### 💡 Why This Matters
 
