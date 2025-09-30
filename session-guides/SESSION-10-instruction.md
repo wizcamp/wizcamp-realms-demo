@@ -5,9 +5,9 @@
 **By the end of Session 10, students will be able to:**
 
 1. **Define version control** as a system for tracking file changes over time and describe development challenges it solves (lost work, breaking changes, collaboration conflicts)
-2. **Execute the Git workflow** using add, commit, and push commands to save and share code changes
+2. **Execute the Git workflow** using add, commit, and push commands to save and share code changes, understanding Git as a "save system for your project"
 3. **Distinguish between Git and GitHub** as local version control tool versus remote hosting platform
-4. **Write meaningful commit messages** using the type(scope): description convention for readable project history
+4. **Write meaningful commit messages** using the type(scope): description convention for readable project history, understanding commits as "journal entries" for your project
 5. **Explain CI/CD automation** and how it transforms development workflows through continuous integration and deployment
 6. **Implement automated deployment** using pre-configured GitHub Actions and GitHub Pages to publish React applications
 7. **Monitor deployment processes** through GitHub's Actions tab and verify successful builds
@@ -59,48 +59,28 @@
 - **Real-World Context:** "Every professional developer uses version control daily"
 - **Student Connection:** "You'll use Git to save your progress and enable deployment"
 
-### **Slide 3: Git Workflow - How to Save and Share Code 💾**
+### **Slide 3: Learn the Git Workflow 🔄**
 
 - **Teaching Focus:** The fundamental workflow that powers all software development
-- **Visual:** Git workflow diagram showing working directory → staging → local repo → remote repo
-- **Staging Area Explanation:** The staging area is Git's "preparation zone" where you collect changes before making a permanent commit
+- **Context Setting:** "Whether you're fixing bugs, adding new features, or updating the design, you'll need a reliable way to manage and publish changes. That's where Git comes in."
+- **Git Introduction:** "Git is a version control tool that helps you track your progress, explain what changed, and safely update your project. It works alongside GitHub (where your code lives) and GitHub Actions (which automatically rebuilds and redeploys your site every time you push changes)."
+- **Learning Objective:** "In this section, you'll learn the three essential Git commands that power this workflow."
+- **Visual:** Git workflow diagram showing how changes move from computer to live website
+- **Emphasis:** "Once you push your code, GitHub takes care of the rest and automatically updates your game online"
 
-```mermaid
----
-config:
-  layout: elk
-  look: neo
----
-flowchart LR
-    Working["🖥️ Working Directory<br>(Your code files)"] 
-    Staging["📦 Staging Area<br>(Changes ready to commit)"]
-    Local["💾 Local Repository<br>(Your commit history)"]
-    Remote["☁️ Remote Repository<br>(GitHub)"]
-    
-    Working --"git add"--> Staging
-    Staging --"git commit"--> Local
-    Local --"git push"--> Remote
-    
-    Working:::workspace
-    Staging:::staging
-    Local:::local
-    Remote:::remote
-    
-    classDef workspace fill:#fff3e0,stroke:#ff9800,stroke-width:2px
-    classDef staging fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    classDef local fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
-    classDef remote fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
-```
+- **The Three Essential Commands:**
+  - **`git add .`** - Stage your changes ("get them ready to save")
+  - **`git commit -m "message"`** - Save a snapshot with a message ("like a journal entry")
+  - **`git push`** - Upload to GitHub ("share with the world and trigger deployment")
 
-- **Key Commands and Staging Concept:**
-  - **`git add .`** - Stage all changes for commit
-    - **Staging Area Purpose:** Acts as a "preparation area" between your working files and permanent commits
-    - **Why Staging Exists:** Lets you choose exactly which changes to include in each commit
-    - **Conceptual Flow:** Working Directory → Staging Area → Local Repository → Remote Repository
-  - **`git commit -m "message"`** - Create snapshot with description
-  - **`git push`** - Upload commits to remote repository
-- **Why It Matters:** "This workflow powers every professional software project — mastering it sets you apart"
-- **Student Application:** "This workflow becomes automatic with practice"
+- **Visual Reference:**
+<img src="images/session-10/git-workflow-flowchart.png" alt="Git Workflow" style="max-width: 300px; width: 100%;">
+*Figure: Git Development Workflow*
+
+- **Commit Message Convention:** Introduce the `type(scope): description` format with examples
+- **Common Message Types Table:** Show feat, fix, style examples
+- **Why It Matters:** "Whether you're fixing a bug, adding a new feature, or updating the design, you'll follow the same workflow every time. This process helps you record your progress, explain what changed, and publish updates to your live site."
+- **Student Application:** "This same pattern applies whether you're fixing a bug, adding a feature, or updating styles"
 
 ### **Slide 4: Git vs GitHub - Local and Remote 🌐**
 
@@ -141,7 +121,7 @@ flowchart LR
 | **fix** | `fix(scoring): resolve bug` | Bug fix |
 | **style** | `style(button): update colors` | Visual changes |
 
-- **Student Connection:** "Good commit messages help you and your team understand what changed and why"
+- **Updated Student Connection:** "These three commands — add, commit, and push — are like the secret handshake of software development. Once you get the hang of these, you're basically speaking the same language as the pros."
 
 ### **Slide 6: CI/CD - Automation That Changes Everything ⚙️**
 

@@ -41,12 +41,12 @@ Your `GameContext` manages five categories of state:
 | **Actions** | Game logic functions | `recordCorrectAnswer`, `resetGame` |
 | **Controls** | UI state setters | `setScreen`, `setIsQuizVisible` |
 
-### Visualizing Application State
+### Visualizing Game State
 
-This mind map shows the structure and organization of state within `GameContext`:
+Think of your `GameContext` as the brain of your game — it keeps track of everything that's happening behind the scenes. The `useGame` hook provides access to this brain from any component that needs it. The mind map below breaks down how your game's state is organized, with a spotlight on **actions** — these are the functions that drive your game logic and help different parts of your app work together:
 
 ![GameContext Mind Map](images/session-08/game-context-mind-map.png)
-*Figure 1: Mind Map of the GameContext*
+*Figure: GameContext Mind Map*
 
 ### 💡 Why This Matters
 

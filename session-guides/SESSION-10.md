@@ -9,7 +9,7 @@ You're about to take your trivia game from local development to the live interne
 - [Understanding Version Control](#understanding-version-control)
 - [Understanding CI/CD](#understanding-cicd)
 - [Make This Project Yours](#make-this-project-yours)
-- [The Git Workflow](#the-git-workflow)
+- [Learn the Git Workflow](#learn-the-git-workflow)
 - [Customize Your Game Title](#customize-your-game-title)
 - [Watch Your Deployment](#watch-your-deployment)
 - [Share Your Live Game](#share-your-live-game)
@@ -241,59 +241,37 @@ These steps transform your project from a shared template into your personal cre
 
 **Note**: Your game uses a special `getAssetPath()` utility function to ensure images and audio work correctly both in development and when deployed to GitHub Pages. This automatically handles the different URL paths needed for deployment.
 
-<a id="the-git-workflow"></a>
+<a id="learn-the-git-workflow"></a>
 
-## 🔄 The Git Workflow
+## 🔄 Learn the Git Workflow
 
-Before making changes, let's understand the essential workflow for saving and sharing your code. This pattern stays consistent across all development work.
+Whether you're fixing bugs, adding new features, or updating the design, you'll need a reliable way to manage and publish changes. That's where **Git** comes in.
 
-### 📊 The Git Workflow
+Git is a version control tool that helps you track your progress, explain what changed, and safely update your project. It works alongside GitHub (where your code lives) and GitHub Actions (which automatically rebuilds and redeploys your site every time you push changes). In this section, you'll learn the three essential Git commands that power this workflow.
 
-```mermaid
----
-config:
-  layout: elk
-  look: neo
----
-flowchart TD
-    A["✏️ Edit code in VS Code"] --> B["🌐 Test changes in browser"]
-    B --> C["📦 Stage with git add ."]
-    C --> D["💾 Commit with descriptive message"]
-    D --> E["🚀 Push to share and deploy"]
-    E --> F["🤖 GitHub Actions builds and deploys"]
-    F --> A
-    
-    A:::edit
-    B:::test
-    C:::stage
-    D:::commit
-    E:::push
-    F:::deploy
-    
-    classDef edit fill:#fff3e0,stroke:#ff9800,stroke-width:2px
-    classDef test fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    classDef stage fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
-    classDef commit fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
-    classDef push fill:#fce4ec,stroke:#e91e63,stroke-width:2px
-    classDef deploy fill:#e0f2f1,stroke:#009688,stroke-width:2px
-```
+### The Three Essential Commands
 
-### The Essential Git Commands
-
-Every change follows this three-step pattern:
+Every update follows this simple pattern:
 
 ```bash
-# 1. Stage your changes (prepare them for committing)
+# 1. Stage your changes (get them ready to save)
 git add .
 
-# 2. Commit your changes (create a permanent snapshot)
+# 2. Save a snapshot with a message (like a journal entry)
 git commit -m "feat(logo): customize game title to Trivia Quest"
 
-# 3. Push your changes (share with the world and trigger deployment)
+# 3. Upload to GitHub (share with the world and trigger deployment)
 git push
 ```
 
-### Understanding Commit Messages
+### How Your Changes Go Live
+
+This diagram shows how your changes move from your computer to the live website, step by step. Once you push your code, GitHub takes care of the rest and automatically updates your game online:
+
+<img src="images/session-10/git-workflow-flowchart.png" alt="Git Workflow" style="max-width: 300px; width: 100%;">
+*Figure: Git Development Workflow*
+
+### Writing Good Commit Messages
 
 Every commit requires a message (any text string) that explains what changed. These messages create a readable history - like a diary of your project's evolution.
 
@@ -315,7 +293,7 @@ The message `feat(logo): customize game title to Trivia Quest` follows this form
 
 ### 💡 Why This Matters
 
-This workflow stays consistent across all development - games, websites, mobile apps. This predictable process helps you build good habits and work confidently with any codebase.
+Git connects your local code to your live site. With just three commands — `add`, `commit`, and `push` — you can track changes, explain what you did, and publish updates instantly. It’s the core workflow behind every improvement you’ll make from here on out.
 
 <a id="customize-your-game-title"></a>
 
@@ -366,6 +344,7 @@ git push
 ### 💡 Why This Matters
 
 You just experienced the complete developer workflow - from making a change to deploying it live. This same pattern applies whether you're fixing a bug, adding a feature, or updating styles.
+
 <a id="watch-your-deployment"></a>
 
 ## 👀 Watch Your Deployment
@@ -389,6 +368,7 @@ Now let's track your title change through the automated deployment process!
 ### 💡 Why This Matters
 
 You just experienced the complete developer workflow - from code change to live deployment. This automation is how teams ship updates multiple times per day.
+
 <a id="share-your-live-game"></a>
 
 ## 🌍 Share Your Live Game
@@ -421,16 +401,14 @@ Having your game live on the internet transforms it from a learning exercise int
 
 _Quick reference for all the version control and deployment concepts you just learned:_
 
-| Term | Definition | Why it matters |
-|------|------------|----------------|
+| Term | Definition     | Why it matters |
+|------|----------------|----------------|
 | 📚 version control | A system that tracks changes to files over time, allowing you to see history, revert changes, and collaborate safely. | Essential for any serious development work — lets you experiment fearlessly and work with others. |
+| 🔧 Git | The version control tool that tracks changes in your code — like a save system for your project with complete history. | The industry standard that every developer uses daily — powers the add, commit, push workflow you just learned. |
 | 📁 repository | A folder containing your project files and their complete change history, managed by Git. | Your project's home base where all code and history live — can be local (on your computer) or remote (on GitHub). |
 | 📝 commit | A snapshot of your project at a specific point in time, with a message describing what changed. | Creates permanent save points you can return to — like checkpoints in a video game. |
-| 🌿 branch | A separate copy of your code where you can experiment with new features without breaking your main code. | Lets you try new ideas safely — if something goes wrong, your main code stays untouched. |
 | ⬆️ push | Upload your local commits to a remote repository like GitHub, making them available to others. | How you share your work and trigger automated deployments — essential for collaboration and publishing. |
 | ⚙️ CI/CD | Continuous Integration/Continuous Deployment — automated processes that build and deploy code when changes are made. | Eliminates manual deployment work — your code automatically becomes a live website when you push changes. |
-| 🤖 GitHub Actions | GitHub's automation platform that runs workflows (like building and deploying) when you push code. | Powers your automated deployment — builds your React app and publishes it without manual work. |
-| 🌐 GitHub Pages | Free web hosting service that automatically publishes websites from GitHub repositories. | Turns your repository into a live website — perfect for React apps and portfolio projects. |
 
 <a id="ask-the-ai"></a>
 
