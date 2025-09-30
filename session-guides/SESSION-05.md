@@ -30,7 +30,7 @@ Before we start coding, let's understand what **APIs** are and why they're every
 
 **API** stands for **Application Programming Interface** — it's like a menu at a restaurant. The menu tells you what dishes are available, what ingredients they contain, and how much they cost, but it's not the actual food. Similarly, an API tells you what data is available, how to request it, and what format you'll receive, but it's not the data itself.
 
-### 💡 Why This Matters
+
 
 **APIs** are the backbone of modern web applications. Your trivia game will use the **OpenTrivia Database API** to fetch real questions from the internet, making your game dynamic and engaging with fresh content.
 
@@ -72,7 +72,7 @@ Let's explore the **API** that will power your trivia questions and see what rea
 
 4. **Understand the structure**: Each question has a `question`, `correct_answer`, and `incorrect_answers` array
 
-### 💡 Why This Matters
+
 
 **JSON** (JavaScript Object Notation) is the universal language of **APIs**. It's how different applications share structured data over the internet. Your job as a developer is to transform this raw data into the format your game needs.
 
@@ -114,7 +114,7 @@ Now let's understand **asynchronous programming** — the key to working with **
 
 Synchronous is like ordering at a fast-food counter where you wait for your entire order before the next person can order. Asynchronous is like a coffee shop where you order, get a number, and sit down while they prepare your drink — other customers can order while you wait.
 
-### 💡 Why This Matters
+
 
 Fetch requests to **APIs** are asynchronous because network requests take time. Your app needs to stay responsive while waiting for data from the internet. **Async/await** syntax makes asynchronous code easier to read and debug.
 
@@ -171,7 +171,7 @@ Time to connect your game to the real internet! Let's implement the core **fetch
    }
    ```
 
-### 💡 Why This Matters
+
 
 **Error handling** and **data validation** are crucial when working with external **APIs**. Networks can fail, APIs can be down, or responses might be empty. Professional developers always plan for these scenarios to create robust applications.
 
@@ -291,7 +291,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
 
    **Test**: Click zone → see array of properly formatted questions!
 
-### 💡 Why This Matters
+
 
 **Data transformation** is a core skill in web development. APIs rarely return data in exactly the format your application needs. The `map()` method is perfect for transforming arrays of data, and helper functions keep your code clean and reusable.
 
@@ -339,7 +339,7 @@ Let's test your complete **API** integration and clean up the debugging code.
      - **Find GameProvider** and examine `currentQuestions` state
      - **Click zones** and watch the state populate with your transformed questions
 
-### 💡 Why This Matters
+
 
 **Testing** is crucial in web development. You've just built a complete API integration that fetches real data from the internet, transforms it, and feeds it into your game's state management system. This is the foundation that will power your quiz functionality in future sessions.
 
@@ -401,7 +401,7 @@ graph TD
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 💡 Why This Matters
+
 
 Understanding the complete data flow helps you debug issues and build more complex features. You've created a robust pipeline that handles API requests, data transformation, and state management — the same patterns used in professional web applications.
 

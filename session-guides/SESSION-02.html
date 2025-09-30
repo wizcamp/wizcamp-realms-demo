@@ -411,7 +411,6 @@ overflow-x: hidden !important;
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="op">&lt;</span>GameButton /<span class="op">&gt;</span> <span class="co">// Add this component</span></a></code></pre></div></li>
 <li><p><strong>Test it</strong>: Run <code>npm run dev</code> and you should see your custom button!</p></li>
 </ol>
-<h3 id="why-this-matters">💡 Why This Matters</h3>
 <p><strong>Components</strong> are the heart of React — reusable UI elements that combine markup, styling, and logic. Think of them as your own custom HTML tags. The <code>.jsx</code> file extension means you’re writing <strong>JSX</strong>, a special syntax that looks like HTML but is actually JavaScript. JSX lets you describe what the UI should look like using readable, expressive code.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
 <p>Try changing the button text in GameButton.jsx and watch it update instantly thanks to Hot Module Replacement!</p>
@@ -427,7 +426,6 @@ overflow-x: hidden !important;
 <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&lt;</span>GameButton text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span> /&gt; <span class="co">// Add text prop</span></a></code></pre></div></li>
 <li><p><strong>Watch the magic</strong>: Your button now shows custom text!</p></li>
 </ol>
-<h3 id="why-this-matters-1">💡 Why This Matters</h3>
 <p><strong>Props</strong> let parent components pass data to child components — just like function parameters. This makes your components flexible and reusable. The <code>{ text }</code> syntax is called <strong>destructuring</strong> — it pulls out just the values you need from the props object, keeping your code clean and readable.</p>
 <p><a id="adding-click-functionality"></a></p>
 <h2 id="adding-click-functionality">🖱️ Adding Click Functionality</h2>
@@ -444,7 +442,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb6-4" title="4">/&gt;</a></code></pre></div></li>
 <li><p><strong>Test it</strong>: Click your button and see the alert!</p></li>
 </ol>
-<h3 id="why-this-matters-2">💡 Why This Matters</h3>
 <p><strong>Functions as props</strong> are like giving your components different personalities. Your <code>GameButton</code> can do different things depending on where you use it — same button, different actions. It’s a key pattern in React for building interactive apps.</p>
 <p><a id="styling-with-variants"></a></p>
 <h2 id="styling-with-variants">🎨 Styling with Variants</h2>
@@ -468,7 +465,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb8-5" title="5">/&gt;</a></code></pre></div></li>
 <li><p><strong>Admire your styled button</strong>: Your button now has the primary styling!</p></li>
 </ol>
-<h3 id="why-this-matters-3">💡 Why This Matters</h3>
 <p><strong><code>className</code></strong> is React’s version of the HTML <code>class</code> attribute. We use a <strong>template literal</strong> to build a dynamic class name like <code>game-button primary</code>. This matches the styles already defined in your project. The <code>variant</code> prop lets you switch between styles like <code>primary</code> and <code>secondary</code>, and <strong>default parameters</strong> like <code>variant = &quot;primary&quot;</code> ensure your component still works even if no variant is passed.</p>
 <p><a id="reusing-your-component"></a></p>
 <h2 id="reusing-your-component">🔄 Reusing Your Component</h2>
@@ -482,7 +478,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb9-5" title="5">/&gt;</a></code></pre></div></li>
 <li><p><strong>Admire your work</strong>: You now have two different buttons using the same component!</p></li>
 </ol>
-<h3 id="why-this-matters-4">💡 Why This Matters</h3>
 <p><strong>Component reusability</strong> is React’s superpower. You wrote the <code>GameButton</code> code once, but now you can use it anywhere in your app with different props. Thanks to your stylesheet, each variant (<code>primary</code>, <code>secondary</code>) automatically applies the right look — no extra styling needed.</p>
 <h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
 <p>Try adding a third GameButton with <code>variant=&quot;primary&quot;</code> and <code>text=&quot;Instructions&quot;</code> to see how easy it is to scale your UI!</p>
@@ -528,7 +523,6 @@ overflow-x: hidden !important;
 <li><strong>Explore your app</strong>: Click on components in the tree to see their props</li>
 <li><strong>Inspect GameButton</strong>: Find your GameButton component and see the text, onClick, and variant props!</li>
 </ol>
-<h3 id="why-this-matters-5">💡 Why This Matters</h3>
 <p><strong>React DevTools</strong> gives you X-ray vision into your app. You can inspect components, props, and state in real time — just like a pro. It’s one of the most important tools for debugging and understanding how your app works under the hood.</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>

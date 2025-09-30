@@ -36,7 +36,7 @@ Before we dive into code, let's understand the key difference between **state** 
 | Like function parameters | Like component memory |
 | External data | Internal data |
 
-### 💡 Why This Matters
+
 
 **Props** are like ingredients you receive to make a recipe — you can't change them, but you use them to create something. **State** is like your kitchen's current condition — you can rearrange, add, or remove things as needed. Understanding this difference is crucial because it determines how data flows through your app and which component is responsible for managing what information.
 
@@ -77,7 +77,7 @@ Let's implement **local state** for the credits modal to see how components can 
 
 5. **Test the credits modal**: Click the Credits button to see the modal appear
 
-### 💡 Why This Matters
+
 
 **Local state** with `useState` belongs to a single component and gives it its own memory. The credits modal only affects `SplashScreen`, so it uses local state to track whether the modal should be visible. This pattern keeps component data isolated and manageable.
 
@@ -115,7 +115,7 @@ GameProvider (provides screen state)
 GameButton (uses useGame hook to get screen)
 ```
 
-### 💡 Why This Matters
+
 
 **Constants** prevent typos and make your code more maintainable. Instead of typing `"splash"` in multiple places (and risking typos like `"spalsh"`), you use `SCREENS.SPLASH` once and get autocomplete everywhere. If you need to change the value later, you only change it in one place.
 
@@ -152,7 +152,7 @@ Now let's implement the core navigation system that will control which screen us
 
 4. **Test the setup**: Run `npm run dev` to make sure everything still works
 
-### 💡 Why This Matters
+
 
 **Conditional rendering** using `&&` is a React pattern that shows components only when certain conditions are true. When `screen` equals `SCREENS.SPLASH`, the `SplashScreen` component renders. When it equals `SCREENS.PLAYING`, `GameMap` renders instead. This single piece of **shared state** controls what your entire app displays!
 
@@ -169,7 +169,7 @@ Let's use React DevTools to see how **shared state** works behind the scenes and
 5. **Experiment with state**: Change the screen value from "splash" to "playing" and watch the UI update!
 6. **Change it back**: Set it back to "splash" to see the SplashScreen return
 
-### 💡 Why This Matters
+
 
 React DevTools gives you X-ray vision into your app's **state**. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how **shared state** affects your entire app. Notice how changing one value in `GameProvider` instantly changes what component renders!
 
@@ -216,7 +216,7 @@ Now let's make your "Start Adventure" button actually start the game by updating
 
 5. **Test it**: Click the "Start Adventure" button and watch the screen change to GameMap!
 
-### 💡 Why This Matters
+
 
 **State setters** like `setScreen` are functions that update **state** and trigger re-renders. When you call `setScreen(SCREENS.PLAYING)`, React updates the shared state and re-renders all components that depend on it. This is how one button click can change your entire app's display!
 

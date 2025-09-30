@@ -429,7 +429,6 @@ overflow-x: hidden !important;
 </tr>
 </tbody>
 </table>
-<h3 id="why-this-matters">💡 Why This Matters</h3>
 <p><strong>Custom hooks</strong> embody one of programming’s most important principles: <strong>“Don’t Repeat Yourself” (DRY)</strong>. Instead of copying and pasting audio logic into every component that needs music, you encapsulate that complexity into a reusable <code>useAudio</code> hook. Now, any component can add background music with a single line of code:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> music <span class="op">=</span> <span class="at">useAudio</span>(<span class="st">&#39;/music.mp3&#39;</span>)<span class="op">;</span></a></code></pre></div>
 <p>This is the difference between amateur and professional code — professionals reduce repetition by creating reusable solutions. Custom hooks let you <strong>“write once, use often,”</strong> making your code cleaner, more maintainable, and easier to scale.</p>
@@ -454,7 +453,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb3-5" title="5"><span class="co">// Properties</span></a>
 <a class="sourceLine" id="cb3-6" title="6"><span class="va">audio</span>.<span class="at">currentTime</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>    <span class="co">// Reset to beginning</span></a>
 <a class="sourceLine" id="cb3-7" title="7"><span class="va">audio</span>.<span class="at">muted</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span>       <span class="co">// Mute audio</span></a></code></pre></div>
-<h3 id="why-this-matters-1">💡 Why This Matters</h3>
 <p>The <strong>HTMLAudioElement</strong> gives you programmatic control over audio playback. Your <code>useAudio</code> hook will wrap this browser API in a clean React interface, making it easy to add music to any component.</p>
 <p><a id="understanding-refs-and-useref"></a></p>
 <h2 id="understanding-refs-and-useref">🔗 Understanding Refs and useRef</h2>
@@ -511,7 +509,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb5-8" title="8">  <span class="cf">return</span> <span class="op">&lt;</span>input ref<span class="op">={</span>inputRef<span class="op">}</span> /&gt;<span class="op">;</span> <span class="co">// Connect ref to DOM element</span></a>
 <a class="sourceLine" id="cb5-9" title="9"><span class="op">}</span></a></code></pre></div>
 <p>The ref creates a direct connection to the actual HTML input element. When you call <code>inputRef.current.focus()</code>, you’re telling the browser to focus that specific input — just like clicking on it.</p>
-<h3 id="why-this-matters-2">💡 Why This Matters</h3>
 <p><strong>Refs</strong> are perfect for storing audio elements because the audio object doesn’t need to trigger re-renders — it just needs to be remembered between function calls. The <code>current</code> property holds the actual value you stored.</p>
 <p><a id="building-the-musictoggle-component"></a></p>
 <h2 id="building-the-musictoggle-component">🎛️ Building the MusicToggle Component</h2>
@@ -550,7 +547,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb8-7" title="7">)<span class="op">;</span></a></code></pre></div></li>
 <li><p><strong>Test</strong>: Start Game → Music toggle visible, but inoperable when clicked</p></li>
 </ol>
-<h3 id="why-this-matters-3">💡 Why This Matters</h3>
 <p>The <strong><code>MusicToggle</code> component</strong> demonstrates conditional rendering with dynamic images and tooltips. The <code>music.isPlaying</code> state controls both the icon and the tooltip text, providing clear visual feedback to users.</p>
 <p><a id="adding-audio-reference-to-useaudio"></a></p>
 <h2 id="adding-audio-reference-to-useaudio">📻 Adding Audio Reference to useAudio</h2>
@@ -569,7 +565,6 @@ overflow-x: hidden !important;
 <h3 id="audio-reference-flow">Audio Reference Flow</h3>
 <pre class="text"><code>useAudio hook called → audioRef.current is null → play() creates new Audio() → 
 audioRef.current stores Audio element → future calls reuse same element</code></pre>
-<h3 id="why-this-matters-4">💡 Why This Matters</h3>
 <p>The <code>audioRef</code> you just created provides persistent storage for the audio element across component re-renders. Without refs, you’d create a new audio element every time the component updates, causing audio to restart unexpectedly.</p>
 <p><a id="implementing-audio-playback"></a></p>
 <h2 id="implementing-audio-playback">🎵 Implementing Audio Playback</h2>
@@ -591,7 +586,6 @@ audioRef.current stores Audio element → future calls reuse same element</code>
 <h3 id="audio-creation-logic">Audio Creation Logic</h3>
 <pre class="text"><code>Check if audio exists → If not, create new Audio(src) → Configure loop and volume → 
 Call play() method → Update isPlaying state → UI reflects playing state</code></pre>
-<h3 id="why-this-matters-5">💡 Why This Matters</h3>
 <p>Creating audio elements only once and reusing them prevents overlapping sounds, memory leaks, and performance issues. Without this pattern, clicking the music toggle rapidly would create multiple audio elements playing simultaneously, causing audio chaos and slowing down your browser.</p>
 <p><a id="github-copilot-workflow"></a></p>
 <h2 id="github-copilot-workflow">⚡ GitHub Copilot Workflow</h2>
@@ -655,7 +649,6 @@ the audio and clears the reference when the component unmounts</code></pre>
 <li>Set <code>isPlaying(false)</code> if an error occurs</li>
 <li>Include a <code>useEffect</code> cleanup function for component unmounting</li>
 </ul>
-<h3 id="why-this-matters-6">💡 Why This Matters</h3>
 <p>This challenge combines everything you’ve learned: custom hooks, browser APIs, error handling, and AI-assisted development. You’re building production-quality code that handles edge cases and prevents memory leaks — exactly what professional developers do.</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>

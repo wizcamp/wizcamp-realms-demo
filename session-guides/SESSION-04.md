@@ -49,7 +49,7 @@ Let's add the game's **HUD** (Heads Up Display) and a coordinate helper to assis
 
 3. **Test the changes**: Run `npm run dev` and navigate to the game screen to see the new HUD and coordinate display
 
-### 💡 Why This Matters
+
 
 **React Fragments** (`<>...</>`) are like invisible containers — they let you snap together multiple components without clutter. React components must return a single root element, so fragments solve this requirement cleanly. The `HUD` shows game progress, while `CoordinateDisplay` helps you position zone labels precisely.
 
@@ -65,7 +65,7 @@ Now let's understand what makes your game tick — **metadata** and **configurat
 
 **Metadata** is data about data. Think of it like a restaurant menu: it tells you everything about the dish — name, price, ingredients, spice level — but it's not the actual food. Your zone metadata works the same way: it describes each zone's properties without being the actual trivia questions.
 
-### 💡 Why This Matters
+
 
 **Configuration files** like `zones.js` are the backbone of **data-driven architecture** — a professional approach where you separate data from code. Think of your `zones.js` file as the DNA of your game experience: it contains all the genetic information that defines how your zones look, behave, and connect to trivia content. This makes your app flexible, maintainable, and easy to modify without touching component code.
 
@@ -82,7 +82,7 @@ Let's explore the fundamental **data structures** that power your zone configura
    - **Objects** for complex data: `mapLabel: { x: 225, y: 140 }`
 3. **Understand the nesting**: An **array** of **objects**, where each object has **properties** that can be different data types
 
-### 💡 Why This Matters
+
 
 **Arrays** are like playlists — they keep things in order. **Objects** are like contact cards — they store all the details about one thing. Together, they're the perfect combo for organizing your game world and representing complex real-world data in code.
 
@@ -106,7 +106,7 @@ Now for the creative part — designing three distinctive zone themes that creat
    - **questionCount**: How many questions (max 50)
    - **mapLabel**: Position and styling (we'll configure this later on)
 
-### 💡 Why This Matters
+
 
 **Cohesive theming** creates an immersive game experience. By matching visual environments with appropriate trivia categories, you create logical connections that help players navigate and remember your game. This attention to **user experience** separates good games from great ones.
 
@@ -143,7 +143,7 @@ Time to implement your zone designs by updating the `ZONES` array with your cust
 
    Note: Changes to `zones.js` will trigger a full page reload (not HMR-friendly)
 
-### 💡 Why This Matters
+
 
 **Object properties** use colon syntax (`name: "value"`) and are separated by commas. Each zone object contains different **data types**: strings for text, numbers for IDs, and nested objects for complex styling. This structure makes your game data organized and easy to modify.
 
@@ -168,7 +168,7 @@ Use the `CoordinateDisplay` component to find optimal positions for your zone la
 
 5. **Test each zone** by navigating to the game screen and confirming label placement
 
-### 💡 Why This Matters
+
 
 **Coordinate positioning** requires precise **number** values to place UI elements exactly where you want them. The `CoordinateDisplay` component gives you real-time feedback, making it easy to find perfect positions without guessing.
 
@@ -191,7 +191,7 @@ Let's use React DevTools to explore your zone configuration and test game progre
 7. **Observe state changes**: Notice how `activeZone` and `currentZone` update automatically
 8. **Check the HUD**: See how the Context.Provider props reflect the updated game state
 
-### 💡 Why This Matters
+
 
 React DevTools lets you manipulate **state** directly to test different game scenarios without playing through the entire game. This is invaluable for debugging and understanding how your **shared state** affects the entire app.
 

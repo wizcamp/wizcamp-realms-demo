@@ -406,7 +406,6 @@ overflow-x: hidden !important;
 ├── AnswerChoices (interactive answer buttons)
 ├── AnswerFeedback (shows results)
 └── ContinueButton (navigation control)</code></pre>
-<h3 id="why-this-matters">💡 Why This Matters</h3>
 <p><strong>Component composition</strong> is how professional React apps stay organized and maintainable. Instead of one massive component doing everything, you break functionality into focused pieces. Each component has a single responsibility, making your code easier to understand, test, and modify.</p>
 <p><a id="connecting-the-quiz-modal"></a></p>
 <h2 id="connecting-the-quiz-modal">🎮 Connecting the Quiz Modal</h2>
@@ -433,7 +432,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb6-2" title="2"><span class="at">setIsQuizVisible</span>(<span class="kw">true</span>)<span class="op">;</span> <span class="co">// Add this line</span></a></code></pre></div>
 <p><strong>Test</strong>: Click a zone → QuizModal should appear with your cached questions!</p></li>
 </ol>
-<h3 id="why-this-matters-1">💡 Why This Matters</h3>
 <p>This pattern controls what users see based on app state. Your quiz modal will appear and disappear based on user actions, creating a smooth interactive experience.</p>
 <p><a id="building-answer-buttons"></a></p>
 <h2 id="building-answer-buttons">🔘 Building Answer Buttons</h2>
@@ -462,7 +460,6 @@ overflow-x: hidden !important;
 <p><strong>Array mapping</strong> transforms each item in an array into something else. Here, each answer string becomes a button element. React needs a unique <strong>key prop</strong> for each mapped element to track changes efficiently.</p>
 <p><strong>Test</strong>: Click zone → You should see answer buttons appear in the modal</p></li>
 </ol>
-<h3 id="why-this-matters-2">💡 Why This Matters</h3>
 <p>By starting with a simple structure and then adding the mapping logic, you followed a professional development pattern: build incrementally and test each step. <strong>Array mapping</strong> is everywhere in React — any time you have a list of data that becomes a list of components, you use <code>map()</code>. The <strong>key prop</strong> helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.</p>
 <p><a id="making-buttons-interactive"></a></p>
 <h2 id="making-buttons-interactive">🎨 Making Buttons Interactive</h2>
@@ -545,7 +542,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb14-23" title="23"><span class="op">}</span></a></code></pre></div>
 <p><strong>Test</strong>: Click zone → Click answer → Try clicking other buttons → Other buttons should be unclickable</p></li>
 </ol>
-<h3 id="why-this-matters-3">💡 Why This Matters</h3>
 <p><strong>Event handlers</strong> like <code>onClick</code> connect user actions to your app’s logic, making static components come alive with interactivity. <strong>Conditional styling</strong> then provides immediate visual feedback to users through the <code>getButtonStyle</code> function, which returns different CSS classes based on the current state. The <code>disabled</code> attribute prevents multiple clicks after an answer is selected, creating a polished user experience where buttons respond intelligently to user interactions.</p>
 <p><a id="creating-feedback-messages"></a></p>
 <h2 id="adding-feedback-messages">💬 Adding Feedback Messages</h2>
@@ -608,7 +604,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb19-6" title="6"><span class="co">// * messages.length → 0 to array length</span></a>
 <a class="sourceLine" id="cb19-7" title="7"><span class="co">// Math.floor() → Round down to whole number</span></a>
 <a class="sourceLine" id="cb19-8" title="8"><span class="co">// messages[index] → Get message at that position</span></a></code></pre></div>
-<h3 id="why-this-matters-4">💡 Why This Matters</h3>
 <p><strong>Constants</strong> keep your feedback messages organized and easy to modify. By storing them in a separate file, you can easily add new messages or change the tone without hunting through component code. <strong>Random selection</strong> adds variety and personality to your game using <code>Math.random()</code> and <code>Math.floor()</code> — the same pattern used in games, animations, and any app that needs variety.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
 <p>Add more feedback messages to each array to increase variety! Try different emojis and encouraging phrases.</p>
@@ -636,7 +631,6 @@ overflow-x: hidden !important;
 <li><strong>Inspect AnswerChoices</strong>: Check answers prop and chosenAnswer state</li>
 <li><strong>Watch state changes</strong>: Click answers and observe chosenAnswer updates</li>
 </ul>
-<h3 id="why-this-matters-5">💡 Why This Matters</h3>
 <p><strong>End-to-end testing</strong> ensures all your components work together correctly. By testing the complete user flow, you catch integration issues that might not appear when testing individual components.</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>

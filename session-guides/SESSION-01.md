@@ -26,7 +26,7 @@ Let's get your cloud coding environment up and running so you can start building
 4. Once it loads, make sure you can see the project files in the file explorer on the left.
 5. **Customize your theme**: Click the gear icon in the bottom left, go to **Themes -> Color Theme**, and pick your favorite (Dark+ is popular for coding).
 
-### 💡 Why This Matters
+
 
 Codespaces give everyone the same setup — no more "it works on my machine" drama. If you mess something up, just delete and start fresh. It's like having a reset button for your entire dev environment. You will use this Codespace for all sessions.
 
@@ -69,7 +69,7 @@ Preview the app in your browser by running the dev server to confirm everything 
 2. Click "Open in Browser" or visit the provided localhost URL (e.g., http://localhost:5173/).
 3. The starter app should load, showing a placeholder component.
 
-### 💡 Why This Matters
+
 
 Your dev server is like having a live preview of your creation. Every change you make shows up instantly — you're watching your code come to life in real-time.
 
@@ -92,7 +92,7 @@ With the development server still running, replace the placeholder component wit
 3. **Replace `<StartHere />` with `<SplashScreen />`**
 4. **Watch the screen update instantly** — no save needed!
 
-### 💡 Why This Matters
+
 
 **Components** are the building blocks of **React** web apps — kind of like digital LEGO pieces. You build apps by snapping them together.
 
@@ -110,7 +110,7 @@ Even though React apps are built with components, they still use a standard HTML
 2. **Update the `<title>` tag** to: `Wizcamp Realms - Legends of Trivia`
 3. **Confirm the browser tab** displays the new title.
 
-### 💡 Why This Matters
+
 
 A descriptive page title is important for usability, accessibility, and SEO. It helps users identify your app when they have multiple tabs open and improves discoverability in search engines.
 

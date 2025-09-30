@@ -47,7 +47,7 @@ Think of **Git** as your project's memory system. It remembers every change you'
 
 When you're ready to share your work or back it up online, you **push** your commits to a remote repository on platforms like GitHub. This uploads your entire project history, not just the current files.
 
-### 💡 Why This Matters
+
 
 **Version control** is essential for any real development work. It tracks every decision and change you make — you can experiment confidently knowing you can always reference or return to any previous state. This tracking transforms how you approach development, making you more willing to try new ideas and refactor existing code.
 
@@ -75,7 +75,7 @@ This diagram shows what happens behind the scenes when you push code. GitHub det
 <img src="images/session-10/cicd-pipeline-flowchart.png" alt="CI/CD Pipeline" style="max-width: 300px; width: 100%;">
 *Figure: CI/CD Pipeline — GitHub Actions builds and deploys your app automatically*
 
-### 💡 Why This Matters
+
 
 **CI/CD** eliminates manual deployment work. Instead of building and uploading files yourself, the system automatically handles everything when you push code. This is how teams deploy apps multiple times per day.
 
@@ -215,7 +215,7 @@ Your site should now be live at `https://your-username.github.io/your-repo-name/
 
 Once you complete the Git workflow in the next section, your site will be live at `https://your-username.github.io/your-repo-name/`
 
-### 💡 Why This Matters
+
 
 These steps transform your project from a shared template into your personal creation. Now you can make updates, publish changes to the web, and share your unique version with the world. Your trivia game is officially yours to customize and deploy!
 
@@ -271,7 +271,7 @@ The message `feat(logo): customize game title to Trivia Quest` follows this form
 | **fix** | `fix(scoring): resolve bug` | Bug fix |
 | **style** | `style(button): update colors` | Visual changes |
 
-### 💡 Why This Matters
+
 
 Git connects your local code to your live site. With just three commands — `add`, `commit`, and `push` — you can track changes, explain what you did, and publish updates instantly. It’s the core workflow behind every improvement you’ll make from here on out.
 
@@ -321,7 +321,7 @@ git commit -m "feat(logo): customize game title to Trivia Quest"
 git push
 ```
 
-### 💡 Why This Matters
+
 
 You just experienced the complete developer workflow - from making a change to deploying it live. This same pattern applies whether you're fixing a bug, adding a feature, or updating styles.
 
@@ -345,7 +345,7 @@ Now let's track your title change through the automated deployment process!
 - **Check the splash screen** - you should see your new title!
 - **Test the game** - make sure everything still works
 
-### 💡 Why This Matters
+
 
 You just experienced the complete developer workflow - from code change to live deployment. This automation is how teams ship updates multiple times per day.
 
@@ -371,7 +371,7 @@ https://your-username.github.io/your-repo-name/
 - **Share on social media** with screenshots of your game
 - **Add the URL to your GitHub profile** or portfolio
 
-### 💡 Why This Matters
+
 
 Having your game live on the internet transforms it from a learning exercise into something real that others can actually use. You've built something that exists on the web — that's a genuine accomplishment!
 

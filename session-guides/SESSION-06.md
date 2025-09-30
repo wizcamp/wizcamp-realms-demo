@@ -64,7 +64,7 @@ Let's understand **localStorage** — your browser's built-in storage system for
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 💡 Why This Matters
+
 
 localStorage provides persistent storage that survives browser refreshes and even computer restarts. It's **synchronous** (blocking), and ideally with small to medium amounts of data. For your trivia game, it's perfect for caching question sets that are relatively small but expensive to fetch over the network.
 
@@ -111,7 +111,7 @@ const cached = getCachedQuestions(0);  // Get questions for zone 0 (or null if n
 
 Notice the **ternary operator** `cached ? JSON.parse(cached) : null` in `getCachedQuestions` — this concise syntax means "If cached data exists, parse it; otherwise return null."
 
-### 💡 Why This Matters
+
 
 These helper functions represent a fundamental software engineering principle: **abstraction**. By wrapping localStorage complexity in simple functions, you're building the same kind of modular, maintainable code architecture used in professional applications. This pattern makes your caching system easy to test, debug, and extend.
 
@@ -147,7 +147,7 @@ Now let's integrate your cache functions into the main `fetchQuestions` function
    return questions;
    ```
 
-### 💡 Why This Matters
+
 
 This implements the classic **cache-aside pattern** used in professional applications: check cache first, fetch from source on miss, store result in cache. The console logging helps you understand when cache hits and misses occur, which is valuable for debugging and performance monitoring.
 
@@ -214,7 +214,7 @@ User clicks zone → Check cache → Cache hit? → Return cached data
   - Console shows `Cache miss`
   - Entry repopulates with fresh data
 
-### 💡 Why This Matters
+
 
 You're basically becoming a detective! By watching console logs, peeking into browser storage, and tracking network requests, you're learning to **follow the digital breadcrumbs** your code leaves behind. This is exactly how real developers figure out why apps crash, why websites load slowly, or why that "it worked yesterday" bug suddenly appeared. These debugging superpowers will make you unstoppable when building your own projects.
 

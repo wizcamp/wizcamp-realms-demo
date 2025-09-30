@@ -427,7 +427,6 @@ overflow-x: hidden !important;
 │ DELETE:        localStorage.removeItem(&#39;key&#39;)                   │
 │ CHECK:         if (localStorage.getItem(&#39;key&#39;)) { ... }         │
 └─────────────────────────────────────────────────────────────────┘</code></pre>
-<h3 id="why-this-matters">💡 Why This Matters</h3>
 <p>localStorage provides persistent storage that survives browser refreshes and even computer restarts. It’s <strong>synchronous</strong> (blocking), and ideally with small to medium amounts of data. For your trivia game, it’s perfect for caching question sets that are relatively small but expensive to fetch over the network.</p>
 <p><a id="building-cache-helper-functions"></a></p>
 <h2 id="building-cache-helper-functions">🔧 Building Cache Helper Functions</h2>
@@ -481,7 +480,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb3-2" title="2"><span class="at">setCachedQuestions</span>(<span class="dv">0</span><span class="op">,</span> questions)<span class="op">;</span>  <span class="co">// Store questions for zone 0</span></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="kw">const</span> cached <span class="op">=</span> <span class="at">getCachedQuestions</span>(<span class="dv">0</span>)<span class="op">;</span>  <span class="co">// Get questions for zone 0 (or null if none)</span></a></code></pre></div>
 <p>Notice the <strong>ternary operator</strong> <code>cached ? JSON.parse(cached) : null</code> in <code>getCachedQuestions</code> — this concise syntax means “If cached data exists, parse it; otherwise return null.”</p>
-<h3 id="why-this-matters-1">💡 Why This Matters</h3>
 <p>These helper functions represent a fundamental software engineering principle: <strong>abstraction</strong>. By wrapping localStorage complexity in simple functions, you’re building the same kind of modular, maintainable code architecture used in professional applications. This pattern makes your caching system easy to test, debug, and extend.</p>
 <p><a id="updating-fetchquestions-with-caching"></a></p>
 <h2 id="updating-fetchquestions-with-caching">🔄 Updating fetchQuestions with Caching</h2>
@@ -506,7 +504,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb5-4" title="4"></a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="cf">return</span> questions<span class="op">;</span></a></code></pre></div></li>
 </ol>
-<h3 id="why-this-matters-2">💡 Why This Matters</h3>
 <p>This implements the classic <strong>cache-aside pattern</strong> used in professional applications: check cache first, fetch from source on miss, store result in cache. The console logging helps you understand when cache hits and misses occur, which is valuable for debugging and performance monitoring.</p>
 <p><a id="testing-your-cache"></a></p>
 <h2 id="testing-your-cache">🧪 Testing Your Cache</h2>
@@ -571,7 +568,6 @@ overflow-x: hidden !important;
 <li>Entry repopulates with fresh data</li>
 </ul></li>
 </ul>
-<h3 id="why-this-matters-3">💡 Why This Matters</h3>
 <p>You’re basically becoming a detective! By watching console logs, peeking into browser storage, and tracking network requests, you’re learning to <strong>follow the digital breadcrumbs</strong> your code leaves behind. This is exactly how real developers figure out why apps crash, why websites load slowly, or why that “it worked yesterday” bug suddenly appeared. These debugging superpowers will make you unstoppable when building your own projects.</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>

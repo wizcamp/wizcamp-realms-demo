@@ -45,7 +45,7 @@ When you create a component, export it with `export default` so it can be shared
    ```
 5. **Test it**: Run `npm run dev` and you should see your custom button!
 
-### 💡 Why This Matters
+
 
 **Components** are the heart of React — reusable UI elements that combine markup, styling, and logic. Think of them as your own custom HTML tags. The `.jsx` file extension means you're writing **JSX**, a special syntax that looks like HTML but is actually JavaScript. JSX lets you describe what the UI should look like using readable, expressive code.
 
@@ -75,7 +75,7 @@ Props are how you pass data from parent components to child components. They're 
 
 3. **Watch the magic**: Your button now shows custom text!
 
-### 💡 Why This Matters
+
 
 **Props** let parent components pass data to child components — just like function parameters. This makes your components flexible and reusable. The `{ text }` syntax is called **destructuring** — it pulls out just the values you need from the props object, keeping your code clean and readable.
 
@@ -104,7 +104,7 @@ Let's make your buttons actually do something when clicked. In React, you can pa
 
 3. **Test it**: Click your button and see the alert!
 
-### 💡 Why This Matters
+
 
 **Functions as props** are like giving your components different personalities. Your `GameButton` can do different things depending on where you use it — same button, different actions. It's a key pattern in React for building interactive apps.
 
@@ -140,7 +140,7 @@ Let's add visual variety to your buttons using CSS classes, default parameters, 
 
 3. **Admire your styled button**: Your button now has the primary styling!
 
-### 💡 Why This Matters
+
 
 **`className`** is React's version of the HTML `class` attribute. We use a **template literal** to build a dynamic class name like `game-button primary`. This matches the styles already defined in your project. The `variant` prop lets you switch between styles like `primary` and `secondary`, and **default parameters** like `variant = "primary"` ensure your component still works even if no variant is passed.
 
@@ -160,7 +160,7 @@ Now that you've built a complete, fully-featured GameButton component, let's exp
    ```
 2. **Admire your work**: You now have two different buttons using the same component!
 
-### 💡 Why This Matters
+
 
 **Component reusability** is React's superpower. You wrote the `GameButton` code once, but now you can use it anywhere in your app with different props. Thanks to your stylesheet, each variant (`primary`, `secondary`) automatically applies the right look — no extra styling needed.
 
@@ -190,7 +190,7 @@ React DevTools is like X-ray vision for your React app — see component structu
 3. **Explore your app**: Click on components in the tree to see their props
 4. **Inspect GameButton**: Find your GameButton component and see the text, onClick, and variant props!
 
-### 💡 Why This Matters
+
 
 **React DevTools** gives you X-ray vision into your app. You can inspect components, props, and state in real time — just like a pro. It's one of the most important tools for debugging and understanding how your app works under the hood.
 

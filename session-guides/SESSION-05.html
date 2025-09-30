@@ -401,7 +401,6 @@ overflow-x: hidden !important;
 <h2 id="understanding-apis-and-external-data">🌐 Understanding APIs and External Data</h2>
 <p>Before we start coding, let’s understand what <strong>APIs</strong> are and why they’re everywhere in modern web development.</p>
 <p><strong>API</strong> stands for <strong>Application Programming Interface</strong> — it’s like a menu at a restaurant. The menu tells you what dishes are available, what ingredients they contain, and how much they cost, but it’s not the actual food. Similarly, an API tells you what data is available, how to request it, and what format you’ll receive, but it’s not the data itself.</p>
-<h3 id="why-this-matters">💡 Why This Matters</h3>
 <p><strong>APIs</strong> are the backbone of modern web applications. Your trivia game will use the <strong>OpenTrivia Database API</strong> to fetch real questions from the internet, making your game dynamic and engaging with fresh content.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
 <p>Think of three apps you use daily — can you identify what external data they might be fetching through APIs?</p>
@@ -431,7 +430,6 @@ overflow-x: hidden !important;
 <li><p><strong>Notice the encoding</strong>: See those <code>%20</code> and <code>%3A</code> symbols? That’s <strong>URL encoding</strong> — a way to safely transmit text over the internet</p></li>
 <li><p><strong>Understand the structure</strong>: Each question has a <code>question</code>, <code>correct_answer</code>, and <code>incorrect_answers</code> array</p></li>
 </ol>
-<h3 id="why-this-matters-1">💡 Why This Matters</h3>
 <p><strong>JSON</strong> (JavaScript Object Notation) is the universal language of <strong>APIs</strong>. It’s how different applications share structured data over the internet. Your job as a developer is to transform this raw data into the format your game needs.</p>
 <p><strong>📚 API Documentation:</strong> For complete details about OpenTrivia Database parameters, response codes, and features, visit: <a href="https://opentdb.com/api_config.php">https://opentdb.com/api_config.php</a></p>
 <h3 id="api-data-transformation-journey">API Data Transformation Journey</h3>
@@ -454,7 +452,6 @@ overflow-x: hidden !important;
 <p><strong>Synchronous</strong> code runs line by line, waiting for each operation to complete before moving to the next. <strong>Asynchronous</strong> code can start a task (like fetching data from the internet) and continue with other work while waiting for the result.</p>
 <h3 id="real-world-analogy">Real-World Analogy</h3>
 <p>Synchronous is like ordering at a fast-food counter where you wait for your entire order before the next person can order. Asynchronous is like a coffee shop where you order, get a number, and sit down while they prepare your drink — other customers can order while you wait.</p>
-<h3 id="why-this-matters-2">💡 Why This Matters</h3>
 <p>Fetch requests to <strong>APIs</strong> are asynchronous because network requests take time. Your app needs to stay responsive while waiting for data from the internet. <strong>Async/await</strong> syntax makes asynchronous code easier to read and debug.</p>
 <p><a id="building-the-fetch-foundation"></a></p>
 <h2 id="hot-module-reloading-hmr-note">⚠️ Hot Module Reloading (HMR) Note</h2>
@@ -498,7 +495,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb6-3" title="3">  <span class="cf">return</span> []<span class="op">;</span></a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="op">}</span></a></code></pre></div></li>
 </ol>
-<h3 id="why-this-matters-3">💡 Why This Matters</h3>
 <p><strong>Error handling</strong> and <strong>data validation</strong> are crucial when working with external <strong>APIs</strong>. Networks can fail, APIs can be down, or responses might be empty. Professional developers always plan for these scenarios to create robust applications.</p>
 <p><a id="transforming-api-data"></a></p>
 <h2 id="transforming-api-data">🔄 Transforming API Data</h2>
@@ -579,7 +575,6 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb14-3" title="3"><span class="cf">return</span> questions<span class="op">;</span></a></code></pre></div>
 <p><strong>Test</strong>: Click zone → see array of properly formatted questions!</p></li>
 </ol>
-<h3 id="why-this-matters-4">💡 Why This Matters</h3>
 <p><strong>Data transformation</strong> is a core skill in web development. APIs rarely return data in exactly the format your application needs. The <code>map()</code> method is perfect for transforming arrays of data, and helper functions keep your code clean and reusable.</p>
 <p><a id="testing-your-api-integration"></a></p>
 <h2 id="testing-your-api-integration">🧪 Testing Your API Integration</h2>
@@ -622,7 +617,6 @@ overflow-x: hidden !important;
 </ul></li>
 </ul></li>
 </ol>
-<h3 id="why-this-matters-5">💡 Why This Matters</h3>
 <p><strong>Testing</strong> is crucial in web development. You’ve just built a complete API integration that fetches real data from the internet, transforms it, and feeds it into your game’s state management system. This is the foundation that will power your quiz functionality in future sessions.</p>
 <p><a id="understanding-the-complete-data-flow"></a></p>
 <h2 id="understanding-the-complete-data-flow">🔄 Understanding the Complete Data Flow</h2>
@@ -672,7 +666,6 @@ overflow-x: hidden !important;
 │   &quot;correct&quot;: 1                                                  │
 │ }                                                               │
 └─────────────────────────────────────────────────────────────────┘</code></pre>
-<h3 id="why-this-matters-6">💡 Why This Matters</h3>
 <p>Understanding the complete data flow helps you debug issues and build more complex features. You’ve created a robust pipeline that handles API requests, data transformation, and state management — the same patterns used in professional web applications.</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>

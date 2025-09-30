@@ -48,7 +48,7 @@ Think of your `GameContext` as the brain of your game — it keeps track of ever
 ![GameContext Mind Map](images/session-08/game-context-mind-map.png)
 *Figure: GameContext Mind Map*
 
-### 💡 Why This Matters
+
 
 **Application state management** is what separates simple websites from complex, interactive applications. Your scoring system will coordinate multiple pieces of state to create a cohesive game experience where every action has consequences and every achievement is tracked.
 
@@ -101,7 +101,7 @@ Let's add a scoring system that tracks player performance and displays it promin
 
 5. **Test**: Navigate to the game screen → Score: 0 appears in HUD
 
-### 💡 Why This Matters
+
 
 The **Scoreboard component** demonstrates the single responsibility principle — it has one job: display the current score. This modular approach makes your code easier to maintain and test.
 
@@ -133,7 +133,7 @@ Now let's make the score actually change based on player performance with point 
    - **Correct answer** → +100 points
    - **Incorrect answer** → -100 points (but never below 0)
 
-### 💡 Why This Matters
+
 
 **Updater functions** like `setScore((prev) => prev + 100)` are crucial when updating state based on the previous value. React batches state updates, so using the previous value ensures accurate calculations even when multiple updates happen quickly.
 
@@ -194,7 +194,7 @@ Let's add cache clearing functions to remove stored questions when zones are com
    };
    ```
 
-### 💡 Why This Matters
+
 
 **Cache management** prevents stale data from affecting gameplay. When players complete a zone, clearing its cache ensures they get fresh questions if they replay. The `Object.keys()` and `filter()` pattern is a professional way to find and remove related localStorage entries.
 
@@ -224,7 +224,7 @@ Let's update the reset function to properly clear all game state and cached data
 
 2. **Test the reset functionality** by completing a zone and then using React DevTools to trigger `resetGame()`
 
-### 💡 Why This Matters
+
 
 **Complete state reset** ensures players can start fresh without any lingering data from previous games. This includes both React state and localStorage cache, providing a clean slate for new gameplay sessions.
 
@@ -279,7 +279,7 @@ Your completed GameOver component must:
 - **Session 2 guide**: `GameButton` props and component export patterns
 - **Session 3 guide**: `SCREENS` constants and navigation patterns
 
-### 💡 Why This Matters
+
 
 This challenge combines everything you've learned: component creation, props, shared state, event handling, and conditional rendering. Following guided steps without code examples builds confidence in applying React patterns — you're connecting concepts rather than copying code.
 

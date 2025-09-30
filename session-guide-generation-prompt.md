@@ -42,7 +42,7 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 ## Student Guide Requirements (SESSION-XX.md)
 
 ### Structure and Format
-- Follow SESSION-01.md structure: Table of Contents, step-by-step sections, "Why This Matters", "Bonus Challenge"
+- Follow SESSION-01.md structure: Table of Contents, step-by-step sections, "Bonus Challenge"
 - Use student-friendly name as primary title, technical concept as subtitle
 - Table of Contents: Include all sections with anchor links EXCEPT "Access Your Codespace"
 - Essential Terms table with consistent definitions and session-specific "Why it matters"
@@ -122,12 +122,6 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 - **Genuine excitement** about technology, practical problem-solving, and building useful things
 - **Empowering language** that builds confidence and capability
 - **Natural enthusiasm** that respects the audience's intelligence
-
-### "Why This Matters" Sections
-- Use engaging metaphors teenagers can relate to: "detective work," "X-ray vision," "digital breadcrumbs"
-- Connect to familiar experiences: apps they use, problems they've encountered
-- Focus on skill-building and empowerment rather than abstract career preparation
-- Use LEGO/building block analogies where appropriate
 
 ### Language to Avoid
 - **Formal/corporate terms**: "professional," "enterprise," "industry-standard," "production-ready"

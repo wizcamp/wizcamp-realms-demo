@@ -426,7 +426,6 @@ overflow-x: hidden !important;
 </tr>
 </tbody>
 </table>
-<h3 id="why-this-matters">💡 Why This Matters</h3>
 <p><strong>Props</strong> are like ingredients you receive to make a recipe — you can’t change them, but you use them to create something. <strong>State</strong> is like your kitchen’s current condition — you can rearrange, add, or remove things as needed. Understanding this difference is crucial because it determines how data flows through your app and which component is responsible for managing what information.</p>
 <p><a id="adding-local-state-for-credits"></a></p>
 <h2 id="adding-local-state-for-credits">🏆 Adding Local State for Credits</h2>
@@ -447,7 +446,6 @@ overflow-x: hidden !important;
 <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">{</span>showCredits <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>CreditsModal onClose<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">setShowCredits</span>(<span class="kw">false</span>)<span class="op">}</span> /&gt;<span class="op">}</span> <span class="co">// Add modal</span></a></code></pre></div></li>
 <li><p><strong>Test the credits modal</strong>: Click the Credits button to see the modal appear</p></li>
 </ol>
-<h3 id="why-this-matters-1">💡 Why This Matters</h3>
 <p><strong>Local state</strong> with <code>useState</code> belongs to a single component and gives it its own memory. The credits modal only affects <code>SplashScreen</code>, so it uses local state to track whether the modal should be visible. This pattern keeps component data isolated and manageable.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
 <p>Use React DevTools to inspect the SplashScreen component and watch the <code>showCredits</code> state change as you interact with the Credits button.</p>
@@ -471,7 +469,6 @@ GameButton (finally uses screen)</code></pre>
 <pre><code>GameProvider (provides screen state)
  ↓ any component can access directly
 GameButton (uses useGame hook to get screen)</code></pre>
-<h3 id="why-this-matters-2">💡 Why This Matters</h3>
 <p><strong>Constants</strong> prevent typos and make your code more maintainable. Instead of typing <code>&quot;splash&quot;</code> in multiple places (and risking typos like <code>&quot;spalsh&quot;</code>), you use <code>SCREENS.SPLASH</code> once and get autocomplete everywhere. If you need to change the value later, you only change it in one place.</p>
 <p><a id="adding-screen-navigation"></a></p>
 <h2 id="adding-screen-navigation">🗺️ Adding Screen Navigation</h2>
@@ -492,7 +489,6 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <a class="sourceLine" id="cb9-6" title="6">)<span class="op">;</span></a></code></pre></div></li>
 <li><p><strong>Test the setup</strong>: Run <code>npm run dev</code> to make sure everything still works</p></li>
 </ol>
-<h3 id="why-this-matters-3">💡 Why This Matters</h3>
 <p><strong>Conditional rendering</strong> using <code>&amp;&amp;</code> is a React pattern that shows components only when certain conditions are true. When <code>screen</code> equals <code>SCREENS.SPLASH</code>, the <code>SplashScreen</code> component renders. When it equals <code>SCREENS.PLAYING</code>, <code>GameMap</code> renders instead. This single piece of <strong>shared state</strong> controls what your entire app displays!</p>
 <p><a id="using-react-devtools-to-explore-state"></a></p>
 <h2 id="using-react-devtools-to-explore-state">🔍 Using React DevTools to Explore State</h2>
@@ -505,7 +501,6 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <li><strong>Experiment with state</strong>: Change the screen value from “splash” to “playing” and watch the UI update!</li>
 <li><strong>Change it back</strong>: Set it back to “splash” to see the SplashScreen return</li>
 </ol>
-<h3 id="why-this-matters-4">💡 Why This Matters</h3>
 <p>React DevTools gives you X-ray vision into your app’s <strong>state</strong>. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how <strong>shared state</strong> affects your entire app. Notice how changing one value in <code>GameProvider</code> instantly changes what component renders!</p>
 <h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
 <p>Try changing the screen state to different values and see what happens. What occurs when you set it to a value that doesn’t match any of your conditions?</p>
@@ -530,7 +525,6 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <a class="sourceLine" id="cb13-5" title="5">/&gt;</a></code></pre></div></li>
 <li><p><strong>Test it</strong>: Click the “Start Adventure” button and watch the screen change to GameMap!</p></li>
 </ol>
-<h3 id="why-this-matters-5">💡 Why This Matters</h3>
 <p><strong>State setters</strong> like <code>setScreen</code> are functions that update <strong>state</strong> and trigger re-renders. When you call <code>setScreen(SCREENS.PLAYING)</code>, React updates the shared state and re-renders all components that depend on it. This is how one button click can change your entire app’s display!</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>

@@ -40,7 +40,7 @@ Before we dive into audio, let's understand **custom hooks** — one of React's 
 | Basic React features | Complex, reusable logic |
 | Used in every React app | Specific to your app's needs |
 
-### 💡 Why This Matters
+
 
 **Custom hooks** embody one of programming's most important principles: **"Don't Repeat Yourself" (DRY)**. Instead of copying and pasting audio logic into every component that needs music, you encapsulate that complexity into a reusable `useAudio` hook. Now, any component can add background music with a single line of code:
 
@@ -85,7 +85,7 @@ audio.currentTime = 0;    // Reset to beginning
 audio.muted = true;       // Mute audio
 ```
 
-### 💡 Why This Matters
+
 
 The **HTMLAudioElement** gives you programmatic control over audio playback. Your `useAudio` hook will wrap this browser API in a clean React interface, making it easy to add music to any component.
 
@@ -139,7 +139,7 @@ function MyComponent() {
 
 The ref creates a direct connection to the actual HTML input element. When you call `inputRef.current.focus()`, you're telling the browser to focus that specific input — just like clicking on it.
 
-### 💡 Why This Matters
+
 
 **Refs** are perfect for storing audio elements because the audio object doesn't need to trigger re-renders — it just needs to be remembered between function calls. The `current` property holds the actual value you stored.
 
@@ -194,7 +194,7 @@ Before we implement the audio functionality, let's add the UI controls you'll ne
 
 4. **Test**: Start Game → Music toggle visible, but inoperable when clicked
 
-### 💡 Why This Matters
+
 
 The **`MusicToggle` component** demonstrates conditional rendering with dynamic images and tooltips. The `music.isPlaying` state controls both the icon and the tooltip text, providing clear visual feedback to users.
 
@@ -229,7 +229,7 @@ useAudio hook called → audioRef.current is null → play() creates new Audio()
 audioRef.current stores Audio element → future calls reuse same element
 ```
 
-### 💡 Why This Matters
+
 
 The `audioRef` you just created provides persistent storage for the audio element across component re-renders. Without refs, you'd create a new audio element every time the component updates, causing audio to restart unexpectedly.
 
@@ -264,7 +264,7 @@ Check if audio exists → If not, create new Audio(src) → Configure loop and v
 Call play() method → Update isPlaying state → UI reflects playing state
 ```
 
-### 💡 Why This Matters
+
 
 Creating audio elements only once and reusing them prevents overlapping sounds, memory leaks, and performance issues. Without this pattern, clicking the music toggle rapidly would create multiple audio elements playing simultaneously, causing audio chaos and slowing down your browser.
 
@@ -347,7 +347,7 @@ Your completed `useAudio` hook must:
 - Set `isPlaying(false)` if an error occurs
 - Include a `useEffect` cleanup function for component unmounting
 
-### 💡 Why This Matters
+
 
 This challenge combines everything you've learned: custom hooks, browser APIs, error handling, and AI-assisted development. You're building production-quality code that handles edge cases and prevents memory leaks — exactly what professional developers do.
 

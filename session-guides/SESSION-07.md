@@ -38,7 +38,7 @@ QuizModal (the container)
 └── ContinueButton (navigation control)
 ```
 
-### 💡 Why This Matters
+
 
 **Component composition** is how professional React apps stay organized and maintainable. Instead of one massive component doing everything, you break functionality into focused pieces. Each component has a single responsibility, making your code easier to understand, test, and modify.
 
@@ -90,7 +90,7 @@ Let's connect your quiz modal to the game flow so clicking zones actually shows 
 
    **Test**: Click a zone → QuizModal should appear with your cached questions!
 
-### 💡 Why This Matters
+
 
 This pattern controls what users see based on app state. Your quiz modal will appear and disappear based on user actions, creating a smooth interactive experience.
 
@@ -138,7 +138,7 @@ Now let's build the interactive answer buttons that transform your question data
 
    **Test**: Click zone → You should see answer buttons appear in the modal
 
-### 💡 Why This Matters
+
 
 By starting with a simple structure and then adding the mapping logic, you followed a professional development pattern: build incrementally and test each step. **Array mapping** is everywhere in React — any time you have a list of data that becomes a list of components, you use `map()`. The **key prop** helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.
 
@@ -245,7 +245,7 @@ Let's add click functionality and dynamic styling that shows correct/incorrect a
 
    **Test**: Click zone → Click answer → Try clicking other buttons → Other buttons should be unclickable
 
-### 💡 Why This Matters
+
 
 **Event handlers** like `onClick` connect user actions to your app's logic, making static components come alive with interactivity. **Conditional styling** then provides immediate visual feedback to users through the `getButtonStyle` function, which returns different CSS classes based on the current state. The `disabled` attribute prevents multiple clicks after an answer is selected, creating a polished user experience where buttons respond intelligently to user interactions.
 
@@ -333,7 +333,7 @@ const message = messages[Math.floor(Math.random() * messages.length)];
 // messages[index] → Get message at that position
 ```
 
-### 💡 Why This Matters
+
 
 **Constants** keep your feedback messages organized and easy to modify. By storing them in a separate file, you can easily add new messages or change the tone without hunting through component code. **Random selection** adds variety and personality to your game using `Math.random()` and `Math.floor()` — the same pattern used in games, animations, and any app that needs variety.
 
@@ -366,7 +366,7 @@ Let's test your complete quiz system and verify all the interactive pieces work 
 - **Inspect AnswerChoices**: Check answers prop and chosenAnswer state
 - **Watch state changes**: Click answers and observe chosenAnswer updates
 
-### 💡 Why This Matters
+
 
 **End-to-end testing** ensures all your components work together correctly. By testing the complete user flow, you catch integration issues that might not appear when testing individual components.
 
