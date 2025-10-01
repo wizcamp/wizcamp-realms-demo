@@ -41,12 +41,11 @@ Visit [github.com/codespaces](https://github.com/codespaces) to explore more abo
 _Quick orientation to help you find files during today's tasks:_
 
 ```text
-wizcamp-realms-demo/
+wizcamp-realms/
 ├── src/                    # Your React code lives here
 │   ├── components/         # React components (SplashScreen, etc.)
 │   └── App.jsx             # Main app component (you'll edit this!)
 ├── public/                 # Static files (images, etc.)
-├── session-guides/         # Step-by-step guides (like this one)
 ├── index.html              # HTML entry point (you'll edit this too!)
 └── package.json            # Project configuration (npm scripts, dependencies)
 ```
@@ -55,7 +54,6 @@ wizcamp-realms-demo/
 
 - `src/App.jsx` — to swap components
 - `index.html` — to update the page title
-- `session-guides/` — for instructions (that's where you are now!)
 
 _Don't worry about the other folders yet — we'll explore them in future sessions._
 

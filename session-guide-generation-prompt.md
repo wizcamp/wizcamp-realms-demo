@@ -124,7 +124,7 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 - **Natural enthusiasm** that respects the audience's intelligence
 
 ### Language to Avoid
-- **Formal/corporate terms**: "professional," "enterprise," "industry-standard," "production-ready"
+- **Formal/corporate terms**: "like a pro", "professional," "enterprise," "industry-standard," "production-ready", "master", "expert", "mastery"
 - **Empty adjectives**: "effective," "smart," "good" when they add no descriptive value
 - **Academic dryness**: overly technical explanations without context
 - **Forced enthusiasm**: excessive exclamations or overuse of "awesome/super/amazing"

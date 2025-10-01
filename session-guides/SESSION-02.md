@@ -2,10 +2,11 @@
 
 Building Reusable UI Elements 🧩
 
-You're about to build your first custom React component and unlock the power of reusable UI building blocks — the secret to fast, scalable development in React. This guide walks you through creating a GameButton component, understanding props, and using professional developer tools. Ready to build like a pro? Let's go!
+You're about to build your first custom React component and unlock the power of reusable UI building blocks — the secret to fast, scalable development in React. This guide walks you through creating a GameButton component, understanding props, and using professional developer tools. Ready to build your first component? Let's go!
 
 ## Table of Contents
 
+- [Understanding React's Approach](#understanding-reacts-approach)
 - [Create Your First Component](#create-your-first-component)
 - [Understanding Props](#understanding-props)
 - [Adding Click Functionality](#adding-click-functionality)
@@ -21,11 +22,26 @@ You're about to build your first custom React component and unlock the power of 
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 1.
 
+<a id="understanding-reacts-approach"></a>
+
+## 💡 Understanding React's Approach
+
+Why did swapping `<StartHere />` for `<SplashScreen />` feel so effortless? It's all about React's approach to building UIs.
+
+With vanilla JavaScript, you write lots of repetitive code to update the page. React works differently: you build self-contained components, and React handles all the messy details of getting them on screen and keeping them updated.
+
+<img src="images/session-02/js-vs-react-flowchart.png" alt="React vs Vanilla JavaScript Comparison" style="max-width: 600px; width: 100%;">
+*Figure: Vanilla JavaScript vs React — Why Components Make Development Easier*
+
+That's why swapping components felt so smooth. You weren't just editing code—you were shaping the UI with reusable building blocks.
+
+Now let's build your first custom component and see that power in action.
+
 <a id="create-your-first-component"></a>
 
 ## 🧩 Create Your First Component
 
-Let's build a GameButton component for starting your trivia game. Components are like digital LEGO blocks — custom, reusable UI elements.
+Let's build a `GameButton` component for starting your trivia game. Components are like digital LEGO blocks — custom, reusable UI elements.
 
 When you create a component, export it with `export default` so it can be shared across your project. Then bring it into other files with `import`.
 
@@ -192,7 +208,7 @@ React DevTools is like X-ray vision for your React app — see component structu
 
 
 
-**React DevTools** gives you X-ray vision into your app. You can inspect components, props, and state in real time — just like a pro. It's one of the most important tools for debugging and understanding how your app works under the hood.
+**React DevTools** gives you X-ray vision into your app. You can inspect components, props, and state in real time — essential for debugging and understanding how your app works under the hood.
 
 <a id="essential-terms"></a>
 

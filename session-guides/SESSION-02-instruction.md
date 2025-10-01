@@ -4,23 +4,24 @@
 
 **By the end of Session 2, students will be able to:**
 
-1. **Create custom React components** that combine markup, styling, and logic using JSX
-2. **Use props** to pass data and behavior from parent to child components
-3. **Apply JSX syntax rules** including curly braces for dynamic expressions and className for styling
-4. **Structure components effectively** using imports, function declarations, destructuring, and return statements
-5. **Style components dynamically** using template literals and variant-based class names
-6. **Implement interactivity** by passing functions as props to handle events like clicks
-7. **Use default parameters** to provide fallback values for props
-8. **Leverage VS Code built-in features** to accelerate component development
-9. **Inspect component structure and props** using React DevTools for debugging
-10. **Compose components together** to build scalable, maintainable UIs
-11. **Follow a smart development workflow** including incremental testing and Hot Module Replacement
+1. **Explain the architectural differences** between React and vanilla JavaScript approaches to DOM updates
+2. **Create custom React components** that combine markup, styling, and logic using JSX
+3. **Use props** to pass data and behavior from parent to child components
+4. **Apply JSX syntax rules** including curly braces for dynamic expressions and className for styling
+5. **Structure components effectively** using imports, function declarations, destructuring, and return statements
+6. **Style components dynamically** using template literals and variant-based class names
+7. **Implement interactivity** by passing functions as props to handle events like clicks
+8. **Use default parameters** to provide fallback values for props
+9. **Leverage VS Code built-in features** to accelerate component development
+10. **Inspect component structure and props** using React DevTools for debugging
+11. **Compose components together** to build scalable, maintainable UIs
+12. **Follow a smart development workflow** including incremental testing and Hot Module Replacement
 
 ## Instruction
 
 **Instructor introduces key concepts students need to succeed:**
 
-1. **From SplashScreen to GameButton** - Recap the component swap from Session 1 and introduce the idea of building your own reusable UI elements
+1. **Why React Feels Like Magic** - Connect Session 1 component swap experience to React's architectural advantages using relatable language that emphasizes the smooth, magical feeling of React development
 2. **React Components: Your First Custom Tags** - Define components as the building blocks of React apps and show how they encapsulate markup, styling, and logic
 3. **JSX and Curly Braces** - Explain JSX syntax and how {} enables dynamic content, styling, and behavior inside components
 4. **Props: Data and Behavior Flow** - Demonstrate how props allow parent components to pass information and actions to children
@@ -50,9 +51,26 @@
   - **Install** essential developer tools
   - **Experience** component composition in action
 - **Visual:** LEGO blocks assembling into a complex structure
-- **Connection:** "Remember swapping `<StartHere />` for `<SplashScreen />`? Today you'll create your own components to swap in!"
+- **Connection:** "You've experienced React's component magic — now let's understand why it's so powerful and build your own!"
 
-### **Slide 2: Components Are Digital LEGO Blocks 🧩**
+### **Slide 2: Understanding React's Approach 💡**
+
+- **Title:** "Understanding React's Approach"
+- **Teaching Focus:** Connect Session 1 experience to React's architectural advantages using relatable language
+- **Session 1 Connection:** "Why did swapping `<StartHere />` for `<SplashScreen />` feel so effortless? It's all about React's approach to building UIs."
+- **Visual:** The side-by-side flowchart diagram
+
+<img src="images/session-02/js-vs-react-flowchart.png" alt="React vs Vanilla JavaScript Comparison" style="max-width: 600px; width: 100%;">
+*Figure: Vanilla JavaScript vs React — Why Components Make Development Easier*
+
+- **Key Teaching Points:**
+  - **Vanilla JavaScript:** "You write lots of repetitive code to update the page"
+  - **React:** "React works differently: you build self-contained components, and React handles all the messy details of getting them on screen and keeping them updated"
+  - **The Connection:** "That's why swapping components felt so smooth. You weren't just editing code—you were shaping the UI with reusable building blocks."
+- **Student Motivation:** Use the "magic" framing to make React's advantages feel exciting and accessible
+- **Transition:** "Now let's build your first custom component and see that power in action."
+
+### **Slide 3: Components Are Digital LEGO Blocks 🧩**
 
 - **Title:** "What Makes Components So Powerful?"
 - **Key Points:**
@@ -67,8 +85,9 @@
 - **Real Example:** "A Button component can be used for 'Start Game', 'Credits', 'Submit Answer', etc."
 - **Visual:** Component tree showing GameButton used in multiple places
 - **Student Connection:** "You'll build a GameButton that works everywhere in your trivia game"
+- **Transition:** "Now that you understand React's advantages, let's see what makes components so powerful..."
 
-### **Slide 3: JSX Mastery - React's Special Language 🌟**
+### **Slide 4: JSX Mastery - React's Special Language 🌟**
 
 - **Title:** "JSX: The Language of React Components"
 - **What is JSX?**

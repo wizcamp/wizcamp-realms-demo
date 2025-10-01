@@ -108,7 +108,7 @@ Should be: [Suggested correction]
 ### 4. Tone and Audience
 - **Voice**: Conversational, empowering for 13-18 year olds
 - **Language**: Direct terms without empty adjectives ("Development Workflow" not "Effective Workflow")
-- **Avoid**: "professional," "enterprise," "industry-standard," "production-ready"
+- **Avoid**: "like a pro", "professional," "enterprise," "industry-standard," "production-ready", "master", "expert", "mastery"
 - **Accept**: "Best Practice" as standard nomenclature
 
 ### 5. Cross-Guide Consistency
