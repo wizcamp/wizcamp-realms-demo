@@ -53,7 +53,7 @@ When you create a component, export it with `export default` so it can be shared
    }
    ```
 
-3. **Import into SplashScreen**: Add `import GameButton from "./GameButton";` at the top // Add this import
+3. **Import into SplashScreen**: Add `import GameButton from "./GameButton";` at the top
 
 4. **Add your button**: Place your button within `div.splash-buttons`:
    ```javascript
