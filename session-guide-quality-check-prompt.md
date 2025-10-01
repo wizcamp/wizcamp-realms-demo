@@ -101,9 +101,19 @@ Should be: [Suggested correction]
 
 ### 3. Content Standards
 - **File saving**: No manual save instructions (auto-saved in Codespaces)
-- **Ask the AI**: Questions explore beyond what's directly explained
+- **Ask the AI**: Use format `## 🤖 Ask the AI — [Student-Friendly Name]` where Student-Friendly Name matches the Session Name Reference table, and questions explore beyond what's directly explained
 - **Code comments**: Action-based guidance only, not explanatory
 - **Essential terms**: Logical learning progression order
+- **Command patterns**: Follow standardized instruction formats for consistency
+- **Section naming**: Use consistent gerund verb forms and established patterns
+
+### 6. Command Pattern Standards
+- **File operations**: Use `**Open `src/path/file.jsx`**` format with backticks for file paths
+- **Code modifications**: Use `**Add [specific element]**`, `**Update [specific target]**`, `**Replace [old] with [new]**` patterns
+- **UI interactions**: Use `**Open DevTools**: Press F12 or right-click → Inspect` format
+- **Testing**: Use `**Test**: [Specific expected behavior]` or `**Verify**: [Specific outcome]` patterns
+- **User actions**: Use `**Click [specific element]**`, `**Navigate to [location]**` patterns
+- **External links**: Use `**Visit [URL]**: Visit [https://example.com](https://example.com)` format
 
 ### 4. Tone and Audience
 - **Voice**: Conversational, empowering for 13-18 year olds
@@ -131,6 +141,43 @@ Should be: [Suggested correction]
 - **Audience appropriateness**: Age-appropriate language and examples
 - **Term consistency**: Student Essential Terms align with instructor explanations
 - **Language quality**: Direct terms without empty adjectives or formal jargon
+
+### Step 9: Command Pattern Verification
+- **File operations**: Verify consistent use of backticks for file paths in Open/Create commands
+- **Code modifications**: Check for standardized Add/Update/Replace patterns
+- **UI interactions**: Ensure consistent DevTools, Click, Navigate command formats
+- **Testing language**: Verify use of Test/Verify patterns with specific expected behaviors
+
+### Step 10: Section Naming Verification
+
+**Section Naming Standards for Student Guides (SESSION-XX.md):**
+
+**Preferred Gerund Forms:**
+- "Building [Feature]" ✅ not "Build [Feature]" ❌
+- "Adding [Functionality]" ✅ not "Add [Functionality]" ❌
+- "Creating [Component]" ✅ not "Create [Component]" ❌
+- "Testing [System]" ✅ not "Test [System]" ❌
+- "Implementing [Logic]" ✅ not "Implement [Logic]" ❌
+- "Exploring [Concept]" ✅ not "Explore [Concept]" ❌
+- "Installing [Tool]" ✅ not "Install [Tool]" ❌
+- "Updating [Code]" ✅ not "Update [Code]" ❌
+
+**Established Conceptual Patterns:**
+- "Understanding [Concept]" for conceptual sections
+- "Understanding State vs Props", "Understanding APIs and External Data"
+- "Understanding Asynchronous Programming", "Understanding Custom Hooks"
+
+**Protected Sections (Do Not Change):**
+- "Essential Terms" - always keep as-is
+- "Ask the AI — [Student-Friendly Name]" - always keep as-is
+- "Access Your Codespace" - always keep as-is
+- "Choose Your Own Adventure" - always keep as-is
+
+**Verification Steps:**
+- **Gerund consistency**: Check all section headings use gerund verb forms
+- **Pattern adherence**: Verify conceptual sections follow "Understanding [Concept]" pattern
+- **Exception handling**: Confirm protected sections remain unchanged
+- **Cross-session consistency**: Ensure similar section types use identical naming patterns
 
 ## Output
 Report issues using format:

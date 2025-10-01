@@ -10,14 +10,14 @@ You're about to unlock one of React's most powerful features — shared state th
 - [Adding Local State for Credits](#adding-local-state-for-credits)
 - [Exploring Game Constants](#exploring-game-constants)
 - [Adding Screen Navigation](#adding-screen-navigation)
-- [Using React DevTools to Explore State](#using-react-devtools-to-explore-state)
-- [Implementing Start Game Functionality](#implementing-start-game-functionality)
+- [Using React DevTools for Exploring State](#using-react-devtools-for-exploring-state)
+- [Implementing Start Game Function](#implementing-start-game-function)
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
 
-<a id="access-your-codespace"></a>
+<a id="accessing-your-codespace"></a>
 
-## ☁️ Access Your Codespace
+## ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 2.
 
@@ -75,7 +75,7 @@ Let's implement **local state** for the credits modal to see how components can 
    {showCredits && <CreditsModal onClose={() => setShowCredits(false)} />} // Add modal
    ```
 
-5. **Test the credits modal**: Click the Credits button to see the modal appear
+5. **Test**: Click the Credits button to see the modal appear
 
 
 
@@ -150,15 +150,15 @@ Now let's implement the core navigation system that will control which screen us
    );
    ```
 
-4. **Test the setup**: Run `npm run dev` to make sure everything still works
+4. **Test**: Run `npm run dev` to make sure everything still works
 
 
 
 **Conditional rendering** using `&&` is a React pattern that shows components only when certain conditions are true. When `screen` equals `SCREENS.SPLASH`, the `SplashScreen` component renders. When it equals `SCREENS.PLAYING`, `GameMap` renders instead. This single piece of **shared state** controls what your entire app displays!
 
-<a id="using-react-devtools-to-explore-state"></a>
+<a id="using-react-devtools-for-exploring-state"></a>
 
-## 🔍 Using React DevTools to Explore State
+## 🔍 Using React DevTools for Exploring State
 
 Let's use React DevTools to see how **shared state** works behind the scenes and experiment with changing it manually.
 
@@ -177,9 +177,9 @@ React DevTools gives you X-ray vision into your app's **state**. You can see exa
 
 Try changing the screen state to different values and see what happens. What occurs when you set it to a value that doesn't match any of your conditions?
 
-<a id="implementing-start-game-functionality"></a>
+<a id="implementing-start-game-function"></a>
 
-## 🎮 Implementing Start Game Functionality
+## 🎮 Implementing Start Game Function
 
 Now let's make your "Start Adventure" button actually start the game by updating the **shared state**!
 
@@ -214,7 +214,7 @@ Now let's make your "Start Adventure" button actually start the game by updating
    />
    ```
 
-5. **Test it**: Click the "Start Adventure" button and watch the screen change to GameMap!
+5. **Test**: Click the "Start Adventure" button and watch the screen change to GameMap!
 
 
 
@@ -234,14 +234,13 @@ _Quick reference for all the state management concepts you just learned:_
 | 🔗 prop drilling | Passing data through multiple component levels, even when intermediate components don't need that data. | Context eliminates prop drilling by letting any component access shared data directly. |
 | 📦 props | Data passed from parent to child components. | Props flow data down the component tree, while state manages data within components. |
 | 🔄 useState | A React hook that adds local state to functional components. | `useState` gives individual components their own memory for data that only they need to track. |
-
 | 📋 constants | Static values that don't change, used to prevent typos and make code more maintainable. | Constants like `SCREENS.SPLASH` prevent typos and make refactoring easier. |
 | 🔀 conditional rendering | Showing different components based on state or props using JavaScript expressions. | Conditional rendering with `&&` lets you control what users see based on app state. |
 | 🏪 Provider | A Context component that makes shared state available to all child components. | The Provider pattern wraps your app and gives all components access to shared data. |
 
 <a id="ask-the-ai"></a>
 
-## 🤖 Ask the AI — State Management Mastery
+## 🤖 Ask the AI — Managing Game Flow
 
 You just implemented both local and shared state, created screen navigation, and experienced the power of React's Context API — excellent work!
 

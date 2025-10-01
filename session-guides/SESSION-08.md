@@ -15,9 +15,9 @@ You're about to add the most satisfying part of any game — scoring and victory
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
 
-<a id="access-your-codespace"></a>
+<a id="accessing-your-codespace"></a>
 
-## ☁️ Access Your Codespace
+## ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 7.
 
@@ -84,7 +84,7 @@ Let's add a scoring system that tracks player performance and displays it promin
    }
    ```
 
-4. **Update HUD to render both components** using a React Fragment (`<>...</>`):
+4. **Update HUD component**: Render both components using a React Fragment (`<>...</>`):
 
    ```javascript
    // Replace this single line:
@@ -99,7 +99,7 @@ Let's add a scoring system that tracks player performance and displays it promin
    );
    ```
 
-5. **Test**: Navigate to the game screen → Score: 0 appears in HUD
+5. **Test**: Navigate to the game screen and verify Score: 0 appears in HUD
 
 
 
@@ -128,7 +128,7 @@ Now let's make the score actually change based on player performance with point 
    };
    ```
 
-3. **Test**: Click zone → Answer questions → Observe score changes:
+3. **Test**: Click zone, answer questions, and observe score changes:
 
    - **Correct answer** → +100 points
    - **Incorrect answer** → -100 points (but never below 0)
@@ -299,7 +299,7 @@ _Quick reference for the key concepts you just learned:_
 
 <a id="ask-the-ai"></a>
 
-## 🤖 Ask the AI — Application State Understanding
+## 🤖 Ask the AI — Implementing Scoring & Victory
 
 You just implemented a complete scoring system, managed complex application state, and built your first independent React component — excellent work!
 

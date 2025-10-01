@@ -6,17 +6,17 @@ You're about to launch your dev setup and start building like a pro. This guide 
 
 ## Table of Contents
 
-- [Launch Your Codespace](#launch-your-codespace)
+- [Launching Your Codespace](#launching-your-codespace)
 - [Project Navigation](#project-navigation)
-- [Start the Development Server](#start-the-development-server)
-- [Replace the Placeholder Component](#replace-the-placeholder-component)
-- [Update the Page Title](#update-the-page-title)
+- [Starting the Development Server](#starting-the-development-server)
+- [Replacing the Placeholder Component](#replacing-the-placeholder-component)
+- [Updating the Page Title](#updating-the-page-title)
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
 
-<a id="launch-your-codespace"></a>
+<a id="launching-your-codespace"></a>
 
-## 🔧 Launch Your Codespace
+## 🔧 Launching Your Codespace
 
 Let's get your cloud coding environment up and running so you can start building without messing with local installs. This is your dev playground in the cloud — no setup headaches, no installs, just code.
 
@@ -57,9 +57,9 @@ wizcamp-realms/
 
 _Don't worry about the other folders yet — we'll explore them in future sessions._
 
-<a id="start-the-development-server"></a>
+<a id="starting-the-development-server"></a>
 
-## 🚀 Start the Development Server
+## 🚀 Starting the Development Server
 
 Preview the app in your browser by running the dev server to confirm everything is wired up correctly.
 
@@ -79,9 +79,9 @@ Try stopping and restarting the dev server:
 - Check localhost again to see the app is gone.
 - Restart it with `npm run dev` and refresh the browser to see the app again.
 
-<a id="replace-the-placeholder-component"></a>
+<a id="replacing-the-placeholder-component"></a>
 
-## 🧩 Replace the Placeholder Component
+## 🧩 Replacing the Placeholder Component
 
 With the development server still running, replace the placeholder component with the game's splash screen component to experience live updates in action.
 
@@ -98,9 +98,9 @@ You probably noticed the `.jsx` file extension. That's because these **component
 
 The live update "magic" you experienced is actually powered by a build tool we are using called **Vite**, which uses a process known as **Hot Module Replacement (HMR)** to apply "smart updates" to your app instantly as you code.
 
-<a id="update-the-page-title"></a>
+<a id="updating-the-page-title"></a>
 
-## 🏷️ Update the Page Title
+## 🏷️ Updating the Page Title
 
 Even though React apps are built with components, they still use a standard HTML file as the entry point. Let's update the page title to reflect our project name.
 
@@ -133,7 +133,7 @@ _Quick reference for all the tools and concepts you just experienced:_
 
 <a id="ask-the-ai"></a>
 
-## 🤖 Ask the AI — What Just Happened?
+## 🤖 Ask the AI — Setting Up Your Trivia Game
 
 You just launched your Codespace, ran your dev server, swapped a component, and updated your page title — nice work!
 

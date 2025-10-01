@@ -7,18 +7,18 @@ You're about to build your first custom React component and unlock the power of 
 ## Table of Contents
 
 - [Understanding React's Approach](#understanding-reacts-approach)
-- [Create Your First Component](#create-your-first-component)
+- [Creating Your First Component](#creating-your-first-component)
 - [Understanding Props](#understanding-props)
 - [Adding Click Functionality](#adding-click-functionality)
 - [Styling with Variants](#styling-with-variants)
 - [Reusing Your Component](#reusing-your-component)
-- [Install React DevTools](#install-react-devtools)
+- [Installing React DevTools](#installing-react-devtools)
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
 
-<a id="access-your-codespace"></a>
+<a id="accessing-your-codespace"></a>
 
-## ☁️ Access Your Codespace
+## ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 1.
 
@@ -37,9 +37,9 @@ That's why swapping components felt so smooth. You weren't just editing code—y
 
 Now let's build your first custom component and see that power in action.
 
-<a id="create-your-first-component"></a>
+<a id="creating-your-first-component"></a>
 
-## 🧩 Create Your First Component
+## 🧩 Creating Your First Component
 
 Let's build a `GameButton` component for starting your trivia game. Components are like digital LEGO blocks — custom, reusable UI elements.
 
@@ -59,7 +59,7 @@ When you create a component, export it with `export default` so it can be shared
    ```javascript
    <GameButton /> // Add this component
    ```
-5. **Test it**: Run `npm run dev` and you should see your custom button!
+5. **Test**: Run `npm run dev` and you should see your custom button!
 
 
 
@@ -83,7 +83,7 @@ Props are how you pass data from parent components to child components. They're 
    }
    ```
 
-2. **Update SplashScreen to pass text**:
+2. **Update SplashScreen**: Pass text prop to GameButton:
 
    ```javascript
    <GameButton text="Start Adventure" /> // Add text prop
@@ -109,7 +109,7 @@ Let's make your buttons actually do something when clicked. In React, you can pa
    }
    ```
 
-2. **Update SplashScreen with click handler**:
+2. **Update SplashScreen**: Add click handler to GameButton:
 
    ```javascript
    <GameButton
@@ -118,7 +118,7 @@ Let's make your buttons actually do something when clicked. In React, you can pa
    />
    ```
 
-3. **Test it**: Click your button and see the alert!
+3. **Test**: Click your button and see the alert!
 
 
 
@@ -144,7 +144,7 @@ Let's add visual variety to your buttons using CSS classes, default parameters, 
    }
    ```
 
-2. **Update SplashScreen with variant**:
+2. **Update SplashScreen**: Add variant prop to GameButton:
 
    ```javascript
    <GameButton
@@ -184,9 +184,9 @@ Now that you've built a complete, fully-featured GameButton component, let's exp
 
 Try adding a third GameButton with `variant="primary"` and `text="Instructions"` to see how easy it is to scale your UI!
 
-<a id="install-react-devtools"></a>
+<a id="installing-react-devtools"></a>
 
-## 🔍 Install React DevTools
+## 🔍 Installing React DevTools
 
 React DevTools is like X-ray vision for your React app — see component structure, props, and state in real-time.
 
@@ -229,7 +229,7 @@ _Quick reference for all the React concepts you just learned:_
 
 <a id="ask-the-ai"></a>
 
-## 🤖 Ask the AI — Component Mastery
+## 🤖 Ask the AI — Building Game Components
 
 You just created your first reusable React component with props, styling, and click handlers — excellent work!
 

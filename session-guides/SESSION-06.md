@@ -14,9 +14,9 @@ You're about to supercharge your trivia game with browser storage and caching! T
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
 
-<a id="access-your-codespace"></a>
+<a id="accessing-your-codespace"></a>
 
-## ☁️ Access Your Codespace
+## ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 5.
 
@@ -238,7 +238,7 @@ _Quick reference for all the caching and browser storageage concepts you just le
 
 <a id="ask-the-ai"></a>
 
-## 🤖 Ask the AI — Understanding Caching
+## 🤖 Ask the AI — Adding Question Caching
 
 You just built your first caching system with localStorage and helper functions — great work!
 

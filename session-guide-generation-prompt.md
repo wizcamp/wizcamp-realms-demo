@@ -44,7 +44,7 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 ### Structure and Format
 - Follow SESSION-01.md structure: Table of Contents, step-by-step sections, "Bonus Challenge"
 - Use student-friendly name as primary title, technical concept as subtitle
-- Table of Contents: Include all sections with anchor links EXCEPT "Access Your Codespace"
+- Table of Contents: Include all sections with anchor links EXCEPT "Accessing Your Codespace"
 - Essential Terms table with consistent definitions and session-specific "Why it matters"
 - "Ask the AI" section with 5-7 high-impact questions
 
@@ -55,6 +55,13 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 - Multi-line code blocks require language qualifiers (```javascript, ```bash, ```json)
 - Use `javascript` for React/JSX (better PDF syntax highlighting than `jsx`)
 - Backticks only for actual code identifiers students type
+
+### Section Naming Standards
+- **Consistent verb forms**: Prefer gerunds ("Building", "Adding", "Testing", "Creating", "Implementing")
+- **Pattern adherence**: Use established patterns like "Understanding [Concept]" for conceptual sections
+- **Exceptions**: "Essential Terms", "Choose Your Own Adventure", and "Ask the AI" sections should remain as-is
+- **Examples**: "Building Game Components" not "Build Game Components", "Adding Click Functionality" not "Add Click Functionality"
+- **Conceptual sections**: "Understanding State vs Props", "Understanding APIs and External Data"
 
 ### Code Standards
 
@@ -68,6 +75,29 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 - **Concepts/technologies**: No backticks (**Components**, **React**, **APIs**)
 - **File references**: Always use backticks (`src/components/GameOver.jsx`)
 - **Rationale**: Backticks mark what students type; concepts use regular emphasis
+
+### Command Pattern Standards
+
+**File Operations:**
+- **Open files**: `**Open `src/path/file.jsx`**` (always use backticks for file paths)
+- **Create files**: `**Create the file**: Right-click `src/folder` → New File → name it `FileName.jsx``
+- **Import statements**: `**Add import**: Add `import Component from "./Component";` at the top`
+
+**Code Modifications:**
+- **Add elements**: `**Add [specific element]**: Add text prop to GameButton`
+- **Update components**: `**Update [specific target]**: Update SplashScreen with variant`
+- **Replace code**: `**Replace [old] with [new]**: Replace `<StartHere />` with `<SplashScreen />`
+
+**UI Interactions:**
+- **DevTools**: `**Open DevTools**: Press F12 or right-click → Inspect`
+- **User actions**: `**Click [specific element]**: Click the Credits button`
+- **Navigation**: `**Navigate to [location]**: Navigate to the game screen`
+- **External links**: `**Visit [URL]**: Visit [https://example.com](https://example.com)`
+
+**Testing & Verification:**
+- **Basic testing**: `**Test**: [Specific expected behavior]`
+- **Verification**: `**Verify**: [Specific outcome to check]`
+- **Result observation**: `**Watch [result]**: Watch the screen update instantly`
 
 ### Essential Terms Standards
 
@@ -105,6 +135,7 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 ❌ "Create a functional component with multiple prop types (text, onClick, variant) using destructuring syntax and default parameters"
 
 ## Ask the AI Guidelines
+- **Heading Format**: Use `## 🤖 Ask the AI — [Student-Friendly Name]` where the Student-Friendly Name comes from the Session Name Reference table above
 - **Scope**: 5-7 high-impact questions that deepen understanding
 - **Focus**: Core concepts from the session, encourage "why" and "how" exploration
 - **Style**: Conversational, student-friendly language
@@ -147,3 +178,8 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 - Consistent section ordering across all guide sections
 - Hands-on focus with practical examples
 - Terminology consistency with previous sessions
+- Standardized command patterns for student instructions
+- Consistent file path formatting with backticks
+- Uniform testing and verification language
+- Consistent section naming with gerund verb forms
+- Adherence to established section naming patterns

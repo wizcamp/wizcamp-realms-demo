@@ -15,9 +15,9 @@ You're about to build the heart of your trivia game — interactive quiz compone
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
 
-<a id="access-your-codespace"></a>
+<a id="accessing-your-codespace"></a>
 
-## ☁️ Access Your Codespace
+## ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 6.
 
@@ -308,7 +308,7 @@ Let's add personality to your game with custom feedback messages that celebrate 
    }
    ```
 
-5. **Add AnswerFeedback component** to JSX (right after QuestionHeader):
+5. **Add AnswerFeedback component**: Place in JSX right after QuestionHeader:
 
    ```jsx
    <AnswerFeedback
@@ -350,13 +350,13 @@ Let's test your complete quiz system and verify all the interactive pieces work 
 ### Complete Quiz Flow Test
 
 - **Navigate to game**: Click "Start Adventure"
-- **Click a zone**: Modal should appear with question and answers
-- **Click an answer**: 
+- **Click any zone**: Modal should appear with question and answers
+- **Click any answer**: 
   - Button should show correct/incorrect styling
   - Random feedback message should appear
   - Other buttons should be disabled
   - Continue button should become enabled
-- **Click Continue**: Next question should load
+- **Click Continue button**: Next question should load
 - **Complete all questions**: Modal should close and zone should be marked complete
 
 ### React DevTools Inspection
@@ -385,7 +385,7 @@ _Quick reference for all the component composition and interaction concepts you 
 
 <a id="ask-the-ai"></a>
 
-## 🤖 Ask the AI — Component Composition Mastery
+## 🤖 Ask the AI — Creating the Quiz Experience
 
 You just built a complex interactive quiz system using component composition, array mapping, and dynamic styling — excellent work!
 

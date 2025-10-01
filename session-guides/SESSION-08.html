@@ -81,10 +81,10 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Amulya Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
-color: #1f2328;
+color: #2d3748;
 margin: 0;
 padding: 0;
 max-width: none;
@@ -105,11 +105,12 @@ width: 100% !important;
 max-width: 100% !important;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-font-weight: 600;
+font-family: "Plein Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 500;
 line-height: 1.25;
 margin-bottom: 16px;
 margin-top: 24px;
+color: #1a202c;
 }
 h1 {
 font-size: 1.75em;
@@ -262,7 +263,8 @@ color: #0969da;
 text-decoration: none;
 }
 strong {
-font-weight: 600;
+font-weight: 500;
+color: #2d3748;
 }
 
 table {
@@ -286,9 +288,9 @@ overflow-wrap: break-word;
 hyphens: auto;
 }
 th {
-font-weight: 600;
+font-weight: 500;
 background-color: #f6f8fa;
-color: #24292f;
+color: #2d3748;
 -webkit-print-color-adjust: exact !important;
 print-color-adjust: exact !important;
 }
@@ -393,8 +395,8 @@ overflow-x: hidden !important;
 <li><a href="#essential-terms">Essential Terms</a></li>
 <li><a href="#ask-the-ai">Ask the AI</a></li>
 </ul>
-<p><a id="access-your-codespace"></a></p>
-<h2 id="access-your-codespace">☁️ Access Your Codespace</h2>
+<p><a id="accessing-your-codespace"></a></p>
+<h2 id="accessing-your-codespace">☁️ Accessing Your Codespace</h2>
 <p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 7.</p>
 <p><a id="understanding-application-state"></a></p>
 <h2 id="understanding-application-state">🧠 Understanding Application State</h2>
@@ -465,7 +467,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb3-2" title="2">  <span class="kw">const</span> <span class="op">{</span> score <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
 <a class="sourceLine" id="cb3-3" title="3">  <span class="cf">return</span> <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;score-display&quot;</span><span class="op">&gt;</span><span class="dt">Score</span><span class="op">:</span> <span class="op">{</span>score<span class="op">}</span>&lt;/div<span class="op">&gt;;</span></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Update HUD to render both components</strong> using a React Fragment (<code>&lt;&gt;...&lt;/&gt;</code>):</p>
+<li><p><strong>Update HUD component</strong>: Render both components using a React Fragment (<code>&lt;&gt;...&lt;/&gt;</code>):</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// Replace this single line:</span></a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="cf">return</span> <span class="op">&lt;</span>CurrentZone /<span class="op">&gt;;</span></a>
 <a class="sourceLine" id="cb4-3" title="3"></a>
@@ -476,7 +478,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb4-8" title="8">    <span class="op">&lt;</span>CurrentZone /<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb4-9" title="9">  &lt;/<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb4-10" title="10">)<span class="op">;</span></a></code></pre></div></li>
-<li><p><strong>Test</strong>: Navigate to the game screen → Score: 0 appears in HUD</p></li>
+<li><p><strong>Test</strong>: Navigate to the game screen and verify Score: 0 appears in HUD</p></li>
 </ol>
 <p>The <strong>Scoreboard component</strong> demonstrates the single responsibility principle — it has one job: display the current score. This modular approach makes your code easier to maintain and test.</p>
 <p><a id="implementing-score-updates"></a></p>
@@ -492,7 +494,7 @@ overflow-x: hidden !important;
 <div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> recordIncorrectAnswer <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb6-2" title="2">  <span class="at">setScore</span>((prev) <span class="kw">=&gt;</span> <span class="va">Math</span>.<span class="at">max</span>(<span class="dv">0</span><span class="op">,</span> prev <span class="op">-</span> POINTS_PER_CORRECT))<span class="op">;</span> <span class="co">// Add score decrease with floor</span></a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="op">};</span></a></code></pre></div></li>
-<li><p><strong>Test</strong>: Click zone → Answer questions → Observe score changes:</p>
+<li><p><strong>Test</strong>: Click zone, answer questions, and observe score changes:</p>
 <ul>
 <li><strong>Correct answer</strong> → +100 points</li>
 <li><strong>Incorrect answer</strong> → -100 points (but never below 0)</li>
@@ -648,7 +650,7 @@ overflow-x: hidden !important;
 </tbody>
 </table>
 <p><a id="ask-the-ai"></a></p>
-<h2 id="ask-the-ai-application-state-understanding">🤖 Ask the AI — Application State Understanding</h2>
+<h2 id="ask-the-ai-implementing-scoring-victory">🤖 Ask the AI — Implementing Scoring &amp; Victory</h2>
 <p>You just implemented a complete scoring system, managed complex application state, and built your first independent React component — excellent work!</p>
 <p>Now let’s deepen your understanding of state management patterns, component architecture, and professional development practices. Here are the most impactful questions to ask your AI assistant about today’s session:</p>
 <ul>

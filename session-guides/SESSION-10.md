@@ -8,17 +8,17 @@ You're about to take your trivia game from local development to the live interne
 
 - [Understanding Version Control](#understanding-version-control)
 - [Understanding CI/CD](#understanding-cicd)
-- [Make This Project Yours](#make-this-project-yours)
-- [Learn the Git Workflow](#learn-the-git-workflow)
-- [Customize Your Game Title](#customize-your-game-title)
-- [Watch Your Deployment](#watch-your-deployment)
-- [Share Your Live Game](#share-your-live-game)
+- [Making This Project Yours](#making-this-project-yours)
+- [Learning the Git Workflow](#learning-the-git-workflow)
+- [Customizing Your Game Title](#customizing-your-game-title)
+- [Watching Your Deployment](#watching-your-deployment)
+- [Sharing Your Live Game](#sharing-your-live-game)
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
 
-<a id="access-your-codespace"></a>
+<a id="accessing-your-codespace"></a>
 
-## ☁️ Access Your Codespace
+## ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 9.
 
@@ -79,9 +79,9 @@ This diagram shows what happens behind the scenes when you push code. GitHub det
 
 **CI/CD** eliminates manual deployment work. Instead of building and uploading files yourself, the system automatically handles everything when you push code. This is how teams deploy apps multiple times per day.
 
-<a id="make-this-project-yours"></a>
+<a id="making-this-project-yours"></a>
 
-## 🏠 Make This Project Yours
+## 🏠 Making This Project Yours
 
 All `git` commands should be run in your Codespace terminal
 
@@ -221,9 +221,9 @@ These steps transform your project from a shared template into your personal cre
 
 **Note**: Your game uses a special `getAssetPath()` utility function to ensure images and audio work correctly both in development and when deployed to GitHub Pages. This automatically handles the different URL paths needed for deployment.
 
-<a id="learn-the-git-workflow"></a>
+<a id="learning-the-git-workflow"></a>
 
-## 🔄 Learn the Git Workflow
+## 🔄 Learning the Git Workflow
 
 Whether you're fixing bugs, adding new features, or updating the design, you'll need a reliable way to manage and publish changes. That's where **Git** comes in.
 
@@ -275,9 +275,9 @@ The message `feat(logo): customize game title to Trivia Quest` follows this form
 
 Git connects your local code to your live site. With just three commands — `add`, `commit`, and `push` — you can track changes, explain what you did, and publish updates instantly. It’s the core workflow behind every improvement you’ll make from here on out.
 
-<a id="customize-your-game-title"></a>
+<a id="customizing-your-game-title"></a>
 
-## ✏️ Customize Your Game Title
+## ✏️ Customizing Your Game Title
 
 Now let's practice the Git workflow by making a real change to your game. We'll personalize your game's title and see the complete process in action.
 
@@ -325,9 +325,9 @@ git push
 
 You just experienced the complete developer workflow - from making a change to deploying it live. This same pattern applies whether you're fixing a bug, adding a feature, or updating styles.
 
-<a id="watch-your-deployment"></a>
+<a id="watching-your-deployment"></a>
 
-## 👀 Watch Your Deployment
+## 👀 Watching Your Deployment
 
 Now let's track your title change through the automated deployment process!
 
@@ -349,9 +349,9 @@ Now let's track your title change through the automated deployment process!
 
 You just experienced the complete developer workflow - from code change to live deployment. This automation is how teams ship updates multiple times per day.
 
-<a id="share-your-live-game"></a>
+<a id="sharing-your-live-game"></a>
 
-## 🌍 Share Your Live Game
+## 🌍 Sharing Your Live Game
 
 Congratulations! Your trivia game is now live on the internet. Here's how to share it with others.
 
@@ -392,7 +392,7 @@ _Quick reference for all the version control and deployment concepts you just le
 
 <a id="ask-the-ai"></a>
 
-## 🤖 Ask the AI — Version Control & Deployment
+## 🤖 Ask the AI — Publishing Your Game
 
 You just published your trivia game to the internet using development workflows — excellent work!
 

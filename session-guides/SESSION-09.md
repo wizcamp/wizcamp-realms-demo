@@ -17,9 +17,9 @@ You're about to add another professional feature to your trivia game — theme m
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
 
-<a id="access-your-codespace"></a>
+<a id="accessing-your-codespace"></a>
 
-## ☁️ Access Your Codespace
+## ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 8.
 
@@ -180,7 +180,7 @@ Before we implement the audio functionality, let's add the UI controls you'll ne
    }
    ```
 
-3. **Add `MusicToggle` to the HUD** by updating the JSX return:
+3. **Add MusicToggle component**: Update the HUD JSX return:
 
    ```javascript
    return (
@@ -192,7 +192,7 @@ Before we implement the audio functionality, let's add the UI controls you'll ne
    );
    ```
 
-4. **Test**: Start Game → Music toggle visible, but inoperable when clicked
+4. **Test**: Start Game and verify music toggle is visible but inoperable when clicked
 
 
 
@@ -255,7 +255,7 @@ Let's implement the core audio functionality by updating the `play` function to 
 
    The `if (!audioRef.current)` check is an example of **lazy initialization** — creating a resource only when it's first needed. Since `audioRef.current` starts as `null`, the first time `play()` runs it creates the audio element. Every time after that, `audioRef.current` contains the audio element, so the `if` condition is false and it skips creating a new one.
 
-2. **Test**: Click music toggle → Game theme plays and button shows playing state
+2. **Test**: Click music toggle and verify game theme plays with button showing playing state
 
 ### Audio Creation Logic
 
@@ -369,7 +369,7 @@ _Quick reference for all the custom hooks and browser API concepts you just lear
 
 <a id="ask-the-ai"></a>
 
-## 🤖 Ask the AI — Custom Hooks & Browser APIs
+## 🤖 Ask the AI — Adding Theme Music
 
 You just created a custom React hook with browser API integration and AI-assisted development — excellent work!
 

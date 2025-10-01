@@ -81,10 +81,10 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Amulya Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
-color: #1f2328;
+color: #2d3748;
 margin: 0;
 padding: 0;
 max-width: none;
@@ -105,11 +105,12 @@ width: 100% !important;
 max-width: 100% !important;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-font-weight: 600;
+font-family: "Plein Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 500;
 line-height: 1.25;
 margin-bottom: 16px;
 margin-top: 24px;
+color: #1a202c;
 }
 h1 {
 font-size: 1.75em;
@@ -262,7 +263,8 @@ color: #0969da;
 text-decoration: none;
 }
 strong {
-font-weight: 600;
+font-weight: 500;
+color: #2d3748;
 }
 
 table {
@@ -286,9 +288,9 @@ overflow-wrap: break-word;
 hyphens: auto;
 }
 th {
-font-weight: 600;
+font-weight: 500;
 background-color: #f6f8fa;
-color: #24292f;
+color: #2d3748;
 -webkit-print-color-adjust: exact !important;
 print-color-adjust: exact !important;
 }
@@ -394,8 +396,8 @@ overflow-x: hidden !important;
 <li><a href="#essential-terms">Essential Terms</a></li>
 <li><a href="#ask-the-ai">Ask the AI</a></li>
 </ul>
-<p><a id="access-your-codespace"></a></p>
-<h2 id="access-your-codespace">☁️ Access Your Codespace</h2>
+<p><a id="accessing-your-codespace"></a></p>
+<h2 id="accessing-your-codespace">☁️ Accessing Your Codespace</h2>
 <p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 3.</p>
 <p><a id="adding-the-hud-and-coordinate-display"></a></p>
 <h2 id="adding-the-hud-and-coordinate-display">🖥️ Adding the HUD and Coordinate Display</h2>
@@ -412,7 +414,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb2-5" title="5">    <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span> <span class="co">// Add CoordinateDisplay</span></a>
 <a class="sourceLine" id="cb2-6" title="6">  &lt;/<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb2-7" title="7">)<span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Test the changes</strong>: Run <code>npm run dev</code> and navigate to the game screen to see the new HUD and coordinate display</p></li>
+<li><p><strong>Test</strong>: Run <code>npm run dev</code> and navigate to the game screen to see the new HUD and coordinate display</p></li>
 </ol>
 <p><strong>React Fragments</strong> (<code>&lt;&gt;...&lt;/&gt;</code>) are like invisible containers — they let you snap together multiple components without clutter. React components must return a single root element, so fragments solve this requirement cleanly. The <code>HUD</code> shows game progress, while <code>CoordinateDisplay</code> helps you position zone labels precisely.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
@@ -484,7 +486,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb3-15" title="15">    <span class="dt">alignment</span><span class="op">:</span> <span class="st">&quot;left&quot;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb3-16" title="16">  <span class="op">},</span></a>
 <a class="sourceLine" id="cb3-17" title="17"><span class="op">},</span></a></code></pre></div></li>
-<li><p><strong>Add Zone 1 and Zone 2</strong> by copying the structure and updating all properties (keep the mapLabel coordinates for now — we’ll position them precisely in the next section)</p>
+<li><p><strong>Add Zone 1 and Zone 2 objects</strong>: Copy the structure and update all properties (keep the mapLabel coordinates for now — we’ll position them precisely in the next section)</p>
 <p>Note: Changes to <code>zones.js</code> will trigger a full page reload (not HMR-friendly)</p></li>
 </ol>
 <p><strong>Object properties</strong> use colon syntax (<code>name: &quot;value&quot;</code>) and are separated by commas. Each zone object contains different <strong>data types</strong>: strings for text, numbers for IDs, and nested objects for complex styling. This structure makes your game data organized and easy to modify.</p>
@@ -575,7 +577,7 @@ overflow-x: hidden !important;
 </tbody>
 </table>
 <p><a id="ask-the-ai"></a></p>
-<h2 id="ask-the-ai-data-structure-mastery">🤖 Ask the AI — Data Structure Mastery</h2>
+<h2 id="ask-the-ai-configuring-game-zones">🤖 Ask the AI — Configuring Game Zones</h2>
 <p>You just designed cohesive zone themes, configured complex JavaScript data structures, and experienced data-driven architecture — excellent work!</p>
 <p>Now let’s deepen your understanding of data structures, configuration patterns, and the relationship between data and UI. Here are the most impactful questions to ask your AI assistant about today’s session:</p>
 <ul>

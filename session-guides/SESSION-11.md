@@ -10,9 +10,9 @@ You've built a complete trivia game and deployed it to the internet — now it's
 - [GitHub Copilot Workflow](#github-copilot-workflow)
 - [Git Workflow](#git-workflow)
 
-<a id="access-your-codespace"></a>
+<a id="accessing-your-codespace"></a>
 
-## ☁️ Access Your Codespace
+## ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 10.
 

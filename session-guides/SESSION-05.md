@@ -16,9 +16,9 @@ You're about to connect your trivia game to the real internet! This guide walks 
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
 
-<a id="access-your-codespace"></a>
+<a id="accessing-your-codespace"></a>
 
-## ☁️ Access Your Codespace
+## ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 4.
 
@@ -154,7 +154,7 @@ Time to connect your game to the real internet! Let's implement the core **fetch
    }
    ```
 
-3. **Test your changes**:
+3. **Test**: Verify the API integration:
 
    - **Open DevTools**: Press F12 or right-click → Inspect
    - **Navigate back to the game** (click "Start Game")
@@ -329,7 +329,7 @@ Let's test your complete **API** integration and clean up the debugging code.
    }
    ```
 
-2. **Test the final integration**:
+2. **Test**: Verify the complete data flow:
 
    - Game resets to splash screen
    - **Navigate to the game** (click "Start Game")
@@ -425,7 +425,7 @@ _Quick reference for all the API and asynchronous programming concepts you just 
 
 <a id="ask-the-ai"></a>
 
-## 🤖 Ask the AI — API Integration
+## 🤖 Ask the AI — Generating Dynamic Questions
 
 You just built a complete API integration with data fetching, transformation, and error handling — excellent work!
 

@@ -46,7 +46,7 @@
 - **Hook:** "You've experienced React's magic — now let's build your own custom components!"
 - **Today's Mission:**
   - **Create** your first reusable React component
-  - **Master** props for component communication
+  - **Learn** props for component communication
   - **Style** components with variants
   - **Install** essential developer tools
   - **Experience** component composition in action
@@ -87,7 +87,7 @@
 - **Student Connection:** "You'll build a GameButton that works everywhere in your trivia game"
 - **Transition:** "Now that you understand React's advantages, let's see what makes components so powerful..."
 
-### **Slide 4: JSX Mastery - React's Special Language 🌟**
+### **Slide 4: JSX Fundamentals - React's Special Language 🌟**
 
 - **Title:** "JSX: The Language of React Components"
 - **What is JSX?**

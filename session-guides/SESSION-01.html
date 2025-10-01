@@ -18,10 +18,10 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Amulya Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
-color: #1f2328;
+color: #2d3748;
 margin: 0;
 padding: 0;
 max-width: none;
@@ -42,11 +42,12 @@ width: 100% !important;
 max-width: 100% !important;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-font-weight: 600;
+font-family: "Plein Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 500;
 line-height: 1.25;
 margin-bottom: 16px;
 margin-top: 24px;
+color: #1a202c;
 }
 h1 {
 font-size: 1.75em;
@@ -199,7 +200,8 @@ color: #0969da;
 text-decoration: none;
 }
 strong {
-font-weight: 600;
+font-weight: 500;
+color: #2d3748;
 }
 
 table {
@@ -223,9 +225,9 @@ overflow-wrap: break-word;
 hyphens: auto;
 }
 th {
-font-weight: 600;
+font-weight: 500;
 background-color: #f6f8fa;
-color: #24292f;
+color: #2d3748;
 -webkit-print-color-adjust: exact !important;
 print-color-adjust: exact !important;
 }
@@ -321,16 +323,16 @@ overflow-x: hidden !important;
 <p>You’re about to launch your dev setup and start building like a pro. This guide breaks everything down into bite-sized tasks so you can move fast, learn by doing, and see results right away. Ready to dive in? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#launch-your-codespace">Launch Your Codespace</a></li>
+<li><a href="#launching-your-codespace">Launching Your Codespace</a></li>
 <li><a href="#project-navigation">Project Navigation</a></li>
-<li><a href="#start-the-development-server">Start the Development Server</a></li>
-<li><a href="#replace-the-placeholder-component">Replace the Placeholder Component</a></li>
-<li><a href="#update-the-page-title">Update the Page Title</a></li>
+<li><a href="#starting-the-development-server">Starting the Development Server</a></li>
+<li><a href="#replacing-the-placeholder-component">Replacing the Placeholder Component</a></li>
+<li><a href="#updating-the-page-title">Updating the Page Title</a></li>
 <li><a href="#essential-terms">Essential Terms</a></li>
 <li><a href="#ask-the-ai">Ask the AI</a></li>
 </ul>
-<p><a id="launch-your-codespace"></a></p>
-<h2 id="launch-your-codespace">🔧 Launch Your Codespace</h2>
+<p><a id="launching-your-codespace"></a></p>
+<h2 id="launching-your-codespace">🔧 Launching Your Codespace</h2>
 <p>Let’s get your cloud coding environment up and running so you can start building without messing with local installs. This is your dev playground in the cloud — no setup headaches, no installs, just code.</p>
 <ol type="1">
 <li>Head over to <a href="https://github.com">github.com</a> and log in using the account you set up during pre-camp.</li>
@@ -345,23 +347,21 @@ overflow-x: hidden !important;
 <p><a id="project-navigation"></a></p>
 <h2 id="project-navigation">🗂️ Project Navigation</h2>
 <p><em>Quick orientation to help you find files during today’s tasks:</em></p>
-<pre class="text"><code>wizcamp-realms-demo/
+<pre class="text"><code>wizcamp-realms/
 ├── src/                    # Your React code lives here
 │   ├── components/         # React components (SplashScreen, etc.)
 │   └── App.jsx             # Main app component (you&#39;ll edit this!)
 ├── public/                 # Static files (images, etc.)
-├── session-guides/         # Step-by-step guides (like this one)
 ├── index.html              # HTML entry point (you&#39;ll edit this too!)
 └── package.json            # Project configuration (npm scripts, dependencies)</code></pre>
 <p><strong>For today’s tasks, you’ll only work with:</strong></p>
 <ul>
 <li><code>src/App.jsx</code> — to swap components</li>
 <li><code>index.html</code> — to update the page title</li>
-<li><code>session-guides/</code> — for instructions (that’s where you are now!)</li>
 </ul>
 <p><em>Don’t worry about the other folders yet — we’ll explore them in future sessions.</em></p>
-<p><a id="start-the-development-server"></a></p>
-<h2 id="start-the-development-server">🚀 Start the Development Server</h2>
+<p><a id="starting-the-development-server"></a></p>
+<h2 id="starting-the-development-server">🚀 Starting the Development Server</h2>
 <p>Preview the app in your browser by running the dev server to confirm everything is wired up correctly.</p>
 <ol type="1">
 <li>Launch the dev server from the terminal: <code>npm run dev</code>.</li>
@@ -376,8 +376,8 @@ overflow-x: hidden !important;
 <li>Check localhost again to see the app is gone.</li>
 <li>Restart it with <code>npm run dev</code> and refresh the browser to see the app again.</li>
 </ul>
-<p><a id="replace-the-placeholder-component"></a></p>
-<h2 id="replace-the-placeholder-component">🧩 Replace the Placeholder Component</h2>
+<p><a id="replacing-the-placeholder-component"></a></p>
+<h2 id="replacing-the-placeholder-component">🧩 Replacing the Placeholder Component</h2>
 <p>With the development server still running, replace the placeholder component with the game’s splash screen component to experience live updates in action.</p>
 <ol type="1">
 <li><strong>Open <code>src/App.jsx</code></strong></li>
@@ -388,8 +388,8 @@ overflow-x: hidden !important;
 <p><strong>Components</strong> are the building blocks of <strong>React</strong> web apps — kind of like digital LEGO pieces. You build apps by snapping them together.</p>
 <p>You probably noticed the <code>.jsx</code> file extension. That’s because these <strong>components</strong> are written in a special syntax called <strong>JSX</strong>. It looks a lot like HTML, but is actually JavaScript under the hood. JSX lets you describe what the UI should look — using a syntax that’s readable like HTML but powered by JavaScript.</p>
 <p>The live update “magic” you experienced is actually powered by a build tool we are using called <strong>Vite</strong>, which uses a process known as <strong>Hot Module Replacement (HMR)</strong> to apply “smart updates” to your app instantly as you code.</p>
-<p><a id="update-the-page-title"></a></p>
-<h2 id="update-the-page-title">🏷️ Update the Page Title</h2>
+<p><a id="updating-the-page-title"></a></p>
+<h2 id="updating-the-page-title">🏷️ Updating the Page Title</h2>
 <p>Even though React apps are built with components, they still use a standard HTML file as the entry point. Let’s update the page title to reflect our project name.</p>
 <ol type="1">
 <li><strong>Open <code>index.html</code></strong></li>
@@ -467,7 +467,7 @@ overflow-x: hidden !important;
 </tbody>
 </table>
 <p><a id="ask-the-ai"></a></p>
-<h2 id="ask-the-ai-what-just-happened">🤖 Ask the AI — What Just Happened?</h2>
+<h2 id="ask-the-ai-setting-up-your-trivia-game">🤖 Ask the AI — Setting Up Your Trivia Game</h2>
 <p>You just launched your Codespace, ran your dev server, swapped a component, and updated your page title — nice work!</p>
 <p>Now let’s make sure you understand what you did and why it matters. Here are the most impactful questions to ask your AI assistant about today’s session:</p>
 <ul>

@@ -81,10 +81,10 @@ margin: 0.6in 0.75in 0.6in 0.75in;
 size: letter;
 }
 body {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-family: "Amulya Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 font-size: 16px;
 line-height: 1.4;
-color: #1f2328;
+color: #2d3748;
 margin: 0;
 padding: 0;
 max-width: none;
@@ -105,11 +105,12 @@ width: 100% !important;
 max-width: 100% !important;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-font-weight: 600;
+font-family: "Plein Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 500;
 line-height: 1.25;
 margin-bottom: 16px;
 margin-top: 24px;
+color: #1a202c;
 }
 h1 {
 font-size: 1.75em;
@@ -262,7 +263,8 @@ color: #0969da;
 text-decoration: none;
 }
 strong {
-font-weight: 600;
+font-weight: 500;
+color: #2d3748;
 }
 
 table {
@@ -286,9 +288,9 @@ overflow-wrap: break-word;
 hyphens: auto;
 }
 th {
-font-weight: 600;
+font-weight: 500;
 background-color: #f6f8fa;
-color: #24292f;
+color: #2d3748;
 -webkit-print-color-adjust: exact !important;
 print-color-adjust: exact !important;
 }
@@ -393,8 +395,8 @@ overflow-x: hidden !important;
 <li><a href="#essential-terms">Essential Terms</a></li>
 <li><a href="#ask-the-ai">Ask the AI</a></li>
 </ul>
-<p><a id="access-your-codespace"></a></p>
-<h2 id="access-your-codespace">☁️ Access Your Codespace</h2>
+<p><a id="accessing-your-codespace"></a></p>
+<h2 id="accessing-your-codespace">☁️ Accessing Your Codespace</h2>
 <p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 6.</p>
 <p><a id="understanding-component-composition"></a></p>
 <h2 id="understanding-component-composition">🧩 Understanding Component Composition</h2>
@@ -587,7 +589,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb17-13" title="13">    &lt;/div<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb17-14" title="14">  )<span class="op">;</span></a>
 <a class="sourceLine" id="cb17-15" title="15"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Add AnswerFeedback component</strong> to JSX (right after QuestionHeader):</p>
+<li><p><strong>Add AnswerFeedback component</strong>: Place in JSX right after QuestionHeader:</p>
 <pre class="jsx"><code>&lt;AnswerFeedback
   hasAnswered={chosenAnswer !== null}
   isCorrect={chosenAnswer === question.correct}
@@ -613,15 +615,15 @@ overflow-x: hidden !important;
 <h3 id="complete-quiz-flow-test">Complete Quiz Flow Test</h3>
 <ul>
 <li><strong>Navigate to game</strong>: Click “Start Adventure”</li>
-<li><strong>Click a zone</strong>: Modal should appear with question and answers</li>
-<li><strong>Click an answer</strong>:
+<li><strong>Click any zone</strong>: Modal should appear with question and answers</li>
+<li><strong>Click any answer</strong>:
 <ul>
 <li>Button should show correct/incorrect styling</li>
 <li>Random feedback message should appear</li>
 <li>Other buttons should be disabled</li>
 <li>Continue button should become enabled</li>
 </ul></li>
-<li><strong>Click Continue</strong>: Next question should load</li>
+<li><strong>Click Continue button</strong>: Next question should load</li>
 <li><strong>Complete all questions</strong>: Modal should close and zone should be marked complete</li>
 </ul>
 <h3 id="react-devtools-inspection">React DevTools Inspection</h3>
@@ -672,7 +674,7 @@ overflow-x: hidden !important;
 </tbody>
 </table>
 <p><a id="ask-the-ai"></a></p>
-<h2 id="ask-the-ai-component-composition-mastery">🤖 Ask the AI — Component Composition Mastery</h2>
+<h2 id="ask-the-ai-creating-the-quiz-experience">🤖 Ask the AI — Creating the Quiz Experience</h2>
 <p>You just built a complex interactive quiz system using component composition, array mapping, and dynamic styling — excellent work!</p>
 <p>Now let’s deepen your understanding of React patterns, component architecture, and user interaction design. Here are the most impactful questions to ask your AI assistant about today’s session:</p>
 <ul>

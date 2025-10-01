@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # Generate PDFs for all SESSION-*.md files
-# Usage: ./generate-all-pdfs.sh [BODY_FONT] [CODE_FONT]
+# Usage: ./generate-all-pdfs.sh [BODY_FONT] [CODE_FONT] [HEADING_FONT]
 
 BODY_FONT=${1:-"Inter"}
 CODE_FONT=${2:-"JetBrains Mono"}
+HEADING_FONT=${3:-"$BODY_FONT"}
 
 echo "Generating PDFs for all session guides..."
-echo "Using fonts: Body='$BODY_FONT', Code='$CODE_FONT'"
+echo "Using fonts: Body='$BODY_FONT', Code='$CODE_FONT', Headings='$HEADING_FONT'"
 echo
 
 # Find all SESSION-*.md files and generate PDFs
@@ -16,7 +17,7 @@ for file in SESSION-*.md; do
         # Extract session name without extension
         session_name="${file%.md}"
         echo "Processing $session_name..."
-        ./generate-pdf.sh "$session_name" "$BODY_FONT" "$CODE_FONT"
+        ./generate-pdf.sh "$session_name" "$BODY_FONT" "$CODE_FONT" "$HEADING_FONT"
         echo
     fi
 done

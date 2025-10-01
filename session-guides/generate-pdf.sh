@@ -1,27 +1,39 @@
 #!/bin/bash
 
-# Usage: ./generate-pdf.sh SESSION-01 [BODY_FONT] [CODE_FONT]
+# Usage: ./generate-pdf.sh SESSION-01 [BODY_FONT] [CODE_FONT] [HEADING_FONT]
 # Examples:
 #   ./generate-pdf.sh SESSION-01
-#   ./generate-pdf.sh SESSION-01 "Inter" "JetBrains Mono"
-#   ./generate-pdf.sh SESSION-01 "Roboto" "Fira Code"
+#   ./generate-pdf.sh SESSION-01 "Inter" "JetBrains Mono" "Inter"
+#   ./generate-pdf.sh SESSION-01 "Amulya Variable" "JetBrains Mono" "Synonym Variable"
 
 SESSION_NAME=$1
 BODY_FONT=${2:-"Inter"}
 CODE_FONT=${3:-"JetBrains Mono"}
+HEADING_FONT=${4:-"$BODY_FONT"}
 
 if [ -z "$SESSION_NAME" ]; then
-    echo "Usage: ./generate-pdf.sh SESSION-NAME [BODY_FONT] [CODE_FONT]"
-    echo "Available fonts: Inter, Roboto, Open Sans, Lato, Source Sans Pro, Geist"
+    echo "Usage: ./generate-pdf.sh SESSION-NAME [BODY_FONT] [CODE_FONT] [HEADING_FONT]"
+    echo "Available fonts: Inter, Roboto, Open Sans, Lato, Source Sans Pro, Geist, Amulya Variable, Synonym Variable"
     echo "Available code fonts: JetBrains Mono, Fira Code, Source Code Pro, Roboto Mono, Geist Mono"
     exit 1
 fi
 
 echo "Generating PDF for $SESSION_NAME..."
-echo "Installing fonts locally..."
+echo "Checking for fonts..."
 
-# Install fonts locally if not already installed
-if ! fc-list | grep -q "$BODY_FONT"; then
+# Check for local project fonts first
+PROJECT_FONTS_DIR="./fonts"
+if [ -d "$PROJECT_FONTS_DIR" ] && [ "$(ls -A $PROJECT_FONTS_DIR 2>/dev/null)" ]; then
+    echo "Found local fonts directory, installing project fonts..."
+    sudo mkdir -p /usr/share/fonts/truetype/project/
+    sudo cp "$PROJECT_FONTS_DIR"/*.{ttf,otf,woff,woff2} /usr/share/fonts/truetype/project/ 2>/dev/null || true
+    sudo fc-cache -f
+    echo "Project fonts installed from $PROJECT_FONTS_DIR"
+fi
+
+# Install fonts locally if not already installed (check after project fonts are loaded)
+sudo fc-cache -f
+if ! fc-list | grep -qi "$BODY_FONT"; then
     echo "Installing $BODY_FONT font..."
     case "$BODY_FONT" in
         "Inter")
@@ -44,7 +56,7 @@ if ! fc-list | grep -q "$BODY_FONT"; then
     sudo fc-cache -f
 fi
 
-if ! fc-list | grep -q "$CODE_FONT"; then
+if ! fc-list | grep -qi "$CODE_FONT"; then
     echo "Installing $CODE_FONT font..."
     case "$CODE_FONT" in
         "JetBrains Mono")
@@ -78,7 +90,7 @@ body {
   font-family: "$BODY_FONT", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.4;
-  color: #1f2328;
+  color: #2d3748;
   margin: 0;
   padding: 0;
   max-width: none;
@@ -102,11 +114,12 @@ html, body {
   max-width: 100% !important;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: "$BODY_FONT", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  font-weight: 600;
+  font-family: "$HEADING_FONT", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 500;
   line-height: 1.25;
   margin-bottom: 16px;
   margin-top: 24px;
+  color: #1a202c;
 }
 h1 {
   font-size: 1.75em;
@@ -276,7 +289,8 @@ a {
   text-decoration: none;
 }
 strong {
-  font-weight: 600;
+  font-weight: 500;
+  color: #2d3748;
 }
 
 /* Table Styling */
@@ -303,9 +317,9 @@ th, td {
 }
 
 th {
-  font-weight: 600;
+  font-weight: 500;
   background-color: #f6f8fa;
-  color: #24292f;
+  color: #2d3748;
   -webkit-print-color-adjust: exact !important;
   print-color-adjust: exact !important;
 }
@@ -437,7 +451,7 @@ google-chrome-stable --headless --disable-gpu \
     ${SESSION_NAME}.html
 
 echo "PDF generated: ${SESSION_NAME}.pdf"
-echo "Fonts used: Body='$BODY_FONT', Code='$CODE_FONT'"
+echo "Fonts used: Body='$BODY_FONT', Code='$CODE_FONT', Headings='$HEADING_FONT'"
 
 # Clean up temporary files
 rm ${SESSION_NAME}.css

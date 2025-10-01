@@ -16,9 +16,9 @@ You're about to design the heart of your trivia game — the zone configuration 
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
 
-<a id="access-your-codespace"></a>
+<a id="accessing-your-codespace"></a>
 
-## ☁️ Access Your Codespace
+## ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 3.
 
@@ -47,7 +47,7 @@ Let's add the game's **HUD** (Heads Up Display) and a coordinate helper to assis
    )}
    ```
 
-3. **Test the changes**: Run `npm run dev` and navigate to the game screen to see the new HUD and coordinate display
+3. **Test**: Run `npm run dev` and navigate to the game screen to see the new HUD and coordinate display
 
 
 
@@ -139,7 +139,7 @@ Time to implement your zone designs by updating the `ZONES` array with your cust
    },
    ```
 
-3. **Add Zone 1 and Zone 2** by copying the structure and updating all properties (keep the mapLabel coordinates for now — we'll position them precisely in the next section)
+3. **Add Zone 1 and Zone 2 objects**: Copy the structure and update all properties (keep the mapLabel coordinates for now — we'll position them precisely in the next section)
 
    Note: Changes to `zones.js` will trigger a full page reload (not HMR-friendly)
 
@@ -213,7 +213,7 @@ _Quick reference for all the data structure and configuration concepts you just 
 
 <a id="ask-the-ai"></a>
 
-## 🤖 Ask the AI — Data Structure Mastery
+## 🤖 Ask the AI — Configuring Game Zones
 
 You just designed cohesive zone themes, configured complex JavaScript data structures, and experienced data-driven architecture — excellent work!
 
