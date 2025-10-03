@@ -516,10 +516,10 @@ overflow-x: hidden !important;
 <h2 id="building-the-musictoggle-component">🎛️ Building the MusicToggle Component</h2>
 <p>Before we implement the audio functionality, let’s add the UI controls you’ll need to test it. This music toggle will provide the interface for testing the <code>useAudio</code> hook as you build it in the next sections.</p>
 <ol type="1">
-<li><p><strong>Add the asset utility import</strong> at the top of <code>src/components/HUD.jsx</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> <span class="op">{</span> getAssetPath <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../utils/assets&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a></code></pre></div></li>
-<li><p><strong>Add the <code>MusicToggle</code> component</strong> after the <code>CurrentZone</code> function:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">function</span> <span class="at">MusicToggle</span>() <span class="op">{</span> <span class="co">// Add MusicToggle component</span></a>
+<li><p><strong>Add</strong> the asset utility import at the top of <code>src/components/HUD.jsx</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> <span class="op">{</span> getAssetPath <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../utils/assets&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Add</strong> the <code>MusicToggle</code> component after the <code>CurrentZone</code> function</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">function</span> <span class="at">MusicToggle</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb7-2" title="2">  <span class="kw">const</span> <span class="op">{</span> music <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
 <a class="sourceLine" id="cb7-3" title="3">  <span class="cf">return</span> (</a>
 <a class="sourceLine" id="cb7-4" title="4">    <span class="op">&lt;</span>button </a>
@@ -539,29 +539,29 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb7-18" title="18">    &lt;/button<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb7-19" title="19">  )<span class="op">;</span></a>
 <a class="sourceLine" id="cb7-20" title="20"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Add MusicToggle component</strong>: Update the HUD JSX return:</p>
+<li><p><strong>Add</strong> MusicToggle component by updating the HUD JSX return</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="cf">return</span> (</a>
 <a class="sourceLine" id="cb8-2" title="2">  <span class="op">&lt;&gt;</span></a>
 <a class="sourceLine" id="cb8-3" title="3">    <span class="op">&lt;</span>Scoreboard /<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb8-4" title="4">    <span class="op">&lt;</span>CurrentZone /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb8-5" title="5">    <span class="op">&lt;</span>MusicToggle /<span class="op">&gt;</span> <span class="co">// Add MusicToggle</span></a>
+<a class="sourceLine" id="cb8-5" title="5">    <span class="op">&lt;</span>MusicToggle /<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb8-6" title="6">  &lt;/<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb8-7" title="7">)<span class="op">;</span></a></code></pre></div></li>
-<li><p><strong>Test</strong>: Start Game and verify music toggle is visible but inoperable when clicked</p></li>
+<li><p><strong>Test</strong> by starting Game and verifying music toggle is visible but inoperable when clicked</p></li>
 </ol>
 <p>The <strong><code>MusicToggle</code> component</strong> demonstrates conditional rendering with dynamic images and tooltips. The <code>music.isPlaying</code> state controls both the icon and the tooltip text, providing clear visual feedback to users.</p>
 <p><a id="adding-audio-reference-to-useaudio"></a></p>
 <h2 id="adding-audio-reference-to-useaudio">📻 Adding Audio Reference to useAudio</h2>
 <p>Now let’s add the audio reference to your <code>useAudio</code> hook so it can store the HTMLAudioElement.</p>
 <ol type="1">
-<li><p><strong>Open <code>src/hooks/useAudio.js</code></strong> and add the audio reference:</p>
+<li><p><strong>Open</strong> <code>src/hooks/useAudio.js</code> and add the audio reference</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="im">export</span> <span class="kw">function</span> <span class="at">useAudio</span>(src) <span class="op">{</span></a>
-<a class="sourceLine" id="cb9-2" title="2">  <span class="kw">const</span> audioRef <span class="op">=</span> <span class="at">useRef</span>(<span class="kw">null</span>)<span class="op">;</span> <span class="co">// Add audio ref</span></a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="kw">const</span> audioRef <span class="op">=</span> <span class="at">useRef</span>(<span class="kw">null</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb9-3" title="3">  <span class="kw">const</span> [isPlaying<span class="op">,</span> setIsPlaying] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb9-4" title="4">  <span class="co">// ... rest of hook</span></a>
 <a class="sourceLine" id="cb9-5" title="5"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Add the useRef import</strong> at the top of the file:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="im">import</span> <span class="op">{</span> useRef<span class="op">,</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span> <span class="co">// Add useRef import</span></a></code></pre></div></li>
+<li><p><strong>Add</strong> the useRef import at the top of the file</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="im">import</span> <span class="op">{</span> useRef<span class="op">,</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a></code></pre></div></li>
 </ol>
 <p>Your hook now has a ref that can store and remember the audio element we’ll create in the <code>play</code> function. The ref starts as <code>null</code> and will hold our audio element once it’s created.</p>
 <h3 id="audio-reference-flow">Audio Reference Flow</h3>
@@ -572,18 +572,19 @@ audioRef.current stores Audio element → future calls reuse same element</code>
 <h2 id="implementing-audio-playback">🎵 Implementing Audio Playback</h2>
 <p>Let’s implement the core audio functionality by updating the <code>play</code> function to create and control audio elements.</p>
 <ol type="1">
-<li><p><strong>Update the play function</strong> in <code>src/hooks/useAudio.js</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">const</span> play <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span> <span class="co">// Update play function</span></a>
-<a class="sourceLine" id="cb12-2" title="2">  <span class="cf">if</span> (<span class="op">!</span><span class="va">audioRef</span>.<span class="at">current</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb12-3" title="3">    <span class="va">audioRef</span>.<span class="at">current</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">Audio</span>(src)<span class="op">;</span></a>
-<a class="sourceLine" id="cb12-4" title="4">    <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">loop</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb12-5" title="5">    <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">volume</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb12-6" title="6">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb12-7" title="7">  <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">play</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb12-8" title="8">  <span class="at">setIsPlaying</span>(<span class="kw">true</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb12-9" title="9"><span class="op">};</span></a></code></pre></div>
+<li><p><strong>Update</strong> the play function in <code>src/hooks/useAudio.js</code></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">const</span> play <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="co">// Lazy initialization - create audio element only when first needed</span></a>
+<a class="sourceLine" id="cb12-3" title="3">  <span class="cf">if</span> (<span class="op">!</span><span class="va">audioRef</span>.<span class="at">current</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-4" title="4">    <span class="va">audioRef</span>.<span class="at">current</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">Audio</span>(src)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-5" title="5">    <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">loop</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb12-6" title="6">    <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">volume</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb12-7" title="7">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb12-8" title="8">  <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">play</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-9" title="9">  <span class="at">setIsPlaying</span>(<span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-10" title="10"><span class="op">};</span></a></code></pre></div>
 <p>The <code>if (!audioRef.current)</code> check is an example of <strong>lazy initialization</strong> — creating a resource only when it’s first needed. Since <code>audioRef.current</code> starts as <code>null</code>, the first time <code>play()</code> runs it creates the audio element. Every time after that, <code>audioRef.current</code> contains the audio element, so the <code>if</code> condition is false and it skips creating a new one.</p></li>
-<li><p><strong>Test</strong>: Click music toggle and verify game theme plays with button showing playing state</p></li>
+<li><p><strong>Test</strong> by clicking music toggle and verifying game theme plays with button showing playing state</p></li>
 </ol>
 <h3 id="audio-creation-logic">Audio Creation Logic</h3>
 <pre class="text"><code>Check if audio exists → If not, create new Audio(src) → Configure loop and volume → 
@@ -594,11 +595,11 @@ Call play() method → Update isPlaying state → UI reflects playing state</cod
 <p>You’re now working with production-quality code. GitHub Copilot can help you write, fix, and understand code faster — but only if you know how to guide it.</p>
 <h3 id="how-to-use-copilot-chat-effectively">How to Use Copilot Chat Effectively</h3>
 <ol type="1">
-<li>Use a Copilot chat command like <code>/fix</code>, <code>/explain</code>, or <code>/test</code></li>
-<li>Write a clear, focused prompt describing what you want</li>
-<li>Review the suggestion Copilot generates</li>
-<li>Apply the change if it meets your needs</li>
-<li>Test the update to confirm it works</li>
+<li><strong>Use</strong> a Copilot chat command like <code>/fix</code>, <code>/explain</code>, or <code>/test</code></li>
+<li><strong>Write</strong> a clear, focused prompt describing what you want</li>
+<li><strong>Review</strong> the suggestion Copilot generates</li>
+<li><strong>Apply</strong> the change if it meets your needs</li>
+<li><strong>Test</strong> the update to confirm it works</li>
 </ol>
 <h3 id="example-prompt">Example Prompt</h3>
 <pre><code>/fix Add error handling to the play function in the useAudio hook so that 
@@ -610,10 +611,10 @@ updates isPlaying to false</code></pre>
 <p>Now for your independent challenge — complete the <code>useAudio</code> hook with pause functionality, error handling, and cleanup! You’ll use AI assistance for the advanced parts.</p>
 <h3 id="implement-pause-functionality">1. Implement Pause Functionality</h3>
 <ul>
-<li>Update the <code>pause</code> function to pause audio and update state</li>
-<li>Use <code>audioRef.current.pause()</code> to stop playback</li>
-<li>Set <code>isPlaying</code> to <code>false</code> when paused</li>
-<li><strong>Test</strong>: Click music toggle while playing → Music stops and music toggle shows paused state</li>
+<li><strong>Update</strong> the <code>pause</code> function to pause audio and update state</li>
+<li><strong>Use</strong> <code>audioRef.current.pause()</code> to stop playback</li>
+<li><strong>Set</strong> <code>isPlaying</code> to <code>false</code> when paused</li>
+<li><strong>Test</strong> by clicking music toggle while playing → Music stops and music toggle shows paused state</li>
 </ul>
 <h3 id="add-error-handling-with-ai-assistance">2. Add Error Handling with AI Assistance</h3>
 <p>With <code>useAudio.js</code> open, use the GitHub Copilot workflow you just learned:</p>
@@ -622,15 +623,15 @@ updates isPlaying to false</code></pre>
 if the audio fails to play, it catches the error, logs a warning, and 
 updates isPlaying to false</code></pre>
 <ul>
-<li>Review the generated code</li>
-<li>Apply the changes if they look correct</li>
-<li><strong>Test</strong>: To verify error handling works, temporarily break the audio path:
+<li><strong>Review</strong> the generated code</li>
+<li><strong>Apply</strong> the changes if they look correct</li>
+<li><strong>Test</strong> to verify error handling works, temporarily break the audio path
 <ul>
-<li>Open <code>src/context/GameContext.jsx</code></li>
-<li>Find the line: <code>const music = useAudio(getAssetPath(&quot;audio/dramatic-action.mp3&quot;));</code></li>
-<li>Change <code>&quot;audio/dramatic-action.mp3&quot;</code> to <code>&quot;audio/nonexistent.mp3&quot;</code> (keep the <code>getAssetPath()</code> wrapper)</li>
-<li>Save the file → Click music toggle → Check browser console for error message</li>
-<li><strong>Important</strong>: Change the path back to <code>&quot;audio/dramatic-action.mp3&quot;</code> when done testing</li>
+<li><strong>Open</strong> <code>src/context/GameContext.jsx</code></li>
+<li><strong>Find</strong> the line <code>const music = useAudio(getAssetPath(&quot;audio/dramatic-action.mp3&quot;));</code></li>
+<li><strong>Change</strong> <code>&quot;audio/dramatic-action.mp3&quot;</code> to <code>&quot;audio/nonexistent.mp3&quot;</code> (keep the <code>getAssetPath()</code> wrapper)</li>
+<li><strong>Save</strong> the file → click music toggle → check browser console for error message</li>
+<li><strong>Important</strong> change the path back to <code>&quot;audio/dramatic-action.mp3&quot;</code> when done testing</li>
 </ul></li>
 </ul>
 <h3 id="add-cleanup-with-ai-assistance">3. Add Cleanup with AI Assistance</h3>
@@ -638,9 +639,9 @@ updates isPlaying to false</code></pre>
 <pre><code>/fix Add a useEffect cleanup function to the useAudio hook that stops 
 the audio and clears the reference when the component unmounts</code></pre>
 <ul>
-<li>Review the generated useEffect code</li>
-<li>Apply the changes to prevent memory leaks</li>
-<li><strong>Test</strong>: Navigate between screens to verify cleanup works</li>
+<li><strong>Review</strong> the generated useEffect code</li>
+<li><strong>Apply</strong> the changes to prevent memory leaks</li>
+<li><strong>Test</strong> by navigating between screens to verify cleanup works</li>
 </ul>
 <h3 id="requirements-checklist">Requirements Checklist</h3>
 <p>Your completed <code>useAudio</code> hook must:</p>
@@ -657,9 +658,9 @@ the audio and clears the reference when the component unmounts</code></pre>
 <p><em>Quick reference for all the custom hooks and browser API concepts you just learned:</em></p>
 <table>
 <colgroup>
-<col style="width: 17%"></col>
-<col style="width: 35%"></col>
-<col style="width: 47%"></col>
+<col style="width: 22%"></col>
+<col style="width: 33%"></col>
+<col style="width: 44%"></col>
 </colgroup>
 <thead>
 <tr class="header">

@@ -461,18 +461,18 @@ overflow-x: hidden !important;
 </table>
 <ol type="1">
 <li><strong>Open <code>src/services/trivia.js</code></strong></li>
-<li><p><strong>Add all three cache helper functions</strong> after the existing helper functions:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">function</span> <span class="at">getCacheKey</span>(zoneId) <span class="op">{</span> <span class="co">// Add this function</span></a>
+<li><p><strong>Add all three cache helper functions</strong> after the existing helper functions</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">function</span> <span class="at">getCacheKey</span>(zoneId) <span class="op">{</span></a>
 <a class="sourceLine" id="cb2-2" title="2">  <span class="cf">return</span> <span class="vs">`trivia_questions_zone_</span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="op">}</span></a>
 <a class="sourceLine" id="cb2-4" title="4"></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="kw">function</span> <span class="at">getCachedQuestions</span>(zoneId) <span class="op">{</span> <span class="co">// Add this function</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">function</span> <span class="at">getCachedQuestions</span>(zoneId) <span class="op">{</span></a>
 <a class="sourceLine" id="cb2-6" title="6">  <span class="kw">const</span> cacheKey <span class="op">=</span> <span class="at">getCacheKey</span>(zoneId)<span class="op">;</span></a>
 <a class="sourceLine" id="cb2-7" title="7">  <span class="kw">const</span> cached <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(cacheKey)<span class="op">;</span></a>
 <a class="sourceLine" id="cb2-8" title="8">  <span class="cf">return</span> cached <span class="op">?</span> <span class="va">JSON</span>.<span class="at">parse</span>(cached) : <span class="kw">null</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb2-9" title="9"><span class="op">}</span></a>
 <a class="sourceLine" id="cb2-10" title="10"></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="kw">function</span> <span class="at">setCachedQuestions</span>(zoneId<span class="op">,</span> questions) <span class="op">{</span> <span class="co">// Add this function</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="kw">function</span> <span class="at">setCachedQuestions</span>(zoneId<span class="op">,</span> questions) <span class="op">{</span></a>
 <a class="sourceLine" id="cb2-12" title="12">  <span class="kw">const</span> cacheKey <span class="op">=</span> <span class="at">getCacheKey</span>(zoneId)<span class="op">;</span></a>
 <a class="sourceLine" id="cb2-13" title="13">  <span class="va">localStorage</span>.<span class="at">setItem</span>(cacheKey<span class="op">,</span> <span class="va">JSON</span>.<span class="at">stringify</span>(questions))<span class="op">;</span></a>
 <a class="sourceLine" id="cb2-14" title="14"><span class="op">}</span></a></code></pre></div></li>
@@ -489,20 +489,21 @@ overflow-x: hidden !important;
 <ol type="1">
 <li><p><strong>Add cache checking</strong> at the beginning of <code>fetchQuestions</code> (before the zone lookup):</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="im">export</span> <span class="kw">async</span> <span class="kw">function</span> <span class="at">fetchQuestions</span>(zoneId<span class="op">,</span> count <span class="op">=</span> <span class="kw">null</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="kw">const</span> cachedQuestions <span class="op">=</span> <span class="at">getCachedQuestions</span>(zoneId)<span class="op">;</span> <span class="co">// Add cache check</span></a>
-<a class="sourceLine" id="cb4-3" title="3">  <span class="cf">if</span> (cachedQuestions) <span class="op">{</span> <span class="co">// Add this condition</span></a>
-<a class="sourceLine" id="cb4-4" title="4">    <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`Cache hit for zone </span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-5" title="5">    <span class="cf">return</span> cachedQuestions<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-6" title="6">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb4-7" title="7"></a>
-<a class="sourceLine" id="cb4-8" title="8">  <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`Cache miss for zone </span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs"> - fetching from API`</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-9" title="9"></a>
-<a class="sourceLine" id="cb4-10" title="10">  <span class="kw">const</span> zone <span class="op">=</span> <span class="at">getZoneById</span>(zoneId)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-11" title="11">  <span class="co">// ... rest of existing code</span></a></code></pre></div></li>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="co">// Cache check pattern: try cache first, fetch on miss</span></a>
+<a class="sourceLine" id="cb4-3" title="3">  <span class="kw">const</span> cachedQuestions <span class="op">=</span> <span class="at">getCachedQuestions</span>(zoneId)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-4" title="4">  <span class="cf">if</span> (cachedQuestions) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`Cache hit for zone </span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-6" title="6">    <span class="cf">return</span> cachedQuestions<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-7" title="7">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-8" title="8"></a>
+<a class="sourceLine" id="cb4-9" title="9">  <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`Cache miss for zone </span><span class="sc">${</span>zoneId<span class="sc">}</span><span class="vs"> - fetching from API`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-10" title="10"></a>
+<a class="sourceLine" id="cb4-11" title="11">  <span class="kw">const</span> zone <span class="op">=</span> <span class="at">getZoneById</span>(zoneId)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-12" title="12">  <span class="co">// ... rest of existing code</span></a></code></pre></div></li>
 <li><p><strong>Add cache storage</strong> after successful data transformation (before the return statement):</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">map</span>(apiQuestion <span class="kw">=&gt;</span> <span class="at">transformQuestion</span>(apiQuestion))<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-2" title="2"></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="at">setCachedQuestions</span>(zoneId<span class="op">,</span> questions)<span class="op">;</span> <span class="co">// Add cache storage</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="at">setCachedQuestions</span>(zoneId<span class="op">,</span> questions)<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-4" title="4"></a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="cf">return</span> questions<span class="op">;</span></a></code></pre></div></li>
 </ol>
@@ -516,33 +517,33 @@ overflow-x: hidden !important;
                               Fetch from API → Store in cache → Return data</code></pre>
 <h3 id="setup-open-devtools-and-locate-local-storage">🔍 Setup: Open DevTools and Locate Local Storage</h3>
 <ul>
-<li>Press F12 or right-click → <strong>Inspect</strong></li>
-<li>Navigate to:
+<li><strong>Press</strong> F12 or right-click → Inspect</li>
+<li><strong>Navigate</strong> to
 <ul>
 <li><strong>Chrome/Edge</strong>: Application tab</li>
 <li><strong>Firefox</strong>: Storage tab</li>
 </ul></li>
-<li>In the sidebar, expand <strong>Local Storage</strong> and select your site’s domain (e.g., <code>http://localhost:5173</code>)</li>
-<li>Keep DevTools open — you’ll watch cache entries appear in real-time</li>
+<li>In the sidebar, <strong>expand</strong> Local Storage and select your site’s domain (e.g., <code>http://localhost:5173</code>)</li>
+<li><strong>Keep</strong> DevTools open as you’ll watch cache entries appear in real-time</li>
 </ul>
 <hr />
 <h3 id="first-time-load-observe-a-cache-miss">🧊 First-Time Load: Observe a Cache Miss</h3>
 <ul>
-<li>Click the active zone for the <strong>first time</strong></li>
-<li>In the <strong>console</strong>, look for: <code>Cache miss for zone X - fetching from API</code></li>
-<li>In localStorage, confirm:
+<li><strong>Click</strong> the active zone for the first time</li>
+<li>In the console, <strong>look</strong> for <code>Cache miss for zone X - fetching from API</code></li>
+<li>In localStorage, <strong>confirm</strong>
 <ul>
 <li>A new entry appears: <code>trivia_questions_zone_0</code></li>
 <li>It contains serialized JSON data</li>
 </ul></li>
-<li>Click the entry to inspect the cached questions</li>
+<li><strong>Click</strong> the entry to inspect the cached questions</li>
 </ul>
 <hr />
 <h3 id="repeat-load-confirm-a-cache-hit">🔁 Repeat Load: Confirm a Cache Hit</h3>
 <ul>
-<li>Click the <strong>same zone again</strong></li>
-<li>In the <strong>console</strong>, look for: <code>Cache hit for zone X</code></li>
-<li>In localStorage, verify:
+<li><strong>Click</strong> the same zone again</li>
+<li>In the console, <strong>look</strong> for <code>Cache hit for zone X</code></li>
+<li>In localStorage, <strong>verify</strong>
 <ul>
 <li>The entry remains unchanged</li>
 <li>No new data was fetched</li>
@@ -551,9 +552,9 @@ overflow-x: hidden !important;
 <hr />
 <h3 id="page-reload-test-cache-persistence">🔄 Page Reload: Test Cache Persistence</h3>
 <ul>
-<li>Refresh the browser</li>
-<li>Click the same zone again</li>
-<li>Confirm:
+<li><strong>Refresh</strong> the browser</li>
+<li><strong>Click</strong> the same zone again</li>
+<li><strong>Confirm</strong>
 <ul>
 <li>Console still shows <code>Cache hit</code></li>
 <li>Cached entry is still present in localStorage</li>
@@ -563,8 +564,8 @@ overflow-x: hidden !important;
 <h3 id="manual-clear-test-cache-reset">🧹 Manual Clear: Test Cache Reset</h3>
 <ul>
 <li>In localStorage, <strong>right-click</strong> the cache entry → Delete</li>
-<li>Click the zone again</li>
-<li>Confirm:
+<li><strong>Click</strong> the zone again</li>
+<li><strong>Confirm</strong>
 <ul>
 <li>Console shows <code>Cache miss</code></li>
 <li>Entry repopulates with fresh data</li>
@@ -576,9 +577,9 @@ overflow-x: hidden !important;
 <p><em>Quick reference for all the caching and browser storageage concepts you just learned:</em></p>
 <table>
 <colgroup>
-<col style="width: 17%"></col>
-<col style="width: 35%"></col>
-<col style="width: 47%"></col>
+<col style="width: 22%"></col>
+<col style="width: 33%"></col>
+<col style="width: 44%"></col>
 </colgroup>
 <thead>
 <tr class="header">

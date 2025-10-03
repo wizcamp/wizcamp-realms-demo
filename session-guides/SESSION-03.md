@@ -46,36 +46,37 @@ Before we dive into code, let's understand the key difference between **state** 
 
 Let's implement **local state** for the credits modal to see how components can manage their own data.
 
-1. **Add imports** at the top of SplashScreen.jsx:
+1. **Add** imports at the top of SplashScreen.jsx
 
    ```javascript
-   import { useState } from "react"; // Add this import
-   import CreditsModal from "./CreditsModal"; // Add this import
+   import { useState } from "react";
+   import CreditsModal from "./CreditsModal";
    ```
 
-2. **Add local state** inside the SplashScreen function (before the return):
+2. **Add** local state inside the SplashScreen function (before the return)
 
    ```javascript
-   const [showCredits, setShowCredits] = useState(false); // Add state
+   const [showCredits, setShowCredits] = useState(false);
    ```
 
-3. **Update the Credits button**:
+3. **Update** the Credits button
 
    ```javascript
    <GameButton
      text="Credits"
-     onClick={() => setShowCredits(true)} // Update onClick
+     onClick={() => setShowCredits(true)}
      variant="secondary"
    />
    ```
 
-4. **Add the modal** before the closing `</div>` tag:
+4. **Add** the modal before the closing `</div>` tag
 
    ```javascript
-   {showCredits && <CreditsModal onClose={() => setShowCredits(false)} />} // Add modal
+   {/* Show modal only when showCredits is true */}
+   {showCredits && <CreditsModal onClose={() => setShowCredits(false)} />}
    ```
 
-5. **Test**: Click the Credits button to see the modal appear
+5. **Test** by clicking the Credits button to see the modal appear
 
 
 
@@ -91,9 +92,9 @@ Use React DevTools to inspect the SplashScreen component and watch the `showCred
 
 Let's understand how our game screens are organized using **constants** — static values that prevent typos and make code more maintainable.
 
-1. **Explore the screens constant**: Open `src/constants/screens.js` and examine the SCREENS object
-2. **Notice the structure**: Each screen has a key (like `SPLASH`) and a descriptive value
-3. **Understand the purpose**: Instead of using strings like `"splash"` everywhere, we use `SCREENS.SPLASH`
+1. **Explore** the screens constant by opening `src/constants/screens.js` and examining the SCREENS object
+2. **Notice** the structure where each screen has a key (like `SPLASH`) and a descriptive value
+3. **Understand** the purpose of using `SCREENS.SPLASH` instead of strings like `"splash"` everywhere
 
 ### What is Prop Drilling?
 
@@ -125,32 +126,32 @@ GameButton (uses useGame hook to get screen)
 
 Now let's implement the core navigation system that will control which screen users see. This is where **shared state** really shines!
 
-1. **Open `src/App.jsx`** and add the necessary imports at the top:
+1. **Open** `src/App.jsx` and add the necessary imports at the top
 
    ```javascript
-   import { useGame } from './hooks/useGame'; // Add this import
-   import { SCREENS } from "./constants/screens"; // Add this import
-   import GameMap from "./components/GameMap"; // Add this import
+   import { useGame } from './hooks/useGame';
+   import { SCREENS } from "./constants/screens";
+   import GameMap from "./components/GameMap";
    ```
 
-2. **Access the shared state** by adding this line inside the App function (before the return):
+2. **Access** the shared state by adding this line inside the App function (before the return)
 
    ```javascript
-   const { screen } = useGame(); // Add shared state
+   const { screen } = useGame();
    ```
 
-3. **Add conditional rendering** by replacing the current JSX with:
+3. **Add** conditional rendering by replacing the current JSX with
 
    ```javascript
    return (
      <div className="app-container">
-       {screen === SCREENS.SPLASH && <SplashScreen />} // Add conditional rendering
-       {screen === SCREENS.PLAYING && <GameMap />} // Add conditional rendering
+       {screen === SCREENS.SPLASH && <SplashScreen />}
+       {screen === SCREENS.PLAYING && <GameMap />}
      </div>
    );
    ```
 
-4. **Test**: Run `npm run dev` to make sure everything still works
+4. **Test** by running `npm run dev` to make sure everything still works
 
 
 
@@ -162,12 +163,12 @@ Now let's implement the core navigation system that will control which screen us
 
 Let's use React DevTools to see how **shared state** works behind the scenes and experiment with changing it manually.
 
-1. **Open DevTools**: Press F12 or right-click → Inspect
-2. **Find Components tab**: Look for "Components" next to Console, Network, etc.
-3. **Locate GameProvider**: Click on GameProvider in the component tree
-4. **Examine the hooks**: Look for the screen state value (if you don't see hook names clearly, click the gear icon and enable "Parse hook names")
-5. **Experiment with state**: Change the screen value from "splash" to "playing" and watch the UI update!
-6. **Change it back**: Set it back to "splash" to see the SplashScreen return
+1. **Open** DevTools by pressing F12 or right-clicking → Inspect
+2. **Find** Components tab by looking for "Components" next to Console, Network, etc.
+3. **Locate** GameProvider by clicking on GameProvider in the component tree
+4. **Examine** the hooks by looking for the screen state value (if you don't see hook names clearly, click the gear icon and enable "Parse hook names")
+5. **Experiment** with state by changing the screen value from "splash" to "playing" and watch the UI update!
+6. **Change** it back by setting it back to "splash" to see the SplashScreen return
 
 
 
@@ -183,38 +184,38 @@ Try changing the screen state to different values and see what happens. What occ
 
 Now let's make your "Start Adventure" button actually start the game by updating the **shared state**!
 
-1. **Open `src/components/SplashScreen.jsx`** and add imports at the top:
+1. **Open** `src/components/SplashScreen.jsx` and add imports at the top
 
    ```javascript
-   import { SCREENS } from "../constants/screens"; // Add this import
-   import { useGame } from "../hooks/useGame"; // Add this import
+   import { SCREENS } from "../constants/screens";
+   import { useGame } from "../hooks/useGame";
    ```
 
-2. **Access the state setter** by adding this inside the SplashScreen function (before the return):
+2. **Access** the state setter by adding this inside the SplashScreen function (before the return)
 
    ```javascript
-   const { setScreen } = useGame(); // Add state setter
+   const { setScreen } = useGame();
    ```
 
-3. **Create the start game function** (before the return):
+3. **Create** the start game function (before the return)
 
    ```javascript
-   const startGame = () => { // Add this function
+   const startGame = () => {
      setScreen(SCREENS.PLAYING);
    };
    ```
 
-4. **Update the first GameButton** to use the real function:
+4. **Update** the first GameButton to use the real function
 
    ```javascript
    <GameButton
      text="Start Adventure"
-     onClick={startGame} // Update onClick
+     onClick={startGame}
      variant="primary"
    />
    ```
 
-5. **Test**: Click the "Start Adventure" button and watch the screen change to GameMap!
+5. **Test** by clicking the "Start Adventure" button and watch the screen change to GameMap!
 
 
 
@@ -226,8 +227,8 @@ Now let's make your "Start Adventure" button actually start the game by updating
 
 _Quick reference for all the state management concepts you just learned:_
 
-| Term | Definition | Why it matters |
-|------|------------|----------------|
+| Term   | Definition | Why it matters |
+|--------|------------|----------------|
 | 🧠 state | Data that can change over time and causes components to re-render when it changes. | State lets components "remember" information and respond to user interactions dynamically. |
 | 🪝 hook | Functions starting with "use" that let you use React features like state and context. | Hooks like `useState` are your tools for managing data and behavior in components. |
 | 🌐 Context | React's solution to prop drilling — lets components access shared data without passing props through multiple levels. | Context prevents "prop drilling" and provides shared state accessible from any component. |

@@ -102,10 +102,78 @@ Should be: [Suggested correction]
 ### 3. Content Standards
 - **File saving**: No manual save instructions (auto-saved in Codespaces)
 - **Ask the AI**: Use format `## 🤖 Ask the AI — [Student-Friendly Name]` where Student-Friendly Name matches the Session Name Reference table, and questions explore beyond what's directly explained
-- **Code comments**: Action-based guidance only, not explanatory
+- **Code comments**: Follow detailed commenting guidelines below
 - **Essential terms**: Logical learning progression order
+- **Essential Terms table formatting**: Must use `| Term   | Definition | Why it matters |` with `|--------|------------|----------------|` to prevent emoji + term wrapping in PDFs
+- **Bolding/emphasis**: Follow detailed bolding standards below
 - **Command patterns**: Follow standardized instruction formats for consistency
 - **Section naming**: Use consistent gerund verb forms and established patterns
+
+### 3a. Commenting Guidelines
+- **Only comment non-obvious logic**: Complex transformations, calculations, React-specific patterns, cache/state management
+- **Use block comments above code**: Place explanatory comments on the line before, not inline
+- **Use JSX comments for React patterns**: `{/* Fragment avoids wrapper div */}` for React-specific explanations
+- **Focus on "why" not "what"**: Explain intent and reasoning, not obvious actions
+- **Remove simple action comments**: No comments for imports, basic additions, obvious operations
+
+**Examples of Comments to Remove:**
+```javascript
+// REMOVE THESE:
+import HUD from "./components/HUD"; // Add this import
+const [score, setScore] = useState(0); // Add score state
+<GameButton text="Start" /> // Add this component
+```
+
+**Examples of Comments to Keep (with improved format):**
+```javascript
+// KEEP THESE (improved format):
+// Prevent score from going negative
+setScore((prev) => Math.max(0, prev - POINTS_PER_CORRECT));
+
+{/* Fragment groups components without extra DOM wrapper */}
+<>
+  <GameMap />
+  <HUD />
+</>
+
+// Transform API response into game-ready format
+const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion));
+```
+
+### 3b. Bolding/Emphasis Standards
+
+**Essential Terms Bolding Verification:**
+- **First introduction**: Essential terms must be bolded when first introduced in body text
+- **Subsequent uses**: Should use regular text for repeated mentions within the same section
+- **Cross-section**: Should be bolded again if term reappears in a different major section after significant gap
+- **Essential Terms table**: Terms in table should NOT be bolded (formatting handled by table structure)
+
+**Instructional Command Bolding Verification:**
+- **Action verbs only**: Bold only the primary action verb, not entire phrases (`**Open** src/App.jsx`, `**Add** the import`, `**Watch** the screen update`)
+- **File operations**: Bold only the operation verb (`**Create** the file:`, `**Update** the component`, `**Replace** the code`)
+- **Testing commands**: Bold only the directive verb (`**Test**:`, `**Verify**:`, `**Watch**:`)
+- **UI interactions**: Bold only the interaction verb (`**Click** the button`, `**Navigate** to the screen`)
+- **Avoid over-bolding**: Do not bold entire instructional phrases, descriptions, or outcomes
+
+**Concept Emphasis Verification:**
+- **Technical concepts**: New programming concepts should be bolded on introduction (**state management**, **component composition**)
+- **React-specific terms**: React terminology should be bolded on first use (**JSX**, **hooks**, **Context API**)
+- **Avoid over-bolding**: Common terms like "function", "variable", "array" should not be bolded unless they're the focus of explanation
+
+**Consistency Pattern Verification:**
+- **Section introductions**: Key concept being taught should be bolded in section opening paragraphs
+- **Explanatory callouts**: Main concept should be bolded in explanation boxes
+- **Avoid bolding**: File paths (should use backticks), code snippets (should use backticks), generic programming terms
+
+**Common Issues to Flag:**
+- Essential terms not bolded on first introduction
+- Action verbs in instructions not bolded
+- Over-bolding of entire instructional phrases (should bold verb only)
+- Over-bolding of common programming terms
+- Inconsistent bolding of the same concept across sections
+- Bolding used instead of backticks for code identifiers
+- Terms bolded in Essential Terms table (should be unbolded)
+- Entire outcomes/descriptions bolded instead of just action verbs
 
 ### 6. Command Pattern Standards
 - **File operations**: Use `**Open `src/path/file.jsx`**` format with backticks for file paths
@@ -135,6 +203,8 @@ Should be: [Suggested correction]
 ### Step 7: Technical Standards Check
 - **Code formatting**: Language qualifiers, indentation, backtick usage
 - **Content standards**: File saving commands, comment guidelines, Essential Terms ordering
+- **Bolding/emphasis**: Essential terms bolded on first use, action verbs bolded in instructions, concepts appropriately emphasized
+- **Instructional sections**: Verify command bolding in all hands-on sections (see Step 11)
 - **Prettier compliance**: Semicolons, quotes, arrow functions (standalone code blocks only)
 
 ### Step 8: Tone and Consistency Review
@@ -179,10 +249,56 @@ Should be: [Suggested correction]
 - **Exception handling**: Confirm protected sections remain unchanged
 - **Cross-session consistency**: Ensure similar section types use identical naming patterns
 
+### Step 11: Instructional Command Bolding Verification
+
+**Hands-On Sections Subject to Command Bolding Standards:**
+
+**Universal Sections (All Sessions):**
+- Any section with numbered step-by-step instructions
+- "Bonus Challenge" subsections with action items
+- Testing and verification procedures
+
+**Common Instructional Section Patterns:**
+- "[Gerund] Your [Component/Feature]" (e.g., "Creating Your First Component", "Building Game Components")
+- "[Gerund] [Technical Feature]" (e.g., "Adding Click Functionality", "Implementing Score Updates")
+- "[Gerund] with [Tool/Method]" (e.g., "Testing with React DevTools", "Styling with Variants")
+- "Installing [Tool]" sections
+- "Using [Tool/Feature]" sections
+
+**Session-Specific Instructional Sections:**
+- **SESSION-01**: "Launching Your Codespace", "Starting the Development Server", "Replacing the Placeholder Component", "Updating the Page Title"
+- **SESSION-02**: "Creating Your First Component", "Adding Click Functionality", "Styling with Variants", "Reusing Your Component", "Installing React DevTools"
+- **SESSION-03**: "Adding Local State for Credits", "Adding Screen Navigation", "Using React DevTools for Exploring State", "Implementing Start Game Function"
+- **SESSION-04**: "Adding the HUD and Coordinate Display", "Configuring Zone Metadata", "Positioning Zone Labels", "Testing with React DevTools"
+- **SESSION-05**: "Building the Fetch Foundation", "Transforming API Data", "Testing Your API Integration"
+- **SESSION-06**: "Building Cache Helper Functions", "Updating fetchQuestions with Caching", "Testing Your Cache"
+- **SESSION-07**: "Connecting the Quiz Modal", "Building Answer Buttons", "Making Buttons Interactive", "Adding Feedback Messages", "Testing Your Quiz System"
+- **SESSION-08**: "Adding Score Tracking", "Implementing Score Updates", "Adding Cache Clearing", "Updating Reset Functionality"
+- **SESSION-09**: "Building the MusicToggle Component", "Adding Audio Reference to useAudio", "Implementing Audio Playback"
+- **SESSION-10**: "Making This Project Yours", "Learning the Git Workflow", "Customizing Your Game Title", "Watching Your Deployment"
+
+**Verification Requirements:**
+- **Action verbs**: Must be bolded in numbered steps (`**Open**`, `**Add**`, `**Update**`, `**Test**`, `**Click**`)
+- **Verb-only bolding**: Bold only the action verb, not entire phrases or outcomes
+- **Consistency**: Same action types should use identical bolding patterns across all sessions
+- **File operations**: File-related verbs must be bolded (`**Create**`, `**Import**`, `**Replace**`)
+- **UI interactions**: Interface actions must be bolded (`**Navigate**`, `**Click**`, `**Find**`)
+
 ## Output
 Report issues using format:
 ```
 SESSION-XX[-instruction].md - [CATEGORY] - Line X
 Issue: [Description]
 Should be: [Correction]
+```
+
+**Bolding Issue Examples:**
+```
+SESSION-01.md - [BOLDING] - Line 45
+Issue: "**Watch the screen update instantly**" - entire phrase bolded
+Should be: "**Watch** the screen update instantly" - verb only bolded
+
+SESSION-02.md - [BOLDING] - Line 78
+Issue: "Add text prop to GameButton" - action verb not bolded
+Should be: "**Add** text prop to GameButton" - action verb bolded
 ```

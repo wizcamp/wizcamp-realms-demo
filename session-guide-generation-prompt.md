@@ -26,6 +26,7 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 **Session Name Reference:**
 | Session | Technical Name | Student-Friendly Name |
 |---------|---------------|----------------------|
+| 0 | Pre-Camp Orientation | Getting Ready for Camp |
 | 1 | Welcome to React Development | Setting Up Your Trivia Game |
 | 2 | Creating Reusable Components | Building Game Components |
 | 3 | Shared State with Context | Managing Game Flow |
@@ -65,10 +66,12 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 
 ### Code Standards
 
-**Commenting (multi-line blocks only):**
-- Use `//` format for action-based guidance: `// Add this function`, `// Update this line`
-- Comment only new/changed lines, not explanatory concepts
-- Apply only to complex logic blocks (3+ lines)
+**Commenting Guidelines:**
+- **Only comment non-obvious logic**: Complex transformations, calculations, React-specific patterns, cache/state management
+- **Use block comments above code**: Place explanatory comments on the line before, not inline
+- **Use JSX comments for React patterns**: `{/* Fragment avoids wrapper div */}` for React-specific explanations
+- **Focus on "why" not "what"**: Explain intent and reasoning, not obvious actions
+- **Remove simple action comments**: No comments for imports, basic additions, obvious operations
 
 **Formatting:**
 - **Code identifiers**: Use backticks (`GameButton`, `useGame`, `className="game-over"`)
@@ -105,12 +108,43 @@ Generate SESSION-XX.md (student guide) and SESSION-XX-instruction.md (instructor
 - Proper capitalization: "component", "Codespace", "Node.js" (not "node")
 - Spell out acronyms: "Hot Module Replacement (HMR)"
 - Format: emoji + term + definition + session-specific relevance
-- Bold first use in body text, unemphasized thereafter
+- Terms in Essential Terms table should NOT be bolded (formatting handled by table structure)
+
+**Essential Terms Table Formatting:**
+- Must use wider first column header to prevent emoji + term wrapping in PDFs
+- Required format: `| Term   | Definition | Why it matters |`
+- Header separator must match: `|--------|------------|----------------|`
+- The extra spaces in "Term   " and dashes in `--------` give Pandoc proper column width hints
 
 **Consistency:**
 - Identical definitions across sessions (vary only "Why it matters")
 - Logical learning progression order (not alphabetical)
 - Group related concepts: foundational → data formats → tools → implementation
+
+### Bolding/Emphasis Standards
+
+**Essential Terms Bolding:**
+- **First introduction**: Bold essential terms when first introduced in body text
+- **Subsequent uses**: Use regular text for repeated mentions within the same section
+- **Cross-section**: Bold again if term reappears in a different major section after significant gap
+- **Essential Terms table**: Terms in table should NOT be bolded (formatting handled by table structure)
+
+**Instructional Command Bolding:**
+- **Action verbs only**: Bold only the primary action verb, not entire phrases (`**Open** src/App.jsx`, `**Add** the import`, `**Watch** the screen update`)
+- **File operations**: Bold only the operation verb (`**Create** the file:`, `**Update** the component`, `**Replace** the code`)
+- **Testing commands**: Bold only the directive verb (`**Test**:`, `**Verify**:`, `**Watch**:`)
+- **UI interactions**: Bold only the interaction verb (`**Click** the button`, `**Navigate** to the screen`)
+- **Avoid over-bolding**: Do not bold entire instructional phrases, descriptions, or outcomes
+
+**Concept Emphasis Rules:**
+- **Technical concepts**: Bold when introducing new programming concepts (**state management**, **component composition**)
+- **React-specific terms**: Bold React terminology on first use (**JSX**, **hooks**, **Context API**)
+- **Avoid over-bolding**: Don't bold common terms like "function", "variable", "array" unless they're the focus of explanation
+
+**Consistency Patterns:**
+- **Section introductions**: Bold key concept being taught in section opening paragraphs
+- **Explanatory callouts**: Bold the main concept in explanation boxes
+- **Avoid bolding**: File paths (use backticks), code snippets (use backticks), generic programming terms
 
 ## Instructor Guide Requirements (SESSION-XX-instruction.md)
 

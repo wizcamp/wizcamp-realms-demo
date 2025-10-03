@@ -83,20 +83,20 @@ Time to build the foundation of your caching system! Helper functions abstract t
 | `setCachedQuestions` | Stores new data | **Serialization** with `JSON.stringify()` |
 
 1. **Open `src/services/trivia.js`**
-2. **Add all three cache helper functions** after the existing helper functions:
+2. **Add all three cache helper functions** after the existing helper functions
 
    ```javascript
-   function getCacheKey(zoneId) { // Add this function
+   function getCacheKey(zoneId) {
      return `trivia_questions_zone_${zoneId}`;
    }
 
-   function getCachedQuestions(zoneId) { // Add this function
+   function getCachedQuestions(zoneId) {
      const cacheKey = getCacheKey(zoneId);
      const cached = localStorage.getItem(cacheKey);
      return cached ? JSON.parse(cached) : null;
    }
 
-   function setCachedQuestions(zoneId, questions) { // Add this function
+   function setCachedQuestions(zoneId, questions) {
      const cacheKey = getCacheKey(zoneId);
      localStorage.setItem(cacheKey, JSON.stringify(questions));
    }
@@ -125,8 +125,9 @@ Now let's integrate your cache functions into the main `fetchQuestions` function
 
    ```javascript
    export async function fetchQuestions(zoneId, count = null) {
-     const cachedQuestions = getCachedQuestions(zoneId); // Add cache check
-     if (cachedQuestions) { // Add this condition
+     // Cache check pattern: try cache first, fetch on miss
+     const cachedQuestions = getCachedQuestions(zoneId);
+     if (cachedQuestions) {
        console.log(`Cache hit for zone ${zoneId}`);
        return cachedQuestions;
      }
@@ -142,7 +143,7 @@ Now let's integrate your cache functions into the main `fetchQuestions` function
    ```javascript
    const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion));
    
-   setCachedQuestions(zoneId, questions); // Add cache storage
+   setCachedQuestions(zoneId, questions);
    
    return questions;
    ```
@@ -166,31 +167,31 @@ User clicks zone → Check cache → Cache hit? → Return cached data
 
 ### 🔍 Setup: Open DevTools and Locate Local Storage
 
-- Press F12 or right-click → **Inspect**
-- Navigate to:
+- **Press** F12 or right-click → Inspect
+- **Navigate** to
   - **Chrome/Edge**: Application tab
   - **Firefox**: Storage tab
-- In the sidebar, expand **Local Storage** and select your site's domain (e.g., `http://localhost:5173`)
-- Keep DevTools open — you'll watch cache entries appear in real-time
+- In the sidebar, **expand** Local Storage and select your site's domain (e.g., `http://localhost:5173`)
+- **Keep** DevTools open as you'll watch cache entries appear in real-time
 
 ---
 
 ### 🧊 First-Time Load: Observe a Cache Miss
 
-- Click the active zone for the **first time**
-- In the **console**, look for: `Cache miss for zone X - fetching from API`
-- In localStorage, confirm:
+- **Click** the active zone for the first time
+- In the console, **look** for `Cache miss for zone X - fetching from API`
+- In localStorage, **confirm**
   - A new entry appears: `trivia_questions_zone_0`
   - It contains serialized JSON data
-- Click the entry to inspect the cached questions
+- **Click** the entry to inspect the cached questions
 
 ---
 
 ### 🔁 Repeat Load: Confirm a Cache Hit
 
-- Click the **same zone again**
-- In the **console**, look for: `Cache hit for zone X`
-- In localStorage, verify:
+- **Click** the same zone again
+- In the console, **look** for `Cache hit for zone X`
+- In localStorage, **verify**
   - The entry remains unchanged
   - No new data was fetched
 
@@ -198,9 +199,9 @@ User clicks zone → Check cache → Cache hit? → Return cached data
 
 ### 🔄 Page Reload: Test Cache Persistence
 
-- Refresh the browser
-- Click the same zone again
-- Confirm:
+- **Refresh** the browser
+- **Click** the same zone again
+- **Confirm**
   - Console still shows `Cache hit`
   - Cached entry is still present in localStorage
 
@@ -209,8 +210,8 @@ User clicks zone → Check cache → Cache hit? → Return cached data
 ### 🧹 Manual Clear: Test Cache Reset
 
 - In localStorage, **right-click** the cache entry → Delete
-- Click the zone again
-- Confirm:
+- **Click** the zone again
+- **Confirm**
   - Console shows `Cache miss`
   - Entry repopulates with fresh data
 
@@ -224,8 +225,8 @@ You're basically becoming a detective! By watching console logs, peeking into br
 
 _Quick reference for all the caching and browser storageage concepts you just learned:_
 
-| Term | Definition | Why it matters |
-|------|------------|----------------|
+| Term   | Definition | Why it matters |
+|--------|------------|----------------|
 | ⚡ caching | Storing frequently accessed data in fast storage to avoid expensive operations like network requests. | Makes your game feel instant and professional by eliminating repeated API calls for the same questions. |
 | 🚦 rate limiting | API restrictions on request frequency to prevent server overload and ensure fair usage. | OpenTrivia Database limits requests to once every 5 seconds — caching helps avoid these limits. |
 | 💾 localStorage | Browser storage that persists data as key-value pairs across sessions and page refreshes. | Your trivia questions stay cached even after closing and reopening the browser, providing instant loading. |

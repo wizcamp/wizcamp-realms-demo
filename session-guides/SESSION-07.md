@@ -48,26 +48,27 @@ QuizModal (the container)
 
 Let's connect your quiz modal to the game flow so clicking zones actually shows quiz questions.
 
-1. **Open `src/App.jsx`** and add the QuizModal import at the top:
+1. **Open** `src/App.jsx` and add the QuizModal import at the top
 
    ```javascript
-   import QuizModal from "./components/QuizModal"; // Add this import
+   import QuizModal from "./components/QuizModal";
    ```
 
-2. **Access the quiz visibility state** by adding `isQuizVisible` to the `useGame` destructuring:
+2. **Access** the quiz visibility state by adding `isQuizVisible` to the `useGame` destructuring
 
    ```javascript
-   const { screen, isQuizVisible } = useGame(); // Add isQuizVisible
+   const { screen, isQuizVisible } = useGame();
    ```
 
-3. **Add conditional rendering** for the QuizModal inside the PLAYING screen section:
+3. **Add conditional rendering** for the QuizModal inside the PLAYING screen section
 
    ```javascript
    {screen === SCREENS.PLAYING && (
      <>
        <GameMap />
        <HUD />
-       {isQuizVisible && <QuizModal />} // Add this line
+       {/* Show quiz modal when isQuizVisible is true */}
+       {isQuizVisible && <QuizModal />}
        <CoordinateDisplay />
      </>
    )}
@@ -75,20 +76,20 @@ Let's connect your quiz modal to the game flow so clicking zones actually shows 
 
    **Conditional rendering** with `&&` is a React pattern that shows components only when certain conditions are true. When `isQuizVisible` is true, the `QuizModal` renders; when false, nothing renders.
 
-4. **Open `src/components/GameMap.jsx`** and add `setIsQuizVisible` to the `useGame` destructuring:
+4. **Open** `src/components/GameMap.jsx` and add `setIsQuizVisible` to the `useGame` destructuring
 
    ```javascript
-   const { activeZone, loadQuestionsForZone, setIsQuizVisible, zoneProgress } = useGame(); // Add setIsQuizVisible
+   const { activeZone, loadQuestionsForZone, setIsQuizVisible, zoneProgress } = useGame();
    ```
 
-5. **Update the handleZoneClick function** to show the quiz modal after loading questions:
+5. **Update** the handleZoneClick function to show the quiz modal after loading questions
 
    ```javascript
    await loadQuestionsForZone(zoneId);
-   setIsQuizVisible(true); // Add this line
+   setIsQuizVisible(true);
    ```
 
-   **Test**: Click a zone → QuizModal should appear with your cached questions!
+   **Test**: **Click** a zone → QuizModal should appear with your cached questions!
 
 
 
@@ -100,31 +101,31 @@ This pattern controls what users see based on app state. Your quiz modal will ap
 
 Now let's build the interactive answer buttons that transform your question data into clickable choices.
 
-1. **Open `src/components/QuizModal.jsx`** and find the QuestionHeader function
+1. **Open** `src/components/QuizModal.jsx` and **find** the QuestionHeader function
 
-2. **Add the AnswerChoices component** after the QuestionHeader function:
+2. **Add** the AnswerChoices component after the QuestionHeader function
 
    ```javascript
-   function AnswerChoices({ answers }) { // Add this component
+   function AnswerChoices({ answers }) {
      return <div className="answers-grid"></div>;
    }
    ```
 
-3. **Add the component to the JSX** (right after `<QuestionHeader question={question} />`):
+3. **Add** the component to the JSX (right after `<QuestionHeader question={question} />`)
 
    ```javascript
-   <AnswerChoices answers={question.answers} /> // Add this line
+   <AnswerChoices answers={question.answers} />
    ```
 
-   **Test**: Click zone → React DevTools → Find AnswerChoices → Confirm answers prop is populated
+   **Test** by clicking zone → React DevTools → finding AnswerChoices → confirming answers prop is populated
 
-4. **Transform the answers array into buttons** using React's mapping pattern:
+4. **Transform the answers array into buttons** using React's mapping pattern
 
    ```javascript
    function AnswerChoices({ answers }) {
      return (
        <div className="answers-grid">
-         {answers.map((answer, index) => ( // Turn answers into buttons
+         {answers.map((answer, index) => (
            <button key={index} className="answer-button">
              {answer}
            </button>
@@ -136,7 +137,7 @@ Now let's build the interactive answer buttons that transform your question data
 
    **Array mapping** transforms each item in an array into something else. Here, each answer string becomes a button element. React needs a unique **key prop** for each mapped element to track changes efficiently.
 
-   **Test**: Click zone → You should see answer buttons appear in the modal
+   **Test** by clicking zone → You should see answer buttons appear in the modal
 
 
 
@@ -148,52 +149,16 @@ By starting with a simple structure and then adding the mapping logic, you follo
 
 Let's add click functionality and dynamic styling that shows correct/incorrect answers with visual feedback.
 
-1. **Add click handling** by updating AnswerChoices and JSX:
+1. **Add click handling** by updating AnswerChoices and JSX
 
    ```javascript
-   function AnswerChoices({ answers, onAnswerClick }) { // Add onAnswerClick prop
+   function AnswerChoices({ answers, onAnswerClick }) {
      return (
        <div className="answers-grid">
          {answers.map((answer, index) => (
            <button
              key={index}
              className="answer-button"
-             onClick={() => onAnswerClick(index)} // Add click handler
-           >
-             {answer}
-           </button>
-         ))}
-       </div>
-     );
-   }
-   ```
-
-   ```javascript
-   <AnswerChoices 
-     answers={question.answers} 
-     onAnswerClick={handleAnswerClick} // Add this prop
-   />
-   ```
-
-   **Test**: Click zone → Click answer button → Next Question should be enabled allowing you to move to next question
-
-2. **Add conditional styling** by updating AnswerChoices and JSX:
-
-   ```javascript
-   function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) { // Add new props
-     const getButtonStyle = (answerIndex) => { // Add styling function
-       if (chosenAnswer === null) return "answer-button";
-       if (answerIndex === correctAnswer) return "answer-button correct";
-       if (answerIndex === chosenAnswer) return "answer-button incorrect";
-       return "answer-button";
-     };
-
-     return (
-       <div className="answers-grid">
-         {answers.map((answer, index) => (
-           <button
-             key={index}
-             className={getButtonStyle(index)} // Use styling function
              onClick={() => onAnswerClick(index)}
            >
              {answer}
@@ -208,14 +173,12 @@ Let's add click functionality and dynamic styling that shows correct/incorrect a
    <AnswerChoices 
      answers={question.answers} 
      onAnswerClick={handleAnswerClick}
-     chosenAnswer={chosenAnswer} // Add these props
-     correctAnswer={question.correct}
    />
    ```
 
-   **Test**: Click zone → Click answer → Different styling for correct vs incorrect
+   **Test** by clicking zone → clicking answer button → Next Question should be enabled allowing you to move to next question
 
-3. **Prevent multiple clicks** by updating AnswerChoices:
+2. **Add conditional styling** by updating AnswerChoices and JSX
 
    ```javascript
    function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) {
@@ -233,7 +196,6 @@ Let's add click functionality and dynamic styling that shows correct/incorrect a
              key={index}
              className={getButtonStyle(index)}
              onClick={() => onAnswerClick(index)}
-             disabled={chosenAnswer !== null} // Add disabled state
            >
              {answer}
            </button>
@@ -243,7 +205,46 @@ Let's add click functionality and dynamic styling that shows correct/incorrect a
    }
    ```
 
-   **Test**: Click zone → Click answer → Try clicking other buttons → Other buttons should be unclickable
+   ```javascript
+   <AnswerChoices 
+     answers={question.answers} 
+     onAnswerClick={handleAnswerClick}
+     chosenAnswer={chosenAnswer}
+     correctAnswer={question.correct}
+   />
+   ```
+
+   **Test** by clicking zone → clicking answer → Different styling for correct vs incorrect
+
+3. **Prevent multiple clicks** by updating AnswerChoices
+
+   ```javascript
+   function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) {
+     const getButtonStyle = (answerIndex) => {
+       if (chosenAnswer === null) return "answer-button";
+       if (answerIndex === correctAnswer) return "answer-button correct";
+       if (answerIndex === chosenAnswer) return "answer-button incorrect";
+       return "answer-button";
+     };
+
+     return (
+       <div className="answers-grid">
+         {answers.map((answer, index) => (
+           <button
+             key={index}
+             className={getButtonStyle(index)}
+             onClick={() => onAnswerClick(index)}
+             disabled={chosenAnswer !== null}
+           >
+             {answer}
+           </button>
+         ))}
+       </div>
+     );
+   }
+   ```
+
+   **Test** by clicking zone → clicking answer → trying to click other buttons → Other buttons should be unclickable
 
 
 
@@ -255,12 +256,11 @@ Let's add click functionality and dynamic styling that shows correct/incorrect a
 
 Let's add personality to your game with custom feedback messages that celebrate correct answers and encourage players after mistakes, then make them dynamic with random selection.
 
-1. **Create the messages file**: Right-click `src/constants` → New File → name it `messages.js`
+1. **Create** the messages file by right-clicking `src/constants` → New File → naming it `messages.js`
 
-2. **Add feedback message arrays**:
+2. **Add** feedback message arrays
 
    ```javascript
-   // Add these message arrays
    export const CORRECT_FEEDBACK = [
      "🎉 Nailed it!",
      "🔥 You got it!",
@@ -282,13 +282,13 @@ Let's add personality to your game with custom feedback messages that celebrate 
    ];
    ```
 
-3. **Import the constants** into QuizModal.jsx:
+3. **Import** the constants into QuizModal.jsx
 
    ```javascript
-   import { CORRECT_FEEDBACK, INCORRECT_FEEDBACK } from "../constants/messages"; // Add this import
+   import { CORRECT_FEEDBACK, INCORRECT_FEEDBACK } from "../constants/messages";
    ```
 
-4. **Find the AnswerFeedback function** in QuizModal.jsx and replace the placeholder message with random selection logic:
+4. **Find** the AnswerFeedback function in QuizModal.jsx and replace the placeholder message with random selection logic
 
    ```javascript
    function AnswerFeedback({ hasAnswered, isCorrect, correctAnswerText }) {
@@ -296,19 +296,20 @@ Let's add personality to your game with custom feedback messages that celebrate 
        return <AnswerPlaceholder />;
      }
 
-     const messages = isCorrect ? CORRECT_FEEDBACK : INCORRECT_FEEDBACK; // Choose message array
-     const message = messages[Math.floor(Math.random() * messages.length)]; // Select random message
+     // Random selection using Math.random() and array length
+     const messages = isCorrect ? CORRECT_FEEDBACK : INCORRECT_FEEDBACK;
+     const message = messages[Math.floor(Math.random() * messages.length)];
 
      return (
        <div className="result">
-         <strong>{message}</strong> // Display random message
+         <strong>{message}</strong>
          {!isCorrect && <div>The answer was: {correctAnswerText}</div>}
        </div>
      );
    }
    ```
 
-5. **Add AnswerFeedback component**: Place in JSX right after QuestionHeader:
+5. **Add** AnswerFeedback component by placing in JSX right after QuestionHeader
 
    ```jsx
    <AnswerFeedback
@@ -318,7 +319,7 @@ Let's add personality to your game with custom feedback messages that celebrate 
    />
    ```
 
-   **Test**: Click zone → Click answers → See different messages each time
+   **Test** by clicking zone → clicking answers → seeing different messages each time
 
 ### Random Selection Breakdown
 
@@ -349,22 +350,22 @@ Let's test your complete quiz system and verify all the interactive pieces work 
 
 ### Complete Quiz Flow Test
 
-- **Navigate to game**: Click "Start Adventure"
-- **Click any zone**: Modal should appear with question and answers
-- **Click any answer**: 
+- **Navigate** to game by clicking "Start Adventure"
+- **Click** any zone where modal should appear with question and answers
+- **Click** any answer 
   - Button should show correct/incorrect styling
   - Random feedback message should appear
   - Other buttons should be disabled
   - Continue button should become enabled
-- **Click Continue button**: Next question should load
-- **Complete all questions**: Modal should close and zone should be marked complete
+- **Click** Continue button where next question should load
+- **Complete** all questions where modal should close and zone should be marked complete
 
 ### React DevTools Inspection
 
-- **Open DevTools**: Press F12 → Components tab
-- **Find QuizModal**: Examine the component tree
-- **Inspect AnswerChoices**: Check answers prop and chosenAnswer state
-- **Watch state changes**: Click answers and observe chosenAnswer updates
+- **Open** DevTools by pressing F12 → Components tab
+- **Find** QuizModal by examining the component tree
+- **Inspect** AnswerChoices by checking answers prop and chosenAnswer state
+- **Watch** state changes by clicking answers and observing chosenAnswer updates
 
 
 
@@ -376,8 +377,8 @@ Let's test your complete quiz system and verify all the interactive pieces work 
 
 _Quick reference for all the component composition and interaction concepts you just learned:_
 
-| Term | Definition | Why it matters |
-|------|------------|----------------|
+| Term   | Definition | Why it matters |
+|--------|------------|----------------|
 | 🧩 component composition | Building complex components by combining smaller, focused components together. | Your `QuizModal` is composed of five smaller components, making it easier to understand and maintain. |
 | 🗺️ Array.map() | JavaScript method that transforms each item in an array into something else, returning a new array. | Essential for converting your answers array into JSX button elements in React. |
 | 🔑 key prop | Unique identifier React needs for each element in a mapped array to track changes efficiently. | Helps React optimize updates when answer lists change or reorder. |

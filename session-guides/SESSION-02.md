@@ -45,21 +45,21 @@ Let's build a `GameButton` component for starting your trivia game. Components a
 
 When you create a component, export it with `export default` so it can be shared across your project. Then bring it into other files with `import`.
 
-1. **Create the file**: Right-click `src/components` → New File → name it `GameButton.jsx`
-2. **Type the component structure**:
+1. **Create** the file by right-clicking `src/components` → New File → name it `GameButton.jsx`
+2. **Type** the component structure
    ```javascript
-   export default function GameButton() { // Add this function
+   export default function GameButton() {
      return <button>Start Adventure</button>;
    }
    ```
 
-3. **Import into SplashScreen**: Add `import GameButton from "./GameButton";` at the top
+3. **Import** into SplashScreen by adding `import GameButton from "./GameButton";` at the top
 
-4. **Add your button**: Place your button within `div.splash-buttons`:
+4. **Add** your button within `div.splash-buttons`
    ```javascript
-   <GameButton /> // Add this component
+   <GameButton />
    ```
-5. **Test**: Run `npm run dev` and you should see your custom button!
+5. **Test** by running `npm run dev` and you should see your custom button!
 
 
 
@@ -75,21 +75,21 @@ Try changing the button text in GameButton.jsx and watch it update instantly tha
 
 Props are how you pass data from parent components to child components. They're like function parameters but for React components.
 
-1. **Add text prop to GameButton**:
+1. **Add** `text` prop to `GameButton`
 
    ```javascript
-   export default function GameButton({ text }) { // Add text prop
+   export default function GameButton({ text }) {
      return <button>{text}</button>;
    }
    ```
 
-2. **Update SplashScreen**: Pass text prop to GameButton:
+2. **Update** SplashScreen to pass the `text` prop to `GameButton`
 
    ```javascript
-   <GameButton text="Start Adventure" /> // Add text prop
+   <GameButton text="Start Adventure" />
    ```
 
-3. **Watch the magic**: Your button now shows custom text!
+3. **Watch** the magic as your button now shows custom text!
 
 
 
@@ -101,24 +101,24 @@ Props are how you pass data from parent components to child components. They're 
 
 Let's make your buttons actually do something when clicked. In React, you can pass functions as props just like any other data.
 
-1. **Add onClick prop to GameButton**:
+1. **Add** `onClick` prop to `GameButton`
 
    ```javascript
-   export default function GameButton({ text, onClick }) { // Add onClick prop
-     return <button onClick={onClick}>{text}</button>; // Add onClick handler
+   export default function GameButton({ text, onClick }) {
+     return <button onClick={onClick}>{text}</button>;
    }
    ```
 
-2. **Update SplashScreen**: Add click handler to GameButton:
+2. **Update** `SplashScreen` to add click handler to `GameButton`
 
    ```javascript
    <GameButton
      text="Start Adventure"
-     onClick={() => alert('Start Game!')} // Add onClick prop
+     onClick={() => alert('Start Game!')}
    />
    ```
 
-3. **Test**: Click your button and see the alert!
+3. **Test** by clicking your button and see the alert!
 
 
 
@@ -130,31 +130,31 @@ Let's make your buttons actually do something when clicked. In React, you can pa
 
 Let's add visual variety to your buttons using CSS classes, default parameters, and a clean variable approach.
 
-1. **Add variant prop with default value and create buttonClass variable**:
+1. **Add** `variant` prop, **create** `buttonClass` variable, and **include** in JSX
 
    ```javascript
-   export default function GameButton({ text, onClick, variant = "primary" }) { // Add variant prop
-     const buttonClass = `game-button ${variant}`; // Add buttonClass variable
+   export default function GameButton({ text, onClick, variant = "primary" }) {
+     const buttonClass = `game-button ${variant}`;
 
      return (
-       <button className={buttonClass} onClick={onClick}> // Use buttonClass
+       <button className={buttonClass} onClick={onClick}>
          {text}
        </button>
      );
    }
    ```
 
-2. **Update SplashScreen**: Add variant prop to GameButton:
+2. **Update** `SplashScreen` to add `variant` prop to `GameButton`
 
    ```javascript
    <GameButton
      text="Start Adventure"
      onClick={() => alert('Start Game!')}
-     variant="primary" // Add variant prop
+     variant="primary"
    />
    ```
 
-3. **Admire your styled button**: Your button now has the primary styling!
+3. **Admire** your styled button as it now has the primary styling!
 
 
 
@@ -166,15 +166,15 @@ Let's add visual variety to your buttons using CSS classes, default parameters, 
 
 Now that you've built a complete, fully-featured GameButton component, let's experience the power of reusability by adding a second button for the game's credits.
 
-1. **Add a second button**: Below your existing GameButton in SplashScreen, add one that will show credits when clicked:
+1. **Add** a Credits button below your existing GameButton
    ```javascript
-   <GameButton // Add second button
+   <GameButton
      text="Credits"
      onClick={() => alert('Show Credits')}
      variant="secondary"
    />
    ```
-2. **Admire your work**: You now have two different buttons using the same component!
+2. **Admire** your work as you now have two different buttons using the same component!
 
 
 
@@ -201,10 +201,10 @@ React DevTools is like X-ray vision for your React app — see component structu
 
 ### Using DevTools
 
-1. **Open DevTools**: Press F12 or right-click → Inspect
-2. **Find Components tab**: Look for "Components" next to Console, Network, etc.
-3. **Explore your app**: Click on components in the tree to see their props
-4. **Inspect GameButton**: Find your GameButton component and see the text, onClick, and variant props!
+1. **Open** DevTools by pressing F12 or right-clicking → Inspect
+2. **Find** Components tab by looking for "Components" next to Console, Network, etc.
+3. **Explore** your app by clicking on components in the tree to see their props
+4. **Inspect** GameButton by finding your GameButton component and see the text, onClick, and variant props!
 
 
 
@@ -216,16 +216,16 @@ React DevTools is like X-ray vision for your React app — see component structu
 
 _Quick reference for all the React concepts you just learned:_
 
-| Term                      | Definition                                                                                       | Why it matters                                                                                        |
-| ------------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| 🧩 component          | A reusable piece of UI that can include markup, styles, and logic (example: `<SplashScreen />`). | You'll build your entire app by composing components together — they're React's building blocks.      |
-| 📦 props              | Data passed from parent to child components.       | Props let you customize components and pass data around your app — essential for reusable components. |
-| ✨ JSX                | JavaScript syntax that looks like HTML — used to describe UI in React components (`.jsx`).       | You'll write JSX in your `GameButton` component to describe what the button should look like.                      |
-| 🎨 className          | React's version of the HTML `class` attribute for applying CSS styles.                           | Use `className` instead of `class` because `class` is a reserved word in JavaScript.                        |
-| 📤 destructuring      | Extracting values from objects/arrays into variables, like `{ text, onClick }` from props.       | Makes your code cleaner by avoiding repetitive `props.text`, `props.onClick` syntax.                  |
-| 🔤 template literals  | String interpolation using backticks and `${}` for dynamic strings.                              | Perfect for creating dynamic CSS classes like `` `game-button ${variant}` ``.                  |
-| ⚙️ default parameters | Fallback values for function parameters, like `variant = "primary"`.                             | Ensures your components work even when some props aren't provided.                                    |
-| 🔍 React DevTools     | Browser extension for inspecting React component trees, props, and state.                        | Essential debugging tool — like X-ray vision for your React app.                                      |
+| Term   | Definition | Why it matters |
+|--------|------------|----------------|
+| 🧩 component | A reusable piece of UI that can include markup, styles, and logic (example: `<SplashScreen />`). | You'll build your entire app by composing components together — they're React's building blocks. |
+| 📦 props | Data passed from parent to child components. | Props let you customize components and pass data around your app — essential for reusable components. |
+| ✨ JSX | JavaScript syntax that looks like HTML — used to describe UI in React components (`.jsx`). | You'll write JSX in your `GameButton` component to describe what the button should look like. |
+| 🎨 className | React's version of the HTML `class` attribute for applying CSS styles. | Use `className` instead of `class` because `class` is a reserved word in JavaScript. |
+| 📤 destructuring | Extracting values from objects/arrays into variables, like `{ text, onClick }` from props. | Makes your code cleaner by avoiding repetitive `props.text`, `props.onClick` syntax. |
+| 🔤 template literals | String interpolation using backticks and `${}` for dynamic strings. | Perfect for creating dynamic CSS classes like `` `game-button ${variant}` ``. |
+| ⚙️ default parameters | Fallback values for function parameters, like `variant = "primary"`. | Ensures your components work even when some props aren't provided. |
+| 🔍 React DevTools | Browser extension for inspecting React component trees, props, and state. | Essential debugging tool — like X-ray vision for your React app. |
 
 <a id="ask-the-ai"></a>
 

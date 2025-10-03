@@ -453,51 +453,53 @@ overflow-x: hidden !important;
 <h2 id="adding-score-tracking">🏆 Adding Score Tracking</h2>
 <p>Let’s add a scoring system that tracks player performance and displays it prominently in your game’s HUD.</p>
 <ol type="1">
-<li><p><strong>Open <code>src/context/GameContext.jsx</code></strong> and add score state inside the GameProvider function:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> [score<span class="op">,</span> setScore] <span class="op">=</span> <span class="at">useState</span>(<span class="dv">0</span>)<span class="op">;</span> <span class="co">// Add score state</span></a></code></pre></div></li>
-<li><p><strong>Make score available</strong> by adding it to the Context value:</p>
+<li><p><strong>Open</strong> <code>src/context/GameContext.jsx</code> and add score state inside the GameProvider function</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> [score<span class="op">,</span> setScore] <span class="op">=</span> <span class="at">useState</span>(<span class="dv">0</span>)<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Make</strong> score available by adding it to the Context value</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="op">&lt;</span>GameContext value<span class="op">={{</span></a>
 <a class="sourceLine" id="cb2-2" title="2">  <span class="co">// GAME STATE</span></a>
 <a class="sourceLine" id="cb2-3" title="3">  screen<span class="op">,</span></a>
-<a class="sourceLine" id="cb2-4" title="4">  score<span class="op">,</span> <span class="co">// Add score to make available</span></a>
+<a class="sourceLine" id="cb2-4" title="4">  score<span class="op">,</span></a>
 <a class="sourceLine" id="cb2-5" title="5">  zoneProgress<span class="op">,</span></a>
 <a class="sourceLine" id="cb2-6" title="6">  <span class="co">// ... rest of existing properties</span></a></code></pre></div></li>
-<li><p><strong>Open <code>src/components/HUD.jsx</code></strong> and add a Scoreboard component at the top of the file:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">function</span> <span class="at">Scoreboard</span>() <span class="op">{</span> <span class="co">// Add Scoreboard component</span></a>
+<li><p><strong>Open</strong> <code>src/components/HUD.jsx</code> and add a Scoreboard component at the top of the file</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">function</span> <span class="at">Scoreboard</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb3-2" title="2">  <span class="kw">const</span> <span class="op">{</span> score <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
 <a class="sourceLine" id="cb3-3" title="3">  <span class="cf">return</span> <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;score-display&quot;</span><span class="op">&gt;</span><span class="dt">Score</span><span class="op">:</span> <span class="op">{</span>score<span class="op">}</span>&lt;/div<span class="op">&gt;;</span></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Update HUD component</strong>: Render both components using a React Fragment (<code>&lt;&gt;...&lt;/&gt;</code>):</p>
+<li><p><strong>Update</strong> HUD component to render both components using a React Fragment (<code>&lt;&gt;...&lt;/&gt;</code>)</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// Replace this single line:</span></a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="cf">return</span> <span class="op">&lt;</span>CurrentZone /<span class="op">&gt;;</span></a>
 <a class="sourceLine" id="cb4-3" title="3"></a>
 <a class="sourceLine" id="cb4-4" title="4"><span class="co">// With this Fragment structure:</span></a>
 <a class="sourceLine" id="cb4-5" title="5"><span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb4-6" title="6">  <span class="op">&lt;&gt;</span></a>
-<a class="sourceLine" id="cb4-7" title="7">    <span class="op">&lt;</span>Scoreboard /<span class="op">&gt;</span> <span class="co">// Add Scoreboard</span></a>
-<a class="sourceLine" id="cb4-8" title="8">    <span class="op">&lt;</span>CurrentZone /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-9" title="9">  &lt;/<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-10" title="10">)<span class="op">;</span></a></code></pre></div></li>
-<li><p><strong>Test</strong>: Navigate to the game screen and verify Score: 0 appears in HUD</p></li>
+<a class="sourceLine" id="cb4-6" title="6">  <span class="op">{</span><span class="co">/* Fragment groups components without extra DOM wrapper */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-7" title="7">  <span class="op">&lt;&gt;</span></a>
+<a class="sourceLine" id="cb4-8" title="8">    <span class="op">&lt;</span>Scoreboard /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-9" title="9">    <span class="op">&lt;</span>CurrentZone /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-10" title="10">  &lt;/<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-11" title="11">)<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Test</strong> by navigating to the game screen and verifying Score: 0 appears in HUD</p></li>
 </ol>
 <p>The <strong>Scoreboard component</strong> demonstrates the single responsibility principle — it has one job: display the current score. This modular approach makes your code easier to maintain and test.</p>
 <p><a id="implementing-score-updates"></a></p>
 <h2 id="implementing-score-updates">📊 Implementing Score Updates</h2>
 <p>Now let’s make the score actually change based on player performance with point rewards and penalties.</p>
 <ol type="1">
-<li><p><strong>Open <code>src/context/GameContext.jsx</code></strong> and find the <code>recordCorrectAnswer</code> function, then add points for correct answers:</p>
+<li><p><strong>Open</strong> <code>src/context/GameContext.jsx</code> and find the <code>recordCorrectAnswer</code> function, then add points for correct answers</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> recordCorrectAnswer <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb5-2" title="2">  <span class="at">setCorrectAnswers</span>((prev) <span class="kw">=&gt;</span> prev <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb5-3" title="3">  <span class="at">setScore</span>((prev) <span class="kw">=&gt;</span> prev <span class="op">+</span> POINTS_PER_CORRECT)<span class="op">;</span> <span class="co">// Add score increase</span></a>
+<a class="sourceLine" id="cb5-3" title="3">  <span class="at">setScore</span>((prev) <span class="kw">=&gt;</span> prev <span class="op">+</span> POINTS_PER_CORRECT)<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-4" title="4"><span class="op">};</span></a></code></pre></div></li>
-<li><p><strong>Find the <code>recordIncorrectAnswer</code> function</strong> and add point deduction:</p>
+<li><p><strong>Find</strong> the <code>recordIncorrectAnswer</code> function and add point deduction</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> recordIncorrectAnswer <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb6-2" title="2">  <span class="at">setScore</span>((prev) <span class="kw">=&gt;</span> <span class="va">Math</span>.<span class="at">max</span>(<span class="dv">0</span><span class="op">,</span> prev <span class="op">-</span> POINTS_PER_CORRECT))<span class="op">;</span> <span class="co">// Add score decrease with floor</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="op">};</span></a></code></pre></div></li>
-<li><p><strong>Test</strong>: Click zone, answer questions, and observe score changes:</p>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="co">// Prevent score from going negative</span></a>
+<a class="sourceLine" id="cb6-3" title="3">  <span class="at">setScore</span>((prev) <span class="kw">=&gt;</span> <span class="va">Math</span>.<span class="at">max</span>(<span class="dv">0</span><span class="op">,</span> prev <span class="op">-</span> POINTS_PER_CORRECT))<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="op">};</span></a></code></pre></div></li>
+<li><p><strong>Test</strong> by clicking zone, answering questions, and observing score changes</p>
 <ul>
-<li><strong>Correct answer</strong> → +100 points</li>
-<li><strong>Incorrect answer</strong> → -100 points (but never below 0)</li>
+<li>Correct answer → +100 points</li>
+<li>Incorrect answer → -100 points (but never below 0)</li>
 </ul></li>
 </ol>
 <p><strong>Updater functions</strong> like <code>setScore((prev) =&gt; prev + 100)</code> are crucial when updating state based on the previous value. React batches state updates, so using the previous value ensures accurate calculations even when multiple updates happen quickly.</p>
@@ -505,24 +507,24 @@ overflow-x: hidden !important;
 <h2 id="adding-cache-clearing">🗄️ Adding Cache Clearing</h2>
 <p>Let’s add cache clearing functions to remove stored questions when zones are completed or the game resets.</p>
 <ol type="1">
-<li><p><strong>Open <code>src/services/trivia.js</code></strong> and add cache clearing functions at the end of the file:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="im">export</span> <span class="kw">function</span> <span class="at">clearQuestionCache</span>(zoneId) <span class="op">{</span> <span class="co">// Add cache clearing for single zone</span></a>
+<li><p><strong>Open</strong> <code>src/services/trivia.js</code> and add cache clearing functions at the end of the file</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="im">export</span> <span class="kw">function</span> <span class="at">clearQuestionCache</span>(zoneId) <span class="op">{</span></a>
 <a class="sourceLine" id="cb7-2" title="2">  <span class="kw">const</span> cacheKey <span class="op">=</span> <span class="at">getCacheKey</span>(zoneId)<span class="op">;</span></a>
 <a class="sourceLine" id="cb7-3" title="3">  <span class="va">localStorage</span>.<span class="at">removeItem</span>(cacheKey)<span class="op">;</span></a>
 <a class="sourceLine" id="cb7-4" title="4"><span class="op">}</span></a>
 <a class="sourceLine" id="cb7-5" title="5"></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="im">export</span> <span class="kw">function</span> <span class="at">clearAllQuestionCache</span>() <span class="op">{</span> <span class="co">// Add cache clearing for all zones</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="im">export</span> <span class="kw">function</span> <span class="at">clearAllQuestionCache</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb7-7" title="7">  <span class="va">Object</span>.<span class="at">keys</span>(localStorage)</a>
 <a class="sourceLine" id="cb7-8" title="8">    .<span class="at">filter</span>((key) <span class="kw">=&gt;</span> <span class="va">key</span>.<span class="at">startsWith</span>(<span class="st">&quot;trivia_questions_zone_&quot;</span>))</a>
 <a class="sourceLine" id="cb7-9" title="9">    .<span class="at">forEach</span>((key) <span class="kw">=&gt;</span> <span class="va">localStorage</span>.<span class="at">removeItem</span>(key))<span class="op">;</span></a>
 <a class="sourceLine" id="cb7-10" title="10"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Import the cache functions</strong> into GameContext.jsx:</p>
+<li><p><strong>Import</strong> the cache functions into GameContext.jsx</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="im">import</span> <span class="op">{</span> </a>
 <a class="sourceLine" id="cb8-2" title="2">  fetchQuestions<span class="op">,</span> </a>
 <a class="sourceLine" id="cb8-3" title="3">  clearQuestionCache<span class="op">,</span> </a>
 <a class="sourceLine" id="cb8-4" title="4">  clearAllQuestionCache </a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../services/trivia&quot;</span><span class="op">;</span> <span class="co">// Add cache functions</span></a></code></pre></div></li>
-<li><p><strong>Update the <code>checkZoneCompletion</code> function</strong> to clear the current zone’s cached questions when completed:</p>
+<a class="sourceLine" id="cb8-5" title="5"><span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../services/trivia&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Update</strong> the <code>checkZoneCompletion</code> function to clear the current zone’s cached questions when completed</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">const</span> checkZoneCompletion <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb9-2" title="2">  <span class="cf">if</span> (activeZone <span class="op">===</span> <span class="kw">null</span> <span class="op">||</span> <span class="va">currentQuestions</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb9-3" title="3"></a>
@@ -537,7 +539,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb9-12" title="12">      [activeZone]<span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">true</span> <span class="op">},</span></a>
 <a class="sourceLine" id="cb9-13" title="13">    <span class="op">}</span>))<span class="op">;</span></a>
 <a class="sourceLine" id="cb9-14" title="14"></a>
-<a class="sourceLine" id="cb9-15" title="15">    <span class="at">clearQuestionCache</span>(activeZone)<span class="op">;</span> <span class="co">// Add cache clearing</span></a>
+<a class="sourceLine" id="cb9-15" title="15">    <span class="at">clearQuestionCache</span>(activeZone)<span class="op">;</span></a>
 <a class="sourceLine" id="cb9-16" title="16"></a>
 <a class="sourceLine" id="cb9-17" title="17">    <span class="cf">if</span> (activeZone <span class="op">===</span> <span class="va">ZONES</span>.<span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>) <span class="op">{</span></a>
 <a class="sourceLine" id="cb9-18" title="18">      <span class="at">setScreen</span>(<span class="va">SCREENS</span>.<span class="at">GAME_OVER</span>)<span class="op">;</span></a>
@@ -550,9 +552,9 @@ overflow-x: hidden !important;
 <h2 id="updating-reset-functionality">🔄 Updating Reset Functionality</h2>
 <p>Let’s update the reset function to properly clear all game state and cached data for a fresh start.</p>
 <ol type="1">
-<li><p><strong>Find the <code>resetGame</code> function</strong> in GameContext.jsx and update it:</p>
+<li><p><strong>Find</strong> the <code>resetGame</code> function in GameContext.jsx and update it</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">const</span> resetGame <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb10-2" title="2">  <span class="at">setScore</span>(<span class="dv">0</span>)<span class="op">;</span> <span class="co">// Add score reset</span></a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="at">setScore</span>(<span class="dv">0</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb10-3" title="3">  <span class="at">setZoneProgress</span>(<span class="op">{</span></a>
 <a class="sourceLine" id="cb10-4" title="4">    <span class="dv">0</span><span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> <span class="op">},</span></a>
 <a class="sourceLine" id="cb10-5" title="5">    <span class="dv">1</span><span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> <span class="op">},</span></a>
@@ -562,9 +564,9 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb10-9" title="9">  <span class="at">setCurrentQuestions</span>([])<span class="op">;</span></a>
 <a class="sourceLine" id="cb10-10" title="10">  <span class="at">setCurrentQuestion</span>(<span class="dv">0</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb10-11" title="11">  <span class="at">setCorrectAnswers</span>(<span class="dv">0</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-12" title="12">  <span class="at">clearAllQuestionCache</span>()<span class="op">;</span> <span class="co">// Add cache clearing</span></a>
+<a class="sourceLine" id="cb10-12" title="12">  <span class="at">clearAllQuestionCache</span>()<span class="op">;</span></a>
 <a class="sourceLine" id="cb10-13" title="13"><span class="op">};</span></a></code></pre></div></li>
-<li><p><strong>Test the reset functionality</strong> by completing a zone and then using React DevTools to trigger <code>resetGame()</code></p></li>
+<li><p><strong>Test</strong> the reset functionality by completing a zone and then using React DevTools to trigger <code>resetGame()</code></p></li>
 </ol>
 <p><strong>Complete state reset</strong> ensures players can start fresh without any lingering data from previous games. This includes both React state and localStorage cache, providing a clean slate for new gameplay sessions.</p>
 <p><a id="solo-mission-gameover-component"></a></p>
@@ -572,28 +574,28 @@ overflow-x: hidden !important;
 <p>Now for the exciting part — you’ll create a GameOver component that celebrates player achievements and allows them to play again! You’ve got all the tools — now it’s time to build your own victory screen using everything you’ve learned.</p>
 <h3 id="create-the-component-foundation">1. Create the Component Foundation</h3>
 <ul>
-<li>Create <code>src/components/GameOver.jsx</code> with function component and default export</li>
-<li>Return JSX with div <code>className=&quot;game-over&quot;</code> containing h1 congratulations message</li>
-<li>Import <code>GameOver</code> into <code>App.jsx</code> and add conditional rendering for <code>SCREENS.GAME_OVER</code></li>
-<li><strong>Test</strong>: Use React DevTools → Set <code>screen</code> to “gameover” → Component appears</li>
+<li><strong>Create</strong> <code>src/components/GameOver.jsx</code> with function component and default export</li>
+<li><strong>Return</strong> JSX with div <code>className=&quot;game-over&quot;</code> containing h1 congratulations message</li>
+<li><strong>Import</strong> <code>GameOver</code> into <code>App.jsx</code> and add conditional rendering for <code>SCREENS.GAME_OVER</code></li>
+<li><strong>Test</strong> by using React DevTools → setting <code>screen</code> to “gameover” → Component appears</li>
 </ul>
 <h3 id="add-score-display">2. Add Score Display</h3>
 <ul>
-<li>Import <code>useGame</code> hook and destructure <code>score</code></li>
-<li>Add div with <code>className=&quot;final-score&quot;</code> displaying <code>Final Score: {score}</code></li>
-<li><strong>Test</strong>: Check score display → Shows current game score</li>
+<li><strong>Import</strong> <code>useGame</code> hook and destructure <code>score</code></li>
+<li><strong>Add</strong> div with <code>className=&quot;final-score&quot;</code> displaying <code>Final Score: {score}</code></li>
+<li><strong>Test</strong> by checking score display → Shows current game score</li>
 </ul>
 <h3 id="add-play-again-functionality">3. Add Play Again Functionality</h3>
 <ul>
-<li>Create click handler calling <code>resetGame</code> and <code>setScreen(SCREENS.SPLASH)</code></li>
-<li>Import and render <code>GameButton</code> with “Play Again” text and <code>&quot;primary&quot;</code> variant</li>
-<li><strong>Test</strong>: Click Play Again → Game resets → Returns to splash screen</li>
+<li><strong>Create</strong> click handler calling <code>resetGame</code> and <code>setScreen(SCREENS.SPLASH)</code></li>
+<li><strong>Import</strong> and render <code>GameButton</code> with “Play Again” text and <code>&quot;primary&quot;</code> variant</li>
+<li><strong>Test</strong> by clicking Play Again → Game resets → Returns to splash screen</li>
 </ul>
 <h3 id="testing-tips">Testing Tips</h3>
 <ul>
-<li><strong>Quick testing</strong>: Use React DevTools to change <code>screen</code> state to “gameover” (find <code>GameProvider</code> → hooks → screen)</li>
-<li><strong>Full testing</strong>: Complete all three zones to naturally trigger GameOver screen</li>
-<li><strong>Verify</strong>: Final score displays correctly and Play Again button resets everything</li>
+<li><strong>Quick testing</strong> by using React DevTools to change <code>screen</code> state to “gameover” (find <code>GameProvider</code> → hooks → screen)</li>
+<li><strong>Full testing</strong> by completing all three zones to naturally trigger GameOver screen</li>
+<li><strong>Verify</strong> final score displays correctly and Play Again button resets everything</li>
 </ul>
 <h3 id="requirements-checklist"><strong>Requirements Checklist</strong></h3>
 <p>Your completed GameOver component must:</p>
@@ -620,9 +622,9 @@ overflow-x: hidden !important;
 <p><em>Quick reference for the key concepts you just learned:</em></p>
 <table>
 <colgroup>
-<col style="width: 17%"></col>
-<col style="width: 35%"></col>
-<col style="width: 47%"></col>
+<col style="width: 22%"></col>
+<col style="width: 33%"></col>
+<col style="width: 44%"></col>
 </colgroup>
 <thead>
 <tr class="header">

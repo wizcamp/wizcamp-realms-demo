@@ -410,8 +410,8 @@ overflow-x: hidden !important;
 <h2 id="exploring-the-opentrivia-database">🔍 Exploring the OpenTrivia Database</h2>
 <p>Let’s explore the <strong>API</strong> that will power your trivia questions and see what real <strong>API</strong> data looks like.</p>
 <ol type="1">
-<li><p><strong>Visit the API endpoint</strong>: Open <a href="https://opentdb.com/api.php?amount=3&amp;category=18&amp;type=multiple&amp;difficulty=easy&amp;encode=url3986">https://opentdb.com/api.php?amount=3&amp;category=18&amp;type=multiple&amp;difficulty=easy&amp;encode=url3986</a> in your browser</p></li>
-<li><p><strong>Examine the raw JSON response</strong>: You’ll see something like this:</p>
+<li><p><strong>Visit</strong> the API endpoint by opening <a href="https://opentdb.com/api.php?amount=3&amp;category=18&amp;type=multiple&amp;difficulty=easy&amp;encode=url3986">https://opentdb.com/api.php?amount=3&amp;category=18&amp;type=multiple&amp;difficulty=easy&amp;encode=url3986</a> in your browser</p></li>
+<li><p><strong>Examine</strong> the raw JSON response where you’ll see something like this</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">{</span></a>
 <a class="sourceLine" id="cb1-2" title="2">  <span class="dt">&quot;response_code&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb1-3" title="3">  <span class="dt">&quot;results&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
@@ -429,8 +429,8 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb1-15" title="15">    <span class="fu">}</span></a>
 <a class="sourceLine" id="cb1-16" title="16">  <span class="ot">]</span></a>
 <a class="sourceLine" id="cb1-17" title="17"><span class="fu">}</span></a></code></pre></div></li>
-<li><p><strong>Notice the encoding</strong>: See those <code>%20</code> and <code>%3A</code> symbols? That’s <strong>URL encoding</strong> — a way to safely transmit text over the internet</p></li>
-<li><p><strong>Understand the structure</strong>: Each question has a <code>question</code>, <code>correct_answer</code>, and <code>incorrect_answers</code> array</p></li>
+<li><p><strong>Notice</strong> the encoding with those <code>%20</code> and <code>%3A</code> symbols which represent <strong>URL encoding</strong> — a way to safely transmit text over the internet</p></li>
+<li><p><strong>Understand</strong> the structure where each question has a <code>question</code>, <code>correct_answer</code>, and <code>incorrect_answers</code> array</p></li>
 </ol>
 <p><strong>JSON</strong> (JavaScript Object Notation) is the universal language of <strong>APIs</strong>. It’s how different applications share structured data over the internet. Your job as a developer is to transform this raw data into the format your game needs.</p>
 <p><strong>📚 API Documentation:</strong> For complete details about OpenTrivia Database parameters, response codes, and features, visit: <a href="https://opentdb.com/api_config.php">https://opentdb.com/api_config.php</a></p>
@@ -464,17 +464,17 @@ overflow-x: hidden !important;
 </ul>
 <p><strong>How to fix and continue:</strong></p>
 <ol type="1">
-<li><strong>Refresh the browser page</strong> manually (Ctrl+R or Cmd+R)</li>
-<li><strong>Navigate back to the game</strong> (click “Start Game”)</li>
-<li><strong>Click a zone</strong> to test your updated code</li>
+<li><strong>Refresh</strong> the browser page manually (Ctrl+R or Cmd+R)</li>
+<li><strong>Navigate</strong> back to the game (<strong>click</strong> “Start Game”)</li>
+<li><strong>Click</strong> a zone to test your updated code</li>
 </ol>
 <p><strong>Pro tip:</strong> Make several changes to your code, then refresh once to test them all together!</p>
 <h2 id="building-the-fetch-foundation">🔧 Building the Fetch Foundation</h2>
 <p>Time to connect your game to the real internet! Let’s implement the core <strong>fetch</strong> logic.</p>
 <ol type="1">
-<li><strong>Open <code>src/services/trivia.js</code></strong></li>
-<li><p><strong>Replace the alert</strong> with basic <strong>fetch</strong> logic:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="cf">try</span> <span class="op">{</span> <span class="co">// Add fetch logic</span></a>
+<li><strong>Open</strong> <code>src/services/trivia.js</code></li>
+<li><p><strong>Replace</strong> the alert with basic fetch logic</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="cf">try</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb5-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Fetching from:&quot;</span><span class="op">,</span> url)<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-3" title="3">  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="at">fetch</span>(url)<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-4" title="4">  <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> <span class="va">response</span>.<span class="at">json</span>()<span class="op">;</span></a>
@@ -483,16 +483,16 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb5-7" title="7">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Failed to fetch questions:&quot;</span><span class="op">,</span> error)<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-8" title="8">  <span class="cf">return</span> []<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-9" title="9"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Test</strong>: Verify the API integration:</p>
+<li><p><strong>Test</strong> to verify the API integration</p>
 <ul>
-<li><strong>Open DevTools</strong>: Press F12 or right-click → Inspect</li>
-<li><strong>Navigate back to the game</strong> (click “Start Game”)</li>
-<li><strong>Click a zone</strong> to test your updated code</li>
-<li><strong>Check the Console tab</strong> to see your fetch in action</li>
-<li><strong>Check the Network tab</strong> to see the actual HTTP request</li>
+<li><strong>Open</strong> DevTools by pressing F12 or right-clicking → Inspect</li>
+<li><strong>Navigate</strong> back to the game by clicking “Start Game”</li>
+<li><strong>Click</strong> a zone to test your updated code</li>
+<li><strong>Check</strong> the Console tab to see your fetch in action</li>
+<li><strong>Check</strong> the Network tab to see the actual HTTP request</li>
 </ul></li>
-<li><p><strong>Add data validation</strong> immediately after getting the data:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="cf">if</span> (<span class="op">!</span><span class="va">data</span>.<span class="at">results</span> <span class="op">||</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="op">{</span> <span class="co">// Add validation</span></a>
+<li><p><strong>Add</strong> data validation immediately after getting the data</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="cf">if</span> (<span class="op">!</span><span class="va">data</span>.<span class="at">results</span> <span class="op">||</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="op">{</span></a>
 <a class="sourceLine" id="cb6-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;No questions received from API&quot;</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb6-3" title="3">  <span class="cf">return</span> []<span class="op">;</span></a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="op">}</span></a></code></pre></div></li>
@@ -502,50 +502,50 @@ overflow-x: hidden !important;
 <h2 id="transforming-api-data">🔄 Transforming API Data</h2>
 <p>Now let’s transform the <strong>API</strong> data into game-ready format. This is where the real magic happens!</p>
 <ol type="1">
-<li><p><strong>Add transformation testing</strong> after the validation check:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">const</span> firstQuestion <span class="op">=</span> <span class="va">data</span>.<span class="at">results</span>[<span class="dv">0</span>]<span class="op">;</span> <span class="co">// Add test code</span></a>
+<li><p><strong>Add</strong> transformation testing after the validation check</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">const</span> firstQuestion <span class="op">=</span> <span class="va">data</span>.<span class="at">results</span>[<span class="dv">0</span>]<span class="op">;</span></a>
 <a class="sourceLine" id="cb7-2" title="2"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Before transform:&quot;</span><span class="op">,</span> firstQuestion)<span class="op">;</span></a>
 <a class="sourceLine" id="cb7-3" title="3"></a>
 <a class="sourceLine" id="cb7-4" title="4"><span class="kw">const</span> transformed <span class="op">=</span> <span class="at">transformQuestion</span>(firstQuestion)<span class="op">;</span></a>
 <a class="sourceLine" id="cb7-5" title="5"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;After transform:&quot;</span><span class="op">,</span> transformed)<span class="op">;</span></a></code></pre></div>
-<p><strong>Test</strong>: Start Game → Click zone → See <code>undefined</code> in console → “We need to implement transformQuestion”</p></li>
-<li><p><strong>Extract object properties</strong> in the <code>transformQuestion</code> function:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span> <span class="co">// Add extraction</span></a>
+<p><strong>Test</strong> by starting Game → clicking zone → seeing <code>undefined</code> in console → “We need to implement transformQuestion”</p></li>
+<li><p><strong>Extract</strong> object properties in the <code>transformQuestion</code> function</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span></a>
 <a class="sourceLine" id="cb8-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="at">question</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb8-3" title="3">  <span class="kw">const</span> incorrectAnswers <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="at">incorrect_answers</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb8-4" title="4">  <span class="kw">const</span> correctAnswer <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="at">correct_answer</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb8-5" title="5"></a>
 <a class="sourceLine" id="cb8-6" title="6">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Extracted properties:&quot;</span><span class="op">,</span> <span class="op">{</span> question<span class="op">,</span> incorrectAnswers<span class="op">,</span> correctAnswer <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb8-7" title="7"><span class="op">}</span></a></code></pre></div>
-<p><strong>Test</strong>: Start Game → Click zone → See extracted properties in console</p></li>
-<li><p><strong>Add helper functions for decoding</strong>:</p>
+<p><strong>Test</strong> by starting Game → clicking zone → seeing extracted properties in console</p></li>
+<li><p><strong>Add</strong> helper functions for decoding</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span></a>
-<a class="sourceLine" id="cb9-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">question</span>)<span class="op">;</span> <span class="co">// Add decoding</span></a>
-<a class="sourceLine" id="cb9-3" title="3">  <span class="kw">const</span> incorrectAnswers <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="va">incorrect_answers</span>.<span class="at">map</span>(answer <span class="kw">=&gt;</span> <span class="at">decodeText</span>(answer))<span class="op">;</span> <span class="co">// Add decoding</span></a>
-<a class="sourceLine" id="cb9-4" title="4">  <span class="kw">const</span> correctAnswer <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">correct_answer</span>)<span class="op">;</span> <span class="co">// Add decoding</span></a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">question</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-3" title="3">  <span class="kw">const</span> incorrectAnswers <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="va">incorrect_answers</span>.<span class="at">map</span>(answer <span class="kw">=&gt;</span> <span class="at">decodeText</span>(answer))<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-4" title="4">  <span class="kw">const</span> correctAnswer <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">correct_answer</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb9-5" title="5"></a>
 <a class="sourceLine" id="cb9-6" title="6">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Decoded data:&quot;</span><span class="op">,</span> <span class="op">{</span> question<span class="op">,</span> incorrectAnswers<span class="op">,</span> correctAnswer <span class="op">}</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb9-7" title="7"><span class="op">}</span></a></code></pre></div>
-<p><strong>Test</strong>: Start Game → Click zone → See decoded, formatted data</p>
+<p><strong>Test</strong> by starting Game → clicking zone → seeing decoded, formatted data</p>
 <p>You should now see formatted game data like:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">{</span></a>
 <a class="sourceLine" id="cb10-2" title="2">  <span class="dt">&quot;question&quot;</span><span class="fu">:</span> <span class="st">&quot;What does GHz stand for?&quot;</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb10-3" title="3">  <span class="dt">&quot;incorrectAnswers&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;Gigahotz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahetz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahatz&quot;</span><span class="ot">]</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb10-4" title="4">  <span class="dt">&quot;correctAnswer&quot;</span><span class="fu">:</span> <span class="st">&quot;Gigahertz&quot;</span></a>
 <a class="sourceLine" id="cb10-5" title="5"><span class="fu">}</span></a></code></pre></div></li>
-<li><p><strong>Add shuffling and index finding</strong>:</p>
+<li><p><strong>Add</strong> shuffling and index finding</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span></a>
 <a class="sourceLine" id="cb11-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">question</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-3" title="3">  <span class="kw">const</span> incorrectAnswers <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="va">incorrect_answers</span>.<span class="at">map</span>(answer <span class="kw">=&gt;</span> <span class="at">decodeText</span>(answer))<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-4" title="4">  <span class="kw">const</span> correctAnswer <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">correct_answer</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb11-5" title="5">  <span class="kw">const</span> shuffledAnswers <span class="op">=</span> <span class="at">shuffleAnswers</span>(correctAnswer<span class="op">,</span> incorrectAnswers)<span class="op">;</span> <span class="co">// Add shuffling</span></a>
-<a class="sourceLine" id="cb11-6" title="6">  <span class="kw">const</span> correctIndex <span class="op">=</span> <span class="va">shuffledAnswers</span>.<span class="at">indexOf</span>(correctAnswer)<span class="op">;</span> <span class="co">// Find correct index</span></a>
+<a class="sourceLine" id="cb11-5" title="5">  <span class="kw">const</span> shuffledAnswers <span class="op">=</span> <span class="at">shuffleAnswers</span>(correctAnswer<span class="op">,</span> incorrectAnswers)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-6" title="6">  <span class="kw">const</span> correctIndex <span class="op">=</span> <span class="va">shuffledAnswers</span>.<span class="at">indexOf</span>(correctAnswer)<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-7" title="7"></a>
 <a class="sourceLine" id="cb11-8" title="8">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Shuffled answers:&quot;</span><span class="op">,</span> shuffledAnswers)<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-9" title="9">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Correct answer is at index:&quot;</span><span class="op">,</span> correctIndex)<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-10" title="10"><span class="op">}</span></a></code></pre></div>
-<p><strong>Test</strong>: Start Game → Click zone → See shuffled answers</p></li>
-<li><p><strong>Return the final game object</strong>:</p>
+<p><strong>Test</strong> by starting Game → clicking zone → seeing shuffled answers</p></li>
+<li><p><strong>Return</strong> the final game object</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span></a>
 <a class="sourceLine" id="cb12-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">question</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb12-3" title="3">  <span class="kw">const</span> incorrectAnswers <span class="op">=</span> <span class="va">apiQuestion</span>.<span class="va">incorrect_answers</span>.<span class="at">map</span>(answer <span class="kw">=&gt;</span> <span class="at">decodeText</span>(answer))<span class="op">;</span></a>
@@ -553,13 +553,13 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb12-5" title="5">  <span class="kw">const</span> shuffledAnswers <span class="op">=</span> <span class="at">shuffleAnswers</span>(correctAnswer<span class="op">,</span> incorrectAnswers)<span class="op">;</span></a>
 <a class="sourceLine" id="cb12-6" title="6">  <span class="kw">const</span> correctIndex <span class="op">=</span> <span class="va">shuffledAnswers</span>.<span class="at">indexOf</span>(correctAnswer)<span class="op">;</span></a>
 <a class="sourceLine" id="cb12-7" title="7"></a>
-<a class="sourceLine" id="cb12-8" title="8">  <span class="cf">return</span> <span class="op">{</span> <span class="co">// Return game object</span></a>
+<a class="sourceLine" id="cb12-8" title="8">  <span class="cf">return</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb12-9" title="9">    <span class="dt">question</span><span class="op">:</span> question<span class="op">,</span></a>
 <a class="sourceLine" id="cb12-10" title="10">    <span class="dt">answers</span><span class="op">:</span> shuffledAnswers<span class="op">,</span></a>
 <a class="sourceLine" id="cb12-11" title="11">    <span class="dt">correct</span><span class="op">:</span> correctIndex</a>
 <a class="sourceLine" id="cb12-12" title="12">  <span class="op">};</span></a>
 <a class="sourceLine" id="cb12-13" title="13"><span class="op">}</span></a></code></pre></div>
-<p><strong>Test</strong>: Start Game → Click zone → See complete transformed object!</p>
+<p><strong>Test</strong> by starting Game → clicking zone → seeing complete transformed object!</p>
 <p>You should now see complete game data like:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">{</span></a>
 <a class="sourceLine" id="cb13-2" title="2">  <span class="dt">&quot;question&quot;</span><span class="fu">:</span> <span class="st">&quot;What does CPU stand for?&quot;</span><span class="fu">,</span></a>
@@ -571,18 +571,19 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb13-8" title="8">  <span class="ot">]</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb13-9" title="9">  <span class="dt">&quot;correct&quot;</span><span class="fu">:</span> <span class="dv">2</span></a>
 <a class="sourceLine" id="cb13-10" title="10"><span class="fu">}</span></a></code></pre></div></li>
-<li><p><strong>Complete the fetchQuestions integration</strong> by replacing the test logging:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">map</span>(apiQuestion <span class="kw">=&gt;</span> <span class="at">transformQuestion</span>(apiQuestion))<span class="op">;</span> <span class="co">// Transform all questions</span></a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;All transformed questions:&quot;</span><span class="op">,</span> questions)<span class="op">;</span></a>
-<a class="sourceLine" id="cb14-3" title="3"><span class="cf">return</span> questions<span class="op">;</span></a></code></pre></div>
-<p><strong>Test</strong>: Click zone → see array of properly formatted questions!</p></li>
+<li><p><strong>Complete</strong> the fetchQuestions integration by replacing the test logging</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="co">// Transform API response into game-ready format</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">map</span>(apiQuestion <span class="kw">=&gt;</span> <span class="at">transformQuestion</span>(apiQuestion))<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;All transformed questions:&quot;</span><span class="op">,</span> questions)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="cf">return</span> questions<span class="op">;</span></a></code></pre></div>
+<p><strong>Test</strong> by clicking zone → see array of properly formatted questions!</p></li>
 </ol>
 <p><strong>Data transformation</strong> is a core skill in web development. APIs rarely return data in exactly the format your application needs. The <code>map()</code> method is perfect for transforming arrays of data, and helper functions keep your code clean and reusable.</p>
 <p><a id="testing-your-api-integration"></a></p>
 <h2 id="testing-your-api-integration">🧪 Testing Your API Integration</h2>
 <p>Let’s test your complete <strong>API</strong> integration and clean up the debugging code.</p>
 <ol type="1">
-<li><p><strong>Remove console logs</strong> from your functions to clean up the code:</p>
+<li><p><strong>Remove</strong> console logs from your functions to clean up the code</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="im">export</span> <span class="kw">async</span> <span class="kw">function</span> <span class="at">fetchQuestions</span>(zoneId<span class="op">,</span> count <span class="op">=</span> <span class="kw">null</span>) <span class="op">{</span></a>
 <a class="sourceLine" id="cb15-2" title="2">  <span class="kw">const</span> zone <span class="op">=</span> <span class="at">getZoneById</span>(zoneId)<span class="op">;</span></a>
 <a class="sourceLine" id="cb15-3" title="3">  <span class="cf">if</span> (<span class="op">!</span>zone) <span class="cf">return</span> []<span class="op">;</span></a>
@@ -606,16 +607,16 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb15-21" title="21">    <span class="cf">return</span> []<span class="op">;</span></a>
 <a class="sourceLine" id="cb15-22" title="22">  <span class="op">}</span></a>
 <a class="sourceLine" id="cb15-23" title="23"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Test</strong>: Verify the complete data flow:</p>
+<li><p><strong>Test</strong> to verify the complete data flow</p>
 <ul>
 <li>Game resets to splash screen</li>
-<li><strong>Navigate to the game</strong> (click “Start Game”)</li>
-<li><strong>Click different zones</strong> to test various categories and difficulties</li>
-<li><strong>Verify the data flow</strong> using React DevTools:
+<li><strong>Navigate</strong> to the game by clicking “Start Game”</li>
+<li><strong>Click</strong> different zones to test various categories and difficulties</li>
+<li><strong>Verify</strong> the data flow using React DevTools
 <ul>
-<li><strong>Open DevTools</strong> → Components tab</li>
-<li><strong>Find GameProvider</strong> and examine <code>currentQuestions</code> state</li>
-<li><strong>Click zones</strong> and watch the state populate with your transformed questions</li>
+<li><strong>Open</strong> DevTools → Components tab</li>
+<li><strong>Find</strong> GameProvider and examine <code>currentQuestions</code> state</li>
+<li><strong>Click</strong> zones and watch the state populate with your transformed questions</li>
 </ul></li>
 </ul></li>
 </ol>
@@ -674,9 +675,9 @@ overflow-x: hidden !important;
 <p><em>Quick reference for all the API and asynchronous programming concepts you just learned:</em></p>
 <table>
 <colgroup>
-<col style="width: 17%"></col>
-<col style="width: 35%"></col>
-<col style="width: 47%"></col>
+<col style="width: 22%"></col>
+<col style="width: 33%"></col>
+<col style="width: 44%"></col>
 </colgroup>
 <thead>
 <tr class="header">

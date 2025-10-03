@@ -403,18 +403,19 @@ overflow-x: hidden !important;
 <h2 id="adding-the-hud-and-coordinate-display">🖥️ Adding the HUD and Coordinate Display</h2>
 <p>Let’s add the game’s <strong>HUD</strong> (Heads Up Display) and a coordinate helper to assist with zone positioning.</p>
 <ol type="1">
-<li><p><strong>Open <code>src/App.jsx</code></strong> and add the new imports at the top:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> HUD <span class="im">from</span> <span class="st">&quot;./components/HUD&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> CoordinateDisplay <span class="im">from</span> <span class="st">&quot;./components/CoordinateDisplay&quot;</span><span class="op">;</span> <span class="co">// Add this import</span></a></code></pre></div></li>
-<li><p><strong>Update the PLAYING screen to render multiple components</strong> using a <strong>React Fragment</strong>:</p>
+<li><p><strong>Open</strong> <code>src/App.jsx</code> and add the new imports at the top</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> HUD <span class="im">from</span> <span class="st">&quot;./components/HUD&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> CoordinateDisplay <span class="im">from</span> <span class="st">&quot;./components/CoordinateDisplay&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Update</strong> the PLAYING screen to render multiple components using a <strong>React Fragment</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> (</a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="op">&lt;&gt;</span> <span class="co">// Add Fragment</span></a>
-<a class="sourceLine" id="cb2-3" title="3">    <span class="op">&lt;</span>GameMap /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb2-4" title="4">    <span class="op">&lt;</span>HUD /<span class="op">&gt;</span> <span class="co">// Add HUD</span></a>
-<a class="sourceLine" id="cb2-5" title="5">    <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span> <span class="co">// Add CoordinateDisplay</span></a>
-<a class="sourceLine" id="cb2-6" title="6">  &lt;/<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb2-7" title="7">)<span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Test</strong>: Run <code>npm run dev</code> and navigate to the game screen to see the new HUD and coordinate display</p></li>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="op">{</span><span class="co">/* Fragment groups components without extra DOM wrapper */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-3" title="3">  <span class="op">&lt;&gt;</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="op">&lt;</span>GameMap /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="op">&lt;</span>HUD /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-6" title="6">    <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-7" title="7">  &lt;/<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-8" title="8">)<span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Test</strong> by running <code>npm run dev</code> and navigating to the game screen to see the new HUD and coordinate display</p></li>
 </ol>
 <p><strong>React Fragments</strong> (<code>&lt;&gt;...&lt;/&gt;</code>) are like invisible containers — they let you snap together multiple components without clutter. React components must return a single root element, so fragments solve this requirement cleanly. The <code>HUD</code> shows game progress, while <code>CoordinateDisplay</code> helps you position zone labels precisely.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
@@ -428,29 +429,29 @@ overflow-x: hidden !important;
 <h2 id="exploring-javascript-data-structures">🏗️ Exploring JavaScript Data Structures</h2>
 <p>Let’s explore the fundamental <strong>data structures</strong> that power your zone configuration — <strong>arrays</strong> and <strong>objects</strong>.</p>
 <ol type="1">
-<li><strong>Open <code>src/data/zones.js</code></strong> and examine the <code>ZONES</code> array structure</li>
-<li><strong>Notice the data types</strong>:
+<li><strong>Open</strong> <code>src/data/zones.js</code> and examine the <code>ZONES</code> array structure</li>
+<li><strong>Notice</strong> the data types
 <ul>
 <li><strong>Strings</strong> for text: <code>&quot;Forest of Knowledge&quot;</code></li>
 <li><strong>Numbers</strong> for IDs and counts: <code>18</code>, <code>4</code></li>
 <li><strong>Objects</strong> for complex data: <code>mapLabel: { x: 225, y: 140 }</code></li>
 </ul></li>
-<li><strong>Understand the nesting</strong>: An <strong>array</strong> of <strong>objects</strong>, where each object has <strong>properties</strong> that can be different data types</li>
+<li><strong>Understand</strong> the nesting as an <strong>array</strong> of <strong>objects</strong>, where each object has <strong>properties</strong> that can be different data types</li>
 </ol>
 <p><strong>Arrays</strong> are like playlists — they keep things in order. <strong>Objects</strong> are like contact cards — they store all the details about one thing. Together, they’re the perfect combo for organizing your game world and representing complex real-world data in code.</p>
 <p><a id="designing-your-zone-themes"></a></p>
 <h2 id="designing-your-zone-themes">🎨 Designing Your Zone Themes</h2>
 <p>Now for the creative part — designing three distinctive zone themes that create a cohesive game experience!</p>
 <ol type="1">
-<li><strong>Explore available categories</strong>: Visit <a href="https://opentdb.com/api_category.php">https://opentdb.com/api_category.php</a> to see all trivia categories</li>
-<li><strong>Brainstorm zone concepts</strong> that match the visual environments:
+<li><strong>Explore</strong> available categories by visiting <a href="https://opentdb.com/api_category.php">https://opentdb.com/api_category.php</a> to see all trivia categories</li>
+<li><strong>Brainstorm</strong> zone concepts that match the visual environments
 <ul>
 <li><strong>Forest theme</strong>: Nature, animals, science categories</li>
 <li><strong>Desert theme</strong>: History, geography, mythology categories<br />
 </li>
 <li><strong>Ice castle theme</strong>: Entertainment, sports, art categories</li>
 </ul></li>
-<li><strong>Plan your zones</strong> — each zone needs:
+<li><strong>Plan</strong> your zones where each zone needs
 <ul>
 <li><strong>id</strong>: Zone number (0, 1, 2)</li>
 <li><strong>name</strong>: Creative zone title</li>
@@ -467,14 +468,14 @@ overflow-x: hidden !important;
 <h2 id="configuring-zone-metadata">⚙️ Configuring Zone Metadata</h2>
 <p>Time to implement your zone designs by updating the <code>ZONES</code> array with your custom metadata.</p>
 <ol type="1">
-<li><strong>Open <code>src/data/zones.js</code></strong></li>
-<li><p><strong>Update the first zone object</strong> with your Zone 0 design:</p>
+<li><strong>Open</strong> <code>src/data/zones.js</code></li>
+<li><p><strong>Update</strong> the first zone object with your Zone 0 design</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="op">{</span></a>
 <a class="sourceLine" id="cb3-2" title="2">  <span class="dt">id</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-3" title="3">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Your Zone Name&quot;</span><span class="op">,</span> <span class="co">// Update name</span></a>
-<a class="sourceLine" id="cb3-4" title="4">  <span class="dt">subtitle</span><span class="op">:</span> <span class="st">&quot;Your Zone Subtitle&quot;</span><span class="op">,</span> <span class="co">// Update subtitle</span></a>
-<a class="sourceLine" id="cb3-5" title="5">  <span class="dt">categoryId</span><span class="op">:</span> <span class="dv">18</span><span class="op">,</span> <span class="co">// Update category</span></a>
-<a class="sourceLine" id="cb3-6" title="6">  <span class="dt">difficulty</span><span class="op">:</span> <span class="st">&quot;easy&quot;</span><span class="op">,</span> <span class="co">// Update difficulty</span></a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Your Zone Name&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="dt">subtitle</span><span class="op">:</span> <span class="st">&quot;Your Zone Subtitle&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-5" title="5">  <span class="dt">categoryId</span><span class="op">:</span> <span class="dv">18</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-6" title="6">  <span class="dt">difficulty</span><span class="op">:</span> <span class="st">&quot;easy&quot;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb3-7" title="7">  <span class="dt">questionCount</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb3-8" title="8">  <span class="dt">mapLabel</span><span class="op">:</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb3-9" title="9">    <span class="dt">x</span><span class="op">:</span> <span class="dv">225</span><span class="op">,</span></a>
@@ -486,7 +487,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb3-15" title="15">    <span class="dt">alignment</span><span class="op">:</span> <span class="st">&quot;left&quot;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb3-16" title="16">  <span class="op">},</span></a>
 <a class="sourceLine" id="cb3-17" title="17"><span class="op">},</span></a></code></pre></div></li>
-<li><p><strong>Add Zone 1 and Zone 2 objects</strong>: Copy the structure and update all properties (keep the mapLabel coordinates for now — we’ll position them precisely in the next section)</p>
+<li><p><strong>Add</strong> Zone 1 and Zone 2 objects by copying the structure and updating all properties (keep the mapLabel coordinates for now — we’ll position them precisely in the next section)</p>
 <p>Note: Changes to <code>zones.js</code> will trigger a full page reload (not HMR-friendly)</p></li>
 </ol>
 <p><strong>Object properties</strong> use colon syntax (<code>name: &quot;value&quot;</code>) and are separated by commas. Each zone object contains different <strong>data types</strong>: strings for text, numbers for IDs, and nested objects for complex styling. This structure makes your game data organized and easy to modify.</p>
@@ -494,16 +495,16 @@ overflow-x: hidden !important;
 <h2 id="positioning-zone-labels">📍 Positioning Zone Labels</h2>
 <p>Use the <code>CoordinateDisplay</code> component to find optimal positions for your zone labels on the game map.</p>
 <ol type="1">
-<li><strong>Navigate to the game screen</strong> and observe the coordinate display</li>
-<li><strong>Move your mouse</strong> around the map and note the x, y coordinates — this tool gives you real-time feedback, no guessing, just precision</li>
-<li><strong>Find good positions</strong> for each zone label that don’t overlap with visual elements</li>
-<li><p><strong>Update the mapLabel coordinates</strong> in your zone objects:</p>
+<li><strong>Navigate</strong> to the game screen and observe the coordinate display</li>
+<li><strong>Move</strong> your mouse around the map and note the x, y coordinates — this tool gives you real-time feedback, no guessing, just precision</li>
+<li><strong>Find</strong> good positions for each zone label that don’t overlap with visual elements</li>
+<li><p><strong>Update</strong> the mapLabel coordinates in your zone objects</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">mapLabel<span class="op">:</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="dt">x</span><span class="op">:</span> <span class="dv">225</span><span class="op">,</span> <span class="co">// Update x coordinate</span></a>
-<a class="sourceLine" id="cb4-3" title="3">  <span class="dt">y</span><span class="op">:</span> <span class="dv">140</span><span class="op">,</span> <span class="co">// Update y coordinate</span></a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="dt">x</span><span class="op">:</span> <span class="dv">225</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-3" title="3">  <span class="dt">y</span><span class="op">:</span> <span class="dv">140</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb4-4" title="4">  <span class="co">// ... other styling properties</span></a>
 <a class="sourceLine" id="cb4-5" title="5"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Test each zone</strong> by navigating to the game screen and confirming label placement</p></li>
+<li><p><strong>Test</strong> each zone by navigating to the game screen and confirming label placement</p></li>
 </ol>
 <p><strong>Coordinate positioning</strong> requires precise <strong>number</strong> values to place UI elements exactly where you want them. The <code>CoordinateDisplay</code> component gives you real-time feedback, making it easy to find perfect positions without guessing.</p>
 <h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
@@ -512,14 +513,14 @@ overflow-x: hidden !important;
 <h2 id="testing-with-react-devtools">🔍 Testing with React DevTools</h2>
 <p>Let’s use React DevTools to explore your zone configuration and test game progression.</p>
 <ol type="1">
-<li><strong>Open DevTools</strong>: Press F12 or right-click → Inspect</li>
-<li><strong>Find Components tab</strong>: Look for “Components” next to Console, Network, etc.</li>
-<li><strong>Locate GameProvider</strong>: Click on GameProvider in the component tree</li>
-<li><strong>Examine the hooks</strong>: Look for the zoneProgress state (if you don’t see hook names clearly, click the gear icon and enable “Parse hook names”)</li>
-<li><strong>Find zoneProgress array</strong>: Under hooks, locate the zoneProgress array</li>
-<li><strong>Experiment with progression</strong>: Change the first zone’s <code>completed</code> property to <code>true</code></li>
-<li><strong>Observe state changes</strong>: Notice how <code>activeZone</code> and <code>currentZone</code> update automatically</li>
-<li><strong>Check the HUD</strong>: See how the Context.Provider props reflect the updated game state</li>
+<li><strong>Open</strong> DevTools by pressing F12 or right-clicking → Inspect</li>
+<li><strong>Find</strong> Components tab by looking for “Components” next to Console, Network, etc.</li>
+<li><strong>Locate</strong> GameProvider by clicking on GameProvider in the component tree</li>
+<li><strong>Examine</strong> the hooks by looking for the zoneProgress state (if you don’t see hook names clearly, click the gear icon and enable “Parse hook names”)</li>
+<li><strong>Find</strong> zoneProgress array by locating it under hooks</li>
+<li><strong>Experiment</strong> with progression by changing the first zone’s <code>completed</code> property to <code>true</code></li>
+<li><strong>Observe</strong> state changes by noticing how <code>activeZone</code> and <code>currentZone</code> update automatically</li>
+<li><strong>Check</strong> the HUD to see how the Context.Provider props reflect the updated game state</li>
 </ol>
 <p>React DevTools lets you manipulate <strong>state</strong> directly to test different game scenarios without playing through the entire game. This is invaluable for debugging and understanding how your <strong>shared state</strong> affects the entire app.</p>
 <p><a id="essential-terms"></a></p>
@@ -527,9 +528,9 @@ overflow-x: hidden !important;
 <p><em>Quick reference for all the data structure and configuration concepts you just learned:</em></p>
 <table>
 <colgroup>
-<col style="width: 17%"></col>
-<col style="width: 35%"></col>
-<col style="width: 47%"></col>
+<col style="width: 22%"></col>
+<col style="width: 33%"></col>
+<col style="width: 44%"></col>
 </colgroup>
 <thead>
 <tr class="header">

@@ -98,7 +98,7 @@
 - **The Magic of Curly Braces {}:**
   ```javascript
   const name = "Alice";
-  return <h1>Hello, {name}!</h1>; // Dynamic content!
+  return <h1>Hello, {name}!</h1>;
   ```
 - **JSX vs HTML - Key Differences:**
   - `className` instead of `class` (JavaScript reserved word)

@@ -58,33 +58,33 @@ Think of your `GameContext` as the brain of your game — it keeps track of ever
 
 Let's add a scoring system that tracks player performance and displays it prominently in your game's HUD.
 
-1. **Open `src/context/GameContext.jsx`** and add score state inside the GameProvider function:
+1. **Open** `src/context/GameContext.jsx` and add score state inside the GameProvider function
 
    ```javascript
-   const [score, setScore] = useState(0); // Add score state
+   const [score, setScore] = useState(0);
    ```
 
-2. **Make score available** by adding it to the Context value:
+2. **Make** score available by adding it to the Context value
 
    ```javascript
    <GameContext value={{
      // GAME STATE
      screen,
-     score, // Add score to make available
+     score,
      zoneProgress,
      // ... rest of existing properties
    ```
 
-3. **Open `src/components/HUD.jsx`** and add a Scoreboard component at the top of the file:
+3. **Open** `src/components/HUD.jsx` and add a Scoreboard component at the top of the file
 
    ```javascript
-   function Scoreboard() { // Add Scoreboard component
+   function Scoreboard() {
      const { score } = useGame();
      return <div className="score-display">Score: {score}</div>;
    }
    ```
 
-4. **Update HUD component**: Render both components using a React Fragment (`<>...</>`):
+4. **Update** HUD component to render both components using a React Fragment (`<>...</>`)
 
    ```javascript
    // Replace this single line:
@@ -92,14 +92,15 @@ Let's add a scoring system that tracks player performance and displays it promin
    
    // With this Fragment structure:
    return (
+     {/* Fragment groups components without extra DOM wrapper */}
      <>
-       <Scoreboard /> // Add Scoreboard
+       <Scoreboard />
        <CurrentZone />
      </>
    );
    ```
 
-5. **Test**: Navigate to the game screen and verify Score: 0 appears in HUD
+5. **Test** by navigating to the game screen and verifying Score: 0 appears in HUD
 
 
 
@@ -111,27 +112,28 @@ The **Scoreboard component** demonstrates the single responsibility principle �
 
 Now let's make the score actually change based on player performance with point rewards and penalties.
 
-1. **Open `src/context/GameContext.jsx`** and find the `recordCorrectAnswer` function, then add points for correct answers:
+1. **Open** `src/context/GameContext.jsx` and find the `recordCorrectAnswer` function, then add points for correct answers
 
    ```javascript
    const recordCorrectAnswer = () => {
      setCorrectAnswers((prev) => prev + 1);
-     setScore((prev) => prev + POINTS_PER_CORRECT); // Add score increase
+     setScore((prev) => prev + POINTS_PER_CORRECT);
    };
    ```
 
-2. **Find the `recordIncorrectAnswer` function** and add point deduction:
+2. **Find** the `recordIncorrectAnswer` function and add point deduction
 
    ```javascript
    const recordIncorrectAnswer = () => {
-     setScore((prev) => Math.max(0, prev - POINTS_PER_CORRECT)); // Add score decrease with floor
+     // Prevent score from going negative
+     setScore((prev) => Math.max(0, prev - POINTS_PER_CORRECT));
    };
    ```
 
-3. **Test**: Click zone, answer questions, and observe score changes:
+3. **Test** by clicking zone, answering questions, and observing score changes
 
-   - **Correct answer** → +100 points
-   - **Incorrect answer** → -100 points (but never below 0)
+   - Correct answer → +100 points
+   - Incorrect answer → -100 points (but never below 0)
 
 
 
@@ -143,32 +145,32 @@ Now let's make the score actually change based on player performance with point 
 
 Let's add cache clearing functions to remove stored questions when zones are completed or the game resets.
 
-1. **Open `src/services/trivia.js`** and add cache clearing functions at the end of the file:
+1. **Open** `src/services/trivia.js` and add cache clearing functions at the end of the file
 
    ```javascript
-   export function clearQuestionCache(zoneId) { // Add cache clearing for single zone
+   export function clearQuestionCache(zoneId) {
      const cacheKey = getCacheKey(zoneId);
      localStorage.removeItem(cacheKey);
    }
 
-   export function clearAllQuestionCache() { // Add cache clearing for all zones
+   export function clearAllQuestionCache() {
      Object.keys(localStorage)
        .filter((key) => key.startsWith("trivia_questions_zone_"))
        .forEach((key) => localStorage.removeItem(key));
    }
    ```
 
-2. **Import the cache functions** into GameContext.jsx:
+2. **Import** the cache functions into GameContext.jsx
 
    ```javascript
    import { 
      fetchQuestions, 
      clearQuestionCache, 
      clearAllQuestionCache 
-   } from "../services/trivia"; // Add cache functions
+   } from "../services/trivia";
    ```
 
-3. **Update the `checkZoneCompletion` function** to clear the current zone's cached questions when completed:
+3. **Update** the `checkZoneCompletion` function to clear the current zone's cached questions when completed
 
    ```javascript
    const checkZoneCompletion = () => {
@@ -185,7 +187,7 @@ Let's add cache clearing functions to remove stored questions when zones are com
          [activeZone]: { completed: true },
        }));
        
-       clearQuestionCache(activeZone); // Add cache clearing
+       clearQuestionCache(activeZone);
 
        if (activeZone === ZONES.length - 1) {
          setScreen(SCREENS.GAME_OVER);
@@ -204,11 +206,11 @@ Let's add cache clearing functions to remove stored questions when zones are com
 
 Let's update the reset function to properly clear all game state and cached data for a fresh start.
 
-1. **Find the `resetGame` function** in GameContext.jsx and update it:
+1. **Find** the `resetGame` function in GameContext.jsx and update it
 
    ```javascript
    const resetGame = () => {
-     setScore(0); // Add score reset
+     setScore(0);
      setZoneProgress({
        0: { completed: false },
        1: { completed: false },
@@ -218,11 +220,11 @@ Let's update the reset function to properly clear all game state and cached data
      setCurrentQuestions([]);
      setCurrentQuestion(0);
      setCorrectAnswers(0);
-     clearAllQuestionCache(); // Add cache clearing
+     clearAllQuestionCache();
    };
    ```
 
-2. **Test the reset functionality** by completing a zone and then using React DevTools to trigger `resetGame()`
+2. **Test** the reset functionality by completing a zone and then using React DevTools to trigger `resetGame()`
 
 
 
@@ -236,28 +238,28 @@ Now for the exciting part — you'll create a GameOver component that celebrates
 
 ### 1. Create the Component Foundation
 
-- Create `src/components/GameOver.jsx` with function component and default export
-- Return JSX with div `className="game-over"` containing h1 congratulations message
-- Import `GameOver` into `App.jsx` and add conditional rendering for `SCREENS.GAME_OVER`
-- **Test**: Use React DevTools → Set `screen` to "gameover" → Component appears
+- **Create** `src/components/GameOver.jsx` with function component and default export
+- **Return** JSX with div `className="game-over"` containing h1 congratulations message
+- **Import** `GameOver` into `App.jsx` and add conditional rendering for `SCREENS.GAME_OVER`
+- **Test** by using React DevTools → setting `screen` to "gameover" → Component appears
 
 ### 2. Add Score Display
 
-- Import `useGame` hook and destructure `score`
-- Add div with `className="final-score"` displaying `Final Score: {score}`
-- **Test**: Check score display → Shows current game score
+- **Import** `useGame` hook and destructure `score`
+- **Add** div with `className="final-score"` displaying `Final Score: {score}`
+- **Test** by checking score display → Shows current game score
 
 ### 3. Add Play Again Functionality
 
-- Create click handler calling `resetGame` and `setScreen(SCREENS.SPLASH)`
-- Import and render `GameButton` with "Play Again" text and `"primary"` variant
-- **Test**: Click Play Again → Game resets → Returns to splash screen
+- **Create** click handler calling `resetGame` and `setScreen(SCREENS.SPLASH)`
+- **Import** and render `GameButton` with "Play Again" text and `"primary"` variant
+- **Test** by clicking Play Again → Game resets → Returns to splash screen
 
 ### Testing Tips
 
-- **Quick testing**: Use React DevTools to change `screen` state to "gameover" (find `GameProvider` → hooks → screen)
-- **Full testing**: Complete all three zones to naturally trigger GameOver screen
-- **Verify**: Final score displays correctly and Play Again button resets everything
+- **Quick testing** by using React DevTools to change `screen` state to "gameover" (find `GameProvider` → hooks → screen)
+- **Full testing** by completing all three zones to naturally trigger GameOver screen
+- **Verify** final score displays correctly and Play Again button resets everything
 
 ### **Requirements Checklist**
 
@@ -291,8 +293,8 @@ This challenge combines everything you've learned: component creation, props, sh
 
 _Quick reference for the key concepts you just learned:_
 
-| Term | Definition | Why it matters |
-|------|------------|----------------|
+| Term   | Definition | Why it matters |
+|--------|------------|----------------|
 | 🏗️ application state | The complete condition of an application at a specific moment in time, encompassing all the information it needs to function correctly. | Your GameContext manages all application state — screen, score, zone progress — making it accessible to any component through useGame. |
 | 🔄 updater function | A function passed to setState that receives the previous state value and returns the new state. | Essential for score calculations — ensures accurate updates even when React batches multiple state changes. |
 | 🎯 single responsibility principle | Design pattern where each component or function has one clear, focused purpose. | Your Scoreboard component only displays score — this separation makes code easier to test and maintain. |

@@ -44,9 +44,9 @@ Think of three apps you use daily — can you identify what external data they m
 
 Let's explore the **API** that will power your trivia questions and see what real **API** data looks like.
 
-1. **Visit the API endpoint**: Open [https://opentdb.com/api.php?amount=3&category=18&type=multiple&difficulty=easy&encode=url3986](https://opentdb.com/api.php?amount=3&category=18&type=multiple&difficulty=easy&encode=url3986) in your browser
+1. **Visit** the API endpoint by opening [https://opentdb.com/api.php?amount=3&category=18&type=multiple&difficulty=easy&encode=url3986](https://opentdb.com/api.php?amount=3&category=18&type=multiple&difficulty=easy&encode=url3986) in your browser
 
-2. **Examine the raw JSON response**: You'll see something like this:
+2. **Examine** the raw JSON response where you'll see something like this
 
    ```json
    {
@@ -68,9 +68,9 @@ Let's explore the **API** that will power your trivia questions and see what rea
    }
    ```
 
-3. **Notice the encoding**: See those `%20` and `%3A` symbols? That's **URL encoding** — a way to safely transmit text over the internet
+3. **Notice** the encoding with those `%20` and `%3A` symbols which represent **URL encoding** — a way to safely transmit text over the internet
 
-4. **Understand the structure**: Each question has a `question`, `correct_answer`, and `incorrect_answers` array
+4. **Understand** the structure where each question has a `question`, `correct_answer`, and `incorrect_answers` array
 
 
 
@@ -129,9 +129,9 @@ When you make changes to `trivia.js`, you may see these behaviors:
 
 **How to fix and continue:**
 
-1. **Refresh the browser page** manually (Ctrl+R or Cmd+R)
-2. **Navigate back to the game** (click "Start Game")
-3. **Click a zone** to test your updated code
+1. **Refresh** the browser page manually (Ctrl+R or Cmd+R)
+2. **Navigate** back to the game (**click** "Start Game")
+3. **Click** a zone to test your updated code
 
 **Pro tip:** Make several changes to your code, then refresh once to test them all together!
 
@@ -139,11 +139,11 @@ When you make changes to `trivia.js`, you may see these behaviors:
 
 Time to connect your game to the real internet! Let's implement the core **fetch** logic.
 
-1. **Open `src/services/trivia.js`**
-2. **Replace the alert** with basic **fetch** logic:
+1. **Open** `src/services/trivia.js`
+2. **Replace** the alert with basic fetch logic
 
    ```javascript
-   try { // Add fetch logic
+   try {
      console.log("Fetching from:", url);
      const response = await fetch(url);
      const data = await response.json();
@@ -154,18 +154,18 @@ Time to connect your game to the real internet! Let's implement the core **fetch
    }
    ```
 
-3. **Test**: Verify the API integration:
+3. **Test** to verify the API integration
 
-   - **Open DevTools**: Press F12 or right-click → Inspect
-   - **Navigate back to the game** (click "Start Game")
-   - **Click a zone** to test your updated code
-   - **Check the Console tab** to see your fetch in action
-   - **Check the Network tab** to see the actual HTTP request
+   - **Open** DevTools by pressing F12 or right-clicking → Inspect
+   - **Navigate** back to the game by clicking "Start Game"
+   - **Click** a zone to test your updated code
+   - **Check** the Console tab to see your fetch in action
+   - **Check** the Network tab to see the actual HTTP request
 
-4. **Add data validation** immediately after getting the data:
+4. **Add** data validation immediately after getting the data
 
    ```javascript
-   if (!data.results || data.results.length === 0) { // Add validation
+   if (!data.results || data.results.length === 0) {
      console.log("No questions received from API");
      return [];
    }
@@ -181,22 +181,22 @@ Time to connect your game to the real internet! Let's implement the core **fetch
 
 Now let's transform the **API** data into game-ready format. This is where the real magic happens!
 
-1. **Add transformation testing** after the validation check:
+1. **Add** transformation testing after the validation check
 
    ```javascript
-   const firstQuestion = data.results[0]; // Add test code
+   const firstQuestion = data.results[0];
    console.log("Before transform:", firstQuestion);
    
    const transformed = transformQuestion(firstQuestion);
    console.log("After transform:", transformed);
    ```
 
-   **Test**: Start Game → Click zone → See `undefined` in console → "We need to implement transformQuestion"
+   **Test** by starting Game → clicking zone → seeing `undefined` in console → "We need to implement transformQuestion"
 
-2. **Extract object properties** in the `transformQuestion` function:
+2. **Extract** object properties in the `transformQuestion` function
 
    ```javascript
-   function transformQuestion(apiQuestion) { // Add extraction
+   function transformQuestion(apiQuestion) {
      const question = apiQuestion.question;
      const incorrectAnswers = apiQuestion.incorrect_answers;
      const correctAnswer = apiQuestion.correct_answer;
@@ -205,21 +205,21 @@ Now let's transform the **API** data into game-ready format. This is where the r
    }
    ```
 
-   **Test**: Start Game → Click zone → See extracted properties in console
+   **Test** by starting Game → clicking zone → seeing extracted properties in console
 
-3. **Add helper functions for decoding**:
+3. **Add** helper functions for decoding
 
    ```javascript
    function transformQuestion(apiQuestion) {
-     const question = decodeText(apiQuestion.question); // Add decoding
-     const incorrectAnswers = apiQuestion.incorrect_answers.map(answer => decodeText(answer)); // Add decoding
-     const correctAnswer = decodeText(apiQuestion.correct_answer); // Add decoding
+     const question = decodeText(apiQuestion.question);
+     const incorrectAnswers = apiQuestion.incorrect_answers.map(answer => decodeText(answer));
+     const correctAnswer = decodeText(apiQuestion.correct_answer);
      
      console.log("Decoded data:", { question, incorrectAnswers, correctAnswer });
    }
    ```
 
-   **Test**: Start Game → Click zone → See decoded, formatted data
+   **Test** by starting Game → clicking zone → seeing decoded, formatted data
 
    You should now see formatted game data like:
    ```json
@@ -230,24 +230,24 @@ Now let's transform the **API** data into game-ready format. This is where the r
    }
    ```
 
-4. **Add shuffling and index finding**:
+4. **Add** shuffling and index finding
 
    ```javascript
    function transformQuestion(apiQuestion) {
      const question = decodeText(apiQuestion.question);
      const incorrectAnswers = apiQuestion.incorrect_answers.map(answer => decodeText(answer));
      const correctAnswer = decodeText(apiQuestion.correct_answer);
-     const shuffledAnswers = shuffleAnswers(correctAnswer, incorrectAnswers); // Add shuffling
-     const correctIndex = shuffledAnswers.indexOf(correctAnswer); // Find correct index
+     const shuffledAnswers = shuffleAnswers(correctAnswer, incorrectAnswers);
+     const correctIndex = shuffledAnswers.indexOf(correctAnswer);
      
      console.log("Shuffled answers:", shuffledAnswers);
      console.log("Correct answer is at index:", correctIndex);
    }
    ```
 
-   **Test**: Start Game → Click zone → See shuffled answers
+   **Test** by starting Game → clicking zone → seeing shuffled answers
 
-5. **Return the final game object**:
+5. **Return** the final game object
 
    ```javascript
    function transformQuestion(apiQuestion) {
@@ -257,7 +257,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
      const shuffledAnswers = shuffleAnswers(correctAnswer, incorrectAnswers);
      const correctIndex = shuffledAnswers.indexOf(correctAnswer);
    
-     return { // Return game object
+     return {
        question: question,
        answers: shuffledAnswers,
        correct: correctIndex
@@ -265,7 +265,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
    }
    ```
 
-   **Test**: Start Game → Click zone → See complete transformed object!
+   **Test** by starting Game → clicking zone → seeing complete transformed object!
 
    You should now see complete game data like:
    ```json
@@ -281,15 +281,16 @@ Now let's transform the **API** data into game-ready format. This is where the r
    }
    ```
 
-6. **Complete the fetchQuestions integration** by replacing the test logging:
+6. **Complete** the fetchQuestions integration by replacing the test logging
 
    ```javascript
-   const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion)); // Transform all questions
+   // Transform API response into game-ready format
+   const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion));
    console.log("All transformed questions:", questions);
    return questions;
    ```
 
-   **Test**: Click zone → see array of properly formatted questions!
+   **Test** by clicking zone → see array of properly formatted questions!
 
 
 
@@ -301,7 +302,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
 
 Let's test your complete **API** integration and clean up the debugging code.
 
-1. **Remove console logs** from your functions to clean up the code:
+1. **Remove** console logs from your functions to clean up the code
 
    ```javascript
    export async function fetchQuestions(zoneId, count = null) {
@@ -329,15 +330,15 @@ Let's test your complete **API** integration and clean up the debugging code.
    }
    ```
 
-2. **Test**: Verify the complete data flow:
+2. **Test** to verify the complete data flow
 
    - Game resets to splash screen
-   - **Navigate to the game** (click "Start Game")
-   - **Click different zones** to test various categories and difficulties
-   - **Verify the data flow** using React DevTools:
-     - **Open DevTools** → Components tab
-     - **Find GameProvider** and examine `currentQuestions` state
-     - **Click zones** and watch the state populate with your transformed questions
+   - **Navigate** to the game by clicking "Start Game"
+   - **Click** different zones to test various categories and difficulties
+   - **Verify** the data flow using React DevTools
+     - **Open** DevTools → Components tab
+     - **Find** GameProvider and examine `currentQuestions` state
+     - **Click** zones and watch the state populate with your transformed questions
 
 
 
@@ -411,8 +412,8 @@ Understanding the complete data flow helps you debug issues and build more compl
 
 _Quick reference for all the API and asynchronous programming concepts you just learned:_
 
-| Term | Definition | Why it matters |
-|------|------------|----------------|
+| Term   | Definition | Why it matters |
+|--------|------------|----------------|
 | 🌐 Application Programming Interface (API) | A set of rules and protocols that allows different software applications to communicate with each other. | Your trivia game uses the OpenTrivia Database API to fetch real questions, transforming static zones into dynamic content. |
 | 📋 JSON | JavaScript Object Notation — a text format for exchanging structured data between applications. | OpenTrivia Database returns question data in JSON format, which your `transformQuestion` function converts to game format. |
 | 📨 HTTP request | A message sent from your application to a server asking for specific data or resources. | Each zone click triggers an HTTP request to OpenTrivia Database with your zone's specific parameters. |

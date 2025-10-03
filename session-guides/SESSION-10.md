@@ -87,13 +87,13 @@ All `git` commands should be run in your Codespace terminal
 
 ### 1. Check Your Git Remote Status
 
-First, let's see if your Codespace has any remote connections:
+First, let's **see** if your Codespace has any remote connections
 
 ```bash
 git remote -v
 ```
 
-If this returns nothing (which is typical for Codespaces), you can skip to step 2. If it shows a remote, you'll need to remove it first:
+If this returns nothing (which is typical for Codespaces), you can **skip** to step 2. If it shows a remote, you'll need to **remove** it first
 
 ```bash
 git remote remove origin
@@ -101,19 +101,19 @@ git remote remove origin
 
 ### 2. Create a New Repo on GitHub
 
-- **Go to**: [github.com/new](https://github.com/new)
-- **Name your repo**, e.g., `trivia-quest`
+- **Go** to [github.com/new](https://github.com/new)
+- **Name** your repo, e.g., `trivia-quest`
 - **Do not add** a `README` or `.gitignore` — your project already has those!
-- **Click "Create repository"**
+- **Click** "Create repository"
 
 Upon completion, you will be redirected to your new repo page.
 
 ### 3. Update the Vite Build Path
 
-Open `package.json` and update the `build` script to match your repo name:
+**Open** `package.json` and update the `build` script to match your repo name
 
 ```javascript
-"build": "vite build --base=/your-repo-name/" // Update with your repo name
+"build": "vite build --base=/your-repo-name/"
 ```
 
 **Example**:
@@ -128,17 +128,17 @@ This ensures your site works correctly when deployed to GitHub Pages by matching
 
 Since GitHub requires authentication, you need to create a Personal Access Token (PAT):
 
-- **Go to**: [github.com/settings/tokens](https://github.com/settings/tokens)
-- **Click "Generate new token"** → **"Generate new token (classic)"**
-- **Note**: Enter "Codespace Git Access" or similar
-- **Expiration**: Choose "30 days" (or longer if preferred)
-- **Scopes**: Check both **"repo"** and **"workflow"** (needed to push GitHub Actions files)
-- **Click "Generate token"**
-- **Copy the token immediately** - you won't see it again!
+- **Go** to [github.com/settings/tokens](https://github.com/settings/tokens)
+- **Click** "Generate new token" → "Generate new token (classic)"
+- **Note** by entering "Codespace Git Access" or similar
+- **Expiration** by choosing "30 days" (or longer if preferred)
+- **Scopes** by checking both "repo" and "workflow" (needed to push GitHub Actions files)
+- **Click** "Generate token"
+- **Copy** the token immediately - you won't see it again!
 
 ### 5. Connect Your Project with Authentication
 
-Replace the placeholders with your actual values:
+**Replace** the placeholders with your actual values
 
 ```bash
 git remote add origin \
@@ -151,7 +151,7 @@ git remote add origin \
   https://babalugats76:ghp_abc123xyz@github.com/babalugats76/trivia-quest.git
 ```
 
-Make a mistake typing the URL? Just remove it using `git remote remove origin` and try again. You can always use `git remote -v` to verify this connection.
+**Make** a mistake typing the URL? Just remove it using `git remote remove origin` and try again. You can always use `git remote -v` to verify this connection.
 
 **Important**: Keep your token private! Don't share it with anyone.
 
@@ -161,7 +161,7 @@ Make a mistake typing the URL? Just remove it using `git remote remove origin` a
 git push -u origin main
 ```
 
-**You should see output like this:**
+**You should see output like this**
 ```
 Enumerating objects: 80, done.
 Counting objects: 100% (80/80), done.
@@ -175,24 +175,24 @@ To https://github.com/your-username/your-repo-name.git
 branch 'main' set up to track 'origin/main'.
 ```
 
-**Note**: This first push will trigger GitHub Actions, but deployment will fail because Pages isn't enabled yet. That's expected!
+**Note** This first push will trigger GitHub Actions, but deployment will fail because Pages isn't enabled yet. That's expected!
 
 ### 7. Verify Your Code Is On GitHub
 
-- **Go to your GitHub profile**: `https://github.com/your-username`
-- **Click on your new repo** (e.g., trivia-quest)
-- **If you see your files**, your push worked! You now officially own your project!
+- **Go** to your GitHub profile `https://github.com/your-username`
+- **Click** on your new repo (e.g., trivia-quest)
+- **If you see** your files, your push worked! You now officially own your project!
 
 ### 8. Enable GitHub Pages
 
-- **Go to your repo** → **Settings** → **Pages**
-- **Under "Build and deployment"**, find the **"Source"** dropdown
-- **Select "GitHub Actions"**
+- **Go** to your repo → Settings → Pages
+- Under "Build and deployment", **find** the "Source" dropdown
+- **Select** "GitHub Actions"
 - **Save** (this happens automatically)
 
 ### 9. Commit Your Course Progress
 
-Now let's commit all the amazing work you've done throughout the course! You likely have changes from previous sessions that need to be saved:
+Now let's **commit** all the amazing work you've done throughout the course! You likely have changes from previous sessions that need to be saved
 
 ```bash
 # Stage all your changes from the entire course
@@ -211,7 +211,7 @@ git push
 
 Your site should now be live at `https://your-username.github.io/your-repo-name/`
 
-**Note**: It may take a few minutes for the deployment to complete. Check the Actions tab to monitor progress.
+**Note** It may take a few minutes for the deployment to complete. Check the Actions tab to monitor progress.
 
 Once you complete the Git workflow in the next section, your site will be live at `https://your-username.github.io/your-repo-name/`
 
@@ -219,7 +219,7 @@ Once you complete the Git workflow in the next section, your site will be live a
 
 These steps transform your project from a shared template into your personal creation. Now you can make updates, publish changes to the web, and share your unique version with the world. Your trivia game is officially yours to customize and deploy!
 
-**Note**: Your game uses a special `getAssetPath()` utility function to ensure images and audio work correctly both in development and when deployed to GitHub Pages. This automatically handles the different URL paths needed for deployment.
+**Note** Your game uses a special `getAssetPath()` utility function to ensure images and audio work correctly both in development and when deployed to GitHub Pages. This automatically handles the different URL paths needed for deployment.
 
 <a id="learning-the-git-workflow"></a>
 
@@ -308,7 +308,7 @@ Let's personalize your game by changing the title that appears on the splash scr
 
 ### Apply the Git Workflow
 
-Now let's commit and share this change using the workflow you just learned:
+Now let's commit and share this change using the workflow you just learned
 
 ```bash
 # 1. Stage your changes (prepare them for committing)
@@ -333,17 +333,17 @@ Now let's track your title change through the automated deployment process!
 
 ### Monitor the Build Process
 
-1. **Go to your repository** on GitHub
-2. **Click the "Actions" tab**
-3. **Click on your latest workflow run** (should show your commit message)
-4. **Click on "build-and-deploy"** to see the deployment steps
-5. **Watch the status** - wait for the green checkmark!
+1. **Go** to your repository on GitHub
+2. **Click** the "Actions" tab
+3. **Click** on your latest workflow run (should show your commit message)
+4. **Click** on "build-and-deploy" to see the deployment steps
+5. **Watch** the status - wait for the green checkmark!
 
 ### Test Your Live Game
 
-- **Visit your live game** at `https://your-username.github.io/your-repo-name/`
-- **Check the splash screen** - you should see your new title!
-- **Test the game** - make sure everything still works
+- **Visit** your live game at `https://your-username.github.io/your-repo-name/`
+- **Check** the splash screen - you should see your new title!
+- **Test** the game - make sure everything still works
 
 
 
@@ -357,7 +357,7 @@ Congratulations! Your trivia game is now live on the internet. Here's how to sha
 
 ### Your Game's Public URL
 
-Your game is available at:
+Your game is available at
 ```
 https://your-username.github.io/your-repo-name/
 ```
@@ -366,10 +366,10 @@ https://your-username.github.io/your-repo-name/
 
 ### Sharing Your Achievement
 
-- **Copy the URL** and share it with friends and family
-- **Test on different devices** — phones, tablets, computers
-- **Share on social media** with screenshots of your game
-- **Add the URL to your GitHub profile** or portfolio
+- **Copy** the URL and share it with friends and family
+- **Test** on different devices — phones, tablets, computers
+- **Share** on social media with screenshots of your game
+- **Add** the URL to your GitHub profile or portfolio
 
 
 
@@ -381,8 +381,8 @@ Having your game live on the internet transforms it from a learning exercise int
 
 _Quick reference for all the version control and deployment concepts you just learned:_
 
-| Term | Definition     | Why it matters |
-|------|----------------|----------------|
+| Term   | Definition | Why it matters |
+|--------|------------|----------------|
 | 📚 version control | A system that tracks changes to files over time, allowing you to see history, revert changes, and collaborate safely. | Essential for any serious development work — lets you experiment fearlessly and work with others. |
 | 🔧 Git | The version control tool that tracks changes in your code — like a save system for your project with complete history. | The industry standard that every developer uses daily — powers the add, commit, push workflow you just learned. |
 | 📁 repository | A folder containing your project files and their complete change history, managed by Git. | Your project's home base where all code and history live — can be local (on your computer) or remote (on GitHub). |
