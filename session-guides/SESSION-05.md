@@ -80,7 +80,7 @@ Let's explore the **API** that will power your trivia questions and see what rea
 
 ### API Data Transformation Journey
 
-```
+```text
 Raw API Data → Your Transform Function → Game-Ready Data
 ```
 
@@ -173,7 +173,7 @@ Time to connect your game to the real internet! Let's implement the core **fetch
 
 
 
-**Error handling** and **data validation** are crucial when working with external **APIs**. Networks can fail, APIs can be down, or responses might be empty. Professional developers always plan for these scenarios to create robust applications.
+**Error handling** and **data validation** are crucial when working with external **APIs**. Networks can fail, APIs can be down, or responses might be empty. Developers always plan for these scenarios to create robust applications.
 
 <a id="transforming-api-data"></a>
 
@@ -222,7 +222,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
    **Test** by starting Game → clicking zone → seeing decoded, formatted data
 
    You should now see formatted game data like:
-   ```json
+   ```javascript
    {
      "question": "What does GHz stand for?",
      "incorrectAnswers": ["Gigahotz", "Gigahetz", "Gigahatz"],
@@ -268,7 +268,7 @@ Now let's transform the **API** data into game-ready format. This is where the r
    **Test** by starting Game → clicking zone → seeing complete transformed object!
 
    You should now see complete game data like:
-   ```json
+   ```javascript
    {
      "question": "What does CPU stand for?",
      "answers": [
@@ -404,7 +404,7 @@ graph TD
 
 
 
-Understanding the complete data flow helps you debug issues and build more complex features. You've created a robust pipeline that handles API requests, data transformation, and state management — the same patterns used in professional web applications.
+Understanding the complete data flow helps you debug issues and build more complex features. You've created a robust pipeline that handles API requests, data transformation, and state management — the same patterns used in modern web applications.
 
 <a id="essential-terms"></a>
 

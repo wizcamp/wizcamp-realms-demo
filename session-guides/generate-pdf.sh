@@ -131,11 +131,11 @@ h2 {
   font-size: 1.5em;
   border-bottom: 1px solid #d0d7de;
   padding-bottom: 0.3em;
-  margin-top: 24px;
+  margin-top: 48px;
   margin-bottom: 16px;
 }
 
-/* First H2 after title gets normal spacing */
+/* First H2 after title gets reduced spacing */
 h1 + * h2:first-of-type,
 h2:first-of-type {
   margin-top: 24px;
@@ -143,7 +143,7 @@ h2:first-of-type {
 
 /* Fix anchor link scrolling - add offset so headings are visible */
 a[id] {
-  scroll-margin-top: 20px;
+  scroll-margin-top: 48px;
 }
 h3 {
   font-size: 1.25em;
@@ -242,6 +242,15 @@ li {
   line-height: 1.4;
 }
 
+/* Hide bullet for list items starting with checkmark emoji */
+li:has(:first-child:is(text):contains("✅")) {
+  list-style-type: none;
+  margin-left: -1.8em;
+  padding-left: 1.8em;
+}
+
+
+
 /* Nested list spacing - add top margin to first item in nested lists */
 li > ul > li:first-child,
 li > ol > li:first-child {
@@ -337,6 +346,87 @@ table code {
   word-break: break-all;
 }
 
+/* Callout Boxes - Minimal styling to reduce visual clutter */
+blockquote {
+  border-left: 4px solid #d1d5db;
+  padding: 12px 16px;
+  margin: 20px 0;
+  background-color: transparent;
+  border-radius: 0;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+blockquote p {
+  margin: 0 0 8px 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+blockquote strong:first-child {
+  display: inline-block;
+  margin-right: 4px;
+}
+
+/* Checkbox list items in callouts */
+blockquote ul {
+  margin-top: 12px;
+  margin-bottom: 0;
+  padding-left: 1.8em;
+  list-style-type: none;
+}
+
+blockquote li {
+  position: relative;
+}
+
+/* Add checkbox symbol */
+blockquote li::before {
+  content: '☐ ';
+  position: absolute;
+  left: -1.8em;
+  font-size: 16px;
+}
+
+/* Concept/Tip callouts (💡) */
+blockquote:has(strong:first-child:contains("💡")) {
+  border-left-color: #3b82f6;
+}
+
+/* Warning callouts (⚠️) */
+blockquote:has(strong:first-child:contains("⚠️")) {
+  border-left-color: #f59e0b;
+}
+
+/* Success/Checkpoint callouts (✅) */
+blockquote:has(strong:first-child:contains("✅")) {
+  border-left-color: #10b981;
+}
+
+/* Error/Danger callouts (❌) */
+blockquote:has(strong:first-child:contains("❌")) {
+  border-left-color: #ef4444;
+}
+
+/* Info callouts (ℹ️) */
+blockquote:has(strong:first-child:contains("ℹ️")) {
+  border-left-color: #6366f1;
+}
+
+/* Pro Tip callouts (🎯) */
+blockquote:has(strong:first-child:contains("🎯")) {
+  border-left-color: #8b5cf6;
+}
+
+/* Fallback for browsers without :has() support */
+@supports not (selector(:has(*))) {
+  blockquote {
+    border-left-color: #3b82f6;
+  }
+}
+
 /* Default column widths for 3-column tables (Essential Terms) */
 table td:first-child {
   width: 200px;
@@ -410,6 +500,13 @@ em {
     page-break-inside: avoid !important;
   }
   
+  /* Preserve callout colors in print */
+  blockquote {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    page-break-inside: avoid !important;
+  }
+  
   /* Hide scrollbars in print */
   * {
     overflow: visible !important;
@@ -427,8 +524,14 @@ em {
 }
 EOF
 
-# Step 2: Convert markdown to HTML with embedded CSS (images auto-embedded as base64)
-pandoc ${SESSION_NAME}.md -o ${SESSION_NAME}.html \
+# Step 2: Preprocess markdown to handle checkmarks and checkboxes
+# Wrap checkmark list items in span for CSS targeting
+sed -e 's/^- \[ \] /- /g' \
+    -e 's/^> - \[ \] /> - /g' \
+    -e 's/^- ✅ /<li style="list-style-type: none;">✅ /g' \
+    ${SESSION_NAME}.md > ${SESSION_NAME}-processed.md
+
+pandoc ${SESSION_NAME}-processed.md -o ${SESSION_NAME}.html \
     --standalone \
     --self-contained \
     --metadata pagetitle="$SESSION_NAME - Wizcamp Session Guide" \
@@ -454,5 +557,5 @@ echo "PDF generated: ${SESSION_NAME}.pdf"
 echo "Fonts used: Body='$BODY_FONT', Code='$CODE_FONT', Headings='$HEADING_FONT'"
 
 # Clean up temporary files
-rm ${SESSION_NAME}.css
+rm ${SESSION_NAME}.css ${SESSION_NAME}-processed.md
 # rm ${SESSION_NAME}.html

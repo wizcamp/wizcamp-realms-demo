@@ -482,7 +482,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb3-2" title="2"><span class="at">setCachedQuestions</span>(<span class="dv">0</span><span class="op">,</span> questions)<span class="op">;</span>  <span class="co">// Store questions for zone 0</span></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="kw">const</span> cached <span class="op">=</span> <span class="at">getCachedQuestions</span>(<span class="dv">0</span>)<span class="op">;</span>  <span class="co">// Get questions for zone 0 (or null if none)</span></a></code></pre></div>
 <p>Notice the <strong>ternary operator</strong> <code>cached ? JSON.parse(cached) : null</code> in <code>getCachedQuestions</code> — this concise syntax means “If cached data exists, parse it; otherwise return null.”</p>
-<p>These helper functions represent a fundamental software engineering principle: <strong>abstraction</strong>. By wrapping localStorage complexity in simple functions, you’re building the same kind of modular, maintainable code architecture used in professional applications. This pattern makes your caching system easy to test, debug, and extend.</p>
+<p>These helper functions represent a fundamental software engineering principle: <strong>abstraction</strong>. By wrapping localStorage complexity in simple functions, you’re building the same kind of modular, maintainable code architecture used in modern applications. This pattern makes your caching system easy to test, debug, and extend.</p>
 <p><a id="updating-fetchquestions-with-caching"></a></p>
 <h2 id="updating-fetchquestions-with-caching">🔄 Updating fetchQuestions with Caching</h2>
 <p>Now let’s integrate your cache functions into the main <code>fetchQuestions</code> function to implement the complete caching flow.</p>
@@ -507,7 +507,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb5-4" title="4"></a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="cf">return</span> questions<span class="op">;</span></a></code></pre></div></li>
 </ol>
-<p>This implements the classic <strong>cache-aside pattern</strong> used in professional applications: check cache first, fetch from source on miss, store result in cache. The console logging helps you understand when cache hits and misses occur, which is valuable for debugging and performance monitoring.</p>
+<p>This implements the classic <strong>cache-aside pattern</strong> used in modern applications: check cache first, fetch from source on miss, store result in cache. The console logging helps you understand when cache hits and misses occur, which is valuable for debugging and performance monitoring.</p>
 <p><a id="testing-your-cache"></a></p>
 <h2 id="testing-your-cache">🧪 Testing Your Cache</h2>
 <p>Let’s see your caching system in action! You’ll observe cache <strong>misses</strong>, <strong>hits</strong>, and <strong>persistence</strong> using DevTools and localStorage. Understanding this flow is crucial:</p>
@@ -574,7 +574,7 @@ overflow-x: hidden !important;
 <p>You’re basically becoming a detective! By watching console logs, peeking into browser storage, and tracking network requests, you’re learning to <strong>follow the digital breadcrumbs</strong> your code leaves behind. This is exactly how real developers figure out why apps crash, why websites load slowly, or why that “it worked yesterday” bug suddenly appeared. These debugging superpowers will make you unstoppable when building your own projects.</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>
-<p><em>Quick reference for all the caching and browser storageage concepts you just learned:</em></p>
+<p><em>Quick reference for all the caching and browser storage concepts you just learned:</em></p>
 <table>
 <colgroup>
 <col style="width: 22%"></col>
@@ -592,7 +592,7 @@ overflow-x: hidden !important;
 <tr class="odd">
 <td>⚡ caching</td>
 <td>Storing frequently accessed data in fast storage to avoid expensive operations like network requests.</td>
-<td>Makes your game feel instant and professional by eliminating repeated API calls for the same questions.</td>
+<td>Makes your game feel instant and responsive by eliminating repeated API calls for the same questions.</td>
 </tr>
 <tr class="even">
 <td>🚦 rate limiting</td>

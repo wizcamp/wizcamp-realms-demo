@@ -101,7 +101,7 @@ Let's understand how our game screens are organized using **constants** — stat
 **Prop drilling** is when you have to pass data through multiple component levels, even when the middle components don't need that data. It's like having to ask your friend to ask their friend to ask their friend for something — inefficient and annoying.
 
 **Example of prop drilling:**
-```
+```text
 App (has screen state)
  ↓ passes screen as prop
 SplashScreen (doesn't need screen, just passes it along)
@@ -110,7 +110,7 @@ GameButton (finally uses screen)
 ```
 
 **With Context (no prop drilling):**
-```
+```text
 GameProvider (provides screen state)
  ↓ any component can access directly
 GameButton (uses useGame hook to get screen)

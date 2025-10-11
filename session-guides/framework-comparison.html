@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>framework-comparison - Wizcamp Session Guide</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style type="text/css">
+
+@page {
+margin: 0.6in 0.75in 0.6in 0.75in;
+size: letter;
+}
+body {
+font-family: "Amulya Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.4;
+color: #2d3748;
+margin: 0;
+padding: 0;
+max-width: none;
+overflow-x: hidden !important;
+}
+
+* {
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+
+html, body {
+overflow-x: hidden !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: "Plein Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 500;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px;
+color: #1a202c;
+}
+h1 {
+font-size: 1.75em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 0;
+}
+h2 {
+font-size: 1.5em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 48px;
+margin-bottom: 16px;
+}
+
+h1 + * h2:first-of-type,
+h2:first-of-type {
+margin-top: 24px;
+}
+
+a[id] {
+scroll-margin-top: 48px;
+}
+h3 {
+font-size: 1.25em;
+margin-top: 24px;
+margin-bottom: 12px;
+page-break-after: avoid;
+break-after: avoid;
+}
+
+h2, h3 {
+page-break-after: avoid;
+}
+
+ol, ul, li, p {
+page-break-inside: auto;
+}
+code {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-size: 13px !important;
+font-weight: 500 !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
+border-radius: 3px !important;
+white-space: nowrap;
+word-break: break-word;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+text-decoration: none !important;
+}
+pre {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+background-color: #f8f9fa !important;
+border: 1px solid #e1e4e8 !important;
+border-radius: 6px !important;
+padding: 16px !important;
+overflow: hidden !important;
+white-space: pre-wrap !important;
+word-wrap: break-word !important;
+page-break-inside: avoid !important;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+font-size: 14px !important;
+line-height: 1.4 !important;
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+box-sizing: border-box !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+
+@media print {
+pre {
+white-space: pre !important;
+font-family: "JetBrains Mono", monospace !important;
+display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+pre * {
+white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+}
+pre code {
+background-color: transparent !important;
+border: none !important;
+padding: 0 !important;
+color: #24292f !important;
+text-decoration: none !important;
+}
+ul, ol {
+padding-left: 1.8em;
+margin-bottom: 12px;
+}
+li {
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
+@media print {
+ul, ol {
+display: block !important;
+}
+li {
+display: list-item !important;
+margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
+}
+
+* {
+box-sizing: border-box !important;
+}
+}
+p {
+margin-bottom: 12px;
+}
+a {
+color: #0969da;
+text-decoration: none;
+}
+strong {
+font-weight: 500;
+color: #2d3748;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+max-width: 100%;
+margin: 16px 0;
+font-size: 16px;
+line-height: 1.5;
+table-layout: auto;
+word-wrap: break-word;
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+vertical-align: top;
+border: 1px solid #d0d7de;
+word-wrap: break-word;
+overflow-wrap: break-word;
+hyphens: auto;
+}
+th {
+font-weight: 500;
+background-color: #f6f8fa;
+color: #2d3748;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+tbody tr:nth-child(even) {
+background-color: #f8f9fa;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+
+table code {
+font-size: 14px !important;
+padding: 2px 4px !important;
+word-break: break-all;
+}
+
+blockquote {
+border-left: 4px solid #d1d5db;
+padding: 12px 16px;
+margin: 20px 0;
+background-color: transparent;
+border-radius: 0;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+blockquote p {
+margin: 0 0 8px 0;
+}
+blockquote p:last-child {
+margin-bottom: 0;
+}
+blockquote strong:first-child {
+display: inline-block;
+margin-right: 4px;
+}
+
+blockquote ul {
+margin-top: 12px;
+margin-bottom: 0;
+padding-left: 1.8em;
+list-style-type: none;
+}
+blockquote li {
+position: relative;
+}
+
+blockquote li::before {
+content: '☐ ';
+position: absolute;
+left: -1.8em;
+font-size: 16px;
+}
+
+blockquote:has(strong:first-child:contains("💡")) {
+border-left-color: #3b82f6;
+}
+
+blockquote:has(strong:first-child:contains("⚠️")) {
+border-left-color: #f59e0b;
+}
+
+blockquote:has(strong:first-child:contains("✅")) {
+border-left-color: #10b981;
+}
+
+blockquote:has(strong:first-child:contains("❌")) {
+border-left-color: #ef4444;
+}
+
+blockquote:has(strong:first-child:contains("ℹ️")) {
+border-left-color: #6366f1;
+}
+
+blockquote:has(strong:first-child:contains("🎯")) {
+border-left-color: #8b5cf6;
+}
+
+@supports not (selector(:has(*))) {
+blockquote {
+border-left-color: #3b82f6;
+}
+}
+
+table td:first-child {
+width: 200px;
+max-width: 250px;
+}
+table td:nth-child(2) {
+width: auto;
+}
+table td:nth-child(3) {
+width: auto;
+}
+
+table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:nth-child(2) {
+width: 50% !important;
+max-width: none !important;
+}
+
+table {
+page-break-inside: auto !important;
+}
+th {
+page-break-after: avoid !important;
+}
+tbody tr {
+page-break-inside: avoid !important;
+page-break-after: auto !important;
+}
+
+thead {
+display: table-header-group !important;
+}
+
+img {
+max-width: 100%;
+height: auto;
+display: block;
+margin: 16px auto;
+page-break-inside: avoid;
+}
+
+em {
+display: block;
+text-align: center;
+font-style: italic;
+font-size: 14px;
+color: #666;
+margin-top: 8px;
+margin-bottom: 16px;
+}
+@media print {
+thead {
+display: table-row-group !important;
+}
+table {
+page-break-inside: auto !important;
+}
+tr {
+page-break-inside: avoid !important;
+}
+
+blockquote {
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+page-break-inside: avoid !important;
+}
+
+* {
+overflow: visible !important;
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+html, body {
+overflow-x: hidden !important;
+}
+}
+</style>
+</head>
+<body>
+<h1 id="configuration-pattern-before-after-comparison">Configuration Pattern: Before &amp; After Comparison</h1>
+<p>Side-by-side comparison of all configuration sections showing current vs. proposed patterns.</p>
+<p><strong>Legend:</strong> - 🔴 <strong>Current</strong> - Existing format - 🟢 <strong>Proposed</strong> - New pattern variant - 📊 <strong>Variant</strong> - Which pattern variant used (A/B/C)</p>
+<hr />
+<h2 id="session-0-getting-ready-for-camp">Session 0: Getting Ready for Camp</h2>
+<h3 id="section-1-introducing-yourself">Section 1: Introducing Yourself</h3>
+<p><strong>📊 Variant:</strong> B (Hybrid) - 3 steps</p>
+<h4 id="current">🔴 Current</h4>
+<h2 id="introducing-yourself">👋 Introducing Yourself</h2>
+<p><strong>Goal:</strong> Connect with your cohort and share your coding journey.</p>
+<h3 id="step-1-log-in-to-the-portal">Step 1: Log in to the portal</h3>
+<p>Go to the <a href="https://portal.wizcamp.com">Wizcamp Portal</a> and log in with your account.</p>
+<h3 id="step-2-create-your-post">Step 2: Create your post</h3>
+<p>Click “New Introduction” and share:</p>
+<ul>
+<li>Your name and coding experience</li>
+<li>What excites you about learning to code</li>
+<li>One fun fact about yourself</li>
+</ul>
+<h3 id="step-3-engage-with-others">Step 3: Engage with others</h3>
+<p>Read and respond to other student introductions.</p>
+<p>💡 <strong>Why this matters:</strong> Building connections with your cohort creates a supportive learning community where you can share challenges, celebrate wins, and learn from each other throughout the course.</p>
+<h4 id="proposed">🟢 Proposed</h4>
+<h2 id="introducing-yourself-1">👋 Introducing Yourself</h2>
+<p>🎯 <strong>Goal:</strong> Connect with your cohort and share your coding journey.</p>
+<ol type="1">
+<li><strong>Log in</strong> to the <a href="https://portal.wizcamp.com">Wizcamp Portal</a></li>
+<li><strong>Click</strong> “New Introduction” and share:
+<ul>
+<li>Your name and coding experience</li>
+<li>What excites you about learning to code</li>
+<li>One fun fact about yourself</li>
+</ul></li>
+<li><strong>Read</strong> and respond to other student introductions</li>
+</ol>
+<p><strong>Verify:</strong> Your introduction post is visible in the portal.</p>
+<p>💡 <strong>Why this matters:</strong> Building connections with your cohort creates a supportive learning community where you can share challenges, celebrate wins, and learn from each other throughout the course.</p>
+<p><strong>Changes:</strong> - ✅ Kept goal statement - ✅ Removed step subheadings - ✅ Used numbered list with bold verbs - ✅ Added brief verification - ✅ Kept callout</p>
+<hr />
+<h3 id="section-2-planning-your-schedule">Section 2: Planning Your Schedule</h3>
+<p><strong>📊 Variant:</strong> A (Minimal) - 1 step</p>
+<h4 id="current-1">🔴 Current</h4>
+<h2 id="planning-your-schedule">📅 Planning Your Schedule</h2>
+<p>Go to the class calendar within the <a href="https://portal.wizcamp.com">Wizcamp Portal</a> and RSVP for each session you plan on attending. You’ll receive confirmation and reminders.</p>
+<h4 id="proposed-1">🟢 Proposed</h4>
+<h2 id="planning-your-schedule-1">📅 Planning Your Schedule</h2>
+<p>Go to the class calendar within the <a href="https://portal.wizcamp.com">Wizcamp Portal</a> and RSVP for each session you plan on attending. You’ll receive confirmation and reminders.</p>
+<p>💡 <strong>Stay organized:</strong> RSVPing helps you plan your schedule and ensures you receive session reminders.</p>
+<p><strong>Changes:</strong> - ✅ Kept minimal format (1 step) - ✅ Added callout for context</p>
+<hr />
+<h3 id="section-3-setting-up-your-github-account">Section 3: Setting Up Your GitHub Account</h3>
+<p><strong>📊 Variant:</strong> A (Minimal) - 2 steps</p>
+<h4 id="current-2">🔴 Current</h4>
+<h2 id="setting-up-your-github-account">🐙 Setting Up Your GitHub Account</h2>
+<p>Go to <a href="https://github.com">github.com</a> and create a new account (<a href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github#signing-up-for-a-new-personal-account">signup guide</a>). If you already have an account, verify you can log in.</p>
+<p>💡 <strong>Why GitHub matters:</strong> GitHub is where developers worldwide store and share code. You’ll use it throughout the course to access your coding environment and AI-powered coding assistant.</p>
+<h4 id="proposed-2">🟢 Proposed</h4>
+<h2 id="setting-up-your-github-account-1">🐙 Setting Up Your GitHub Account</h2>
+<ol type="1">
+<li>Go to <a href="https://github.com">github.com</a> and create a new account (<a href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github#signing-up-for-a-new-personal-account">signup guide</a>)</li>
+<li>If you already have an account, verify you can log in</li>
+</ol>
+<p>💡 <strong>Why GitHub matters:</strong> GitHub is where developers worldwide store and share code. You’ll use it throughout the course to access your coding environment and AI-powered coding assistant.</p>
+<p><strong>Changes:</strong> - ✅ Numbered the 2 steps for clarity - ✅ Kept callout - ✅ No goal statement (obvious from title)</p>
+<hr />
+<h3 id="section-4-connecting-with-your-instructor">Section 4: Connecting with Your Instructor</h3>
+<p><strong>📊 Variant:</strong> A (Minimal) - 1 step</p>
+<h4 id="current-3">🔴 Current</h4>
+<h2 id="connecting-with-your-instructor">📨 Connecting with Your Instructor</h2>
+<p>DM Mr. Colestock in the <a href="https://portal.wizcamp.com">Wizcamp Portal</a> with your full name, email, and GitHub username. You’ll receive confirmation that you’ve been added to the Wizcamp GitHub Organization.</p>
+<p>💡 <strong>Why this matters:</strong> Being added to the organization gives you access to Codespaces and GitHub Copilot Pro — the tools you’ll use to build your trivia game.</p>
+<h4 id="proposed-3">🟢 Proposed</h4>
+<h2 id="connecting-with-your-instructor-1">📨 Connecting with Your Instructor</h2>
+<p>DM Mr. Colestock in the <a href="https://portal.wizcamp.com">Wizcamp Portal</a> with your full name, email, and GitHub username. You’ll receive confirmation that you’ve been added to the Wizcamp GitHub Organization.</p>
+<p>💡 <strong>Why this matters:</strong> Being added to the organization gives you access to Codespaces and GitHub Copilot Pro — the tools you’ll use to build your trivia game.</p>
+<p><strong>Changes:</strong> - ✅ No changes needed (already optimal for 1-step task)</p>
+<hr />
+<h2 id="session-1-setting-up-your-trivia-game">Session 1: Setting Up Your Trivia Game</h2>
+<h3 id="section-5-creating-your-codespace">Section 5: Creating Your Codespace</h3>
+<p><strong>📊 Variant:</strong> B (Hybrid) - 4 steps</p>
+<h4 id="current-4">🔴 Current</h4>
+<h2 id="creating-your-codespace">☁️ Creating Your Codespace</h2>
+<p>🎯 <strong>Goal:</strong> Set up your cloud development environment so you can start coding without any local installations.</p>
+<h3 id="step-1-sign-in-to-github">Step 1: Sign in to GitHub</h3>
+<p>Go to <a href="https://github.com">github.com</a> and log in with your account.</p>
+<h3 id="step-2-launch-the-template">Step 2: Launch the template</h3>
+<p>Go to <a href="https://github.com/wizcamp/wizcamp-realms-demo">github.com/wizcamp/wizcamp-realms-demo</a> and click <strong>Use this template</strong> → <strong>Open in a codespace</strong>.</p>
+<p><strong>Expected result:</strong> Your Codespace begins building (this takes 1-2 minutes).</p>
+<h3 id="step-3-wait-for-the-environment-to-load">Step 3: Wait for the environment to load</h3>
+<p>Once the build completes, VS Code will open in your browser.</p>
+<p><strong>Expected result:</strong> Project files appear in the file explorer on the left side.</p>
+<h3 id="step-4-customize-your-theme-optional">Step 4: Customize your theme (optional)</h3>
+<p>Click the ⚙️ gear icon in the bottom left → <strong>Themes</strong> → <strong>Color Theme</strong> → pick your favorite (Dark+ is popular for coding).</p>
+<p>💡 <strong>Why Codespaces rocks:</strong> Everyone gets the same setup — no more “it works on my machine” drama. Mess something up? Just delete and start fresh. It’s like having a reset button for your entire dev environment. You’ll use this Codespace for all 12 sessions.</p>
+<p>🏆 <strong>Bonus Challenge:</strong> Go to <a href="https://github.com/codespaces">github.com/codespaces</a> to explore more about managing your Codespaces.</p>
+<h4 id="proposed-4">🟢 Proposed</h4>
+<h2 id="creating-your-codespace-1">☁️ Creating Your Codespace</h2>
+<p>🎯 <strong>Goal:</strong> Set up your cloud development environment so you can start coding without any local installations.</p>
+<ol type="1">
+<li><strong>Sign in</strong> to <a href="https://github.com">github.com</a></li>
+<li><strong>Navigate</strong> to <a href="https://github.com/wizcamp/wizcamp-realms-demo">github.com/wizcamp/wizcamp-realms-demo</a></li>
+<li><strong>Click</strong> Use this template → Open in a codespace</li>
+<li><strong>Wait</strong> for the build to complete (1-2 minutes)</li>
+</ol>
+<p><strong>Verify:</strong> VS Code opens in your browser with project files visible in the left sidebar.</p>
+<p>💡 <strong>Why Codespaces rocks:</strong> Everyone gets the same setup — no more “it works on my machine” drama. Mess something up? Just delete and start fresh. You’ll use this Codespace for all 12 sessions.</p>
+<p>🏆 <strong>Bonus Challenge:</strong> Customize your theme by clicking the ⚙️ gear icon → Themes → Color Theme, or explore <a href="https://github.com/codespaces">github.com/codespaces</a> to learn about managing Codespaces.</p>
+<p><strong>Changes:</strong> - ✅ Kept goal statement - ✅ Removed step subheadings - ✅ Condensed to numbered list with bold verbs - ✅ Single verification statement - ✅ Moved optional customization to bonus - ✅ Streamlined callout</p>
+<hr />
+<h3 id="section-6-starting-your-development-server">Section 6: Starting Your Development Server</h3>
+<p><strong>📊 Variant:</strong> C (Full) - 3 steps with commands</p>
+<h4 id="current-5">🔴 Current</h4>
+<h2 id="starting-your-development-server">🚀 Starting Your Development Server</h2>
+<p>🎯 <strong>Goal:</strong> Practice starting and stopping the local server you’ll use to preview real-time changes as you build your app.</p>
+<h3 id="step-1-run-the-dev-server">Step 1: Run the dev server</h3>
+<p>From the terminal at the bottom of your Codespace, run:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">npm</span> run dev</a></code></pre></div>
+<h3 id="step-2-open-the-app-in-your-browser">Step 2: Open the app in your browser</h3>
+<p>After running the command, you’ll see output like:</p>
+<pre class="text"><code>VITE v7.1.7  ready in 2473 ms
+
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
+➜  press h + enter to show help</code></pre>
+<p>Follow the link (ctrl + click), copy-paste it into a new browser tab, or click “Open in Browser” if a dialog appears.</p>
+<p><strong>Expected result:</strong> A web page displaying the starter app with placeholder content.</p>
+<h3 id="step-3-stop-the-server">Step 3: Stop the server</h3>
+<p>Go back to your terminal and press <code>Ctrl + C</code>.</p>
+<p><strong>Expected result:</strong></p>
+<ul>
+<li>Terminal returns to the command prompt</li>
+<li>Refreshing the browser shows a connection error (app no longer running)</li>
+</ul>
+<p>💡 <strong>Your dev server cheat sheet:</strong> Run <code>npm run dev</code> to fire up your server and see your app live. Hit <code>Ctrl + C</code> to shut it down. You’ll use these commands constantly — they’re about to become muscle memory.</p>
+<h4 id="proposed-5">🟢 Proposed</h4>
+<h2 id="starting-your-development-server-1">🚀 Starting Your Development Server</h2>
+<p>🎯 <strong>Goal:</strong> Practice starting and stopping the local server you’ll use to preview real-time changes as you build your app.</p>
+<h3 id="step-1-run-the-dev-server-1">Step 1: Run the dev server</h3>
+<p>From the terminal at the bottom of your Codespace, run:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">npm</span> run dev</a></code></pre></div>
+<h3 id="step-2-open-the-app-in-your-browser-1">Step 2: Open the app in your browser</h3>
+<p>After running the command, you’ll see output like:</p>
+<pre class="text"><code>VITE v7.1.7  ready in 2473 ms
+
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
+➜  press h + enter to show help</code></pre>
+<p>Follow the link (ctrl + click), copy-paste it into a new browser tab, or click “Open in Browser” if a dialog appears.</p>
+<p><strong>Expected result:</strong> A web page displaying the starter app with placeholder content.</p>
+<h3 id="step-3-stop-the-server-1">Step 3: Stop the server</h3>
+<p>Go back to your terminal and press <code>Ctrl + C</code>.</p>
+<p><strong>Expected result:</strong></p>
+<ul>
+<li>Terminal returns to the command prompt</li>
+<li>Refreshing the browser shows a connection error (app no longer running)</li>
+</ul>
+<p>💡 <strong>Your dev server cheat sheet:</strong> Run <code>npm run dev</code> to fire up your server and see your app live. Hit <code>Ctrl + C</code> to shut it down. You’ll use these commands constantly — they’re about to become muscle memory.</p>
+<p><strong>Changes:</strong> - ✅ <strong>NO CHANGES</strong> - Already optimal for complex config with commands and output - ✅ Variant C is appropriate here</p>
+<hr />
+<h2 id="session-2-building-game-components">Session 2: Building Game Components</h2>
+<h3 id="section-7-accessing-your-codespace">Section 7: Accessing Your Codespace</h3>
+<p><strong>📊 Variant:</strong> A (Minimal) - 1 step</p>
+<h4 id="current-6">🔴 Current</h4>
+<h2 id="accessing-your-codespace">☁️ Accessing Your Codespace</h2>
+<p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 1.</p>
+<h4 id="proposed-6">🟢 Proposed</h4>
+<h2 id="accessing-your-codespace-1">☁️ Accessing Your Codespace</h2>
+<p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 1.</p>
+<p>💡 <strong>Quick tip:</strong> Your Codespace saves your work automatically. You can close and reopen it anytime without losing progress.</p>
+<p><strong>Changes:</strong> - ✅ Added callout for reassurance</p>
+<hr />
+<h3 id="section-8-installing-react-devtools">Section 8: Installing React DevTools</h3>
+<p><strong>📊 Variant:</strong> B (Hybrid) - 4 steps</p>
+<h4 id="current-7">🔴 Current</h4>
+<h2 id="installing-react-devtools">🔍 Installing React DevTools</h2>
+<p>React DevTools is like X-ray vision for your React app — see component structure, props, and state in real-time.</p>
+<h3 id="browser-installation">Browser Installation</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Browser</th>
+<th>Installation Link</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Chrome</strong></td>
+<td><a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">Chrome Web Store</a></td>
+<td>Most popular choice</td>
+</tr>
+<tr class="even">
+<td><strong>Firefox</strong></td>
+<td><a href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/">Firefox Add-ons</a></td>
+<td>Great alternative</td>
+</tr>
+<tr class="odd">
+<td><strong>Edge</strong></td>
+<td><a href="https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil">Edge Add-ons</a></td>
+<td>Windows default</td>
+</tr>
+<tr class="even">
+<td><strong>Safari</strong></td>
+<td>Manual installation required</td>
+<td>Advanced users only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-devtools">Using DevTools</h3>
+<ol type="1">
+<li><strong>Open</strong> DevTools by pressing F12 or right-clicking → Inspect</li>
+<li><strong>Find</strong> Components tab by looking for “Components” next to Console, Network, etc.</li>
+<li><strong>Explore</strong> your app by clicking on components in the tree to see their props</li>
+<li><strong>Inspect</strong> GameButton by finding your GameButton component and see the text, onClick, and variant props!</li>
+</ol>
+<p>💡 <strong>React DevTools</strong> gives you X-ray vision into your app. You can inspect components, props, and state in real time — essential for debugging and understanding how your app works under the hood.</p>
+<h4 id="proposed-7">🟢 Proposed</h4>
+<h2 id="installing-react-devtools-1">🔍 Installing React DevTools</h2>
+<p>🎯 <strong>Goal:</strong> Install and learn to use React DevTools for inspecting your app’s components.</p>
+<h3 id="browser-installation-1">Browser Installation</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Browser</th>
+<th>Installation Link</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Chrome</strong></td>
+<td><a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">Chrome Web Store</a></td>
+<td>Most popular choice</td>
+</tr>
+<tr class="even">
+<td><strong>Firefox</strong></td>
+<td><a href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/">Firefox Add-ons</a></td>
+<td>Great alternative</td>
+</tr>
+<tr class="odd">
+<td><strong>Edge</strong></td>
+<td><a href="https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil">Edge Add-ons</a></td>
+<td>Windows default</td>
+</tr>
+<tr class="even">
+<td><strong>Safari</strong></td>
+<td>Manual installation required</td>
+<td>Advanced users only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-devtools-1">Using DevTools</h3>
+<ol type="1">
+<li><strong>Open</strong> DevTools by pressing <code>F12</code> or right-clicking → Inspect</li>
+<li><strong>Find</strong> the Components tab next to Console, Network, etc.</li>
+<li><strong>Click</strong> on GameButton in the component tree</li>
+<li><strong>Inspect</strong> the props: <code>text</code>, <code>onClick</code>, and <code>variant</code></li>
+</ol>
+<p><strong>Verify:</strong> You can see GameButton’s props in the right panel.</p>
+<p>💡 <strong>Why this matters:</strong> React DevTools gives you X-ray vision into your app — essential for debugging and understanding how components work.</p>
+<p><strong>Changes:</strong> - ✅ Added goal statement - ✅ Kept platform table - ✅ Simplified usage steps (removed redundancy) - ✅ Added brief verification - ✅ Streamlined callout</p>
+<hr />
+<h2 id="session-3-managing-game-flow">Session 3: Managing Game Flow</h2>
+<h3 id="section-9-using-react-devtools-for-exploring-state">Section 9: Using React DevTools for Exploring State</h3>
+<p><strong>📊 Variant:</strong> C (Full) - 6 exploratory steps</p>
+<h4 id="current-8">🔴 Current</h4>
+<h2 id="using-react-devtools-for-exploring-state">🔍 Using React DevTools for Exploring State</h2>
+<p>Let’s use React DevTools to see how <strong>shared state</strong> works behind the scenes and experiment with changing it manually.</p>
+<ol type="1">
+<li><strong>Open</strong> DevTools by pressing F12 or right-clicking → Inspect</li>
+<li><strong>Find</strong> Components tab by looking for “Components” next to Console, Network, etc.</li>
+<li><strong>Locate</strong> GameProvider by clicking on GameProvider in the component tree</li>
+<li><strong>Examine</strong> the hooks by looking for the screen state value (if you don’t see hook names clearly, click the gear icon and enable “Parse hook names”)</li>
+<li><strong>Experiment</strong> with state by changing the screen value from “splash” to “playing” and watch the UI update!</li>
+<li><strong>Change</strong> it back by setting it back to “splash” to see the SplashScreen return</li>
+</ol>
+<p>💡 React DevTools gives you X-ray vision into your app’s <strong>state</strong>. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how <strong>shared state</strong> affects your entire app. Notice how changing one value in <code>GameProvider</code> instantly changes what component renders!</p>
+<h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
+<p>Try changing the screen state to different values and see what happens. What occurs when you set it to a value that doesn’t match any of your conditions?</p>
+<h4 id="proposed-8">🟢 Proposed</h4>
+<h2 id="using-react-devtools-for-exploring-state-1">🔍 Using React DevTools for Exploring State</h2>
+<p>🎯 <strong>Goal:</strong> Explore how shared state controls your app by manually changing values in DevTools.</p>
+<h3 id="step-1-open-devtools">Step 1: Open DevTools</h3>
+<p>Press <code>F12</code> or right-click → Inspect to open your browser’s developer tools.</p>
+<h3 id="step-2-navigate-to-components-tab">Step 2: Navigate to Components tab</h3>
+<p>Look for “Components” next to Console, Network, etc. and click it.</p>
+<p><strong>Expected result:</strong> You see a tree of React components.</p>
+<h3 id="step-3-locate-gameprovider">Step 3: Locate GameProvider</h3>
+<p>Click on GameProvider in the component tree.</p>
+<p><strong>Expected result:</strong> The right panel shows GameProvider’s hooks and state.</p>
+<h3 id="step-4-find-the-screen-state">Step 4: Find the screen state</h3>
+<p>Look for the <code>screen</code> state value in the hooks section. If hook names aren’t clear, click the gear icon and enable “Parse hook names.”</p>
+<h3 id="step-5-experiment-with-state">Step 5: Experiment with state</h3>
+<p>Change the <code>screen</code> value from <code>&quot;splash&quot;</code> to <code>&quot;playing&quot;</code> and watch the UI update instantly!</p>
+<h3 id="step-6-change-it-back">Step 6: Change it back</h3>
+<p>Set <code>screen</code> back to <code>&quot;splash&quot;</code> to see the SplashScreen return.</p>
+<p><strong>Verify:</strong> The app switches between screens as you change the state value.</p>
+<p>💡 <strong>Why this matters:</strong> React DevTools gives you X-ray vision into your app’s state. You can see exactly what data each component has and modify it in real-time — invaluable for debugging and understanding how shared state affects your entire app.</p>
+<p>🏆 <strong>Bonus Challenge:</strong> Try changing the screen state to different values and see what happens. What occurs when you set it to a value that doesn’t match any of your conditions?</p>
+<p><strong>Changes:</strong> - ✅ Added goal statement - ✅ Added step subheadings (6 steps = complex) - ✅ Added expected results after key steps - ✅ Streamlined instructions - ✅ Kept bonus challenge - ✅ Improved callout</p>
+<hr />
+<h2 id="summary-of-changes">Summary of Changes</h2>
+<h3 id="by-variant">By Variant</h3>
+<p><strong>Variant A (Minimal) - 4 sections:</strong> - Planning Schedule - GitHub Account - Connecting with Instructor - Relaunch Codespace</p>
+<p><strong>Variant B (Hybrid) - 3 sections:</strong> - Introducing Yourself - Creating Codespace - Installing DevTools</p>
+<p><strong>Variant C (Full) - 2 sections:</strong> - Starting Dev Server (no changes) - Exploring State (enhanced)</p>
+<h3 id="key-improvements">Key Improvements</h3>
+<ol type="1">
+<li><strong>Reduced cognitive load</strong> - Removed step subheadings for 3-4 step tasks</li>
+<li><strong>Better scannability</strong> - Bold action verbs in numbered lists</li>
+<li><strong>Appropriate structure</strong> - Complexity matches content</li>
+<li><strong>Maintained student support</strong> - Kept verification and callouts</li>
+<li><strong>Streamlined content</strong> - Removed redundancy while keeping clarity</li>
+</ol>
+<h3 id="what-stayed-the-same">What Stayed the Same</h3>
+<ul>
+<li>Goal statements (where appropriate)</li>
+<li>Callouts explaining value</li>
+<li>Verification points</li>
+<li>Bonus challenges</li>
+<li>Code blocks and expected output</li>
+<li>Platform-specific tables</li>
+</ul>
+<hr />
+<h2 id="recommendation">Recommendation</h2>
+<p><strong>Adopt these changes</strong> because they: - ✅ Reduce unnecessary structure for simple tasks - ✅ Maintain clarity and student support - ✅ Align with industry best practices - ✅ Scale appropriately with complexity - ✅ Keep unique educational value (goals, callouts, verification)</p>
+</body>
+</html>

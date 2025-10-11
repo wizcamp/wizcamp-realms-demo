@@ -2,7 +2,7 @@
 
 Custom Hooks & Browser APIs 🎵
 
-You're about to add another professional feature to your trivia game — theme music! This guide walks you through creating custom React hooks, working with browser audio APIs, and building reusable audio controls. Ready to bring your game to life with sound? Let's go!
+You're about to add another feature to your trivia game — theme music! This guide walks you through creating custom React hooks, working with browser audio APIs, and building reusable audio controls. Ready to bring your game to life with sound? Let's go!
 
 ## Table of Contents
 
@@ -48,7 +48,7 @@ Before we dive into audio, let's understand **custom hooks** — one of React's 
 const music = useAudio('/music.mp3');
 ```
 
-This is the difference between amateur and professional code — professionals reduce repetition by creating reusable solutions. Custom hooks let you **"write once, use often,"** making your code cleaner, more maintainable, and easier to scale.
+This is the difference between basic and advanced code — experienced developers reduce repetition by creating reusable solutions. Custom hooks let you **"write once, use often,"** making your code cleaner, more maintainable, and easier to scale.
 
 ### 🏆 Bonus Challenge
 
@@ -285,7 +285,7 @@ You're now working with production-quality code. GitHub Copilot can help you wri
 
 ### Example Prompt
 
-```
+```text
 /fix Add error handling to the play function in the useAudio hook so that 
 if the audio fails to play, it catches the error, logs a warning, and 
 updates isPlaying to false
@@ -311,7 +311,7 @@ Now for your independent challenge — complete the `useAudio` hook with pause f
 With `useAudio.js` open, use the GitHub Copilot workflow you just learned:
 
 **Prompt**:
-```
+```text
 /fix Add error handling to the play function in the useAudio hook so that 
 if the audio fails to play, it catches the error, logs a warning, and 
 updates isPlaying to false
@@ -329,7 +329,7 @@ updates isPlaying to false
 ### 3. Add Cleanup with AI Assistance
 
 **Prompt**:
-```
+```text
 /fix Add a useEffect cleanup function to the useAudio hook that stops 
 the audio and clears the reference when the component unmounts
 ```
@@ -350,7 +350,7 @@ Your completed `useAudio` hook must:
 
 
 
-This challenge combines everything you've learned: custom hooks, browser APIs, error handling, and AI-assisted development. You're building production-quality code that handles edge cases and prevents memory leaks — exactly what professional developers do.
+This challenge combines everything you've learned: custom hooks, browser APIs, error handling, and AI-assisted development. You're building quality code that handles edge cases and prevents memory leaks — exactly what experienced developers do.
 
 <a id="essential-terms"></a>
 
@@ -374,7 +374,7 @@ _Quick reference for all the custom hooks and browser API concepts you just lear
 
 You just created a custom React hook with browser API integration and AI-assisted development — excellent work!
 
-Now let's deepen your understanding of custom hooks, browser APIs, and professional development practices. Here are the most impactful questions to ask your AI assistant about today's session:
+Now let's deepen your understanding of custom hooks, browser APIs, and development practices. Here are the most impactful questions to ask your AI assistant about today's session:
 
 - **What makes custom hooks different from regular functions, and why do they need to start with "use"?**
 - **How do refs differ from state, and when should I use each one?**

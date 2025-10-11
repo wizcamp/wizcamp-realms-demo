@@ -30,6 +30,7 @@ For each SESSION-XX-instruction.md instructor guide:
 **Session Name Reference:**
 | Session | Technical Name | Student-Friendly Name |
 |---------|---------------|----------------------|
+| 0 | Pre-Camp Orientation | Getting Ready for Camp |
 | 1 | Welcome to React Development | Setting Up Your Trivia Game |
 | 2 | Creating Reusable Components | Building Game Components |
 | 3 | Shared State with Context | Managing Game Flow |
@@ -104,7 +105,7 @@ Should be: [Suggested correction]
 - **Ask the AI**: Use format `## 🤖 Ask the AI — [Student-Friendly Name]` where Student-Friendly Name matches the Session Name Reference table, and questions explore beyond what's directly explained
 - **Code comments**: Follow detailed commenting guidelines below
 - **Essential terms**: Logical learning progression order
-- **Essential Terms table formatting**: Must use `| Term   | Definition | Why it matters |` with `|--------|------------|----------------|` to prevent emoji + term wrapping in PDFs
+- **Essential Terms table formatting**: Must use `| Term   | Definition | Why it matters |` with `|--------|------------|----------------|` to prevent emoji + term wrapping in PDFs; don't remove emojis
 - **Bolding/emphasis**: Follow detailed bolding standards below
 - **Command patterns**: Follow standardized instruction formats for consistency
 - **Section naming**: Use consistent gerund verb forms and established patterns
@@ -175,14 +176,6 @@ const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion)
 - Terms bolded in Essential Terms table (should be unbolded)
 - Entire outcomes/descriptions bolded instead of just action verbs
 
-### 6. Command Pattern Standards
-- **File operations**: Use `**Open `src/path/file.jsx`**` format with backticks for file paths
-- **Code modifications**: Use `**Add [specific element]**`, `**Update [specific target]**`, `**Replace [old] with [new]**` patterns
-- **UI interactions**: Use `**Open DevTools**: Press F12 or right-click → Inspect` format
-- **Testing**: Use `**Test**: [Specific expected behavior]` or `**Verify**: [Specific outcome]` patterns
-- **User actions**: Use `**Click [specific element]**`, `**Navigate to [location]**` patterns
-- **External links**: Use `**Visit [URL]**: Visit [https://example.com](https://example.com)` format
-
 ### 4. Tone and Audience
 - **Voice**: Conversational, empowering for 13-18 year olds
 - **Language**: Direct terms without empty adjectives ("Development Workflow" not "Effective Workflow")
@@ -197,28 +190,22 @@ const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion)
 
 ## Execution Steps
 
-### Step 1-6: Core Verification
-(Follow existing steps 1-6 for naming conventions, session flow, recaps, previews, ordering, and boundaries)
+### Step 1-5: Core Verification
+(Follow existing steps 1-5 for naming conventions, session flow, recaps, previews, ordering, and boundaries)
 
-### Step 7: Technical Standards Check
+### Step 6: Technical Standards Check
 - **Code formatting**: Language qualifiers, indentation, backtick usage
 - **Content standards**: File saving commands, comment guidelines, Essential Terms ordering
 - **Bolding/emphasis**: Essential terms bolded on first use, action verbs bolded in instructions, concepts appropriately emphasized
-- **Instructional sections**: Verify command bolding in all hands-on sections (see Step 11)
+- **Instructional sections**: Verify command bolding in all hands-on sections (see Step 9)
 - **Prettier compliance**: Semicolons, quotes, arrow functions (standalone code blocks only)
 
-### Step 8: Tone and Consistency Review
+### Step 7: Tone and Consistency Review
 - **Audience appropriateness**: Age-appropriate language and examples
 - **Term consistency**: Student Essential Terms align with instructor explanations
 - **Language quality**: Direct terms without empty adjectives or formal jargon
 
-### Step 9: Command Pattern Verification
-- **File operations**: Verify consistent use of backticks for file paths in Open/Create commands
-- **Code modifications**: Check for standardized Add/Update/Replace patterns
-- **UI interactions**: Ensure consistent DevTools, Click, Navigate command formats
-- **Testing language**: Verify use of Test/Verify patterns with specific expected behaviors
-
-### Step 10: Section Naming Verification
+### Step 8: Section Naming Verification
 
 **Section Naming Standards for Student Guides (SESSION-XX.md):**
 
@@ -249,7 +236,7 @@ const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion)
 - **Exception handling**: Confirm protected sections remain unchanged
 - **Cross-session consistency**: Ensure similar section types use identical naming patterns
 
-### Step 11: Instructional Command Bolding Verification
+### Step 9: Instructional Command Bolding Verification
 
 **Hands-On Sections Subject to Command Bolding Standards:**
 

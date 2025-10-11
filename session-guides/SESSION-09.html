@@ -383,7 +383,7 @@ overflow-x: hidden !important;
 <body>
 <h1 id="session-9-adding-theme-music">Session 9 — Adding Theme Music</h1>
 <p>Custom Hooks &amp; Browser APIs 🎵</p>
-<p>You’re about to add another professional feature to your trivia game — theme music! This guide walks you through creating custom React hooks, working with browser audio APIs, and building reusable audio controls. Ready to bring your game to life with sound? Let’s go!</p>
+<p>You’re about to add another feature to your trivia game — theme music! This guide walks you through creating custom React hooks, working with browser audio APIs, and building reusable audio controls. Ready to bring your game to life with sound? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#understanding-custom-hooks">Understanding Custom Hooks</a></li>
@@ -433,7 +433,7 @@ overflow-x: hidden !important;
 </table>
 <p><strong>Custom hooks</strong> embody one of programming’s most important principles: <strong>“Don’t Repeat Yourself” (DRY)</strong>. Instead of copying and pasting audio logic into every component that needs music, you encapsulate that complexity into a reusable <code>useAudio</code> hook. Now, any component can add background music with a single line of code:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> music <span class="op">=</span> <span class="at">useAudio</span>(<span class="st">&#39;/music.mp3&#39;</span>)<span class="op">;</span></a></code></pre></div>
-<p>This is the difference between amateur and professional code — professionals reduce repetition by creating reusable solutions. Custom hooks let you <strong>“write once, use often,”</strong> making your code cleaner, more maintainable, and easier to scale.</p>
+<p>This is the difference between basic and advanced code — experienced developers reduce repetition by creating reusable solutions. Custom hooks let you <strong>“write once, use often,”</strong> making your code cleaner, more maintainable, and easier to scale.</p>
 <h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
 <p>Visit <a href="https://usehooks.com/">useHooks – The React Hooks Library</a> and find three interesting custom hooks that might be great for use in a web-based video game.</p>
 <p><a id="exploring-browser-audio-apis"></a></p>
@@ -602,7 +602,7 @@ Call play() method → Update isPlaying state → UI reflects playing state</cod
 <li><strong>Test</strong> the update to confirm it works</li>
 </ol>
 <h3 id="example-prompt">Example Prompt</h3>
-<pre><code>/fix Add error handling to the play function in the useAudio hook so that 
+<pre class="text"><code>/fix Add error handling to the play function in the useAudio hook so that 
 if the audio fails to play, it catches the error, logs a warning, and 
 updates isPlaying to false</code></pre>
 <p>Use this workflow during your Solo Mission and anytime you’re stuck or want to improve your code.</p>
@@ -619,7 +619,7 @@ updates isPlaying to false</code></pre>
 <h3 id="add-error-handling-with-ai-assistance">2. Add Error Handling with AI Assistance</h3>
 <p>With <code>useAudio.js</code> open, use the GitHub Copilot workflow you just learned:</p>
 <p><strong>Prompt</strong>:</p>
-<pre><code>/fix Add error handling to the play function in the useAudio hook so that 
+<pre class="text"><code>/fix Add error handling to the play function in the useAudio hook so that 
 if the audio fails to play, it catches the error, logs a warning, and 
 updates isPlaying to false</code></pre>
 <ul>
@@ -636,7 +636,7 @@ updates isPlaying to false</code></pre>
 </ul>
 <h3 id="add-cleanup-with-ai-assistance">3. Add Cleanup with AI Assistance</h3>
 <p><strong>Prompt</strong>:</p>
-<pre><code>/fix Add a useEffect cleanup function to the useAudio hook that stops 
+<pre class="text"><code>/fix Add a useEffect cleanup function to the useAudio hook that stops 
 the audio and clears the reference when the component unmounts</code></pre>
 <ul>
 <li><strong>Review</strong> the generated useEffect code</li>
@@ -652,7 +652,7 @@ the audio and clears the reference when the component unmounts</code></pre>
 <li>Set <code>isPlaying(false)</code> if an error occurs</li>
 <li>Include a <code>useEffect</code> cleanup function for component unmounting</li>
 </ul>
-<p>This challenge combines everything you’ve learned: custom hooks, browser APIs, error handling, and AI-assisted development. You’re building production-quality code that handles edge cases and prevents memory leaks — exactly what professional developers do.</p>
+<p>This challenge combines everything you’ve learned: custom hooks, browser APIs, error handling, and AI-assisted development. You’re building quality code that handles edge cases and prevents memory leaks — exactly what experienced developers do.</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>
 <p><em>Quick reference for all the custom hooks and browser API concepts you just learned:</em></p>
@@ -710,7 +710,7 @@ the audio and clears the reference when the component unmounts</code></pre>
 <p><a id="ask-the-ai"></a></p>
 <h2 id="ask-the-ai-adding-theme-music">🤖 Ask the AI — Adding Theme Music</h2>
 <p>You just created a custom React hook with browser API integration and AI-assisted development — excellent work!</p>
-<p>Now let’s deepen your understanding of custom hooks, browser APIs, and professional development practices. Here are the most impactful questions to ask your AI assistant about today’s session:</p>
+<p>Now let’s deepen your understanding of custom hooks, browser APIs, and development practices. Here are the most impactful questions to ask your AI assistant about today’s session:</p>
 <ul>
 <li><strong>What makes custom hooks different from regular functions, and why do they need to start with “use”?</strong></li>
 <li><strong>How do refs differ from state, and when should I use each one?</strong></li>

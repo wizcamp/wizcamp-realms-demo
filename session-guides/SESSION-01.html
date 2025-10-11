@@ -12,6 +12,69 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style type="text/css">
 
 @page {
 margin: 0.6in 0.75in 0.6in 0.75in;
@@ -59,7 +122,7 @@ h2 {
 font-size: 1.5em;
 border-bottom: 1px solid #d0d7de;
 padding-bottom: 0.3em;
-margin-top: 24px;
+margin-top: 48px;
 margin-bottom: 16px;
 }
 
@@ -69,7 +132,7 @@ margin-top: 24px;
 }
 
 a[id] {
-scroll-margin-top: 20px;
+scroll-margin-top: 48px;
 }
 h3 {
 font-size: 1.25em;
@@ -320,32 +383,34 @@ overflow-x: hidden !important;
 <body>
 <h1 id="session-1-setting-up-your-trivia-game">Session 1 — Setting Up Your Trivia Game</h1>
 <p>Welcome to <strong>React</strong> Development! 🎉</p>
-<p>You’re about to launch your dev setup and start building like a pro. This guide breaks everything down into bite-sized tasks so you can move fast, learn by doing, and see results right away. Ready to dive in? Let’s go!</p>
+<p>You’re about to launch your dev setup and start building your trivia game. This guide breaks everything down into bite-sized tasks so you can move fast, learn by doing, and see results right away. Ready to dive in? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#launching-your-codespace">Launching Your Codespace</a></li>
-<li><a href="#project-navigation">Project Navigation</a></li>
-<li><a href="#starting-the-development-server">Starting the Development Server</a></li>
-<li><a href="#replacing-the-placeholder-component">Replacing the Placeholder Component</a></li>
-<li><a href="#updating-the-page-title">Updating the Page Title</a></li>
-<li><a href="#essential-terms">Essential Terms</a></li>
-<li><a href="#ask-the-ai">Ask the AI</a></li>
+<li><a href="#creating-your-codespace">Creating Your Codespace</a> ☁️</li>
+<li><a href="#navigating-the-project">Navigating the Project</a> 🗂️</li>
+<li><a href="#starting-your-development-server">Starting Your Development Server</a> 🚀</li>
+<li><a href="#editing-your-first-component">Editing Your First Component</a> 🧩</li>
+<li><a href="#updating-the-page-title">Updating the Page Title</a> 🏷️</li>
+<li><a href="#essential-terms">Essential Terms</a> 📚📋</li>
+<li><a href="#ask-the-ai">Ask the AI</a> 🤖</li>
 </ul>
-<p><a id="launching-your-codespace"></a></p>
-<h2 id="launching-your-codespace">🔧 Launching Your Codespace</h2>
-<p>Let’s get your cloud coding environment up and running so you can start building without messing with local installs. This is your dev playground in the cloud — no setup headaches, no installs, just code.</p>
-<ol type="1">
-<li>Head over to <a href="https://github.com">github.com</a> and log in using the account you set up during pre-camp.</li>
-<li><strong>Go</strong> to <a href="https://github.com/wizcamp/wizcamp-realms-demo">github.com/wizcamp/wizcamp-realms-demo</a> and click Use this template → Open in codespace</li>
-<li><strong>Wait</strong> while your Codespace builds until you see a VS Code editor pop up in your browser</li>
-<li><strong>Verify</strong> you can see the project files in the file explorer on the left once it loads</li>
-<li><strong>Customize</strong> your theme by clicking the gear icon in the bottom left, going to Themes -&gt; Color Theme, and picking your favorite (Dark+ is popular for coding)</li>
-</ol>
-<p>Codespaces give everyone the same setup — no more “it works on my machine” drama. If you mess something up, just delete and start fresh. It’s like having a reset button for your entire dev environment. You will use this Codespace for all sessions.</p>
-<h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
-<p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to explore more about managing your Codespaces.</p>
-<p><a id="project-navigation"></a></p>
-<h2 id="project-navigation">🗂️ Project Navigation</h2>
+<p><a id="creating-your-codespace"></a></p>
+<h2 id="creating-your-codespace">☁️ Creating Your Codespace</h2>
+<p>🎯 <strong>Goal:</strong> Set up your cloud development environment so you can start coding without any local installations.</p>
+<h3 id="step-1-sign-in-to-github">Step 1: Sign in to GitHub</h3>
+<p>Go to <a href="https://github.com">github.com</a> and log in with your account.</p>
+<h3 id="step-2-launch-the-template">Step 2: Launch the template</h3>
+<p>Go to <a href="https://github.com/wizcamp/wizcamp-realms-demo">github.com/wizcamp/wizcamp-realms-demo</a> and click <strong>Use this template</strong> → <strong>Open in a codespace</strong>.</p>
+<p><strong>Expected result:</strong> Your Codespace begins building (this takes 1-2 minutes).</p>
+<h3 id="step-3-wait-for-the-environment-to-load">Step 3: Wait for the environment to load</h3>
+<p>Once the build completes, VS Code will open in your browser.</p>
+<p><strong>Expected result:</strong> Project files appear in the file explorer on the left side.</p>
+<h3 id="step-4-customize-your-theme-optional">Step 4: Customize your theme (optional)</h3>
+<p>Click the ⚙️ gear icon in the bottom left → <strong>Themes</strong> → <strong>Color Theme</strong> → pick your favorite (Dark+ is popular for coding).</p>
+<p>💡 <strong>Why Codespaces rocks:</strong> Everyone gets the same setup — no more “it works on my machine” drama. Mess something up? Just delete and start fresh. It’s like having a reset button for your entire dev environment. You’ll use this Codespace for all 12 sessions.</p>
+<p>🏆 <strong>Bonus Challenge:</strong> Go to <a href="https://github.com/codespaces">github.com/codespaces</a> to explore more about managing your Codespaces.</p>
+<p><a id="navigating-the-project"></a></p>
+<h2 id="navigating-the-project">🗂️ Navigating the Project</h2>
 <p><em>Quick orientation to help you find files during today’s tasks:</em></p>
 <pre class="text"><code>wizcamp-realms/
 ├── src/                    # Your React code lives here
@@ -360,51 +425,61 @@ overflow-x: hidden !important;
 <li><code>index.html</code> — to update the page title</li>
 </ul>
 <p><em>Don’t worry about the other folders yet — we’ll explore them in future sessions.</em></p>
-<p><a id="starting-the-development-server"></a></p>
-<h2 id="starting-the-development-server">🚀 Starting the Development Server</h2>
-<p>Preview the app in your browser by running the dev server to confirm everything is wired up correctly.</p>
-<ol type="1">
-<li><strong>Launch</strong> the dev server from the terminal with <code>npm run dev</code></li>
-<li><strong>Click</strong> “Open in Browser” or visit the provided localhost URL (e.g., http://localhost:5173/)</li>
-<li>The starter app should load, showing a placeholder component.</li>
-</ol>
-<p>Your dev server is like having a live preview of your creation. Every change you make shows up instantly — you’re watching your code come to life in real-time.</p>
-<h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
-<p>Try stopping and restarting the dev server:</p>
+<p><a id="starting-your-development-server"></a></p>
+<h2 id="starting-your-development-server">🚀 Starting Your Development Server</h2>
+<p>🎯 <strong>Goal:</strong> Practice starting and stopping the local server you’ll use to preview real-time changes as you build your app.</p>
+<h3 id="step-1-run-the-dev-server">Step 1: Run the dev server</h3>
+<p>From the terminal at the bottom of your Codespace, run:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">npm</span> run dev</a></code></pre></div>
+<h3 id="step-2-open-the-app-in-your-browser">Step 2: Open the app in your browser</h3>
+<p>After running the command, you’ll see output like:</p>
+<pre class="text"><code>VITE v7.1.7  ready in 2473 ms
+
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
+➜  press h + enter to show help</code></pre>
+<p>Follow the link (ctrl + click), copy-paste it into a new browser tab, or click “Open in Browser” if a dialog appears.</p>
+<p><strong>Expected result:</strong> A web page displaying the starter app with placeholder content.</p>
+<h3 id="step-3-stop-the-server">Step 3: Stop the server</h3>
+<p>Go back to your terminal and press <code>Ctrl + C</code>.</p>
+<p><strong>Expected result:</strong></p>
 <ul>
-<li><strong>Stop</strong> the server by pressing <code>Ctrl + C</code> in the terminal</li>
-<li><strong>Check</strong> localhost again to verify the app is gone</li>
-<li><strong>Restart</strong> it with <code>npm run dev</code> and refresh the browser to see the app again</li>
+<li>Terminal returns to the command prompt</li>
+<li>Refreshing the browser shows a connection error (app no longer running)</li>
 </ul>
-<p><a id="replacing-the-placeholder-component"></a></p>
-<h2 id="replacing-the-placeholder-component">🧩 Replacing the Placeholder Component</h2>
-<p>With the development server still running, replace the placeholder component with the game’s splash screen component to experience live updates in action.</p>
-<ol type="1">
-<li><strong>Open</strong> <code>src/App.jsx</code></li>
-<li><strong>Add</strong> the import <code>import SplashScreen from &quot;./components/SplashScreen&quot;;</code></li>
-<li><strong>Replace</strong> <code>&lt;StartHere /&gt;</code> with <code>&lt;SplashScreen /&gt;</code></li>
-<li><strong>Watch</strong> the screen update instantly without needing to save!</li>
-</ol>
-<p><strong>Components</strong> are the building blocks of <strong>React</strong> web apps — kind of like digital LEGO pieces. You build apps by snapping them together.</p>
-<p>You probably noticed the <code>.jsx</code> file extension. That’s because these <strong>components</strong> are written in a special syntax called <strong>JSX</strong>. It looks a lot like HTML, but is actually JavaScript under the hood. JSX lets you describe what the UI should look — using a syntax that’s readable like HTML but powered by JavaScript.</p>
-<p>The live update “magic” you experienced is actually powered by a build tool we are using called <strong>Vite</strong>, which uses a process known as <strong>Hot Module Replacement (HMR)</strong> to apply “smart updates” to your app instantly as you code.</p>
+<p>💡 <strong>Your dev server cheat sheet:</strong> Run <code>npm run dev</code> to fire up your server and see your app live. Hit <code>Ctrl + C</code> to shut it down. You’ll use these commands constantly — they’re about to become muscle memory.</p>
+<p><a id="editing-your-first-component"></a></p>
+<h2 id="editing-your-first-component">🧩 Editing Your First Component</h2>
+<p>🎯 <strong>Goal:</strong> Edit the App component to display your game’s splash screen and experience React’s live updates.</p>
+<p><strong>File:</strong> <code>src/App.jsx</code></p>
+<h3 id="step-1-import-splashscreen">Step 1: Import SplashScreen</h3>
+<p>At the top of the file, add:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="im">import</span> SplashScreen <span class="im">from</span> <span class="st">&quot;./components/SplashScreen&quot;</span><span class="op">;</span></a></code></pre></div>
+<h3 id="step-2-swap-the-placeholder-for-splashscreen">Step 2: Swap the placeholder for SplashScreen</h3>
+<p>In the App component’s return statement, replace <code>&lt;StartHere /&gt;</code> with <code>&lt;SplashScreen /&gt;</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">App</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb5-3" title="3">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb5-4" title="4">      <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;</span>  <span class="op">{</span><span class="co">/* Was: &lt;StartHere /&gt; */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-5" title="5">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb5-6" title="6">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="op">}</span></a></code></pre></div>
+<p><strong>Expected result:</strong> The screen updates instantly — no save needed, no refresh required. That’s the magic of Hot Module Replacement!</p>
+<p>💡 <strong>What just happened?</strong> Components are React’s building blocks — think digital LEGO pieces you snap together to build apps. That <code>.jsx</code> extension? It’s JSX, a special syntax that looks like HTML but is actually JavaScript. And that instant update you just saw? That’s Vite’s Hot Module Replacement (HMR) doing its thing — your dev server is basically a live preview of your creation.</p>
 <p><a id="updating-the-page-title"></a></p>
 <h2 id="updating-the-page-title">🏷️ Updating the Page Title</h2>
-<p>Even though React apps are built with components, they still use a standard HTML file as the entry point. Let’s update the page title to reflect our project name.</p>
-<ol type="1">
-<li><strong>Open</strong> <code>index.html</code></li>
-<li><strong>Update</strong> the <code>&lt;title&gt;</code> tag to <code>Wizcamp Realms - Legends of Trivia</code></li>
-<li><strong>Confirm</strong> the browser tab displays the new title</li>
-</ol>
-<p>A descriptive page title is important for usability, accessibility, and SEO. It helps users identify your app when they have multiple tabs open and improves discoverability in search engines.</p>
+<p><strong>File:</strong> <code>index.html</code></p>
+<p>Open <code>index.html</code> and change the <code>&lt;title&gt;</code> tag to <code>Wizcamp Realms - Legends of Trivia</code>.</p>
+<p><strong>Expected result:</strong> The browser tab displays your new title.</p>
+<p>💡 <strong>Why this matters:</strong> Even though React apps are built with components, they still need a standard HTML file as the entry point. A descriptive page title helps users identify your app when they have multiple tabs open — plus it’s crucial for accessibility and SEO.</p>
 <p><a id="essential-terms"></a></p>
-<h2 id="essential-terms">📚 Essential Terms</h2>
+<h2 id="essential-terms">📚📋 Essential Terms</h2>
 <p><em>Quick reference for all the tools and concepts you just experienced:</em></p>
 <table>
 <colgroup>
-<col style="width: 22%"></col>
-<col style="width: 33%"></col>
-<col style="width: 44%"></col>
+<col style="width: 12%"></col>
+<col style="width: 46%"></col>
+<col style="width: 41%"></col>
 </colgroup>
 <thead>
 <tr class="header">

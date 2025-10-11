@@ -113,7 +113,7 @@ Notice the **ternary operator** `cached ? JSON.parse(cached) : null` in `getCach
 
 
 
-These helper functions represent a fundamental software engineering principle: **abstraction**. By wrapping localStorage complexity in simple functions, you're building the same kind of modular, maintainable code architecture used in professional applications. This pattern makes your caching system easy to test, debug, and extend.
+These helper functions represent a fundamental software engineering principle: **abstraction**. By wrapping localStorage complexity in simple functions, you're building the same kind of modular, maintainable code architecture used in modern applications. This pattern makes your caching system easy to test, debug, and extend.
 
 <a id="updating-fetchquestions-with-caching"></a>
 
@@ -150,7 +150,7 @@ Now let's integrate your cache functions into the main `fetchQuestions` function
 
 
 
-This implements the classic **cache-aside pattern** used in professional applications: check cache first, fetch from source on miss, store result in cache. The console logging helps you understand when cache hits and misses occur, which is valuable for debugging and performance monitoring.
+This implements the classic **cache-aside pattern** used in modern applications: check cache first, fetch from source on miss, store result in cache. The console logging helps you understand when cache hits and misses occur, which is valuable for debugging and performance monitoring.
 
 <a id="testing-your-cache"></a>
 
@@ -223,11 +223,11 @@ You're basically becoming a detective! By watching console logs, peeking into br
 
 ## 📚 Essential Terms
 
-_Quick reference for all the caching and browser storageage concepts you just learned:_
+_Quick reference for all the caching and browser storage concepts you just learned:_
 
 | Term   | Definition | Why it matters |
 |--------|------------|----------------|
-| ⚡ caching | Storing frequently accessed data in fast storage to avoid expensive operations like network requests. | Makes your game feel instant and professional by eliminating repeated API calls for the same questions. |
+| ⚡ caching | Storing frequently accessed data in fast storage to avoid expensive operations like network requests. | Makes your game feel instant and responsive by eliminating repeated API calls for the same questions. |
 | 🚦 rate limiting | API restrictions on request frequency to prevent server overload and ensure fair usage. | OpenTrivia Database limits requests to once every 5 seconds — caching helps avoid these limits. |
 | 💾 localStorage | Browser storage that persists data as key-value pairs across sessions and page refreshes. | Your trivia questions stay cached even after closing and reopening the browser, providing instant loading. |
 | 🔑 key-value pairs | Data storage format where each piece of information has a unique identifier (key) and associated data (value). | localStorage uses this format: your cache keys identify zones, values contain question data. |

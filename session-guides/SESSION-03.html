@@ -463,13 +463,13 @@ overflow-x: hidden !important;
 <h3 id="what-is-prop-drilling">What is Prop Drilling?</h3>
 <p><strong>Prop drilling</strong> is when you have to pass data through multiple component levels, even when the middle components don’t need that data. It’s like having to ask your friend to ask their friend to ask their friend for something — inefficient and annoying.</p>
 <p><strong>Example of prop drilling:</strong></p>
-<pre><code>App (has screen state)
+<pre class="text"><code>App (has screen state)
  ↓ passes screen as prop
 SplashScreen (doesn&#39;t need screen, just passes it along)
  ↓ passes screen as prop  
 GameButton (finally uses screen)</code></pre>
 <p><strong>With Context (no prop drilling):</strong></p>
-<pre><code>GameProvider (provides screen state)
+<pre class="text"><code>GameProvider (provides screen state)
  ↓ any component can access directly
 GameButton (uses useGame hook to get screen)</code></pre>
 <p><strong>Constants</strong> prevent typos and make your code more maintainable. Instead of typing <code>&quot;splash&quot;</code> in multiple places (and risking typos like <code>&quot;spalsh&quot;</code>), you use <code>SCREENS.SPLASH</code> once and get autocomplete everywhere. If you need to change the value later, you only change it in one place.</p>

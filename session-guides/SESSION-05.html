@@ -122,7 +122,7 @@ h2 {
 font-size: 1.5em;
 border-bottom: 1px solid #d0d7de;
 padding-bottom: 0.3em;
-margin-top: 24px;
+margin-top: 48px;
 margin-bottom: 16px;
 }
 
@@ -132,7 +132,7 @@ margin-top: 24px;
 }
 
 a[id] {
-scroll-margin-top: 20px;
+scroll-margin-top: 48px;
 }
 h3 {
 font-size: 1.25em;
@@ -435,7 +435,7 @@ overflow-x: hidden !important;
 <p><strong>JSON</strong> (JavaScript Object Notation) is the universal language of <strong>APIs</strong>. It’s how different applications share structured data over the internet. Your job as a developer is to transform this raw data into the format your game needs.</p>
 <p><strong>📚 API Documentation:</strong> For complete details about OpenTrivia Database parameters, response codes, and features, visit: <a href="https://opentdb.com/api_config.php">https://opentdb.com/api_config.php</a></p>
 <h3 id="api-data-transformation-journey">API Data Transformation Journey</h3>
-<pre><code>Raw API Data → Your Transform Function → Game-Ready Data</code></pre>
+<pre class="text"><code>Raw API Data → Your Transform Function → Game-Ready Data</code></pre>
 <p><strong>Before (API Response):</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb3-1" title="1"><span class="fu">{</span></a>
 <a class="sourceLine" id="cb3-2" title="2">  <span class="dt">&quot;question&quot;</span><span class="fu">:</span> <span class="st">&quot;What%20does%20GHz%20stand%20for%3F&quot;</span><span class="fu">,</span></a>
@@ -497,7 +497,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb6-3" title="3">  <span class="cf">return</span> []<span class="op">;</span></a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="op">}</span></a></code></pre></div></li>
 </ol>
-<p><strong>Error handling</strong> and <strong>data validation</strong> are crucial when working with external <strong>APIs</strong>. Networks can fail, APIs can be down, or responses might be empty. Professional developers always plan for these scenarios to create robust applications.</p>
+<p><strong>Error handling</strong> and <strong>data validation</strong> are crucial when working with external <strong>APIs</strong>. Networks can fail, APIs can be down, or responses might be empty. Developers always plan for these scenarios to create robust applications.</p>
 <p><a id="transforming-api-data"></a></p>
 <h2 id="transforming-api-data">🔄 Transforming API Data</h2>
 <p>Now let’s transform the <strong>API</strong> data into game-ready format. This is where the real magic happens!</p>
@@ -528,11 +528,11 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb9-7" title="7"><span class="op">}</span></a></code></pre></div>
 <p><strong>Test</strong> by starting Game → clicking zone → seeing decoded, formatted data</p>
 <p>You should now see formatted game data like:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb10-2" title="2">  <span class="dt">&quot;question&quot;</span><span class="fu">:</span> <span class="st">&quot;What does GHz stand for?&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb10-3" title="3">  <span class="dt">&quot;incorrectAnswers&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;Gigahotz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahetz&quot;</span><span class="ot">,</span> <span class="st">&quot;Gigahatz&quot;</span><span class="ot">]</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb10-4" title="4">  <span class="dt">&quot;correctAnswer&quot;</span><span class="fu">:</span> <span class="st">&quot;Gigahertz&quot;</span></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="fu">}</span></a></code></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="op">{</span></a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="st">&quot;question&quot;</span><span class="op">:</span> <span class="st">&quot;What does GHz stand for?&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb10-3" title="3">  <span class="st">&quot;incorrectAnswers&quot;</span><span class="op">:</span> [<span class="st">&quot;Gigahotz&quot;</span><span class="op">,</span> <span class="st">&quot;Gigahetz&quot;</span><span class="op">,</span> <span class="st">&quot;Gigahatz&quot;</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb10-4" title="4">  <span class="st">&quot;correctAnswer&quot;</span><span class="op">:</span> <span class="st">&quot;Gigahertz&quot;</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="op">}</span></a></code></pre></div></li>
 <li><p><strong>Add</strong> shuffling and index finding</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span></a>
 <a class="sourceLine" id="cb11-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">question</span>)<span class="op">;</span></a>
@@ -561,16 +561,16 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb12-13" title="13"><span class="op">}</span></a></code></pre></div>
 <p><strong>Test</strong> by starting Game → clicking zone → seeing complete transformed object!</p>
 <p>You should now see complete game data like:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb13-1" title="1"><span class="fu">{</span></a>
-<a class="sourceLine" id="cb13-2" title="2">  <span class="dt">&quot;question&quot;</span><span class="fu">:</span> <span class="st">&quot;What does CPU stand for?&quot;</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb13-3" title="3">  <span class="dt">&quot;answers&quot;</span><span class="fu">:</span> <span class="ot">[</span></a>
-<a class="sourceLine" id="cb13-4" title="4">    <span class="st">&quot;Central Process Unit&quot;</span><span class="ot">,</span></a>
-<a class="sourceLine" id="cb13-5" title="5">    <span class="st">&quot;Computer Personal Unit&quot;</span><span class="ot">,</span> </a>
-<a class="sourceLine" id="cb13-6" title="6">    <span class="st">&quot;Central Processing Unit&quot;</span><span class="ot">,</span></a>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="op">{</span></a>
+<a class="sourceLine" id="cb13-2" title="2">  <span class="st">&quot;question&quot;</span><span class="op">:</span> <span class="st">&quot;What does CPU stand for?&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb13-3" title="3">  <span class="st">&quot;answers&quot;</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb13-4" title="4">    <span class="st">&quot;Central Process Unit&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb13-5" title="5">    <span class="st">&quot;Computer Personal Unit&quot;</span><span class="op">,</span> </a>
+<a class="sourceLine" id="cb13-6" title="6">    <span class="st">&quot;Central Processing Unit&quot;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb13-7" title="7">    <span class="st">&quot;Central Processor Unit&quot;</span></a>
-<a class="sourceLine" id="cb13-8" title="8">  <span class="ot">]</span><span class="fu">,</span></a>
-<a class="sourceLine" id="cb13-9" title="9">  <span class="dt">&quot;correct&quot;</span><span class="fu">:</span> <span class="dv">2</span></a>
-<a class="sourceLine" id="cb13-10" title="10"><span class="fu">}</span></a></code></pre></div></li>
+<a class="sourceLine" id="cb13-8" title="8">  ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb13-9" title="9">  <span class="st">&quot;correct&quot;</span><span class="op">:</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb13-10" title="10"><span class="op">}</span></a></code></pre></div></li>
 <li><p><strong>Complete</strong> the fetchQuestions integration by replacing the test logging</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="co">// Transform API response into game-ready format</span></a>
 <a class="sourceLine" id="cb14-2" title="2"><span class="kw">const</span> questions <span class="op">=</span> <span class="va">data</span>.<span class="va">results</span>.<span class="at">map</span>(apiQuestion <span class="kw">=&gt;</span> <span class="at">transformQuestion</span>(apiQuestion))<span class="op">;</span></a>
@@ -669,7 +669,7 @@ overflow-x: hidden !important;
 │   &quot;correct&quot;: 1                                                  │
 │ }                                                               │
 └─────────────────────────────────────────────────────────────────┘</code></pre>
-<p>Understanding the complete data flow helps you debug issues and build more complex features. You’ve created a robust pipeline that handles API requests, data transformation, and state management — the same patterns used in professional web applications.</p>
+<p>Understanding the complete data flow helps you debug issues and build more complex features. You’ve created a robust pipeline that handles API requests, data transformation, and state management — the same patterns used in modern web applications.</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>
 <p><em>Quick reference for all the API and asynchronous programming concepts you just learned:</em></p>

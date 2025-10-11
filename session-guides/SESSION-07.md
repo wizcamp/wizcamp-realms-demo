@@ -29,7 +29,7 @@ Before we start coding, let's understand how complex components are built from s
 
 **Component composition** is like building with LEGO blocks — you create complex structures by snapping together smaller, focused pieces. Your `QuizModal` is actually composed of five smaller components working together:
 
-```
+```text
 QuizModal (the container)
 ├── ProgressHeader (shows question progress)
 ├── QuestionHeader (displays the question)
@@ -40,7 +40,7 @@ QuizModal (the container)
 
 
 
-**Component composition** is how professional React apps stay organized and maintainable. Instead of one massive component doing everything, you break functionality into focused pieces. Each component has a single responsibility, making your code easier to understand, test, and modify.
+**Component composition** is how React apps stay organized and maintainable. Instead of one massive component doing everything, you break functionality into focused pieces. Each component has a single responsibility, making your code easier to understand, test, and modify.
 
 <a id="connecting-the-quiz-modal"></a>
 
@@ -141,7 +141,7 @@ Now let's build the interactive answer buttons that transform your question data
 
 
 
-By starting with a simple structure and then adding the mapping logic, you followed a professional development pattern: build incrementally and test each step. **Array mapping** is everywhere in React — any time you have a list of data that becomes a list of components, you use `map()`. The **key prop** helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.
+By starting with a simple structure and then adding the mapping logic, you followed a development pattern: build incrementally and test each step. **Array mapping** is everywhere in React — any time you have a list of data that becomes a list of components, you use `map()`. The **key prop** helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.
 
 <a id="making-buttons-interactive"></a>
 

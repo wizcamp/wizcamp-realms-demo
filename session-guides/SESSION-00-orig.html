@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SESSION-00-orig - Wizcamp Session Guide</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+
+@page {
+margin: 0.6in 0.75in 0.6in 0.75in;
+size: letter;
+}
+body {
+font-family: "Amulya Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.4;
+color: #2d3748;
+margin: 0;
+padding: 0;
+max-width: none;
+overflow-x: hidden !important;
+}
+
+* {
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+
+html, body {
+overflow-x: hidden !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: "Plein Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 500;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px;
+color: #1a202c;
+}
+h1 {
+font-size: 1.75em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 0;
+}
+h2 {
+font-size: 1.5em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 48px;
+margin-bottom: 16px;
+}
+
+h1 + * h2:first-of-type,
+h2:first-of-type {
+margin-top: 24px;
+}
+
+a[id] {
+scroll-margin-top: 48px;
+}
+h3 {
+font-size: 1.25em;
+margin-top: 24px;
+margin-bottom: 12px;
+page-break-after: avoid;
+break-after: avoid;
+}
+
+h2, h3 {
+page-break-after: avoid;
+}
+
+ol, ul, li, p {
+page-break-inside: auto;
+}
+code {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-size: 13px !important;
+font-weight: 500 !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
+border-radius: 3px !important;
+white-space: nowrap;
+word-break: break-word;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+text-decoration: none !important;
+}
+pre {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+background-color: #f8f9fa !important;
+border: 1px solid #e1e4e8 !important;
+border-radius: 6px !important;
+padding: 16px !important;
+overflow: hidden !important;
+white-space: pre-wrap !important;
+word-wrap: break-word !important;
+page-break-inside: avoid !important;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+font-size: 14px !important;
+line-height: 1.4 !important;
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+box-sizing: border-box !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+
+@media print {
+pre {
+white-space: pre !important;
+font-family: "JetBrains Mono", monospace !important;
+display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+pre * {
+white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+}
+pre code {
+background-color: transparent !important;
+border: none !important;
+padding: 0 !important;
+color: #24292f !important;
+text-decoration: none !important;
+}
+ul, ol {
+padding-left: 1.8em;
+margin-bottom: 12px;
+}
+li {
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
+@media print {
+ul, ol {
+display: block !important;
+}
+li {
+display: list-item !important;
+margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
+}
+
+* {
+box-sizing: border-box !important;
+}
+}
+p {
+margin-bottom: 12px;
+}
+a {
+color: #0969da;
+text-decoration: none;
+}
+strong {
+font-weight: 500;
+color: #2d3748;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+max-width: 100%;
+margin: 16px 0;
+font-size: 16px;
+line-height: 1.5;
+table-layout: auto;
+word-wrap: break-word;
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+vertical-align: top;
+border: 1px solid #d0d7de;
+word-wrap: break-word;
+overflow-wrap: break-word;
+hyphens: auto;
+}
+th {
+font-weight: 500;
+background-color: #f6f8fa;
+color: #2d3748;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+tbody tr:nth-child(even) {
+background-color: #f8f9fa;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+
+table code {
+font-size: 14px !important;
+padding: 2px 4px !important;
+word-break: break-all;
+}
+
+blockquote {
+border-left: 4px solid #d1d5db;
+padding: 12px 16px;
+margin: 20px 0;
+background-color: transparent;
+border-radius: 0;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+blockquote p {
+margin: 0 0 8px 0;
+}
+blockquote p:last-child {
+margin-bottom: 0;
+}
+blockquote strong:first-child {
+display: inline-block;
+margin-right: 4px;
+}
+
+blockquote ul {
+margin-top: 12px;
+margin-bottom: 0;
+padding-left: 1.8em;
+list-style-type: none;
+}
+blockquote li {
+position: relative;
+}
+
+blockquote li::before {
+content: '☐ ';
+position: absolute;
+left: -1.8em;
+font-size: 16px;
+}
+
+blockquote:has(strong:first-child:contains("💡")) {
+border-left-color: #3b82f6;
+}
+
+blockquote:has(strong:first-child:contains("⚠️")) {
+border-left-color: #f59e0b;
+}
+
+blockquote:has(strong:first-child:contains("✅")) {
+border-left-color: #10b981;
+}
+
+blockquote:has(strong:first-child:contains("❌")) {
+border-left-color: #ef4444;
+}
+
+blockquote:has(strong:first-child:contains("ℹ️")) {
+border-left-color: #6366f1;
+}
+
+blockquote:has(strong:first-child:contains("🎯")) {
+border-left-color: #8b5cf6;
+}
+
+@supports not (selector(:has(*))) {
+blockquote {
+border-left-color: #3b82f6;
+}
+}
+
+table td:first-child {
+width: 200px;
+max-width: 250px;
+}
+table td:nth-child(2) {
+width: auto;
+}
+table td:nth-child(3) {
+width: auto;
+}
+
+table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:nth-child(2) {
+width: 50% !important;
+max-width: none !important;
+}
+
+table {
+page-break-inside: auto !important;
+}
+th {
+page-break-after: avoid !important;
+}
+tbody tr {
+page-break-inside: avoid !important;
+page-break-after: auto !important;
+}
+
+thead {
+display: table-header-group !important;
+}
+
+img {
+max-width: 100%;
+height: auto;
+display: block;
+margin: 16px auto;
+page-break-inside: avoid;
+}
+
+em {
+display: block;
+text-align: center;
+font-style: italic;
+font-size: 14px;
+color: #666;
+margin-top: 8px;
+margin-bottom: 16px;
+}
+@media print {
+thead {
+display: table-row-group !important;
+}
+table {
+page-break-inside: auto !important;
+}
+tr {
+page-break-inside: avoid !important;
+}
+
+blockquote {
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+page-break-inside: avoid !important;
+}
+
+* {
+overflow: visible !important;
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+html, body {
+overflow-x: hidden !important;
+}
+}
+</style>
+</head>
+<body>
+<h1 id="session-0-getting-ready-for-camp">Session 0 — Getting Ready for Camp</h1>
+<p>Welcome to your pre-camp adventure! 🎒</p>
+<p>[Course Name] allows you to experience the world from the perspective of a Junior Developer building a browser-based open-world trivia adventure game. Through hands-on coding challenges using tools like <strong>React</strong>, <strong>Node.js</strong>, <strong>GitHub Codespaces</strong>, and <strong>Copilot</strong>, you’ll learn what it’s like to think and work like a developer—solving problems, bringing your ideas to life, and contributing to a cutting-edge web project.</p>
+<p>Before you dive into building your trivia game, let’s get your tools and accounts set up so you’re ready to code!</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#introducing-yourself">Introducing Yourself</a></li>
+<li><a href="#planning-your-schedule">Planning Your Schedule</a></li>
+<li><a href="#setting-up-your-github-account">Setting Up Your GitHub Account</a></li>
+<li><a href="#connecting-with-your-instructor">Connecting with Your Instructor</a></li>
+</ul>
+<p><a id="introducing-yourself"></a></p>
+<h2 id="introducing-yourself">👋 Introducing Yourself</h2>
+<p><strong>Goal:</strong> Connect with your cohort and share your coding journey.</p>
+<h3 id="step-1-log-in-to-the-portal">Step 1: Log in to the portal</h3>
+<p>Go to the <a href="https://portal.wizcamp.com">Wizcamp Portal</a> and log in with your account.</p>
+<h3 id="step-2-create-your-post">Step 2: Create your post</h3>
+<p>Click “New Introduction” and share:</p>
+<ul>
+<li>Your name and coding experience</li>
+<li>What excites you about learning to code</li>
+<li>One fun fact about yourself</li>
+</ul>
+<h3 id="step-3-engage-with-others">Step 3: Engage with others</h3>
+<p>Read and respond to other student introductions.</p>
+<p>💡 <strong>Why this matters:</strong> Building connections with your cohort creates a supportive learning community where you can share challenges, celebrate wins, and learn from each other throughout the course.</p>
+<p><a id="planning-your-schedule"></a></p>
+<h2 id="planning-your-schedule">📅 Planning Your Schedule</h2>
+<p>Go to the class calendar within the <a href="https://portal.wizcamp.com">Wizcamp Portal</a> and RSVP for each session you plan on attending. You’ll receive confirmation and reminders.</p>
+<p><a id="setting-up-your-github-account"></a></p>
+<h2 id="setting-up-your-github-account">🐙 Setting Up Your GitHub Account</h2>
+<p>Go to <a href="https://github.com">github.com</a> and create a new account (<a href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github#signing-up-for-a-new-personal-account">signup guide</a>). If you already have an account, verify you can log in.</p>
+<p>💡 <strong>Why GitHub matters:</strong> GitHub is where developers worldwide store and share code. You’ll use it throughout the course to access your coding environment and AI-powered coding assistant.</p>
+<p><a id="connecting-with-your-instructor"></a></p>
+<h2 id="connecting-with-your-instructor">📨 Connecting with Your Instructor</h2>
+<p>DM Mr. Colestock in the <a href="https://portal.wizcamp.com">Wizcamp Portal</a> with your full name, email, and GitHub username. You’ll receive confirmation that you’ve been added to the Wizcamp GitHub Organization.</p>
+<p>💡 <strong>Why this matters:</strong> Being added to the organization gives you access to Codespaces and GitHub Copilot Pro — the tools you’ll use to build your trivia game.</p>
+<h2 id="youre-ready-for-camp">🎉 You’re Ready for Camp!</h2>
+<p>You’ve completed all the pre-camp requirements:</p>
+<ul>
+<li>Introduced yourself to your cohort</li>
+<li>Planned your session schedule<br />
+</li>
+<li>Set up your <strong>GitHub</strong> account</li>
+<li>Connected with your instructor</li>
+</ul>
+<p>See you in Session 1 where you’ll meet your fellow campers and start building your trivia game!</p>
+</body>
+</html>

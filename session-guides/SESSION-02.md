@@ -2,7 +2,7 @@
 
 Building Reusable UI Elements 🧩
 
-You're about to build your first custom React component and unlock the power of reusable UI building blocks — the secret to fast, scalable development in React. This guide walks you through creating a GameButton component, understanding props, and using professional developer tools. Ready to build your first component? Let's go!
+You're about to build your first custom React component and unlock the power of reusable UI building blocks — the secret to fast, scalable development in React. This guide walks you through creating a GameButton component, understanding props, and using React developer tools. Ready to build your first component? Let's go!
 
 ## Table of Contents
 

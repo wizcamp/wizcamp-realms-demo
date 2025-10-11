@@ -68,7 +68,7 @@ Now let's understand what makes your game tick — **metadata** and **configurat
 
 
 
-**Configuration files** like `zones.js` are the backbone of **data-driven architecture** — a professional approach where you separate data from code. Think of your `zones.js` file as the DNA of your game experience: it contains all the genetic information that defines how your zones look, behave, and connect to trivia content. This makes your app flexible, maintainable, and easy to modify without touching component code.
+**Configuration files** like `zones.js` are the backbone of **data-driven architecture** — an approach where you separate data from code. Think of your `zones.js` file as the DNA of your game experience: it contains all the genetic information that defines how your zones look, behave, and connect to trivia content. This makes your app flexible, maintainable, and easy to modify without touching component code.
 
 <a id="exploring-javascript-data-structures"></a>
 

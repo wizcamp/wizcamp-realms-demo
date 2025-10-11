@@ -402,13 +402,13 @@ overflow-x: hidden !important;
 <h2 id="understanding-component-composition">🧩 Understanding Component Composition</h2>
 <p>Before we start coding, let’s understand how complex components are built from smaller pieces — the foundation of scalable React architecture.</p>
 <p><strong>Component composition</strong> is like building with LEGO blocks — you create complex structures by snapping together smaller, focused pieces. Your <code>QuizModal</code> is actually composed of five smaller components working together:</p>
-<pre><code>QuizModal (the container)
+<pre class="text"><code>QuizModal (the container)
 ├── ProgressHeader (shows question progress)
 ├── QuestionHeader (displays the question)
 ├── AnswerChoices (interactive answer buttons)
 ├── AnswerFeedback (shows results)
 └── ContinueButton (navigation control)</code></pre>
-<p><strong>Component composition</strong> is how professional React apps stay organized and maintainable. Instead of one massive component doing everything, you break functionality into focused pieces. Each component has a single responsibility, making your code easier to understand, test, and modify.</p>
+<p><strong>Component composition</strong> is how React apps stay organized and maintainable. Instead of one massive component doing everything, you break functionality into focused pieces. Each component has a single responsibility, making your code easier to understand, test, and modify.</p>
 <p><a id="connecting-the-quiz-modal"></a></p>
 <h2 id="connecting-the-quiz-modal">🎮 Connecting the Quiz Modal</h2>
 <p>Let’s connect your quiz modal to the game flow so clicking zones actually shows quiz questions.</p>
@@ -463,7 +463,7 @@ overflow-x: hidden !important;
 <p><strong>Array mapping</strong> transforms each item in an array into something else. Here, each answer string becomes a button element. React needs a unique <strong>key prop</strong> for each mapped element to track changes efficiently.</p>
 <p><strong>Test</strong> by clicking zone → You should see answer buttons appear in the modal</p></li>
 </ol>
-<p>By starting with a simple structure and then adding the mapping logic, you followed a professional development pattern: build incrementally and test each step. <strong>Array mapping</strong> is everywhere in React — any time you have a list of data that becomes a list of components, you use <code>map()</code>. The <strong>key prop</strong> helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.</p>
+<p>By starting with a simple structure and then adding the mapping logic, you followed a development pattern: build incrementally and test each step. <strong>Array mapping</strong> is everywhere in React — any time you have a list of data that becomes a list of components, you use <code>map()</code>. The <strong>key prop</strong> helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.</p>
 <p><a id="making-buttons-interactive"></a></p>
 <h2 id="making-buttons-interactive">🎨 Making Buttons Interactive</h2>
 <p>Let’s add click functionality and dynamic styling that shows correct/incorrect answers with visual feedback.</p>

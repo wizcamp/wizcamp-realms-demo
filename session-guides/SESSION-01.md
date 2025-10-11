@@ -2,41 +2,51 @@
 
 Welcome to **React** Development! 🎉
 
-You're about to launch your dev setup and start building like a pro. This guide breaks everything down into bite-sized tasks so you can move fast, learn by doing, and see results right away. Ready to dive in? Let's go!
+You're about to launch your dev setup and start building your trivia game. This guide breaks everything down into bite-sized tasks so you can move fast, learn by doing, and see results right away. Ready to dive in? Let's go!
 
 ## Table of Contents
 
-- [Launching Your Codespace](#launching-your-codespace)
-- [Project Navigation](#project-navigation)
-- [Starting the Development Server](#starting-the-development-server)
-- [Replacing the Placeholder Component](#replacing-the-placeholder-component)
-- [Updating the Page Title](#updating-the-page-title)
-- [Essential Terms](#essential-terms)
-- [Ask the AI](#ask-the-ai)
+- [Creating Your Codespace](#creating-your-codespace) ☁️
+- [Navigating the Project](#navigating-the-project) 🗂️
+- [Starting Your Development Server](#starting-your-development-server) 🚀
+- [Editing Your First Component](#editing-your-first-component) 🧩
+- [Updating the Page Title](#updating-the-page-title) 🏷️
+- [Essential Terms](#essential-terms) 📚📋
+- [Ask the AI](#ask-the-ai) 🤖
 
-<a id="launching-your-codespace"></a>
+<a id="creating-your-codespace"></a>
 
-## 🔧 Launching Your Codespace
+## ☁️ Creating Your Codespace
 
-Let's get your cloud coding environment up and running so you can start building without messing with local installs. This is your dev playground in the cloud — no setup headaches, no installs, just code.
+🎯 **Goal:** Set up your cloud development environment so you can start coding without any local installations.
 
-1. Head over to [github.com](https://github.com) and log in using the account you set up during pre-camp.
-2. **Go** to [github.com/wizcamp/wizcamp-realms-demo](https://github.com/wizcamp/wizcamp-realms-demo) and click Use this template → Open in codespace
-3. **Wait** while your Codespace builds until you see a VS Code editor pop up in your browser
-4. **Verify** you can see the project files in the file explorer on the left once it loads
-5. **Customize** your theme by clicking the gear icon in the bottom left, going to Themes -> Color Theme, and picking your favorite (Dark+ is popular for coding)
+### Step 1: Sign in to GitHub
 
+Go to [github.com](https://github.com) and log in with your account.
 
+### Step 2: Launch the template
 
-Codespaces give everyone the same setup — no more "it works on my machine" drama. If you mess something up, just delete and start fresh. It's like having a reset button for your entire dev environment. You will use this Codespace for all sessions.
+Go to [github.com/wizcamp/wizcamp-realms-demo](https://github.com/wizcamp/wizcamp-realms-demo) and click **Use this template** → **Open in a codespace**.
 
-### 🏆 Bonus Challenge
+**Expected result:** Your Codespace begins building (this takes 1-2 minutes).
 
-Visit [github.com/codespaces](https://github.com/codespaces) to explore more about managing your Codespaces.
+### Step 3: Wait for the environment to load
 
-<a id="project-navigation"></a>
+Once the build completes, VS Code will open in your browser.
 
-## 🗂️ Project Navigation
+**Expected result:** Project files appear in the file explorer on the left side.
+
+### Step 4: Customize your theme (optional)
+
+Click the ⚙️ gear icon in the bottom left → **Themes** → **Color Theme** → pick your favorite (Dark+ is popular for coding).
+
+💡 **Why Codespaces rocks:** Everyone gets the same setup — no more "it works on my machine" drama. Mess something up? Just delete and start fresh. It's like having a reset button for your entire dev environment. You'll use this Codespace for all 12 sessions.
+
+🏆 **Bonus Challenge:** Go to [github.com/codespaces](https://github.com/codespaces) to explore more about managing your Codespaces.
+
+<a id="navigating-the-project"></a>
+
+## 🗂️ Navigating the Project
 
 _Quick orientation to help you find files during today's tasks:_
 
@@ -57,78 +67,110 @@ wizcamp-realms/
 
 _Don't worry about the other folders yet — we'll explore them in future sessions._
 
-<a id="starting-the-development-server"></a>
+<a id="starting-your-development-server"></a>
 
-## 🚀 Starting the Development Server
+## 🚀 Starting Your Development Server
 
-Preview the app in your browser by running the dev server to confirm everything is wired up correctly.
+🎯 **Goal:** Practice starting and stopping the local server you'll use to preview real-time changes as you build your app.
 
-1. **Launch** the dev server from the terminal with `npm run dev`
-2. **Click** "Open in Browser" or visit the provided localhost URL (e.g., http://localhost:5173/)
-3. The starter app should load, showing a placeholder component.
+### Step 1: Run the dev server
 
+From the terminal at the bottom of your Codespace, run:
 
+```bash
+npm run dev
+```
 
-Your dev server is like having a live preview of your creation. Every change you make shows up instantly — you're watching your code come to life in real-time.
+### Step 2: Open the app in your browser
 
-### 🏆 Bonus Challenge
+After running the command, you'll see output like:
 
-Try stopping and restarting the dev server:
+```text
+VITE v7.1.7  ready in 2473 ms
 
-- **Stop** the server by pressing `Ctrl + C` in the terminal
-- **Check** localhost again to verify the app is gone
-- **Restart** it with `npm run dev` and refresh the browser to see the app again
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
+➜  press h + enter to show help
+```
 
-<a id="replacing-the-placeholder-component"></a>
+Follow the link (ctrl + click), copy-paste it into a new browser tab, or click "Open in Browser" if a dialog appears.
 
-## 🧩 Replacing the Placeholder Component
+**Expected result:** A web page displaying the starter app with placeholder content.
 
-With the development server still running, replace the placeholder component with the game's splash screen component to experience live updates in action.
+### Step 3: Stop the server
 
-1. **Open** `src/App.jsx`
-2. **Add** the import `import SplashScreen from "./components/SplashScreen";`
-3. **Replace** `<StartHere />` with `<SplashScreen />`
-4. **Watch** the screen update instantly without needing to save!
+Go back to your terminal and press `Ctrl + C`.
 
+**Expected result:**
 
+- Terminal returns to the command prompt
+- Refreshing the browser shows a connection error (app no longer running)
 
-**Components** are the building blocks of **React** web apps — kind of like digital LEGO pieces. You build apps by snapping them together.
+💡 **Your dev server cheat sheet:** Run `npm run dev` to fire up your server and see your app live. Hit `Ctrl + C` to shut it down. You'll use these commands constantly — they're about to become muscle memory.
 
-You probably noticed the `.jsx` file extension. That's because these **components** are written in a special syntax called **JSX**. It looks a lot like HTML, but is actually JavaScript under the hood. JSX lets you describe what the UI should look — using a syntax that's readable like HTML but powered by JavaScript.
+<a id="editing-your-first-component"></a>
 
-The live update "magic" you experienced is actually powered by a build tool we are using called **Vite**, which uses a process known as **Hot Module Replacement (HMR)** to apply "smart updates" to your app instantly as you code.
+## 🧩 Editing Your First Component
+
+🎯 **Goal:** Edit the App component to display your game's splash screen and experience React's live updates.
+
+**File:** `src/App.jsx`
+
+### Step 1: Import SplashScreen
+
+At the top of the file, add:
+
+```javascript
+import SplashScreen from "./components/SplashScreen";
+```
+
+### Step 2: Swap the placeholder for SplashScreen
+
+In the App component's return statement, replace `<StartHere />` with `<SplashScreen />`:
+
+```javascript
+export default function App() {
+  return (
+    <div className="app-container">
+      <SplashScreen />  {/* Was: <StartHere /> */}
+    </div>
+  );
+}
+```
+
+**Expected result:** The screen updates instantly — no save needed, no refresh required. That's the magic of Hot Module Replacement!
+
+💡 **What just happened?** Components are React's building blocks — think digital LEGO pieces you snap together to build apps. That `.jsx` extension? It's JSX, a special syntax that looks like HTML but is actually JavaScript. And that instant update you just saw? That's Vite's Hot Module Replacement (HMR) doing its thing — your dev server is basically a live preview of your creation.
 
 <a id="updating-the-page-title"></a>
 
 ## 🏷️ Updating the Page Title
 
-Even though React apps are built with components, they still use a standard HTML file as the entry point. Let's update the page title to reflect our project name.
+**File:** `index.html`
 
-1. **Open** `index.html`
-2. **Update** the `<title>` tag to `Wizcamp Realms - Legends of Trivia`
-3. **Confirm** the browser tab displays the new title
+Open `index.html` and change the `<title>` tag to `Wizcamp Realms - Legends of Trivia`.
 
+**Expected result:** The browser tab displays your new title.
 
-
-A descriptive page title is important for usability, accessibility, and SEO. It helps users identify your app when they have multiple tabs open and improves discoverability in search engines.
+💡 **Why this matters:** Even though React apps are built with components, they still need a standard HTML file as the entry point. A descriptive page title helps users identify your app when they have multiple tabs open — plus it's crucial for accessibility and SEO.
 
 <a id="essential-terms"></a>
 
-## 📚 Essential Terms
+## 📚📋 Essential Terms
 
 _Quick reference for all the tools and concepts you just experienced:_
 
-| Term   | Definition | Why it matters |
-|--------|------------|----------------|
-| ☁️ Codespace | A cloud dev environment from GitHub — a ready-made VS Code workspace that runs in your browser. | You'll launch this first; it gives everyone the same setup so you can jump straight to coding. |
-| 🖥️ VS Code | Your coding headquarters — think Photoshop but for building apps instead of editing photos. | This is where the magic happens. File explorer, code editor, terminal — all in one place. |
-| 🔧 Node.js | JavaScript that runs on your computer (not just in browsers) — like having a JavaScript engine everywhere. | Powers your dev tools and lets you run `npm` commands. It's JavaScript unleashed. |
-| 📦 npm | Node's package manager — installs libraries and runs scripts (`npm run dev`). | Use it to install dependencies and start the dev server. |
-| ⚡ Vite | The Ferrari of dev servers — crazy fast and makes your app load instantly during development. | When you run `npm run dev`, Vite serves your app at lightning speed. You'll see why it's so popular. |
-| 🔁 Hot Module Replacement (HMR) | Updates only the changed code in the browser without a full reload, often keeping app state. | Lets you see edits instantly (CSS/JS) while you work — you'll notice changes apply without losing progress. |
-| ⚛️ React | A library for building UIs out of components; it updates the UI when data changes. | The project is a React app — you'll edit components to change what users see. |
-| ✨ JSX | JavaScript syntax that looks like HTML — used to describe UI in React components (`.jsx`). | You'll edit `.jsx` files (e.g., `src/App.jsx`) to swap components and change UI. |
-| 🧩 component | A reusable piece of UI that can include markup, styles, and logic (example: `<SplashScreen />`). | You'll replace a placeholder component with `SplashScreen` to practice editing and imports. |
+| Term                            | Definition                                                                                                             | Why it matters                                                                                              |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| ☁️ Codespace                    | A cloud dev environment from GitHub — a ready-made VS Code workspace that runs in your browser.                        | You'll launch this first; it gives everyone the same setup so you can jump straight to coding.              |
+| 🖥️ VS Code                      | Your coding headquarters — think Photoshop but for building apps instead of editing photos.                            | This is where the magic happens. File explorer, code editor, terminal — all in one place.                   |
+| 🔧 Node.js                      | JavaScript that runs on your computer (not just in browsers) — like having a JavaScript engine everywhere.             | Powers your dev tools and lets you run `npm` commands. It's JavaScript unleashed.                           |
+| 📦 npm                          | Node's package manager — installs libraries and runs scripts (`npm run dev`).                                          | Use it to install dependencies and start the dev server.                                                    |
+| ⚡ Vite                         | The Ferrari of dev servers — crazy fast and makes your app load instantly during development.                          | When you run `npm run dev`, Vite serves your app at lightning speed. You'll see why it's so popular.        |
+| 🔁 Hot Module Replacement (HMR) | Updates only the changed code in the browser without a full reload, often keeping app state.                           | Lets you see edits instantly (CSS/JS) while you work — you'll notice changes apply without losing progress. |
+| ⚛️ React                        | A library for building UIs out of components; it updates the UI when data changes.                                     | The project is a React app — you'll edit components to change what users see.                               |
+| ✨ JSX                          | JavaScript syntax that looks like HTML — used to describe UI in React components (`.jsx`).                             | You'll edit `.jsx` files (e.g., `src/App.jsx`) to swap components and change UI.                            |
+| 🧩 component                    | A reusable piece of UI that can include markup, styles, and logic (example: `<SplashScreen />`).                       | You'll replace a placeholder component with `SplashScreen` to practice editing and imports.                 |
 | 🌐 Document Object Model (DOM) | The browser's object model of the page — JS code (including React) reads and updates the DOM to change what users see. | React updates the DOM when you change components or state (e.g., button clicks, title updates). |
 
 <a id="ask-the-ai"></a>
@@ -146,3 +188,4 @@ Now let's make sure you understand what you did and why it matters. Here are the
 - **How and why do I import a component in React? Where am I importing all that from?**
 - **What does import SplashScreen from './components/SplashScreen' mean?**
 - **In a React app, what does the index.html file do?**
+

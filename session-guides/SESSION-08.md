@@ -198,7 +198,7 @@ Let's add cache clearing functions to remove stored questions when zones are com
 
 
 
-**Cache management** prevents stale data from affecting gameplay. When players complete a zone, clearing its cache ensures they get fresh questions if they replay. The `Object.keys()` and `filter()` pattern is a professional way to find and remove related localStorage entries.
+**Cache management** prevents stale data from affecting gameplay. When players complete a zone, clearing its cache ensures they get fresh questions if they replay. The `Object.keys()` and `filter()` pattern is an effective way to find and remove related localStorage entries.
 
 <a id="updating-reset-functionality"></a>
 
@@ -305,7 +305,7 @@ _Quick reference for the key concepts you just learned:_
 
 You just implemented a complete scoring system, managed complex application state, and built your first independent React component — excellent work!
 
-Now let's deepen your understanding of state management patterns, component architecture, and professional development practices. Here are the most impactful questions to ask your AI assistant about today's session:
+Now let's deepen your understanding of state management patterns, component architecture, and development practices. Here are the most impactful questions to ask your AI assistant about today's session:
 
 - **How does application state differ from component state, and when should I use each?**
 - **Why are updater functions important for state that depends on previous values?**

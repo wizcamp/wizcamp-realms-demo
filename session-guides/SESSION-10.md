@@ -162,7 +162,7 @@ git push -u origin main
 ```
 
 **You should see output like this**
-```
+```text
 Enumerating objects: 80, done.
 Counting objects: 100% (80/80), done.
 Delta compression using up to 2 threads
@@ -358,7 +358,7 @@ Congratulations! Your trivia game is now live on the internet. Here's how to sha
 ### Your Game's Public URL
 
 Your game is available at
-```
+```text
 https://your-username.github.io/your-repo-name/
 ```
 
