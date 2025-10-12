@@ -193,8 +193,8 @@ export default function GameButton({ text, onClick, variant = "primary" }) {
   const buttonClass = `game-button ${variant}`;
 
   return (
-    // Update this line: add className prop
     <button className={buttonClass} onClick={onClick}>
+      {/* ↑ Update to use className */}
       {text}
     </button>
   );
