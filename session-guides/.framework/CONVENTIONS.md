@@ -4,6 +4,71 @@ Global formatting and style rules for all Wizcamp session guides.
 
 ---
 
+## Special Sections
+
+Certain sections have unique conventions that differ from standard patterns.
+
+### Accessing Your Codespace
+
+**When to include:** Sessions 2+ (not Session 1, which covers initial setup)
+
+**Conventions:**
+- ❌ Does NOT appear in Table of Contents
+- ❌ Does NOT include Goal statement
+- ✅ Brief, single-sentence instruction
+- ✅ Always first section after TOC
+- ✅ Uses ☁️ emoji in heading
+
+**Format:**
+```markdown
+<a id="accessing-your-codespace"></a>
+
+## ☁️ Accessing Your Codespace
+
+Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session X.
+```
+
+### Essential Terms
+
+**Conventions:**
+- ❌ Does NOT include Goal statement
+- ✅ Appears in Table of Contents
+- ✅ Uses 📋 emoji in heading
+- ✅ Includes italic description line
+- ✅ 3-column table format
+
+**Format:**
+```markdown
+## 📋 Essential Terms
+
+_Quick reference for all the [topic] concepts you just learned:_
+
+| Term | Definition | Why it matters |
+```
+
+### Ask the AI
+
+**Conventions:**
+- ❌ Does NOT include Goal statement
+- ✅ Appears in Table of Contents
+- ✅ Uses 🤖 emoji in heading
+- ✅ Includes context paragraph + curated questions
+- ✅ Always final section
+
+**Format:**
+```markdown
+## 🤖 Ask the AI — [Session Topic]
+
+[Context paragraph summarizing what was accomplished]
+
+[Context paragraph introducing questions]
+
+- **Question 1?**
+- **Question 2?**
+```
+
+---
+
 ## Formatting Best Practices
 
 ### When to Use Bold
@@ -80,6 +145,59 @@ The `useState` hook creates state. Pass the `score` prop to the component. Updat
 | Terminal command | `backticks` | Run `npm start` |
 | Property/constant | `backticks` | Set `score` to `0` |
 | Quoted text | "Quotes" | Display "Score: 0" |
+
+---
+
+## Essential Terms Bolding
+
+**Rule:** Bold the first occurrence of each term that appears in the current guide's Essential Terms table.
+
+**Important:** 
+- Only bold terms that are listed in the Essential Terms section of the current session guide
+- Do not bold terms from other sessions
+- **Essential Terms should never repeat across guides** — once a term appears in one session's Essential Terms table, it should not appear in any other session's Essential Terms table
+
+### Where to Bold
+
+- ✅ Paragraph text in explanations
+- ✅ Callout body text
+- ✅ Table cells (Definition/Why it matters columns in Essential Terms table)
+
+### Where NOT to Bold
+
+- ❌ Headings (## or ###)
+- ❌ Code blocks (```...```) or inline code (`...`)
+- ❌ Bullet points or numbered lists
+- ❌ Already bolded text
+- ❌ Table of Contents
+- ❌ Essential Terms table (Term column - already has emoji)
+- ❌ File paths or technical references
+
+### Example
+
+```markdown
+You're about to launch your **Codespace** and start building.
+
+## Creating Your Codespace  ← Don't bold here
+
+- Open Codespace  ← Don't bold here
+- Run `npm install` in your Codespace  ← Don't bold here
+
+Your Codespace is ready.  ← Already bolded, skip
+
+> 💡 **Why Codespaces**
+>
+> A **Codespace** gives everyone the same setup.  ← Bold in callout body
+```
+
+### Author Checklist
+
+- [ ] Verify no Essential Terms repeat from previous sessions
+- [ ] Identify all terms in the current guide's Essential Terms table
+- [ ] Bold first occurrence of each term in body text (before Essential Terms section)
+- [ ] Verify no bolding in headings, code, or lists
+- [ ] Confirm only terms from current guide's Essential Terms table are bolded
+- [ ] Ensure term is bolded before it appears in Essential Terms section
 
 ---
 

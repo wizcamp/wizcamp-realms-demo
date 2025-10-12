@@ -114,14 +114,21 @@ You'll receive confirmation that you've been added to the Wizcamp GitHub Organiz
 
 🎯 **Goal:** [What you'll accomplish]
 
-1. **[Action]** [instruction]
-2. **[Action]** [instruction]
-3. **[Action]** [instruction]
-4. **[Action]** [instruction]
+### Step 1: [Action Name]
 
-**Verify:** [Brief check]
+[Instruction with action verbs]
 
-> **[Callout Type]:** [Explanation]
+**✓ You should see:** [What should happen]
+
+### Step 2: [Action Name]
+
+[Instruction with action verbs]
+
+**✓ You should see:** [What should happen]
+
+[Continue for 3-4 steps...]
+
+[Callout at end]
 
 [Optional: Bonus challenge]
 ```
@@ -129,14 +136,19 @@ You'll receive confirmation that you've been added to the Wizcamp GitHub Organiz
 **Required elements:**
 - Section title with emoji
 - Goal statement
-- Numbered steps with **bold action verbs**
-- Brief verification
-- Callout
+- Step subheadings (### Step X: Name)
+- Verification (✓ You should see:) WITHIN each step
+- Callout at END of section
 
 **Optional elements:**
 - Code blocks (if commands)
 - Platform-specific table
 - Bonus challenge
+
+**Critical rules:**
+- Verification stays WITH the step it verifies
+- Callouts come AFTER all steps
+- Don't consolidate verification at end
 
 ---
 
@@ -147,16 +159,24 @@ You'll receive confirmation that you've been added to the Wizcamp GitHub Organiz
 
 🎯 **Goal:** Connect with your cohort and share your coding journey.
 
-1. **Log in** to the [Wizcamp Portal](https://portal.wizcamp.com)
-2. **Click** "New Introduction" and share:
-   - Your name and coding experience
-   - What excites you about learning to code
-   - One fun fact about yourself
-3. **Read** and respond to other student introductions
+### Step 1: Log in to the portal
 
-**Verify:** Your introduction post is visible in the portal.
+Go to the [Wizcamp Portal](https://portal.wizcamp.com) and log in with your credentials.
 
-> **💡 Concept:** Building connections with your cohort creates a supportive learning community where you can share challenges, celebrate wins, and learn from each other throughout the course.
+### Step 2: Create your introduction
+
+Click New Introduction and share:
+- Your name and coding experience
+- What excites you about learning to code
+- One fun fact about yourself
+
+**✓ You should see:** Your introduction post is visible in the portal.
+
+### Step 3: Engage with others
+
+Read and respond to other student introductions.
+
+💡 **Why this matters:** Building connections with your cohort creates a supportive learning community where you can share challenges, celebrate wins, and learn from each other throughout the course.
 ```
 
 ---
@@ -184,7 +204,7 @@ You'll receive confirmation that you've been added to the Wizcamp GitHub Organiz
 3. **Click** on `GameButton` in the component tree
 4. **Inspect** the props: `text`, `onClick`, and `variant`
 
-**Verify:** You can see GameButton's props in the right panel.
+**✓ You should see:** GameButton's props displayed in the right panel.
 
 > **💡 Concept:** React DevTools gives you X-ray vision into your app — essential for debugging and understanding how components work.
 ```
@@ -198,18 +218,29 @@ You'll receive confirmation that you've been added to the Wizcamp GitHub Organiz
 
 🎯 **Goal:** Set up your cloud development environment so you can start coding without any local installations.
 
-1. **Sign in** to [github.com](https://github.com)
-2. **Navigate** to [github.com/wizcamp/wizcamp-realms-demo](https://github.com/wizcamp/wizcamp-realms-demo)
-3. **Click** Use this template → Open in a codespace
-4. **Wait** for the build to complete (1-2 minutes)
+### Step 1: Sign in to GitHub
 
-**Verify:** VS Code opens in your browser with project files visible in the left sidebar.
+Go to [github.com](https://github.com) and log in with your account.
 
-> **💡 Concept:** Everyone gets the same setup — no more "it works on my machine" drama. Mess something up? Just delete and start fresh. You'll use this Codespace for all 12 sessions.
+### Step 2: Launch the template
 
-### 🏆 Bonus Challenge
+Go to [github.com/wizcamp/wizcamp-realms-demo](https://github.com/wizcamp/wizcamp-realms-demo) and click **Use this template** → **Open in a codespace**.
 
-Customize your theme by clicking the ⚙️ gear icon → **Themes** → **Color Theme**, or explore [github.com/codespaces](https://github.com/codespaces) to learn about managing Codespaces.
+**✓ You should see:** Your Codespace begins building (this takes 1-2 minutes).
+
+### Step 3: Wait for the environment to load
+
+Once the build completes, VS Code will open in your browser.
+
+**✓ You should see:** Project files appear in the file explorer on the left side.
+
+### Step 4: Customize your theme (optional)
+
+Click the ⚙️ gear icon in the bottom left → **Themes** → **Color Theme** → pick your favorite (Dark+ is popular for coding).
+
+💡 **Why Codespaces rocks:** Everyone gets the same setup — no more "it works on my machine" drama. Mess something up? Just delete and start fresh. It's like having a reset button for your entire dev environment. You'll use this Codespace for all 12 sessions.
+
+🏆 **Bonus Challenge:** Go to [github.com/codespaces](https://github.com/codespaces) to explore more about managing your Codespaces.
 ```
 
 ---
@@ -232,13 +263,13 @@ Customize your theme by clicking the ⚙️ gear icon → **Themes** → **Color
 [command or code]
 ```
 
-**Expected result:** [What you should see]
+**✓ You should see:** [What you should see]
 
 ### Step 2: [Action Name]
 
 [Continue pattern...]
 
-> **[Callout Type]:** [Explanation]
+[Callout at end]
 
 [Optional: Bonus challenge]
 ```
@@ -248,13 +279,18 @@ Customize your theme by clicking the ⚙️ gear icon → **Themes** → **Color
 - Goal statement
 - Step subheadings (### Step X: Name)
 - Code blocks with language identifiers
-- Expected result/output statements
-- Callout
+- Verification (✓ You should see:) WITHIN each step
+- Callout at END of section
 
 **Optional elements:**
 - Expected output in code blocks
-- Multiple verification points
+- Multiple verification points per step
 - Bonus challenge
+
+**Critical rules:**
+- Each step's verification stays WITH that step
+- Don't consolidate verification at end
+- Callouts explain AFTER experience
 
 ---
 
@@ -298,7 +334,7 @@ Go back to your terminal and press `Ctrl + C`.
 - Terminal returns to the command prompt
 - Refreshing the browser shows a connection error (app no longer running)
 
-> **💡 Concept:** Run `npm run dev` to fire up your server and see your app live. Hit `Ctrl + C` to shut it down. You'll use these commands constantly — they're about to become muscle memory.
+💡 **Your dev server cheat sheet:** Run `npm run dev` to fire up your server and see your app live. Hit `Ctrl + C` to shut it down. You'll use these commands constantly — they're about to become muscle memory.
 ```
 
 ---
@@ -353,13 +389,15 @@ Try changing the `screen` state to different values and see what happens. What o
 
 ### Action Verbs
 
-Always **bold** action verbs at the start of instructions:
+Bold action verbs in Variant A (minimal) when using simple instructions:
 
-- **Open** DevTools
+- **Navigate** to [github.com](https://github.com)
 - **Click** the button
-- **Navigate** to the URL
-- **Run** the command
-- **Wait** for completion
+
+In Variants B and C, action verbs are in step headings and natural prose:
+
+- ### Step 1: Sign in to GitHub
+- Go to [github.com](https://github.com) and log in with your account.
 
 ### Links
 
@@ -384,9 +422,12 @@ Use `backticks` for:
 
 ### UI Navigation
 
-Use arrow notation without backticks:
-- Click the gear icon → **Themes** → **Color Theme**
+Use arrow notation without backticks, bold UI elements:
+- Click the ⚙️ gear icon in the bottom left → **Themes** → **Color Theme**
 - Open DevTools → Components → GameProvider
+
+For simple navigation in prose:
+- Click **Use this template** → **Open in a codespace**
 
 ---
 
@@ -396,7 +437,9 @@ Use arrow notation without backticks:
 
 **💡 Concept** - Explain how/why something works
 ```markdown
-> **💡 Concept:** GitHub is where developers worldwide store and share code.
+> 💡 **Why Codespaces**
+>
+> Everyone gets the same setup — no more "it works on my machine" drama.
 ```
 
 **ℹ️ Note** - Additional context or tips
@@ -416,13 +459,37 @@ Use arrow notation without backticks:
 
 ### Callout Placement
 
-- Always at end of section
-- After all steps and verification
-- Before bonus challenges
+**CRITICAL:** Callouts come at END of section, after all steps and verification.
+
+**Format:** Use descriptive title without "Concept:" prefix
+
+❌ **WRONG:**
+```markdown
+### Step 1: Do something
+
+> 💡 **Concept:** Here's why...
+
+### Step 2: Do next thing
+```
+
+✅ **RIGHT:**
+```markdown
+### Step 1: Do something
+
+**Expected result:** It works
+
+### Step 2: Do next thing
+
+**Expected result:** It also works
+
+> 💡 **Why This Matters**
+>
+> Here's why...
+```
 
 ### Callout Content
 
-- Explain value/importance
+- Explain value/importance AFTER experience
 - Provide context
 - Connect to bigger picture
 - Keep concise (1-2 sentences)
@@ -430,6 +497,8 @@ Use arrow notation without backticks:
 ---
 
 ## Verification Patterns
+
+**CRITICAL RULE:** Verification stays WITH the step it verifies. Never consolidate at end.
 
 ### Implicit Verification (Variant A)
 
@@ -439,28 +508,42 @@ No explicit verification statement. Success assumed if student can proceed.
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace.
 ```
 
-### Brief Verification (Variant B)
+### Inline Verification (Variant B)
 
-Single statement after all steps:
+Within the step that needs verification:
 
 ```markdown
-**Verify:** Your introduction post is visible in the portal.
+### Step 2: Launch the template
+
+Go to [github.com/wizcamp/wizcamp-realms-demo](https://github.com/wizcamp/wizcamp-realms-demo) and click **Use this template** → **Open in a codespace**.
+
+**Expected result:** Your Codespace begins building (this takes 1-2 minutes).
 ```
 
 ### Detailed Verification (Variant C)
 
-After individual steps or at end:
+After individual steps, never consolidated:
 
 ```markdown
-**Expected result:** Terminal returns to the command prompt.
-```
+### Step 3: Stop the server
 
-Or with multiple points:
+Go back to your terminal and press `Ctrl + C`.
 
-```markdown
 **Expected result:**
 - Terminal returns to the command prompt
 - Refreshing the browser shows a connection error
+```
+
+❌ **NEVER DO THIS:**
+```markdown
+### Step 1: Do thing
+### Step 2: Do other thing
+### Step 3: Do final thing
+
+**Verify:**
+- Step 1 worked
+- Step 2 worked
+- Step 3 worked
 ```
 
 ---

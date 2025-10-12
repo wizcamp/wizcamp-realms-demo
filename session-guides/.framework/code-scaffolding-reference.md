@@ -286,6 +286,34 @@ export default function GameButton({ text, onClick, variant = "primary" }) { // 
 
 ---
 
+### 8H: Pure Diff-Style ⭐ RECOMMENDED FOR EXPERIENCED STUDENTS
+**Use:** Clean diff format without extra markers
+
+```diff
+-export default function GameButton({ text, onClick }) {
++export default function GameButton({ text, onClick, variant = "primary" }) {
++  const buttonClass = `game-button ${variant}`;
++
+   return (
+-    <button onClick={onClick}>
++    <button className={buttonClass} onClick={onClick}>
+       {text}
+     </button>
+   );
+ }
+```
+
+**Pros:** Clean, industry-standard, no clutter, precise  
+**Cons:** Requires diff literacy, may intimidate beginners
+
+**When to use:**
+- Students familiar with Git/version control
+- Multiple line additions/removals
+- Professional development context
+- Clear before/after comparison needed
+
+---
+
 ## Pattern 9: JSX Partial Context Approaches
 
 ### 9A: Minimal JSX Context
@@ -431,10 +459,25 @@ export default function SplashScreen() {
 
 ---
 
+## Pattern 8 Quick Reference
+
+| Variant | Best For | Pros | Cons |
+|---------|----------|------|------|
+| 8A (Numbered) | Clear sequencing needed | No off-page issues | Requires numbered list |
+| 8B (Stacked) | Descriptive guidance | Self-documenting | Verbose |
+| 8C (Arrow) | Short lines | Compact, visual | Can run off page |
+| 8D (Annotated) | Post-line clarity | Doesn't interfere | Takes vertical space |
+| 8E (Progressive) | Complex evolution | Shows progression | Repetitive |
+| 8F (Sectioned) | Isolated concerns | Clear focus | Loses context |
+| 8G (Diff+Markers) | Git-familiar with help | Precise with guidance | Mixed syntax |
+| 8H (Pure Diff) | Experienced students | Clean, standard | Requires diff literacy |
+
+---
+
 ## Pattern Selection Matrix
 
 | Scenario | Pattern | Variant | Why |
-|----------|---------|---------|-----|
+|----------|---------|---------|-----|----|---------|-----|
 | 1-2 line addition | 1 | - | Simple, clear |
 | Function update | 2 | - | Preserves context |
 | New component/function | 3 | - | Clear boundaries |

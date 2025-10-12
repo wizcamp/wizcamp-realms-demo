@@ -18,34 +18,58 @@
 ```markdown
 ## 🔄 Feature Name
 
+🎯 **Goal:** [What you'll accomplish]
+
 Brief description of what will be built and why.
 ```
 
-### Step Format
+### Multi-Step Format
 
 ```markdown
 ### Step X: Descriptive Action Name
 
 Context sentence explaining what this step accomplishes.
 
-- **Open** `path/to/file.js` (only when file changes)
-- **Action** verb with specific instruction
-- **Action** verb with code modification
-- **Verify:** How to confirm it worked
+[Code scaffolding or instruction]
 
-> **Callout Type:** Teaching moment or important note
+**✓ Verify:** [What should happen]
+
+[Repeat for each step...]
+
+[Callout at end]
+
+[Optional: Bonus Challenge]
+```
+
+### Single-Action Format
+
+```markdown
+## 🔄 Feature Name
+
+🎯 **Goal:** [What you'll accomplish]
+
+**File:** `path/to/file.js`
+
+[Instruction with code scaffolding]
+
+**✓ Verify:** [What should happen]
+
+[Callout at end]
+
+[Optional: Bonus Challenge]
 ```
 
 ### Key Principles
 
-1. **Step X: Descriptive Name** provides wayfinding + meaning
-2. **All actions use bullets** for consistency
-3. **Open** `file` only when file changes (track current file)
-4. **Backticks** for all code elements (props, functions, variables)
-5. **Callouts** teach concepts without blocking action
+1. **Multi-step sections** use ### Step X: Descriptive Name
+2. **Single-action sections** skip step numbering
+3. **Verification stays WITH the step** it verifies
+4. **Callouts come at END** after all steps
+5. **Backticks** for all code elements (props, functions, variables)
 6. **Code scaffolding** matches complexity (simple → detailed)
-7. **Verification** always uses bullets
-8. **Consistent patterns** reduce cognitive load
+7. **✓ Verify** immediately follows the change
+8. **File:** declaration when file context needed
+9. **Bonus Challenge** comes after callout (optional)
 
 ---
 
@@ -490,38 +514,48 @@ What type of verification?
 
 ## Callout Usage Guidelines
 
-Use callouts strategically after code blocks or verification steps.
+**CRITICAL:** Callouts come at END of section, after all steps and verification.
 
 ### 💡 Concept Callout
 
 **Use when:** Explaining how or why something works
 
-**Placement:** After code block that introduces new concept
+**Placement:** After all steps and verification
+
+**Format:** Use descriptive title without "Concept:" prefix
 
 ```markdown
-- **Add** the mapping logic:
-  ```javascript
-  {answers.map((answer, index) => (
-    <button key={index}>{answer}</button>
-  ))}
-  ```
+### Step 1: Add the mapping logic
 
-> **💡 Concept:** The `map()` method transforms each item in an array. Here, each answer string becomes a button element.
+```javascript
+{answers.map((answer, index) => (
+  <button key={index}>{answer}</button>
+))}
+```
+
+**✓ Verify:** Four answer buttons appear.
+
+> 💡 **Array Mapping**
+>
+> The `map()` method transforms each item in an array. Here, each answer string becomes a button element.
 ```
 
 ### ⚠️ Warning Callout
 
 **Use when:** Preventing common mistakes or highlighting gotchas
 
-**Placement:** After code that has potential pitfalls
+**Placement:** After all steps, not inline
 
 ```markdown
-- **Update** the audio playback:
-  ```javascript
-  if (!audioRef.current) {
-    audioRef.current = new Audio(src);
-  }
-  ```
+### Step 1: Update the audio playback
+
+```javascript
+if (!audioRef.current) {
+  audioRef.current = new Audio(src);
+}
+```
+
+**✓ Verify:** Audio plays without overlapping.
 
 > **⚠️ Warning:** Creating audio elements only once prevents overlapping sounds and memory leaks.
 ```
@@ -530,10 +564,21 @@ Use callouts strategically after code blocks or verification steps.
 
 **Use when:** Providing additional context or tips
 
-**Placement:** After code or verification
+**Placement:** After all verification
 
 ```markdown
-- **Verify:** Navigate to game screen → Score: 0 should appear in HUD
+### Step 1: Add the fragment wrapper
+
+```javascript
+return (
+  <>
+    <Scoreboard />
+    <CurrentZone />
+  </>
+);
+```
+
+**✓ Verify:** Both components render without extra wrapper.
 
 > **ℹ️ Note:** React Fragments (`<>...</>`) let you group components without adding extra DOM wrapper elements.
 ```
@@ -545,7 +590,13 @@ Use callouts strategically after code blocks or verification steps.
 **Placement:** After final step in section
 
 ```markdown
-- **Return** the transformed questions
+### Step 3: Return the transformed questions
+
+```javascript
+return transformedQuestions;
+```
+
+**✓ Verify:** Questions array is properly formatted.
 
 > **✅ Success Check:**
 >
@@ -558,12 +609,44 @@ Use callouts strategically after code blocks or verification steps.
 
 **Use when:** Sharing advanced techniques or shortcuts
 
-**Placement:** After related code or verification
+**Placement:** After all verification
 
 ```markdown
-- **Verify:** Open React DevTools → GameProvider → hooks → `score` should be `0`
+### Step 1: Add score state
+
+```javascript
+const [score, setScore] = useState(0);
+```
+
+**✓ Verify:** React DevTools → GameProvider → hooks → `score` should be `0`
 
 > **🎯 Pro Tip:** Use React DevTools to change the `score` value and watch the UI update in real-time.
+```
+
+---
+
+### 🏆 Bonus Challenge
+
+**Use when:** Offering optional extension activities
+
+**Placement:** After callout at very end of section
+
+**Format:** Simple paragraph or bullet list, no callout box
+
+```markdown
+### Step 2: Complete the implementation
+
+```javascript
+const [score, setScore] = useState(0);
+```
+
+**✓ Verify:** Score displays correctly in the HUD.
+
+> 💡 **State Management**
+>
+> The `useState` hook gives components their own memory. When state changes, React automatically re-renders the component.
+
+🏆 **Bonus Challenge:** Use React DevTools to manually change the score value and watch the UI update in real-time.
 ```
 
 ---

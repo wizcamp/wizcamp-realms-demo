@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>SESSION-01 - Wizcamp Session Guide</title>
+  <title>SESSION-01-orig - Wizcamp Session Guide</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -271,16 +271,6 @@ text-decoration: none;
 strong {
 font-weight: 500;
 color: #2d3748;
-white-space: normal;
-word-spacing: normal;
-letter-spacing: normal;
-}
-
-strong::before,
-strong::after {
-content: none;
-margin: 0;
-padding: 0;
 }
 
 table {
@@ -337,27 +327,9 @@ margin: 0 0 8px 0;
 blockquote p:last-child {
 margin-bottom: 0;
 }
-
-blockquote strong {
-margin: 0;
-padding: 0;
-display: inline;
-white-space: normal;
-}
-blockquote code {
-margin: 0;
-padding: 1px 3px !important;
-display: inline;
-}
-blockquote em {
-margin: 0;
-padding: 0;
-display: inline;
-}
-blockquote a {
-margin: 0;
-padding: 0;
-display: inline;
+blockquote strong:first-child {
+display: inline-block;
+margin-right: 4px;
 }
 
 blockquote ul {
@@ -489,16 +461,17 @@ overflow-x: hidden !important;
 </head>
 <body>
 <h1 id="session-1-setting-up-your-trivia-game">Session 1 — Setting Up Your Trivia Game</h1>
+<p>Welcome to <strong>React</strong> Development! 🎉</p>
 <p>You’re about to launch your dev setup and start building your trivia game. This guide breaks everything down into bite-sized tasks so you can move fast, learn by doing, and see results right away. Ready to dive in? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#creating-your-codespace">Creating Your Codespace</a></li>
-<li><a href="#navigating-the-project">Navigating the Project</a></li>
-<li><a href="#starting-your-development-server">Starting Your Development Server</a></li>
-<li><a href="#editing-your-first-component">Editing Your First Component</a></li>
-<li><a href="#updating-the-page-title">Updating the Page Title</a></li>
-<li><a href="#essential-terms">Essential Terms</a></li>
-<li><a href="#ask-the-ai">Ask the AI</a></li>
+<li><a href="#creating-your-codespace">Creating Your Codespace</a> ☁️</li>
+<li><a href="#navigating-the-project">Navigating the Project</a> 🗂️</li>
+<li><a href="#starting-your-development-server">Starting Your Development Server</a> 🚀</li>
+<li><a href="#editing-your-first-component">Editing Your First Component</a> 🧩</li>
+<li><a href="#updating-the-page-title">Updating the Page Title</a> 🏷️</li>
+<li><a href="#essential-terms">Essential Terms</a> 📚📋</li>
+<li><a href="#ask-the-ai">Ask the AI</a> 🤖</li>
 </ul>
 <p><a id="creating-your-codespace"></a></p>
 <h2 id="creating-your-codespace">☁️ Creating Your Codespace</h2>
@@ -507,20 +480,14 @@ overflow-x: hidden !important;
 <p>Go to <a href="https://github.com">github.com</a> and log in with your account.</p>
 <h3 id="step-2-launch-the-template">Step 2: Launch the template</h3>
 <p>Go to <a href="https://github.com/wizcamp/wizcamp-realms-demo">github.com/wizcamp/wizcamp-realms-demo</a> and click <strong>Use this template</strong> → <strong>Open in a codespace</strong>.</p>
-<p><strong>✓ You should see:</strong> Your Codespace begins building (this takes 1-2 minutes).</p>
+<p><strong>Expected result:</strong> Your Codespace begins building (this takes 1-2 minutes).</p>
 <h3 id="step-3-wait-for-the-environment-to-load">Step 3: Wait for the environment to load</h3>
-<p>Once the build completes, <strong>VS Code</strong> will open in your browser.</p>
-<p><strong>✓ You should see:</strong> Project files appear in the file explorer on the left side.</p>
+<p>Once the build completes, VS Code will open in your browser.</p>
+<p><strong>Expected result:</strong> Project files appear in the file explorer on the left side.</p>
 <h3 id="step-4-customize-your-theme-optional">Step 4: Customize your theme (optional)</h3>
 <p>Click the ⚙️ gear icon in the bottom left → <strong>Themes</strong> → <strong>Color Theme</strong> → pick your favorite (Dark+ is popular for coding).</p>
-<blockquote>
-<p>💡 <strong>Why Codespaces</strong></p>
-<p>Everyone gets the same setup — no more “it works on my machine” drama. Mess something up? Just delete and start fresh. It’s like having a reset button for your entire dev environment. You’ll use this <strong>Codespace</strong> for all 12 sessions.</p>
-</blockquote>
-<blockquote>
-<p>🏆 <strong>Bonus Challenge</strong></p>
-<p>Go to <a href="https://github.com/codespaces">github.com/codespaces</a> to explore more about managing your Codespaces.</p>
-</blockquote>
+<p>💡 <strong>Why Codespaces rocks:</strong> Everyone gets the same setup — no more “it works on my machine” drama. Mess something up? Just delete and start fresh. It’s like having a reset button for your entire dev environment. You’ll use this Codespace for all 12 sessions.</p>
+<p>🏆 <strong>Bonus Challenge:</strong> Go to <a href="https://github.com/codespaces">github.com/codespaces</a> to explore more about managing your Codespaces.</p>
 <p><a id="navigating-the-project"></a></p>
 <h2 id="navigating-the-project">🗂️ Navigating the Project</h2>
 <p><em>Quick orientation to help you find files during today’s tasks:</em></p>
@@ -551,59 +518,41 @@ overflow-x: hidden !important;
 ➜  Network: use --host to expose
 ➜  press h + enter to show help</code></pre>
 <p>Follow the link (ctrl + click), copy-paste it into a new browser tab, or click “Open in Browser” if a dialog appears.</p>
-<p><strong>✓ You should see:</strong> A web page displaying the starter app with placeholder content.</p>
+<p><strong>Expected result:</strong> A web page displaying the starter app with placeholder content.</p>
 <h3 id="step-3-stop-the-server">Step 3: Stop the server</h3>
 <p>Go back to your terminal and press <code>Ctrl + C</code>.</p>
-<p><strong>✓ You should see:</strong></p>
+<p><strong>Expected result:</strong></p>
 <ul>
 <li>Terminal returns to the command prompt</li>
 <li>Refreshing the browser shows a connection error (app no longer running)</li>
 </ul>
-<blockquote>
-<p>💡 <strong>Dev Server Workflow</strong></p>
-<p>Run <code>npm run dev</code> to fire up your server and see your app live. Hit <code>Ctrl + C</code> to shut it down. You’ll use these commands constantly — they’re about to become muscle memory. <strong>Node.js</strong> powers the development tools, <strong>npm</strong> manages packages and runs scripts, and <strong>Vite</strong> serves your app at lightning speed with <strong>Hot Module Replacement</strong> (HMR) that updates code instantly without full page reloads.</p>
-</blockquote>
+<p>💡 <strong>Your dev server cheat sheet:</strong> Run <code>npm run dev</code> to fire up your server and see your app live. Hit <code>Ctrl + C</code> to shut it down. You’ll use these commands constantly — they’re about to become muscle memory.</p>
 <p><a id="editing-your-first-component"></a></p>
 <h2 id="editing-your-first-component">🧩 Editing Your First Component</h2>
 <p>🎯 <strong>Goal:</strong> Edit the App component to display your game’s splash screen and experience React’s live updates.</p>
 <p><strong>File:</strong> <code>src/App.jsx</code></p>
-<p>Replace <code>StartHere</code> with <code>SplashScreen</code> by updating the import at the top and what the component returns:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb4-1" title="1"><span class="st">-import StartHere from &quot;./components/StartHere&quot;;</span></a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="va">+import SplashScreen from &quot;./components/SplashScreen&quot;;</span></a>
-<a class="sourceLine" id="cb4-3" title="3"></a>
-<a class="sourceLine" id="cb4-4" title="4">export default function App() {</a>
-<a class="sourceLine" id="cb4-5" title="5">  return (</a>
-<a class="sourceLine" id="cb4-6" title="6">    &lt;div className=&quot;app-container&quot;&gt;</a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="st">-     &lt;StartHere /&gt;</span></a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="va">+     &lt;SplashScreen /&gt;</span></a>
-<a class="sourceLine" id="cb4-9" title="9">    &lt;/div&gt;</a>
-<a class="sourceLine" id="cb4-10" title="10">  );</a>
-<a class="sourceLine" id="cb4-11" title="11">}</a></code></pre></div>
-<p><strong>✓ You should see:</strong> The screen updates instantly — no save needed, no refresh required. That’s the magic of Hot Module Replacement!</p>
-<blockquote>
-<p>💡 <strong>Components and JSX</strong></p>
-<p><strong>Components</strong> are <strong>React’s</strong> building blocks — think digital LEGO pieces you snap together to build apps. That <code>.jsx</code> extension? It’s <strong>JSX</strong>, a special syntax that looks like HTML but is actually JavaScript. And that instant update you just saw? That’s Vite’s Hot Module Replacement (HMR) doing its thing — your dev server is basically a live preview of your creation.</p>
-</blockquote>
+<h3 id="step-1-import-splashscreen">Step 1: Import SplashScreen</h3>
+<p>At the top of the file, add:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="im">import</span> SplashScreen <span class="im">from</span> <span class="st">&quot;./components/SplashScreen&quot;</span><span class="op">;</span></a></code></pre></div>
+<h3 id="step-2-swap-the-placeholder-for-splashscreen">Step 2: Swap the placeholder for SplashScreen</h3>
+<p>In the App component’s return statement, replace <code>&lt;StartHere /&gt;</code> with <code>&lt;SplashScreen /&gt;</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">App</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb5-3" title="3">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb5-4" title="4">      <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;</span>  <span class="op">{</span><span class="co">/* Was: &lt;StartHere /&gt; */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-5" title="5">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb5-6" title="6">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="op">}</span></a></code></pre></div>
+<p><strong>Expected result:</strong> The screen updates instantly — no save needed, no refresh required. That’s the magic of Hot Module Replacement!</p>
+<p>💡 <strong>What just happened?</strong> Components are React’s building blocks — think digital LEGO pieces you snap together to build apps. That <code>.jsx</code> extension? It’s JSX, a special syntax that looks like HTML but is actually JavaScript. And that instant update you just saw? That’s Vite’s Hot Module Replacement (HMR) doing its thing — your dev server is basically a live preview of your creation.</p>
 <p><a id="updating-the-page-title"></a></p>
 <h2 id="updating-the-page-title">🏷️ Updating the Page Title</h2>
-<p>🎯 <strong>Goal:</strong> Customize the browser tab title for your game.</p>
 <p><strong>File:</strong> <code>index.html</code></p>
-<p>Update the page title to reflect your game:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb5-1" title="1"><span class="st">&lt;!doctype html&gt;</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="st">&lt;html lang=&quot;en&quot;&gt;</span></a>
-<a class="sourceLine" id="cb5-3" title="3">  &lt;head&gt;</a>
-<a class="sourceLine" id="cb5-4" title="4">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</a>
-<a class="sourceLine" id="cb5-5" title="5">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="st">-   &lt;title&gt;Wizcamp - Fullstack Explorer&lt;/title&gt;</span></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="va">+   &lt;title&gt;Wizcamp Realms - Legends of Trivia&lt;/title&gt;</span></a>
-<a class="sourceLine" id="cb5-8" title="8">  &lt;/head&gt;</a></code></pre></div>
-<p><strong>✓ You should see:</strong> The browser tab displays your new title.</p>
-<blockquote>
-<p>💡 <strong>HTML Entry Point</strong></p>
-<p>Even though React apps are built with components, they still need a standard HTML file as the entry point. A descriptive page title helps users identify your app when they have multiple tabs open — plus it’s crucial for accessibility and SEO. React updates the <strong>DOM</strong> (Document Object Model) to change what users see in the browser.</p>
-</blockquote>
+<p>Open <code>index.html</code> and change the <code>&lt;title&gt;</code> tag to <code>Wizcamp Realms - Legends of Trivia</code>.</p>
+<p><strong>Expected result:</strong> The browser tab displays your new title.</p>
+<p>💡 <strong>Why this matters:</strong> Even though React apps are built with components, they still need a standard HTML file as the entry point. A descriptive page title helps users identify your app when they have multiple tabs open — plus it’s crucial for accessibility and SEO.</p>
 <p><a id="essential-terms"></a></p>
-<h2 id="essential-terms">📋 Essential Terms</h2>
+<h2 id="essential-terms">📚📋 Essential Terms</h2>
 <p><em>Quick reference for all the tools and concepts you just experienced:</em></p>
 <table>
 <colgroup>

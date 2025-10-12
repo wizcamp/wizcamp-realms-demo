@@ -1,16 +1,18 @@
 # Session 1 — Setting Up Your Trivia Game
 
+Welcome to **React** Development! 🎉
+
 You're about to launch your dev setup and start building your trivia game. This guide breaks everything down into bite-sized tasks so you can move fast, learn by doing, and see results right away. Ready to dive in? Let's go!
 
 ## Table of Contents
 
-- [Creating Your Codespace](#creating-your-codespace)
-- [Navigating the Project](#navigating-the-project)
-- [Starting Your Development Server](#starting-your-development-server)
-- [Editing Your First Component](#editing-your-first-component)
-- [Updating the Page Title](#updating-the-page-title)
-- [Essential Terms](#essential-terms)
-- [Ask the AI](#ask-the-ai)
+- [Creating Your Codespace](#creating-your-codespace) ☁️
+- [Navigating the Project](#navigating-the-project) 🗂️
+- [Starting Your Development Server](#starting-your-development-server) 🚀
+- [Editing Your First Component](#editing-your-first-component) 🧩
+- [Updating the Page Title](#updating-the-page-title) 🏷️
+- [Essential Terms](#essential-terms) 📚📋
+- [Ask the AI](#ask-the-ai) 🤖
 
 <a id="creating-your-codespace"></a>
 
@@ -26,25 +28,21 @@ Go to [github.com](https://github.com) and log in with your account.
 
 Go to [github.com/wizcamp/wizcamp-realms-demo](https://github.com/wizcamp/wizcamp-realms-demo) and click **Use this template** → **Open in a codespace**.
 
-**✓ You should see:** Your Codespace begins building (this takes 1-2 minutes).
+**Expected result:** Your Codespace begins building (this takes 1-2 minutes).
 
 ### Step 3: Wait for the environment to load
 
-Once the build completes, **VS Code** will open in your browser.
+Once the build completes, VS Code will open in your browser.
 
-**✓ You should see:** Project files appear in the file explorer on the left side.
+**Expected result:** Project files appear in the file explorer on the left side.
 
 ### Step 4: Customize your theme (optional)
 
 Click the ⚙️ gear icon in the bottom left → **Themes** → **Color Theme** → pick your favorite (Dark+ is popular for coding).
 
-> 💡 **Why Codespaces**
->
-> Everyone gets the same setup — no more "it works on my machine" drama. Mess something up? Just delete and start fresh. It's like having a reset button for your entire dev environment. You'll use this **Codespace** for all 12 sessions.
+💡 **Why Codespaces rocks:** Everyone gets the same setup — no more "it works on my machine" drama. Mess something up? Just delete and start fresh. It's like having a reset button for your entire dev environment. You'll use this Codespace for all 12 sessions.
 
-> 🏆 **Bonus Challenge**
->
-> Go to [github.com/codespaces](https://github.com/codespaces) to explore more about managing your Codespaces.
+🏆 **Bonus Challenge:** Go to [github.com/codespaces](https://github.com/codespaces) to explore more about managing your Codespaces.
 
 <a id="navigating-the-project"></a>
 
@@ -97,20 +95,18 @@ VITE v7.1.7  ready in 2473 ms
 
 Follow the link (ctrl + click), copy-paste it into a new browser tab, or click "Open in Browser" if a dialog appears.
 
-**✓ You should see:** A web page displaying the starter app with placeholder content.
+**Expected result:** A web page displaying the starter app with placeholder content.
 
 ### Step 3: Stop the server
 
 Go back to your terminal and press `Ctrl + C`.
 
-**✓ You should see:**
+**Expected result:**
 
 - Terminal returns to the command prompt
 - Refreshing the browser shows a connection error (app no longer running)
 
-> 💡 **Dev Server Workflow**
->
-> Run `npm run dev` to fire up your server and see your app live. Hit `Ctrl + C` to shut it down. You'll use these commands constantly — they're about to become muscle memory. **Node.js** powers the development tools, **npm** manages packages and runs scripts, and **Vite** serves your app at lightning speed with **Hot Module Replacement** (HMR) that updates code instantly without full page reloads.
+💡 **Your dev server cheat sheet:** Run `npm run dev` to fire up your server and see your app live. Hit `Ctrl + C` to shut it down. You'll use these commands constantly — they're about to become muscle memory.
 
 <a id="editing-your-first-component"></a>
 
@@ -120,58 +116,47 @@ Go back to your terminal and press `Ctrl + C`.
 
 **File:** `src/App.jsx`
 
-Replace `StartHere` with `SplashScreen` by updating the import at the top and what the component returns:
+### Step 1: Import SplashScreen
 
-```diff
--import StartHere from "./components/StartHere";
-+import SplashScreen from "./components/SplashScreen";
+At the top of the file, add:
 
+```javascript
+import SplashScreen from "./components/SplashScreen";
+```
+
+### Step 2: Swap the placeholder for SplashScreen
+
+In the App component's return statement, replace `<StartHere />` with `<SplashScreen />`:
+
+```javascript
 export default function App() {
   return (
     <div className="app-container">
--     <StartHere />
-+     <SplashScreen />
+      <SplashScreen />  {/* Was: <StartHere /> */}
     </div>
   );
 }
 ```
 
-**✓ You should see:** The screen updates instantly — no save needed, no refresh required. That's the magic of Hot Module Replacement!
+**Expected result:** The screen updates instantly — no save needed, no refresh required. That's the magic of Hot Module Replacement!
 
-> 💡 **Components and JSX**
->
-> **Components** are **React's** building blocks — think digital LEGO pieces you snap together to build apps. That `.jsx` extension? It's **JSX**, a special syntax that looks like HTML but is actually JavaScript. And that instant update you just saw? That's Vite's Hot Module Replacement (HMR) doing its thing — your dev server is basically a live preview of your creation.
+💡 **What just happened?** Components are React's building blocks — think digital LEGO pieces you snap together to build apps. That `.jsx` extension? It's JSX, a special syntax that looks like HTML but is actually JavaScript. And that instant update you just saw? That's Vite's Hot Module Replacement (HMR) doing its thing — your dev server is basically a live preview of your creation.
 
 <a id="updating-the-page-title"></a>
 
 ## 🏷️ Updating the Page Title
 
-🎯 **Goal:** Customize the browser tab title for your game.
-
 **File:** `index.html`
 
-Update the page title to reflect your game:
+Open `index.html` and change the `<title>` tag to `Wizcamp Realms - Legends of Trivia`.
 
-```diff
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
--   <title>Wizcamp - Fullstack Explorer</title>
-+   <title>Wizcamp Realms - Legends of Trivia</title>
-  </head>
-```
+**Expected result:** The browser tab displays your new title.
 
-**✓ You should see:** The browser tab displays your new title.
-
-> 💡 **HTML Entry Point**
->
-> Even though React apps are built with components, they still need a standard HTML file as the entry point. A descriptive page title helps users identify your app when they have multiple tabs open — plus it's crucial for accessibility and SEO. React updates the **DOM** (Document Object Model) to change what users see in the browser.
+💡 **Why this matters:** Even though React apps are built with components, they still need a standard HTML file as the entry point. A descriptive page title helps users identify your app when they have multiple tabs open — plus it's crucial for accessibility and SEO.
 
 <a id="essential-terms"></a>
 
-## 📋 Essential Terms
+## 📚📋 Essential Terms
 
 _Quick reference for all the tools and concepts you just experienced:_
 

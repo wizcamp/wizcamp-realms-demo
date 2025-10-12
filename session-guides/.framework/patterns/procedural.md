@@ -207,7 +207,7 @@ You'll receive confirmation that you've been added to the Wizcamp GitHub Organiz
 
 [Continue for all steps...]
 
-**Verify:** [How to confirm completion]
+**✓ You should see:** [How to confirm completion]
 
 > **💡 Concept:** [Why this matters]
 ```
@@ -274,7 +274,7 @@ Collect the following URLs:
 4. **Upload** your project summary as a PDF or paste as text
 5. **Click** "Submit Project"
 
-**Verify:** You receive a confirmation email within 24 hours with next steps for the showcase session.
+**✓ You should see:** A confirmation email within 24 hours with next steps for the showcase session.
 
 > **💡 Why this matters:** Your project submission showcases your learning journey and becomes a portfolio piece you can share with future employers or college admissions officers.
 ```
@@ -302,7 +302,7 @@ Before you begin, have ready:
 3. **Complete** the verification puzzle
 4. **Verify** your email address by clicking the link sent to your inbox
 
-**Verify:** You can log in to [github.com](https://github.com) and see your profile.
+**✓ You should see:** Your GitHub profile when you log in to [github.com](https://github.com).
 
 ### Step 2: Enable two-factor authentication
 
@@ -311,7 +311,7 @@ Before you begin, have ready:
 3. **Choose** authentication method (authenticator app recommended)
 4. **Save** your recovery codes in a safe place
 
-**Verify:** You see a green checkmark next to "Two-factor authentication."
+**✓ You should see:** A green checkmark next to "Two-factor authentication."
 
 ### Step 3: Join the Wizcamp organization
 
@@ -319,7 +319,7 @@ Before you begin, have ready:
 2. **Click** "Join Wizcamp" in the email
 3. **Accept** the organization invitation
 
-**Verify:** You see "Wizcamp" listed under Organizations in your GitHub profile.
+**✓ You should see:** "Wizcamp" listed under Organizations in your GitHub profile.
 
 ### Step 4: Verify Copilot access
 
@@ -327,7 +327,7 @@ Before you begin, have ready:
 2. **Confirm** you see "GitHub Copilot is active"
 3. **Review** the Copilot usage guidelines
 
-**Verify:** The Copilot settings page shows your organization provides access.
+**✓ You should see:** The Copilot settings page showing your organization provides access.
 
 ### Step 5: Test Codespaces access
 
@@ -335,7 +335,7 @@ Before you begin, have ready:
 2. **Confirm** you can see the Codespaces dashboard
 3. **Note** your monthly included hours (60 hours for organization members)
 
-**Verify:** You see "You have access to GitHub Codespaces" on the dashboard.
+**✓ You should see:** "You have access to GitHub Codespaces" on the dashboard.
 
 > **✅ Success Check:**
 >
@@ -463,7 +463,7 @@ Visit the class calendar and RSVP for each session you plan to attend.
 Optional single statement after steps:
 
 ```markdown
-**Verify:** Your introduction post is visible in the portal.
+**✓ You should see:** Your introduction post is visible in the portal.
 ```
 
 Or implicit through final step:
@@ -479,13 +479,13 @@ Or implicit through final step:
 After individual steps or at end:
 
 ```markdown
-**Verify:** You receive a confirmation email within 24 hours.
+**✓ You should see:** A confirmation email within 24 hours.
 ```
 
 Or with multiple points:
 
 ```markdown
-**Verify:** The Copilot settings page shows your organization provides access.
+**✓ You should see:** The Copilot settings page showing your organization provides access.
 ```
 
 Or comprehensive checklist:

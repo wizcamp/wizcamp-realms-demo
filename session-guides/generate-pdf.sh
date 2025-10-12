@@ -300,6 +300,17 @@ a {
 strong {
   font-weight: 500;
   color: #2d3748;
+  white-space: normal;
+  word-spacing: normal;
+  letter-spacing: normal;
+}
+
+/* Prevent extra whitespace around bold text */
+strong::before,
+strong::after {
+  content: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Table Styling */
@@ -365,9 +376,30 @@ blockquote p:last-child {
   margin-bottom: 0;
 }
 
-blockquote strong:first-child {
-  display: inline-block;
-  margin-right: 4px;
+/* Prevent extra spacing around inline elements in blockquotes */
+blockquote strong {
+  margin: 0;
+  padding: 0;
+  display: inline;
+  white-space: normal;
+}
+
+blockquote code {
+  margin: 0;
+  padding: 1px 3px !important;
+  display: inline;
+}
+
+blockquote em {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+blockquote a {
+  margin: 0;
+  padding: 0;
+  display: inline;
 }
 
 /* Checkbox list items in callouts */

@@ -6,7 +6,31 @@ This guide helps you choose the right pattern for your teaching task based on ac
 
 ## Available Patterns
 
-### 1. Procedural Pattern
+### 1. Conceptual Pattern
+
+**Use when:** Explaining concepts, providing context, or orienting students without requiring actions.
+
+**Characteristics:**
+- No step-by-step instructions
+- Explanatory and educational focus
+- Reinforces previous instruction
+- Builds mental models
+- Includes special sections (Essential Terms, Ask the AI)
+
+**Example tasks:**
+- Project structure orientation
+- Explaining how things work
+- Vocabulary reference tables
+- Reflection prompts
+- Architecture overviews
+
+**Course usage:** Sessions 1-11 (appears in most sessions)
+
+**Documentation:** `patterns/conceptual.md`
+
+---
+
+### 2. Procedural Pattern
 
 **Use when:** Guiding students through simple sequential tasks without code.
 
@@ -28,7 +52,7 @@ This guide helps you choose the right pattern for your teaching task based on ac
 
 ---
 
-### 2. Iterative Build Pattern
+### 3. Iterative Build Pattern
 
 **Use when:** Building features through incremental modifications with testing after each step.
 
@@ -50,7 +74,7 @@ This guide helps you choose the right pattern for your teaching task based on ac
 
 ---
 
-### 3. Configuration Pattern
+### 4. Configuration Pattern
 
 **Use when:** Setting up tools, environments, or project configuration.
 
@@ -72,7 +96,7 @@ This guide helps you choose the right pattern for your teaching task based on ac
 
 ---
 
-### 4. Integration Pattern
+### 5. Integration Pattern
 
 **Use when:** Connecting multiple files, systems, or components.
 
@@ -94,7 +118,7 @@ This guide helps you choose the right pattern for your teaching task based on ac
 
 ---
 
-### 5. Solo Mission Pattern
+### 6. Solo Mission Pattern
 
 **Use when:** Students apply learned concepts independently with minimal guidance.
 
@@ -187,10 +211,11 @@ All patterns follow the same formatting conventions. See `CONVENTIONS.md` for:
 Based on course usage frequency:
 
 1. **Iterative Build** ✅ (documented - 5 sessions)
-2. **Configuration** ✅ (documented - 2 sessions)
-3. **Procedural** ✅ (documented - 1 session)
-4. **Integration** (needed - 3 sessions)
-5. **Solo Mission** (needed - 2 sessions)
+2. **Conceptual** ✅ (documented - appears in most sessions)
+3. **Configuration** ✅ (documented - 2 sessions)
+4. **Procedural** ✅ (documented - 1 session)
+5. **Integration** (needed - 3 sessions)
+6. **Solo Mission** (needed - 2 sessions)
 
 ---
 
