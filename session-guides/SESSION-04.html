@@ -122,7 +122,7 @@ h2 {
 font-size: 1.5em;
 border-bottom: 1px solid #d0d7de;
 padding-bottom: 0.3em;
-margin-top: 24px;
+margin-top: 48px;
 margin-bottom: 16px;
 }
 
@@ -132,7 +132,7 @@ margin-top: 24px;
 }
 
 a[id] {
-scroll-margin-top: 20px;
+scroll-margin-top: 48px;
 }
 h3 {
 font-size: 1.25em;
@@ -223,6 +223,12 @@ margin-bottom: 6px;
 line-height: 1.4;
 }
 
+li:has(:first-child:is(text):contains("✅")) {
+list-style-type: none;
+margin-left: -1.8em;
+padding-left: 1.8em;
+}
+
 li > ul > li:first-child,
 li > ol > li:first-child {
 margin-top: 8px;
@@ -265,6 +271,16 @@ text-decoration: none;
 strong {
 font-weight: 500;
 color: #2d3748;
+white-space: normal;
+word-spacing: normal;
+letter-spacing: normal;
+}
+
+strong::before,
+strong::after {
+content: none;
+margin: 0;
+padding: 0;
 }
 
 table {
@@ -304,6 +320,91 @@ table code {
 font-size: 14px !important;
 padding: 2px 4px !important;
 word-break: break-all;
+}
+
+blockquote {
+border-left: 4px solid #d1d5db;
+padding: 12px 16px;
+margin: 20px 0;
+background-color: transparent;
+border-radius: 0;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+blockquote p {
+margin: 0 0 8px 0;
+}
+blockquote p:last-child {
+margin-bottom: 0;
+}
+
+blockquote strong {
+margin: 0;
+padding: 0;
+display: inline;
+white-space: normal;
+}
+blockquote code {
+margin: 0;
+padding: 1px 3px !important;
+display: inline;
+}
+blockquote em {
+margin: 0;
+padding: 0;
+display: inline;
+}
+blockquote a {
+margin: 0;
+padding: 0;
+display: inline;
+}
+
+blockquote ul {
+margin-top: 12px;
+margin-bottom: 0;
+padding-left: 1.8em;
+list-style-type: none;
+}
+blockquote li {
+position: relative;
+}
+
+blockquote li::before {
+content: '☐ ';
+position: absolute;
+left: -1.8em;
+font-size: 16px;
+}
+
+blockquote:has(strong:first-child:contains("💡")) {
+border-left-color: #3b82f6;
+}
+
+blockquote:has(strong:first-child:contains("⚠️")) {
+border-left-color: #f59e0b;
+}
+
+blockquote:has(strong:first-child:contains("✅")) {
+border-left-color: #10b981;
+}
+
+blockquote:has(strong:first-child:contains("❌")) {
+border-left-color: #ef4444;
+}
+
+blockquote:has(strong:first-child:contains("ℹ️")) {
+border-left-color: #6366f1;
+}
+
+blockquote:has(strong:first-child:contains("🎯")) {
+border-left-color: #8b5cf6;
+}
+
+@supports not (selector(:has(*))) {
+blockquote {
+border-left-color: #3b82f6;
+}
 }
 
 table td:first-child {
@@ -366,6 +467,12 @@ tr {
 page-break-inside: avoid !important;
 }
 
+blockquote {
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+page-break-inside: avoid !important;
+}
+
 * {
 overflow: visible !important;
 scrollbar-width: none !important;
@@ -382,13 +489,13 @@ overflow-x: hidden !important;
 </head>
 <body>
 <h1 id="session-4-configuring-game-zones">Session 4 — Configuring Game Zones</h1>
-<p>Data-Driven Design 📊</p>
 <p>You’re about to design the heart of your trivia game — the zone configuration that defines your entire game experience! This guide walks you through creating cohesive zone themes, understanding JavaScript data structures, and building the metadata that powers your adventure. Ready to architect your game world? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
+<li><a href="#accessing-your-codespace">Accessing Your Codespace</a></li>
 <li><a href="#adding-the-hud-and-coordinate-display">Adding the HUD and Coordinate Display</a></li>
-<li><a href="#understanding-metadata-and-configuration">Understanding Metadata and Configuration</a></li>
-<li><a href="#exploring-javascript-data-structures">Exploring JavaScript Data Structures</a></li>
+<li><a href="#metadata-and-configuration">Metadata and Configuration</a></li>
+<li><a href="#the-zones-array-structure">The ZONES Array Structure</a></li>
 <li><a href="#designing-your-zone-themes">Designing Your Zone Themes</a></li>
 <li><a href="#configuring-zone-metadata">Configuring Zone Metadata</a></li>
 <li><a href="#positioning-zone-labels">Positioning Zone Labels</a></li>
@@ -401,128 +508,280 @@ overflow-x: hidden !important;
 <p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 3.</p>
 <p><a id="adding-the-hud-and-coordinate-display"></a></p>
 <h2 id="adding-the-hud-and-coordinate-display">🖥️ Adding the HUD and Coordinate Display</h2>
-<p>Let’s add the game’s <strong>HUD</strong> (Heads Up Display) and a coordinate helper to assist with zone positioning.</p>
-<ol type="1">
-<li><p><strong>Open</strong> <code>src/App.jsx</code> and add the new imports at the top</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> HUD <span class="im">from</span> <span class="st">&quot;./components/HUD&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> CoordinateDisplay <span class="im">from</span> <span class="st">&quot;./components/CoordinateDisplay&quot;</span><span class="op">;</span></a></code></pre></div></li>
-<li><p><strong>Update</strong> the PLAYING screen to render multiple components using a <strong>React Fragment</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> (</a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="op">{</span><span class="co">/* Fragment groups components without extra DOM wrapper */</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb2-3" title="3">  <span class="op">&lt;&gt;</span></a>
-<a class="sourceLine" id="cb2-4" title="4">    <span class="op">&lt;</span>GameMap /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb2-5" title="5">    <span class="op">&lt;</span>HUD /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb2-6" title="6">    <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb2-7" title="7">  &lt;/<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb2-8" title="8">)<span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Test</strong> by running <code>npm run dev</code> and navigating to the game screen to see the new HUD and coordinate display</p></li>
-</ol>
-<p><strong>React Fragments</strong> (<code>&lt;&gt;...&lt;/&gt;</code>) are like invisible containers — they let you snap together multiple components without clutter. React components must return a single root element, so fragments solve this requirement cleanly. The <code>HUD</code> shows game progress, while <code>CoordinateDisplay</code> helps you position zone labels precisely.</p>
-<h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
+<p>🎯 <strong>Goal:</strong> Add the game’s HUD (Heads Up Display) and coordinate helper to prepare for zone configuration.</p>
+<p><strong>File:</strong> <code>src/App.jsx</code></p>
+<h3 id="step-1-add-imports-to-app">Step 1: Add imports to App</h3>
+<p>To display game progress and assist with positioning, we need to import the HUD and CoordinateDisplay components.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="co">// Add these two imports</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> CoordinateDisplay <span class="im">from</span> <span class="st">&quot;./components/CoordinateDisplay&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="im">import</span> HUD <span class="im">from</span> <span class="st">&quot;./components/HUD&quot;</span><span class="op">;</span></a></code></pre></div>
+<h3 id="step-2-update-playing-screen-rendering">Step 2: Update PLAYING screen rendering</h3>
+<p>Replace the single GameMap component with a Fragment containing multiple components, allowing you to display the map, HUD, and coordinate helper together.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="co">// Before:</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>GameMap /<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">// After:</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> (</a>
+<a class="sourceLine" id="cb2-6" title="6">  <span class="op">&lt;&gt;</span></a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="op">&lt;</span>GameMap /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="op">&lt;</span>HUD /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-9" title="9">    <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-10" title="10">  &lt;/<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-11" title="11">)<span class="op">}</span></a></code></pre></div>
+<h3 id="step-3-test-the-display">Step 3: Test the display</h3>
+<p>Navigate to the game screen by clicking “Start Adventure.”</p>
+<p><strong>✓ You should see:</strong> The game map with a HUD at the top showing zone progress and a coordinate display in the corner showing your mouse position.</p>
+<blockquote>
+<p>💡 <strong>Fragments Group Without Clutter</strong></p>
+<p>React Fragments (<code>&lt;&gt;...&lt;/&gt;</code>) are like invisible containers that let you group multiple components without adding extra DOM elements. React requires a single root element, so fragments solve this cleanly. The HUD shows game progress, while CoordinateDisplay helps you position zone labels precisely in the next sections.</p>
+</blockquote>
+<blockquote>
+<p>🏆 <strong>Bonus Challenge</strong></p>
 <p>Try removing the fragment tags (<code>&lt;&gt;</code> and <code>&lt;/&gt;</code>) and see what error React gives you when trying to return multiple elements!</p>
-<p><a id="understanding-metadata-and-configuration"></a></p>
-<h2 id="understanding-metadata-and-configuration">📋 Understanding Metadata and Configuration</h2>
-<p>Now let’s understand what makes your game tick — <strong>metadata</strong> and <strong>configuration files</strong> that define your entire game experience.</p>
+</blockquote>
+<p><a id="metadata-and-configuration"></a></p>
+<h2 id="metadata-and-configuration">📋 Metadata and Configuration</h2>
+<p>Before diving into code, let’s understand what makes your game tick — <strong>metadata</strong> and <strong>configuration files</strong> that define your entire game experience.</p>
+<h3 id="what-is-metadata">What is Metadata?</h3>
 <p><strong>Metadata</strong> is data about data. Think of it like a restaurant menu: it tells you everything about the dish — name, price, ingredients, spice level — but it’s not the actual food. Your zone metadata works the same way: it describes each zone’s properties without being the actual trivia questions.</p>
-<p><strong>Configuration files</strong> like <code>zones.js</code> are the backbone of <strong>data-driven architecture</strong> — an approach where you separate data from code. Think of your <code>zones.js</code> file as the DNA of your game experience: it contains all the genetic information that defines how your zones look, behave, and connect to trivia content. This makes your app flexible, maintainable, and easy to modify without touching component code.</p>
-<p><a id="exploring-javascript-data-structures"></a></p>
-<h2 id="exploring-javascript-data-structures">🏗️ Exploring JavaScript Data Structures</h2>
-<p>Let’s explore the fundamental <strong>data structures</strong> that power your zone configuration — <strong>arrays</strong> and <strong>objects</strong>.</p>
-<ol type="1">
-<li><strong>Open</strong> <code>src/data/zones.js</code> and examine the <code>ZONES</code> array structure</li>
-<li><strong>Notice</strong> the data types
+<h3 id="configuration-files-and-data-driven-architecture">Configuration Files and Data-Driven Architecture</h3>
+<p><strong>Configuration files</strong> like <code>zones.js</code> separate data from code. Your <code>zones.js</code> file contains all the information that defines how your zones look, behave, and connect to trivia content. This makes your app flexible and easy to modify without touching component code.</p>
+<p><strong>Example:</strong> Want to change a zone’s difficulty from “easy” to “medium”? Just update one value in <code>zones.js</code>. Want to add a fourth zone? Add another object to the array. The components automatically adapt to your data.</p>
+<blockquote>
+<p>💡 <strong>Data-Driven Design</strong></p>
+<p>Separating data from code is a fundamental pattern in software development. When your app reads configuration data, you can modify the entire game experience by editing a single file. This same pattern powers everything from video games to web applications — the code stays the same, but the data defines what users experience.</p>
+</blockquote>
+<p><a id="the-zones-array-structure"></a></p>
+<h2 id="the-zones-array-structure">🏗️ The ZONES Array Structure</h2>
+<p>Let’s examine the <strong>data structures</strong> that power your zone configuration — <strong>arrays</strong> and <strong>objects</strong>.</p>
+<p><strong>File:</strong> <code>src/data/zones.js</code></p>
+<p>Here’s the ZONES array structure that defines your game:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="im">export</span> <span class="kw">const</span> ZONES <span class="op">=</span> [</a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="dt">id</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span>                                    <span class="co">// ← Zone number for tracking</span></a>
+<a class="sourceLine" id="cb3-4" title="4">    <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Binary Woods&quot;</span><span class="op">,</span>                     <span class="co">// ← Zone title shown to players</span></a>
+<a class="sourceLine" id="cb3-5" title="5">    <span class="dt">subtitle</span><span class="op">:</span> <span class="st">&quot;Bytes &amp; Bugs&quot;</span><span class="op">,</span>                 <span class="co">// ← Zone description</span></a>
+<a class="sourceLine" id="cb3-6" title="6">    <span class="dt">categoryId</span><span class="op">:</span> <span class="dv">18</span><span class="op">,</span>                           <span class="co">// ← Trivia category (Computers)</span></a>
+<a class="sourceLine" id="cb3-7" title="7">    <span class="dt">difficulty</span><span class="op">:</span> <span class="st">&quot;easy&quot;</span><span class="op">,</span>                       <span class="co">// ← Question difficulty level</span></a>
+<a class="sourceLine" id="cb3-8" title="8">    <span class="dt">questionCount</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span>                         <span class="co">// ← How many questions in this zone</span></a>
+<a class="sourceLine" id="cb3-9" title="9">    <span class="dt">mapLabel</span><span class="op">:</span> <span class="op">{</span>                               <span class="co">// ← Nested object for positioning</span></a>
+<a class="sourceLine" id="cb3-10" title="10">      <span class="dt">x</span><span class="op">:</span> <span class="dv">225</span><span class="op">,</span>                                 <span class="co">// ← Horizontal position on map</span></a>
+<a class="sourceLine" id="cb3-11" title="11">      <span class="dt">y</span><span class="op">:</span> <span class="dv">140</span><span class="op">,</span>                                 <span class="co">// ← Vertical position on map</span></a>
+<a class="sourceLine" id="cb3-12" title="12">      <span class="dt">fontSize</span><span class="op">:</span> <span class="st">&quot;35&quot;</span><span class="op">,</span>                         <span class="co">// ← Label text size</span></a>
+<a class="sourceLine" id="cb3-13" title="13">      <span class="dt">fontFamily</span><span class="op">:</span> <span class="st">&quot;Pirata One, serif&quot;</span><span class="op">,</span>        <span class="co">// ← Label font style</span></a>
+<a class="sourceLine" id="cb3-14" title="14">      <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;#333&quot;</span><span class="op">,</span>                          <span class="co">// ← Label text color</span></a>
+<a class="sourceLine" id="cb3-15" title="15">      <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">&quot;normal&quot;</span><span class="op">,</span>                   <span class="co">// ← Label font weight</span></a>
+<a class="sourceLine" id="cb3-16" title="16">      <span class="dt">alignment</span><span class="op">:</span> <span class="st">&quot;left&quot;</span><span class="op">,</span>                      <span class="co">// ← Label text alignment</span></a>
+<a class="sourceLine" id="cb3-17" title="17">    <span class="op">},</span></a>
+<a class="sourceLine" id="cb3-18" title="18">  <span class="op">},</span></a>
+<a class="sourceLine" id="cb3-19" title="19">  <span class="co">// Zone 1 and Zone 2 follow the same structure...</span></a>
+<a class="sourceLine" id="cb3-20" title="20">]<span class="op">;</span></a></code></pre></div>
+<h3 id="understanding-the-structure">Understanding the Structure</h3>
+<p><strong>Arrays</strong> (the <code>[]</code> brackets) are ordered lists — perfect for your three zones that players complete in sequence. Arrays use zero-based indexing, so Zone 0 is first, Zone 1 is second, and Zone 2 is third.</p>
+<p><strong>Objects</strong> (the <code>{}</code> curly braces) are collections of key-value pairs — ideal for storing all the details about one zone. Each property uses colon syntax (<code>name: &quot;value&quot;</code>) and properties are separated by commas.</p>
+<p>The <code>ZONES</code> array will contain three zone objects — one for each game zone — each containing a <strong>nested</strong> <code>mapLabel</code> object inside it. This combination of arrays and objects lets you represent complex, real-world data in code.</p>
+<h3 id="data-types-in-your-configuration">Data Types in Your Configuration</h3>
 <ul>
-<li><strong>Strings</strong> for text: <code>&quot;Forest of Knowledge&quot;</code></li>
-<li><strong>Numbers</strong> for IDs and counts: <code>18</code>, <code>4</code></li>
-<li><strong>Objects</strong> for complex data: <code>mapLabel: { x: 225, y: 140 }</code></li>
-</ul></li>
-<li><strong>Understand</strong> the nesting as an <strong>array</strong> of <strong>objects</strong>, where each object has <strong>properties</strong> that can be different data types</li>
-</ol>
-<p><strong>Arrays</strong> are like playlists — they keep things in order. <strong>Objects</strong> are like contact cards — they store all the details about one thing. Together, they’re the perfect combo for organizing your game world and representing complex real-world data in code.</p>
+<li><strong>Strings</strong> (in quotes): <code>&quot;Binary Woods&quot;</code>, <code>&quot;easy&quot;</code> — text data</li>
+<li><strong>Numbers</strong> (no quotes): <code>18</code>, <code>4</code>, <code>225</code> — numeric data for calculations and positioning</li>
+<li><strong>Objects</strong> (inside objects): <code>mapLabel: { x: 225, y: 140 }</code> — complex data with multiple properties</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Arrays and Objects Work Together</strong></p>
+<p>Arrays are like playlists — they keep things in order. Objects are like contact cards — they store all the details about one thing. Together, they’re the perfect combination for organizing your game world. You’ll see this pattern everywhere in JavaScript: arrays of objects representing lists of complex items.</p>
+</blockquote>
 <p><a id="designing-your-zone-themes"></a></p>
 <h2 id="designing-your-zone-themes">🎨 Designing Your Zone Themes</h2>
 <p>Now for the creative part — designing three distinctive zone themes that create a cohesive game experience!</p>
-<ol type="1">
-<li><strong>Explore</strong> available categories by visiting <a href="https://opentdb.com/api_category.php">https://opentdb.com/api_category.php</a> to see all trivia categories</li>
-<li><strong>Brainstorm</strong> zone concepts that match the visual environments
+<h3 id="step-1-explore-available-categories">Step 1: Explore available categories</h3>
+<p>Visit <a href="https://opentdb.com/api_category.php">https://opentdb.com/api_category.php</a> to see all available trivia categories and their IDs.</p>
+<h3 id="step-2-brainstorm-zone-concepts">Step 2: Brainstorm zone concepts</h3>
+<p>Think about themes that match the visual environments on your game map:</p>
 <ul>
 <li><strong>Forest theme</strong>: Nature, animals, science categories</li>
-<li><strong>Desert theme</strong>: History, geography, mythology categories<br />
-</li>
+<li><strong>Desert theme</strong>: History, geography, mythology categories</li>
 <li><strong>Ice castle theme</strong>: Entertainment, sports, art categories</li>
-</ul></li>
-<li><strong>Plan</strong> your zones where each zone needs
+</ul>
+<h3 id="step-3-plan-your-zones">Step 3: Plan your zones</h3>
+<p>Use this organizer to capture your design decisions for each zone:</p>
+<p><strong>Zone 0 (First zone):</strong></p>
 <ul>
-<li><strong>id</strong>: Zone number (0, 1, 2)</li>
-<li><strong>name</strong>: Creative zone title</li>
-<li><strong>subtitle</strong>: Zone tagline/description<br />
-</li>
-<li><strong>categoryId</strong>: Question type from the API categories</li>
-<li><strong>difficulty</strong>: “easy”, “medium”, or “hard”</li>
-<li><strong>questionCount</strong>: How many questions (max 50)</li>
-<li><strong>mapLabel</strong>: Position and styling (we’ll configure this later on)</li>
-</ul></li>
-</ol>
-<p><strong>Cohesive theming</strong> creates an immersive game experience. By matching visual environments with appropriate trivia categories, you create logical connections that help players navigate and remember your game. This attention to <strong>user experience</strong> separates good games from great ones.</p>
+<li><strong>name</strong>: ___________________________</li>
+<li><strong>subtitle</strong>: ___________________________</li>
+<li><strong>categoryId</strong>: _____ (from API categories)</li>
+<li><strong>difficulty</strong>: _____ (easy, medium, or hard)</li>
+<li><strong>questionCount</strong>: _____ (max 50)</li>
+</ul>
+<p><strong>Zone 1 (Second zone):</strong></p>
+<ul>
+<li><strong>name</strong>: ___________________________</li>
+<li><strong>subtitle</strong>: ___________________________</li>
+<li><strong>categoryId</strong>: _____ (from API categories)</li>
+<li><strong>difficulty</strong>: _____ (easy, medium, or hard)</li>
+<li><strong>questionCount</strong>: _____ (max 50)</li>
+</ul>
+<p><strong>Zone 2 (Third zone):</strong></p>
+<ul>
+<li><strong>name</strong>: ___________________________</li>
+<li><strong>subtitle</strong>: ___________________________</li>
+<li><strong>categoryId</strong>: _____ (from API categories)</li>
+<li><strong>difficulty</strong>: _____ (easy, medium, or hard)</li>
+<li><strong>questionCount</strong>: _____ (max 50)</li>
+</ul>
+<h3 id="design-tips">Design Tips</h3>
+<ul>
+<li><strong>Create progression</strong>: Start with easier categories and increase difficulty</li>
+<li><strong>Match themes</strong>: Choose categories that fit the visual environment</li>
+<li><strong>Balance length</strong>: Vary question counts to create pacing (e.g., 4, 7, 10 questions)</li>
+<li><strong>Consider your audience</strong>: Pick categories that interest you and your players</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Cohesive Theming Creates Immersion</strong></p>
+<p>Matching visual environments with appropriate trivia categories creates logical connections that help players navigate and remember your game. When the “Forest of Knowledge” asks science questions and the “Desert of History” asks about ancient civilizations, players intuitively understand your game world. This attention to user experience separates good games from great ones.</p>
+</blockquote>
 <p><a id="configuring-zone-metadata"></a></p>
 <h2 id="configuring-zone-metadata">⚙️ Configuring Zone Metadata</h2>
-<p>Time to implement your zone designs by updating the <code>ZONES</code> array with your custom metadata.</p>
-<ol type="1">
-<li><strong>Open</strong> <code>src/data/zones.js</code></li>
-<li><p><strong>Update</strong> the first zone object with your Zone 0 design</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="op">{</span></a>
-<a class="sourceLine" id="cb3-2" title="2">  <span class="dt">id</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-3" title="3">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Your Zone Name&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-4" title="4">  <span class="dt">subtitle</span><span class="op">:</span> <span class="st">&quot;Your Zone Subtitle&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-5" title="5">  <span class="dt">categoryId</span><span class="op">:</span> <span class="dv">18</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-6" title="6">  <span class="dt">difficulty</span><span class="op">:</span> <span class="st">&quot;easy&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-7" title="7">  <span class="dt">questionCount</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-8" title="8">  <span class="dt">mapLabel</span><span class="op">:</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb3-9" title="9">    <span class="dt">x</span><span class="op">:</span> <span class="dv">225</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-10" title="10">    <span class="dt">y</span><span class="op">:</span> <span class="dv">140</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-11" title="11">    <span class="dt">fontSize</span><span class="op">:</span> <span class="st">&quot;35&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-12" title="12">    <span class="dt">fontFamily</span><span class="op">:</span> <span class="st">&quot;Pirata One, serif&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-13" title="13">    <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;#333&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-14" title="14">    <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">&quot;normal&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-15" title="15">    <span class="dt">alignment</span><span class="op">:</span> <span class="st">&quot;left&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb3-16" title="16">  <span class="op">},</span></a>
-<a class="sourceLine" id="cb3-17" title="17"><span class="op">},</span></a></code></pre></div></li>
-<li><p><strong>Add</strong> Zone 1 and Zone 2 objects by copying the structure and updating all properties (keep the mapLabel coordinates for now — we’ll position them precisely in the next section)</p>
-<p>Note: Changes to <code>zones.js</code> will trigger a full page reload (not HMR-friendly)</p></li>
-</ol>
-<p><strong>Object properties</strong> use colon syntax (<code>name: &quot;value&quot;</code>) and are separated by commas. Each zone object contains different <strong>data types</strong>: strings for text, numbers for IDs, and nested objects for complex styling. This structure makes your game data organized and easy to modify.</p>
+<p>🎯 <strong>Goal:</strong> Implement your zone designs by updating the ZONES array with your custom metadata from your planning organizer.</p>
+<p><strong>File:</strong> <code>src/data/zones.js</code></p>
+<h3 id="step-1-update-zone-0">Step 1: Update Zone 0</h3>
+<p>Replace the first zone object with your Zone 0 design from your planning organizer. Use the values you decided on for <code>name</code>, <code>subtitle</code>, <code>categoryId</code>, <code>difficulty</code>, and <code>questionCount</code>. Keep the <code>mapLabel</code> coordinates as-is for now.</p>
+<p><strong>Example structure (use YOUR values from the organizer):</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="dt">id</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-3" title="3">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Your Zone Name&quot;</span><span class="op">,</span>            <span class="co">// ← Use your Zone 0 name</span></a>
+<a class="sourceLine" id="cb4-4" title="4">  <span class="dt">subtitle</span><span class="op">:</span> <span class="st">&quot;Your Zone Subtitle&quot;</span><span class="op">,</span>    <span class="co">// ← Use your Zone 0 subtitle</span></a>
+<a class="sourceLine" id="cb4-5" title="5">  <span class="dt">categoryId</span><span class="op">:</span> <span class="dv">18</span><span class="op">,</span>                    <span class="co">// ← Use your Zone 0 categoryId</span></a>
+<a class="sourceLine" id="cb4-6" title="6">  <span class="dt">difficulty</span><span class="op">:</span> <span class="st">&quot;easy&quot;</span><span class="op">,</span>                <span class="co">// ← Use your Zone 0 difficulty</span></a>
+<a class="sourceLine" id="cb4-7" title="7">  <span class="dt">questionCount</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span>                  <span class="co">// ← Use your Zone 0 questionCount</span></a>
+<a class="sourceLine" id="cb4-8" title="8">  <span class="dt">mapLabel</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-9" title="9">    <span class="dt">x</span><span class="op">:</span> <span class="dv">225</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-10" title="10">    <span class="dt">y</span><span class="op">:</span> <span class="dv">140</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-11" title="11">    <span class="dt">fontSize</span><span class="op">:</span> <span class="st">&quot;35&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-12" title="12">    <span class="dt">fontFamily</span><span class="op">:</span> <span class="st">&quot;Pirata One, serif&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-13" title="13">    <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;#333&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-14" title="14">    <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">&quot;normal&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-15" title="15">    <span class="dt">alignment</span><span class="op">:</span> <span class="st">&quot;left&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-16" title="16">  <span class="op">},</span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="op">},</span></a></code></pre></div>
+<h3 id="step-2-update-zone-1">Step 2: Update Zone 1</h3>
+<p>Replace the second zone object with your Zone 1 design from your planning organizer.</p>
+<p><strong>Example structure (use YOUR values from the organizer):</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-3" title="3">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Your Zone Name&quot;</span><span class="op">,</span>            <span class="co">// ← Use your Zone 1 name</span></a>
+<a class="sourceLine" id="cb5-4" title="4">  <span class="dt">subtitle</span><span class="op">:</span> <span class="st">&quot;Your Zone Subtitle&quot;</span><span class="op">,</span>    <span class="co">// ← Use your Zone 1 subtitle</span></a>
+<a class="sourceLine" id="cb5-5" title="5">  <span class="dt">categoryId</span><span class="op">:</span> <span class="dv">9</span><span class="op">,</span>                     <span class="co">// ← Use your Zone 1 categoryId</span></a>
+<a class="sourceLine" id="cb5-6" title="6">  <span class="dt">difficulty</span><span class="op">:</span> <span class="st">&quot;medium&quot;</span><span class="op">,</span>              <span class="co">// ← Use your Zone 1 difficulty</span></a>
+<a class="sourceLine" id="cb5-7" title="7">  <span class="dt">questionCount</span><span class="op">:</span> <span class="dv">7</span><span class="op">,</span>                  <span class="co">// ← Use your Zone 1 questionCount</span></a>
+<a class="sourceLine" id="cb5-8" title="8">  <span class="dt">mapLabel</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-9" title="9">    <span class="dt">x</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-10" title="10">    <span class="dt">y</span><span class="op">:</span> <span class="dv">530</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-11" title="11">    <span class="dt">fontSize</span><span class="op">:</span> <span class="st">&quot;35&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-12" title="12">    <span class="dt">fontFamily</span><span class="op">:</span> <span class="st">&quot;Pirata One, serif&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-13" title="13">    <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;#333&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-14" title="14">    <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">&quot;normal&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-15" title="15">    <span class="dt">alignment</span><span class="op">:</span> <span class="st">&quot;left&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-16" title="16">  <span class="op">},</span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="op">},</span></a></code></pre></div>
+<h3 id="step-3-update-zone-2">Step 3: Update Zone 2</h3>
+<p>Replace the third zone object with your Zone 2 design from your planning organizer.</p>
+<p><strong>Example structure (use YOUR values from the organizer):</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-3" title="3">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Your Zone Name&quot;</span><span class="op">,</span>            <span class="co">// ← Use your Zone 2 name</span></a>
+<a class="sourceLine" id="cb6-4" title="4">  <span class="dt">subtitle</span><span class="op">:</span> <span class="st">&quot;Your Zone Subtitle&quot;</span><span class="op">,</span>    <span class="co">// ← Use your Zone 2 subtitle</span></a>
+<a class="sourceLine" id="cb6-5" title="5">  <span class="dt">categoryId</span><span class="op">:</span> <span class="dv">17</span><span class="op">,</span>                    <span class="co">// ← Use your Zone 2 categoryId</span></a>
+<a class="sourceLine" id="cb6-6" title="6">  <span class="dt">difficulty</span><span class="op">:</span> <span class="st">&quot;hard&quot;</span><span class="op">,</span>                <span class="co">// ← Use your Zone 2 difficulty</span></a>
+<a class="sourceLine" id="cb6-7" title="7">  <span class="dt">questionCount</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span>                 <span class="co">// ← Use your Zone 2 questionCount</span></a>
+<a class="sourceLine" id="cb6-8" title="8">  <span class="dt">mapLabel</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-9" title="9">    <span class="dt">x</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-10" title="10">    <span class="dt">y</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-11" title="11">    <span class="dt">fontSize</span><span class="op">:</span> <span class="st">&quot;35&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-12" title="12">    <span class="dt">fontFamily</span><span class="op">:</span> <span class="st">&quot;Pirata One, serif&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-13" title="13">    <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;#333&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-14" title="14">    <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">&quot;normal&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-15" title="15">    <span class="dt">alignment</span><span class="op">:</span> <span class="st">&quot;middle&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-16" title="16">  <span class="op">},</span></a>
+<a class="sourceLine" id="cb6-17" title="17"><span class="op">},</span></a></code></pre></div>
+<h3 id="step-4-test-your-configuration">Step 4: Test your configuration</h3>
+<p>Navigate to the game screen by clicking “Start Adventure.”</p>
+<p><strong>✓ You should see:</strong> Your custom zone names and subtitles appear on the game map (though positions may need adjustment in the next section).</p>
+<p><strong>Note:</strong> Changes to <code>zones.js</code> trigger a full page reload, not hot module replacement.</p>
+<blockquote>
+<p>💡 <strong>Configuration as Game Design</strong></p>
+<p>By editing this single data file, you’re designing your entire game experience without touching any component code. This separation means you could create completely different games — a history quiz, a science challenge, a pop culture trivia — just by changing the data in <code>zones.js</code>. The components stay the same; the data defines what players experience. This is the power of data-driven architecture in action.</p>
+</blockquote>
 <p><a id="positioning-zone-labels"></a></p>
 <h2 id="positioning-zone-labels">📍 Positioning Zone Labels</h2>
-<p>Use the <code>CoordinateDisplay</code> component to find optimal positions for your zone labels on the game map.</p>
-<ol type="1">
-<li><strong>Navigate</strong> to the game screen and observe the coordinate display</li>
-<li><strong>Move</strong> your mouse around the map and note the x, y coordinates — this tool gives you real-time feedback, no guessing, just precision</li>
-<li><strong>Find</strong> good positions for each zone label that don’t overlap with visual elements</li>
-<li><p><strong>Update</strong> the mapLabel coordinates in your zone objects</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">mapLabel<span class="op">:</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="dt">x</span><span class="op">:</span> <span class="dv">225</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb4-3" title="3">  <span class="dt">y</span><span class="op">:</span> <span class="dv">140</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb4-4" title="4">  <span class="co">// ... other styling properties</span></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Test</strong> each zone by navigating to the game screen and confirming label placement</p></li>
-</ol>
-<p><strong>Coordinate positioning</strong> requires precise <strong>number</strong> values to place UI elements exactly where you want them. The <code>CoordinateDisplay</code> component gives you real-time feedback, making it easy to find perfect positions without guessing.</p>
-<h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
-<p>Try different <code>fontSize</code> and <code>color</code> values to customize your zone labels’ appearance!</p>
+<p>🎯 <strong>Goal:</strong> Use the CoordinateDisplay component to find optimal positions for your zone labels on the game map.</p>
+<p><strong>File:</strong> <code>src/data/zones.js</code></p>
+<h3 id="step-1-navigate-to-the-game-screen">Step 1: Navigate to the game screen</h3>
+<p>Click “Start Adventure” to see your game map with the coordinate display in the corner.</p>
+<h3 id="step-2-find-optimal-positions">Step 2: Find optimal positions</h3>
+<p>Move your mouse around the map and watch the coordinate display show real-time x and y values. Find good positions for each zone label that don’t overlap with visual elements or other labels.</p>
+<p><strong>Tips for positioning:</strong></p>
+<ul>
+<li>Hover over different areas of each zone</li>
+<li>Note coordinates where labels would be clearly visible</li>
+<li>Avoid edges and busy visual areas</li>
+<li>Consider label alignment (left, middle, right)</li>
+</ul>
+<h3 id="step-3-update-zone-0-coordinates">Step 3: Update Zone 0 coordinates</h3>
+<p>Update the <code>x</code> and <code>y</code> values in Zone 0’s <code>mapLabel</code> object with your chosen coordinates.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1">mapLabel<span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="dt">x</span><span class="op">:</span> <span class="dv">225</span><span class="op">,</span>  <span class="co">// ← Update with your x coordinate</span></a>
+<a class="sourceLine" id="cb7-3" title="3">  <span class="dt">y</span><span class="op">:</span> <span class="dv">140</span><span class="op">,</span>  <span class="co">// ← Update with your y coordinate</span></a>
+<a class="sourceLine" id="cb7-4" title="4">  <span class="co">// ... other styling properties</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="op">}</span></a></code></pre></div>
+<h3 id="step-4-update-zone-1-coordinates">Step 4: Update Zone 1 coordinates</h3>
+<p>Update the <code>x</code> and <code>y</code> values in Zone 1’s <code>mapLabel</code> object.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1">mapLabel<span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="dt">x</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span>  <span class="co">// ← Update with your x coordinate</span></a>
+<a class="sourceLine" id="cb8-3" title="3">  <span class="dt">y</span><span class="op">:</span> <span class="dv">530</span><span class="op">,</span>  <span class="co">// ← Update with your y coordinate</span></a>
+<a class="sourceLine" id="cb8-4" title="4">  <span class="co">// ... other styling properties</span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="op">}</span></a></code></pre></div>
+<h3 id="step-5-update-zone-2-coordinates">Step 5: Update Zone 2 coordinates</h3>
+<p>Update the <code>x</code> and <code>y</code> values in Zone 2’s <code>mapLabel</code> object.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1">mapLabel<span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="dt">x</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span>  <span class="co">// ← Update with your x coordinate</span></a>
+<a class="sourceLine" id="cb9-3" title="3">  <span class="dt">y</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span>   <span class="co">// ← Update with your y coordinate</span></a>
+<a class="sourceLine" id="cb9-4" title="4">  <span class="co">// ... other styling properties</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="op">}</span></a></code></pre></div>
+<h3 id="step-6-test-and-refine">Step 6: Test and refine</h3>
+<p>Let the page reload and check your label positions. Adjust coordinates as needed until all labels are clearly visible and well-positioned.</p>
+<p><strong>✓ You should see:</strong> All three zone labels positioned exactly where you want them on the map.</p>
+<blockquote>
+<p>💡 <strong>Tool-Assisted Design</strong></p>
+<p>The CoordinateDisplay component demonstrates a key principle in development: build tools that make your work easier. Instead of guessing coordinates and refreshing repeatedly, you get instant feedback. This “observe, note, update, verify” workflow appears everywhere in game development and UI design — from level editors to animation tools. Good developers build tools to solve problems once, then reuse them.</p>
+</blockquote>
+<blockquote>
+<p>🏆 <strong>Bonus Challenge</strong></p>
+<p>Try experimenting with other mapLabel properties like <code>fontSize</code>, <code>color</code>, or <code>alignment</code> to customize your zone labels’ appearance!</p>
+</blockquote>
 <p><a id="testing-with-react-devtools"></a></p>
 <h2 id="testing-with-react-devtools">🔍 Testing with React DevTools</h2>
-<p>Let’s use React DevTools to explore your zone configuration and test game progression.</p>
-<ol type="1">
-<li><strong>Open</strong> DevTools by pressing F12 or right-clicking → Inspect</li>
-<li><strong>Find</strong> Components tab by looking for “Components” next to Console, Network, etc.</li>
-<li><strong>Locate</strong> GameProvider by clicking on GameProvider in the component tree</li>
-<li><strong>Examine</strong> the hooks by looking for the zoneProgress state (if you don’t see hook names clearly, click the gear icon and enable “Parse hook names”)</li>
-<li><strong>Find</strong> zoneProgress array by locating it under hooks</li>
-<li><strong>Experiment</strong> with progression by changing the first zone’s <code>completed</code> property to <code>true</code></li>
-<li><strong>Observe</strong> state changes by noticing how <code>activeZone</code> and <code>currentZone</code> update automatically</li>
-<li><strong>Check</strong> the HUD to see how the Context.Provider props reflect the updated game state</li>
-</ol>
-<p>React DevTools lets you manipulate <strong>state</strong> directly to test different game scenarios without playing through the entire game. This is invaluable for debugging and understanding how your <strong>shared state</strong> affects the entire app.</p>
+<p>🎯 <strong>Goal:</strong> Use React DevTools to explore your zone configuration and test game progression without playing through the entire game.</p>
+<h3 id="step-1-open-devtools">Step 1: Open DevTools</h3>
+<p>Press <code>F12</code> or right-click → Inspect to open your browser’s developer tools.</p>
+<h3 id="step-2-navigate-to-components-tab">Step 2: Navigate to Components tab</h3>
+<p>Look for “Components” next to Console, Network, etc. and click it.</p>
+<p><strong>✓ You should see:</strong> A tree of React components.</p>
+<h3 id="step-3-locate-gameprovider">Step 3: Locate GameProvider</h3>
+<p>Click on <code>GameProvider</code> in the component tree.</p>
+<p><strong>✓ You should see:</strong> The right panel shows GameProvider’s hooks and state.</p>
+<h3 id="step-4-find-zoneprogress-state">Step 4: Find zoneProgress state</h3>
+<p>Look for the <code>zoneProgress</code> state in the hooks section. If hook names aren’t clear, click the gear icon and enable “Parse hook names.”</p>
+<p><strong>✓ You should see:</strong> An array with three objects, one for each zone, showing <code>completed</code> and <code>score</code> properties.</p>
+<h3 id="step-5-experiment-with-progression">Step 5: Experiment with progression</h3>
+<p>Change the first zone’s <code>completed</code> property from <code>false</code> to <code>true</code> and watch the UI update.</p>
+<p><strong>✓ You should see:</strong> The HUD updates to show Zone 0 as completed, and <code>activeZone</code> and <code>currentZone</code> values change automatically.</p>
+<h3 id="step-6-observe-state-relationships">Step 6: Observe state relationships</h3>
+<p>Notice how changing one piece of state (<code>zoneProgress</code>) automatically updates related values (<code>activeZone</code>, <code>currentZone</code>) and the UI reflects these changes instantly.</p>
+<p><strong>✓ You should see:</strong> The entire app responds to the state change — this is the power of shared state management!</p>
+<blockquote>
+<p>💡 <strong>X-Ray Vision for Your App</strong></p>
+<p>React DevTools gives you superpowers: inspect any component’s data, then manipulate it instantly to test complex scenarios. Want to see what happens when all zones are complete? Change the state. Curious about edge cases? Modify values and watch. This transforms debugging from guesswork into precision — test interactions, simulate states, and verify data flow without writing test code.</p>
+</blockquote>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>
 <p><em>Quick reference for all the data structure and configuration concepts you just learned:</em></p>
@@ -584,10 +843,11 @@ overflow-x: hidden !important;
 <ul>
 <li><strong>What makes arrays and objects different, and when should I use each?</strong></li>
 <li><strong>How does nesting data structures help represent complex real-world information?</strong></li>
-<li><strong>Why is separating data from code considered a best practice in software development?</strong></li>
+<li><strong>Why is separating data from code a good practice in software development?</strong></li>
 <li><strong>What are the benefits of using configuration files like zones.js?</strong></li>
 <li><strong>How do React Fragments solve the single root element requirement?</strong></li>
 <li><strong>What is metadata and why is it important in application design?</strong></li>
+<li><strong>How does changing data in zones.js affect what users see without modifying components?</strong></li>
 </ul>
 </body>
 </html>

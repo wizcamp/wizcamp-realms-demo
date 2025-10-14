@@ -26,6 +26,8 @@ A modular system for creating consistent, effective coding tutorials.
 ├── patterns/
 │   ├── iterative-build.md              # ✅ Multi-step file modifications
 │   ├── code-scaffolding-reference.md   # ✅ Complete scaffolding toolkit (9 patterns, 15+ variants)
+│   ├── annotated-code-example.md       # ✅ Teaching data structures with visual examples
+│   ├── planning-design.md              # ✅ Creative design and planning phases
 │   ├── procedural.md                   # Sequential non-coding tasks (coming soon)
 │   ├── configuration.md                # Setup and tooling tasks (coming soon)
 │   ├── integration.md                  # Connecting multiple systems (coming soon)
@@ -66,6 +68,8 @@ Balance minimal structure with appropriate complexity. Don't over-structure simp
 | Task Type | Pattern | Key Feature |
 |-----------|---------|-------------|
 | Build new feature | Iterative Build | Step-by-step with testing |
+| Teach data structures | Annotated Code Example | Visual examples with annotations |
+| Plan/design phase | Planning/Design | Structured organizer for decisions |
 | Non-coding tasks | Procedural | Linear sequential instructions |
 | Setup tools | Configuration | Terminal-heavy instructions |
 | Connect systems | Integration | Multi-file coordination |
@@ -181,10 +185,12 @@ Based on course usage frequency:
 
 1. **Iterative Build** ✅ Documented (5 sessions)
 2. **Code Scaffolding** ✅ Comprehensive reference (9 patterns, 15+ variants)
-3. **Integration** 🔄 Needed (3 sessions)
-4. **Configuration** 🔄 Needed (2 sessions)
-5. **Solo Mission** 🔄 Needed (2 sessions)
-6. **Procedural** 🔄 Needed (1 session)
+3. **Annotated Code Example** ✅ Documented (conceptual variant)
+4. **Planning/Design** ✅ Documented (bridge pattern)
+5. **Integration** 🔄 Needed (3 sessions)
+6. **Configuration** 🔄 Needed (2 sessions)
+7. **Solo Mission** 🔄 Needed (2 sessions)
+8. **Procedural** 🔄 Needed (1 session)
 
 ---
 

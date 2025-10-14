@@ -25,16 +25,58 @@ Brief description of what will be built and why.
 
 ### Multi-Step Format
 
+**Single File Modified:**
+
 ```markdown
-### Step X: Descriptive Action Name
+**File:** `path/to/file.js`
+
+### Step 1: Descriptive Action Name
 
 Context sentence explaining what this step accomplishes.
 
 [Code scaffolding or instruction]
 
-**✓ Verify:** [What should happen]
+### Step 2: Descriptive Action Name
 
-[Repeat for each step...]
+[Code scaffolding or instruction]
+
+### Step 3: Test the feature
+
+[Test instruction]
+
+**✓ You should see:** [What should happen]
+
+[Callout at end]
+
+[Optional: Bonus Challenge]
+```
+
+**Multiple Files Modified:**
+
+```markdown
+### Step 1: Descriptive Action Name
+
+**File:** `path/to/first-file.js`
+
+[Code scaffolding or instruction]
+
+### Step 2: Descriptive Action Name
+
+**File:** `path/to/first-file.js`
+
+[Code scaffolding or instruction]
+
+### Step 3: Descriptive Action Name
+
+**File:** `path/to/second-file.js`
+
+[Code scaffolding or instruction]
+
+### Step 4: Test the feature
+
+[Test instruction]
+
+**✓ You should see:** [What should happen]
 
 [Callout at end]
 
@@ -63,12 +105,14 @@ Context sentence explaining what this step accomplishes.
 
 1. **Multi-step sections** use ### Step X: Descriptive Name
 2. **Single-action sections** skip step numbering
-3. **Verification stays WITH the step** it verifies
-4. **Callouts come at END** after all steps
-5. **Backticks** for all code elements (props, functions, variables)
-6. **Code scaffolding** matches complexity (simple → detailed)
-7. **✓ Verify** immediately follows the change
-8. **File:** declaration when file context needed
+3. **File paths:**
+   - Single file modified: **File:** before Step 1
+   - Multiple files: **File:** after step heading (first occurrence per file only)
+4. **Verification stays WITH the step** it verifies
+5. **Callouts come at END** after all steps
+6. **Backticks** for all code elements (props, functions, variables)
+7. **Code scaffolding** matches complexity (simple → detailed)
+8. **✓ You should see:** for verification statements
 9. **Bonus Challenge** comes after callout (optional)
 
 ---

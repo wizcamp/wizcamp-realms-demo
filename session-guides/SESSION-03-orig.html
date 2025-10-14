@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SESSION-03-orig - Wizcamp Session Guide</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style type="text/css">
+
+@page {
+margin: 0.6in 0.75in 0.6in 0.75in;
+size: letter;
+}
+body {
+font-family: "Amulya Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.4;
+color: #2d3748;
+margin: 0;
+padding: 0;
+max-width: none;
+overflow-x: hidden !important;
+}
+
+* {
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+
+html, body {
+overflow-x: hidden !important;
+width: 100% !important;
+max-width: 100% !important;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: "Plein Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+font-weight: 500;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px;
+color: #1a202c;
+}
+h1 {
+font-size: 1.75em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 0;
+}
+h2 {
+font-size: 1.5em;
+border-bottom: 1px solid #d0d7de;
+padding-bottom: 0.3em;
+margin-top: 48px;
+margin-bottom: 16px;
+}
+
+h1 + * h2:first-of-type,
+h2:first-of-type {
+margin-top: 24px;
+}
+
+a[id] {
+scroll-margin-top: 48px;
+}
+h3 {
+font-size: 1.25em;
+margin-top: 24px;
+margin-bottom: 12px;
+page-break-after: avoid;
+break-after: avoid;
+}
+
+h2, h3 {
+page-break-after: avoid;
+}
+
+ol, ul, li, p {
+page-break-inside: auto;
+}
+code {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+font-size: 13px !important;
+font-weight: 500 !important;
+background-color: #f6f8fa !important;
+color: #24292f !important;
+padding: 1px 3px !important;
+border-radius: 3px !important;
+white-space: nowrap;
+word-break: break-word;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+text-decoration: none !important;
+}
+pre {
+font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace !important;
+background-color: #f8f9fa !important;
+border: 1px solid #e1e4e8 !important;
+border-radius: 6px !important;
+padding: 16px !important;
+overflow: hidden !important;
+white-space: pre-wrap !important;
+word-wrap: break-word !important;
+page-break-inside: avoid !important;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+font-size: 14px !important;
+line-height: 1.4 !important;
+display: block !important;
+width: 100% !important;
+max-width: 100% !important;
+box-sizing: border-box !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+
+@media print {
+pre {
+white-space: pre !important;
+font-family: "JetBrains Mono", monospace !important;
+display: block !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+pre * {
+white-space: pre !important;
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+code {
+text-decoration: none !important;
+-webkit-text-decorations-in-effect: none !important;
+font-variant-ligatures: none !important;
+}
+}
+pre code {
+background-color: transparent !important;
+border: none !important;
+padding: 0 !important;
+color: #24292f !important;
+text-decoration: none !important;
+}
+ul, ol {
+padding-left: 1.8em;
+margin-bottom: 12px;
+}
+li {
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+li:has(:first-child:is(text):contains("✅")) {
+list-style-type: none;
+margin-left: -1.8em;
+padding-left: 1.8em;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px;
+}
+
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px;
+}
+
+@media print {
+ul, ol {
+display: block !important;
+}
+li {
+display: list-item !important;
+margin-bottom: 8px !important;
+}
+
+li > ul > li:first-child,
+li > ol > li:first-child {
+margin-top: 8px !important;
+}
+li > ul > li > ul > li:first-child,
+li > ol > li > ol > li:first-child {
+margin-top: 6px !important;
+}
+
+* {
+box-sizing: border-box !important;
+}
+}
+p {
+margin-bottom: 12px;
+}
+a {
+color: #0969da;
+text-decoration: none;
+}
+strong {
+font-weight: 500;
+color: #2d3748;
+white-space: normal;
+word-spacing: normal;
+letter-spacing: normal;
+}
+
+strong::before,
+strong::after {
+content: none;
+margin: 0;
+padding: 0;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+max-width: 100%;
+margin: 16px 0;
+font-size: 16px;
+line-height: 1.5;
+table-layout: auto;
+word-wrap: break-word;
+}
+th, td {
+padding: 12px 16px;
+text-align: left;
+vertical-align: top;
+border: 1px solid #d0d7de;
+word-wrap: break-word;
+overflow-wrap: break-word;
+hyphens: auto;
+}
+th {
+font-weight: 500;
+background-color: #f6f8fa;
+color: #2d3748;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+tbody tr:nth-child(even) {
+background-color: #f8f9fa;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+
+table code {
+font-size: 14px !important;
+padding: 2px 4px !important;
+word-break: break-all;
+}
+
+blockquote {
+border-left: 4px solid #d1d5db;
+padding: 12px 16px;
+margin: 20px 0;
+background-color: transparent;
+border-radius: 0;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+blockquote p {
+margin: 0 0 8px 0;
+}
+blockquote p:last-child {
+margin-bottom: 0;
+}
+
+blockquote strong {
+margin: 0;
+padding: 0;
+display: inline;
+white-space: normal;
+}
+blockquote code {
+margin: 0;
+padding: 1px 3px !important;
+display: inline;
+}
+blockquote em {
+margin: 0;
+padding: 0;
+display: inline;
+}
+blockquote a {
+margin: 0;
+padding: 0;
+display: inline;
+}
+
+blockquote ul {
+margin-top: 12px;
+margin-bottom: 0;
+padding-left: 1.8em;
+list-style-type: none;
+}
+blockquote li {
+position: relative;
+}
+
+blockquote li::before {
+content: '☐ ';
+position: absolute;
+left: -1.8em;
+font-size: 16px;
+}
+
+blockquote:has(strong:first-child:contains("💡")) {
+border-left-color: #3b82f6;
+}
+
+blockquote:has(strong:first-child:contains("⚠️")) {
+border-left-color: #f59e0b;
+}
+
+blockquote:has(strong:first-child:contains("✅")) {
+border-left-color: #10b981;
+}
+
+blockquote:has(strong:first-child:contains("❌")) {
+border-left-color: #ef4444;
+}
+
+blockquote:has(strong:first-child:contains("ℹ️")) {
+border-left-color: #6366f1;
+}
+
+blockquote:has(strong:first-child:contains("🎯")) {
+border-left-color: #8b5cf6;
+}
+
+@supports not (selector(:has(*))) {
+blockquote {
+border-left-color: #3b82f6;
+}
+}
+
+table td:first-child {
+width: 200px;
+max-width: 250px;
+}
+table td:nth-child(2) {
+width: auto;
+}
+table td:nth-child(3) {
+width: auto;
+}
+
+table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:nth-child(2) {
+width: 50% !important;
+max-width: none !important;
+}
+
+table {
+page-break-inside: auto !important;
+}
+th {
+page-break-after: avoid !important;
+}
+tbody tr {
+page-break-inside: avoid !important;
+page-break-after: auto !important;
+}
+
+thead {
+display: table-header-group !important;
+}
+
+img {
+max-width: 100%;
+height: auto;
+display: block;
+margin: 16px auto;
+page-break-inside: avoid;
+}
+
+em {
+display: block;
+text-align: center;
+font-style: italic;
+font-size: 14px;
+color: #666;
+margin-top: 8px;
+margin-bottom: 16px;
+}
+@media print {
+thead {
+display: table-row-group !important;
+}
+table {
+page-break-inside: auto !important;
+}
+tr {
+page-break-inside: avoid !important;
+}
+
+blockquote {
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+page-break-inside: avoid !important;
+}
+
+* {
+overflow: visible !important;
+scrollbar-width: none !important;
+-ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+display: none !important;
+}
+html, body {
+overflow-x: hidden !important;
+}
+}
+</style>
+</head>
+<body>
+<h1 id="session-3-managing-game-flow">Session 3 — Managing Game Flow</h1>
+<p>Shared State with Context 🧠</p>
+<p>You’re about to unlock one of React’s most powerful features — shared state that controls your entire app! This guide walks you through implementing screen navigation, understanding the difference between local and shared state, and using React’s Context API to manage game flow. Ready to make your buttons actually navigate? Let’s go!</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#understanding-state-vs-props">Understanding State vs Props</a></li>
+<li><a href="#adding-local-state-for-credits">Adding Local State for Credits</a></li>
+<li><a href="#exploring-game-constants">Exploring Game Constants</a></li>
+<li><a href="#adding-screen-navigation">Adding Screen Navigation</a></li>
+<li><a href="#using-react-devtools-for-exploring-state">Using React DevTools for Exploring State</a></li>
+<li><a href="#implementing-start-game-function">Implementing Start Game Function</a></li>
+<li><a href="#essential-terms">Essential Terms</a></li>
+<li><a href="#ask-the-ai">Ask the AI</a></li>
+</ul>
+<p><a id="accessing-your-codespace"></a></p>
+<h2 id="accessing-your-codespace">☁️ Accessing Your Codespace</h2>
+<p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 2.</p>
+<p><a id="understanding-state-vs-props"></a></p>
+<h2 id="understanding-state-vs-props">🧠 Understanding State vs Props</h2>
+<p>Before we dive into code, let’s understand the key difference between <strong>state</strong> and <strong>props</strong> — two fundamental concepts that control how data flows in React apps.</p>
+<h3 id="props-vs-state-the-key-differences">Props vs State: The Key Differences</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Props</strong></th>
+<th><strong>State</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data flows <strong>down</strong> from parent to child</td>
+<td>Data lives <strong>inside</strong> a component</td>
+</tr>
+<tr class="even">
+<td><strong>Read-only</strong> — child can’t change them</td>
+<td><strong>Changeable</strong> — component can update it</td>
+</tr>
+<tr class="odd">
+<td>Like function parameters</td>
+<td>Like component memory</td>
+</tr>
+<tr class="even">
+<td>External data</td>
+<td>Internal data</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Props</strong> are like ingredients you receive to make a recipe — you can’t change them, but you use them to create something. <strong>State</strong> is like your kitchen’s current condition — you can rearrange, add, or remove things as needed. Understanding this difference is crucial because it determines how data flows through your app and which component is responsible for managing what information.</p>
+<p><a id="adding-local-state-for-credits"></a></p>
+<h2 id="adding-local-state-for-credits">🏆 Adding Local State for Credits</h2>
+<p>Let’s implement <strong>local state</strong> for the credits modal to see how components can manage their own data.</p>
+<ol type="1">
+<li><p><strong>Add</strong> imports at the top of SplashScreen.jsx</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> <span class="op">{</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> CreditsModal <span class="im">from</span> <span class="st">&quot;./CreditsModal&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Add</strong> local state inside the SplashScreen function (before the return)</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Update</strong> the Credits button</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&lt;</span>GameButton</a>
+<a class="sourceLine" id="cb3-2" title="2">  text<span class="op">=</span><span class="st">&quot;Credits&quot;</span></a>
+<a class="sourceLine" id="cb3-3" title="3">  onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">setShowCredits</span>(<span class="kw">true</span>)<span class="op">}</span></a>
+<a class="sourceLine" id="cb3-4" title="4">  variant<span class="op">=</span><span class="st">&quot;secondary&quot;</span></a>
+<a class="sourceLine" id="cb3-5" title="5">/&gt;</a></code></pre></div></li>
+<li><p><strong>Add</strong> the modal before the closing <code>&lt;/div&gt;</code> tag</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">{</span><span class="co">/* Show modal only when showCredits is true */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="op">{</span>showCredits <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>CreditsModal onClose<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">setShowCredits</span>(<span class="kw">false</span>)<span class="op">}</span> /&gt;<span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Test</strong> by clicking the Credits button to see the modal appear</p></li>
+</ol>
+<p><strong>Local state</strong> with <code>useState</code> belongs to a single component and gives it its own memory. The credits modal only affects <code>SplashScreen</code>, so it uses local state to track whether the modal should be visible. This pattern keeps component data isolated and manageable.</p>
+<h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
+<p>Use React DevTools to inspect the SplashScreen component and watch the <code>showCredits</code> state change as you interact with the Credits button.</p>
+<p><a id="exploring-game-constants"></a></p>
+<h2 id="exploring-game-constants">📋 Exploring Game Constants</h2>
+<p>Let’s understand how our game screens are organized using <strong>constants</strong> — static values that prevent typos and make code more maintainable.</p>
+<ol type="1">
+<li><strong>Explore</strong> the screens constant by opening <code>src/constants/screens.js</code> and examining the SCREENS object</li>
+<li><strong>Notice</strong> the structure where each screen has a key (like <code>SPLASH</code>) and a descriptive value</li>
+<li><strong>Understand</strong> the purpose of using <code>SCREENS.SPLASH</code> instead of strings like <code>&quot;splash&quot;</code> everywhere</li>
+</ol>
+<h3 id="what-is-prop-drilling">What is Prop Drilling?</h3>
+<p><strong>Prop drilling</strong> is when you have to pass data through multiple component levels, even when the middle components don’t need that data. It’s like having to ask your friend to ask their friend to ask their friend for something — inefficient and annoying.</p>
+<p><strong>Example of prop drilling:</strong></p>
+<pre class="text"><code>App (has screen state)
+ ↓ passes screen as prop
+SplashScreen (doesn&#39;t need screen, just passes it along)
+ ↓ passes screen as prop  
+GameButton (finally uses screen)</code></pre>
+<p><strong>With Context (no prop drilling):</strong></p>
+<pre class="text"><code>GameProvider (provides screen state)
+ ↓ any component can access directly
+GameButton (uses useGame hook to get screen)</code></pre>
+<p><strong>Constants</strong> prevent typos and make your code more maintainable. Instead of typing <code>&quot;splash&quot;</code> in multiple places (and risking typos like <code>&quot;spalsh&quot;</code>), you use <code>SCREENS.SPLASH</code> once and get autocomplete everywhere. If you need to change the value later, you only change it in one place.</p>
+<p><a id="adding-screen-navigation"></a></p>
+<h2 id="adding-screen-navigation">🗺️ Adding Screen Navigation</h2>
+<p>Now let’s implement the core navigation system that will control which screen users see. This is where <strong>shared state</strong> really shines!</p>
+<ol type="1">
+<li><p><strong>Open</strong> <code>src/App.jsx</code> and add the necessary imports at the top</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./hooks/useGame&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;./constants/screens&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="im">import</span> GameMap <span class="im">from</span> <span class="st">&quot;./components/GameMap&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Access</strong> the shared state by adding this line inside the App function (before the return)</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">const</span> <span class="op">{</span> screen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Add</strong> conditional rendering by replacing the current JSX with</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-3" title="3">    <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb9-4" title="4">    <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>GameMap /<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb9-5" title="5">  &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-6" title="6">)<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Test</strong> by running <code>npm run dev</code> to make sure everything still works</p></li>
+</ol>
+<p><strong>Conditional rendering</strong> using <code>&amp;&amp;</code> is a React pattern that shows components only when certain conditions are true. When <code>screen</code> equals <code>SCREENS.SPLASH</code>, the <code>SplashScreen</code> component renders. When it equals <code>SCREENS.PLAYING</code>, <code>GameMap</code> renders instead. This single piece of <strong>shared state</strong> controls what your entire app displays!</p>
+<p><a id="using-react-devtools-for-exploring-state"></a></p>
+<h2 id="using-react-devtools-for-exploring-state">🔍 Using React DevTools for Exploring State</h2>
+<p>Let’s use React DevTools to see how <strong>shared state</strong> works behind the scenes and experiment with changing it manually.</p>
+<ol type="1">
+<li><strong>Open</strong> DevTools by pressing F12 or right-clicking → Inspect</li>
+<li><strong>Find</strong> Components tab by looking for “Components” next to Console, Network, etc.</li>
+<li><strong>Locate</strong> GameProvider by clicking on GameProvider in the component tree</li>
+<li><strong>Examine</strong> the hooks by looking for the screen state value (if you don’t see hook names clearly, click the gear icon and enable “Parse hook names”)</li>
+<li><strong>Experiment</strong> with state by changing the screen value from “splash” to “playing” and watch the UI update!</li>
+<li><strong>Change</strong> it back by setting it back to “splash” to see the SplashScreen return</li>
+</ol>
+<p>React DevTools gives you X-ray vision into your app’s <strong>state</strong>. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how <strong>shared state</strong> affects your entire app. Notice how changing one value in <code>GameProvider</code> instantly changes what component renders!</p>
+<h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
+<p>Try changing the screen state to different values and see what happens. What occurs when you set it to a value that doesn’t match any of your conditions?</p>
+<p><a id="implementing-start-game-function"></a></p>
+<h2 id="implementing-start-game-function">🎮 Implementing Start Game Function</h2>
+<p>Now let’s make your “Start Adventure” button actually start the game by updating the <strong>shared state</strong>!</p>
+<ol type="1">
+<li><p><strong>Open</strong> <code>src/components/SplashScreen.jsx</code> and add imports at the top</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/screens&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../hooks/useGame&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Access</strong> the state setter by adding this inside the SplashScreen function (before the return)</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Create</strong> the start game function (before the return)</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">const</span> startGame <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="at">setScreen</span>(<span class="va">SCREENS</span>.<span class="at">PLAYING</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="op">};</span></a></code></pre></div></li>
+<li><p><strong>Update</strong> the first GameButton to use the real function</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="op">&lt;</span>GameButton</a>
+<a class="sourceLine" id="cb13-2" title="2">  text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
+<a class="sourceLine" id="cb13-3" title="3">  onClick<span class="op">={</span>startGame<span class="op">}</span></a>
+<a class="sourceLine" id="cb13-4" title="4">  variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
+<a class="sourceLine" id="cb13-5" title="5">/&gt;</a></code></pre></div></li>
+<li><p><strong>Test</strong> by clicking the “Start Adventure” button and watch the screen change to GameMap!</p></li>
+</ol>
+<p><strong>State setters</strong> like <code>setScreen</code> are functions that update <strong>state</strong> and trigger re-renders. When you call <code>setScreen(SCREENS.PLAYING)</code>, React updates the shared state and re-renders all components that depend on it. This is how one button click can change your entire app’s display!</p>
+<p><a id="essential-terms"></a></p>
+<h2 id="essential-terms">📚 Essential Terms</h2>
+<p><em>Quick reference for all the state management concepts you just learned:</em></p>
+<table>
+<colgroup>
+<col style="width: 22%"></col>
+<col style="width: 33%"></col>
+<col style="width: 44%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Definition</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🧠 state</td>
+<td>Data that can change over time and causes components to re-render when it changes.</td>
+<td>State lets components “remember” information and respond to user interactions dynamically.</td>
+</tr>
+<tr class="even">
+<td>🪝 hook</td>
+<td>Functions starting with “use” that let you use React features like state and context.</td>
+<td>Hooks like <code>useState</code> are your tools for managing data and behavior in components.</td>
+</tr>
+<tr class="odd">
+<td>🌐 Context</td>
+<td>React’s solution to prop drilling — lets components access shared data without passing props through multiple levels.</td>
+<td>Context prevents “prop drilling” and provides shared state accessible from any component.</td>
+</tr>
+<tr class="even">
+<td>🔗 prop drilling</td>
+<td>Passing data through multiple component levels, even when intermediate components don’t need that data.</td>
+<td>Context eliminates prop drilling by letting any component access shared data directly.</td>
+</tr>
+<tr class="odd">
+<td>📦 props</td>
+<td>Data passed from parent to child components.</td>
+<td>Props flow data down the component tree, while state manages data within components.</td>
+</tr>
+<tr class="even">
+<td>🔄 useState</td>
+<td>A React hook that adds local state to functional components.</td>
+<td><code>useState</code> gives individual components their own memory for data that only they need to track.</td>
+</tr>
+<tr class="odd">
+<td>📋 constants</td>
+<td>Static values that don’t change, used to prevent typos and make code more maintainable.</td>
+<td>Constants like <code>SCREENS.SPLASH</code> prevent typos and make refactoring easier.</td>
+</tr>
+<tr class="even">
+<td>🔀 conditional rendering</td>
+<td>Showing different components based on state or props using JavaScript expressions.</td>
+<td>Conditional rendering with <code>&amp;&amp;</code> lets you control what users see based on app state.</td>
+</tr>
+<tr class="odd">
+<td>🏪 Provider</td>
+<td>A Context component that makes shared state available to all child components.</td>
+<td>The Provider pattern wraps your app and gives all components access to shared data.</td>
+</tr>
+</tbody>
+</table>
+<p><a id="ask-the-ai"></a></p>
+<h2 id="ask-the-ai-managing-game-flow">🤖 Ask the AI — Managing Game Flow</h2>
+<p>You just implemented both local and shared state, created screen navigation, and experienced the power of React’s Context API — excellent work!</p>
+<p>Now let’s deepen your understanding of state management, hooks, and the React data flow. Here are the most impactful questions to ask your AI assistant about today’s session:</p>
+<ul>
+<li><strong>What makes hooks special and why do they all start with “use”?</strong></li>
+<li><strong>Explain <code>const [showCredits, setShowCredits] = useState(false);</code> in regular English.</strong></li>
+<li><strong>Explain state setter functions like <code>setScreen</code>, but in a non-tech example.</strong></li>
+<li><strong>What is “prop drilling” and how does the Context API prevent it? Give me non-tech examples.</strong></li>
+<li><strong>How does the GameProvider make state available to all components?</strong></li>
+</ul>
+</body>
+</html>
