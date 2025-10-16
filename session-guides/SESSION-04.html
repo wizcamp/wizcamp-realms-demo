@@ -492,7 +492,6 @@ overflow-x: hidden !important;
 <p>You’re about to design the heart of your trivia game — the zone configuration that defines your entire game experience! This guide walks you through creating cohesive zone themes, understanding JavaScript data structures, and building the metadata that powers your adventure. Ready to architect your game world? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#accessing-your-codespace">Accessing Your Codespace</a></li>
 <li><a href="#adding-the-hud-and-coordinate-display">Adding the HUD and Coordinate Display</a></li>
 <li><a href="#metadata-and-configuration">Metadata and Configuration</a></li>
 <li><a href="#the-zones-array-structure">The ZONES Array Structure</a></li>
@@ -533,7 +532,7 @@ overflow-x: hidden !important;
 <p><strong>✓ You should see:</strong> The game map with a HUD at the top showing zone progress and a coordinate display in the corner showing your mouse position.</p>
 <blockquote>
 <p>💡 <strong>Fragments Group Without Clutter</strong></p>
-<p>React Fragments (<code>&lt;&gt;...&lt;/&gt;</code>) are like invisible containers that let you group multiple components without adding extra DOM elements. React requires a single root element, so fragments solve this cleanly. The HUD shows game progress, while CoordinateDisplay helps you position zone labels precisely in the next sections.</p>
+<p><strong>React Fragments</strong> (<code>&lt;&gt;...&lt;/&gt;</code>) are like invisible containers that let you group multiple components without adding extra DOM elements. React requires a single root element, so fragments solve this cleanly. The HUD shows game progress, while CoordinateDisplay helps you position zone labels precisely in the next sections.</p>
 </blockquote>
 <blockquote>
 <p>🏆 <strong>Bonus Challenge</strong></p>
@@ -663,8 +662,8 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb4-15" title="15">    <span class="dt">alignment</span><span class="op">:</span> <span class="st">&quot;left&quot;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb4-16" title="16">  <span class="op">},</span></a>
 <a class="sourceLine" id="cb4-17" title="17"><span class="op">},</span></a></code></pre></div>
-<h3 id="step-2-update-zone-1">Step 2: Update Zone 1</h3>
-<p>Replace the second zone object with your Zone 1 design from your planning organizer.</p>
+<h3 id="step-2-add-zone-1">Step 2: Add Zone 1</h3>
+<p>Add a second zone object after Zone 0 with your Zone 1 design from your planning organizer. You can copy Zone 0’s structure and modify the values, or type it from scratch.</p>
 <p><strong>Example structure (use YOUR values from the organizer):</strong></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="op">{</span></a>
 <a class="sourceLine" id="cb5-2" title="2">  <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></a>
@@ -683,8 +682,8 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb5-15" title="15">    <span class="dt">alignment</span><span class="op">:</span> <span class="st">&quot;left&quot;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb5-16" title="16">  <span class="op">},</span></a>
 <a class="sourceLine" id="cb5-17" title="17"><span class="op">},</span></a></code></pre></div>
-<h3 id="step-3-update-zone-2">Step 3: Update Zone 2</h3>
-<p>Replace the third zone object with your Zone 2 design from your planning organizer.</p>
+<h3 id="step-3-add-zone-2">Step 3: Add Zone 2</h3>
+<p>Add a third zone object after Zone 1 with your Zone 2 design from your planning organizer. Again, you can copy an existing zone’s structure and modify the values.</p>
 <p><strong>Example structure (use YOUR values from the organizer):</strong></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="op">{</span></a>
 <a class="sourceLine" id="cb6-2" title="2">  <span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span></a>

@@ -13,7 +13,7 @@ Certain sections have unique conventions that differ from standard patterns.
 **When to include:** Sessions 2+ (not Session 1, which covers initial setup)
 
 **Conventions:**
-- ❌ Does NOT appear in Table of Contents
+- ❌ Does NOT appear in Table of Contents (use `####` heading level, not `##`)
 - ❌ Does NOT include Goal statement
 - ✅ Brief, single-sentence instruction
 - ✅ Always first section after TOC
@@ -23,7 +23,7 @@ Certain sections have unique conventions that differ from standard patterns.
 ```markdown
 <a id="accessing-your-codespace"></a>
 
-## ☁️ Accessing Your Codespace
+#### ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session X.
 ```

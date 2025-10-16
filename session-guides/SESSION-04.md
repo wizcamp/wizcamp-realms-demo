@@ -4,7 +4,6 @@ You're about to design the heart of your trivia game — the zone configuration 
 
 ## Table of Contents
 
-- [Accessing Your Codespace](#accessing-your-codespace)
 - [Adding the HUD and Coordinate Display](#adding-the-hud-and-coordinate-display)
 - [Metadata and Configuration](#metadata-and-configuration)
 - [The ZONES Array Structure](#the-zones-array-structure)
@@ -65,7 +64,7 @@ Navigate to the game screen by clicking "Start Adventure."
 
 > 💡 **Fragments Group Without Clutter**
 >
-> React Fragments (`<>...</>`) are like invisible containers that let you group multiple components without adding extra DOM elements. React requires a single root element, so fragments solve this cleanly. The HUD shows game progress, while CoordinateDisplay helps you position zone labels precisely in the next sections.
+> **React Fragments** (`<>...</>`) are like invisible containers that let you group multiple components without adding extra DOM elements. React requires a single root element, so fragments solve this cleanly. The HUD shows game progress, while CoordinateDisplay helps you position zone labels precisely in the next sections.
 
 > 🏆 **Bonus Challenge**
 >
@@ -233,9 +232,9 @@ Replace the first zone object with your Zone 0 design from your planning organiz
 },
 ```
 
-### Step 2: Update Zone 1
+### Step 2: Add Zone 1
 
-Replace the second zone object with your Zone 1 design from your planning organizer.
+Add a second zone object after Zone 0 with your Zone 1 design from your planning organizer. You can copy Zone 0's structure and modify the values, or type it from scratch.
 
 **Example structure (use YOUR values from the organizer):**
 
@@ -259,9 +258,9 @@ Replace the second zone object with your Zone 1 design from your planning organi
 },
 ```
 
-### Step 3: Update Zone 2
+### Step 3: Add Zone 2
 
-Replace the third zone object with your Zone 2 design from your planning organizer.
+Add a third zone object after Zone 1 with your Zone 2 design from your planning organizer. Again, you can copy an existing zone's structure and modify the values.
 
 **Example structure (use YOUR values from the organizer):**
 

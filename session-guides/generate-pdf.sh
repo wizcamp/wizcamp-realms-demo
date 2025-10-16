@@ -402,24 +402,11 @@ blockquote a {
   display: inline;
 }
 
-/* Checkbox list items in callouts */
+/* Regular list items in callouts - keep normal bullets */
 blockquote ul {
   margin-top: 12px;
   margin-bottom: 0;
   padding-left: 1.8em;
-  list-style-type: none;
-}
-
-blockquote li {
-  position: relative;
-}
-
-/* Add checkbox symbol */
-blockquote li::before {
-  content: '☐ ';
-  position: absolute;
-  left: -1.8em;
-  font-size: 16px;
 }
 
 /* Concept/Tip callouts (💡) */
@@ -556,10 +543,9 @@ em {
 }
 EOF
 
-# Step 2: Preprocess markdown to handle checkmarks and checkboxes
-# Wrap checkmark list items in span for CSS targeting
+# Step 2: Preprocess markdown - only handle actual checkbox syntax
+# Remove checkbox syntax ONLY from lines that start with '- [ ]' (not in blockquotes)
 sed -e 's/^- \[ \] /- /g' \
-    -e 's/^> - \[ \] /> - /g' \
     -e 's/^- ✅ /<li style="list-style-type: none;">✅ /g' \
     ${SESSION_NAME}.md > ${SESSION_NAME}-processed.md
 
