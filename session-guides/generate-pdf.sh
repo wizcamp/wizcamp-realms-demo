@@ -460,10 +460,15 @@ table td:nth-child(3) {
   width: auto;
 }
 
-/* 2-column tables get 50/50 split */
-table:not(:has(td:nth-child(3))) td:first-child,
+/* 2-column tables: first column auto-sizes, second gets remaining space */
+table:not(:has(td:nth-child(3))) td:first-child {
+  width: auto !important;
+  max-width: none !important;
+  white-space: nowrap;
+}
+
 table:not(:has(td:nth-child(3))) td:nth-child(2) {
-  width: 50% !important;
+  width: 100% !important;
   max-width: none !important;
 }
 

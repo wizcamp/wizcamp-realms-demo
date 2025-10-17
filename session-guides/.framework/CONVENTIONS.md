@@ -67,6 +67,22 @@ _Quick reference for all the [topic] concepts you just learned:_
 - **Question 2?**
 ```
 
+### Bonus Challenge
+
+**Conventions:**
+- ❌ Does NOT have its own heading
+- ✅ Appears at end of conceptual sections
+- ✅ Uses 🏆 emoji
+- ✅ Formatted as blockquote callout
+- ✅ Contains thought-provoking question or task
+
+**Format:**
+```markdown
+> 🏆 **Bonus Challenge**
+>
+> Think of three apps you use daily — can you identify what external data they might be fetching through APIs?
+```
+
 ---
 
 ## Formatting Best Practices
@@ -128,8 +144,10 @@ The `useState` hook creates state. Pass the `score` prop to the component. Updat
 - ❌ Don't bold entire sentences
 - ❌ Don't use backticks for non-code terms ("the `game` needs scoring")
 - ❌ Don't mix styles inconsistently (Open **src/file.js** vs **Open** `src/file.js`)
-- ❌ Don't bold verification text except the word "Verify"
+- ❌ Don't bold verification text except the word "Verify" or "✓ You should see"
 - ❌ Don't use backticks around quoted UI text ("Score: 0" not `"Score: 0"`)
+- ❌ Don't use emojis in step headings (use in section headings only)
+- ❌ Don't add callouts automatically (only when they elevate understanding)
 
 ### Quick Reference
 
@@ -203,11 +221,24 @@ Your Codespace is ready.  ← Already bolded, skip
 
 ## Callout Types
 
+**General Guidelines:**
+- Callouts should elevate understanding beyond the immediate task
+- Not every section needs a callout
+- Conceptual sections: Use callouts sparingly, only when they add insight beyond core content
+- Iterative build sections: Use callouts to explain patterns, principles, or "why" behind the code
+
 ### 💡 Concept
 
-Use for explaining how or why something works.
+Use for explaining how or why something works, or connecting to broader patterns.
 
-> **💡 Concept:** The `map()` method transforms each item in an array. Here, it decodes each incorrect answer.
+> **💡 Understanding the Fetch Process**
+>
+> This code performs four key operations:
+>
+> 1. **Log the URL**: Shows what endpoint we're calling
+> 2. **Send the request**: `await fetch(url)` sends HTTP request and waits for response
+> 3. **Parse JSON**: `await response.json()` converts the response text into a JavaScript object
+> 4. **Log the data**: Shows the raw API response structure
 
 ### ⚠️ Warning
 
@@ -273,4 +304,213 @@ Always include blank line before lists inside callouts:
 >
 > - [ ] First condition
 > - [ ] Second condition
+```
+
+---
+
+## Section Types & Patterns
+
+### Conceptual Sections
+
+**Purpose:** Explain concepts before students write code
+
+**Conventions:**
+- ❌ Does NOT include Goal statement
+- ❌ Does NOT automatically include callouts (only when elevating understanding)
+- ✅ Uses emoji in section heading (e.g., `## 🌐 APIs and External Data`)
+- ✅ Direct, technical explanations
+- ✅ Avoid marketing language ("supercharge", "lightning-fast", "magic")
+- ✅ Bold Essential Terms on first occurrence
+- ✅ May include diagrams, examples, or use cases
+
+**Example:** "APIs and External Data" in SESSION-05
+
+### Iterative Build Sections
+
+**Purpose:** Guide students through building code step-by-step
+
+**Conventions:**
+- ✅ MUST include Goal statement
+- ✅ MUST include File reference
+- ✅ Uses `### Step N:` headings (not numbered lists)
+- ✅ Each step includes verification ("✓ You should see:")
+- ✅ May include callouts that explain patterns or principles
+
+**Example:** "Building the Fetch Foundation" in SESSION-05
+
+### Testing Sections
+
+**Purpose:** Guide students through verifying their implementation
+
+**Conventions:**
+- ✅ MUST include Goal statement
+- ✅ Uses `### Step N:` headings (not numbered lists)
+- ❌ Does NOT use emojis in step headings
+- ✅ Each step includes verification ("✓ You should see:")
+- ✅ May include flow diagrams
+
+**Example:** "Testing Your API Integration" in SESSION-05
+
+---
+
+## Code Scaffolding Patterns
+
+### Decision Tree
+
+Choose the appropriate pattern based on the type of change:
+
+```text
+What type of change?
+├─ Simple line replacement → Inline Before/After
+├─ Adding new lines → Scaffolding with Comments
+├─ Updating existing lines → Diff Format
+├─ Complex multi-line addition → Numbered Annotations
+└─ Multiple distinct actions → Multi-Part Steps
+```
+
+### Pattern 1: Inline Before/After
+
+**When to use:** Simple line replacements
+
+**Format:**
+```javascript
+// Before:
+alert(`Loading questions for ${zone.name}`);
+
+// After:
+console.log("Fetching from:", url);
+const response = await fetch(url);
+const data = await response.json();
+```
+
+### Pattern 2: Scaffolding with Comments
+
+**When to use:** Adding new lines to existing code
+
+**Format:**
+```javascript
+export default function SplashScreen() {
+  const [showCredits, setShowCredits] = useState(false);
+  // Add this line to access the shared state setter
+  const { setScreen } = useGame();
+  
+  // ... rest of function ...
+}
+```
+
+### Pattern 3: Diff Format
+
+**When to use:** Updating existing lines (shows precise changes)
+
+**Format:**
+```diff
+function transformQuestion(apiQuestion) {
+- const question = apiQuestion.question;
++ const question = decodeText(apiQuestion.question);
+- const incorrectAnswers = apiQuestion.incorrect_answers;
++ const incorrectAnswers = apiQuestion.incorrect_answers.map(
++   (answer) => decodeText(answer)
++ );
+}
+```
+
+### Pattern 4: Numbered Annotations
+
+**When to use:** Complex multi-line additions that need explanation
+
+**Format:**
+```javascript
+try {
+  console.log("Fetching from:", url);        // [1] Log the URL
+  const response = await fetch(url);         // [2] Send HTTP request
+  const data = await response.json();        // [3] Parse JSON response
+  console.log("Raw API data:", data);        // [4] Log the data
+} catch (error) {
+  // ... error handling ...
+}
+```
+
+**Follow with explanatory callout:**
+```markdown
+> 💡 **Understanding the Fetch Process**
+>
+> This code performs four key operations:
+>
+> 1. **Log the URL**: Shows what endpoint we're calling
+> 2. **Send the request**: `await fetch(url)` sends HTTP request and waits for response
+> 3. **Parse JSON**: `await response.json()` converts response text into JavaScript object
+> 4. **Log the data**: Shows the raw API response structure
+```
+
+### Pattern 5: Multi-Part Steps
+
+**When to use:** Single step involves multiple distinct actions
+
+**Format:**
+```markdown
+### Step 6: Complete the integration
+
+#### Part A: Remove test code
+
+[Instructions and code for Part A]
+
+#### Part B: Format all questions
+
+[Instructions and code for Part B]
+
+#### Part C: Verify integration
+
+[Instructions and code for Part C]
+```
+
+### Pattern 6: Reference Code Blocks
+
+**When to use:** After iterative steps complete, show final result
+
+**Format:**
+```markdown
+Here's the complete `fetchQuestions` function for reference:
+
+```javascript
+export async function fetchQuestions(zoneId, count = null) {
+  // ... complete final code ...
+}
+```
+```
+
+---
+
+## Verification Patterns
+
+### Text-Based Verification
+
+**Format:**
+```markdown
+**✓ You should see:** Console shows the fetching URL and raw API data.
+```
+
+### Example Output Verification
+
+**When to use:** Show exact expected output (JSON, console logs, etc.)
+
+**Format:**
+```markdown
+**✓ You should see:** Console shows "After transform:" with extracted properties (example):
+```json
+{
+  "question": "What%20is%20RAM%3F",
+  "incorrectAnswers": ["Processor", "Storage", "Graphics"],
+  "correctAnswer": "Memory"
+}
+```
+```
+
+### Multi-Condition Verification
+
+**Format:**
+```markdown
+**✓ You should see:**
+- Console shows `Cache hit for zone X`
+- localStorage entry remains unchanged
+- No new network requests in Network tab
 ```
