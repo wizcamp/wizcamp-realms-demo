@@ -364,17 +364,6 @@ blockquote ul {
 margin-top: 12px;
 margin-bottom: 0;
 padding-left: 1.8em;
-list-style-type: none;
-}
-blockquote li {
-position: relative;
-}
-
-blockquote li::before {
-content: '☐ ';
-position: absolute;
-left: -1.8em;
-font-size: 16px;
 }
 
 blockquote:has(strong:first-child:contains("💡")) {
@@ -418,9 +407,13 @@ table td:nth-child(3) {
 width: auto;
 }
 
-table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:first-child {
+width: auto !important;
+max-width: none !important;
+white-space: nowrap;
+}
 table:not(:has(td:nth-child(3))) td:nth-child(2) {
-width: 50% !important;
+width: 100% !important;
 max-width: none !important;
 }
 

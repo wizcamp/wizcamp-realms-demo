@@ -494,7 +494,7 @@ overflow-x: hidden !important;
 <li><a href="#ask-the-ai">Ask the AI</a></li>
 </ul>
 <p><a id="accessing-your-codespace"></a></p>
-<h4 id="accessing-your-codespace">☁️ Accessing Your Codespace</h4>
+<h2 id="accessing-your-codespace">☁️ Accessing Your Codespace</h2>
 <p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from the previous session.</p>
 <p><a id="why-caching-matters"></a></p>
 <h2 id="why-caching-matters">⚡ Why Caching Matters</h2>
@@ -553,13 +553,13 @@ overflow-x: hidden !important;
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> data <span class="op">=</span> [<span class="op">{</span> <span class="dt">question</span><span class="op">:</span> <span class="st">&quot;What is RAM?&quot;</span><span class="op">,</span> <span class="dt">answers</span><span class="op">:</span> [...] <span class="op">}</span>]<span class="op">;</span>  <span class="co">// [1] Data</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">const</span> text <span class="op">=</span> <span class="va">JSON</span>.<span class="at">stringify</span>(data)<span class="op">;</span>                            <span class="co">// [2] Convert</span></a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;trivia_zone_0&#39;</span><span class="op">,</span> text)<span class="op">;</span>                  <span class="co">// [3] Store</span></a></code></pre></div>
-<p><strong>Deserialization</strong> converts the stored string back into JavaScript data:</p>
+<p><strong>Deserialization</strong> converts the stored string back into its original data structure:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">const</span> text <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;trivia_zone_0&#39;</span>)<span class="op">;</span>  <span class="co">// [1] Retrieve</span></a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="kw">const</span> data <span class="op">=</span> <span class="va">JSON</span>.<span class="at">parse</span>(text)<span class="op">;</span>                       <span class="co">// [2] Convert back</span></a></code></pre></div>
-<p>Think of <strong>serialization</strong> like packing a suitcase for storage — you’re converting complex items into a compact, storable format. <strong>Deserialization</strong> is unpacking that suitcase when you need to use those items again.</p>
+<p>Think of <strong>serialization</strong> like packing a suitcase for storage — you’re converting items into a compact, storable format. <strong>Deserialization</strong> is unpacking that suitcase to get your original items back.</p>
 <blockquote>
 <p>💡 <strong>Why JSON for Serialization?</strong></p>
-<p>JSON (JavaScript Object Notation) is the standard format for <strong>serialization</strong> because it’s human-readable, compact, and JavaScript has built-in methods (<code>JSON.stringify()</code> and <code>JSON.parse()</code>) for conversion. When you see serialized data in DevTools, you’ll recognize the JSON structure from previous API work.</p>
+<p>JSON (JavaScript Object Notation) is the standard format for <strong>serialization</strong> because it’s human-readable, compact, and JavaScript has built-in methods (<code>JSON.stringify()</code> and <code>JSON.parse()</code>) for conversion. The string format can be stored anywhere, then converted back into its original structure whenever you need it.</p>
 </blockquote>
 <p><a id="building-cache-helper-functions"></a></p>
 <h2 id="building-cache-helper-functions">🔧 Building Cache Helper Functions</h2>
@@ -592,8 +592,8 @@ overflow-x: hidden !important;
 </tr>
 </tbody>
 </table>
-<h3 id="step-1-add-key-generation">Step 1: Add key generation</h3>
-<p>Add the <code>getCacheKey</code> function after the existing helper functions (<code>decodeText</code>, <code>shuffleAnswers</code>, etc.).</p>
+<h3 id="step-1-create-getcachekey-function">Step 1: Create getCacheKey function</h3>
+<p>Create a function that generates unique cache keys for each zone’s questions.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="co">// After existing helper functions, add:</span></a>
 <a class="sourceLine" id="cb3-2" title="2"></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="kw">function</span> <span class="at">getCacheKey</span>(zoneId) <span class="op">{</span>                 <span class="co">// [1] Accept zone ID</span></a>
@@ -607,8 +607,8 @@ overflow-x: hidden !important;
 </ol>
 <p>Consistent key generation ensures you always look up the same cache entry for each zone.</p>
 </blockquote>
-<h3 id="step-2-add-cache-retrieval">Step 2: Add cache retrieval</h3>
-<p>Add the <code>getCachedQuestions</code> function after <code>getCacheKey</code>.</p>
+<h3 id="step-2-create-getcachedquestions-function">Step 2: Create getCachedQuestions function</h3>
+<p>Create a function that checks localStorage for cached questions and deserializes them back into JavaScript objects.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">function</span> <span class="at">getCachedQuestions</span>(zoneId) <span class="op">{</span>          <span class="co">// [1] Accept zone ID</span></a>
 <a class="sourceLine" id="cb4-2" title="2">  <span class="kw">const</span> key <span class="op">=</span> <span class="at">getCacheKey</span>(zoneId)<span class="op">;</span>             <span class="co">// [2] Get cache key</span></a>
 <a class="sourceLine" id="cb4-3" title="3">  <span class="kw">const</span> cached <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(key)<span class="op">;</span>    <span class="co">// [3] Retrieve from storage</span></a>
@@ -624,8 +624,8 @@ overflow-x: hidden !important;
 </ol>
 <p>The <strong>ternary operator</strong> <code>cached ? JSON.parse(cached) : null</code> handles both cases in one line.</p>
 </blockquote>
-<h3 id="step-3-add-cache-storage">Step 3: Add cache storage</h3>
-<p>Add the <code>setCachedQuestions</code> function after <code>getCachedQuestions</code>.</p>
+<h3 id="step-3-create-setcachedquestions-function">Step 3: Create setCachedQuestions function</h3>
+<p>Create a function that serializes questions and saves them to localStorage for future use.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">function</span> <span class="at">setCachedQuestions</span>(zoneId<span class="op">,</span> questions) <span class="op">{</span>          <span class="co">// [1] Accept parameters</span></a>
 <a class="sourceLine" id="cb5-2" title="2">  <span class="kw">const</span> key <span class="op">=</span> <span class="at">getCacheKey</span>(zoneId)<span class="op">;</span>                        <span class="co">// [2] Get cache key</span></a>
 <a class="sourceLine" id="cb5-3" title="3">  <span class="va">localStorage</span>.<span class="at">setItem</span>(key<span class="op">,</span> <span class="va">JSON</span>.<span class="at">stringify</span>(questions))<span class="op">;</span>   <span class="co">// [3] Serialize</span></a>
@@ -644,8 +644,8 @@ overflow-x: hidden !important;
 <p>🎯 <strong>Goal:</strong> Integrate cache functions into <code>fetchQuestions</code> to check cache before fetching and store results after fetching.</p>
 <p><strong>File:</strong> <code>src/services/trivia.js</code></p>
 <p>You’ll add caching to <code>fetchQuestions</code> in two places: check cache at the start, store results at the end.</p>
-<h3 id="step-1-add-cache-checking">Step 1: Add cache checking</h3>
-<p>Add cache checking at the beginning of <code>fetchQuestions</code>, before the zone lookup.</p>
+<h3 id="step-1-add-cache-checking-to-fetchquestions">Step 1: Add cache checking to fetchQuestions</h3>
+<p>Check if questions are already cached before making an API request — if they exist, return them immediately.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="im">export</span> <span class="kw">async</span> <span class="kw">function</span> <span class="at">fetchQuestions</span>(zoneId<span class="op">,</span> count <span class="op">=</span> <span class="kw">null</span>) <span class="op">{</span></a>
 <a class="sourceLine" id="cb6-2" title="2">  <span class="co">// Add cache check:</span></a>
 <a class="sourceLine" id="cb6-3" title="3">  <span class="kw">const</span> cachedQuestions <span class="op">=</span> <span class="at">getCachedQuestions</span>(zoneId)<span class="op">;</span>  <span class="co">// [1] Check cache</span></a>
@@ -671,8 +671,8 @@ overflow-x: hidden !important;
 <p>The early return in step 4 is crucial — it prevents the expensive API request from executing when cached data exists. If <code>getCachedQuestions()</code> returns <code>null</code> (<strong>cache miss</strong>), execution continues past the if block to fetch fresh data.</p>
 </blockquote>
 <p><strong>✓ You should see:</strong> When clicking a zone for the first time, console shows <code>Cache miss for zone X</code>.</p>
-<h3 id="step-2-add-cache-storage">Step 2: Add cache storage</h3>
-<p>Add cache storage after the data transformation, before the return statement.</p>
+<h3 id="step-2-store-questions-in-cache">Step 2: Store questions in cache</h3>
+<p>Store the freshly fetched and transformed questions in localStorage so the next click loads instantly.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="im">export</span> <span class="kw">async</span> <span class="kw">function</span> <span class="at">fetchQuestions</span>(zoneId<span class="op">,</span> count <span class="op">=</span> <span class="kw">null</span>) <span class="op">{</span></a>
 <a class="sourceLine" id="cb7-2" title="2">  <span class="co">// ... existing code ...</span></a>
 <a class="sourceLine" id="cb7-3" title="3">  </a>

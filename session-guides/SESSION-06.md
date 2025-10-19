@@ -14,7 +14,7 @@ You're about to add browser storage and caching to your trivia game! This guide 
 
 <a id="accessing-your-codespace"></a>
 
-#### ☁️ Accessing Your Codespace
+## ☁️ Accessing Your Codespace
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from the previous session.
 
@@ -100,9 +100,9 @@ Helper functions abstract `localStorage` complexity into clean, reusable pieces.
 | `getCachedQuestions` | Retrieves stored data | **Deserialization** with `JSON.parse()` |
 | `setCachedQuestions` | Stores new data | **Serialization** with `JSON.stringify()` |
 
-### Step 1: Add key generation
+### Step 1: Create getCacheKey function
 
-Add the `getCacheKey` function after the existing helper functions (`decodeText`, `shuffleAnswers`, etc.).
+Create a function that generates unique cache keys for each zone's questions.
 
 ```javascript
 // After existing helper functions, add:
@@ -119,9 +119,9 @@ function getCacheKey(zoneId) {                 // [1] Accept zone ID
 >
 > Consistent key generation ensures you always look up the same cache entry for each zone.
 
-### Step 2: Add cache retrieval
+### Step 2: Create getCachedQuestions function
 
-Add the `getCachedQuestions` function after `getCacheKey`.
+Create a function that checks localStorage for cached questions and deserializes them back into JavaScript objects.
 
 ```javascript
 function getCachedQuestions(zoneId) {          // [1] Accept zone ID
@@ -140,9 +140,9 @@ function getCachedQuestions(zoneId) {          // [1] Accept zone ID
 >
 > The **ternary operator** `cached ? JSON.parse(cached) : null` handles both cases in one line.
 
-### Step 3: Add cache storage
+### Step 3: Create setCachedQuestions function
 
-Add the `setCachedQuestions` function after `getCachedQuestions`.
+Create a function that serializes questions and saves them to localStorage for future use.
 
 ```javascript
 function setCachedQuestions(zoneId, questions) {          // [1] Accept parameters
@@ -169,9 +169,9 @@ function setCachedQuestions(zoneId, questions) {          // [1] Accept paramete
 
 You'll add caching to `fetchQuestions` in two places: check cache at the start, store results at the end.
 
-### Step 1: Add cache checking
+### Step 1: Add cache checking to fetchQuestions
 
-Add cache checking at the beginning of `fetchQuestions`, before the zone lookup.
+Check if questions are already cached before making an API request — if they exist, return them immediately.
 
 ```javascript
 export async function fetchQuestions(zoneId, count = null) {
@@ -201,9 +201,9 @@ export async function fetchQuestions(zoneId, count = null) {
 
 **✓ You should see:** When clicking a zone for the first time, console shows `Cache miss for zone X`.
 
-### Step 2: Add cache storage
+### Step 2: Store questions in cache
 
-Add cache storage after the data transformation, before the return statement.
+Store the freshly fetched and transformed questions in localStorage so the next click loads instantly.
 
 ```javascript
 export async function fetchQuestions(zoneId, count = null) {

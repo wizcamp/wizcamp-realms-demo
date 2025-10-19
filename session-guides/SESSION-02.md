@@ -47,7 +47,7 @@ Now let's build your first custom component and see that power in action.
 
 ### Step 2: Write the component structure
 
-Create the basic component function that returns a button element, establishing the foundation for your reusable GameButton.
+Create the basic component function that returns a button element.
 
 **File:** `src/components/GameButton.jsx`
 
@@ -102,7 +102,7 @@ export default function SplashScreen() {
 
 ### Step 1: Add text prop to GameButton
 
-Modify the component to accept a `text` prop using destructuring, replacing the hardcoded button text with a dynamic value.
+Update the component to accept a `text` prop, replacing the hardcoded button text with a dynamic value.
 
 **File:** `src/components/GameButton.jsx`
 
@@ -116,7 +116,7 @@ export default function GameButton({ text }) {
 
 ### Step 2: Pass the text prop from SplashScreen
 
-Provide the button text from the parent component by passing it as a prop, demonstrating how data flows from parent to child.
+Pass the button text from the parent component as a prop.
 
 **File:** `src/components/SplashScreen.jsx`
 
@@ -148,7 +148,7 @@ export default function SplashScreen() {
 
 ### Step 1: Add onClick prop to GameButton
 
-Extend the component to accept an `onClick` function prop and attach it to the button element, enabling interactive behavior.
+Update the component to accept an `onClick` prop and attach it to the button element.
 
 **File:** `src/components/GameButton.jsx`
 
@@ -162,7 +162,7 @@ export default function GameButton({ text, onClick }) {
 
 ### Step 2: Pass click handler from SplashScreen
 
-Provide a function that will execute when the button is clicked, using an arrow function to display an alert.
+Pass a function that will execute when the button is clicked.
 
 **File:** `src/components/SplashScreen.jsx`
 
@@ -215,7 +215,7 @@ export default function GameButton({ text, onClick, variant = "primary" }) {
 
 ### Step 2: Use the variant prop in SplashScreen
 
-Pass the `variant` prop to specify which button style to use, demonstrating how props control component appearance.
+Pass the `variant` prop to specify which button style to use.
 
 **File:** `src/components/SplashScreen.jsx`
 

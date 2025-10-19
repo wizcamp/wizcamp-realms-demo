@@ -407,9 +407,13 @@ table td:nth-child(3) {
 width: auto;
 }
 
-table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:first-child {
+width: auto !important;
+max-width: none !important;
+white-space: nowrap;
+}
 table:not(:has(td:nth-child(3))) td:nth-child(2) {
-width: 50% !important;
+width: 100% !important;
 max-width: none !important;
 }
 
@@ -550,8 +554,8 @@ overflow-x: hidden !important;
 </ul>
 <p><strong>To continue:</strong> Refresh the browser (<code>Ctrl+R</code> or <code>Cmd+R</code>), click “Start Game”, then click a zone to test your code.</p>
 </blockquote>
-<h3 id="step-1-add-fetch-logic">Step 1: Add fetch logic</h3>
-<p>Add fetch logic after the alert to request data from the API.</p>
+<h3 id="step-1-add-fetch-logic-to-fetchquestions">Step 1: Add fetch logic to fetchQuestions</h3>
+<p>Replace the placeholder alert with real code that requests trivia questions from the OpenTrivia Database.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="im">export</span> <span class="kw">async</span> <span class="kw">function</span> <span class="at">fetchQuestions</span>(zoneId<span class="op">,</span> count <span class="op">=</span> <span class="kw">null</span>) <span class="op">{</span></a>
 <a class="sourceLine" id="cb2-2" title="2">  <span class="co">// ... existing code ...</span></a>
 <a class="sourceLine" id="cb2-3" title="3">  </a>
@@ -602,7 +606,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb5-4" title="4">  <span class="dt">&quot;correct&quot;</span><span class="fu">:</span> <span class="dv">1</span></a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="fu">}</span></a></code></pre></div>
 <p>Let’s build the <code>transformQuestion</code> function step by step, testing each transformation stage.</p>
-<h3 id="step-1-set-up-transformation-testing">Step 1: Set up transformation testing</h3>
+<h3 id="step-1-set-up-transformation-testing-in-fetchquestions">Step 1: Set up transformation testing in fetchQuestions</h3>
 <p>Add test code after the fetch logic to verify each transformation step.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="im">export</span> <span class="kw">async</span> <span class="kw">function</span> <span class="at">fetchQuestions</span>(zoneId<span class="op">,</span> count <span class="op">=</span> <span class="kw">null</span>) <span class="op">{</span></a>
 <a class="sourceLine" id="cb6-2" title="2">  <span class="co">// ... existing code ...</span></a>
@@ -637,7 +641,7 @@ overflow-x: hidden !important;
 <p>This testing pattern lets you see the transformation in action. Once you verify each step works correctly, you’ll replace this single-question test with code that transforms all questions at once.</p>
 </blockquote>
 <p><strong>✓ You should see:</strong> Console shows <code>undefined</code> for transformed question — we need to implement <code>transformQuestion</code>.</p>
-<h3 id="step-2-extract-object-properties">Step 2: Extract object properties</h3>
+<h3 id="step-2-extract-properties-in-transformquestion">Step 2: Extract properties in transformQuestion</h3>
 <p>Update the <code>transformQuestion</code> function to extract the question data.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="co">// Before:</span></a>
 <a class="sourceLine" id="cb7-2" title="2"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{}</span></a>
@@ -660,7 +664,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb8-3" title="3">  <span class="dt">&quot;incorrectAnswers&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;Processor&quot;</span><span class="ot">,</span> <span class="st">&quot;Storage&quot;</span><span class="ot">,</span> <span class="st">&quot;Graphics&quot;</span><span class="ot">]</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb8-4" title="4">  <span class="dt">&quot;correctAnswer&quot;</span><span class="fu">:</span> <span class="st">&quot;Memory&quot;</span></a>
 <a class="sourceLine" id="cb8-5" title="5"><span class="fu">}</span></a></code></pre></div>
-<h3 id="step-3-add-decoding">Step 3: Add decoding</h3>
+<h3 id="step-3-add-decoding-to-transformquestion">Step 3: Add decoding to transformQuestion</h3>
 <p>Update <code>transformQuestion</code> to decode the URL-encoded text using the helper function.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb9-1" title="1">function transformQuestion(apiQuestion) {</a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="st">- const question = apiQuestion.question;</span></a>
@@ -684,7 +688,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb10-3" title="3">  <span class="dt">&quot;incorrectAnswers&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;Processor&quot;</span><span class="ot">,</span> <span class="st">&quot;Storage&quot;</span><span class="ot">,</span> <span class="st">&quot;Graphics&quot;</span><span class="ot">]</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb10-4" title="4">  <span class="dt">&quot;correctAnswer&quot;</span><span class="fu">:</span> <span class="st">&quot;Memory&quot;</span></a>
 <a class="sourceLine" id="cb10-5" title="5"><span class="fu">}</span></a></code></pre></div>
-<h3 id="step-4-shuffle-answers">Step 4: Shuffle answers</h3>
+<h3 id="step-4-shuffle-answers-in-transformquestion">Step 4: Shuffle answers in transformQuestion</h3>
 <p>Add logic to randomize answer order and track where the correct answer ends up.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">function</span> <span class="at">transformQuestion</span>(apiQuestion) <span class="op">{</span></a>
 <a class="sourceLine" id="cb11-2" title="2">  <span class="kw">const</span> question <span class="op">=</span> <span class="at">decodeText</span>(<span class="va">apiQuestion</span>.<span class="at">question</span>)<span class="op">;</span></a>
@@ -717,7 +721,7 @@ overflow-x: hidden !important;
 </ol>
 <p>This transformation prevents players from memorizing answer positions. Each time the game loads, answers appear in a different order, making the quiz more challenging and fair.</p>
 </blockquote>
-<h3 id="step-5-return-game-format">Step 5: Return game format</h3>
+<h3 id="step-5-return-game-format-from-transformquestion">Step 5: Return game format from transformQuestion</h3>
 <p>Update the return statement to use the final game format with shuffled answers and correct index.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb12-1" title="1">function transformQuestion(apiQuestion) {</a>
 <a class="sourceLine" id="cb12-2" title="2">  // ... existing variable declarations ...</a>

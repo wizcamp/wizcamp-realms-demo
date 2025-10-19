@@ -122,7 +122,7 @@ h2 {
 font-size: 1.5em;
 border-bottom: 1px solid #d0d7de;
 padding-bottom: 0.3em;
-margin-top: 24px;
+margin-top: 48px;
 margin-bottom: 16px;
 }
 
@@ -132,7 +132,7 @@ margin-top: 24px;
 }
 
 a[id] {
-scroll-margin-top: 20px;
+scroll-margin-top: 48px;
 }
 h3 {
 font-size: 1.25em;
@@ -223,6 +223,12 @@ margin-bottom: 6px;
 line-height: 1.4;
 }
 
+li:has(:first-child:is(text):contains("✅")) {
+list-style-type: none;
+margin-left: -1.8em;
+padding-left: 1.8em;
+}
+
 li > ul > li:first-child,
 li > ol > li:first-child {
 margin-top: 8px;
@@ -265,6 +271,16 @@ text-decoration: none;
 strong {
 font-weight: 500;
 color: #2d3748;
+white-space: normal;
+word-spacing: normal;
+letter-spacing: normal;
+}
+
+strong::before,
+strong::after {
+content: none;
+margin: 0;
+padding: 0;
 }
 
 table {
@@ -306,6 +322,80 @@ padding: 2px 4px !important;
 word-break: break-all;
 }
 
+blockquote {
+border-left: 4px solid #d1d5db;
+padding: 12px 16px;
+margin: 20px 0;
+background-color: transparent;
+border-radius: 0;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+blockquote p {
+margin: 0 0 8px 0;
+}
+blockquote p:last-child {
+margin-bottom: 0;
+}
+
+blockquote strong {
+margin: 0;
+padding: 0;
+display: inline;
+white-space: normal;
+}
+blockquote code {
+margin: 0;
+padding: 1px 3px !important;
+display: inline;
+}
+blockquote em {
+margin: 0;
+padding: 0;
+display: inline;
+}
+blockquote a {
+margin: 0;
+padding: 0;
+display: inline;
+}
+
+blockquote ul {
+margin-top: 12px;
+margin-bottom: 0;
+padding-left: 1.8em;
+}
+
+blockquote:has(strong:first-child:contains("💡")) {
+border-left-color: #3b82f6;
+}
+
+blockquote:has(strong:first-child:contains("⚠️")) {
+border-left-color: #f59e0b;
+}
+
+blockquote:has(strong:first-child:contains("✅")) {
+border-left-color: #10b981;
+}
+
+blockquote:has(strong:first-child:contains("❌")) {
+border-left-color: #ef4444;
+}
+
+blockquote:has(strong:first-child:contains("ℹ️")) {
+border-left-color: #6366f1;
+}
+
+blockquote:has(strong:first-child:contains("🎯")) {
+border-left-color: #8b5cf6;
+}
+
+@supports not (selector(:has(*))) {
+blockquote {
+border-left-color: #3b82f6;
+}
+}
+
 table td:first-child {
 width: 200px;
 max-width: 250px;
@@ -317,9 +407,13 @@ table td:nth-child(3) {
 width: auto;
 }
 
-table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:first-child {
+width: auto !important;
+max-width: none !important;
+white-space: nowrap;
+}
 table:not(:has(td:nth-child(3))) td:nth-child(2) {
-width: 50% !important;
+width: 100% !important;
 max-width: none !important;
 }
 
@@ -363,6 +457,12 @@ table {
 page-break-inside: auto !important;
 }
 tr {
+page-break-inside: avoid !important;
+}
+
+blockquote {
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
 page-break-inside: avoid !important;
 }
 
@@ -524,11 +624,8 @@ overflow-x: hidden !important;
 <li><p><strong>Score reset</strong> - Clean slate for new games</p></li>
 </ul>
 <p><strong>Point System Design:</strong></p>
-<ul>
-<li>✅ <strong>Correct Answer:</strong> +100 points (positive reinforcement)</li>
-<li>❌ <strong>Incorrect Answer:</strong> -100 points with 0 floor (consequence without punishment)</li>
-<li>🏁 <strong>Zone Completion:</strong> Tracked separately from scoring</li>
-</ul>
+<li style="list-style-type: none;">
+<p>✅ <strong>Correct Answer:</strong> +100 points (positive reinforcement) - ❌ <strong>Incorrect Answer:</strong> -100 points with 0 floor (consequence without punishment) - 🏁 <strong>Zone Completion:</strong> Tracked separately from scoring</p>
 <p><strong>UI Integration:</strong></p>
 <ul>
 <li><strong>Scoreboard component</strong> - Dedicated display following single responsibility</li>

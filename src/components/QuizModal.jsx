@@ -89,11 +89,11 @@ export default function QuizModal() {
     ? currentQuestion === currentQuestions.length - 1
     : false;
 
-  const handleAnswerClick = (answerIndex) => {
+  const handleAnswerClick = (index) => {
     if (chosenAnswer !== null) return;
 
-    setChosenAnswer(answerIndex);
-    const isCorrect = answerIndex === question.correct;
+    setChosenAnswer(index);
+    const isCorrect = index === question.correct;
 
     if (isCorrect) {
       recordCorrectAnswer();

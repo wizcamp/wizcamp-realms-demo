@@ -160,6 +160,12 @@ margin-bottom: 6px;
 line-height: 1.4;
 }
 
+li:has(:first-child:is(text):contains("✅")) {
+list-style-type: none;
+margin-left: -1.8em;
+padding-left: 1.8em;
+}
+
 li > ul > li:first-child,
 li > ol > li:first-child {
 margin-top: 8px;
@@ -202,6 +208,16 @@ text-decoration: none;
 strong {
 font-weight: 500;
 color: #2d3748;
+white-space: normal;
+word-spacing: normal;
+letter-spacing: normal;
+}
+
+strong::before,
+strong::after {
+content: none;
+margin: 0;
+padding: 0;
 }
 
 table {
@@ -258,26 +274,33 @@ margin: 0 0 8px 0;
 blockquote p:last-child {
 margin-bottom: 0;
 }
-blockquote strong:first-child {
-display: inline-block;
-margin-right: 4px;
+
+blockquote strong {
+margin: 0;
+padding: 0;
+display: inline;
+white-space: normal;
+}
+blockquote code {
+margin: 0;
+padding: 1px 3px !important;
+display: inline;
+}
+blockquote em {
+margin: 0;
+padding: 0;
+display: inline;
+}
+blockquote a {
+margin: 0;
+padding: 0;
+display: inline;
 }
 
 blockquote ul {
 margin-top: 12px;
 margin-bottom: 0;
 padding-left: 1.8em;
-list-style-type: none;
-}
-blockquote li {
-position: relative;
-}
-
-blockquote li::before {
-content: '☐ ';
-position: absolute;
-left: -1.8em;
-font-size: 16px;
 }
 
 blockquote:has(strong:first-child:contains("💡")) {
@@ -321,9 +344,13 @@ table td:nth-child(3) {
 width: auto;
 }
 
-table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:first-child {
+width: auto !important;
+max-width: none !important;
+white-space: nowrap;
+}
 table:not(:has(td:nth-child(3))) td:nth-child(2) {
-width: 50% !important;
+width: 100% !important;
 max-width: none !important;
 }
 

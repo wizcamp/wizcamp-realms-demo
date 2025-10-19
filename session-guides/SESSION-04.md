@@ -30,7 +30,7 @@ Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Co
 
 ### Step 1: Add imports to App
 
-To display game progress and assist with positioning, we need to import the HUD and CoordinateDisplay components.
+Import the HUD and coordinate display components you'll add to the game screen.
 
 ```javascript
 // Add these two imports
@@ -40,7 +40,7 @@ import HUD from "./components/HUD";
 
 ### Step 2: Update PLAYING screen rendering
 
-Replace the single GameMap component with a Fragment containing multiple components, allowing you to display the map, HUD, and coordinate helper together.
+Add the HUD and coordinate display alongside your game map.
 
 ```javascript
 // Before:

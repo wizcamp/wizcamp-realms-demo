@@ -109,6 +109,23 @@ _Quick reference for all the [topic] concepts you just learned:_
 - **Important code elements in instructions**: **Find** the `recordCorrectAnswer` function
 - **UI elements that are also code**: Click the **`<StartButton />`** component
 
+### Import Statement Scaffolding
+
+**Use ellipsis to show import context:**
+
+```javascript
+// ... existing imports ...
+import NewComponent from "./components/NewComponent";  // Add import
+```
+
+**When to use different patterns:**
+- **Single new import**: Use `// ... existing imports ...` above the new import
+- **Multiple related imports**: Show all new imports together with ellipsis above
+- **First import in file**: Show without ellipsis (it's the first one)
+- **Import with other changes**: Show ellipsis, then continue with function code
+
+**Why:** The ellipsis provides context that the import goes with other imports at the top of the file, without cluttering the code block with unnecessary existing imports.
+
 ### When to Use Neither
 
 - Regular descriptive text
@@ -270,6 +287,105 @@ Use for advanced techniques or shortcuts.
 
 ---
 
+## Step Introduction Paragraphs
+
+The paragraph before a code block bridges the step heading and the code itself, providing context that helps students understand what they're about to do and why it matters.
+
+### Purpose
+
+Step intro paragraphs serve three functions:
+1. **Orient** - Help students locate where to make changes
+2. **Contextualize** - Explain how this step fits into the bigger picture
+3. **Prepare** - Set expectations for what the code will accomplish
+
+### Guidelines (Not Rules)
+
+**Be conversational but clear:**
+- Write like you're sitting next to the student
+- Use natural language, not robotic commands
+- It's okay to explain "why" briefly if it helps understanding
+
+**Keep it focused:**
+- 1-3 sentences is ideal
+- Don't repeat what's obvious from the step heading
+- Don't duplicate what code comments will show
+- Save detailed explanations for Understanding callouts
+
+**Provide helpful context:**
+- Where to make the change ("at the top", "after the QuestionHeader", "inside the function")
+- What the change accomplishes ("to track modal visibility", "to trigger the modal")
+- How it connects to previous steps ("this satisfies Step 1's condition")
+
+### Voice Options
+
+**Imperative (direct command):**
+> "Add the import at the top with your other component imports."
+
+**Explanatory (what and why):**
+> "To track whether the modal is visible, add state that starts with `false` since the modal should be hidden initially."
+
+**Contextual (how it fits):**
+> "Add `setIsQuizVisible` and call it after questions load — this sets the state to true, satisfying Step 1's condition and making the modal appear."
+
+**Choose the voice that best serves student understanding for that specific step.**
+
+### Examples by Complexity
+
+**Simple steps** (obvious from heading):
+> "Add the import at the top with your other imports."
+
+Or even simpler - let the code speak:
+```javascript
+// No intro paragraph needed - step heading + code is clear
+```
+
+**Medium steps** (needs location/context):
+> "Update the `AnswerChoices` component to accept an `onAnswerClick` prop and attach it to each button."
+
+**Complex steps** (needs connection to bigger picture):
+> "Create a state variable to track whether the modal is visible, starting with `false` since the modal should be hidden initially. The `useState` hook returns both the current value (`showCredits`) and a setter function (`setShowCredits`) that you'll use to update the state later."
+
+### What to Avoid
+
+- ❌ Don't be overly verbose or academic
+- ❌ Don't repeat the step heading verbatim
+- ❌ Don't explain every detail (save for Understanding callouts)
+- ❌ Don't use jargon without context for first-time learners
+- ❌ Don't write paragraphs just to have paragraphs (sometimes code + comments is enough)
+
+### Decision Tree
+
+```
+Is the step obvious from the heading + code?
+├─ Yes → Consider skipping intro paragraph or keep it minimal
+└─ No → Ask: What would help students most?
+   ├─ Location guidance? → "Add X at the top..."
+   ├─ Purpose clarity? → "To accomplish Y, add X..."
+   └─ Connection to flow? → "Add X — this connects to Step N by..."
+```
+
+### Real Examples
+
+**Good - Provides helpful context:**
+> "Create a state variable to track whether the modal is visible, starting with `false` since the modal should be hidden initially."
+
+**Good - Explains connection:**
+> "Add `setIsQuizVisible` and call it after questions load — this sets the state to true, satisfying Step 1's condition and making the modal appear."
+
+**Too rigid - Loses helpful context:**
+> "Add state to track modal visibility."
+
+**Too verbose - Belongs in Understanding callout:**
+> "Create a state variable to track whether the modal is visible, starting with `false` since the modal should be hidden initially. The `useState` hook returns both the current value (`showCredits`) and a setter function (`setShowCredits`) that you'll use to update the state later. State persists between renders and causes re-renders when updated."
+
+### Key Principle
+
+**Optimize for student understanding, not formula adherence.**
+
+If a longer, more explanatory intro helps a teenage student understand what they're about to do and why it matters, that's better than a terse command that leaves them confused. The goal is learning, not brevity.
+
+---
+
 ## Markdown Best Practices
 
 ### Lists
@@ -308,6 +424,74 @@ Always include blank line before lists inside callouts:
 
 ---
 
+## Step Naming Conventions
+
+### Core Principle
+
+**Always name the primary entity being created or modified.**
+
+### Format Patterns
+
+**Creating new entities:**
+- `Create [EntityName] [component/function/file]`
+- Examples: "Create AnswerChoices component", "Create getCacheKey function"
+
+**Modifying existing entities:**
+- `Update [EntityName] to [purpose]`
+- `Add [feature] to [EntityName]`
+- Examples: "Update GameMap to show modal", "Add cache checking to fetchQuestions"
+
+**Adding to existing structures:**
+- `Add [EntityName] to [ParentEntity]`
+- Examples: "Add QuizModal to App", "Add AnswerChoices to QuizModal"
+
+**Testing/Verification:**
+- `Test [specific feature]` or `Verify [specific behavior]`
+- Examples: "Test the modal connection", "Verify props are passed"
+
+**Procedural (setup/tools):**
+- Generic is acceptable for non-code steps
+- Examples: "Open DevTools", "Navigate to Components tab"
+
+### Decision Tree
+
+```
+Is this a code change?
+├─ Yes → Name the entity
+│   ├─ Creating? → "Create [EntityName] [type]"
+│   ├─ Modifying? → "Update [EntityName] to [purpose]"
+│   │              or "Add [feature] to [EntityName]"
+│   └─ Adding? → "Add [EntityName] to [ParentEntity]"
+│
+└─ No → Is it testing/verification?
+    ├─ Yes → "Test/Verify [specific feature]"
+    └─ No → Generic procedural name OK
+```
+
+### Examples
+
+**Good (specific):**
+- ✅ "Create getCacheKey function"
+- ✅ "Add cache checking to fetchQuestions"
+- ✅ "Add AnswerChoices to QuizModal"
+- ✅ "Update GameMap to show modal"
+- ✅ "Test the modal connection"
+
+**Avoid (generic):**
+- ❌ "Add cache retrieval" → "Create getCachedQuestions function"
+- ❌ "Add component to JSX" → "Add AnswerChoices to QuizModal"
+- ❌ "Add fetch logic" → "Add fetch logic to fetchQuestions"
+- ❌ "Add local state" → "Add showCredits state"
+
+### Benefits
+
+- **Scannability**: Students can quickly find specific steps
+- **Context**: Names provide context even in isolation
+- **Consistency**: Same pattern throughout all sessions
+- **Reference**: Easy to reference in cross-references and discussions
+
+---
+
 ## Section Types & Patterns
 
 ### Conceptual Sections
@@ -317,13 +501,14 @@ Always include blank line before lists inside callouts:
 **Conventions:**
 - ❌ Does NOT include Goal statement
 - ❌ Does NOT automatically include callouts (only when elevating understanding)
+- ❌ Does NOT use gerunds in section titles (use nouns: "Component Composition" not "Understanding Component Composition")
 - ✅ Uses emoji in section heading (e.g., `## 🌐 APIs and External Data`)
 - ✅ Direct, technical explanations
 - ✅ Avoid marketing language ("supercharge", "lightning-fast", "magic")
 - ✅ Bold Essential Terms on first occurrence
 - ✅ May include diagrams, examples, or use cases
 
-**Example:** "APIs and External Data" in SESSION-05
+**Example:** "APIs and External Data" in SESSION-05, "Component Composition" in SESSION-07
 
 ### Iterative Build Sections
 
@@ -355,6 +540,8 @@ Always include blank line before lists inside callouts:
 
 ## Code Scaffolding Patterns
 
+**See also:** `ADVANCED-PATTERNS-SESSIONS-05-07.md` for complex patterns used in later sessions
+
 ### Decision Tree
 
 Choose the appropriate pattern based on the type of change:
@@ -364,7 +551,8 @@ What type of change?
 ├─ Simple line replacement → Inline Before/After
 ├─ Adding new lines → Scaffolding with Comments
 ├─ Updating existing lines → Diff Format
-├─ Complex multi-line addition → Numbered Annotations
+├─ Complex multi-line addition (3+) → Numbered Inline Annotations + Understanding Callout
+├─ Iterative transformation → Multi-Step with Intermediate Verification
 └─ Multiple distinct actions → Multi-Part Steps
 ```
 
@@ -414,11 +602,51 @@ function transformQuestion(apiQuestion) {
 }
 ```
 
-### Pattern 4: Numbered Annotations
+### Pattern 4: Numbered Inline Annotations
 
-**When to use:** Complex multi-line additions that need explanation
+**When to use:** Complex multi-line additions (3+) that need step-by-step explanation
 
-**Format:**
+**Three levels of detail based on complexity:**
+
+#### Level 1: Simple Multi-Change (3-5 changes)
+
+**For straightforward changes where purpose is relatively clear:**
+
+```javascript
+function AnswerChoices({ answers, onAnswerClick }) {  // [1] Add onAnswerClick prop
+  return (
+    <div className="answers-grid">
+      {answers.map((answer, index) => (
+        <button
+          onClick={() => onAnswerClick(index)}  // [2] Attach click handler
+        >
+          {answer}
+        </button>
+      ))}
+    </div>
+  );
+}
+```
+
+**Understanding callout:**
+```markdown
+> 💡 **Understanding Click Handling**
+>
+> 1. **Add onAnswerClick prop**: Accept the click handler function from the parent
+> 2. **Attach click handler**: Pass the button's index when clicked
+>
+> [Optional: One paragraph of additional context]
+```
+
+**Characteristics:**
+- Inline annotations on changed lines
+- Brief Understanding callout
+- Minimal additional explanation
+
+#### Level 2: Medium Complexity (4-8 changes)
+
+**For moderately complex logic requiring more explanation:**
+
 ```javascript
 try {
   console.log("Fetching from:", url);        // [1] Log the URL
@@ -430,21 +658,101 @@ try {
 }
 ```
 
-**Follow with explanatory callout:**
+**Understanding callout:**
 ```markdown
 > 💡 **Understanding the Fetch Process**
->
-> This code performs four key operations:
 >
 > 1. **Log the URL**: Shows what endpoint we're calling
 > 2. **Send the request**: `await fetch(url)` sends HTTP request and waits for response
 > 3. **Parse JSON**: `await response.json()` converts response text into JavaScript object
 > 4. **Log the data**: Shows the raw API response structure
+>
+> The `await` keyword pauses execution until each async operation completes, making the code read top-to-bottom like synchronous code.
 ```
+
+**Characteristics:**
+- Inline annotations on each significant line
+- Detailed Understanding callout with explanations
+- Additional context paragraph explaining broader concepts
+
+#### Level 3: Critical Passages (Maximum Support)
+
+**For complex logic requiring line-by-line explanation:**
+
+```javascript
+// Add cache check:
+const cachedQuestions = getCachedQuestions(zoneId);  // [1] Check cache
+if (cachedQuestions) {                               // [2] If found
+  console.log(`Cache hit for zone ${zoneId}`);       // [3] Log hit
+  return cachedQuestions;                            // [4] Return early
+}
+
+console.log(`Cache miss for zone ${zoneId}`);        // [5] Log miss
+```
+
+**Understanding callout:**
+```markdown
+> 💡 **Understanding Cache Checking**
+>
+> 1. **Check cache**: Call `getCachedQuestions()` to see if we have stored questions for this zone
+> 2. **If found**: **Cache hit** — we have the data already
+> 3. **Log hit**: Record the cache hit for debugging
+> 4. **Return early**: Skip the entire API request and return cached data immediately
+> 5. **Log miss**: If cache is empty, record the miss before fetching from API
+>
+> The early return in step 4 is crucial — it prevents the expensive API request from executing when cached data exists. If `getCachedQuestions()` returns `null` (**cache miss**), execution continues past the if block to fetch fresh data.
+```
+
+**Characteristics:**
+- Section label comment ("Add cache check:")
+- Inline annotation on EVERY significant line
+- Aligned annotations for readability
+- Comprehensive Understanding callout
+- Each numbered item has detailed explanation
+- Additional paragraph explaining critical concepts or flow
+- Used for: complex algorithms, critical logic paths, non-obvious patterns
+
+**When to use Level 3:**
+- ✅ Complex conditional logic with early returns
+- ✅ Critical performance optimizations
+- ✅ Non-obvious patterns (cache-aside, circuit breakers)
+- ✅ Code where understanding the flow is essential
+- ✅ First-time introduction of advanced concepts
+
+### Multi-Line Chunk Annotation Guidelines
+
+**For multi-line chunks within numbered annotation blocks:**
+
+1. **Short chunks (1-3 lines)**: Inline annotation on first line
+   ```javascript
+   const messages = isCorrect ? CORRECT_FEEDBACK : INCORRECT_FEEDBACK;  // [1] Pick array
+   ```
+
+2. **Medium chunks (4-8 lines)**: Above-line annotation
+   ```javascript
+   // [1] Add style function
+   const getButtonStyle = (index) => {
+     if (chosenAnswer === null) return "answer-button";
+     if (index === correctAnswer) return "answer-button correct";
+     return "answer-button";
+   };
+   ```
+
+3. **Long chunks or multiple separate additions**: Stacked annotations
+   ```javascript
+   // [1] Pick the appropriate array
+   const messages = isCorrect ? CORRECT_FEEDBACK : INCORRECT_FEEDBACK;
+   // [2] Select random message  
+   const message = messages[Math.floor(Math.random() * messages.length)];
+   ```
+
+**Key principle:** Optimize for clarity - if the chunk's purpose isn't immediately obvious, use above-line annotation.
+
+**Always follow with Understanding callout** that explains each numbered annotation.
 
 ### Pattern 5: Multi-Part Steps
 
-**When to use:** Single step involves multiple distinct actions
+**When to use:** Single step involves multiple distinct actions that need separate focus
 
 **Format:**
 ```markdown
@@ -452,20 +760,35 @@ try {
 
 #### Part A: Remove test code
 
-[Instructions and code for Part A]
+Remove the temporary transformation testing we added earlier:
 
-#### Part B: Format all questions
+[Code showing removals]
 
-[Instructions and code for Part B]
+#### Part B: Format all questions for your game
 
-#### Part C: Verify integration
+Apply your transformation to every question and return the formatted data:
 
-[Instructions and code for Part C]
+[Code showing implementation]
+
+#### Part C: Verify your integration
+
+Test the complete API integration using React DevTools:
+
+[Verification instructions]
+
+**✓ You should see:** [Expected result]
 ```
+
+**Key characteristics:**
+- Main step heading describes overall goal
+- Parts use `####` subheadings
+- Each part has intro paragraph + code/instructions
+- Final part often includes verification
+- Used for complex integration steps (common in SESSION-05, 06)
 
 ### Pattern 6: Reference Code Blocks
 
-**When to use:** After iterative steps complete, show final result
+**When to use:** After iterative steps complete, show final result for verification
 
 **Format:**
 ```markdown
@@ -473,10 +796,59 @@ Here's the complete `fetchQuestions` function for reference:
 
 ```javascript
 export async function fetchQuestions(zoneId, count = null) {
-  // ... complete final code ...
+  // ... complete final code without annotations ...
 }
 ```
 ```
+
+**Key characteristics:**
+- Introduced with "Here's the complete X for reference:"
+- Shows entire function/component
+- No annotations or instructional comments (clean final code)
+- Helps students verify their work
+- Only used after iterative build completes
+
+### Pattern 7: Destructuring Changes
+
+**When to use:** Showing changes to destructuring statements
+
+**Primary Pattern - Before/After (for isolated changes):**
+```javascript
+// Before:
+const { screen } = useGame();
+
+// After:
+const { screen, setScreen } = useGame();
+```
+
+**Secondary Pattern - Numbered Annotations (for multi-change steps):**
+```javascript
+export default function Component() {
+  // [1] Add setScreen
+  const { screen, setScreen } = useGame();
+  
+  const handleClick = () => {
+    setScreen(SCREENS.PLAYING);  // [2] Navigate to game
+  };
+}
+```
+
+**Decision criteria:**
+- **Isolated destructuring change only** → Use Before/After
+- **Destructuring + other changes in same code block** → Use Numbered Annotations
+- **Multiple destructuring statements in one step** → Use Numbered Annotations
+- **When clarity is paramount** → Use Before/After
+
+**Why Before/After for isolated changes:**
+- Shows exact transformation with zero ambiguity
+- Student sees precisely what changed
+- No need to scan entire line to find the addition
+- Clearest pattern for learning
+
+**Why Numbered Annotations for multi-change steps:**
+- More concise when showing full function context
+- Allows referencing multiple changes in Understanding callout
+- Maintains flow when destructuring is one of several modifications
 
 ---
 

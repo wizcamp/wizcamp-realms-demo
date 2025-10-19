@@ -122,7 +122,7 @@ h2 {
 font-size: 1.5em;
 border-bottom: 1px solid #d0d7de;
 padding-bottom: 0.3em;
-margin-top: 24px;
+margin-top: 48px;
 margin-bottom: 16px;
 }
 
@@ -132,7 +132,7 @@ margin-top: 24px;
 }
 
 a[id] {
-scroll-margin-top: 20px;
+scroll-margin-top: 48px;
 }
 h3 {
 font-size: 1.25em;
@@ -223,6 +223,12 @@ margin-bottom: 6px;
 line-height: 1.4;
 }
 
+li:has(:first-child:is(text):contains("✅")) {
+list-style-type: none;
+margin-left: -1.8em;
+padding-left: 1.8em;
+}
+
 li > ul > li:first-child,
 li > ol > li:first-child {
 margin-top: 8px;
@@ -265,6 +271,16 @@ text-decoration: none;
 strong {
 font-weight: 500;
 color: #2d3748;
+white-space: normal;
+word-spacing: normal;
+letter-spacing: normal;
+}
+
+strong::before,
+strong::after {
+content: none;
+margin: 0;
+padding: 0;
 }
 
 table {
@@ -306,6 +322,80 @@ padding: 2px 4px !important;
 word-break: break-all;
 }
 
+blockquote {
+border-left: 4px solid #d1d5db;
+padding: 12px 16px;
+margin: 20px 0;
+background-color: transparent;
+border-radius: 0;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+blockquote p {
+margin: 0 0 8px 0;
+}
+blockquote p:last-child {
+margin-bottom: 0;
+}
+
+blockquote strong {
+margin: 0;
+padding: 0;
+display: inline;
+white-space: normal;
+}
+blockquote code {
+margin: 0;
+padding: 1px 3px !important;
+display: inline;
+}
+blockquote em {
+margin: 0;
+padding: 0;
+display: inline;
+}
+blockquote a {
+margin: 0;
+padding: 0;
+display: inline;
+}
+
+blockquote ul {
+margin-top: 12px;
+margin-bottom: 0;
+padding-left: 1.8em;
+}
+
+blockquote:has(strong:first-child:contains("💡")) {
+border-left-color: #3b82f6;
+}
+
+blockquote:has(strong:first-child:contains("⚠️")) {
+border-left-color: #f59e0b;
+}
+
+blockquote:has(strong:first-child:contains("✅")) {
+border-left-color: #10b981;
+}
+
+blockquote:has(strong:first-child:contains("❌")) {
+border-left-color: #ef4444;
+}
+
+blockquote:has(strong:first-child:contains("ℹ️")) {
+border-left-color: #6366f1;
+}
+
+blockquote:has(strong:first-child:contains("🎯")) {
+border-left-color: #8b5cf6;
+}
+
+@supports not (selector(:has(*))) {
+blockquote {
+border-left-color: #3b82f6;
+}
+}
+
 table td:first-child {
 width: 200px;
 max-width: 250px;
@@ -317,9 +407,13 @@ table td:nth-child(3) {
 width: auto;
 }
 
-table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:first-child {
+width: auto !important;
+max-width: none !important;
+white-space: nowrap;
+}
 table:not(:has(td:nth-child(3))) td:nth-child(2) {
-width: 50% !important;
+width: 100% !important;
 max-width: none !important;
 }
 
@@ -366,6 +460,12 @@ tr {
 page-break-inside: avoid !important;
 }
 
+blockquote {
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+page-break-inside: avoid !important;
+}
+
 * {
 overflow: visible !important;
 scrollbar-width: none !important;
@@ -382,24 +482,23 @@ overflow-x: hidden !important;
 </head>
 <body>
 <h1 id="session-7-creating-the-quiz-experience">Session 7 — Creating the Quiz Experience</h1>
-<p>Building Complex Interactive Components 🎛️</p>
-<p>You’re about to build the heart of your trivia game — interactive quiz components that bring your cached questions to life! This guide walks you through component composition, array mapping patterns, and creating dynamic user feedback systems. Ready to transform your static zones into engaging quiz experiences? Let’s go!</p>
+<p>You’re about to build the heart of your trivia game — interactive quiz components that bring your cached questions to life! This guide walks you through <strong>component composition</strong>, array mapping patterns, and creating dynamic user feedback systems. Ready to transform your static zones into engaging quiz experiences? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#understanding-component-composition">Understanding Component Composition</a></li>
+<li><a href="#component-composition">Component Composition</a></li>
 <li><a href="#connecting-the-quiz-modal">Connecting the Quiz Modal</a></li>
 <li><a href="#building-answer-buttons">Building Answer Buttons</a></li>
 <li><a href="#making-buttons-interactive">Making Buttons Interactive</a></li>
-<li><a href="#creating-feedback-messages">Adding Feedback Messages</a></li>
+<li><a href="#adding-feedback-messages">Adding Feedback Messages</a></li>
 <li><a href="#testing-your-quiz-system">Testing Your Quiz System</a></li>
 <li><a href="#essential-terms">Essential Terms</a></li>
 <li><a href="#ask-the-ai">Ask the AI</a></li>
 </ul>
 <p><a id="accessing-your-codespace"></a></p>
 <h2 id="accessing-your-codespace">☁️ Accessing Your Codespace</h2>
-<p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 6.</p>
-<p><a id="understanding-component-composition"></a></p>
-<h2 id="understanding-component-composition">🧩 Understanding Component Composition</h2>
+<p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from the previous session.</p>
+<p><a id="component-composition"></a></p>
+<h2 id="component-composition">🧩 Component Composition</h2>
 <p>Before we start coding, let’s understand how complex components are built from smaller pieces — the foundation of scalable React architecture.</p>
 <p><strong>Component composition</strong> is like building with LEGO blocks — you create complex structures by snapping together smaller, focused pieces. Your <code>QuizModal</code> is actually composed of five smaller components working together:</p>
 <pre class="text"><code>QuizModal (the container)
@@ -408,233 +507,374 @@ overflow-x: hidden !important;
 ├── AnswerChoices (interactive answer buttons)
 ├── AnswerFeedback (shows results)
 └── ContinueButton (navigation control)</code></pre>
-<p><strong>Component composition</strong> is how React apps stay organized and maintainable. Instead of one massive component doing everything, you break functionality into focused pieces. Each component has a single responsibility, making your code easier to understand, test, and modify.</p>
+<p>Each component has a single responsibility, making your code easier to understand, test, and modify. Instead of one massive component doing everything, you break functionality into focused pieces that can be reused and debugged independently.</p>
 <p><a id="connecting-the-quiz-modal"></a></p>
-<h2 id="connecting-the-quiz-modal">🎮 Connecting the Quiz Modal</h2>
-<p>Let’s connect your quiz modal to the game flow so clicking zones actually shows quiz questions.</p>
+<h2 id="connecting-the-quiz-modal">🔗 Connecting the Quiz Modal</h2>
+<p>🎯 <strong>Goal:</strong> Connect the quiz modal to your game flow so clicking zones displays quiz questions.</p>
+<p>You’ll set up the modal to appear when players click zones, creating the bridge between your game map and quiz questions.</p>
+<h3 id="step-1-add-quizmodal-to-app">Step 1: Add QuizModal to App</h3>
+<p><strong>File:</strong> <code>src/App.jsx</code></p>
+<p>Make the QuizModal component available in your app so it can appear when players click zones.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="co">// ... existing imports ...</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="im">import</span> QuizModal <span class="im">from</span> <span class="st">&quot;./components/QuizModal&quot;</span><span class="op">;</span>  <span class="co">// [1] Import QuizModal</span></a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">App</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-5" title="5">  <span class="kw">const</span> <span class="op">{</span> screen<span class="op">,</span> isQuizVisible <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span>   <span class="co">// [2] Add isQuizVisible</span></a>
+<a class="sourceLine" id="cb2-6" title="6">  </a>
+<a class="sourceLine" id="cb2-7" title="7">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb2-8" title="8">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-9" title="9">      <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb2-10" title="10">      <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> (</a>
+<a class="sourceLine" id="cb2-11" title="11">        <span class="op">&lt;&gt;</span></a>
+<a class="sourceLine" id="cb2-12" title="12">          <span class="op">&lt;</span>GameMap /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-13" title="13">          <span class="op">&lt;</span>HUD /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-14" title="14">          <span class="op">{</span>isQuizVisible <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>QuizModal /<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb2-15" title="15">          <span class="op">{</span><span class="co">/* ↑ [3] Conditional rendering */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-16" title="16">          <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-17" title="17">        &lt;/<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-18" title="18">      )<span class="op">}</span></a>
+<a class="sourceLine" id="cb2-19" title="19">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb2-20" title="20">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="op">}</span></a></code></pre></div>
+<blockquote>
+<p>💡 <strong>Understanding App Updates</strong></p>
 <ol type="1">
-<li><p><strong>Open</strong> <code>src/App.jsx</code> and add the QuizModal import at the top</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="im">import</span> QuizModal <span class="im">from</span> <span class="st">&quot;./components/QuizModal&quot;</span><span class="op">;</span></a></code></pre></div></li>
-<li><p><strong>Access</strong> the quiz visibility state by adding <code>isQuizVisible</code> to the <code>useGame</code> destructuring</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">const</span> <span class="op">{</span> screen<span class="op">,</span> isQuizVisible <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
-<li><p><strong>Add conditional rendering</strong> for the QuizModal inside the PLAYING screen section</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> (</a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="op">&lt;&gt;</span></a>
-<a class="sourceLine" id="cb4-3" title="3">    <span class="op">&lt;</span>GameMap /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-4" title="4">    <span class="op">&lt;</span>HUD /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-5" title="5">    <span class="op">{</span><span class="co">/* Show quiz modal when isQuizVisible is true */</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb4-6" title="6">    <span class="op">{</span>isQuizVisible <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>QuizModal /<span class="op">&gt;}</span></a>
-<a class="sourceLine" id="cb4-7" title="7">    <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-8" title="8">  &lt;/<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-9" title="9">)<span class="op">}</span></a></code></pre></div>
-<p><strong>Conditional rendering</strong> with <code>&amp;&amp;</code> is a React pattern that shows components only when certain conditions are true. When <code>isQuizVisible</code> is true, the <code>QuizModal</code> renders; when false, nothing renders.</p></li>
-<li><p><strong>Open</strong> <code>src/components/GameMap.jsx</code> and add <code>setIsQuizVisible</code> to the <code>useGame</code> destructuring</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> <span class="op">{</span> activeZone<span class="op">,</span> loadQuestionsForZone<span class="op">,</span> setIsQuizVisible<span class="op">,</span> zoneProgress <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
-<li><p><strong>Update</strong> the handleZoneClick function to show the quiz modal after loading questions</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="cf">await</span> <span class="at">loadQuestionsForZone</span>(zoneId)<span class="op">;</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="at">setIsQuizVisible</span>(<span class="kw">true</span>)<span class="op">;</span></a></code></pre></div>
-<p><strong>Test</strong>: <strong>Click</strong> a zone → QuizModal should appear with your cached questions!</p></li>
+<li><strong>Import QuizModal</strong>: Import the QuizModal component at the top with other components</li>
+<li><strong>Add isQuizVisible</strong>: Add the modal visibility state to the destructuring</li>
+<li><strong>Conditional rendering</strong>: Use the <code>&amp;&amp;</code> operator to show QuizModal only when <code>isQuizVisible</code> is true</li>
 </ol>
-<p>This pattern controls what users see based on app state. Your quiz modal will appear and disappear based on user actions, creating a smooth interactive experience.</p>
+<p>The <code>&amp;&amp;</code> operator creates conditional rendering — when <code>isQuizVisible</code> is true, React renders <code>&lt;QuizModal /&gt;</code>; when false, nothing renders. This pattern controls what users see based on app state.</p>
+</blockquote>
+<h3 id="step-2-update-gamemap-to-show-modal">Step 2: Update GameMap to show modal</h3>
+<p><strong>File:</strong> <code>src/components/GameMap.jsx</code></p>
+<p>Make the modal appear after questions finish loading by updating the visibility state.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">GameMap</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="co">// [1] Access setIsQuizVisible</span></a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="kw">const</span> <span class="op">{</span> activeZone<span class="op">,</span> loadQuestionsForZone<span class="op">,</span> setIsQuizVisible<span class="op">,</span> zoneProgress <span class="op">}</span> <span class="op">=</span></a>
+<a class="sourceLine" id="cb3-4" title="4">    <span class="at">useGame</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" title="5">  </a>
+<a class="sourceLine" id="cb3-6" title="6">  <span class="kw">const</span> handleZoneClick <span class="op">=</span> <span class="kw">async</span> (zoneId) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-7" title="7">    <span class="co">// ... existing code ...</span></a>
+<a class="sourceLine" id="cb3-8" title="8">    <span class="cf">await</span> <span class="at">loadQuestionsForZone</span>(zoneId)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-9" title="9">    <span class="at">setIsQuizVisible</span>(<span class="kw">true</span>)<span class="op">;</span>  <span class="co">// [2] Show modal</span></a>
+<a class="sourceLine" id="cb3-10" title="10">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb3-11" title="11">  </a>
+<a class="sourceLine" id="cb3-12" title="12">  <span class="co">// ... rest of component ...</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="op">}</span></a></code></pre></div>
+<blockquote>
+<p>💡 <strong>Understanding GameMap Updates</strong></p>
+<ol type="1">
+<li><strong>Access setIsQuizVisible</strong>: Get the setter function to control modal visibility</li>
+<li><strong>Show modal</strong>: Setting <code>isQuizVisible</code> to true satisfies Step 1’s condition, rendering the modal</li>
+</ol>
+<p>This completes the connection: zone click → questions load → state updates to true → Step 1’s condition satisfied → modal renders.</p>
+</blockquote>
+<h3 id="step-3-test-the-modal-connection">Step 3: Test the modal connection</h3>
+<p>Click any zone on the game map.</p>
+<p><strong>✓ You should see:</strong> QuizModal appears with your cached questions displayed!</p>
 <p><a id="building-answer-buttons"></a></p>
 <h2 id="building-answer-buttons">🔘 Building Answer Buttons</h2>
-<p>Now let’s build the interactive answer buttons that transform your question data into clickable choices.</p>
+<p>🎯 <strong>Goal:</strong> Build interactive answer buttons that transform your question data into clickable choices using array mapping.</p>
+<p><strong>File:</strong> <code>src/components/QuizModal.jsx</code></p>
+<p>You’ll create the <code>AnswerChoices</code> component in four steps: create the component structure, add it to JSX, then implement array mapping to generate buttons.</p>
+<h3 id="step-1-create-answerchoices-component">Step 1: Create AnswerChoices component</h3>
+<p>Create the component structure that will hold your answer buttons.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// Add this component after QuestionHeader:</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-3" title="3">  <span class="cf">return</span> <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span>&lt;/div<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="op">}</span></a></code></pre></div>
+<h3 id="step-2-add-answerchoices-to-quizmodal">Step 2: Add AnswerChoices to QuizModal</h3>
+<p>Place the AnswerChoices component in your modal so it appears below the question.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">QuizModal</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="co">// ... existing code ...</span></a>
+<a class="sourceLine" id="cb5-3" title="3">  </a>
+<a class="sourceLine" id="cb5-4" title="4">  <span class="cf">return</span> shouldShowModal <span class="op">?</span> (</a>
+<a class="sourceLine" id="cb5-5" title="5">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;quiz-modal&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb5-6" title="6">      <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;quiz-content&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb5-7" title="7">        <span class="op">{</span><span class="co">/* ... existing code ... */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-8" title="8">        </a>
+<a class="sourceLine" id="cb5-9" title="9">        <span class="op">&lt;</span>QuestionHeader question<span class="op">={</span>question<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb5-10" title="10">        <span class="op">&lt;</span>AnswerChoices answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb5-11" title="11">        <span class="op">{</span><span class="co">/* ↑ Add this component */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-12" title="12">        </a>
+<a class="sourceLine" id="cb5-13" title="13">        <span class="op">&lt;</span>ContinueButton</a>
+<a class="sourceLine" id="cb5-14" title="14">          hasAnswered<span class="op">={</span>chosenAnswer <span class="op">!==</span> <span class="kw">null</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-15" title="15">          isOnFinalQuestion<span class="op">={</span>isLastQuestion<span class="op">}</span></a>
+<a class="sourceLine" id="cb5-16" title="16">          onContinue<span class="op">={</span>handleContinue<span class="op">}</span></a>
+<a class="sourceLine" id="cb5-17" title="17">        /&gt;</a>
+<a class="sourceLine" id="cb5-18" title="18">      &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb5-19" title="19">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb5-20" title="20">  ) : <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb5-21" title="21"><span class="op">}</span></a></code></pre></div>
+<h3 id="step-3-verify-props-are-passed">Step 3: Verify props are passed</h3>
+<p>Click a zone, then open React DevTools → Components tab → find AnswerChoices → check the <code>answers</code> prop.</p>
+<p><strong>✓ You should see:</strong> The <code>answers</code> prop is populated with an array of four answer strings.</p>
+<h3 id="step-4-add-array-mapping-to-answerchoices">Step 4: Add array mapping to AnswerChoices</h3>
+<p>Transform your answers array into clickable buttons using <code>map()</code> — one button for each answer.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb6-3" title="3">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb6-4" title="4">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (  <span class="co">// [1] Map over answers</span></a>
+<a class="sourceLine" id="cb6-5" title="5">        <span class="op">&lt;</span>button key<span class="op">={</span>index<span class="op">}</span> className<span class="op">=</span><span class="st">&quot;answer-button&quot;</span><span class="op">&gt;</span>  <span class="co">// [2] Create button</span></a>
+<a class="sourceLine" id="cb6-6" title="6">          <span class="op">{</span>answer<span class="op">}</span>  <span class="co">// [3] Display answer text</span></a>
+<a class="sourceLine" id="cb6-7" title="7">        &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb6-8" title="8">      ))<span class="op">}</span></a>
+<a class="sourceLine" id="cb6-9" title="9">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb6-10" title="10">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="op">}</span></a></code></pre></div>
+<h3 id="step-5-test-the-answer-buttons">Step 5: Test the answer buttons</h3>
+<p>Click a zone to open the quiz modal.</p>
+<p><strong>✓ You should see:</strong> Four answer buttons appear in the modal with your question’s answer choices!</p>
+<blockquote>
+<p>💡 <strong>Array Mapping in React</strong></p>
 <ol type="1">
-<li><p><strong>Open</strong> <code>src/components/QuizModal.jsx</code> and <strong>find</strong> the QuestionHeader function</p></li>
-<li><p><strong>Add</strong> the AnswerChoices component after the QuestionHeader function</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers <span class="op">}</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb7-2" title="2">  <span class="cf">return</span> <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span>&lt;/div<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Add</strong> the component to the JSX (right after <code>&lt;QuestionHeader question={question} /&gt;</code>)</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="op">&lt;</span>AnswerChoices answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> /&gt;</a></code></pre></div>
-<p><strong>Test</strong> by clicking zone → React DevTools → finding AnswerChoices → confirming answers prop is populated</p></li>
-<li><p><strong>Transform the answers array into buttons</strong> using React’s mapping pattern</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers <span class="op">}</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb9-2" title="2">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb9-3" title="3">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb9-4" title="4">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
-<a class="sourceLine" id="cb9-5" title="5">        <span class="op">&lt;</span>button key<span class="op">={</span>index<span class="op">}</span> className<span class="op">=</span><span class="st">&quot;answer-button&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb9-6" title="6">          <span class="op">{</span>answer<span class="op">}</span></a>
-<a class="sourceLine" id="cb9-7" title="7">        &lt;/button<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb9-8" title="8">      ))<span class="op">}</span></a>
-<a class="sourceLine" id="cb9-9" title="9">    &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb9-10" title="10">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb9-11" title="11"><span class="op">}</span></a></code></pre></div>
-<p><strong>Array mapping</strong> transforms each item in an array into something else. Here, each answer string becomes a button element. React needs a unique <strong>key prop</strong> for each mapped element to track changes efficiently.</p>
-<p><strong>Test</strong> by clicking zone → You should see answer buttons appear in the modal</p></li>
+<li><strong>Map over answers</strong>: The <code>map()</code> method transforms each item in the array</li>
+<li><strong>Create button</strong>: Each answer string becomes a button element</li>
+<li><strong>Display answer text</strong>: The answer text appears inside the button</li>
 </ol>
-<p>By starting with a simple structure and then adding the mapping logic, you followed a development pattern: build incrementally and test each step. <strong>Array mapping</strong> is everywhere in React — any time you have a list of data that becomes a list of components, you use <code>map()</code>. The <strong>key prop</strong> helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.</p>
+<p>Array mapping is everywhere in React — any time you have a list of data that becomes a list of components, you use <code>map()</code>. The key prop helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.</p>
+</blockquote>
 <p><a id="making-buttons-interactive"></a></p>
 <h2 id="making-buttons-interactive">🎨 Making Buttons Interactive</h2>
-<p>Let’s add click functionality and dynamic styling that shows correct/incorrect answers with visual feedback.</p>
+<p>🎯 <strong>Goal:</strong> Add click functionality and dynamic styling that shows correct/incorrect answers with visual feedback.</p>
+<p><strong>File:</strong> <code>src/components/QuizModal.jsx</code></p>
+<p>You’ll add interactivity in three steps: click handling, conditional styling, and preventing multiple clicks.</p>
+<h3 id="step-1-add-click-handling-to-answerchoices">Step 1: Add click handling to AnswerChoices</h3>
+<p>Make your answer buttons respond to clicks by connecting them to the game’s answer handling logic.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers<span class="op">,</span> onAnswerClick <span class="op">}</span>) <span class="op">{</span>  <span class="co">// [1] Add onAnswerClick prop</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb7-3" title="3">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-4" title="4">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb7-5" title="5">        <span class="op">&lt;</span>button</a>
+<a class="sourceLine" id="cb7-6" title="6">          key<span class="op">={</span>index<span class="op">}</span></a>
+<a class="sourceLine" id="cb7-7" title="7">          className<span class="op">=</span><span class="st">&quot;answer-button&quot;</span></a>
+<a class="sourceLine" id="cb7-8" title="8">          onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">onAnswerClick</span>(index)<span class="op">}</span>  <span class="co">// [2] Attach click handler</span></a>
+<a class="sourceLine" id="cb7-9" title="9">        <span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-10" title="10">          <span class="op">{</span>answer<span class="op">}</span></a>
+<a class="sourceLine" id="cb7-11" title="11">        &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-12" title="12">      ))<span class="op">}</span></a>
+<a class="sourceLine" id="cb7-13" title="13">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-14" title="14">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-15" title="15"><span class="op">}</span></a></code></pre></div>
+<blockquote>
+<p>💡 <strong>Understanding Click Handling</strong></p>
 <ol type="1">
-<li><p><strong>Add click handling</strong> by updating AnswerChoices and JSX</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers<span class="op">,</span> onAnswerClick <span class="op">}</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb10-2" title="2">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb10-3" title="3">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb10-4" title="4">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
-<a class="sourceLine" id="cb10-5" title="5">        <span class="op">&lt;</span>button</a>
-<a class="sourceLine" id="cb10-6" title="6">          key<span class="op">={</span>index<span class="op">}</span></a>
-<a class="sourceLine" id="cb10-7" title="7">          className<span class="op">=</span><span class="st">&quot;answer-button&quot;</span></a>
-<a class="sourceLine" id="cb10-8" title="8">          onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">onAnswerClick</span>(index)<span class="op">}</span></a>
-<a class="sourceLine" id="cb10-9" title="9">        <span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb10-10" title="10">          <span class="op">{</span>answer<span class="op">}</span></a>
-<a class="sourceLine" id="cb10-11" title="11">        &lt;/button<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb10-12" title="12">      ))<span class="op">}</span></a>
-<a class="sourceLine" id="cb10-13" title="13">    &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb10-14" title="14">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-15" title="15"><span class="op">}</span></a></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="op">&lt;</span>AnswerChoices </a>
-<a class="sourceLine" id="cb11-2" title="2">  answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> </a>
-<a class="sourceLine" id="cb11-3" title="3">  onAnswerClick<span class="op">={</span>handleAnswerClick<span class="op">}</span></a>
-<a class="sourceLine" id="cb11-4" title="4">/&gt;</a></code></pre></div>
-<p><strong>Test</strong> by clicking zone → clicking answer button → Next Question should be enabled allowing you to move to next question</p></li>
-<li><p><strong>Add conditional styling</strong> by updating AnswerChoices and JSX</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers<span class="op">,</span> onAnswerClick<span class="op">,</span> chosenAnswer<span class="op">,</span> correctAnswer <span class="op">}</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb12-2" title="2">  <span class="kw">const</span> getButtonStyle <span class="op">=</span> (answerIndex) <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb12-3" title="3">    <span class="cf">if</span> (chosenAnswer <span class="op">===</span> <span class="kw">null</span>) <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb12-4" title="4">    <span class="cf">if</span> (answerIndex <span class="op">===</span> correctAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button correct&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb12-5" title="5">    <span class="cf">if</span> (answerIndex <span class="op">===</span> chosenAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button incorrect&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb12-6" title="6">    <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb12-7" title="7">  <span class="op">};</span></a>
-<a class="sourceLine" id="cb12-8" title="8"></a>
-<a class="sourceLine" id="cb12-9" title="9">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb12-10" title="10">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb12-11" title="11">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
-<a class="sourceLine" id="cb12-12" title="12">        <span class="op">&lt;</span>button</a>
-<a class="sourceLine" id="cb12-13" title="13">          key<span class="op">={</span>index<span class="op">}</span></a>
-<a class="sourceLine" id="cb12-14" title="14">          className<span class="op">={</span><span class="at">getButtonStyle</span>(index)<span class="op">}</span></a>
-<a class="sourceLine" id="cb12-15" title="15">          onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">onAnswerClick</span>(index)<span class="op">}</span></a>
-<a class="sourceLine" id="cb12-16" title="16">        <span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb12-17" title="17">          <span class="op">{</span>answer<span class="op">}</span></a>
-<a class="sourceLine" id="cb12-18" title="18">        &lt;/button<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb12-19" title="19">      ))<span class="op">}</span></a>
-<a class="sourceLine" id="cb12-20" title="20">    &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb12-21" title="21">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb12-22" title="22"><span class="op">}</span></a></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="op">&lt;</span>AnswerChoices </a>
-<a class="sourceLine" id="cb13-2" title="2">  answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> </a>
-<a class="sourceLine" id="cb13-3" title="3">  onAnswerClick<span class="op">={</span>handleAnswerClick<span class="op">}</span></a>
-<a class="sourceLine" id="cb13-4" title="4">  chosenAnswer<span class="op">={</span>chosenAnswer<span class="op">}</span></a>
-<a class="sourceLine" id="cb13-5" title="5">  correctAnswer<span class="op">={</span><span class="va">question</span>.<span class="at">correct</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb13-6" title="6">/&gt;</a></code></pre></div>
-<p><strong>Test</strong> by clicking zone → clicking answer → Different styling for correct vs incorrect</p></li>
-<li><p><strong>Prevent multiple clicks</strong> by updating AnswerChoices</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers<span class="op">,</span> onAnswerClick<span class="op">,</span> chosenAnswer<span class="op">,</span> correctAnswer <span class="op">}</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb14-2" title="2">  <span class="kw">const</span> getButtonStyle <span class="op">=</span> (answerIndex) <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb14-3" title="3">    <span class="cf">if</span> (chosenAnswer <span class="op">===</span> <span class="kw">null</span>) <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb14-4" title="4">    <span class="cf">if</span> (answerIndex <span class="op">===</span> correctAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button correct&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb14-5" title="5">    <span class="cf">if</span> (answerIndex <span class="op">===</span> chosenAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button incorrect&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb14-6" title="6">    <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb14-7" title="7">  <span class="op">};</span></a>
-<a class="sourceLine" id="cb14-8" title="8"></a>
-<a class="sourceLine" id="cb14-9" title="9">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb14-10" title="10">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb14-11" title="11">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
-<a class="sourceLine" id="cb14-12" title="12">        <span class="op">&lt;</span>button</a>
-<a class="sourceLine" id="cb14-13" title="13">          key<span class="op">={</span>index<span class="op">}</span></a>
-<a class="sourceLine" id="cb14-14" title="14">          className<span class="op">={</span><span class="at">getButtonStyle</span>(index)<span class="op">}</span></a>
-<a class="sourceLine" id="cb14-15" title="15">          onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">onAnswerClick</span>(index)<span class="op">}</span></a>
-<a class="sourceLine" id="cb14-16" title="16">          disabled<span class="op">={</span>chosenAnswer <span class="op">!==</span> <span class="kw">null</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb14-17" title="17">        <span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb14-18" title="18">          <span class="op">{</span>answer<span class="op">}</span></a>
-<a class="sourceLine" id="cb14-19" title="19">        &lt;/button<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb14-20" title="20">      ))<span class="op">}</span></a>
-<a class="sourceLine" id="cb14-21" title="21">    &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb14-22" title="22">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb14-23" title="23"><span class="op">}</span></a></code></pre></div>
-<p><strong>Test</strong> by clicking zone → clicking answer → trying to click other buttons → Other buttons should be unclickable</p></li>
+<li><strong>Add onAnswerClick prop</strong>: Accept the click handler function from the parent</li>
+<li><strong>Attach click handler</strong>: Pass the button’s index when clicked</li>
 </ol>
-<p><strong>Event handlers</strong> like <code>onClick</code> connect user actions to your app’s logic, making static components come alive with interactivity. <strong>Conditional styling</strong> then provides immediate visual feedback to users through the <code>getButtonStyle</code> function, which returns different CSS classes based on the current state. The <code>disabled</code> attribute prevents multiple clicks after an answer is selected, creating a polished user experience where buttons respond intelligently to user interactions.</p>
-<p><a id="creating-feedback-messages"></a></p>
+<p>The arrow function <code>() =&gt; onAnswerClick(index)</code> ensures each button passes its own index when clicked, allowing the parent component to know which answer was selected.</p>
+</blockquote>
+<p>Update the JSX to pass the <code>handleAnswerClick</code> function:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="op">&lt;</span>AnswerChoices </a>
+<a class="sourceLine" id="cb8-2" title="2">  answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> </a>
+<a class="sourceLine" id="cb8-3" title="3">  onAnswerClick<span class="op">={</span>handleAnswerClick<span class="op">}</span></a>
+<a class="sourceLine" id="cb8-4" title="4">/&gt;</a></code></pre></div>
+<p>Click a zone, then click any answer button.</p>
+<p><strong>✓ You should see:</strong> The Continue button becomes enabled, allowing you to move to the next question.</p>
+<h3 id="step-2-add-conditional-styling-to-answerchoices">Step 2: Add conditional styling to AnswerChoices</h3>
+<p>Add visual feedback that shows which answer is correct (green) and which was chosen incorrectly (red).</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers<span class="op">,</span> onAnswerClick<span class="op">,</span> chosenAnswer<span class="op">,</span> correctAnswer <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="co">// [1] Create style function</span></a>
+<a class="sourceLine" id="cb9-3" title="3">  <span class="kw">const</span> getButtonStyle <span class="op">=</span> (index) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-4" title="4">    <span class="cf">if</span> (chosenAnswer <span class="op">===</span> <span class="kw">null</span>) <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-5" title="5">    <span class="cf">if</span> (index <span class="op">===</span> correctAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button correct&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-6" title="6">    <span class="cf">if</span> (index <span class="op">===</span> chosenAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button incorrect&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-7" title="7">    <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-8" title="8">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb9-9" title="9"></a>
+<a class="sourceLine" id="cb9-10" title="10">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb9-11" title="11">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-12" title="12">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb9-13" title="13">        <span class="op">&lt;</span>button</a>
+<a class="sourceLine" id="cb9-14" title="14">          key<span class="op">={</span>index<span class="op">}</span></a>
+<a class="sourceLine" id="cb9-15" title="15">          className<span class="op">={</span><span class="at">getButtonStyle</span>(index)<span class="op">}</span>  <span class="co">// [2] Apply dynamic className</span></a>
+<a class="sourceLine" id="cb9-16" title="16">          onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">onAnswerClick</span>(index)<span class="op">}</span></a>
+<a class="sourceLine" id="cb9-17" title="17">        <span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-18" title="18">          <span class="op">{</span>answer<span class="op">}</span></a>
+<a class="sourceLine" id="cb9-19" title="19">        &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-20" title="20">      ))<span class="op">}</span></a>
+<a class="sourceLine" id="cb9-21" title="21">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-22" title="22">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-23" title="23"><span class="op">}</span></a></code></pre></div>
+<blockquote>
+<p>💡 <strong>Understanding Dynamic Styling</strong></p>
+<ol type="1">
+<li><strong>Create style function</strong>: <code>getButtonStyle()</code> returns different CSS classes based on state - default before answering, green for correct, red for chosen incorrect, default for other buttons</li>
+<li><strong>Apply dynamic className</strong>: Each button calls the function with its index to get the appropriate styling</li>
+</ol>
+<p>The function checks conditions in order: if no answer is selected yet, all buttons are default. After selection, the correct answer gets green styling, the chosen wrong answer gets red styling, and other buttons remain default. This provides immediate visual feedback.</p>
+</blockquote>
+<p>Update the JSX to pass the styling props:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="op">&lt;</span>AnswerChoices </a>
+<a class="sourceLine" id="cb10-2" title="2">  answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> </a>
+<a class="sourceLine" id="cb10-3" title="3">  onAnswerClick<span class="op">={</span>handleAnswerClick<span class="op">}</span></a>
+<a class="sourceLine" id="cb10-4" title="4">  chosenAnswer<span class="op">={</span>chosenAnswer<span class="op">}</span></a>
+<a class="sourceLine" id="cb10-5" title="5">  correctAnswer<span class="op">={</span><span class="va">question</span>.<span class="at">correct</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-6" title="6">/&gt;</a></code></pre></div>
+<p>Click a zone, then click an answer.</p>
+<p><strong>✓ You should see:</strong> The correct answer shows green styling, incorrect answer shows red styling.</p>
+<h3 id="step-3-disable-buttons-after-answer-selection">Step 3: Disable buttons after answer selection</h3>
+<p>Disable all buttons after an answer is selected so players can’t change their answer.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers<span class="op">,</span> onAnswerClick<span class="op">,</span> chosenAnswer<span class="op">,</span> correctAnswer <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-2" title="2">  <span class="kw">const</span> getButtonStyle <span class="op">=</span> (index) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-3" title="3">    <span class="cf">if</span> (chosenAnswer <span class="op">===</span> <span class="kw">null</span>) <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb11-4" title="4">    <span class="cf">if</span> (index <span class="op">===</span> correctAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button correct&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb11-5" title="5">    <span class="cf">if</span> (index <span class="op">===</span> chosenAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button incorrect&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb11-6" title="6">    <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb11-7" title="7">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb11-8" title="8"></a>
+<a class="sourceLine" id="cb11-9" title="9">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb11-10" title="10">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-11" title="11">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb11-12" title="12">        <span class="op">&lt;</span>button</a>
+<a class="sourceLine" id="cb11-13" title="13">          key<span class="op">={</span>index<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-14" title="14">          className<span class="op">={</span><span class="at">getButtonStyle</span>(index)<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-15" title="15">          onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">onAnswerClick</span>(index)<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-16" title="16">          disabled<span class="op">={</span>chosenAnswer <span class="op">!==</span> <span class="kw">null</span><span class="op">}</span>  <span class="co">// Add disabled attribute</span></a>
+<a class="sourceLine" id="cb11-17" title="17">        <span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-18" title="18">          <span class="op">{</span>answer<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-19" title="19">        &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-20" title="20">      ))<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-21" title="21">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-22" title="22">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-23" title="23"><span class="op">}</span></a></code></pre></div>
+<p>Click a zone, click an answer, then try clicking other buttons.</p>
+<p><strong>✓ You should see:</strong> After selecting an answer, all other buttons become unclickable.</p>
+<blockquote>
+<p>💡 <strong>Preventing Multiple Clicks</strong></p>
+<p>The <code>disabled</code> attribute prevents multiple clicks after an answer is selected. Once <code>chosenAnswer</code> is no longer <code>null</code>, all buttons become disabled, creating a polished user experience where buttons respond intelligently to user interactions.</p>
+</blockquote>
+<p><a id="adding-feedback-messages"></a></p>
 <h2 id="adding-feedback-messages">💬 Adding Feedback Messages</h2>
-<p>Let’s add personality to your game with custom feedback messages that celebrate correct answers and encourage players after mistakes, then make them dynamic with random selection.</p>
+<p>🎯 <strong>Goal:</strong> Add personality to your game with custom feedback messages that celebrate correct answers and encourage players after mistakes.</p>
+<p>You’ll create feedback message constants, import them, implement random selection logic, and add the feedback component to your quiz modal.</p>
+<h3 id="step-1-create-the-messages-file">Step 1: Create the messages file</h3>
+<p><strong>File:</strong> <code>src/constants/messages.js</code></p>
+<p>Create a new file to store your custom feedback messages for correct and incorrect answers.</p>
+<p><strong>Right-click</strong> <code>src/constants</code> → New File → name it <code>messages.js</code>, then add:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="im">export</span> <span class="kw">const</span> CORRECT_FEEDBACK <span class="op">=</span> [</a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="st">&quot;🎉 Nailed it!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-3" title="3">  <span class="st">&quot;🔥 You got it!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-4" title="4">  <span class="st">&quot;✨ Awesome!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-5" title="5">  <span class="st">&quot;🏆 Perfect!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-6" title="6">  <span class="st">&quot;💯 Brilliant!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-7" title="7">  <span class="st">&quot;⭐ Outstanding!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-8" title="8">  <span class="st">&quot;🚀 Amazing!&quot;</span></a>
+<a class="sourceLine" id="cb12-9" title="9">]<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-10" title="10"></a>
+<a class="sourceLine" id="cb12-11" title="11"><span class="im">export</span> <span class="kw">const</span> INCORRECT_FEEDBACK <span class="op">=</span> [</a>
+<a class="sourceLine" id="cb12-12" title="12">  <span class="st">&quot;😬 Missed it!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-13" title="13">  <span class="st">&quot;💥 Not quite!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-14" title="14">  <span class="st">&quot;🤔 Close one!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-15" title="15">  <span class="st">&quot;😅 Try again!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-16" title="16">  <span class="st">&quot;🎯 Almost there!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-17" title="17">  <span class="st">&quot;💪 Keep going!&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-18" title="18">  <span class="st">&quot;🧠 Learning time!&quot;</span></a>
+<a class="sourceLine" id="cb12-19" title="19">]<span class="op">;</span></a></code></pre></div>
+<h3 id="step-2-import-the-constants">Step 2: Import the constants</h3>
+<p><strong>File:</strong> <code>src/components/QuizModal.jsx</code></p>
+<p>Import your feedback messages so the QuizModal can use them.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="co">// ... existing imports ...</span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="im">import</span> <span class="op">{</span> CORRECT_FEEDBACK<span class="op">,</span> INCORRECT_FEEDBACK <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/messages&quot;</span><span class="op">;</span></a></code></pre></div>
+<h3 id="step-3-update-answerfeedback-component">Step 3: Update AnswerFeedback component</h3>
+<p><strong>File:</strong> <code>src/components/QuizModal.jsx</code></p>
+<p>Add logic that picks a random message from your feedback arrays each time a player answers.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">function</span> <span class="at">AnswerFeedback</span>(<span class="op">{</span> hasAnswered<span class="op">,</span> isCorrect<span class="op">,</span> correctAnswerText <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-2" title="2">  <span class="cf">if</span> (<span class="op">!</span>hasAnswered) <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-3" title="3">    <span class="cf">return</span> <span class="op">&lt;</span>AnswerPlaceholder /<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb14-4" title="4">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb14-5" title="5"></a>
+<a class="sourceLine" id="cb14-6" title="6">  <span class="co">// [1] Pick the appropriate array</span></a>
+<a class="sourceLine" id="cb14-7" title="7">  <span class="kw">const</span> messages <span class="op">=</span> isCorrect <span class="op">?</span> CORRECT_FEEDBACK : INCORRECT_FEEDBACK<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-8" title="8">  <span class="co">// [2] Select random message</span></a>
+<a class="sourceLine" id="cb14-9" title="9">  <span class="kw">const</span> message <span class="op">=</span> messages[<span class="va">Math</span>.<span class="at">floor</span>(<span class="va">Math</span>.<span class="at">random</span>() <span class="op">*</span> <span class="va">messages</span>.<span class="at">length</span>)]<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-10" title="10"></a>
+<a class="sourceLine" id="cb14-11" title="11">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb14-12" title="12">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;result&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-13" title="13">      <span class="op">&lt;</span>strong<span class="op">&gt;{</span>message<span class="op">}</span>&lt;/strong<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-14" title="14">      <span class="op">{!</span>isCorrect <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>The answer <span class="dt">was</span><span class="op">:</span> <span class="op">{</span>correctAnswerText<span class="op">}</span>&lt;/div<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb14-15" title="15">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-16" title="16">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-17" title="17"><span class="op">}</span></a></code></pre></div>
+<blockquote>
+<p>💡 <strong>Understanding Random Selection</strong></p>
 <ol type="1">
-<li><p><strong>Create</strong> the messages file by right-clicking <code>src/constants</code> → New File → naming it <code>messages.js</code></p></li>
-<li><p><strong>Add</strong> feedback message arrays</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="im">export</span> <span class="kw">const</span> CORRECT_FEEDBACK <span class="op">=</span> [</a>
-<a class="sourceLine" id="cb15-2" title="2">  <span class="st">&quot;🎉 Nailed it!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-3" title="3">  <span class="st">&quot;🔥 You got it!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-4" title="4">  <span class="st">&quot;✨ Awesome!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-5" title="5">  <span class="st">&quot;🏆 Perfect!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-6" title="6">  <span class="st">&quot;💯 Brilliant!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-7" title="7">  <span class="st">&quot;⭐ Outstanding!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-8" title="8">  <span class="st">&quot;🚀 Amazing!&quot;</span></a>
-<a class="sourceLine" id="cb15-9" title="9">]<span class="op">;</span></a>
-<a class="sourceLine" id="cb15-10" title="10"></a>
-<a class="sourceLine" id="cb15-11" title="11"><span class="im">export</span> <span class="kw">const</span> INCORRECT_FEEDBACK <span class="op">=</span> [</a>
-<a class="sourceLine" id="cb15-12" title="12">  <span class="st">&quot;😬 Missed it!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-13" title="13">  <span class="st">&quot;💥 Not quite!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-14" title="14">  <span class="st">&quot;🤔 Close one!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-15" title="15">  <span class="st">&quot;😅 Try again!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-16" title="16">  <span class="st">&quot;🎯 Almost there!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-17" title="17">  <span class="st">&quot;💪 Keep going!&quot;</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb15-18" title="18">  <span class="st">&quot;🧠 Learning time!&quot;</span></a>
-<a class="sourceLine" id="cb15-19" title="19">]<span class="op">;</span></a></code></pre></div></li>
-<li><p><strong>Import</strong> the constants into QuizModal.jsx</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1"><span class="im">import</span> <span class="op">{</span> CORRECT_FEEDBACK<span class="op">,</span> INCORRECT_FEEDBACK <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/messages&quot;</span><span class="op">;</span></a></code></pre></div></li>
-<li><p><strong>Find</strong> the AnswerFeedback function in QuizModal.jsx and replace the placeholder message with random selection logic</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">function</span> <span class="at">AnswerFeedback</span>(<span class="op">{</span> hasAnswered<span class="op">,</span> isCorrect<span class="op">,</span> correctAnswerText <span class="op">}</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb17-2" title="2">  <span class="cf">if</span> (<span class="op">!</span>hasAnswered) <span class="op">{</span></a>
-<a class="sourceLine" id="cb17-3" title="3">    <span class="cf">return</span> <span class="op">&lt;</span>AnswerPlaceholder /<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb17-4" title="4">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb17-5" title="5"></a>
-<a class="sourceLine" id="cb17-6" title="6">  <span class="co">// Random selection using Math.random() and array length</span></a>
-<a class="sourceLine" id="cb17-7" title="7">  <span class="kw">const</span> messages <span class="op">=</span> isCorrect <span class="op">?</span> CORRECT_FEEDBACK : INCORRECT_FEEDBACK<span class="op">;</span></a>
-<a class="sourceLine" id="cb17-8" title="8">  <span class="kw">const</span> message <span class="op">=</span> messages[<span class="va">Math</span>.<span class="at">floor</span>(<span class="va">Math</span>.<span class="at">random</span>() <span class="op">*</span> <span class="va">messages</span>.<span class="at">length</span>)]<span class="op">;</span></a>
-<a class="sourceLine" id="cb17-9" title="9"></a>
-<a class="sourceLine" id="cb17-10" title="10">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb17-11" title="11">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;result&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb17-12" title="12">      <span class="op">&lt;</span>strong<span class="op">&gt;{</span>message<span class="op">}</span>&lt;/strong<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb17-13" title="13">      <span class="op">{!</span>isCorrect <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>The answer <span class="dt">was</span><span class="op">:</span> <span class="op">{</span>correctAnswerText<span class="op">}</span>&lt;/div<span class="op">&gt;}</span></a>
-<a class="sourceLine" id="cb17-14" title="14">    &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb17-15" title="15">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb17-16" title="16"><span class="op">}</span></a></code></pre></div></li>
-<li><p><strong>Add</strong> AnswerFeedback component by placing in JSX right after QuestionHeader</p>
-<pre class="jsx"><code>&lt;AnswerFeedback
-  hasAnswered={chosenAnswer !== null}
-  isCorrect={chosenAnswer === question.correct}
-  correctAnswerText={question.answers[question.correct]}
-/&gt;</code></pre>
-<p><strong>Test</strong> by clicking zone → clicking answers → seeing different messages each time</p></li>
+<li><strong>Pick the appropriate array</strong>: Use ternary operator to choose CORRECT_FEEDBACK or INCORRECT_FEEDBACK</li>
+<li><strong>Select random message</strong>: <code>Math.random()</code> generates 0-1, multiply by array length, <code>Math.floor()</code> rounds down to get valid index</li>
 </ol>
-<h3 id="random-selection-breakdown">Random Selection Breakdown</h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">const</span> messages <span class="op">=</span> isCorrect <span class="op">?</span> CORRECT_FEEDBACK : INCORRECT_FEEDBACK<span class="op">;</span></a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="co">// Choose the right array based on whether answer was correct</span></a>
-<a class="sourceLine" id="cb19-3" title="3"></a>
-<a class="sourceLine" id="cb19-4" title="4"><span class="kw">const</span> message <span class="op">=</span> messages[<span class="va">Math</span>.<span class="at">floor</span>(<span class="va">Math</span>.<span class="at">random</span>() <span class="op">*</span> <span class="va">messages</span>.<span class="at">length</span>)]<span class="op">;</span></a>
-<a class="sourceLine" id="cb19-5" title="5"><span class="co">// Math.random() → 0 to 0.999...</span></a>
-<a class="sourceLine" id="cb19-6" title="6"><span class="co">// * messages.length → 0 to array length</span></a>
-<a class="sourceLine" id="cb19-7" title="7"><span class="co">// Math.floor() → Round down to whole number</span></a>
-<a class="sourceLine" id="cb19-8" title="8"><span class="co">// messages[index] → Get message at that position</span></a></code></pre></div>
-<p><strong>Constants</strong> keep your feedback messages organized and easy to modify. By storing them in a separate file, you can easily add new messages or change the tone without hunting through component code. <strong>Random selection</strong> adds variety and personality to your game using <code>Math.random()</code> and <code>Math.floor()</code> — the same pattern used in games, animations, and any app that needs variety.</p>
-<h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
+<p>This pattern adds variety to your game — players see different encouraging messages each time they answer, making the experience feel more dynamic and engaging.</p>
+</blockquote>
+<h3 id="step-4-add-answerfeedback-to-quizmodal">Step 4: Add AnswerFeedback to QuizModal</h3>
+<p><strong>File:</strong> <code>src/components/QuizModal.jsx</code></p>
+<p>Place the feedback component in your modal so players see their results after answering.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">QuizModal</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-2" title="2">  <span class="co">// ... existing code ...</span></a>
+<a class="sourceLine" id="cb15-3" title="3">  </a>
+<a class="sourceLine" id="cb15-4" title="4">  <span class="cf">return</span> shouldShowModal <span class="op">?</span> (</a>
+<a class="sourceLine" id="cb15-5" title="5">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;quiz-modal&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb15-6" title="6">      <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;quiz-content&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb15-7" title="7">        <span class="op">{</span><span class="co">/* ... existing code ... */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb15-8" title="8">        </a>
+<a class="sourceLine" id="cb15-9" title="9">        <span class="op">&lt;</span>QuestionHeader question<span class="op">={</span>question<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb15-10" title="10">        </a>
+<a class="sourceLine" id="cb15-11" title="11">        <span class="op">&lt;</span>AnswerFeedback</a>
+<a class="sourceLine" id="cb15-12" title="12">          hasAnswered<span class="op">={</span>chosenAnswer <span class="op">!==</span> <span class="kw">null</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb15-13" title="13">          isCorrect<span class="op">={</span>chosenAnswer <span class="op">===</span> <span class="va">question</span>.<span class="at">correct</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb15-14" title="14">          correctAnswerText<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span>[<span class="va">question</span>.<span class="at">correct</span>]<span class="op">}</span></a>
+<a class="sourceLine" id="cb15-15" title="15">        /&gt;</a>
+<a class="sourceLine" id="cb15-16" title="16">        <span class="op">{</span><span class="co">/* ↑ Add this component */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb15-17" title="17">        </a>
+<a class="sourceLine" id="cb15-18" title="18">        <span class="op">{</span><span class="co">/* ... rest of modal ... */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb15-19" title="19">      &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb15-20" title="20">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb15-21" title="21">  ) : <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb15-22" title="22"><span class="op">}</span></a></code></pre></div>
+<h3 id="step-5-test-the-feedback-messages">Step 5: Test the feedback messages</h3>
+<p>Click a zone, then click different answers multiple times.</p>
+<p><strong>✓ You should see:</strong> Different feedback messages appear each time you answer, adding variety and personality to your game!</p>
+<blockquote>
+<p>🏆 <strong>Bonus Challenge</strong></p>
 <p>Add more feedback messages to each array to increase variety! Try different emojis and encouraging phrases.</p>
+</blockquote>
 <p><a id="testing-your-quiz-system"></a></p>
 <h2 id="testing-your-quiz-system">🧪 Testing Your Quiz System</h2>
-<p>Let’s test your complete quiz system and verify all the interactive pieces work together.</p>
-<h3 id="complete-quiz-flow-test">Complete Quiz Flow Test</h3>
+<p>🎯 <strong>Goal:</strong> Verify your complete quiz system works by testing the full user flow and inspecting component state with DevTools.</p>
+<p>You’ll test the complete quiz flow from zone click to completion, then use React DevTools to inspect component state and props.</p>
+<h3 id="step-1-test-complete-quiz-flow">Step 1: Test complete quiz flow</h3>
+<p>Navigate to the game by clicking “Start Adventure”, then test the full interaction sequence.</p>
 <ul>
-<li><strong>Navigate</strong> to game by clicking “Start Adventure”</li>
-<li><strong>Click</strong> any zone where modal should appear with question and answers</li>
-<li><strong>Click</strong> any answer
+<li><strong>Click</strong> any zone</li>
+<li><strong>Verify</strong> modal appears with question and four answer buttons</li>
+<li><strong>Click</strong> any answer</li>
+<li><strong>Verify</strong>:
 <ul>
-<li>Button should show correct/incorrect styling</li>
-<li>Random feedback message should appear</li>
-<li>Other buttons should be disabled</li>
-<li>Continue button should become enabled</li>
+<li>Button shows correct/incorrect styling</li>
+<li>Random feedback message appears</li>
+<li>Other buttons become disabled</li>
+<li>Continue button becomes enabled</li>
 </ul></li>
-<li><strong>Click</strong> Continue button where next question should load</li>
-<li><strong>Complete</strong> all questions where modal should close and zone should be marked complete</li>
+<li><strong>Click</strong> Continue button</li>
+<li><strong>Verify</strong> next question loads</li>
+<li><strong>Complete</strong> all questions</li>
+<li><strong>Verify</strong> modal closes and zone is marked complete in HUD</li>
 </ul>
-<h3 id="react-devtools-inspection">React DevTools Inspection</h3>
+<p><strong>✓ You should see:</strong> The complete quiz flow works smoothly from start to finish, with all interactive elements responding correctly!</p>
+<h3 id="step-2-inspect-component-state-with-devtools">Step 2: Inspect component state with DevTools</h3>
+<p>Press <code>F12</code> or right-click → Inspect to open DevTools, then navigate to the Components tab.</p>
 <ul>
-<li><strong>Open</strong> DevTools by pressing F12 → Components tab</li>
-<li><strong>Find</strong> QuizModal by examining the component tree</li>
-<li><strong>Inspect</strong> AnswerChoices by checking answers prop and chosenAnswer state</li>
-<li><strong>Watch</strong> state changes by clicking answers and observing chosenAnswer updates</li>
+<li><strong>Find</strong> QuizModal in the component tree</li>
+<li><strong>Expand</strong> to see child components</li>
+<li><strong>Click</strong> AnswerChoices</li>
+<li><strong>Inspect</strong> the <code>answers</code> prop (should show four answer strings)</li>
+<li><strong>Inspect</strong> the <code>chosenAnswer</code> prop (should be <code>null</code> before answering)</li>
+<li><strong>Click</strong> an answer in the game</li>
+<li><strong>Observe</strong> <code>chosenAnswer</code> updates to the selected index</li>
 </ul>
-<p><strong>End-to-end testing</strong> ensures all your components work together correctly. By testing the complete user flow, you catch integration issues that might not appear when testing individual components.</p>
+<p><strong>✓ You should see:</strong> React DevTools shows how props and state flow through your component tree, updating in real-time as you interact with the quiz!</p>
+<blockquote>
+<p>💡 <strong>End-to-End Testing</strong></p>
+<p>End-to-end testing ensures all your components work together correctly. By testing the complete user flow, you catch integration issues that might not appear when testing individual components. React DevTools gives you X-ray vision into your component hierarchy, letting you verify that data flows correctly from parent to child components.</p>
+</blockquote>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>
 <p><em>Quick reference for all the component composition and interaction concepts you just learned:</em></p>
@@ -681,9 +921,6 @@ overflow-x: hidden !important;
 <ul>
 <li><strong>How does component composition make React apps more maintainable than monolithic components?</strong></li>
 <li><strong>How do conditional classes provide better user experience than static styling?</strong></li>
-<li><strong>How does the disabled attribute improve the user experience in quiz interfaces?</strong></li>
-<li><strong>Why is it better to store feedback messages in constants rather than hardcoding them?</strong></li>
-<li><strong>How does the AnswerChoices component demonstrate the single responsibility principle?</strong></li>
 </ul>
 </body>
 </html>

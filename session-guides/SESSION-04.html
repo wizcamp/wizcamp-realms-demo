@@ -364,17 +364,6 @@ blockquote ul {
 margin-top: 12px;
 margin-bottom: 0;
 padding-left: 1.8em;
-list-style-type: none;
-}
-blockquote li {
-position: relative;
-}
-
-blockquote li::before {
-content: '☐ ';
-position: absolute;
-left: -1.8em;
-font-size: 16px;
 }
 
 blockquote:has(strong:first-child:contains("💡")) {
@@ -418,9 +407,13 @@ table td:nth-child(3) {
 width: auto;
 }
 
-table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:first-child {
+width: auto !important;
+max-width: none !important;
+white-space: nowrap;
+}
 table:not(:has(td:nth-child(3))) td:nth-child(2) {
-width: 50% !important;
+width: 100% !important;
 max-width: none !important;
 }
 
@@ -510,12 +503,12 @@ overflow-x: hidden !important;
 <p>🎯 <strong>Goal:</strong> Add the game’s HUD (Heads Up Display) and coordinate helper to prepare for zone configuration.</p>
 <p><strong>File:</strong> <code>src/App.jsx</code></p>
 <h3 id="step-1-add-imports-to-app">Step 1: Add imports to App</h3>
-<p>To display game progress and assist with positioning, we need to import the HUD and CoordinateDisplay components.</p>
+<p>Import the HUD and coordinate display components you’ll add to the game screen.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="co">// Add these two imports</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> CoordinateDisplay <span class="im">from</span> <span class="st">&quot;./components/CoordinateDisplay&quot;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="im">import</span> HUD <span class="im">from</span> <span class="st">&quot;./components/HUD&quot;</span><span class="op">;</span></a></code></pre></div>
 <h3 id="step-2-update-playing-screen-rendering">Step 2: Update PLAYING screen rendering</h3>
-<p>Replace the single GameMap component with a Fragment containing multiple components, allowing you to display the map, HUD, and coordinate helper together.</p>
+<p>Add the HUD and coordinate display alongside your game map.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="co">// Before:</span></a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>GameMap /<span class="op">&gt;}</span></a>
 <a class="sourceLine" id="cb2-3" title="3"></a>

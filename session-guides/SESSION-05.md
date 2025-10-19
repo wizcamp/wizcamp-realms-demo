@@ -102,9 +102,9 @@ To connect your game to real trivia data, we'll replace the placeholder alert wi
 >
 > **To continue:** Refresh the browser (`Ctrl+R` or `Cmd+R`), click "Start Game", then click a zone to test your code.
 
-### Step 1: Add fetch logic
+### Step 1: Add fetch logic to fetchQuestions
 
-Add fetch logic after the alert to request data from the API.
+Replace the placeholder alert with real code that requests trivia questions from the OpenTrivia Database.
 
 ```javascript
 export async function fetchQuestions(zoneId, count = null) {
@@ -179,7 +179,7 @@ Raw API Data → Your Transform Function → Game-Ready Data
 
 Let's build the `transformQuestion` function step by step, testing each transformation stage.
 
-### Step 1: Set up transformation testing
+### Step 1: Set up transformation testing in fetchQuestions
 
 Add test code after the fetch logic to verify each transformation step.
 
@@ -220,7 +220,7 @@ export async function fetchQuestions(zoneId, count = null) {
 
 **✓ You should see:** Console shows `undefined` for transformed question — we need to implement `transformQuestion`.
 
-### Step 2: Extract object properties
+### Step 2: Extract properties in transformQuestion
 
 Update the `transformQuestion` function to extract the question data.
 
@@ -251,7 +251,7 @@ function transformQuestion(apiQuestion) {
 }
 ```
 
-### Step 3: Add decoding
+### Step 3: Add decoding to transformQuestion
 
 Update `transformQuestion` to decode the URL-encoded text using the helper function.
 
@@ -283,7 +283,7 @@ function transformQuestion(apiQuestion) {
 }
 ```
 
-### Step 4: Shuffle answers
+### Step 4: Shuffle answers in transformQuestion
 
 Add logic to randomize answer order and track where the correct answer ends up.
 
@@ -321,7 +321,7 @@ function transformQuestion(apiQuestion) {
 >
 > This transformation prevents players from memorizing answer positions. Each time the game loads, answers appear in a different order, making the quiz more challenging and fair.
 
-### Step 5: Return game format
+### Step 5: Return game format from transformQuestion
 
 Update the return statement to use the final game format with shuffled answers and correct index.
 

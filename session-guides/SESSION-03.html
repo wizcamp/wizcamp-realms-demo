@@ -364,17 +364,6 @@ blockquote ul {
 margin-top: 12px;
 margin-bottom: 0;
 padding-left: 1.8em;
-list-style-type: none;
-}
-blockquote li {
-position: relative;
-}
-
-blockquote li::before {
-content: '☐ ';
-position: absolute;
-left: -1.8em;
-font-size: 16px;
 }
 
 blockquote:has(strong:first-child:contains("💡")) {
@@ -418,9 +407,13 @@ table td:nth-child(3) {
 width: auto;
 }
 
-table:not(:has(td:nth-child(3))) td:first-child,
+table:not(:has(td:nth-child(3))) td:first-child {
+width: auto !important;
+max-width: none !important;
+white-space: nowrap;
+}
 table:not(:has(td:nth-child(3))) td:nth-child(2) {
-width: 50% !important;
+width: 100% !important;
 max-width: none !important;
 }
 
@@ -497,7 +490,7 @@ overflow-x: hidden !important;
 <li><a href="#screen-constants">Screen Constants</a></li>
 <li><a href="#context-and-prop-drilling">Context and Prop Drilling</a></li>
 <li><a href="#adding-screen-navigation">Adding Screen Navigation</a></li>
-<li><a href="#using-react-devtools-for-exploring-state">Using React DevTools for Exploring State</a></li>
+<li><a href="#exploring-state-with-react-devtools">Exploring State with React DevTools</a></li>
 <li><a href="#implementing-start-game-function">Implementing Start Game Function</a></li>
 <li><a href="#essential-terms">Essential Terms</a></li>
 <li><a href="#ask-the-ai">Ask the AI</a></li>
@@ -545,15 +538,15 @@ overflow-x: hidden !important;
 <p>🎯 <strong>Goal:</strong> Implement local state for the credits modal to see how components can manage their own data.</p>
 <p><strong>File:</strong> <code>src/components/SplashScreen.jsx</code></p>
 <h3 id="step-1-add-imports-to-splashscreen">Step 1: Add imports to SplashScreen</h3>
-<p>To use React’s state management and the credits modal, we need to import <code>useState</code> and <code>CreditsModal</code>.</p>
+<p>Import the tools you’ll need for managing modal visibility.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="co">// Add these two imports</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> <span class="op">{</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="im">import</span> CreditsModal <span class="im">from</span> <span class="st">&quot;./CreditsModal&quot;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb1-4" title="4"><span class="co">// Existing imports below</span></a>
 <a class="sourceLine" id="cb1-5" title="5"><span class="im">import</span> GameButton <span class="im">from</span> <span class="st">&quot;./GameButton&quot;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb1-6" title="6"><span class="im">import</span> GameLogo <span class="im">from</span> <span class="st">&quot;./GameLogo&quot;</span><span class="op">;</span></a></code></pre></div>
-<h3 id="step-2-add-local-state">Step 2: Add local state</h3>
-<p>Create a state variable to track whether the modal is visible, starting with <code>false</code> since the modal should be hidden initially. The <code>useState</code> hook returns both the current value (<code>showCredits</code>) and a setter function (<code>setShowCredits</code>) that you’ll use to update the state later.</p>
+<h3 id="step-2-add-showcredits-state">Step 2: Add showCredits state</h3>
+<p>Create a state variable to track whether the modal is visible, starting with <code>false</code> since the modal should be hidden initially.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">SplashScreen</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb2-2" title="2">  <span class="co">// Add this state to track modal visibility</span></a>
 <a class="sourceLine" id="cb2-3" title="3">  <span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
@@ -561,7 +554,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb2-5" title="5">  <span class="co">// ... rest of function ...</span></a>
 <a class="sourceLine" id="cb2-6" title="6"><span class="op">}</span></a></code></pre></div>
 <h3 id="step-3-update-the-credits-button-onclick">Step 3: Update the Credits button onClick</h3>
-<p>Connect the Credits button to your state by updating its onClick handler to show the modal when clicked.</p>
+<p>Connect the Credits button to your modal visibility state.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-buttons&quot;</span><span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb3-2" title="2">  <span class="op">&lt;</span>GameButton</a>
 <a class="sourceLine" id="cb3-3" title="3">    text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
@@ -576,7 +569,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb3-12" title="12">  <span class="op">{</span><span class="co">/* ↑ Update onClick to set state */</span><span class="op">}</span></a>
 <a class="sourceLine" id="cb3-13" title="13">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
 <h3 id="step-4-add-the-modal-to-jsx">Step 4: Add the modal to JSX</h3>
-<p>Conditionally render the modal in your JSX so it only appears when <code>showCredits</code> is true, and pass a function to close it.</p>
+<p>Add the modal to your component so it can appear when needed.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-screen&quot;</span><span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb4-2" title="2">  <span class="op">&lt;</span>GameLogo /<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb4-3" title="3">  <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-buttons&quot;</span><span class="op">&gt;</span></a>
@@ -655,15 +648,15 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <p>🎯 <strong>Goal:</strong> Implement the core navigation system that will control which screen users see using shared state.</p>
 <p><strong>File:</strong> <code>src/App.jsx</code></p>
 <h3 id="step-1-add-imports-to-app">Step 1: Add imports to App</h3>
-<p>To access shared state and use screen constants, we need to import the <code>useGame</code> hook, <code>SCREENS</code> constants, and the <code>GameMap</code> component.</p>
+<p>Import the tools you’ll need for screen navigation and the game map.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="co">// Add these three imports</span></a>
 <a class="sourceLine" id="cb10-2" title="2"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./hooks/useGame&#39;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;./constants/screens&quot;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb10-4" title="4"><span class="im">import</span> GameMap <span class="im">from</span> <span class="st">&quot;./components/GameMap&quot;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb10-5" title="5"><span class="co">// Existing import below</span></a>
 <a class="sourceLine" id="cb10-6" title="6"><span class="im">import</span> SplashScreen <span class="im">from</span> <span class="st">&quot;./components/SplashScreen&quot;</span><span class="op">;</span></a></code></pre></div>
-<h3 id="step-2-access-shared-state">Step 2: Access shared state</h3>
-<p>Extract the <code>screen</code> value from Context using the <code>useGame</code> hook, which gives you access to the current screen state managed by <code>GameProvider</code>.</p>
+<h3 id="step-2-access-screen-from-usegame">Step 2: Access screen from useGame</h3>
+<p>Get the current screen value from your game’s shared state.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">App</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb11-2" title="2">  <span class="co">// Access shared screen state from Context</span></a>
 <a class="sourceLine" id="cb11-3" title="3">  <span class="kw">const</span> <span class="op">{</span> screen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
@@ -671,7 +664,7 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <a class="sourceLine" id="cb11-5" title="5">  <span class="co">// ... rest of function ...</span></a>
 <a class="sourceLine" id="cb11-6" title="6"><span class="op">}</span></a></code></pre></div>
 <h3 id="step-3-add-conditional-rendering">Step 3: Add conditional rendering</h3>
-<p>Replace the hardcoded <code>&lt;SplashScreen /&gt;</code> with conditional logic that renders different components based on the <code>screen</code> state value.</p>
+<p>Set up your app to show different screens based on the current game state.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="co">// Before:</span></a>
 <a class="sourceLine" id="cb12-2" title="2"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb12-3" title="3">  <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;</span></a>
@@ -689,8 +682,8 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <p>💡 <strong>Shared State Controls Everything</strong></p>
 <p>The <code>&amp;&amp;</code> operator creates conditional rendering — when the left side is true, React renders the right side. By checking <code>screen</code> against different <code>SCREENS</code> constants, this single piece of shared state controls your entire app’s display. Change the state in one place (like clicking a button), and the whole UI updates automatically. This is the power of centralized state management!</p>
 </blockquote>
-<p><a id="using-react-devtools-for-exploring-state"></a></p>
-<h2 id="using-react-devtools-for-exploring-state">🔍 Using React DevTools for Exploring State</h2>
+<p><a id="exploring-state-with-react-devtools"></a></p>
+<h2 id="exploring-state-with-react-devtools">🔍 Exploring State with React DevTools</h2>
 <p>🎯 <strong>Goal:</strong> Use React DevTools to see how shared state works behind the scenes and experiment with changing it manually.</p>
 <h3 id="step-1-open-devtools-and-find-gameprovider">Step 1: Open DevTools and find GameProvider</h3>
 <ol type="1">
@@ -719,7 +712,7 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <p>🎯 <strong>Goal:</strong> Make your “Start Adventure” button actually start the game by updating the shared state.</p>
 <p><strong>File:</strong> <code>src/components/SplashScreen.jsx</code></p>
 <h3 id="step-1-add-imports-to-splashscreen-1">Step 1: Add imports to SplashScreen</h3>
-<p>To access screen constants and the shared state setter function, we need to import <code>SCREENS</code> and the <code>useGame</code> hook.</p>
+<p>Import the tools you’ll need to navigate to the game screen.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="co">// Add these two imports</span></a>
 <a class="sourceLine" id="cb13-2" title="2"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/screens&quot;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb13-3" title="3"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../hooks/useGame&quot;</span><span class="op">;</span></a>
@@ -728,17 +721,16 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <a class="sourceLine" id="cb13-6" title="6"><span class="im">import</span> CreditsModal <span class="im">from</span> <span class="st">&quot;./CreditsModal&quot;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb13-7" title="7"><span class="im">import</span> GameButton <span class="im">from</span> <span class="st">&quot;./GameButton&quot;</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb13-8" title="8"><span class="im">import</span> GameLogo <span class="im">from</span> <span class="st">&quot;./GameLogo&quot;</span><span class="op">;</span></a></code></pre></div>
-<h3 id="step-2-access-the-state-setter">Step 2: Access the state setter</h3>
-<p>Extract the <code>setScreen</code> function from Context, which allows this component to update the shared screen state.</p>
+<h3 id="step-2-access-setscreen-from-usegame">Step 2: Access setScreen from useGame</h3>
+<p>Add the <code>setScreen</code> function from the <code>useGame</code> hook.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">SplashScreen</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb14-2" title="2">  <span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb14-3" title="3">  <span class="co">// Add this line to access the shared state setter</span></a>
-<a class="sourceLine" id="cb14-4" title="4">  <span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb14-5" title="5">  </a>
-<a class="sourceLine" id="cb14-6" title="6">  <span class="co">// ... rest of function ...</span></a>
-<a class="sourceLine" id="cb14-7" title="7"><span class="op">}</span></a></code></pre></div>
+<a class="sourceLine" id="cb14-3" title="3">  <span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span>  <span class="co">// Add this line</span></a>
+<a class="sourceLine" id="cb14-4" title="4">  </a>
+<a class="sourceLine" id="cb14-5" title="5">  <span class="co">// ... rest of function ...</span></a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="op">}</span></a></code></pre></div>
 <h3 id="step-3-create-the-start-game-function">Step 3: Create the start game function</h3>
-<p>Define a function that changes the screen state to PLAYING when called, triggering the navigation to GameMap.</p>
+<p>Define a <code>startGame</code> function that changes the screen state to PLAYING, triggering navigation to GameMap.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">SplashScreen</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb15-2" title="2">  <span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb15-3" title="3">  <span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>

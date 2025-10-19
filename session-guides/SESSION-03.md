@@ -51,7 +51,7 @@ Before we dive into code, let's understand the key difference between **state** 
 
 ### Step 1: Add imports to SplashScreen
 
-To use React's state management and the credits modal, we need to import `useState` and `CreditsModal`.
+Import the tools you'll need for managing modal visibility.
 
 ```javascript
 // Add these two imports
@@ -62,9 +62,9 @@ import GameButton from "./GameButton";
 import GameLogo from "./GameLogo";
 ```
 
-### Step 2: Add local state
+### Step 2: Add showCredits state
 
-Create a state variable to track whether the modal is visible, starting with `false` since the modal should be hidden initially. The `useState` hook returns both the current value (`showCredits`) and a setter function (`setShowCredits`) that you'll use to update the state later.
+Create a state variable to track whether the modal is visible, starting with `false` since the modal should be hidden initially.
 
 ```javascript
 export default function SplashScreen() {
@@ -77,7 +77,7 @@ export default function SplashScreen() {
 
 ### Step 3: Update the Credits button onClick
 
-Connect the Credits button to your state by updating its onClick handler to show the modal when clicked.
+Connect the Credits button to your modal visibility state.
 
 ```javascript
 <div className="splash-buttons">
@@ -97,7 +97,7 @@ Connect the Credits button to your state by updating its onClick handler to show
 
 ### Step 4: Add the modal to JSX
 
-Conditionally render the modal in your JSX so it only appears when `showCredits` is true, and pass a function to close it.
+Add the modal to your component so it can appear when needed.
 
 ```javascript
 <div className="splash-screen">
@@ -220,7 +220,7 @@ With Context, components that need the screen value can grab it directly using t
 
 ### Step 1: Add imports to App
 
-To access shared state and use screen constants, we need to import the `useGame` hook, `SCREENS` constants, and the `GameMap` component.
+Import the tools you'll need for screen navigation and the game map.
 
 ```javascript
 // Add these three imports
@@ -231,9 +231,9 @@ import GameMap from "./components/GameMap";
 import SplashScreen from "./components/SplashScreen";
 ```
 
-### Step 2: Access shared state
+### Step 2: Access screen from useGame
 
-Extract the `screen` value from Context using the `useGame` hook, which gives you access to the current screen state managed by `GameProvider`.
+Get the current screen value from your game's shared state.
 
 ```javascript
 export default function App() {
@@ -246,7 +246,7 @@ export default function App() {
 
 ### Step 3: Add conditional rendering
 
-Replace the hardcoded `<SplashScreen />` with conditional logic that renders different components based on the `screen` state value.
+Set up your app to show different screens based on the current game state.
 
 ```javascript
 // Before:
@@ -310,7 +310,7 @@ Replace the hardcoded `<SplashScreen />` with conditional logic that renders dif
 
 ### Step 1: Add imports to SplashScreen
 
-To access screen constants and the shared state setter function, we need to import `SCREENS` and the `useGame` hook.
+Import the tools you'll need to navigate to the game screen.
 
 ```javascript
 // Add these two imports
@@ -323,15 +323,14 @@ import GameButton from "./GameButton";
 import GameLogo from "./GameLogo";
 ```
 
-### Step 2: Access the state setter
+### Step 2: Access setScreen from useGame
 
-Extract the `setScreen` function from Context, which allows this component to update the shared screen state.
+Add the `setScreen` function from the `useGame` hook.
 
 ```javascript
 export default function SplashScreen() {
   const [showCredits, setShowCredits] = useState(false);
-  // Add this line to access the shared state setter
-  const { setScreen } = useGame();
+  const { setScreen } = useGame();  // Add this line
   
   // ... rest of function ...
 }
@@ -339,7 +338,7 @@ export default function SplashScreen() {
 
 ### Step 3: Create the start game function
 
-Define a function that changes the screen state to PLAYING when called, triggering the navigation to GameMap.
+Define a `startGame` function that changes the screen state to PLAYING, triggering navigation to GameMap.
 
 ```javascript
 export default function SplashScreen() {
