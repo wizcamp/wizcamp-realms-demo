@@ -529,7 +529,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb2-12" title="12">          <span class="op">&lt;</span>GameMap /<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb2-13" title="13">          <span class="op">&lt;</span>HUD /<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb2-14" title="14">          <span class="op">{</span>isQuizVisible <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>QuizModal /<span class="op">&gt;}</span></a>
-<a class="sourceLine" id="cb2-15" title="15">          <span class="op">{</span><span class="co">/* ↑ [3] Conditional rendering */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-15" title="15">          <span class="op">{</span><span class="co">/* ↑ [3] Conditionally render QuizModal */</span><span class="op">}</span></a>
 <a class="sourceLine" id="cb2-16" title="16">          <span class="op">&lt;</span>CoordinateDisplay /<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb2-17" title="17">        &lt;/<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb2-18" title="18">      )<span class="op">}</span></a>
@@ -537,11 +537,11 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb2-20" title="20">  )<span class="op">;</span></a>
 <a class="sourceLine" id="cb2-21" title="21"><span class="op">}</span></a></code></pre></div>
 <blockquote>
-<p>💡 <strong>Understanding App Updates</strong></p>
+<p>💡 <strong>Understanding Conditional Rendering</strong></p>
 <ol type="1">
 <li><strong>Import QuizModal</strong>: Import the QuizModal component at the top with other components</li>
 <li><strong>Add isQuizVisible</strong>: Add the modal visibility state to the destructuring</li>
-<li><strong>Conditional rendering</strong>: Use the <code>&amp;&amp;</code> operator to show QuizModal only when <code>isQuizVisible</code> is true</li>
+<li><strong>Conditionally render QuizModal</strong>: Use the <code>&amp;&amp;</code> operator to show QuizModal only when <code>isQuizVisible</code> is true</li>
 </ol>
 <p>The <code>&amp;&amp;</code> operator creates conditional rendering — when <code>isQuizVisible</code> is true, React renders <code>&lt;QuizModal /&gt;</code>; when false, nothing renders. This pattern controls what users see based on app state.</p>
 </blockquote>
@@ -562,7 +562,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb3-12" title="12">  <span class="co">// ... rest of component ...</span></a>
 <a class="sourceLine" id="cb3-13" title="13"><span class="op">}</span></a></code></pre></div>
 <blockquote>
-<p>💡 <strong>Understanding GameMap Updates</strong></p>
+<p>💡 <strong>Understanding Modal Visibility Control</strong></p>
 <ol type="1">
 <li><strong>Access setIsQuizVisible</strong>: Get the setter function to control modal visibility</li>
 <li><strong>Show modal</strong>: Setting <code>isQuizVisible</code> to true satisfies Step 1’s condition, rendering the modal</li>
@@ -576,9 +576,9 @@ overflow-x: hidden !important;
 <h2 id="building-answer-buttons">🔘 Building Answer Buttons</h2>
 <p>🎯 <strong>Goal:</strong> Build interactive answer buttons that transform your question data into clickable choices using array mapping.</p>
 <p><strong>File:</strong> <code>src/components/QuizModal.jsx</code></p>
-<p>You’ll create the <code>AnswerChoices</code> component in four steps: create the component structure, add it to JSX, then implement array mapping to generate buttons.</p>
+<p>You’ll create the <code>AnswerChoices</code> component in three steps: create the component structure, add it to JSX, then implement array mapping to generate buttons.</p>
 <h3 id="step-1-create-answerchoices-component">Step 1: Create AnswerChoices component</h3>
-<p>Create the component structure that will hold your answer buttons.</p>
+<p>Create a skeleton version of the component that you’ll progressively build up with functionality.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// Add this component after QuestionHeader:</span></a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers <span class="op">}</span>) <span class="op">{</span></a>
 <a class="sourceLine" id="cb4-3" title="3">  <span class="cf">return</span> <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span>&lt;/div<span class="op">&gt;;</span></a>
@@ -595,7 +595,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb5-8" title="8">        </a>
 <a class="sourceLine" id="cb5-9" title="9">        <span class="op">&lt;</span>QuestionHeader question<span class="op">={</span>question<span class="op">}</span> /&gt;</a>
 <a class="sourceLine" id="cb5-10" title="10">        <span class="op">&lt;</span>AnswerChoices answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> /&gt;</a>
-<a class="sourceLine" id="cb5-11" title="11">        <span class="op">{</span><span class="co">/* ↑ Add this component */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-11" title="11">        <span class="op">{</span><span class="co">/* ↑ Add AnswerChoices component */</span><span class="op">}</span></a>
 <a class="sourceLine" id="cb5-12" title="12">        </a>
 <a class="sourceLine" id="cb5-13" title="13">        <span class="op">&lt;</span>ContinueButton</a>
 <a class="sourceLine" id="cb5-14" title="14">          hasAnswered<span class="op">={</span>chosenAnswer <span class="op">!==</span> <span class="kw">null</span><span class="op">}</span></a>
@@ -609,38 +609,40 @@ overflow-x: hidden !important;
 <h3 id="step-3-verify-props-are-passed">Step 3: Verify props are passed</h3>
 <p>Click a zone, then open React DevTools → Components tab → find AnswerChoices → check the <code>answers</code> prop.</p>
 <p><strong>✓ You should see:</strong> The <code>answers</code> prop is populated with an array of four answer strings.</p>
-<h3 id="step-4-add-array-mapping-to-answerchoices">Step 4: Add array mapping to AnswerChoices</h3>
+<h3 id="step-4-generate-buttons-from-answers-array">Step 4: Generate buttons from answers array</h3>
 <p>Transform your answers array into clickable buttons using <code>map()</code> — one button for each answer.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers <span class="op">}</span>) <span class="op">{</span></a>
 <a class="sourceLine" id="cb6-2" title="2">  <span class="cf">return</span> (</a>
 <a class="sourceLine" id="cb6-3" title="3">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb6-4" title="4">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (  <span class="co">// [1] Map over answers</span></a>
+<a class="sourceLine" id="cb6-4" title="4">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (                 <span class="co">// [1] Loop answers</span></a>
 <a class="sourceLine" id="cb6-5" title="5">        <span class="op">&lt;</span>button key<span class="op">={</span>index<span class="op">}</span> className<span class="op">=</span><span class="st">&quot;answer-button&quot;</span><span class="op">&gt;</span>  <span class="co">// [2] Create button</span></a>
-<a class="sourceLine" id="cb6-6" title="6">          <span class="op">{</span>answer<span class="op">}</span>  <span class="co">// [3] Display answer text</span></a>
+<a class="sourceLine" id="cb6-6" title="6">          <span class="op">{</span>answer<span class="op">}</span>                                      <span class="co">// [3] Display answer</span></a>
 <a class="sourceLine" id="cb6-7" title="7">        &lt;/button<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb6-8" title="8">      ))<span class="op">}</span></a>
 <a class="sourceLine" id="cb6-9" title="9">    &lt;/div<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb6-10" title="10">  )<span class="op">;</span></a>
 <a class="sourceLine" id="cb6-11" title="11"><span class="op">}</span></a></code></pre></div>
+<blockquote>
+<p>💡 <strong>Understanding Array Mapping</strong></p>
+<ol type="1">
+<li><strong>Loop answers</strong>: The <code>map()</code> method iterates through the answers array, converting each string into JSX</li>
+<li><strong>Create button</strong>: Each answer becomes its own button with a unique key for React’s tracking</li>
+<li><strong>Display answer</strong>: The answer string appears as the visible text on each button</li>
+</ol>
+<p>Array mapping is everywhere in React — any time you have a list of data that becomes a list of components, you use <code>map()</code>. The <code>key</code> prop helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.</p>
+</blockquote>
 <h3 id="step-5-test-the-answer-buttons">Step 5: Test the answer buttons</h3>
 <p>Click a zone to open the quiz modal.</p>
 <p><strong>✓ You should see:</strong> Four answer buttons appear in the modal with your question’s answer choices!</p>
-<blockquote>
-<p>💡 <strong>Array Mapping in React</strong></p>
-<ol type="1">
-<li><strong>Map over answers</strong>: The <code>map()</code> method transforms each item in the array</li>
-<li><strong>Create button</strong>: Each answer string becomes a button element</li>
-<li><strong>Display answer text</strong>: The answer text appears inside the button</li>
-</ol>
-<p>Array mapping is everywhere in React — any time you have a list of data that becomes a list of components, you use <code>map()</code>. The key prop helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.</p>
-</blockquote>
 <p><a id="making-buttons-interactive"></a></p>
 <h2 id="making-buttons-interactive">🎨 Making Buttons Interactive</h2>
 <p>🎯 <strong>Goal:</strong> Add click functionality and dynamic styling that shows correct/incorrect answers with visual feedback.</p>
 <p><strong>File:</strong> <code>src/components/QuizModal.jsx</code></p>
 <p>You’ll add interactivity in three steps: click handling, conditional styling, and preventing multiple clicks.</p>
 <h3 id="step-1-add-click-handling-to-answerchoices">Step 1: Add click handling to AnswerChoices</h3>
-<p>Make your answer buttons respond to clicks by connecting them to the game’s answer handling logic.</p>
+<h4 id="part-a-update-answerchoices-component">Part A: Update AnswerChoices component</h4>
+<p>Make your answer buttons respond to clicks by accepting a click handler prop.</p>
+<p><strong>File:</strong> <code>src/components/QuizModal.jsx</code></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers<span class="op">,</span> onAnswerClick <span class="op">}</span>) <span class="op">{</span>  <span class="co">// [1] Add onAnswerClick prop</span></a>
 <a class="sourceLine" id="cb7-2" title="2">  <span class="cf">return</span> (</a>
 <a class="sourceLine" id="cb7-3" title="3">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
@@ -659,85 +661,116 @@ overflow-x: hidden !important;
 <blockquote>
 <p>💡 <strong>Understanding Click Handling</strong></p>
 <ol type="1">
-<li><strong>Add onAnswerClick prop</strong>: Accept the click handler function from the parent</li>
-<li><strong>Attach click handler</strong>: Pass the button’s index when clicked</li>
+<li><strong>Add onAnswerClick prop</strong>: Accept the click handler function from the parent component</li>
+<li><strong>Attach click handler</strong>: Add <code>onClick</code> to each button so it calls <code>onAnswerClick</code> with the button’s <code>index</code></li>
 </ol>
-<p>The arrow function <code>() =&gt; onAnswerClick(index)</code> ensures each button passes its own index when clicked, allowing the parent component to know which answer was selected.</p>
+<p>Each button needs to tell the parent component which answer was clicked. The <code>onClick</code> prop connects the button to the handler function, and the <code>index</code> parameter identifies which specific answer the player selected.</p>
 </blockquote>
+<h4 id="part-b-pass-the-handler-to-answerchoices">Part B: Pass the handler to AnswerChoices</h4>
 <p>Update the JSX to pass the <code>handleAnswerClick</code> function:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="op">&lt;</span>AnswerChoices </a>
-<a class="sourceLine" id="cb8-2" title="2">  answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> </a>
-<a class="sourceLine" id="cb8-3" title="3">  onAnswerClick<span class="op">={</span>handleAnswerClick<span class="op">}</span></a>
-<a class="sourceLine" id="cb8-4" title="4">/&gt;</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">QuizModal</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="co">// ... existing code ...</span></a>
+<a class="sourceLine" id="cb8-3" title="3">  </a>
+<a class="sourceLine" id="cb8-4" title="4">  <span class="cf">return</span> shouldShowModal <span class="op">?</span> (</a>
+<a class="sourceLine" id="cb8-5" title="5">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;quiz-modal&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-6" title="6">      <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;quiz-content&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-7" title="7">        <span class="op">{</span><span class="co">/* ... existing code ... */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb8-8" title="8">        </a>
+<a class="sourceLine" id="cb8-9" title="9">        <span class="op">&lt;</span>AnswerChoices </a>
+<a class="sourceLine" id="cb8-10" title="10">          answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> </a>
+<a class="sourceLine" id="cb8-11" title="11">          onAnswerClick<span class="op">={</span>handleAnswerClick<span class="op">}</span>  <span class="op">{</span><span class="co">/* Add this prop */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb8-12" title="12">        /&gt;</a>
+<a class="sourceLine" id="cb8-13" title="13">        </a>
+<a class="sourceLine" id="cb8-14" title="14">        <span class="op">{</span><span class="co">/* ... rest of modal ... */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb8-15" title="15">      &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-16" title="16">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-17" title="17">  ) : <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-18" title="18"><span class="op">}</span></a></code></pre></div>
+<h4 id="part-c-test-click-handling">Part C: Test click handling</h4>
 <p>Click a zone, then click any answer button.</p>
 <p><strong>✓ You should see:</strong> The Continue button becomes enabled, allowing you to move to the next question.</p>
 <h3 id="step-2-add-conditional-styling-to-answerchoices">Step 2: Add conditional styling to AnswerChoices</h3>
-<p>Add visual feedback that shows which answer is correct (green) and which was chosen incorrectly (red).</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers<span class="op">,</span> onAnswerClick<span class="op">,</span> chosenAnswer<span class="op">,</span> correctAnswer <span class="op">}</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb9-2" title="2">  <span class="co">// [1] Create style function</span></a>
-<a class="sourceLine" id="cb9-3" title="3">  <span class="kw">const</span> getButtonStyle <span class="op">=</span> (index) <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb9-4" title="4">    <span class="cf">if</span> (chosenAnswer <span class="op">===</span> <span class="kw">null</span>) <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb9-5" title="5">    <span class="cf">if</span> (index <span class="op">===</span> correctAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button correct&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb9-6" title="6">    <span class="cf">if</span> (index <span class="op">===</span> chosenAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button incorrect&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb9-7" title="7">    <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb9-8" title="8">  <span class="op">};</span></a>
-<a class="sourceLine" id="cb9-9" title="9"></a>
-<a class="sourceLine" id="cb9-10" title="10">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb9-11" title="11">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb9-12" title="12">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
-<a class="sourceLine" id="cb9-13" title="13">        <span class="op">&lt;</span>button</a>
-<a class="sourceLine" id="cb9-14" title="14">          key<span class="op">={</span>index<span class="op">}</span></a>
-<a class="sourceLine" id="cb9-15" title="15">          className<span class="op">={</span><span class="at">getButtonStyle</span>(index)<span class="op">}</span>  <span class="co">// [2] Apply dynamic className</span></a>
-<a class="sourceLine" id="cb9-16" title="16">          onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">onAnswerClick</span>(index)<span class="op">}</span></a>
-<a class="sourceLine" id="cb9-17" title="17">        <span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb9-18" title="18">          <span class="op">{</span>answer<span class="op">}</span></a>
-<a class="sourceLine" id="cb9-19" title="19">        &lt;/button<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb9-20" title="20">      ))<span class="op">}</span></a>
-<a class="sourceLine" id="cb9-21" title="21">    &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb9-22" title="22">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb9-23" title="23"><span class="op">}</span></a></code></pre></div>
+<h4 id="part-a-update-answerchoices-component-1">Part A: Update AnswerChoices component</h4>
+<p>Add visual feedback that shows which answer is correct and which was chosen incorrectly.</p>
+<p><strong>File:</strong> <code>src/components/QuizModal.jsx</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// [1] Add new props</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers<span class="op">,</span> onAnswerClick<span class="op">,</span> chosenAnswer<span class="op">,</span> correctAnswer <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-3" title="3">  <span class="co">// [2] Create style function</span></a>
+<a class="sourceLine" id="cb9-4" title="4">  <span class="kw">const</span> getButtonStyle <span class="op">=</span> (index) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-5" title="5">    <span class="cf">if</span> (chosenAnswer <span class="op">===</span> <span class="kw">null</span>) <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-6" title="6">    <span class="cf">if</span> (index <span class="op">===</span> correctAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button correct&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-7" title="7">    <span class="cf">if</span> (index <span class="op">===</span> chosenAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button incorrect&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-8" title="8">    <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-9" title="9">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb9-10" title="10"></a>
+<a class="sourceLine" id="cb9-11" title="11">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb9-12" title="12">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-13" title="13">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb9-14" title="14">        <span class="op">&lt;</span>button</a>
+<a class="sourceLine" id="cb9-15" title="15">          key<span class="op">={</span>index<span class="op">}</span></a>
+<a class="sourceLine" id="cb9-16" title="16">          className<span class="op">={</span><span class="at">getButtonStyle</span>(index)<span class="op">}</span>  <span class="co">// [3] Apply dynamic className</span></a>
+<a class="sourceLine" id="cb9-17" title="17">          onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">onAnswerClick</span>(index)<span class="op">}</span></a>
+<a class="sourceLine" id="cb9-18" title="18">        <span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-19" title="19">          <span class="op">{</span>answer<span class="op">}</span></a>
+<a class="sourceLine" id="cb9-20" title="20">        &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-21" title="21">      ))<span class="op">}</span></a>
+<a class="sourceLine" id="cb9-22" title="22">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-23" title="23">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-24" title="24"><span class="op">}</span></a></code></pre></div>
 <blockquote>
 <p>💡 <strong>Understanding Dynamic Styling</strong></p>
 <ol type="1">
-<li><strong>Create style function</strong>: <code>getButtonStyle()</code> returns different CSS classes based on state - default before answering, green for correct, red for chosen incorrect, default for other buttons</li>
-<li><strong>Apply dynamic className</strong>: Each button calls the function with its index to get the appropriate styling</li>
+<li><strong>Add new props</strong>: Accept <code>chosenAnswer</code> and <code>correctAnswer</code> to track answer state</li>
+<li><strong>Create style function</strong>: <code>getButtonStyle()</code> returns different CSS classes based on state - default before answering, <code>correct</code> class for right answer, <code>incorrect</code> class for wrong answer, default for other buttons</li>
+<li><strong>Apply dynamic className</strong>: Each button calls the function with its <code>index</code> to get the appropriate styling</li>
 </ol>
-<p>The function checks conditions in order: if no answer is selected yet, all buttons are default. After selection, the correct answer gets green styling, the chosen wrong answer gets red styling, and other buttons remain default. This provides immediate visual feedback.</p>
+<p>The function checks conditions in order: if no answer is selected yet, all buttons are default. After selection, the correct answer gets distinct styling to show it was right, the chosen wrong answer gets different styling to show it was incorrect, and other buttons remain default. This provides immediate visual feedback.</p>
 </blockquote>
+<h4 id="part-b-pass-the-styling-props">Part B: Pass the styling props</h4>
 <p>Update the JSX to pass the styling props:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="op">&lt;</span>AnswerChoices </a>
-<a class="sourceLine" id="cb10-2" title="2">  answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> </a>
-<a class="sourceLine" id="cb10-3" title="3">  onAnswerClick<span class="op">={</span>handleAnswerClick<span class="op">}</span></a>
-<a class="sourceLine" id="cb10-4" title="4">  chosenAnswer<span class="op">={</span>chosenAnswer<span class="op">}</span></a>
-<a class="sourceLine" id="cb10-5" title="5">  correctAnswer<span class="op">={</span><span class="va">question</span>.<span class="at">correct</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb10-6" title="6">/&gt;</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">QuizModal</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="co">// ... existing code ...</span></a>
+<a class="sourceLine" id="cb10-3" title="3">  </a>
+<a class="sourceLine" id="cb10-4" title="4">  <span class="cf">return</span> shouldShowModal <span class="op">?</span> (</a>
+<a class="sourceLine" id="cb10-5" title="5">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;quiz-modal&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb10-6" title="6">      <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;quiz-content&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb10-7" title="7">        <span class="op">{</span><span class="co">/* ... existing code ... */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-8" title="8">        </a>
+<a class="sourceLine" id="cb10-9" title="9">        <span class="op">&lt;</span>AnswerChoices </a>
+<a class="sourceLine" id="cb10-10" title="10">          answers<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span><span class="op">}</span> </a>
+<a class="sourceLine" id="cb10-11" title="11">          onAnswerClick<span class="op">={</span>handleAnswerClick<span class="op">}</span></a>
+<a class="sourceLine" id="cb10-12" title="12">          chosenAnswer<span class="op">={</span>chosenAnswer<span class="op">}</span>          <span class="op">{</span><span class="co">/* Add this prop */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-13" title="13">          correctAnswer<span class="op">={</span><span class="va">question</span>.<span class="at">correct</span><span class="op">}</span>     <span class="op">{</span><span class="co">/* Add this prop */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-14" title="14">        /&gt;</a>
+<a class="sourceLine" id="cb10-15" title="15">        </a>
+<a class="sourceLine" id="cb10-16" title="16">        <span class="op">{</span><span class="co">/* ... rest of modal ... */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-17" title="17">      &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb10-18" title="18">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb10-19" title="19">  ) : <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-20" title="20"><span class="op">}</span></a></code></pre></div>
+<h4 id="part-c-test-conditional-styling">Part C: Test conditional styling</h4>
 <p>Click a zone, then click an answer.</p>
-<p><strong>✓ You should see:</strong> The correct answer shows green styling, incorrect answer shows red styling.</p>
+<p><strong>✓ You should see:</strong> The correct answer and your chosen answer (if incorrect) show distinct visual styling.</p>
 <h3 id="step-3-disable-buttons-after-answer-selection">Step 3: Disable buttons after answer selection</h3>
 <p>Disable all buttons after an answer is selected so players can’t change their answer.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">function</span> <span class="at">AnswerChoices</span>(<span class="op">{</span> answers<span class="op">,</span> onAnswerClick<span class="op">,</span> chosenAnswer<span class="op">,</span> correctAnswer <span class="op">}</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb11-2" title="2">  <span class="kw">const</span> getButtonStyle <span class="op">=</span> (index) <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb11-3" title="3">    <span class="cf">if</span> (chosenAnswer <span class="op">===</span> <span class="kw">null</span>) <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb11-4" title="4">    <span class="cf">if</span> (index <span class="op">===</span> correctAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button correct&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb11-5" title="5">    <span class="cf">if</span> (index <span class="op">===</span> chosenAnswer) <span class="cf">return</span> <span class="st">&quot;answer-button incorrect&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb11-6" title="6">    <span class="cf">return</span> <span class="st">&quot;answer-button&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb11-7" title="7">  <span class="op">};</span></a>
-<a class="sourceLine" id="cb11-8" title="8"></a>
-<a class="sourceLine" id="cb11-9" title="9">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb11-10" title="10">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb11-11" title="11">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
-<a class="sourceLine" id="cb11-12" title="12">        <span class="op">&lt;</span>button</a>
-<a class="sourceLine" id="cb11-13" title="13">          key<span class="op">={</span>index<span class="op">}</span></a>
-<a class="sourceLine" id="cb11-14" title="14">          className<span class="op">={</span><span class="at">getButtonStyle</span>(index)<span class="op">}</span></a>
-<a class="sourceLine" id="cb11-15" title="15">          onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">onAnswerClick</span>(index)<span class="op">}</span></a>
-<a class="sourceLine" id="cb11-16" title="16">          disabled<span class="op">={</span>chosenAnswer <span class="op">!==</span> <span class="kw">null</span><span class="op">}</span>  <span class="co">// Add disabled attribute</span></a>
-<a class="sourceLine" id="cb11-17" title="17">        <span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb11-18" title="18">          <span class="op">{</span>answer<span class="op">}</span></a>
-<a class="sourceLine" id="cb11-19" title="19">        &lt;/button<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb11-20" title="20">      ))<span class="op">}</span></a>
-<a class="sourceLine" id="cb11-21" title="21">    &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb11-22" title="22">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb11-23" title="23"><span class="op">}</span></a></code></pre></div>
+<a class="sourceLine" id="cb11-2" title="2">  <span class="co">// ... existing code ...</span></a>
+<a class="sourceLine" id="cb11-3" title="3"></a>
+<a class="sourceLine" id="cb11-4" title="4">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb11-5" title="5">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;answers-grid&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-6" title="6">      <span class="op">{</span><span class="va">answers</span>.<span class="at">map</span>((answer<span class="op">,</span> index) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb11-7" title="7">        <span class="op">&lt;</span>button</a>
+<a class="sourceLine" id="cb11-8" title="8">          key<span class="op">={</span>index<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-9" title="9">          className<span class="op">={</span><span class="at">getButtonStyle</span>(index)<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-10" title="10">          onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">onAnswerClick</span>(index)<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-11" title="11">          disabled<span class="op">={</span>chosenAnswer <span class="op">!==</span> <span class="kw">null</span><span class="op">}</span>  <span class="op">{</span><span class="co">/* Add disabled attribute */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb11-12" title="12">        <span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-13" title="13">          <span class="op">{</span>answer<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-14" title="14">        &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-15" title="15">      ))<span class="op">}</span></a>
+<a class="sourceLine" id="cb11-16" title="16">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-17" title="17">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-18" title="18"><span class="op">}</span></a></code></pre></div>
 <p>Click a zone, click an answer, then try clicking other buttons.</p>
 <p><strong>✓ You should see:</strong> After selecting an answer, all other buttons become unclickable.</p>
 <blockquote>
@@ -822,7 +855,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb15-13" title="13">          isCorrect<span class="op">={</span>chosenAnswer <span class="op">===</span> <span class="va">question</span>.<span class="at">correct</span><span class="op">}</span></a>
 <a class="sourceLine" id="cb15-14" title="14">          correctAnswerText<span class="op">={</span><span class="va">question</span>.<span class="at">answers</span>[<span class="va">question</span>.<span class="at">correct</span>]<span class="op">}</span></a>
 <a class="sourceLine" id="cb15-15" title="15">        /&gt;</a>
-<a class="sourceLine" id="cb15-16" title="16">        <span class="op">{</span><span class="co">/* ↑ Add this component */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb15-16" title="16">        <span class="op">{</span><span class="co">/* ↑ Add AnswerFeedback component */</span><span class="op">}</span></a>
 <a class="sourceLine" id="cb15-17" title="17">        </a>
 <a class="sourceLine" id="cb15-18" title="18">        <span class="op">{</span><span class="co">/* ... rest of modal ... */</span><span class="op">}</span></a>
 <a class="sourceLine" id="cb15-19" title="19">      &lt;/div<span class="op">&gt;</span></a>
@@ -921,6 +954,9 @@ overflow-x: hidden !important;
 <ul>
 <li><strong>How does component composition make React apps more maintainable than monolithic components?</strong></li>
 <li><strong>How do conditional classes provide better user experience than static styling?</strong></li>
+<li><strong>How does the disabled attribute improve the user experience in quiz interfaces?</strong></li>
+<li><strong>Why is it better to store feedback messages in constants rather than hardcoding them?</strong></li>
+<li><strong>How does the AnswerChoices component demonstrate the single responsibility principle?</strong></li>
 </ul>
 </body>
 </html>

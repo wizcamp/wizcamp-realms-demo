@@ -67,7 +67,7 @@ export default function App() {
           <GameMap />
           <HUD />
           {isQuizVisible && <QuizModal />}
-          {/* ↑ [3] Conditional rendering */}
+          {/* ↑ [3] Conditionally render QuizModal */}
           <CoordinateDisplay />
         </>
       )}
@@ -76,11 +76,11 @@ export default function App() {
 }
 ```
 
-> 💡 **Understanding App Updates**
+> 💡 **Understanding Conditional Rendering**
 >
 > 1. **Import QuizModal**: Import the QuizModal component at the top with other components
 > 2. **Add isQuizVisible**: Add the modal visibility state to the destructuring
-> 3. **Conditional rendering**: Use the `&&` operator to show QuizModal only when `isQuizVisible` is true
+> 3. **Conditionally render QuizModal**: Use the `&&` operator to show QuizModal only when `isQuizVisible` is true
 >
 > The `&&` operator creates conditional rendering — when `isQuizVisible` is true, React renders `<QuizModal />`; when false, nothing renders. This pattern controls what users see based on app state.
 
@@ -106,7 +106,7 @@ export default function GameMap() {
 }
 ```
 
-> 💡 **Understanding GameMap Updates**
+> 💡 **Understanding Modal Visibility Control**
 >
 > 1. **Access setIsQuizVisible**: Get the setter function to control modal visibility
 > 2. **Show modal**: Setting `isQuizVisible` to true satisfies Step 1's condition, rendering the modal
@@ -127,11 +127,11 @@ Click any zone on the game map.
 
 **File:** `src/components/QuizModal.jsx`
 
-You'll create the `AnswerChoices` component in four steps: create the component structure, add it to JSX, then implement array mapping to generate buttons.
+You'll create the `AnswerChoices` component in three steps: create the component structure, add it to JSX, then implement array mapping to generate buttons.
 
 ### Step 1: Create AnswerChoices component
 
-Create the component structure that will hold your answer buttons.
+Create a skeleton version of the component that you'll progressively build up with functionality.
 
 ```javascript
 // Add this component after QuestionHeader:
@@ -155,7 +155,7 @@ export default function QuizModal() {
         
         <QuestionHeader question={question} />
         <AnswerChoices answers={question.answers} />
-        {/* ↑ Add this component */}
+        {/* ↑ Add AnswerChoices component */}
         
         <ContinueButton
           hasAnswered={chosenAnswer !== null}
@@ -174,7 +174,7 @@ Click a zone, then open React DevTools → Components tab → find AnswerChoices
 
 **✓ You should see:** The `answers` prop is populated with an array of four answer strings.
 
-### Step 4: Add array mapping to AnswerChoices
+### Step 4: Generate buttons from answers array
 
 Transform your answers array into clickable buttons using `map()` — one button for each answer.
 
@@ -182,9 +182,9 @@ Transform your answers array into clickable buttons using `map()` — one button
 function AnswerChoices({ answers }) {
   return (
     <div className="answers-grid">
-      {answers.map((answer, index) => (  // [1] Map over answers
+      {answers.map((answer, index) => (                 // [1] Loop answers
         <button key={index} className="answer-button">  // [2] Create button
-          {answer}  // [3] Display answer text
+          {answer}                                      // [3] Display answer
         </button>
       ))}
     </div>
@@ -192,19 +192,19 @@ function AnswerChoices({ answers }) {
 }
 ```
 
+> 💡 **Understanding Array Mapping**
+>
+> 1. **Loop answers**: The `map()` method iterates through the answers array, converting each string into JSX
+> 2. **Create button**: Each answer becomes its own button with a unique key for React's tracking
+> 3. **Display answer**: The answer string appears as the visible text on each button
+>
+> Array mapping is everywhere in React — any time you have a list of data that becomes a list of components, you use `map()`. The `key` prop helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.
+
 ### Step 5: Test the answer buttons
 
 Click a zone to open the quiz modal.
 
 **✓ You should see:** Four answer buttons appear in the modal with your question's answer choices!
-
-> 💡 **Array Mapping in React**
->
-> 1. **Map over answers**: The `map()` method transforms each item in the array
-> 2. **Create button**: Each answer string becomes a button element
-> 3. **Display answer text**: The answer text appears inside the button
->
-> Array mapping is everywhere in React — any time you have a list of data that becomes a list of components, you use `map()`. The key prop helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.
 
 <a id="making-buttons-interactive"></a>
 
@@ -218,7 +218,11 @@ You'll add interactivity in three steps: click handling, conditional styling, an
 
 ### Step 1: Add click handling to AnswerChoices
 
-Make your answer buttons respond to clicks by connecting them to the game's answer handling logic.
+#### Part A: Update AnswerChoices component
+
+Make your answer buttons respond to clicks by accepting a click handler prop.
+
+**File:** `src/components/QuizModal.jsx`
 
 ```javascript
 function AnswerChoices({ answers, onAnswerClick }) {  // [1] Add onAnswerClick prop
@@ -240,19 +244,37 @@ function AnswerChoices({ answers, onAnswerClick }) {  // [1] Add onAnswerClick p
 
 > 💡 **Understanding Click Handling**
 >
-> 1. **Add onAnswerClick prop**: Accept the click handler function from the parent
-> 2. **Attach click handler**: Pass the button's index when clicked
+> 1. **Add onAnswerClick prop**: Accept the click handler function from the parent component
+> 2. **Attach click handler**: Add `onClick` to each button so it calls `onAnswerClick` with the button's `index`
 >
-> The arrow function `() => onAnswerClick(index)` ensures each button passes its own index when clicked, allowing the parent component to know which answer was selected.
+> Each button needs to tell the parent component which answer was clicked. The `onClick` prop connects the button to the handler function, and the `index` parameter identifies which specific answer the player selected.
+
+#### Part B: Pass the handler to AnswerChoices
 
 Update the JSX to pass the `handleAnswerClick` function:
 
 ```javascript
-<AnswerChoices 
-  answers={question.answers} 
-  onAnswerClick={handleAnswerClick}
-/>
+export default function QuizModal() {
+  // ... existing code ...
+  
+  return shouldShowModal ? (
+    <div className="quiz-modal">
+      <div className="quiz-content">
+        {/* ... existing code ... */}
+        
+        <AnswerChoices 
+          answers={question.answers} 
+          onAnswerClick={handleAnswerClick}  {/* Add this prop */}
+        />
+        
+        {/* ... rest of modal ... */}
+      </div>
+    </div>
+  ) : null;
+}
 ```
+
+#### Part C: Test click handling
 
 Click a zone, then click any answer button.
 
@@ -260,11 +282,16 @@ Click a zone, then click any answer button.
 
 ### Step 2: Add conditional styling to AnswerChoices
 
-Add visual feedback that shows which answer is correct (green) and which was chosen incorrectly (red).
+#### Part A: Update AnswerChoices component
+
+Add visual feedback that shows which answer is correct and which was chosen incorrectly.
+
+**File:** `src/components/QuizModal.jsx`
 
 ```javascript
+// [1] Add new props
 function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) {
-  // [1] Create style function
+  // [2] Create style function
   const getButtonStyle = (index) => {
     if (chosenAnswer === null) return "answer-button";
     if (index === correctAnswer) return "answer-button correct";
@@ -277,7 +304,7 @@ function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) 
       {answers.map((answer, index) => (
         <button
           key={index}
-          className={getButtonStyle(index)}  // [2] Apply dynamic className
+          className={getButtonStyle(index)}  // [3] Apply dynamic className
           onClick={() => onAnswerClick(index)}
         >
           {answer}
@@ -290,25 +317,44 @@ function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) 
 
 > 💡 **Understanding Dynamic Styling**
 >
-> 1. **Create style function**: `getButtonStyle()` returns different CSS classes based on state - default before answering, green for correct, red for chosen incorrect, default for other buttons
-> 2. **Apply dynamic className**: Each button calls the function with its index to get the appropriate styling
+> 1. **Add new props**: Accept `chosenAnswer` and `correctAnswer` to track answer state
+> 2. **Create style function**: `getButtonStyle()` returns different CSS classes based on state - default before answering, `correct` class for right answer, `incorrect` class for wrong answer, default for other buttons
+> 3. **Apply dynamic className**: Each button calls the function with its `index` to get the appropriate styling
 >
-> The function checks conditions in order: if no answer is selected yet, all buttons are default. After selection, the correct answer gets green styling, the chosen wrong answer gets red styling, and other buttons remain default. This provides immediate visual feedback.
+> The function checks conditions in order: if no answer is selected yet, all buttons are default. After selection, the correct answer gets distinct styling to show it was right, the chosen wrong answer gets different styling to show it was incorrect, and other buttons remain default. This provides immediate visual feedback.
+
+#### Part B: Pass the styling props
 
 Update the JSX to pass the styling props:
 
 ```javascript
-<AnswerChoices 
-  answers={question.answers} 
-  onAnswerClick={handleAnswerClick}
-  chosenAnswer={chosenAnswer}
-  correctAnswer={question.correct}
-/>
+export default function QuizModal() {
+  // ... existing code ...
+  
+  return shouldShowModal ? (
+    <div className="quiz-modal">
+      <div className="quiz-content">
+        {/* ... existing code ... */}
+        
+        <AnswerChoices 
+          answers={question.answers} 
+          onAnswerClick={handleAnswerClick}
+          chosenAnswer={chosenAnswer}          {/* Add this prop */}
+          correctAnswer={question.correct}     {/* Add this prop */}
+        />
+        
+        {/* ... rest of modal ... */}
+      </div>
+    </div>
+  ) : null;
+}
 ```
+
+#### Part C: Test conditional styling
 
 Click a zone, then click an answer.
 
-**✓ You should see:** The correct answer shows green styling, incorrect answer shows red styling.
+**✓ You should see:** The correct answer and your chosen answer (if incorrect) show distinct visual styling.
 
 ### Step 3: Disable buttons after answer selection
 
@@ -316,12 +362,7 @@ Disable all buttons after an answer is selected so players can't change their an
 
 ```javascript
 function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) {
-  const getButtonStyle = (index) => {
-    if (chosenAnswer === null) return "answer-button";
-    if (index === correctAnswer) return "answer-button correct";
-    if (index === chosenAnswer) return "answer-button incorrect";
-    return "answer-button";
-  };
+  // ... existing code ...
 
   return (
     <div className="answers-grid">
@@ -330,7 +371,7 @@ function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) 
           key={index}
           className={getButtonStyle(index)}
           onClick={() => onAnswerClick(index)}
-          disabled={chosenAnswer !== null}  // Add disabled attribute
+          disabled={chosenAnswer !== null}  {/* Add disabled attribute */}
         >
           {answer}
         </button>
@@ -452,7 +493,7 @@ export default function QuizModal() {
           isCorrect={chosenAnswer === question.correct}
           correctAnswerText={question.answers[question.correct]}
         />
-        {/* ↑ Add this component */}
+        {/* ↑ Add AnswerFeedback component */}
         
         {/* ... rest of modal ... */}
       </div>
@@ -541,3 +582,6 @@ Now let's deepen your understanding of React patterns, component architecture, a
 
 - **How does component composition make React apps more maintainable than monolithic components?**
 - **How do conditional classes provide better user experience than static styling?**
+- **How does the disabled attribute improve the user experience in quiz interfaces?**
+- **Why is it better to store feedback messages in constants rather than hardcoding them?**
+- **How does the AnswerChoices component demonstrate the single responsibility principle?**

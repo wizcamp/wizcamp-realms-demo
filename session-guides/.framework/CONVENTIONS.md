@@ -102,6 +102,7 @@ _Quick reference for all the [topic] concepts you just learned:_
 - **Terminal commands**: Run `npm install`
 - **HTML/CSS selectors**: `.score-display` or `<div>`
 - **Package names**: Install `react-router-dom`
+- **Props and attributes in Understanding callouts**: When referring to specific code elements like `onClick`, `onAnswerClick`, `className`, `disabled`
 
 ### When to Use Both Bold + Backticks
 
@@ -131,7 +132,7 @@ import NewComponent from "./components/NewComponent";  // Add import
 - Regular descriptive text
 - Explanations and context
 - UI navigation paths in verification (React DevTools → Components → GameProvider)
-- Callout body text
+- Generic references to concepts ("the click handler", "the prop", "the function") when not referring to specific code elements
 
 ### Consistent Patterns
 
@@ -179,6 +180,7 @@ The `useState` hook creates state. Pass the `score` prop to the component. Updat
 | Keyboard shortcut | `backticks` | Press `F12` |
 | Terminal command | `backticks` | Run `npm start` |
 | Property/constant | `backticks` | Set `score` to `0` |
+| Props/attributes | `backticks` | The `onClick` prop |
 | Quoted text | "Quotes" | Display "Score: 0" |
 
 ---
