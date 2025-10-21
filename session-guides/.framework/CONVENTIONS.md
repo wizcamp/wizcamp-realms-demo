@@ -110,6 +110,39 @@ _Quick reference for all the [topic] concepts you just learned:_
 - **Important code elements in instructions**: **Find** the `recordCorrectAnswer` function
 - **UI elements that are also code**: Click the **`<StartButton />`** component
 
+### File Creation vs File Editing
+
+**Rule:** Only use **File:** label when editing an existing file, not when creating a new file.
+
+**Creating new files:**
+```markdown
+### Step 1: Create the messages file
+
+**Right-click** `src/constants` → New File → name it `messages.js`, then add your feedback messages:
+
+```javascript
+export const CORRECT_FEEDBACK = [
+  "🎉 Nailed it!",
+  // ...
+];
+```
+```
+
+**Editing existing files:**
+```markdown
+### Step 2: Import the constants
+
+**File:** `src/components/QuizModal.jsx`
+
+Import your feedback messages so the QuizModal can use them.
+
+```javascript
+import { CORRECT_FEEDBACK } from "../constants/messages";
+```
+```
+
+**Why:** The **File:** label indicates "open this existing file and make changes." For new files, the creation instruction itself provides the file path context.
+
 ### Import Statement Scaffolding
 
 **Use ellipsis to show import context:**

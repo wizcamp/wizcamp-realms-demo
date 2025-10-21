@@ -80,6 +80,11 @@ export default function SplashScreen() {
 }
 ```
 
+> 💡 **Understanding Diff Syntax**
+>
+> One common way to show code changes is using a diff format. Lines starting with `+` are additions, while lines starting with `-` are deletions. Lines without symbols remain unchanged.
+
+
 ### Step 4: Test your component
 
 **Run** `npm run dev` if not already running.
@@ -102,19 +107,28 @@ export default function SplashScreen() {
 
 ### Step 1: Add text prop to GameButton
 
-Update the component to accept a `text` prop, replacing the hardcoded button text with a dynamic value.
+Make your button display custom text by accepting a `text` prop and using it in place of the hardcoded text.
 
 **File:** `src/components/GameButton.jsx`
 
 ```javascript
-// Add text parameter in curly braces
+// [1] Add text parameter
 export default function GameButton({ text }) {
-  // Replace hardcoded text with {text}
+  // [2] Use text in JSX
   return <button>{text}</button>;
 }
 ```
 
-### Step 2: Pass the text prop from SplashScreen
+> 💡 **Understanding Props and Destructuring**
+>
+> 1. **Add text parameter**: Destructure `text` from the props object in the
+>    function signature
+> 2. **Use text in JSX**: Display the dynamic value with `{text}` instead of
+>    hardcoded text
+>
+> Destructuring `{ text }` is shorthand for `const text = props.text`. It pulls the value directly from the props object, making your code cleaner and more readable.
+
+### Step 2: Pass text prop from SplashScreen
 
 Pass the button text from the parent component as a prop.
 
@@ -138,7 +152,7 @@ export default function SplashScreen() {
 
 > 💡 **Parent-to-Child Data Flow**
 >
-> **Props** let parent components pass data to child components — just like function parameters. This makes your components flexible and reusable. The `{ text }` syntax is called **destructuring** — it pulls out just the values you need from the **props** object, keeping your code clean and readable.
+> **Props** let parent components pass data to child components — just like function parameters. This makes your components flexible and reusable. SplashScreen (the parent) passes `text="Start Adventure"` down to GameButton (the child), which receives it and displays it.
 
 <a id="adding-click-functionality"></a>
 
@@ -148,17 +162,25 @@ export default function SplashScreen() {
 
 ### Step 1: Add onClick prop to GameButton
 
-Update the component to accept an `onClick` prop and attach it to the button element.
+Make your button interactive by accepting an `onClick` prop and attaching it to the button element.
 
 **File:** `src/components/GameButton.jsx`
 
 ```javascript
-// Add onClick parameter
+// [1] Add onClick parameter
 export default function GameButton({ text, onClick }) {
-  // Add onClick to button element
+  // [2] Attach to button element
   return <button onClick={onClick}>{text}</button>;
 }
 ```
+
+> 💡 **Understanding Click Handlers**
+>
+> 1. **Add onClick parameter**: Destructure `onClick` from props alongside `text`
+> 2. **Attach to button element**: Pass `onClick` to the button's `onClick`
+>    attribute
+>
+> Functions can be passed as props just like any other data. When the button is clicked, React calls the function you passed from the parent component, enabling interactive behavior.
 
 ### Step 2: Pass click handler from SplashScreen
 
@@ -180,11 +202,11 @@ Pass a function that will execute when the button is clicked.
 
 **Click** "Start Adventure" on your splash screen.
 
-**✓ You should see:** A browser alert with the message "Start Game!" appears!
+**✓ You should see:** A browser alert with the message "Start Game!" appears.
 
-> 💡 **Giving Components Different Behaviors**
+> 💡 **Functions as Props**
 >
-> Functions as props are like giving your components different personalities. Your GameButton can do different things depending on where you use it — same button, different actions. It's a key pattern in React for building interactive apps.
+> Passing functions as props lets you define custom behavior for components. When you click the button, the `onClick` function you provided from SplashScreen is executed, showing the alert. This pattern allows components to be highly flexible and interactive.
 
 <a id="styling-with-variants"></a>
 
@@ -192,28 +214,38 @@ Pass a function that will execute when the button is clicked.
 
 🎯 **Goal:** Add visual variety to your buttons using CSS classes and default parameters.
 
-### Step 1: Add variant prop and dynamic className
+### Step 1: Add variant styling to GameButton
 
-Add a `variant` prop with a default value to control button styling, then create a dynamic className that combines the base class with the variant.
+Add a `variant` parameter with a default value, create a variable that combines the base class with the variant, then update the button to use this dynamic className.
 
 **File:** `src/components/GameButton.jsx`
 
 ```javascript
-// Add variant parameter with default value
+// [1] Add variant parameter with default value
 export default function GameButton({ text, onClick, variant = "primary" }) {
-  // Add this line: create buttonClass variable
+  // [2] Create buttonClass variable
   const buttonClass = `game-button ${variant}`;
 
   return (
     <button className={buttonClass} onClick={onClick}>
-      {/* ↑ Update to use className */}
       {text}
     </button>
+    {/* ↑ [3] Update to use className */}
   );
 }
 ```
 
-### Step 2: Use the variant prop in SplashScreen
+> 💡 **Understanding Dynamic Styling**
+>
+> 1. **Add variant parameter**: Accept `variant` prop with default value
+>    `"primary"`
+> 2. **Create buttonClass variable**: Use template literal to combine base class
+>    with variant
+> 3. **Update to use className**: Apply the dynamic class to the button element
+>
+> **className** is React's version of the HTML `class` attribute (since `class` is a reserved word in JavaScript). Template literals (backticks with `${}`) let you build strings dynamically — here we combine `game-button` with the variant to create class names like `game-button primary`. The `variant` prop lets you switch between styles, and the default parameter ensures the component works even without explicitly passing a variant.
+
+### Step 2: Pass variant prop from SplashScreen
 
 Pass the `variant` prop to specify which button style to use.
 
@@ -231,10 +263,6 @@ Pass the `variant` prop to specify which button style to use.
 ```
 
 **✓ You should see:** Your button now has the primary styling with a vibrant color!
-
-> 💡 **Building Dynamic Class Names**
->
-> **className** is React's version of the HTML `class` attribute. We use a **template literal** to build a dynamic class name like `game-button primary`. This matches the styles already defined in your project. The `variant` prop lets you switch between styles like `primary` and `secondary`, and **default parameters** like `variant = "primary"` ensure your component still works even if no variant is passed.
 
 <a id="reusing-your-component"></a>
 
@@ -260,7 +288,7 @@ Add a second GameButton with different prop values to demonstrate how the same c
     onClick={() => alert('Show Credits')}
     variant="secondary"
   />
-  {/* ↑ Add this button */}
+  {/* ↑ Add credits button */}
 </div>
 ```
 
@@ -269,10 +297,6 @@ Add a second GameButton with different prop values to demonstrate how the same c
 > 💡 **Write Once, Use Everywhere**
 >
 > Component reusability is React's superpower. You wrote the GameButton code once, but now you can use it anywhere in your app with different props. Thanks to your stylesheet, each variant (`primary`, `secondary`) automatically applies the right look — no extra styling needed.
-
-> 🏆 **Bonus Challenge**
->
-> Try adding a third GameButton with `variant="primary"` and `text="Instructions"` to see how easy it is to scale your UI!
 
 <a id="installing-react-devtools"></a>
 

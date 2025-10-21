@@ -225,7 +225,8 @@ Make your answer buttons respond to clicks by accepting a click handler prop.
 **File:** `src/components/QuizModal.jsx`
 
 ```javascript
-function AnswerChoices({ answers, onAnswerClick }) {  // [1] Add onAnswerClick prop
+// [1] Add onAnswerClick parameter
+function AnswerChoices({ answers, onAnswerClick }) {
   return (
     <div className="answers-grid">
       {answers.map((answer, index) => (
@@ -244,8 +245,10 @@ function AnswerChoices({ answers, onAnswerClick }) {  // [1] Add onAnswerClick p
 
 > 💡 **Understanding Click Handling**
 >
-> 1. **Add onAnswerClick prop**: Accept the click handler function from the parent component
-> 2. **Attach click handler**: Add `onClick` to each button so it calls `onAnswerClick` with the button's `index`
+> 1. **Add onAnswerClick parameter**: Accept the click handler function from the
+>    parent component
+> 2. **Attach click handler**: Add `onClick` to each button so it calls
+>    `onAnswerClick` with the button's `index`
 >
 > Each button needs to tell the parent component which answer was clicked. The `onClick` prop connects the button to the handler function, and the `index` parameter identifies which specific answer the player selected.
 
@@ -289,7 +292,7 @@ Add visual feedback that shows which answer is correct and which was chosen inco
 **File:** `src/components/QuizModal.jsx`
 
 ```javascript
-// [1] Add new props
+// [1] Add chosenAnswer and correctAnswer parameters
 function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) {
   // [2] Create style function
   const getButtonStyle = (index) => {
@@ -317,7 +320,8 @@ function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) 
 
 > 💡 **Understanding Dynamic Styling**
 >
-> 1. **Add new props**: Accept `chosenAnswer` and `correctAnswer` to track answer state
+> 1. **Add chosenAnswer and correctAnswer parameters**: Accept `chosenAnswer` and
+>    `correctAnswer` to track answer state
 > 2. **Create style function**: `getButtonStyle()` returns different CSS classes based on state - default before answering, `correct` class for right answer, `incorrect` class for wrong answer, default for other buttons
 > 3. **Apply dynamic className**: Each button calls the function with its `index` to get the appropriate styling
 >
@@ -399,8 +403,6 @@ You'll create feedback message constants, import them, implement random selectio
 
 ### Step 1: Create the messages file
 
-**File:** `src/constants/messages.js`
-
 Create a new file to store your custom feedback messages for correct and incorrect answers.
 
 **Right-click** `src/constants` → New File → name it `messages.js`, then add your own feedback messages. Here are some examples to get you started, but feel free to create your own unique messages that match your game's personality:
@@ -467,11 +469,18 @@ function AnswerFeedback({ hasAnswered, isCorrect, correctAnswerText }) {
 
 > 💡 **Understanding Random Feedback Selection**
 >
-> 1. **Choose message type**: Select `CORRECT_FEEDBACK` for right answers, `INCORRECT_FEEDBACK` for wrong answers based on `isCorrect`
-> 2. **Select random message**: `Math.random()` generates 0-1, multiply by array length, `Math.floor()` rounds down to valid index
+> 1. **Choose message type**: Select `CORRECT_FEEDBACK` for right answers,
+>    `INCORRECT_FEEDBACK` for wrong answers based on `isCorrect`
+> 2. **Select random message**: `Math.random()` generates a random decimal,
+>    which gets multiplied by the array length and rounded down with
+>    `Math.floor()` to produce a valid index — picking a different message each
+>    time for variety
 > 3. **Display feedback**: Show the randomly selected message to the player
 >
-> The AnswerFeedback component shows different messages for correct vs incorrect answers, picking randomly from each array to add variety. When players answer incorrectly, it also displays the correct answer to help them learn.
+> The AnswerFeedback component handles three states: before answering (shows
+> a placeholder asking the player to pick an answer), after correct answer
+> (shows celebratory message), and after incorrect answer (shows encouraging
+> message plus the correct answer for learning).
 
 ### Step 4: Add AnswerFeedback to QuizModal
 
@@ -509,8 +518,6 @@ export default function QuizModal() {
 Click a zone, then click different answers multiple times.
 
 **✓ You should see:** Different feedback messages appear each time you answer, adding variety and personality to your game!
-
-
 
 > 🏆 **Bonus Challenge**
 >
@@ -557,9 +564,8 @@ Press `F12` or right-click → Inspect to open DevTools, then navigate to the Co
 
 **✓ You should see:** React DevTools shows how props and state flow through your component tree, updating in real-time as you interact with the quiz!
 
-> 💡 **End-to-End Testing**
->
-> End-to-end testing ensures all your components work together correctly. By testing the complete user flow, you catch integration issues that might not appear when testing individual components. React DevTools gives you X-ray vision into your component hierarchy, letting you verify that data flows correctly from parent to child components.
+<img src="https://placehold.co/500x350?text=React+DevTools+AnswerChoices" alt="React DevTools showing AnswerChoices component with answers prop and chosenAnswer state" style="max-width: 500px; width: 100%;">
+*Figure: Verify component props and state in React DevTools*
 
 <a id="essential-terms"></a>
 
