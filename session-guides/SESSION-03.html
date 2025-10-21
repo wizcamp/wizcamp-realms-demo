@@ -584,7 +584,7 @@ overflow-x: hidden !important;
 <p><strong>✓ You should see:</strong> The credits modal appears! Click outside or the close button to dismiss it.</p>
 <blockquote>
 <p>💡 <strong>Giving Components Their Own Memory</strong></p>
-<p>The <code>useState</code> hook gives a component its own memory that persists between renders. Since the credits modal only affects <code>SplashScreen</code>, we use component-level state rather than shared state. This pattern keeps data isolated where it belongs — only the component that needs it manages it.</p>
+<p>The <code>useState</code> hook gives a component its own memory that persists between renders. Since the credits modal only affects SplashScreen, we use component-level state rather than shared state. This pattern keeps data isolated where it belongs — only the component that needs it manages it.</p>
 </blockquote>
 <blockquote>
 <p>🏆 <strong>Bonus Challenge</strong></p>
@@ -701,7 +701,7 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <p><strong>✓ You should see:</strong> The screen instantly switches between SplashScreen and GameMap as you modify the state value!</p>
 <blockquote>
 <p>💡 <strong>Seeing and Changing State in Real-Time</strong></p>
-<p>React DevTools gives you X-ray vision into your app’s <strong>state</strong>. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how <strong>shared state</strong> affects your entire app. Notice how changing one value in <code>GameProvider</code> instantly changes what component renders!</p>
+<p>React DevTools gives you X-ray vision into your app’s <strong>state</strong>. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how <strong>shared state</strong> affects your entire app. Notice how changing one value in GameProvider instantly changes what component renders!</p>
 </blockquote>
 <blockquote>
 <p>🏆 <strong>Bonus Challenge</strong></p>
@@ -762,7 +762,7 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <p><strong>✓ You should see:</strong> The screen changes to GameMap! Your button now controls the entire app’s navigation through shared state.</p>
 <blockquote>
 <p>💡 <strong>One Change Updates the Whole App</strong></p>
-<p>When you call <code>setScreen(SCREENS.PLAYING)</code>, React updates the shared state in <code>GameProvider</code> and automatically re-renders all components that depend on that state. The <code>App</code> component sees the new screen value, evaluates its conditional rendering logic, and switches from <code>&lt;SplashScreen /&gt;</code> to <code>&lt;GameMap /&gt;</code>. This is the power of centralized state management — one function call orchestrates changes across your entire application.</p>
+<p>When you call <code>setScreen(SCREENS.PLAYING)</code>, React updates the shared state in GameProvider and automatically re-renders all components that depend on that state. The App component sees the new screen value, evaluates its conditional rendering logic, and switches from <code>&lt;SplashScreen /&gt;</code> to <code>&lt;GameMap /&gt;</code>. This is the power of centralized state management — one function call orchestrates changes across your entire application.</p>
 </blockquote>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📋 Essential Terms</h2>

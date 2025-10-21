@@ -166,6 +166,7 @@ The `useState` hook creates state. Pass the `score` prop to the component. Updat
 - ❌ Don't use backticks around quoted UI text ("Score: 0" not `"Score: 0"`)
 - ❌ Don't use emojis in step headings (use in section headings only)
 - ❌ Don't add callouts automatically (only when they elevate understanding)
+- ❌ **Don't double-format with bold + backticks in numbered items**: Use "**Add isCorrect prop**" not "**Add `isCorrect` prop**" - the bold formatting is sufficient for the title
 
 ### Quick Reference
 

@@ -184,7 +184,7 @@ Pass a function that will execute when the button is clicked.
 
 > 💡 **Giving Components Different Behaviors**
 >
-> Functions as props are like giving your components different personalities. Your `GameButton` can do different things depending on where you use it — same button, different actions. It's a key pattern in React for building interactive apps.
+> Functions as props are like giving your components different personalities. Your GameButton can do different things depending on where you use it — same button, different actions. It's a key pattern in React for building interactive apps.
 
 <a id="styling-with-variants"></a>
 
@@ -268,7 +268,7 @@ Add a second GameButton with different prop values to demonstrate how the same c
 
 > 💡 **Write Once, Use Everywhere**
 >
-> Component reusability is React's superpower. You wrote the `GameButton` code once, but now you can use it anywhere in your app with different props. Thanks to your stylesheet, each variant (`primary`, `secondary`) automatically applies the right look — no extra styling needed.
+> Component reusability is React's superpower. You wrote the GameButton code once, but now you can use it anywhere in your app with different props. Thanks to your stylesheet, each variant (`primary`, `secondary`) automatically applies the right look — no extra styling needed.
 
 > 🏆 **Bonus Challenge**
 >

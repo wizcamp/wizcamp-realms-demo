@@ -403,7 +403,7 @@ You'll create feedback message constants, import them, implement random selectio
 
 Create a new file to store your custom feedback messages for correct and incorrect answers.
 
-**Right-click** `src/constants` → New File → name it `messages.js`, then add:
+**Right-click** `src/constants` → New File → name it `messages.js`, then add your own feedback messages. Here are some examples to get you started, but feel free to create your own unique messages that match your game's personality:
 
 ```javascript
 export const CORRECT_FEEDBACK = [
@@ -438,7 +438,7 @@ Import your feedback messages so the QuizModal can use them.
 import { CORRECT_FEEDBACK, INCORRECT_FEEDBACK } from "../constants/messages";
 ```
 
-### Step 3: Update AnswerFeedback component
+### Step 3: Add random feedback to AnswerFeedback
 
 **File:** `src/components/QuizModal.jsx`
 
@@ -450,26 +450,28 @@ function AnswerFeedback({ hasAnswered, isCorrect, correctAnswerText }) {
     return <AnswerPlaceholder />;
   }
 
-  // [1] Pick the appropriate array
+  // [1] Choose message type
   const messages = isCorrect ? CORRECT_FEEDBACK : INCORRECT_FEEDBACK;
+  
   // [2] Select random message
   const message = messages[Math.floor(Math.random() * messages.length)];
 
   return (
     <div className="result">
-      <strong>{message}</strong>
+      <strong>{message}</strong>  {/* [3] Display feedback */}
       {!isCorrect && <div>The answer was: {correctAnswerText}</div>}
     </div>
   );
 }
 ```
 
-> 💡 **Understanding Random Selection**
+> 💡 **Understanding Random Feedback Selection**
 >
-> 1. **Pick the appropriate array**: Use ternary operator to choose CORRECT_FEEDBACK or INCORRECT_FEEDBACK
-> 2. **Select random message**: `Math.random()` generates 0-1, multiply by array length, `Math.floor()` rounds down to get valid index
+> 1. **Choose message type**: Select `CORRECT_FEEDBACK` for right answers, `INCORRECT_FEEDBACK` for wrong answers based on `isCorrect`
+> 2. **Select random message**: `Math.random()` generates 0-1, multiply by array length, `Math.floor()` rounds down to valid index
+> 3. **Display feedback**: Show the randomly selected message to the player
 >
-> This pattern adds variety to your game — players see different encouraging messages each time they answer, making the experience feel more dynamic and engaging.
+> The AnswerFeedback component shows different messages for correct vs incorrect answers, picking randomly from each array to add variety. When players answer incorrectly, it also displays the correct answer to help them learn.
 
 ### Step 4: Add AnswerFeedback to QuizModal
 

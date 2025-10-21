@@ -119,7 +119,7 @@ Test the complete flow by clicking the Credits button to open the modal, then cl
 
 > 💡 **Giving Components Their Own Memory**
 >
-> The `useState` hook gives a component its own memory that persists between renders. Since the credits modal only affects `SplashScreen`, we use component-level state rather than shared state. This pattern keeps data isolated where it belongs — only the component that needs it manages it.
+> The `useState` hook gives a component its own memory that persists between renders. Since the credits modal only affects SplashScreen, we use component-level state rather than shared state. This pattern keeps data isolated where it belongs — only the component that needs it manages it.
 
 > 🏆 **Bonus Challenge**
 >
@@ -294,7 +294,7 @@ Set up your app to show different screens based on the current game state.
 
 > 💡 **Seeing and Changing State in Real-Time**
 >
-> React DevTools gives you X-ray vision into your app's **state**. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how **shared state** affects your entire app. Notice how changing one value in `GameProvider` instantly changes what component renders!
+> React DevTools gives you X-ray vision into your app's **state**. You can see exactly what data each component has and even modify it in real-time. This is invaluable for debugging and understanding how **shared state** affects your entire app. Notice how changing one value in GameProvider instantly changes what component renders!
 
 > 🏆 **Bonus Challenge**
 >
@@ -382,7 +382,7 @@ Connect the button to your start game function by replacing the alert with the a
 
 > 💡 **One Change Updates the Whole App**
 >
-> When you call `setScreen(SCREENS.PLAYING)`, React updates the shared state in `GameProvider` and automatically re-renders all components that depend on that state. The `App` component sees the new screen value, evaluates its conditional rendering logic, and switches from `<SplashScreen />` to `<GameMap />`. This is the power of centralized state management — one function call orchestrates changes across your entire application.
+> When you call `setScreen(SCREENS.PLAYING)`, React updates the shared state in GameProvider and automatically re-renders all components that depend on that state. The App component sees the new screen value, evaluates its conditional rendering logic, and switches from `<SplashScreen />` to `<GameMap />`. This is the power of centralized state management — one function call orchestrates changes across your entire application.
 
 <a id="essential-terms"></a>
 

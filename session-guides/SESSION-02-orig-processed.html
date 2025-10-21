@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>SESSION-02 - Wizcamp Session Guide</title>
+  <title>SESSION-02-orig-processed - Wizcamp Session Guide</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -482,6 +482,7 @@ overflow-x: hidden !important;
 </head>
 <body>
 <h1 id="session-2-building-game-components">Session 2 — Building Game Components</h1>
+<p>Building Reusable UI Elements 🧩</p>
 <p>You’re about to build your first custom React component and unlock the power of reusable UI building blocks — the secret to fast, scalable development in React. This guide walks you through creating a GameButton component, understanding props, and using React developer tools. Ready to build your first component? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
@@ -507,169 +508,93 @@ overflow-x: hidden !important;
 <p>Now let’s build your first custom component and see that power in action.</p>
 <p><a id="creating-your-first-component"></a></p>
 <h2 id="creating-your-first-component">🧩 Creating Your First Component</h2>
-<p>🎯 <strong>Goal:</strong> Build a reusable GameButton component and learn how to export, import, and use custom components.</p>
-<h3 id="step-1-create-the-component-file">Step 1: Create the component file</h3>
-<p><strong>Right-click</strong> <code>src/components</code> → New File → name it <code>GameButton.jsx</code></p>
-<h3 id="step-2-write-the-component-structure">Step 2: Write the component structure</h3>
-<p>Create the basic component function that returns a button element.</p>
-<p><strong>File:</strong> <code>src/components/GameButton.jsx</code></p>
+<p>Let’s build a <code>GameButton</code> component for starting your trivia game. Components are like digital LEGO blocks — custom, reusable UI elements.</p>
+<p>When you create a component, export it with <code>export default</code> so it can be shared across your project. Then bring it into other files with <code>import</code>.</p>
+<ol type="1">
+<li><strong>Create</strong> the file by right-clicking <code>src/components</code> → New File → name it <code>GameButton.jsx</code></li>
+<li><p><strong>Type</strong> the component structure</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">GameButton</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb1-2" title="2">  <span class="cf">return</span> <span class="op">&lt;</span>button<span class="op">&gt;</span>Start Adventure&lt;/button<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="op">}</span></a></code></pre></div>
-<h3 id="step-3-import-and-use-the-component">Step 3: Import and use the component</h3>
-<p>Import your new GameButton component into SplashScreen and add it to the JSX to see it render on the page.</p>
-<p><strong>File:</strong> <code>src/components/SplashScreen.jsx</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb2-1" title="1"> import GameLogo from &quot;./GameLogo&quot;;</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="va">+import GameButton from &quot;./GameButton&quot;;</span></a>
-<a class="sourceLine" id="cb2-3" title="3"></a>
-<a class="sourceLine" id="cb2-4" title="4">export default function SplashScreen() {</a>
-<a class="sourceLine" id="cb2-5" title="5">  return (</a>
-<a class="sourceLine" id="cb2-6" title="6">    &lt;div className=&quot;splash-screen&quot;&gt;</a>
-<a class="sourceLine" id="cb2-7" title="7">      &lt;GameLogo /&gt;</a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="st">-     &lt;div className=&quot;splash-buttons&quot;&gt;&lt;/div&gt;</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="va">+     &lt;div className=&quot;splash-buttons&quot;&gt;</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="va">+       &lt;GameButton /&gt;</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="va">+     &lt;/div&gt;</span></a>
-<a class="sourceLine" id="cb2-12" title="12">    &lt;/div&gt;</a>
-<a class="sourceLine" id="cb2-13" title="13">  );</a>
-<a class="sourceLine" id="cb2-14" title="14">}</a></code></pre></div>
-<h3 id="step-4-test-your-component">Step 4: Test your component</h3>
-<p><strong>Run</strong> <code>npm run dev</code> if not already running.</p>
-<p><strong>✓ You should see:</strong> Your custom button appears on the splash screen!</p>
-<blockquote>
-<p>💡 <strong>Export and Import Pattern</strong></p>
-<p>Components are the heart of React — reusable UI elements that combine markup, styling, and logic. Think of them as your own custom HTML tags. The <code>.jsx</code> file extension means you’re writing JSX, a special syntax that looks like HTML but is actually JavaScript. When you create a component, export it with <code>export default</code> so it can be shared across your project. Then bring it into other files with <code>import</code>.</p>
-</blockquote>
-<blockquote>
-<p>🏆 <strong>Bonus Challenge</strong></p>
+<a class="sourceLine" id="cb1-3" title="3"><span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Import</strong> into SplashScreen by adding <code>import GameButton from &quot;./GameButton&quot;;</code> at the top</p></li>
+<li><p><strong>Add</strong> your button within <code>div.splash-buttons</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="op">&lt;</span>GameButton /<span class="op">&gt;</span></a></code></pre></div></li>
+<li><p><strong>Test</strong> by running <code>npm run dev</code> and you should see your custom button!</p></li>
+</ol>
+<p><strong>Components</strong> are the heart of React — reusable UI elements that combine markup, styling, and logic. Think of them as your own custom HTML tags. The <code>.jsx</code> file extension means you’re writing <strong>JSX</strong>, a special syntax that looks like HTML but is actually JavaScript. JSX lets you describe what the UI should look like using readable, expressive code.</p>
+<h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
 <p>Try changing the button text in GameButton.jsx and watch it update instantly thanks to Hot Module Replacement!</p>
-</blockquote>
 <p><a id="understanding-props"></a></p>
 <h2 id="understanding-props">📦 Understanding Props</h2>
-<p>🎯 <strong>Goal:</strong> Make your GameButton flexible by accepting custom text through props.</p>
-<h3 id="step-1-add-text-prop-to-gamebutton">Step 1: Add text prop to GameButton</h3>
-<p>Update the component to accept a <code>text</code> prop, replacing the hardcoded button text with a dynamic value.</p>
-<p><strong>File:</strong> <code>src/components/GameButton.jsx</code></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="co">// Add text parameter in curly braces</span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">GameButton</span>(<span class="op">{</span> text <span class="op">}</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb3-3" title="3">  <span class="co">// Replace hardcoded text with {text}</span></a>
-<a class="sourceLine" id="cb3-4" title="4">  <span class="cf">return</span> <span class="op">&lt;</span>button<span class="op">&gt;{</span>text<span class="op">}</span>&lt;/button<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="op">}</span></a></code></pre></div>
-<h3 id="step-2-pass-the-text-prop-from-splashscreen">Step 2: Pass the text prop from SplashScreen</h3>
-<p>Pass the button text from the parent component as a prop.</p>
-<p><strong>File:</strong> <code>src/components/SplashScreen.jsx</code></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">SplashScreen</span>() <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb4-3" title="3">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-screen&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-4" title="4">      <span class="op">&lt;</span>GameLogo /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-5" title="5">      <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-buttons&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-6" title="6">        <span class="op">&lt;</span>GameButton text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span> /&gt;</a>
-<a class="sourceLine" id="cb4-7" title="7">        <span class="op">{</span><span class="co">/* ↑ Add text prop with value */</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb4-8" title="8">      &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-9" title="9">    &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-10" title="10">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="op">}</span></a></code></pre></div>
-<p><strong>✓ You should see:</strong> Your button now shows custom text!</p>
-<blockquote>
-<p>💡 <strong>Parent-to-Child Data Flow</strong></p>
-<p><strong>Props</strong> let parent components pass data to child components — just like function parameters. This makes your components flexible and reusable. The <code>{ text }</code> syntax is called <strong>destructuring</strong> — it pulls out just the values you need from the <strong>props</strong> object, keeping your code clean and readable.</p>
-</blockquote>
+<p>Props are how you pass data from parent components to child components. They’re like function parameters but for React components.</p>
+<ol type="1">
+<li><p><strong>Add</strong> <code>text</code> prop to <code>GameButton</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">GameButton</span>(<span class="op">{</span> text <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="cf">return</span> <span class="op">&lt;</span>button<span class="op">&gt;{</span>text<span class="op">}</span>&lt;/button<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Update</strong> SplashScreen to pass the <code>text</code> prop to <code>GameButton</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&lt;</span>GameButton text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span> /&gt;</a></code></pre></div></li>
+<li><p><strong>Watch</strong> the magic as your button now shows custom text!</p></li>
+</ol>
+<p><strong>Props</strong> let parent components pass data to child components — just like function parameters. This makes your components flexible and reusable. The <code>{ text }</code> syntax is called <strong>destructuring</strong> — it pulls out just the values you need from the props object, keeping your code clean and readable.</p>
 <p><a id="adding-click-functionality"></a></p>
 <h2 id="adding-click-functionality">🖱️ Adding Click Functionality</h2>
-<p>🎯 <strong>Goal:</strong> Make your button interactive by adding click handlers through props.</p>
-<h3 id="step-1-add-onclick-prop-to-gamebutton">Step 1: Add onClick prop to GameButton</h3>
-<p>Update the component to accept an <code>onClick</code> prop and attach it to the button element.</p>
-<p><strong>File:</strong> <code>src/components/GameButton.jsx</code></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="co">// Add onClick parameter</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">GameButton</span>(<span class="op">{</span> text<span class="op">,</span> onClick <span class="op">}</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb5-3" title="3">  <span class="co">// Add onClick to button element</span></a>
-<a class="sourceLine" id="cb5-4" title="4">  <span class="cf">return</span> <span class="op">&lt;</span>button onClick<span class="op">={</span>onClick<span class="op">}&gt;{</span>text<span class="op">}</span>&lt;/button<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="op">}</span></a></code></pre></div>
-<h3 id="step-2-pass-click-handler-from-splashscreen">Step 2: Pass click handler from SplashScreen</h3>
-<p>Pass a function that will execute when the button is clicked.</p>
-<p><strong>File:</strong> <code>src/components/SplashScreen.jsx</code></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-buttons&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb6-2" title="2">  <span class="op">&lt;</span>GameButton</a>
-<a class="sourceLine" id="cb6-3" title="3">    text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
-<a class="sourceLine" id="cb6-4" title="4">    onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Start Game!&#39;</span>)<span class="op">}</span></a>
-<a class="sourceLine" id="cb6-5" title="5">  /&gt;</a>
-<a class="sourceLine" id="cb6-6" title="6">  <span class="op">{</span><span class="co">/* ↑ Add onClick prop */</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb6-7" title="7">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
-<h3 id="step-3-test-the-gamebutton">Step 3: Test the GameButton</h3>
-<p><strong>Click</strong> “Start Adventure” on your splash screen.</p>
-<p><strong>✓ You should see:</strong> A browser alert with the message “Start Game!” appears!</p>
-<blockquote>
-<p>💡 <strong>Giving Components Different Behaviors</strong></p>
-<p>Functions as props are like giving your components different personalities. Your GameButton can do different things depending on where you use it — same button, different actions. It’s a key pattern in React for building interactive apps.</p>
-</blockquote>
+<p>Let’s make your buttons actually do something when clicked. In React, you can pass functions as props just like any other data.</p>
+<ol type="1">
+<li><p><strong>Add</strong> <code>onClick</code> prop to <code>GameButton</code></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">GameButton</span>(<span class="op">{</span> text<span class="op">,</span> onClick <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="cf">return</span> <span class="op">&lt;</span>button onClick<span class="op">={</span>onClick<span class="op">}&gt;{</span>text<span class="op">}</span>&lt;/button<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Update</strong> <code>SplashScreen</code> to add click handler to <code>GameButton</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="op">&lt;</span>GameButton</a>
+<a class="sourceLine" id="cb6-2" title="2">  text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
+<a class="sourceLine" id="cb6-3" title="3">  onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Start Game!&#39;</span>)<span class="op">}</span></a>
+<a class="sourceLine" id="cb6-4" title="4">/&gt;</a></code></pre></div></li>
+<li><p><strong>Test</strong> by clicking your button and see the alert!</p></li>
+</ol>
+<p><strong>Functions as props</strong> are like giving your components different personalities. Your <code>GameButton</code> can do different things depending on where you use it — same button, different actions. It’s a key pattern in React for building interactive apps.</p>
 <p><a id="styling-with-variants"></a></p>
 <h2 id="styling-with-variants">🎨 Styling with Variants</h2>
-<p>🎯 <strong>Goal:</strong> Add visual variety to your buttons using CSS classes and default parameters.</p>
-<h3 id="step-1-add-variant-prop-and-dynamic-classname">Step 1: Add variant prop and dynamic className</h3>
-<p>Add a <code>variant</code> prop with a default value to control button styling, then create a dynamic className that combines the base class with the variant.</p>
-<p><strong>File:</strong> <code>src/components/GameButton.jsx</code></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="co">// Add variant parameter with default value</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">GameButton</span>(<span class="op">{</span> text<span class="op">,</span> onClick<span class="op">,</span> variant <span class="op">=</span> <span class="st">&quot;primary&quot;</span> <span class="op">}</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb7-3" title="3">  <span class="co">// Add this line: create buttonClass variable</span></a>
-<a class="sourceLine" id="cb7-4" title="4">  <span class="kw">const</span> buttonClass <span class="op">=</span> <span class="vs">`game-button </span><span class="sc">${</span>variant<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb7-5" title="5"></a>
-<a class="sourceLine" id="cb7-6" title="6">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb7-7" title="7">    <span class="op">&lt;</span>button className<span class="op">={</span>buttonClass<span class="op">}</span> onClick<span class="op">={</span>onClick<span class="op">}&gt;</span></a>
-<a class="sourceLine" id="cb7-8" title="8">      <span class="op">{</span><span class="co">/* ↑ Update to use className */</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb7-9" title="9">      <span class="op">{</span>text<span class="op">}</span></a>
-<a class="sourceLine" id="cb7-10" title="10">    &lt;/button<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb7-11" title="11">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb7-12" title="12"><span class="op">}</span></a></code></pre></div>
-<h3 id="step-2-use-the-variant-prop-in-splashscreen">Step 2: Use the variant prop in SplashScreen</h3>
-<p>Pass the <code>variant</code> prop to specify which button style to use.</p>
-<p><strong>File:</strong> <code>src/components/SplashScreen.jsx</code></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-buttons&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb8-2" title="2">  <span class="op">&lt;</span>GameButton</a>
-<a class="sourceLine" id="cb8-3" title="3">    text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
-<a class="sourceLine" id="cb8-4" title="4">    onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Start Game!&#39;</span>)<span class="op">}</span></a>
-<a class="sourceLine" id="cb8-5" title="5">    variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
-<a class="sourceLine" id="cb8-6" title="6">  /&gt;</a>
-<a class="sourceLine" id="cb8-7" title="7">  <span class="op">{</span><span class="co">/* ↑ Add variant prop */</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb8-8" title="8">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
-<p><strong>✓ You should see:</strong> Your button now has the primary styling with a vibrant color!</p>
-<blockquote>
-<p>💡 <strong>Building Dynamic Class Names</strong></p>
-<p><strong>className</strong> is React’s version of the HTML <code>class</code> attribute. We use a <strong>template literal</strong> to build a dynamic class name like <code>game-button primary</code>. This matches the styles already defined in your project. The <code>variant</code> prop lets you switch between styles like <code>primary</code> and <code>secondary</code>, and <strong>default parameters</strong> like <code>variant = &quot;primary&quot;</code> ensure your component still works even if no variant is passed.</p>
-</blockquote>
+<p>Let’s add visual variety to your buttons using CSS classes, default parameters, and a clean variable approach.</p>
+<ol type="1">
+<li><p><strong>Add</strong> <code>variant</code> prop, <strong>create</strong> <code>buttonClass</code> variable, and <strong>include</strong> in JSX</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">GameButton</span>(<span class="op">{</span> text<span class="op">,</span> onClick<span class="op">,</span> variant <span class="op">=</span> <span class="st">&quot;primary&quot;</span> <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="kw">const</span> buttonClass <span class="op">=</span> <span class="vs">`game-button </span><span class="sc">${</span>variant<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb7-5" title="5">    <span class="op">&lt;</span>button className<span class="op">={</span>buttonClass<span class="op">}</span> onClick<span class="op">={</span>onClick<span class="op">}&gt;</span></a>
+<a class="sourceLine" id="cb7-6" title="6">      <span class="op">{</span>text<span class="op">}</span></a>
+<a class="sourceLine" id="cb7-7" title="7">    &lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-8" title="8">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-9" title="9"><span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Update</strong> <code>SplashScreen</code> to add <code>variant</code> prop to <code>GameButton</code></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="op">&lt;</span>GameButton</a>
+<a class="sourceLine" id="cb8-2" title="2">  text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
+<a class="sourceLine" id="cb8-3" title="3">  onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Start Game!&#39;</span>)<span class="op">}</span></a>
+<a class="sourceLine" id="cb8-4" title="4">  variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
+<a class="sourceLine" id="cb8-5" title="5">/&gt;</a></code></pre></div></li>
+<li><p><strong>Admire</strong> your styled button as it now has the primary styling!</p></li>
+</ol>
+<p><strong><code>className</code></strong> is React’s version of the HTML <code>class</code> attribute. We use a <strong>template literal</strong> to build a dynamic class name like <code>game-button primary</code>. This matches the styles already defined in your project. The <code>variant</code> prop lets you switch between styles like <code>primary</code> and <code>secondary</code>, and <strong>default parameters</strong> like <code>variant = &quot;primary&quot;</code> ensure your component still works even if no variant is passed.</p>
 <p><a id="reusing-your-component"></a></p>
 <h2 id="reusing-your-component">🔄 Reusing Your Component</h2>
-<p>🎯 <strong>Goal:</strong> Experience the power of component reusability by adding a second button with different props.</p>
-<p><strong>File:</strong> <code>src/components/SplashScreen.jsx</code></p>
-<p>Add a second GameButton with different prop values to demonstrate how the same component can be reused with different configurations.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-buttons&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb9-2" title="2">  <span class="op">&lt;</span>GameButton</a>
-<a class="sourceLine" id="cb9-3" title="3">    text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
-<a class="sourceLine" id="cb9-4" title="4">    onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Start Game!&#39;</span>)<span class="op">}</span></a>
-<a class="sourceLine" id="cb9-5" title="5">    variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
-<a class="sourceLine" id="cb9-6" title="6">  /&gt;</a>
-<a class="sourceLine" id="cb9-7" title="7">  <span class="op">{</span><span class="co">/* ↑ Existing button */</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb9-8" title="8">  </a>
-<a class="sourceLine" id="cb9-9" title="9">  <span class="op">&lt;</span>GameButton</a>
-<a class="sourceLine" id="cb9-10" title="10">    text<span class="op">=</span><span class="st">&quot;Credits&quot;</span></a>
-<a class="sourceLine" id="cb9-11" title="11">    onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Show Credits&#39;</span>)<span class="op">}</span></a>
-<a class="sourceLine" id="cb9-12" title="12">    variant<span class="op">=</span><span class="st">&quot;secondary&quot;</span></a>
-<a class="sourceLine" id="cb9-13" title="13">  /&gt;</a>
-<a class="sourceLine" id="cb9-14" title="14">  <span class="op">{</span><span class="co">/* ↑ Add this button */</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb9-15" title="15">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
-<p><strong>✓ You should see:</strong> Two different buttons using the same component!</p>
-<blockquote>
-<p>💡 <strong>Write Once, Use Everywhere</strong></p>
-<p>Component reusability is React’s superpower. You wrote the GameButton code once, but now you can use it anywhere in your app with different props. Thanks to your stylesheet, each variant (<code>primary</code>, <code>secondary</code>) automatically applies the right look — no extra styling needed.</p>
-</blockquote>
-<blockquote>
-<p>🏆 <strong>Bonus Challenge</strong></p>
+<p>Now that you’ve built a complete, fully-featured GameButton component, let’s experience the power of reusability by adding a second button for the game’s credits.</p>
+<ol type="1">
+<li><p><strong>Add</strong> a Credits button below your existing GameButton</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="op">&lt;</span>GameButton</a>
+<a class="sourceLine" id="cb9-2" title="2">  text<span class="op">=</span><span class="st">&quot;Credits&quot;</span></a>
+<a class="sourceLine" id="cb9-3" title="3">  onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Show Credits&#39;</span>)<span class="op">}</span></a>
+<a class="sourceLine" id="cb9-4" title="4">  variant<span class="op">=</span><span class="st">&quot;secondary&quot;</span></a>
+<a class="sourceLine" id="cb9-5" title="5">/&gt;</a></code></pre></div></li>
+<li><p><strong>Admire</strong> your work as you now have two different buttons using the same component!</p></li>
+</ol>
+<p><strong>Component reusability</strong> is React’s superpower. You wrote the <code>GameButton</code> code once, but now you can use it anywhere in your app with different props. Thanks to your stylesheet, each variant (<code>primary</code>, <code>secondary</code>) automatically applies the right look — no extra styling needed.</p>
+<h3 id="bonus-challenge-1">🏆 Bonus Challenge</h3>
 <p>Try adding a third GameButton with <code>variant=&quot;primary&quot;</code> and <code>text=&quot;Instructions&quot;</code> to see how easy it is to scale your UI!</p>
-</blockquote>
 <p><a id="installing-react-devtools"></a></p>
 <h2 id="installing-react-devtools">🔍 Installing React DevTools</h2>
-<p>🎯 <strong>Goal:</strong> Install and explore React DevTools to inspect your components and props.</p>
-<h3 id="step-1-install-the-browser-extension">Step 1: Install the browser extension</h3>
-<p><strong>Choose</strong> your browser and install React DevTools:</p>
+<p>React DevTools is like X-ray vision for your React app — see component structure, props, and state in real-time.</p>
+<h3 id="browser-installation">Browser Installation</h3>
 <table>
 <thead>
 <tr class="header">
@@ -701,20 +626,16 @@ overflow-x: hidden !important;
 </tr>
 </tbody>
 </table>
-<h3 id="step-2-open-and-explore-devtools">Step 2: Open and explore DevTools</h3>
+<h3 id="using-devtools">Using DevTools</h3>
 <ol type="1">
-<li><strong>Press</strong> <code>F12</code> or right-click → Inspect</li>
-<li><strong>Find</strong> the Components tab (next to Console, Network, etc.)</li>
-<li><strong>Click</strong> on components in the tree to see their props</li>
-<li><strong>Find</strong> your GameButton component and inspect its props</li>
+<li><strong>Open</strong> DevTools by pressing F12 or right-clicking → Inspect</li>
+<li><strong>Find</strong> Components tab by looking for “Components” next to Console, Network, etc.</li>
+<li><strong>Explore</strong> your app by clicking on components in the tree to see their props</li>
+<li><strong>Inspect</strong> GameButton by finding your GameButton component and see the text, onClick, and variant props!</li>
 </ol>
-<p><strong>✓ You should see:</strong> The text, onClick, and variant props displayed in the DevTools panel!</p>
-<blockquote>
-<p>💡 <strong>Real-Time Component Inspection</strong></p>
 <p><strong>React DevTools</strong> gives you X-ray vision into your app. You can inspect components, props, and state in real time — essential for debugging and understanding how your app works under the hood.</p>
-</blockquote>
 <p><a id="essential-terms"></a></p>
-<h2 id="essential-terms">📋 Essential Terms</h2>
+<h2 id="essential-terms">📚 Essential Terms</h2>
 <p><em>Quick reference for all the React concepts you just learned:</em></p>
 <table>
 <colgroup>
@@ -731,9 +652,19 @@ overflow-x: hidden !important;
 </thead>
 <tbody>
 <tr class="odd">
+<td>🧩 component</td>
+<td>A reusable piece of UI that can include markup, styles, and logic (example: <code>&lt;SplashScreen /&gt;</code>).</td>
+<td>You’ll build your entire app by composing components together — they’re React’s building blocks.</td>
+</tr>
+<tr class="even">
 <td>📦 props</td>
 <td>Data passed from parent to child components.</td>
 <td>Props let you customize components and pass data around your app — essential for reusable components.</td>
+</tr>
+<tr class="odd">
+<td>✨ JSX</td>
+<td>JavaScript syntax that looks like HTML — used to describe UI in React components (<code>.jsx</code>).</td>
+<td>You’ll write JSX in your <code>GameButton</code> component to describe what the button should look like.</td>
 </tr>
 <tr class="even">
 <td>🎨 className</td>
@@ -746,7 +677,7 @@ overflow-x: hidden !important;
 <td>Makes your code cleaner by avoiding repetitive <code>props.text</code>, <code>props.onClick</code> syntax.</td>
 </tr>
 <tr class="even">
-<td>🔤 template literal</td>
+<td>🔤 template literals</td>
 <td>String interpolation using backticks and <code>${}</code> for dynamic strings.</td>
 <td>Perfect for creating dynamic CSS classes like <code>`game-button ${variant}`</code>.</td>
 </tr>

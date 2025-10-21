@@ -784,7 +784,7 @@ overflow-x: hidden !important;
 <h3 id="step-1-create-the-messages-file">Step 1: Create the messages file</h3>
 <p><strong>File:</strong> <code>src/constants/messages.js</code></p>
 <p>Create a new file to store your custom feedback messages for correct and incorrect answers.</p>
-<p><strong>Right-click</strong> <code>src/constants</code> → New File → name it <code>messages.js</code>, then add:</p>
+<p><strong>Right-click</strong> <code>src/constants</code> → New File → name it <code>messages.js</code>, then add your own feedback messages. Here are some examples to get you started, but feel free to create your own unique messages that match your game’s personality:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="im">export</span> <span class="kw">const</span> CORRECT_FEEDBACK <span class="op">=</span> [</a>
 <a class="sourceLine" id="cb12-2" title="2">  <span class="st">&quot;🎉 Nailed it!&quot;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb12-3" title="3">  <span class="st">&quot;🔥 You got it!&quot;</span><span class="op">,</span></a>
@@ -809,7 +809,7 @@ overflow-x: hidden !important;
 <p>Import your feedback messages so the QuizModal can use them.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="co">// ... existing imports ...</span></a>
 <a class="sourceLine" id="cb13-2" title="2"><span class="im">import</span> <span class="op">{</span> CORRECT_FEEDBACK<span class="op">,</span> INCORRECT_FEEDBACK <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/messages&quot;</span><span class="op">;</span></a></code></pre></div>
-<h3 id="step-3-update-answerfeedback-component">Step 3: Update AnswerFeedback component</h3>
+<h3 id="step-3-add-random-feedback-to-answerfeedback">Step 3: Add random feedback to AnswerFeedback</h3>
 <p><strong>File:</strong> <code>src/components/QuizModal.jsx</code></p>
 <p>Add logic that picks a random message from your feedback arrays each time a player answers.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">function</span> <span class="at">AnswerFeedback</span>(<span class="op">{</span> hasAnswered<span class="op">,</span> isCorrect<span class="op">,</span> correctAnswerText <span class="op">}</span>) <span class="op">{</span></a>
@@ -817,25 +817,27 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb14-3" title="3">    <span class="cf">return</span> <span class="op">&lt;</span>AnswerPlaceholder /<span class="op">&gt;;</span></a>
 <a class="sourceLine" id="cb14-4" title="4">  <span class="op">}</span></a>
 <a class="sourceLine" id="cb14-5" title="5"></a>
-<a class="sourceLine" id="cb14-6" title="6">  <span class="co">// [1] Pick the appropriate array</span></a>
+<a class="sourceLine" id="cb14-6" title="6">  <span class="co">// [1] Choose message type</span></a>
 <a class="sourceLine" id="cb14-7" title="7">  <span class="kw">const</span> messages <span class="op">=</span> isCorrect <span class="op">?</span> CORRECT_FEEDBACK : INCORRECT_FEEDBACK<span class="op">;</span></a>
-<a class="sourceLine" id="cb14-8" title="8">  <span class="co">// [2] Select random message</span></a>
-<a class="sourceLine" id="cb14-9" title="9">  <span class="kw">const</span> message <span class="op">=</span> messages[<span class="va">Math</span>.<span class="at">floor</span>(<span class="va">Math</span>.<span class="at">random</span>() <span class="op">*</span> <span class="va">messages</span>.<span class="at">length</span>)]<span class="op">;</span></a>
-<a class="sourceLine" id="cb14-10" title="10"></a>
-<a class="sourceLine" id="cb14-11" title="11">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb14-12" title="12">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;result&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb14-13" title="13">      <span class="op">&lt;</span>strong<span class="op">&gt;{</span>message<span class="op">}</span>&lt;/strong<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb14-14" title="14">      <span class="op">{!</span>isCorrect <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>The answer <span class="dt">was</span><span class="op">:</span> <span class="op">{</span>correctAnswerText<span class="op">}</span>&lt;/div<span class="op">&gt;}</span></a>
-<a class="sourceLine" id="cb14-15" title="15">    &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb14-16" title="16">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb14-17" title="17"><span class="op">}</span></a></code></pre></div>
+<a class="sourceLine" id="cb14-8" title="8">  </a>
+<a class="sourceLine" id="cb14-9" title="9">  <span class="co">// [2] Select random message</span></a>
+<a class="sourceLine" id="cb14-10" title="10">  <span class="kw">const</span> message <span class="op">=</span> messages[<span class="va">Math</span>.<span class="at">floor</span>(<span class="va">Math</span>.<span class="at">random</span>() <span class="op">*</span> <span class="va">messages</span>.<span class="at">length</span>)]<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-11" title="11"></a>
+<a class="sourceLine" id="cb14-12" title="12">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb14-13" title="13">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;result&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-14" title="14">      <span class="op">&lt;</span>strong<span class="op">&gt;{</span>message<span class="op">}</span>&lt;/strong<span class="op">&gt;</span>  <span class="op">{</span><span class="co">/* [3] Display feedback */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb14-15" title="15">      <span class="op">{!</span>isCorrect <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>The answer <span class="dt">was</span><span class="op">:</span> <span class="op">{</span>correctAnswerText<span class="op">}</span>&lt;/div<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb14-16" title="16">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-17" title="17">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-18" title="18"><span class="op">}</span></a></code></pre></div>
 <blockquote>
-<p>💡 <strong>Understanding Random Selection</strong></p>
+<p>💡 <strong>Understanding Random Feedback Selection</strong></p>
 <ol type="1">
-<li><strong>Pick the appropriate array</strong>: Use ternary operator to choose CORRECT_FEEDBACK or INCORRECT_FEEDBACK</li>
-<li><strong>Select random message</strong>: <code>Math.random()</code> generates 0-1, multiply by array length, <code>Math.floor()</code> rounds down to get valid index</li>
+<li><strong>Choose message type</strong>: Select <code>CORRECT_FEEDBACK</code> for right answers, <code>INCORRECT_FEEDBACK</code> for wrong answers based on <code>isCorrect</code></li>
+<li><strong>Select random message</strong>: <code>Math.random()</code> generates 0-1, multiply by array length, <code>Math.floor()</code> rounds down to valid index</li>
+<li><strong>Display feedback</strong>: Show the randomly selected message to the player</li>
 </ol>
-<p>This pattern adds variety to your game — players see different encouraging messages each time they answer, making the experience feel more dynamic and engaging.</p>
+<p>The AnswerFeedback component shows different messages for correct vs incorrect answers, picking randomly from each array to add variety. When players answer incorrectly, it also displays the correct answer to help them learn.</p>
 </blockquote>
 <h3 id="step-4-add-answerfeedback-to-quizmodal">Step 4: Add AnswerFeedback to QuizModal</h3>
 <p><strong>File:</strong> <code>src/components/QuizModal.jsx</code></p>
