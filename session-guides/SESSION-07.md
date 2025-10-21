@@ -198,7 +198,7 @@ function AnswerChoices({ answers }) {
 > 2. **Create button**: Each answer becomes its own button with a unique key for React's tracking
 > 3. **Display answer**: The answer string appears as the visible text on each button
 >
-> Array mapping is everywhere in React — any time you have a list of data that becomes a list of components, you use `map()`. The `key` prop helps React optimize updates by tracking which items changed, moved, or were added/removed, making your dynamic button lists performant and reliable.
+> Array mapping is everywhere in React — any time you have a list of data that becomes a list of components, you use `map()`. The `key` prop helps React optimize updates by tracking which items changed, moved, or were added/removed. Without keys, React would re-render all buttons on every update; with keys, it only updates the buttons that actually changed, making your dynamic button lists performant and reliable.
 
 ### Step 5: Test the answer buttons
 
@@ -250,7 +250,7 @@ function AnswerChoices({ answers, onAnswerClick }) {
 > 2. **Attach click handler**: Add `onClick` to each button so it calls
 >    `onAnswerClick` with the button's `index`
 >
-> Each button needs to tell the parent component which answer was clicked. The `onClick` prop connects the button to the handler function, and the `index` parameter identifies which specific answer the player selected.
+> Each button needs to tell the parent component which answer was clicked. The `onClick` prop connects the button to the handler function, and the `index` parameter identifies which specific answer the player selected. This pattern — child components calling parent functions with identifying data — is common in React for handling interactions in lists.
 
 #### Part B: Pass the handler to AnswerChoices
 
@@ -403,7 +403,7 @@ You'll create feedback message constants, import them, implement random selectio
 
 ### Step 1: Create the messages file
 
-Create a new file to store your custom feedback messages for correct and incorrect answers.
+Storing feedback messages in a dedicated constants file separates content from code logic. This makes it easy to modify messages or add variety without touching component code.
 
 **Right-click** `src/constants` → New File → name it `messages.js`, then add your own feedback messages. Here are some examples to get you started, but feel free to create your own unique messages that match your game's personality:
 
@@ -471,16 +471,17 @@ function AnswerFeedback({ hasAnswered, isCorrect, correctAnswerText }) {
 >
 > 1. **Choose message type**: Select `CORRECT_FEEDBACK` for right answers,
 >    `INCORRECT_FEEDBACK` for wrong answers based on `isCorrect`
-> 2. **Select random message**: `Math.random()` generates a random decimal,
->    which gets multiplied by the array length and rounded down with
->    `Math.floor()` to produce a valid index — picking a different message each
->    time for variety
+> 2. **Select random message**: `Math.random()` gets a number between 0 and 1,
+>    multiply it by the number of messages, and `Math.floor()` rounds down to
+>    get a valid index. This picks one message from the array at random — like
+>    drawing a card from a shuffled deck — adding variety to the feedback
+>    players see
 > 3. **Display feedback**: Show the randomly selected message to the player
 >
 > The AnswerFeedback component handles three states: before answering (shows
-> a placeholder asking the player to pick an answer), after correct answer
-> (shows celebratory message), and after incorrect answer (shows encouraging
-> message plus the correct answer for learning).
+> a prompt), after a correct answer (shows a celebratory message), and after
+> an incorrect answer (shows an encouraging message plus the correct answer to
+> help with learning).
 
 ### Step 4: Add AnswerFeedback to QuizModal
 
@@ -551,6 +552,8 @@ Navigate to the game by clicking "Start Adventure", then test the full interacti
 **✓ You should see:** The complete quiz flow works smoothly from start to finish, with all interactive elements responding correctly!
 
 ### Step 2: Inspect component state with DevTools
+
+React DevTools lets you inspect props and state in real-time, helping you verify data is flowing correctly through your component tree.
 
 Press `F12` or right-click → Inspect to open DevTools, then navigate to the Components tab.
 
