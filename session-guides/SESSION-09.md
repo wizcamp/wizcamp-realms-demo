@@ -1,8 +1,6 @@
 # Session 9 — Adding Theme Music
 
-Custom Hooks & Browser APIs 🎵
-
-You're about to add another feature to your trivia game — theme music! This guide walks you through creating custom React hooks, working with browser audio APIs, and building reusable audio controls. Ready to bring your game to life with sound? Let's go!
+You're about to add another dimension to your trivia game — theme music! This guide walks you through creating custom React hooks, working with browser audio APIs, and building reusable audio controls. Ready to bring your game to life with sound? Let's go!
 
 ## Table of Contents
 
@@ -31,16 +29,12 @@ Before we dive into audio, let's understand **custom hooks** — one of React's 
 
 **Custom hooks** are functions that start with "use" and let you extract component logic into reusable functions. Think of them as your own personal React features that you can use across multiple components.
 
-### Built-in vs Custom Hooks
-
 | **Built-in Hooks** | **Custom Hooks** |
 |-------------------|------------------|
 | `useState`, `useEffect`, `useRef` | `useGame`, `useAudio` |
 | Provided by React | Created by developers |
 | Basic React features | Complex, reusable logic |
 | Used in every React app | Specific to your app's needs |
-
-
 
 **Custom hooks** embody one of programming's most important principles: **"Don't Repeat Yourself" (DRY)**. Instead of copying and pasting audio logic into every component that needs music, you encapsulate that complexity into a reusable `useAudio` hook. Now, any component can add background music with a single line of code:
 
@@ -50,9 +44,9 @@ const music = useAudio('/music.mp3');
 
 This is the difference between basic and advanced code — experienced developers reduce repetition by creating reusable solutions. Custom hooks let you **"write once, use often,"** making your code cleaner, more maintainable, and easier to scale.
 
-### 🏆 Bonus Challenge
-
-Visit [useHooks – The React Hooks Library](https://usehooks.com/) and find three interesting custom hooks that might be great for use in a web-based video game.
+> 🏆 **Bonus Challenge**
+>
+> Visit [useHooks – The React Hooks Library](https://usehooks.com/) and find three interesting custom hooks that might be great for use in a web-based video game.
 
 <a id="exploring-browser-audio-apis"></a>
 
@@ -85,8 +79,6 @@ audio.currentTime = 0;    // Reset to beginning
 audio.muted = true;       // Mute audio
 ```
 
-
-
 The **HTMLAudioElement** gives you programmatic control over audio playback. Your `useAudio` hook will wrap this browser API in a clean React interface, making it easy to add music to any component.
 
 <a id="understanding-refs-and-useref"></a>
@@ -96,8 +88,6 @@ The **HTMLAudioElement** gives you programmatic control over audio playback. You
 Now let's understand **refs** — React's way to "step outside" the component system and work directly with DOM elements or browser APIs.
 
 **Refs** are like bookmarks that let you remember information that doesn't affect what's rendered on the page. Unlike **state**, changing a ref doesn't trigger re-renders.
-
-### State vs Refs: The Key Differences
 
 | **State** | **Refs** |
 |-----------|----------|
@@ -139,88 +129,116 @@ function MyComponent() {
 
 The ref creates a direct connection to the actual HTML input element. When you call `inputRef.current.focus()`, you're telling the browser to focus that specific input — just like clicking on it.
 
-
-
 **Refs** are perfect for storing audio elements because the audio object doesn't need to trigger re-renders — it just needs to be remembered between function calls. The `current` property holds the actual value you stored.
 
 <a id="building-the-musictoggle-component"></a>
 
 ## 🎛️ Building the MusicToggle Component
 
-Before we implement the audio functionality, let's add the UI controls you'll need to test it. This music toggle will provide the interface for testing the `useAudio` hook as you build it in the next sections.
+🎯 **Goal:** Add the UI controls you'll need to test the audio functionality as you build it.
 
-1. **Add** the asset utility import at the top of `src/components/HUD.jsx`
+This music toggle will provide the interface for testing the `useAudio` hook as you implement it in the next sections.
 
-   ```javascript
-   import { getAssetPath } from "../utils/assets";
-   ```
+### Step 1: Add asset utility import
 
-2. **Add** the `MusicToggle` component after the `CurrentZone` function
+**File:** `src/components/HUD.jsx`
 
-   ```javascript
-   function MusicToggle() {
-     const { music } = useGame();
-     return (
-       <button 
-         onClick={music.toggle}
-         className="music-toggle"
-         title={music.isPlaying ? "Pause Music" : "Play Music"}
-       >
-         <img 
-           src={getAssetPath(
-             music.isPlaying ? "images/playing.svg" : "images/paused.svg"
-           )}
-           alt={music.isPlaying ? "Pause" : "Play"}
-           className="music-icon"
-           width={24}
-           height={24}
-         />
-       </button>
-     );
-   }
-   ```
+Add the asset utility import at the top of the file.
 
-3. **Add** MusicToggle component by updating the HUD JSX return
+```javascript
+import { getAssetPath } from "../utils/assets";
+```
 
-   ```javascript
-   return (
-     <>
-       <Scoreboard />
-       <CurrentZone />
-       <MusicToggle />
-     </>
-   );
-   ```
+### Step 2: Create MusicToggle component
 
-4. **Test** by starting Game and verifying music toggle is visible but inoperable when clicked
+**File:** `src/components/HUD.jsx`
 
+Add the MusicToggle component after the CurrentZone function.
 
+```javascript
+function MusicToggle() {
+  const { music } = useGame();
+  return (
+    <button 
+      onClick={music.toggle}
+      className="music-toggle"
+      title={music.isPlaying ? "Pause Music" : "Play Music"}
+    >
+      <img 
+        src={getAssetPath(
+          music.isPlaying ? "images/playing.svg" : "images/paused.svg"
+        )}
+        alt={music.isPlaying ? "Pause" : "Play"}
+        className="music-icon"
+        width={24}
+        height={24}
+      />
+    </button>
+  );
+}
+```
 
-The **`MusicToggle` component** demonstrates conditional rendering with dynamic images and tooltips. The `music.isPlaying` state controls both the icon and the tooltip text, providing clear visual feedback to users.
+### Step 3: Add MusicToggle to HUD
+
+**File:** `src/components/HUD.jsx`
+
+Update the HUD JSX return to include the MusicToggle component.
+
+```javascript
+export default function HUD() {
+  return (
+    <>
+      <Scoreboard />
+      <CurrentZone />
+      <MusicToggle />
+    </>
+  );
+}
+```
+
+### Step 4: Test music toggle visibility
+
+Start the game and navigate to the playing screen.
+
+**✓ You should see:** Music toggle button is visible but inoperable when clicked (audio functionality not yet implemented).
+
+> 💡 **Conditional Rendering with Dynamic Content**
+>
+> The MusicToggle component demonstrates conditional rendering with dynamic images and tooltips. The `music.isPlaying` state controls both the icon and the tooltip text, providing clear visual feedback to users. This pattern — using state to drive multiple UI elements — creates cohesive, responsive interfaces.
 
 <a id="adding-audio-reference-to-useaudio"></a>
 
 ## 📻 Adding Audio Reference to useAudio
 
-Now let's add the audio reference to your `useAudio` hook so it can store the HTMLAudioElement.
+🎯 **Goal:** Add the audio reference to your `useAudio` hook so it can store the HTMLAudioElement.
 
-1. **Open** `src/hooks/useAudio.js` and add the audio reference
+You'll add a ref to store the audio element and import the necessary React hooks.
 
-   ```javascript
-   export function useAudio(src) {
-     const audioRef = useRef(null);
-     const [isPlaying, setIsPlaying] = useState(false);
-     // ... rest of hook
-   }
-   ```
+### Step 1: Add useRef import
 
-2. **Add** the useRef import at the top of the file
+**File:** `src/hooks/useAudio.js`
 
-   ```javascript
-   import { useRef, useState } from "react";
-   ```
+Add the useRef import at the top of the file.
 
-Your hook now has a ref that can store and remember the audio element we'll create in the `play` function. The ref starts as `null` and will hold our audio element once it's created.
+```javascript
+import { useRef, useState } from "react";
+```
+
+### Step 2: Add audio reference to hook
+
+**File:** `src/hooks/useAudio.js`
+
+Add the audio reference inside the `useAudio` function.
+
+```javascript
+export function useAudio(src) {
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  // ... rest of hook
+}
+```
+
+Your hook now has a ref that can store and remember the audio element you'll create in the `play` function. The ref starts as `null` and will hold your audio element once it's created.
 
 ### Audio Reference Flow
 
@@ -229,45 +247,56 @@ useAudio hook called → audioRef.current is null → play() creates new Audio()
 audioRef.current stores Audio element → future calls reuse same element
 ```
 
-
-
-The `audioRef` you just created provides persistent storage for the audio element across component re-renders. Without refs, you'd create a new audio element every time the component updates, causing audio to restart unexpectedly.
+> 💡 **Persistent Storage Across Re-renders**
+>
+> The `audioRef` you just created provides persistent storage for the audio element across component re-renders. Without refs, you'd create a new audio element every time the component updates, causing audio to restart unexpectedly. Refs solve this by maintaining the same reference to the audio object throughout the component's lifecycle.
 
 <a id="implementing-audio-playback"></a>
 
 ## 🎵 Implementing Audio Playback
 
-Let's implement the core audio functionality by updating the `play` function to create and control audio elements.
+🎯 **Goal:** Implement the core audio functionality by updating the `play` function to create and control audio elements.
 
-1. **Update** the play function in `src/hooks/useAudio.js`
+You'll add lazy initialization to create the audio element only when needed, then configure and play it.
 
-   ```javascript
-   const play = () => {
-     // Lazy initialization - create audio element only when first needed
-     if (!audioRef.current) {
-       audioRef.current = new Audio(src);
-       audioRef.current.loop = true;
-       audioRef.current.volume = 0.5;
-     }
-     audioRef.current.play();
-     setIsPlaying(true);
-   };
-   ```
+### Step 1: Update play function
 
-   The `if (!audioRef.current)` check is an example of **lazy initialization** — creating a resource only when it's first needed. Since `audioRef.current` starts as `null`, the first time `play()` runs it creates the audio element. Every time after that, `audioRef.current` contains the audio element, so the `if` condition is false and it skips creating a new one.
+**File:** `src/hooks/useAudio.js`
 
-2. **Test** by clicking music toggle and verifying game theme plays with button showing playing state
+Update the play function to create and control the audio element.
 
-### Audio Creation Logic
-
-```text
-Check if audio exists → If not, create new Audio(src) → Configure loop and volume → 
-Call play() method → Update isPlaying state → UI reflects playing state
+```javascript
+const play = () => {
+  // [1] Lazy initialization
+  if (!audioRef.current) {
+    audioRef.current = new Audio(src);
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.5;
+  }
+  // [2] Play audio
+  audioRef.current.play();
+  // [3] Update state
+  setIsPlaying(true);
+};
 ```
 
+> 💡 **Understanding Lazy Initialization**
+>
+> 1. **Lazy initialization**: Create audio element only when first needed — the `if (!audioRef.current)` check ensures the audio element is created once and reused
+> 2. **Play audio**: Call the browser's play method to start playback
+> 3. **Update state**: Set `isPlaying` to true so UI reflects the playing state
+>
+> The `if (!audioRef.current)` check is an example of **lazy initialization** — creating a resource only when it's first needed. Since `audioRef.current` starts as `null`, the first time `play()` runs it creates the audio element. Every time after that, `audioRef.current` contains the audio element, so the `if` condition is false and it skips creating a new one.
 
+### Step 2: Test audio playback
 
-Creating audio elements only once and reusing them prevents overlapping sounds, memory leaks, and performance issues. Without this pattern, clicking the music toggle rapidly would create multiple audio elements playing simultaneously, causing audio chaos and slowing down your browser.
+Click the music toggle button.
+
+**✓ You should see:** Game theme plays and button shows playing state (icon changes).
+
+> 💡 **Preventing Audio Chaos**
+>
+> Creating audio elements only once and reusing them prevents overlapping sounds, memory leaks, and performance issues. Without this pattern, clicking the music toggle rapidly would create multiple audio elements playing simultaneously, causing audio chaos and slowing down your browser. The lazy initialization pattern ensures clean, efficient audio management.
 
 <a id="github-copilot-workflow"></a>
 
@@ -348,9 +377,9 @@ Your completed `useAudio` hook must:
 - Set `isPlaying(false)` if an error occurs
 - Include a `useEffect` cleanup function for component unmounting
 
-
-
-This challenge combines everything you've learned: custom hooks, browser APIs, error handling, and AI-assisted development. You're building quality code that handles edge cases and prevents memory leaks — exactly what experienced developers do.
+> 💡 **Building Production-Quality Code**
+>
+> This challenge combines everything you've learned: custom hooks, browser APIs, error handling, and AI-assisted development. You're building quality code that handles edge cases and prevents memory leaks — exactly what experienced developers do. Error handling ensures your app doesn't crash when things go wrong, and cleanup prevents memory leaks that slow down browsers over time.
 
 <a id="essential-terms"></a>
 
@@ -360,8 +389,8 @@ _Quick reference for all the custom hooks and browser API concepts you just lear
 
 | Term   | Definition | Why it matters |
 |--------|------------|----------------|
-| 🪝 hook | Functions starting with "use" that let you use React features like state and context. | Hooks like `useState` are your tools for managing data and behavior in components. |
-| 🔄 DRY (Don't Repeat Yourself) | A fundamental programming principle that emphasizes eliminating code duplication through reusable solutions. | Custom hooks like `useAudio` let you "write once, use often" instead of copying audio logic across components. |
+| 🪝 custom hook | Functions starting with "use" that let you extract and reuse component logic across multiple components. | Hooks like `useAudio` let you "write once, use often" instead of copying audio logic across components. |
+| 🔄 DRY (Don't Repeat Yourself) | A fundamental programming principle that emphasizes eliminating code duplication through reusable solutions. | Custom hooks embody DRY by encapsulating complex logic into reusable functions. |
 | 🔊 HTMLAudioElement | Part of the Web API that provides an interface for controlling audio playback, with methods like play(), pause(), and properties like volume and loop. | Gives you programmatic control over audio files in web applications. |
 | 🔗 ref | A way to access DOM elements or store values that don't cause re-renders when changed. | Perfect for storing audio elements that need to persist but don't affect UI rendering. |
 | 🎯 useRef | A React hook that creates a persistent reference to a DOM element or value that doesn't cause re-renders when it changes. | Essential for storing audio elements and other browser API objects across component updates. |

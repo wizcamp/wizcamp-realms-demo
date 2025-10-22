@@ -772,12 +772,13 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb11-16" title="16">    &lt;/div<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb11-17" title="17">  )<span class="op">;</span></a>
 <a class="sourceLine" id="cb11-18" title="18"><span class="op">}</span></a></code></pre></div>
+<blockquote>
+<p>💡 <strong>Understanding the disabled Attribute</strong></p>
+<p>The <code>disabled</code> attribute is a built-in HTML feature that prevents user interaction with an element. When <code>disabled={true}</code>, the button becomes unclickable and typically appears grayed out.</p>
+<p>Here, <code>disabled={chosenAnswer !== null}</code> means: once a player selects an answer (<code>chosenAnswer</code> is no longer <code>null</code>), all buttons become disabled. This prevents players from changing their answer after committing to a choice, creating a polished quiz experience.</p>
+</blockquote>
 <p>Click a zone, click an answer, then try clicking other buttons.</p>
 <p><strong>✓ You should see:</strong> After selecting an answer, all other buttons become unclickable.</p>
-<blockquote>
-<p>💡 <strong>Preventing Multiple Clicks</strong></p>
-<p>The <code>disabled</code> attribute prevents multiple clicks after an answer is selected. Once <code>chosenAnswer</code> is no longer <code>null</code>, all buttons become disabled, creating a polished user experience where buttons respond intelligently to user interactions.</p>
-</blockquote>
 <p><a id="adding-feedback-messages"></a></p>
 <h2 id="adding-feedback-messages">💬 Adding Feedback Messages</h2>
 <p>🎯 <strong>Goal:</strong> Add personality to your game with custom feedback messages that celebrate correct answers and encourage players after mistakes.</p>

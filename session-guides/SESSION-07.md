@@ -385,13 +385,15 @@ function AnswerChoices({ answers, onAnswerClick, chosenAnswer, correctAnswer }) 
 }
 ```
 
+> 💡 **Understanding the disabled Attribute**
+>
+> The `disabled` attribute is a built-in HTML feature that prevents user interaction with an element. When `disabled={true}`, the button becomes unclickable and typically appears grayed out.
+>
+> Here, `disabled={chosenAnswer !== null}` means: once a player selects an answer (`chosenAnswer` is no longer `null`), all buttons become disabled. This prevents players from changing their answer after committing to a choice, creating a polished quiz experience.
+
 Click a zone, click an answer, then try clicking other buttons.
 
 **✓ You should see:** After selecting an answer, all other buttons become unclickable.
-
-> 💡 **Preventing Multiple Clicks**
->
-> The `disabled` attribute prevents multiple clicks after an answer is selected. Once `chosenAnswer` is no longer `null`, all buttons become disabled, creating a polished user experience where buttons respond intelligently to user interactions.
 
 <a id="adding-feedback-messages"></a>
 
