@@ -135,6 +135,13 @@ h2 {
   margin-bottom: 16px;
 }
 
+/* Horizontal rules within sections */
+hr {
+  border: none;
+  border-bottom: 1px solid #d0d7de;
+  margin: 24px 0;
+}
+
 /* First H2 after title gets reduced spacing */
 h1 + * h2:first-of-type,
 h2:first-of-type {
@@ -548,17 +555,13 @@ em {
 }
 EOF
 
-# Step 2: Preprocess markdown - only handle actual checkbox syntax
-# Remove checkbox syntax ONLY from lines that start with '- [ ]' (not in blockquotes)
-sed -e 's/^- \[ \] /- /g' \
-    -e 's/^- ✅ /<li style="list-style-type: none;">✅ /g' \
-    ${SESSION_NAME}.md > ${SESSION_NAME}-processed.md
-
-pandoc ${SESSION_NAME}-processed.md -o ${SESSION_NAME}.html \
+# Step 2: Convert markdown to HTML with checkbox filter
+pandoc ${SESSION_NAME}.md -o ${SESSION_NAME}.html \
     --standalone \
     --self-contained \
     --metadata pagetitle="$SESSION_NAME - Wizcamp Session Guide" \
-    --css=${SESSION_NAME}.css
+    --css=${SESSION_NAME}.css \
+    --lua-filter=checkbox-filter.lua
 
 # Step 3: Generate PDF with Chrome (force color preservation)
 google-chrome-stable --headless --disable-gpu \
@@ -580,5 +583,5 @@ echo "PDF generated: ${SESSION_NAME}.pdf"
 echo "Fonts used: Body='$BODY_FONT', Code='$CODE_FONT', Headings='$HEADING_FONT'"
 
 # Clean up temporary files
-rm ${SESSION_NAME}.css ${SESSION_NAME}-processed.md
+rm ${SESSION_NAME}.css
 # rm ${SESSION_NAME}.html

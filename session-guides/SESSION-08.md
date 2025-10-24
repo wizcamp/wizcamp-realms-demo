@@ -8,7 +8,6 @@ You're about to add the most satisfying part of any game — scoring and victory
 - [Adding Score Tracking](#adding-score-tracking)
 - [Implementing Score Updates](#implementing-score-updates)
 - [Adding Cache Clearing](#adding-cache-clearing)
-- [Updating Reset Functionality](#updating-reset-functionality)
 - [Solo Mission: GameOver Component](#solo-mission-gameover-component)
 - [Essential Terms](#essential-terms)
 - [Ask the AI](#ask-the-ai)
@@ -167,11 +166,11 @@ Navigate to the game screen.
 
 🎯 **Goal:** Make the score change based on player performance with point rewards and penalties.
 
+**File:** `src/context/GameContext.jsx`
+
 You'll update the `recordCorrectAnswer` and `recordIncorrectAnswer` functions to modify the score when players answer questions.
 
 ### Step 1: Add points for correct answers
-
-**File:** `src/context/GameContext.jsx`
 
 Update the `recordCorrectAnswer` function to award points when players answer correctly.
 
@@ -182,9 +181,13 @@ const recordCorrectAnswer = () => {
 };
 ```
 
-### Step 2: Add point deduction for incorrect answers
+> 💡 **Understanding Updater Functions**
+>
+> `setScore((prev) => prev + POINTS_PER_CORRECT)` uses an **updater function** — a way to update state based on what it was before.
+>
+> Instead of giving React a new value directly, you give it a function. That function gets the current value (`prev`) and returns the updated one. This is super useful when the new value depends on the old one — like adding points to a score.
 
-**File:** `src/context/GameContext.jsx`
+### Step 2: Add point deduction for incorrect answers
 
 Update the `recordIncorrectAnswer` function to deduct points, preventing negative scores.
 
@@ -194,17 +197,40 @@ const recordIncorrectAnswer = () => {
 };
 ```
 
-### Step 3: Test score updates
+> 💡 **Understanding Math.max for Score Boundaries**
+>
+> `Math.max(0, prev - POINTS_PER_CORRECT)` keeps the score from dropping below zero. It compares the result of the subtraction with `0` and returns whichever is higher.
+>
+> That way, if the player doesn't have enough points to lose, their score just stays at zero.
+
+### Step 3: Reset score on game reset
+
+Update the `resetGame` function to reset the score back to zero when players start over.
+
+```javascript
+const resetGame = () => {
+  setScore(0);  // Reset score to zero
+  setZoneProgress({
+    0: { completed: false },
+    1: { completed: false },
+    2: { completed: false },
+  });
+  setIsQuizVisible(false);
+  setCurrentQuestions([]);
+  setCurrentQuestion(0);
+  setCorrectAnswers(0);
+};
+```
+
+### Step 4: Test score updates
 
 Click a zone, then answer questions.
 
 **✓ You should see:**
+
+- Score starts at 0 when game begins
 - Correct answer → Score increases by 100 points
 - Incorrect answer → Score decreases by 100 points (but never below 0)
-
-> 💡 **Updater Functions**
->
-> **Updater functions** like `setScore((prev) => prev + 100)` are crucial when updating state based on the previous value. React batches state updates for performance, so using the previous value ensures accurate calculations even when multiple updates happen quickly. Without the updater function, you might lose updates or get incorrect values.
 
 <a id="adding-cache-clearing"></a>
 
@@ -212,34 +238,50 @@ Click a zone, then answer questions.
 
 🎯 **Goal:** Add cache clearing functions to remove stored questions when zones are completed or the game resets.
 
-You'll create functions to clear individual zone caches and all caches, then integrate them into your game flow.
+You'll build two helper functions — one to clear a single zone's cache, and one to clear all cached questions — then use them when zones are completed and when the game resets.
 
 ### Step 1: Create cache clearing functions
 
 **File:** `src/services/trivia.js`
 
-Add cache clearing functions at the end of the file.
+Add the cache clearing functions at the end of the file.
 
 ```javascript
+// Add clearQuestionCache function:
 export function clearQuestionCache(zoneId) {
-  const cacheKey = getCacheKey(zoneId);
-  localStorage.removeItem(cacheKey);
+  const key = getCacheKey(zoneId);             // [1] Get cache key
+  localStorage.removeItem(key);                // [2] Remove from storage
 }
 
+// Add clearAllQuestionCache function:
 export function clearAllQuestionCache() {
-  Object.keys(localStorage)
-    .filter((key) => key.startsWith("trivia_questions_zone_"))
-    .forEach((key) => localStorage.removeItem(key));
+  Object.keys(localStorage)                                    // [3] Get all keys
+    .filter((key) => key.startsWith("trivia_questions_zone_")) // [4] Filter keys
+    .forEach((key) => localStorage.removeItem(key));           // [5] Remove each
 }
 ```
+
+> 💡 **Understanding Cache Clearing**
+>
+> 1. **Get cache key**: Use `getCacheKey()` to create the correct key for this zone
+> 2. **Remove from storage**: Delete the cache entry using `localStorage.removeItem()`
+> 3. **Get all keys**: `Object.keys(localStorage)` returns array of all localStorage keys
+> 4. **Filter keys**: Keep only keys starting with `"trivia_questions_zone_"`
+> 5. **Remove each**: Delete each matching cache entry
+>
+> The `clearAllQuestionCache` function uses method chaining to find and remove all trivia-related cache entries without affecting other localStorage data your app might use.
 
 ### Step 2: Import cache functions into GameContext
 
 **File:** `src/context/GameContext.jsx`
 
-Add the cache clearing functions to your imports.
+Update your import to include the cache clearing functions.
 
 ```javascript
+// Before:
+import { fetchQuestions } from "../services/trivia";
+
+// After:
 import { 
   fetchQuestions, 
   clearQuestionCache, 
@@ -251,16 +293,11 @@ import {
 
 **File:** `src/context/GameContext.jsx`
 
-Update the `checkZoneCompletion` function to clear the zone's cache when completed.
+Update the `checkZoneCompletion` function to clear the zone's cache when players pass, ensuring fresh questions if they replay.
 
 ```javascript
 const checkZoneCompletion = () => {
-  if (activeZone === null || currentQuestions.length === 0) return;
-
-  const questionsNeeded = Math.ceil(
-    currentQuestions.length * PASS_PERCENTAGE
-  );
-  const passed = correctAnswers >= questionsNeeded;
+  // ... existing validation and calculation logic ...
 
   if (passed) {
     setZoneProgress((prev) => ({
@@ -268,7 +305,7 @@ const checkZoneCompletion = () => {
       [activeZone]: { completed: true },
     }));
     
-    clearQuestionCache(activeZone);  // Clear zone cache
+    clearQuestionCache(activeZone);  // Clear completed zone cache
 
     if (activeZone === ZONES.length - 1) {
       setScreen(SCREENS.GAME_OVER);
@@ -277,29 +314,15 @@ const checkZoneCompletion = () => {
 };
 ```
 
-### Step 4: Test cache clearing
-
-Complete a zone, then check localStorage in browser DevTools.
-
-**✓ You should see:** The cache entry for the completed zone is removed from localStorage.
-
-> 💡 **Cache Management**
+> 💡 **Understanding Cache Clearing on Completion**
 >
-> Cache management prevents stale data from affecting gameplay. When players complete a zone, clearing its cache ensures they get fresh questions if they replay. The `Object.keys()` and `filter()` pattern is an effective way to find and remove related localStorage entries by matching key prefixes.
+> When players complete a zone, clearing its cache ensures they get fresh questions if they replay. Without this, replaying would show the exact same questions they just answered, reducing the challenge and interest.
 
-<a id="updating-reset-functionality"></a>
-
-## 🔄 Updating Reset Functionality
-
-🎯 **Goal:** Update the reset function to properly clear all game state and cached data for a fresh start.
-
-You'll modify the `resetGame` function to reset all state variables and clear the question cache.
-
-### Step 1: Update resetGame function
+### Step 4: Clear cache on game reset
 
 **File:** `src/context/GameContext.jsx`
 
-Update the `resetGame` function to reset all state and clear caches.
+Update the `resetGame` function to clear all cached questions when players start over.
 
 ```javascript
 const resetGame = () => {
@@ -313,74 +336,121 @@ const resetGame = () => {
   setCurrentQuestions([]);
   setCurrentQuestion(0);
   setCorrectAnswers(0);
-  clearAllQuestionCache();
+  clearAllQuestionCache();  // Clear all cached questions
 };
 ```
 
-### Step 2: Test reset functionality
-
-Complete a zone, then use React DevTools to trigger `resetGame()`.
-
-**✓ You should see:** All state resets to initial values and localStorage cache is cleared.
-
-> 💡 **Complete State Reset**
+> 💡 **Understanding Cache Clearing on Reset**
 >
-> Complete state reset ensures players can start fresh without any lingering data from previous games. This includes both React state and localStorage cache, providing a clean slate for new gameplay sessions. Resetting all related state together prevents bugs where some state is stale while other state is fresh.
+> Clearing all cached questions on game reset ensures players get fresh questions for every zone when they start a new game. This prevents stale data from previous games and provides a clean slate for new gameplay sessions.
+
+### Step 5: Test cache clearing
+
+Test both zone completion and game reset cache clearing.
+
+**Test zone completion:**
+
+- **Open** DevTools (`F12`) → Application/Storage tab → Local Storage
+- **Complete** a zone by answering enough questions correctly
+- **Observe** the localStorage panel
+
+**✓ You should see:** The cache entry for the completed zone is removed from localStorage.
+
+**Test game reset:**
+
+- **Open** React DevTools → Components tab → Find `GameProvider`
+- **Scroll** to hooks section → Find `resetGame` function
+- **Click** the function icon to execute it
+- **Check** localStorage panel in Application/Storage tab
+
+**✓ You should see:** All cache entries are removed from localStorage.
 
 <a id="solo-mission-gameover-component"></a>
 
 ## 🎖️ Solo Mission: GameOver Component
 
-Now for the exciting part — you'll create a GameOver component that celebrates player achievements and allows them to play again! You've got all the tools — now it's time to build your own victory screen using everything you've learned.
+You've built components with guidance — now it's your turn to create a victory screen using the patterns you've practiced.
 
-### 1. Create the Component Foundation
+### What You're Building
 
-- **Create** `src/components/GameOver.jsx` with function component and default export
-- **Return** JSX with div `className="game-over"` containing h1 congratulations message
-- **Import** GameOver into `App.jsx` and add conditional rendering for `SCREENS.GAME_OVER`
-- **Test** by using React DevTools → setting `screen` to "gameover" → Component appears
+A final screen that appears when the player completes all zones. It should display a congratulations message, show the final score, and offer a way to play again.
 
-### 2. Add Score Display
+---
 
-- **Import** `useGame` hook and destructure `score`
-- **Add** div with `className="final-score"` displaying `Final Score: {score}`
-- **Test** by checking score display → Shows current game score
+### Phase 1: Component Foundation
 
-### 3. Add Play Again Functionality
+🎯 **Goal:** Set up the basic structure of your GameOver component
 
-- **Create** click handler calling `resetGame` and `setScreen(SCREENS.SPLASH)`
-- **Import** and render `GameButton` with "Play Again" text and `"primary"` variant
-- **Test** by clicking Play Again → Game resets → Returns to splash screen
+**Your Tasks:**
 
-### Testing Tips
+1. Create a new file: `src/components/GameOver.jsx`
+2. Define a React component and export it as the default
+3. In the component's return, include a div with `className="game-over"` that contains an h1 congratulating the player
+4. In `App.jsx`, import your new GameOver component
+5. Add a condition in `App.jsx` to render GameOver when `screen === SCREENS.GAME_OVER`
 
-- **Quick testing** by using React DevTools to change `screen` state to "gameover" (find `GameProvider` → hooks → screen)
-- **Full testing** by completing all three zones to naturally trigger GameOver screen
-- **Verify** final score displays correctly and Play Again button resets everything
+**Test:** Use React DevTools to manually set `screen` to `"gameover"` — the component should appear in the browser
 
-### Requirements Checklist
+---
 
-Your completed GameOver component must:
+### Phase 2: Score Display
 
-- Export function component as default
-- Wrap content in div with `className="game-over"`
-- Display congratulations using h1 element
-- Import `GameButton`, `useGame`, `SCREENS`
-- Show final score in div with `className="final-score"`
-- Include Play Again button using `GameButton` with `"primary"` variant
-- Reset game and navigate to splash screen when Play Again is clicked
-- Display when screen state equals `SCREENS.GAME_OVER` in `App.jsx`
+🎯 **Goal:** Show the player's final score on the GameOver screen
 
-### 🔍 Reference Files
+**Your Tasks:**
 
-- **`SplashScreen.jsx`**: Component structure, `GameButton` usage, `useGame` hook, screen navigation, click handler patterns
-- **`HUD.jsx`**: Accessing `score` from `useGame` hook
-- **Session 2 guide**: `GameButton` props and component export patterns
-- **Session 3 guide**: `SCREENS` constants and navigation patterns
+1. Import the `useGame` hook at the top of `GameOver.jsx` from `"../hooks/useGame"`
+2. Inside the component, use the hook and destructure `score`:
+   ```javascript
+   const { score } = useGame();
+   ```
+3. Below the congratulations h1, display the score in a div with `className="final-score"` using `{score}`
 
-> 💡 **Building Without Code Examples**
->
-> This challenge combines everything you've learned: component creation, props, shared state, event handling, and conditional rendering. Following guided steps without code examples builds confidence in applying React patterns — you're connecting concepts rather than copying code. This is how you develop the ability to build features independently.
+**Test:** Play the game to build up a score, then use React DevTools to set `screen` to `"gameover"` (like in Phase 1) to quickly view the score display
+
+---
+
+### Phase 3: Play Again Button
+
+🎯 **Goal:** Let players restart the game from the GameOver screen
+
+**Your Tasks:**
+
+1. Add imports:
+   - Import `SCREENS` from `"../constants/screens"`
+   - Import `GameButton` from `"./GameButton"`
+2. Inside the component, get `resetGame` and `setScreen` from `useGame()`
+3. Write a click handler that resets the game and shows the splash screen:
+   ```javascript
+   const playAgain = () => {
+     resetGame();
+     setScreen(SCREENS.SPLASH);
+   };
+   ```
+4. Below the final-score div, render the button with:
+   - Text: "Play Again"
+   - Variant: `"primary"`
+   - Your click handler
+
+**Test:** Use React DevTools to set `screen` to `"gameover"` (like in Phase 1), then click the button → returns to splash → score and zones reset
+
+---
+
+### ✅ Success Review
+
+Your GameOver component should:
+
+- Appear when the game ends
+- Show a congratulations message
+- Display the final score using `useGame()`
+- Include a working "Play Again" button
+- Support multiple full game cycles without issues
+
+### 🔍 Reference Guide
+
+- **SplashScreen.jsx** – Component structure, GameButton usage, click handlers, screen navigation
+- **HUD.jsx** – Accessing score from `useGame()`
+- **App.jsx** – Conditional rendering with SCREENS constants
 
 <a id="essential-terms"></a>
 

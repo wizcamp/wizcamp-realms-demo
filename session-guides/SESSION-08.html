@@ -126,6 +126,12 @@ margin-top: 48px;
 margin-bottom: 16px;
 }
 
+hr {
+border: none;
+border-bottom: 1px solid #d0d7de;
+margin: 24px 0;
+}
+
 h1 + * h2:first-of-type,
 h2:first-of-type {
 margin-top: 24px;
@@ -489,7 +495,6 @@ overflow-x: hidden !important;
 <li><a href="#adding-score-tracking">Adding Score Tracking</a></li>
 <li><a href="#implementing-score-updates">Implementing Score Updates</a></li>
 <li><a href="#adding-cache-clearing">Adding Cache Clearing</a></li>
-<li><a href="#updating-reset-functionality">Updating Reset Functionality</a></li>
 <li><a href="#solo-mission-gameover-component">Solo Mission: GameOver Component</a></li>
 <li><a href="#essential-terms">Essential Terms</a></li>
 <li><a href="#ask-the-ai">Ask the AI</a></li>
@@ -635,161 +640,221 @@ overflow-x: hidden !important;
 <p><a id="implementing-score-updates"></a></p>
 <h2 id="implementing-score-updates">📊 Implementing Score Updates</h2>
 <p>🎯 <strong>Goal:</strong> Make the score change based on player performance with point rewards and penalties.</p>
+<p><strong>File:</strong> <code>src/context/GameContext.jsx</code></p>
 <p>You’ll update the <code>recordCorrectAnswer</code> and <code>recordIncorrectAnswer</code> functions to modify the score when players answer questions.</p>
 <h3 id="step-1-add-points-for-correct-answers">Step 1: Add points for correct answers</h3>
-<p><strong>File:</strong> <code>src/context/GameContext.jsx</code></p>
 <p>Update the <code>recordCorrectAnswer</code> function to award points when players answer correctly.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> recordCorrectAnswer <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb5-2" title="2">  <span class="at">setCorrectAnswers</span>((prev) <span class="kw">=&gt;</span> prev <span class="op">+</span> <span class="dv">1</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb5-3" title="3">  <span class="at">setScore</span>((prev) <span class="kw">=&gt;</span> prev <span class="op">+</span> POINTS_PER_CORRECT)<span class="op">;</span>  <span class="co">// Add points</span></a>
 <a class="sourceLine" id="cb5-4" title="4"><span class="op">};</span></a></code></pre></div>
+<blockquote>
+<p>💡 <strong>Understanding Updater Functions</strong></p>
+<p><code>setScore((prev) =&gt; prev + POINTS_PER_CORRECT)</code> uses an <strong>updater function</strong> — a way to update state based on what it was before.</p>
+<p>Instead of giving React a new value directly, you give it a function. That function gets the current value (<code>prev</code>) and returns the updated one. This is super useful when the new value depends on the old one — like adding points to a score.</p>
+</blockquote>
 <h3 id="step-2-add-point-deduction-for-incorrect-answers">Step 2: Add point deduction for incorrect answers</h3>
-<p><strong>File:</strong> <code>src/context/GameContext.jsx</code></p>
 <p>Update the <code>recordIncorrectAnswer</code> function to deduct points, preventing negative scores.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> recordIncorrectAnswer <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb6-2" title="2">  <span class="at">setScore</span>((prev) <span class="kw">=&gt;</span> <span class="va">Math</span>.<span class="at">max</span>(<span class="dv">0</span><span class="op">,</span> prev <span class="op">-</span> POINTS_PER_CORRECT))<span class="op">;</span>  <span class="co">// Deduct points</span></a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="op">};</span></a></code></pre></div>
-<h3 id="step-3-test-score-updates">Step 3: Test score updates</h3>
-<p>Click a zone, then answer questions.</p>
-<p><strong>✓ You should see:</strong> - Correct answer → Score increases by 100 points - Incorrect answer → Score decreases by 100 points (but never below 0)</p>
 <blockquote>
-<p>💡 <strong>Updater Functions</strong></p>
-<p><strong>Updater functions</strong> like <code>setScore((prev) =&gt; prev + 100)</code> are crucial when updating state based on the previous value. React batches state updates for performance, so using the previous value ensures accurate calculations even when multiple updates happen quickly. Without the updater function, you might lose updates or get incorrect values.</p>
+<p>💡 <strong>Understanding Math.max for Score Boundaries</strong></p>
+<p><code>Math.max(0, prev - POINTS_PER_CORRECT)</code> keeps the score from dropping below zero. It compares the result of the subtraction with <code>0</code> and returns whichever is higher.</p>
+<p>That way, if the player doesn’t have enough points to lose, their score just stays at zero.</p>
 </blockquote>
+<h3 id="step-3-reset-score-on-game-reset">Step 3: Reset score on game reset</h3>
+<p>Update the <code>resetGame</code> function to reset the score back to zero when players start over.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">const</span> resetGame <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="at">setScore</span>(<span class="dv">0</span>)<span class="op">;</span>  <span class="co">// Reset score to zero</span></a>
+<a class="sourceLine" id="cb7-3" title="3">  <span class="at">setZoneProgress</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb7-4" title="4">    <span class="dv">0</span><span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb7-5" title="5">    <span class="dv">1</span><span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb7-6" title="6">    <span class="dv">2</span><span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb7-7" title="7">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-8" title="8">  <span class="at">setIsQuizVisible</span>(<span class="kw">false</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-9" title="9">  <span class="at">setCurrentQuestions</span>([])<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-10" title="10">  <span class="at">setCurrentQuestion</span>(<span class="dv">0</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-11" title="11">  <span class="at">setCorrectAnswers</span>(<span class="dv">0</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-12" title="12"><span class="op">};</span></a></code></pre></div>
+<h3 id="step-4-test-score-updates">Step 4: Test score updates</h3>
+<p>Click a zone, then answer questions.</p>
+<p><strong>✓ You should see:</strong></p>
+<ul>
+<li>Score starts at 0 when game begins</li>
+<li>Correct answer → Score increases by 100 points</li>
+<li>Incorrect answer → Score decreases by 100 points (but never below 0)</li>
+</ul>
 <p><a id="adding-cache-clearing"></a></p>
 <h2 id="adding-cache-clearing">🗄️ Adding Cache Clearing</h2>
 <p>🎯 <strong>Goal:</strong> Add cache clearing functions to remove stored questions when zones are completed or the game resets.</p>
-<p>You’ll create functions to clear individual zone caches and all caches, then integrate them into your game flow.</p>
+<p>You’ll build two helper functions — one to clear a single zone’s cache, and one to clear all cached questions — then use them when zones are completed and when the game resets.</p>
 <h3 id="step-1-create-cache-clearing-functions">Step 1: Create cache clearing functions</h3>
 <p><strong>File:</strong> <code>src/services/trivia.js</code></p>
-<p>Add cache clearing functions at the end of the file.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="im">export</span> <span class="kw">function</span> <span class="at">clearQuestionCache</span>(zoneId) <span class="op">{</span></a>
-<a class="sourceLine" id="cb7-2" title="2">  <span class="kw">const</span> cacheKey <span class="op">=</span> <span class="at">getCacheKey</span>(zoneId)<span class="op">;</span></a>
-<a class="sourceLine" id="cb7-3" title="3">  <span class="va">localStorage</span>.<span class="at">removeItem</span>(cacheKey)<span class="op">;</span></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="op">}</span></a>
-<a class="sourceLine" id="cb7-5" title="5"></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="im">export</span> <span class="kw">function</span> <span class="at">clearAllQuestionCache</span>() <span class="op">{</span></a>
-<a class="sourceLine" id="cb7-7" title="7">  <span class="va">Object</span>.<span class="at">keys</span>(localStorage)</a>
-<a class="sourceLine" id="cb7-8" title="8">    .<span class="at">filter</span>((key) <span class="kw">=&gt;</span> <span class="va">key</span>.<span class="at">startsWith</span>(<span class="st">&quot;trivia_questions_zone_&quot;</span>))</a>
-<a class="sourceLine" id="cb7-9" title="9">    .<span class="at">forEach</span>((key) <span class="kw">=&gt;</span> <span class="va">localStorage</span>.<span class="at">removeItem</span>(key))<span class="op">;</span></a>
-<a class="sourceLine" id="cb7-10" title="10"><span class="op">}</span></a></code></pre></div>
+<p>Add the cache clearing functions at the end of the file.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="co">// Add clearQuestionCache function:</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="im">export</span> <span class="kw">function</span> <span class="at">clearQuestionCache</span>(zoneId) <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-3" title="3">  <span class="kw">const</span> key <span class="op">=</span> <span class="at">getCacheKey</span>(zoneId)<span class="op">;</span>             <span class="co">// [1] Get cache key</span></a>
+<a class="sourceLine" id="cb8-4" title="4">  <span class="va">localStorage</span>.<span class="at">removeItem</span>(key)<span class="op">;</span>                <span class="co">// [2] Remove from storage</span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="op">}</span></a>
+<a class="sourceLine" id="cb8-6" title="6"></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="co">// Add clearAllQuestionCache function:</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="im">export</span> <span class="kw">function</span> <span class="at">clearAllQuestionCache</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-9" title="9">  <span class="va">Object</span>.<span class="at">keys</span>(localStorage)                                    <span class="co">// [3] Get all keys</span></a>
+<a class="sourceLine" id="cb8-10" title="10">    .<span class="at">filter</span>((key) <span class="kw">=&gt;</span> <span class="va">key</span>.<span class="at">startsWith</span>(<span class="st">&quot;trivia_questions_zone_&quot;</span>)) <span class="co">// [4] Filter keys</span></a>
+<a class="sourceLine" id="cb8-11" title="11">    .<span class="at">forEach</span>((key) <span class="kw">=&gt;</span> <span class="va">localStorage</span>.<span class="at">removeItem</span>(key))<span class="op">;</span>           <span class="co">// [5] Remove each</span></a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="op">}</span></a></code></pre></div>
+<blockquote>
+<p>💡 <strong>Understanding Cache Clearing</strong></p>
+<ol type="1">
+<li><strong>Get cache key</strong>: Use <code>getCacheKey()</code> to create the correct key for this zone</li>
+<li><strong>Remove from storage</strong>: Delete the cache entry using <code>localStorage.removeItem()</code></li>
+<li><strong>Get all keys</strong>: <code>Object.keys(localStorage)</code> returns array of all localStorage keys</li>
+<li><strong>Filter keys</strong>: Keep only keys starting with <code>&quot;trivia_questions_zone_&quot;</code></li>
+<li><strong>Remove each</strong>: Delete each matching cache entry</li>
+</ol>
+<p>The <code>clearAllQuestionCache</code> function uses method chaining to find and remove all trivia-related cache entries without affecting other localStorage data your app might use.</p>
+</blockquote>
 <h3 id="step-2-import-cache-functions-into-gamecontext">Step 2: Import cache functions into GameContext</h3>
 <p><strong>File:</strong> <code>src/context/GameContext.jsx</code></p>
-<p>Add the cache clearing functions to your imports.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="im">import</span> <span class="op">{</span> </a>
-<a class="sourceLine" id="cb8-2" title="2">  fetchQuestions<span class="op">,</span> </a>
-<a class="sourceLine" id="cb8-3" title="3">  clearQuestionCache<span class="op">,</span> </a>
-<a class="sourceLine" id="cb8-4" title="4">  clearAllQuestionCache </a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../services/trivia&quot;</span><span class="op">;</span></a></code></pre></div>
+<p>Update your import to include the cache clearing functions.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// Before:</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="im">import</span> <span class="op">{</span> fetchQuestions <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../services/trivia&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co">// After:</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="im">import</span> <span class="op">{</span> </a>
+<a class="sourceLine" id="cb9-6" title="6">  fetchQuestions<span class="op">,</span> </a>
+<a class="sourceLine" id="cb9-7" title="7">  clearQuestionCache<span class="op">,</span> </a>
+<a class="sourceLine" id="cb9-8" title="8">  clearAllQuestionCache </a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../services/trivia&quot;</span><span class="op">;</span></a></code></pre></div>
 <h3 id="step-3-clear-cache-on-zone-completion">Step 3: Clear cache on zone completion</h3>
 <p><strong>File:</strong> <code>src/context/GameContext.jsx</code></p>
-<p>Update the <code>checkZoneCompletion</code> function to clear the zone’s cache when completed.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">const</span> checkZoneCompletion <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb9-2" title="2">  <span class="cf">if</span> (activeZone <span class="op">===</span> <span class="kw">null</span> <span class="op">||</span> <span class="va">currentQuestions</span>.<span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb9-3" title="3"></a>
-<a class="sourceLine" id="cb9-4" title="4">  <span class="kw">const</span> questionsNeeded <span class="op">=</span> <span class="va">Math</span>.<span class="at">ceil</span>(</a>
-<a class="sourceLine" id="cb9-5" title="5">    <span class="va">currentQuestions</span>.<span class="at">length</span> <span class="op">*</span> PASS_PERCENTAGE</a>
-<a class="sourceLine" id="cb9-6" title="6">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb9-7" title="7">  <span class="kw">const</span> passed <span class="op">=</span> correctAnswers <span class="op">&gt;=</span> questionsNeeded<span class="op">;</span></a>
-<a class="sourceLine" id="cb9-8" title="8"></a>
-<a class="sourceLine" id="cb9-9" title="9">  <span class="cf">if</span> (passed) <span class="op">{</span></a>
-<a class="sourceLine" id="cb9-10" title="10">    <span class="at">setZoneProgress</span>((prev) <span class="kw">=&gt;</span> (<span class="op">{</span></a>
-<a class="sourceLine" id="cb9-11" title="11">      ...<span class="at">prev</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb9-12" title="12">      [activeZone]<span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">true</span> <span class="op">},</span></a>
-<a class="sourceLine" id="cb9-13" title="13">    <span class="op">}</span>))<span class="op">;</span></a>
-<a class="sourceLine" id="cb9-14" title="14">    </a>
-<a class="sourceLine" id="cb9-15" title="15">    <span class="at">clearQuestionCache</span>(activeZone)<span class="op">;</span>  <span class="co">// Clear zone cache</span></a>
-<a class="sourceLine" id="cb9-16" title="16"></a>
-<a class="sourceLine" id="cb9-17" title="17">    <span class="cf">if</span> (activeZone <span class="op">===</span> <span class="va">ZONES</span>.<span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb9-18" title="18">      <span class="at">setScreen</span>(<span class="va">SCREENS</span>.<span class="at">GAME_OVER</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb9-19" title="19">    <span class="op">}</span></a>
-<a class="sourceLine" id="cb9-20" title="20">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb9-21" title="21"><span class="op">};</span></a></code></pre></div>
-<h3 id="step-4-test-cache-clearing">Step 4: Test cache clearing</h3>
-<p>Complete a zone, then check localStorage in browser DevTools.</p>
-<p><strong>✓ You should see:</strong> The cache entry for the completed zone is removed from localStorage.</p>
+<p>Update the <code>checkZoneCompletion</code> function to clear the zone’s cache when players pass, ensuring fresh questions if they replay.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">const</span> checkZoneCompletion <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="co">// ... existing validation and calculation logic ...</span></a>
+<a class="sourceLine" id="cb10-3" title="3"></a>
+<a class="sourceLine" id="cb10-4" title="4">  <span class="cf">if</span> (passed) <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-5" title="5">    <span class="at">setZoneProgress</span>((prev) <span class="kw">=&gt;</span> (<span class="op">{</span></a>
+<a class="sourceLine" id="cb10-6" title="6">      ...<span class="at">prev</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb10-7" title="7">      [activeZone]<span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">true</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb10-8" title="8">    <span class="op">}</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-9" title="9">    </a>
+<a class="sourceLine" id="cb10-10" title="10">    <span class="at">clearQuestionCache</span>(activeZone)<span class="op">;</span>  <span class="co">// Clear completed zone cache</span></a>
+<a class="sourceLine" id="cb10-11" title="11"></a>
+<a class="sourceLine" id="cb10-12" title="12">    <span class="cf">if</span> (activeZone <span class="op">===</span> <span class="va">ZONES</span>.<span class="at">length</span> <span class="op">-</span> <span class="dv">1</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-13" title="13">      <span class="at">setScreen</span>(<span class="va">SCREENS</span>.<span class="at">GAME_OVER</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-14" title="14">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb10-15" title="15">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb10-16" title="16"><span class="op">};</span></a></code></pre></div>
 <blockquote>
-<p>💡 <strong>Cache Management</strong></p>
-<p>Cache management prevents stale data from affecting gameplay. When players complete a zone, clearing its cache ensures they get fresh questions if they replay. The <code>Object.keys()</code> and <code>filter()</code> pattern is an effective way to find and remove related localStorage entries by matching key prefixes.</p>
+<p>💡 <strong>Understanding Cache Clearing on Completion</strong></p>
+<p>When players complete a zone, clearing its cache ensures they get fresh questions if they replay. Without this, replaying would show the exact same questions they just answered, reducing the challenge and interest.</p>
 </blockquote>
-<p><a id="updating-reset-functionality"></a></p>
-<h2 id="updating-reset-functionality">🔄 Updating Reset Functionality</h2>
-<p>🎯 <strong>Goal:</strong> Update the reset function to properly clear all game state and cached data for a fresh start.</p>
-<p>You’ll modify the <code>resetGame</code> function to reset all state variables and clear the question cache.</p>
-<h3 id="step-1-update-resetgame-function">Step 1: Update resetGame function</h3>
+<h3 id="step-4-clear-cache-on-game-reset">Step 4: Clear cache on game reset</h3>
 <p><strong>File:</strong> <code>src/context/GameContext.jsx</code></p>
-<p>Update the <code>resetGame</code> function to reset all state and clear caches.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">const</span> resetGame <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb10-2" title="2">  <span class="at">setScore</span>(<span class="dv">0</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-3" title="3">  <span class="at">setZoneProgress</span>(<span class="op">{</span></a>
-<a class="sourceLine" id="cb10-4" title="4">    <span class="dv">0</span><span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> <span class="op">},</span></a>
-<a class="sourceLine" id="cb10-5" title="5">    <span class="dv">1</span><span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> <span class="op">},</span></a>
-<a class="sourceLine" id="cb10-6" title="6">    <span class="dv">2</span><span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> <span class="op">},</span></a>
-<a class="sourceLine" id="cb10-7" title="7">  <span class="op">}</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-8" title="8">  <span class="at">setIsQuizVisible</span>(<span class="kw">false</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-9" title="9">  <span class="at">setCurrentQuestions</span>([])<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-10" title="10">  <span class="at">setCurrentQuestion</span>(<span class="dv">0</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-11" title="11">  <span class="at">setCorrectAnswers</span>(<span class="dv">0</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-12" title="12">  <span class="at">clearAllQuestionCache</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-13" title="13"><span class="op">};</span></a></code></pre></div>
-<h3 id="step-2-test-reset-functionality">Step 2: Test reset functionality</h3>
-<p>Complete a zone, then use React DevTools to trigger <code>resetGame()</code>.</p>
-<p><strong>✓ You should see:</strong> All state resets to initial values and localStorage cache is cleared.</p>
+<p>Update the <code>resetGame</code> function to clear all cached questions when players start over.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">const</span> resetGame <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-2" title="2">  <span class="at">setScore</span>(<span class="dv">0</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-3" title="3">  <span class="at">setZoneProgress</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb11-4" title="4">    <span class="dv">0</span><span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb11-5" title="5">    <span class="dv">1</span><span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb11-6" title="6">    <span class="dv">2</span><span class="op">:</span> <span class="op">{</span> <span class="dt">completed</span><span class="op">:</span> <span class="kw">false</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb11-7" title="7">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-8" title="8">  <span class="at">setIsQuizVisible</span>(<span class="kw">false</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-9" title="9">  <span class="at">setCurrentQuestions</span>([])<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-10" title="10">  <span class="at">setCurrentQuestion</span>(<span class="dv">0</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-11" title="11">  <span class="at">setCorrectAnswers</span>(<span class="dv">0</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-12" title="12">  <span class="at">clearAllQuestionCache</span>()<span class="op">;</span>  <span class="co">// Clear all cached questions</span></a>
+<a class="sourceLine" id="cb11-13" title="13"><span class="op">};</span></a></code></pre></div>
 <blockquote>
-<p>💡 <strong>Complete State Reset</strong></p>
-<p>Complete state reset ensures players can start fresh without any lingering data from previous games. This includes both React state and localStorage cache, providing a clean slate for new gameplay sessions. Resetting all related state together prevents bugs where some state is stale while other state is fresh.</p>
+<p>💡 <strong>Understanding Cache Clearing on Reset</strong></p>
+<p>Clearing all cached questions on game reset ensures players get fresh questions for every zone when they start a new game. This prevents stale data from previous games and provides a clean slate for new gameplay sessions.</p>
 </blockquote>
+<h3 id="step-5-test-cache-clearing">Step 5: Test cache clearing</h3>
+<p>Test both zone completion and game reset cache clearing.</p>
+<p><strong>Test zone completion:</strong></p>
+<ul>
+<li><strong>Open</strong> DevTools (<code>F12</code>) → Application/Storage tab → Local Storage</li>
+<li><strong>Complete</strong> a zone by answering enough questions correctly</li>
+<li><strong>Observe</strong> the localStorage panel</li>
+</ul>
+<p><strong>✓ You should see:</strong> The cache entry for the completed zone is removed from localStorage.</p>
+<p><strong>Test game reset:</strong></p>
+<ul>
+<li><strong>Open</strong> React DevTools → Components tab → Find <code>GameProvider</code></li>
+<li><strong>Scroll</strong> to hooks section → Find <code>resetGame</code> function</li>
+<li><strong>Click</strong> the function icon to execute it</li>
+<li><strong>Check</strong> localStorage panel in Application/Storage tab</li>
+</ul>
+<p><strong>✓ You should see:</strong> All cache entries are removed from localStorage.</p>
 <p><a id="solo-mission-gameover-component"></a></p>
 <h2 id="solo-mission-gameover-component">🎖️ Solo Mission: GameOver Component</h2>
-<p>Now for the exciting part — you’ll create a GameOver component that celebrates player achievements and allows them to play again! You’ve got all the tools — now it’s time to build your own victory screen using everything you’ve learned.</p>
-<h3 id="create-the-component-foundation">1. Create the Component Foundation</h3>
+<p>You’ve built components with guidance — now it’s your turn to create a victory screen using the patterns you’ve practiced.</p>
+<h3 id="what-youre-building">What You’re Building</h3>
+<p>A final screen that appears when the player completes all zones. It should display a congratulations message, show the final score, and offer a way to play again.</p>
+<hr />
+<h3 id="phase-1-component-foundation">Phase 1: Component Foundation</h3>
+<p>🎯 <strong>Goal:</strong> Set up the basic structure of your GameOver component</p>
+<p><strong>Your Tasks:</strong></p>
+<ol type="1">
+<li>Create a new file: <code>src/components/GameOver.jsx</code></li>
+<li>Define a React component and export it as the default</li>
+<li>In the component’s return, include a div with <code>className=&quot;game-over&quot;</code> that contains an h1 congratulating the player</li>
+<li>In <code>App.jsx</code>, import your new GameOver component</li>
+<li>Add a condition in <code>App.jsx</code> to render GameOver when <code>screen === SCREENS.GAME_OVER</code></li>
+</ol>
+<p><strong>Test:</strong> Use React DevTools to manually set <code>screen</code> to <code>&quot;gameover&quot;</code> — the component should appear in the browser</p>
+<hr />
+<h3 id="phase-2-score-display">Phase 2: Score Display</h3>
+<p>🎯 <strong>Goal:</strong> Show the player’s final score on the GameOver screen</p>
+<p><strong>Your Tasks:</strong></p>
+<ol type="1">
+<li>Import the <code>useGame</code> hook at the top of <code>GameOver.jsx</code> from <code>&quot;../hooks/useGame&quot;</code></li>
+<li><p>Inside the component, use the hook and destructure <code>score</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">const</span> <span class="op">{</span> score <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a></code></pre></div></li>
+<li><p>Below the congratulations h1, display the score in a div with <code>className=&quot;final-score&quot;</code> using <code>{score}</code></p></li>
+</ol>
+<p><strong>Test:</strong> Play the game to build up a score, then use React DevTools to set <code>screen</code> to <code>&quot;gameover&quot;</code> (like in Phase 1) to quickly view the score display</p>
+<hr />
+<h3 id="phase-3-play-again-button">Phase 3: Play Again Button</h3>
+<p>🎯 <strong>Goal:</strong> Let players restart the game from the GameOver screen</p>
+<p><strong>Your Tasks:</strong></p>
+<ol type="1">
+<li>Add imports:
 <ul>
-<li><strong>Create</strong> <code>src/components/GameOver.jsx</code> with function component and default export</li>
-<li><strong>Return</strong> JSX with div <code>className=&quot;game-over&quot;</code> containing h1 congratulations message</li>
-<li><strong>Import</strong> GameOver into <code>App.jsx</code> and add conditional rendering for <code>SCREENS.GAME_OVER</code></li>
-<li><strong>Test</strong> by using React DevTools → setting <code>screen</code> to “gameover” → Component appears</li>
-</ul>
-<h3 id="add-score-display">2. Add Score Display</h3>
+<li>Import <code>SCREENS</code> from <code>&quot;../constants/screens&quot;</code></li>
+<li>Import <code>GameButton</code> from <code>&quot;./GameButton&quot;</code></li>
+</ul></li>
+<li>Inside the component, get <code>resetGame</code> and <code>setScreen</code> from <code>useGame()</code></li>
+<li><p>Write a click handler that resets the game and shows the splash screen:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">const</span> playAgain <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-2" title="2">  <span class="at">resetGame</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb13-3" title="3">  <span class="at">setScreen</span>(<span class="va">SCREENS</span>.<span class="at">SPLASH</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="op">};</span></a></code></pre></div></li>
+<li>Below the final-score div, render the button with:
 <ul>
-<li><strong>Import</strong> <code>useGame</code> hook and destructure <code>score</code></li>
-<li><strong>Add</strong> div with <code>className=&quot;final-score&quot;</code> displaying <code>Final Score: {score}</code></li>
-<li><strong>Test</strong> by checking score display → Shows current game score</li>
-</ul>
-<h3 id="add-play-again-functionality">3. Add Play Again Functionality</h3>
+<li>Text: “Play Again”</li>
+<li>Variant: <code>&quot;primary&quot;</code></li>
+<li>Your click handler</li>
+</ul></li>
+</ol>
+<p><strong>Test:</strong> Use React DevTools to set <code>screen</code> to <code>&quot;gameover&quot;</code> (like in Phase 1), then click the button → returns to splash → score and zones reset</p>
+<hr />
+<h3 id="success-review">✅ Success Review</h3>
+<p>Your GameOver component should:</p>
 <ul>
-<li><strong>Create</strong> click handler calling <code>resetGame</code> and <code>setScreen(SCREENS.SPLASH)</code></li>
-<li><strong>Import</strong> and render <code>GameButton</code> with “Play Again” text and <code>&quot;primary&quot;</code> variant</li>
-<li><strong>Test</strong> by clicking Play Again → Game resets → Returns to splash screen</li>
+<li>Appear when the game ends</li>
+<li>Show a congratulations message</li>
+<li>Display the final score using <code>useGame()</code></li>
+<li>Include a working “Play Again” button</li>
+<li>Support multiple full game cycles without issues</li>
 </ul>
-<h3 id="testing-tips">Testing Tips</h3>
+<h3 id="reference-guide">🔍 Reference Guide</h3>
 <ul>
-<li><strong>Quick testing</strong> by using React DevTools to change <code>screen</code> state to “gameover” (find <code>GameProvider</code> → hooks → screen)</li>
-<li><strong>Full testing</strong> by completing all three zones to naturally trigger GameOver screen</li>
-<li><strong>Verify</strong> final score displays correctly and Play Again button resets everything</li>
+<li><strong>SplashScreen.jsx</strong> – Component structure, GameButton usage, click handlers, screen navigation</li>
+<li><strong>HUD.jsx</strong> – Accessing score from <code>useGame()</code></li>
+<li><strong>App.jsx</strong> – Conditional rendering with SCREENS constants</li>
 </ul>
-<h3 id="requirements-checklist">Requirements Checklist</h3>
-<p>Your completed GameOver component must:</p>
-<ul>
-<li>Export function component as default</li>
-<li>Wrap content in div with <code>className=&quot;game-over&quot;</code></li>
-<li>Display congratulations using h1 element</li>
-<li>Import <code>GameButton</code>, <code>useGame</code>, <code>SCREENS</code></li>
-<li>Show final score in div with <code>className=&quot;final-score&quot;</code></li>
-<li>Include Play Again button using <code>GameButton</code> with <code>&quot;primary&quot;</code> variant</li>
-<li>Reset game and navigate to splash screen when Play Again is clicked</li>
-<li>Display when screen state equals <code>SCREENS.GAME_OVER</code> in <code>App.jsx</code></li>
-</ul>
-<h3 id="reference-files">🔍 Reference Files</h3>
-<ul>
-<li><strong><code>SplashScreen.jsx</code></strong>: Component structure, <code>GameButton</code> usage, <code>useGame</code> hook, screen navigation, click handler patterns</li>
-<li><strong><code>HUD.jsx</code></strong>: Accessing <code>score</code> from <code>useGame</code> hook</li>
-<li><strong>Session 2 guide</strong>: <code>GameButton</code> props and component export patterns</li>
-<li><strong>Session 3 guide</strong>: <code>SCREENS</code> constants and navigation patterns</li>
-</ul>
-<blockquote>
-<p>💡 <strong>Building Without Code Examples</strong></p>
-<p>This challenge combines everything you’ve learned: component creation, props, shared state, event handling, and conditional rendering. Following guided steps without code examples builds confidence in applying React patterns — you’re connecting concepts rather than copying code. This is how you develop the ability to build features independently.</p>
-</blockquote>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>
 <p><em>Quick reference for the key concepts you just learned:</em></p>
