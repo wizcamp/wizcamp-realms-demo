@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>SESSION-09 - Wizcamp Session Guide</title>
+  <title>SESSION-09-orig - Wizcamp Session Guide</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -488,12 +488,13 @@ overflow-x: hidden !important;
 </head>
 <body>
 <h1 id="session-9-adding-theme-music">Session 9 — Adding Theme Music</h1>
-<p>You’re about to add another dimension to your trivia game — theme music! This guide walks you through creating custom React hooks, working with browser audio APIs, and building reusable audio controls. Ready to bring your game to life with sound? Let’s go!</p>
+<p>Custom Hooks &amp; Browser APIs 🎵</p>
+<p>You’re about to add another feature to your trivia game — theme music! This guide walks you through creating custom React hooks, working with browser audio APIs, and building reusable audio controls. Ready to bring your game to life with sound? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#custom-hooks">Custom Hooks</a></li>
-<li><a href="#browser-audio-apis">Browser Audio APIs</a></li>
-<li><a href="#refs-and-useref">Refs and useRef</a></li>
+<li><a href="#understanding-custom-hooks">Understanding Custom Hooks</a></li>
+<li><a href="#exploring-browser-audio-apis">Exploring Browser Audio APIs</a></li>
+<li><a href="#understanding-refs-and-useref">Understanding Refs and useRef</a></li>
 <li><a href="#building-the-musictoggle-component">Building the MusicToggle Component</a></li>
 <li><a href="#adding-audio-reference-to-useaudio">Adding Audio Reference to useAudio</a></li>
 <li><a href="#implementing-audio-playback">Implementing Audio Playback</a></li>
@@ -505,10 +506,11 @@ overflow-x: hidden !important;
 <p><a id="accessing-your-codespace"></a></p>
 <h2 id="accessing-your-codespace">☁️ Accessing Your Codespace</h2>
 <p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 8.</p>
-<p><a id="custom-hooks"></a></p>
-<h2 id="custom-hooks">🪝 Custom Hooks</h2>
+<p><a id="understanding-custom-hooks"></a></p>
+<h2 id="understanding-custom-hooks">🪝 Understanding Custom Hooks</h2>
 <p>Before we dive into audio, let’s understand <strong>custom hooks</strong> — one of React’s most powerful patterns for code reuse.</p>
-<p>Custom hooks are functions that start with “use” and let you extract component logic into reusable functions. Think of them as your own personal React features that you can use across multiple components.</p>
+<p><strong>Custom hooks</strong> are functions that start with “use” and let you extract component logic into reusable functions. Think of them as your own personal React features that you can use across multiple components.</p>
+<h3 id="built-in-vs-custom-hooks">Built-in vs Custom Hooks</h3>
 <table>
 <thead>
 <tr class="header">
@@ -535,17 +537,15 @@ overflow-x: hidden !important;
 </tr>
 </tbody>
 </table>
-<p>Custom hooks embody one of programming’s most important principles: <strong>“Don’t Repeat Yourself” (DRY)</strong>. Instead of copying and pasting audio logic into every component that needs music, you encapsulate that complexity into a reusable <code>useAudio</code> hook. Now, any component can add background music with a single line of code:</p>
+<p><strong>Custom hooks</strong> embody one of programming’s most important principles: <strong>“Don’t Repeat Yourself” (DRY)</strong>. Instead of copying and pasting audio logic into every component that needs music, you encapsulate that complexity into a reusable <code>useAudio</code> hook. Now, any component can add background music with a single line of code:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> music <span class="op">=</span> <span class="at">useAudio</span>(<span class="st">&#39;/music.mp3&#39;</span>)<span class="op">;</span></a></code></pre></div>
-<p>This is the difference between basic and advanced code — experienced developers reduce repetition by creating reusable solutions. Custom hooks let you “write once, use often,” making your code cleaner, more maintainable, and easier to scale.</p>
-<blockquote>
-<p>🏆 <strong>Bonus Challenge</strong></p>
+<p>This is the difference between basic and advanced code — experienced developers reduce repetition by creating reusable solutions. Custom hooks let you <strong>“write once, use often,”</strong> making your code cleaner, more maintainable, and easier to scale.</p>
+<h3 id="bonus-challenge">🏆 Bonus Challenge</h3>
 <p>Visit <a href="https://usehooks.com/">useHooks – The React Hooks Library</a> and find three interesting custom hooks that might be great for use in a web-based video game.</p>
-</blockquote>
-<p><a id="browser-audio-apis"></a></p>
-<h2 id="browser-audio-apis">🔊 Browser Audio APIs</h2>
+<p><a id="exploring-browser-audio-apis"></a></p>
+<h2 id="exploring-browser-audio-apis">🔊 Exploring Browser Audio APIs</h2>
 <p>Let’s understand the <strong>HTMLAudioElement</strong> — the browser’s built-in interface for controlling audio playback.</p>
-<p>You might be familiar with HTML audio elements like <code>&lt;audio src=&quot;music.mp3&quot;&gt;&lt;/audio&gt;</code> that you write in HTML files. HTMLAudioElement is the JavaScript version of the same thing — it’s like a digital music player that you create and control entirely with JavaScript code. Instead of writing HTML tags, you use <code>new Audio()</code> to create the player, then control it with methods like <code>play()</code> and <code>pause()</code>.</p>
+<p>You might be familiar with HTML audio elements like <code>&lt;audio src=&quot;music.mp3&quot;&gt;&lt;/audio&gt;</code> that you write in HTML files. <strong>HTMLAudioElement</strong> is the JavaScript version of the same thing — it’s like a digital music player that you create and control entirely with JavaScript code. Instead of writing HTML tags, you use <code>new Audio()</code> to create the player, then control it with methods like <code>play()</code> and <code>pause()</code>.</p>
 <h3 id="creating-audio-elements">Creating Audio Elements</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="co">// Create new audio element</span></a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="kw">const</span> audio <span class="op">=</span> <span class="kw">new</span> <span class="at">Audio</span>(<span class="at">getAssetPath</span>(<span class="st">&#39;audio/theme-music.mp3&#39;</span>))<span class="op">;</span></a>
@@ -561,11 +561,12 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb3-5" title="5"><span class="co">// Properties</span></a>
 <a class="sourceLine" id="cb3-6" title="6"><span class="va">audio</span>.<span class="at">currentTime</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>    <span class="co">// Reset to beginning</span></a>
 <a class="sourceLine" id="cb3-7" title="7"><span class="va">audio</span>.<span class="at">muted</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span>       <span class="co">// Mute audio</span></a></code></pre></div>
-<p>The HTMLAudioElement gives you programmatic control over audio playback. Your <code>useAudio</code> hook will wrap this browser API in a clean React interface, making it easy to add music to any component.</p>
-<p><a id="refs-and-useref"></a></p>
-<h2 id="refs-and-useref">🔗 Refs and useRef</h2>
+<p>The <strong>HTMLAudioElement</strong> gives you programmatic control over audio playback. Your <code>useAudio</code> hook will wrap this browser API in a clean React interface, making it easy to add music to any component.</p>
+<p><a id="understanding-refs-and-useref"></a></p>
+<h2 id="understanding-refs-and-useref">🔗 Understanding Refs and useRef</h2>
 <p>Now let’s understand <strong>refs</strong> — React’s way to “step outside” the component system and work directly with DOM elements or browser APIs.</p>
-<p>Refs are like bookmarks that let you remember information that doesn’t affect what’s rendered on the page. Unlike state, changing a ref doesn’t trigger re-renders.</p>
+<p><strong>Refs</strong> are like bookmarks that let you remember information that doesn’t affect what’s rendered on the page. Unlike <strong>state</strong>, changing a ref doesn’t trigger re-renders.</p>
+<h3 id="state-vs-refs-the-key-differences">State vs Refs: The Key Differences</h3>
 <table>
 <thead>
 <tr class="header">
@@ -616,18 +617,14 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb5-8" title="8">  <span class="cf">return</span> <span class="op">&lt;</span>input ref<span class="op">={</span>inputRef<span class="op">}</span> /&gt;<span class="op">;</span> <span class="co">// Connect ref to DOM element</span></a>
 <a class="sourceLine" id="cb5-9" title="9"><span class="op">}</span></a></code></pre></div>
 <p>The ref creates a direct connection to the actual HTML input element. When you call <code>inputRef.current.focus()</code>, you’re telling the browser to focus that specific input — just like clicking on it.</p>
-<p>Refs are perfect for storing audio elements because the audio object doesn’t need to trigger re-renders — it just needs to be remembered between function calls. The <code>current</code> property holds the actual value you stored.</p>
+<p><strong>Refs</strong> are perfect for storing audio elements because the audio object doesn’t need to trigger re-renders — it just needs to be remembered between function calls. The <code>current</code> property holds the actual value you stored.</p>
 <p><a id="building-the-musictoggle-component"></a></p>
 <h2 id="building-the-musictoggle-component">🎛️ Building the MusicToggle Component</h2>
-<p>🎯 <strong>Goal:</strong> Add the UI controls you’ll need to test the audio functionality as you build it.</p>
-<p>This music toggle will provide the interface for testing the <code>useAudio</code> hook as you implement it in the next sections.</p>
-<h3 id="step-1-add-asset-utility-import">Step 1: Add asset utility import</h3>
-<p><strong>File:</strong> <code>src/components/HUD.jsx</code></p>
-<p>Add the asset utility import at the top of the file.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> <span class="op">{</span> getAssetPath <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../utils/assets&quot;</span><span class="op">;</span></a></code></pre></div>
-<h3 id="step-2-create-musictoggle-component">Step 2: Create MusicToggle component</h3>
-<p><strong>File:</strong> <code>src/components/HUD.jsx</code></p>
-<p>Add the MusicToggle component after the CurrentZone function.</p>
+<p>Before we implement the audio functionality, let’s add the UI controls you’ll need to test it. This music toggle will provide the interface for testing the <code>useAudio</code> hook as you build it in the next sections.</p>
+<ol type="1">
+<li><p><strong>Add</strong> the asset utility import at the top of <code>src/components/HUD.jsx</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> <span class="op">{</span> getAssetPath <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../utils/assets&quot;</span><span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Add</strong> the <code>MusicToggle</code> component after the <code>CurrentZone</code> function</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">function</span> <span class="at">MusicToggle</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb7-2" title="2">  <span class="kw">const</span> <span class="op">{</span> music <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
 <a class="sourceLine" id="cb7-3" title="3">  <span class="cf">return</span> (</a>
@@ -647,85 +644,58 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb7-17" title="17">      /&gt;</a>
 <a class="sourceLine" id="cb7-18" title="18">    &lt;/button<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb7-19" title="19">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb7-20" title="20"><span class="op">}</span></a></code></pre></div>
-<h3 id="step-3-add-musictoggle-to-hud">Step 3: Add MusicToggle to HUD</h3>
-<p><strong>File:</strong> <code>src/components/HUD.jsx</code></p>
-<p>Update the HUD JSX return to include the MusicToggle component.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">HUD</span>() <span class="op">{</span></a>
-<a class="sourceLine" id="cb8-2" title="2">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb8-3" title="3">    <span class="op">&lt;&gt;</span></a>
-<a class="sourceLine" id="cb8-4" title="4">      <span class="op">&lt;</span>Scoreboard /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb8-5" title="5">      <span class="op">&lt;</span>CurrentZone /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb8-6" title="6">      <span class="op">&lt;</span>MusicToggle /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb8-7" title="7">    &lt;/<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb8-8" title="8">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb8-9" title="9"><span class="op">}</span></a></code></pre></div>
-<h3 id="step-4-test-music-toggle-visibility">Step 4: Test music toggle visibility</h3>
-<p>Start the game and navigate to the playing screen.</p>
-<p><strong>✓ You should see:</strong> Music toggle button is visible but inoperable when clicked (audio functionality not yet implemented).</p>
-<blockquote>
-<p>💡 <strong>Conditional Rendering with Dynamic Content</strong></p>
-<p>The MusicToggle component demonstrates conditional rendering with dynamic images and tooltips. The <code>music.isPlaying</code> state controls both the icon and the tooltip text, providing clear visual feedback to users. This pattern — using state to drive multiple UI elements — creates cohesive, responsive interfaces.</p>
-</blockquote>
+<a class="sourceLine" id="cb7-20" title="20"><span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Add</strong> MusicToggle component by updating the HUD JSX return</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="op">&lt;&gt;</span></a>
+<a class="sourceLine" id="cb8-3" title="3">    <span class="op">&lt;</span>Scoreboard /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-4" title="4">    <span class="op">&lt;</span>CurrentZone /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-5" title="5">    <span class="op">&lt;</span>MusicToggle /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-6" title="6">  &lt;/<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb8-7" title="7">)<span class="op">;</span></a></code></pre></div></li>
+<li><p><strong>Test</strong> by starting Game and verifying music toggle is visible but inoperable when clicked</p></li>
+</ol>
+<p>The <strong><code>MusicToggle</code> component</strong> demonstrates conditional rendering with dynamic images and tooltips. The <code>music.isPlaying</code> state controls both the icon and the tooltip text, providing clear visual feedback to users.</p>
 <p><a id="adding-audio-reference-to-useaudio"></a></p>
 <h2 id="adding-audio-reference-to-useaudio">📻 Adding Audio Reference to useAudio</h2>
-<p>🎯 <strong>Goal:</strong> Add the audio reference to your <code>useAudio</code> hook so it can store the HTMLAudioElement.</p>
-<p>You’ll add a ref to store the audio element and import the necessary React hooks.</p>
-<h3 id="step-1-add-useref-import">Step 1: Add useRef import</h3>
-<p><strong>File:</strong> <code>src/hooks/useAudio.js</code></p>
-<p>Add the useRef import at the top of the file.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="im">import</span> <span class="op">{</span> useRef<span class="op">,</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a></code></pre></div>
-<h3 id="step-2-add-audio-reference-to-hook">Step 2: Add audio reference to hook</h3>
-<p><strong>File:</strong> <code>src/hooks/useAudio.js</code></p>
-<p>Add the audio reference inside the <code>useAudio</code> function.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="im">export</span> <span class="kw">function</span> <span class="at">useAudio</span>(src) <span class="op">{</span></a>
-<a class="sourceLine" id="cb10-2" title="2">  <span class="kw">const</span> audioRef <span class="op">=</span> <span class="at">useRef</span>(<span class="kw">null</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-3" title="3">  <span class="kw">const</span> [isPlaying<span class="op">,</span> setIsPlaying] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb10-4" title="4">  <span class="co">// ... rest of hook</span></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="op">}</span></a></code></pre></div>
-<p>Your hook now has a ref that can store and remember the audio element you’ll create in the <code>play</code> function. The ref starts as <code>null</code> and will hold your audio element once it’s created.</p>
+<p>Now let’s add the audio reference to your <code>useAudio</code> hook so it can store the HTMLAudioElement.</p>
+<ol type="1">
+<li><p><strong>Open</strong> <code>src/hooks/useAudio.js</code> and add the audio reference</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="im">export</span> <span class="kw">function</span> <span class="at">useAudio</span>(src) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="kw">const</span> audioRef <span class="op">=</span> <span class="at">useRef</span>(<span class="kw">null</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-3" title="3">  <span class="kw">const</span> [isPlaying<span class="op">,</span> setIsPlaying] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-4" title="4">  <span class="co">// ... rest of hook</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="op">}</span></a></code></pre></div></li>
+<li><p><strong>Add</strong> the useRef import at the top of the file</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="im">import</span> <span class="op">{</span> useRef<span class="op">,</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a></code></pre></div></li>
+</ol>
+<p>Your hook now has a ref that can store and remember the audio element we’ll create in the <code>play</code> function. The ref starts as <code>null</code> and will hold our audio element once it’s created.</p>
 <h3 id="audio-reference-flow">Audio Reference Flow</h3>
 <pre class="text"><code>useAudio hook called → audioRef.current is null → play() creates new Audio() → 
 audioRef.current stores Audio element → future calls reuse same element</code></pre>
-<blockquote>
-<p>💡 <strong>Persistent Storage Across Re-renders</strong></p>
-<p>The <code>audioRef</code> you just created provides persistent storage for the audio element across component re-renders. Without refs, you’d create a new audio element every time the component updates, causing audio to restart unexpectedly. Refs solve this by maintaining the same reference to the audio object throughout the component’s lifecycle.</p>
-</blockquote>
+<p>The <code>audioRef</code> you just created provides persistent storage for the audio element across component re-renders. Without refs, you’d create a new audio element every time the component updates, causing audio to restart unexpectedly.</p>
 <p><a id="implementing-audio-playback"></a></p>
 <h2 id="implementing-audio-playback">🎵 Implementing Audio Playback</h2>
-<p>🎯 <strong>Goal:</strong> Implement the core audio functionality by updating the <code>play</code> function to create and control audio elements.</p>
-<p>You’ll add lazy initialization to create the audio element only when needed, then configure and play it.</p>
-<h3 id="step-1-update-play-function">Step 1: Update play function</h3>
-<p><strong>File:</strong> <code>src/hooks/useAudio.js</code></p>
-<p>Update the play function to create and control the audio element.</p>
+<p>Let’s implement the core audio functionality by updating the <code>play</code> function to create and control audio elements.</p>
+<ol type="1">
+<li><p><strong>Update</strong> the play function in <code>src/hooks/useAudio.js</code></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">const</span> play <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb12-2" title="2">  <span class="co">// [1] Lazy initialization</span></a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="co">// Lazy initialization - create audio element only when first needed</span></a>
 <a class="sourceLine" id="cb12-3" title="3">  <span class="cf">if</span> (<span class="op">!</span><span class="va">audioRef</span>.<span class="at">current</span>) <span class="op">{</span></a>
 <a class="sourceLine" id="cb12-4" title="4">    <span class="va">audioRef</span>.<span class="at">current</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">Audio</span>(src)<span class="op">;</span></a>
 <a class="sourceLine" id="cb12-5" title="5">    <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">loop</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb12-6" title="6">    <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">volume</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span></a>
 <a class="sourceLine" id="cb12-7" title="7">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb12-8" title="8">  <span class="co">// [2] Play audio</span></a>
-<a class="sourceLine" id="cb12-9" title="9">  <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">play</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb12-10" title="10">  <span class="co">// [3] Update state</span></a>
-<a class="sourceLine" id="cb12-11" title="11">  <span class="at">setIsPlaying</span>(<span class="kw">true</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb12-12" title="12"><span class="op">};</span></a></code></pre></div>
-<blockquote>
-<p>💡 <strong>Understanding Lazy Initialization</strong></p>
-<ol type="1">
-<li><strong>Lazy initialization</strong>: Create audio element only when first needed — the <code>if (!audioRef.current)</code> check ensures the audio element is created once and reused</li>
-<li><strong>Play audio</strong>: Call the browser’s play method to start playback</li>
-<li><strong>Update state</strong>: Set <code>isPlaying</code> to true so UI reflects the playing state</li>
+<a class="sourceLine" id="cb12-8" title="8">  <span class="va">audioRef</span>.<span class="va">current</span>.<span class="at">play</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-9" title="9">  <span class="at">setIsPlaying</span>(<span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-10" title="10"><span class="op">};</span></a></code></pre></div>
+<p>The <code>if (!audioRef.current)</code> check is an example of <strong>lazy initialization</strong> — creating a resource only when it’s first needed. Since <code>audioRef.current</code> starts as <code>null</code>, the first time <code>play()</code> runs it creates the audio element. Every time after that, <code>audioRef.current</code> contains the audio element, so the <code>if</code> condition is false and it skips creating a new one.</p></li>
+<li><p><strong>Test</strong> by clicking music toggle and verifying game theme plays with button showing playing state</p></li>
 </ol>
-<p>The <code>if (!audioRef.current)</code> check is an example of <strong>lazy initialization</strong> — creating a resource only when it’s first needed. Since <code>audioRef.current</code> starts as <code>null</code>, the first time <code>play()</code> runs it creates the audio element. Every time after that, <code>audioRef.current</code> contains the audio element, so the <code>if</code> condition is false and it skips creating a new one.</p>
-</blockquote>
-<h3 id="step-2-test-audio-playback">Step 2: Test audio playback</h3>
-<p>Click the music toggle button.</p>
-<p><strong>✓ You should see:</strong> Game theme plays and button shows playing state (icon changes).</p>
-<blockquote>
-<p>💡 <strong>Preventing Audio Chaos</strong></p>
-<p>Creating audio elements only once and reusing them prevents overlapping sounds, memory leaks, and performance issues. Without this pattern, clicking the music toggle rapidly would create multiple audio elements playing simultaneously, causing audio chaos and slowing down your browser. The lazy initialization pattern ensures clean, efficient audio management.</p>
-</blockquote>
+<h3 id="audio-creation-logic">Audio Creation Logic</h3>
+<pre class="text"><code>Check if audio exists → If not, create new Audio(src) → Configure loop and volume → 
+Call play() method → Update isPlaying state → UI reflects playing state</code></pre>
+<p>Creating audio elements only once and reusing them prevents overlapping sounds, memory leaks, and performance issues. Without this pattern, clicking the music toggle rapidly would create multiple audio elements playing simultaneously, causing audio chaos and slowing down your browser.</p>
 <p><a id="github-copilot-workflow"></a></p>
 <h2 id="github-copilot-workflow">⚡ GitHub Copilot Workflow</h2>
 <p>You’re now working with production-quality code. GitHub Copilot can help you write, fix, and understand code faster — but only if you know how to guide it.</p>
@@ -738,87 +708,57 @@ audioRef.current stores Audio element → future calls reuse same element</code>
 <li><strong>Test</strong> the update to confirm it works</li>
 </ol>
 <h3 id="example-prompt">Example Prompt</h3>
-<blockquote>
-<p>🤖 <strong>AI Prompt:</strong></p>
-<p><code>/fix Add error handling to the play function in the useAudio hook so that if the audio fails to play, it catches the error, logs a warning, and updates isPlaying to false</code></p>
-</blockquote>
+<pre class="text"><code>/fix Add error handling to the play function in the useAudio hook so that 
+if the audio fails to play, it catches the error, logs a warning, and 
+updates isPlaying to false</code></pre>
 <p>Use this workflow during your Solo Mission and anytime you’re stuck or want to improve your code.</p>
 <p><a id="solo-mission-complete-useaudio-hook"></a></p>
 <h2 id="solo-mission-complete-useaudio-hook">🎖️ Solo Mission: Complete useAudio Hook</h2>
-<p>Now for your independent challenge — complete the <code>useAudio</code> hook with pause functionality, error handling, and cleanup using AI assistance.</p>
-<h3 id="what-youre-building">What You’re Building</h3>
-<p>A complete custom audio hook that manages background music playback with play/pause controls, error handling, and proper cleanup. This hook will encapsulate all audio logic, making it reusable across any component that needs music.</p>
-<hr />
-<h3 id="phase-1-pause-functionality">Phase 1: Pause Functionality</h3>
-<p>🎯 <strong>Goal:</strong> Add pause controls to stop audio playback and update state</p>
-<p><strong>Your Task:</strong></p>
-<p>In <code>src/hooks/useAudio.js</code>, update the <code>pause</code> function to:</p>
+<p>Now for your independent challenge — complete the <code>useAudio</code> hook with pause functionality, error handling, and cleanup! You’ll use AI assistance for the advanced parts.</p>
+<h3 id="implement-pause-functionality">1. Implement Pause Functionality</h3>
 <ul>
-<li>Call <code>audioRef.current.pause()</code> method</li>
-<li>Set <code>isPlaying</code> to <code>false</code></li>
+<li><strong>Update</strong> the <code>pause</code> function to pause audio and update state</li>
+<li><strong>Use</strong> <code>audioRef.current.pause()</code> to stop playback</li>
+<li><strong>Set</strong> <code>isPlaying</code> to <code>false</code> when paused</li>
+<li><strong>Test</strong> by clicking music toggle while playing → Music stops and music toggle shows paused state</li>
 </ul>
-<p><strong>Test:</strong> Click the music toggle while audio is playing → music should stop and the icon should switch to the paused state</p>
-<hr />
-<h3 id="phase-2-error-handling">Phase 2: Error Handling</h3>
-<p>🎯 <strong>Goal:</strong> Prevent audio failures from crashing the app</p>
-<p><strong>Your Tasks:</strong></p>
-<ol type="1">
-<li><p>With <code>src/hooks/useAudio.js</code> open, issue the following prompt to GitHub Copilot:</p>
-<blockquote>
-<p>🤖 <strong>AI Prompt:</strong></p>
-<p><code>/fix Add error handling to the play function in the useAudio hook so that if the audio fails to play, it catches the error, logs a warning, and updates isPlaying to false</code></p>
-</blockquote></li>
-<li>Review the generated code</li>
-<li><p>Apply the changes if they look correct</p></li>
-</ol>
-<p><strong>Test error handling:</strong></p>
-<ol type="1">
-<li>Open <code>src/context/GameContext.jsx</code></li>
-<li><p>Locate</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">const</span> music <span class="op">=</span> <span class="at">useAudio</span>(<span class="at">getAssetPath</span>(<span class="st">&quot;audio/dramatic-action.mp3&quot;</span>))<span class="op">;</span></a></code></pre></div></li>
-<li>Change the path to <code>&quot;audio/nonexistent.mp3&quot;</code> (keep the <code>getAssetPath()</code> wrapper)</li>
-<li>Click music toggle → check browser console for an error message</li>
-<li><p>Revert the path back to <code>&quot;audio/dramatic-action.mp3&quot;</code> after testing</p></li>
-</ol>
-<p><strong>✓ You should see:</strong> Console shows error message, app doesn’t crash, and <code>isPlaying</code> stays false</p>
-<p><img src="data:image/svg+xml; charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgNTAwIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI0RERERERCIvPjxwYXRoIGZpbGw9IiM5OTk5OTkiIGQ9Ik0xMTMuMDI1IDUzLjMxNXEuMzMgMCAuNTkuMjZsMS41OSAxLjczcS0xLjMyIDEuNjMtMy4yNSAyLjV0LTQuNjMuODdxLTIuNDEgMC00LjM0LS44Mi0xLjkzLS44My0zLjI5LTIuMy0xLjM3LTEuNDctMi4wOS0zLjUxLS43My0yLjA0LS43My00LjQ1IDAtMi40NS43OC00LjQ4Ljc4LTIuMDQgMi4yLTMuNSAxLjQxLTEuNDcgMy4zOC0yLjI5IDEuOTYtLjgyIDQuMzUtLjgyIDIuMzcgMCA0LjIxLjc4IDEuODMuNzggMy4xMiAyLjA0bC0xLjM1IDEuODhxLS4xMi4xOC0uMy4zMS0uMTkuMTMtLjUyLjEzLS4yMyAwLS40Ny0uMTItLjI0LS4xMy0uNTItLjMybC0uNjYtLjQxcS0uMzgtLjIyLS44Ny0uNDEtLjUtLjE5LTEuMTUtLjMydC0xLjUxLS4xM3EtMS40NSAwLTIuNjYuNTJ0LTIuMDggMS41cS0uODcuOTktMS4zNSAyLjQtLjQ4IDEuNDItLjQ4IDMuMjQgMCAxLjgzLjUyIDMuMjV0MS40IDIuNHEuODkuOTggMi4wOSAxLjQ5IDEuMi41MiAyLjU4LjUyLjgyIDAgMS40OS0uMDl0MS4yMy0uMjhxLjU2LS4yIDEuMDctLjUxLjUtLjMxLjk5LS43NS4xNS0uMTQuMzItLjIyLjE2LS4wOS4zNC0uMDltMTEuMTgtMTAuNTFxMS43MSAwIDMuMTEuNTYgMS40LjU1IDIuNCAxLjU3dDEuNTQgMi40OS41NCAzLjI5cTAgMS44My0uNTQgMy4zLS41NCAxLjQ2LTEuNTQgMi41LTEgMS4wMy0yLjQgMS41OS0xLjQuNTUtMy4xMS41NS0xLjczIDAtMy4xNC0uNTUtMS40MS0uNTYtMi40LTEuNTktMS0xLjA0LTEuNTUtMi41LS41NS0xLjQ3LS41NS0zLjMgMC0xLjgyLjU1LTMuMjl0MS41NS0yLjQ5cS45OS0xLjAyIDIuNC0xLjU3IDEuNDEtLjU2IDMuMTQtLjU2bTAgMTNxMS45MiAwIDIuODQtMS4yOXQuOTItMy43N3EwLTIuNS0uOTItMy44dC0yLjg0LTEuM3EtMS45NSAwLTIuODkgMS4zMXQtLjk0IDMuNzlxMCAyLjQ3Ljk0IDMuNzcuOTQgMS4yOSAyLjg5IDEuMjltMTMuNjMtMTIuMDguMjYgMS4yMXEuNDYtLjQ2Ljk4LS44NnQxLjEtLjY4cS41Ny0uMjcgMS4yMy0uNDN0MS40NC0uMTZxMS4yNiAwIDIuMjQuNDMuOTcuNDMgMS42MyAxLjIuNjUuNzcuOTkgMS44NC4zMyAxLjA4LjMzIDIuMzd2OS43OWgtMy43di05Ljc5cTAtMS40Mi0uNjUtMi4xOS0uNjQtLjc3LTEuOTYtLjc3LS45NiAwLTEuOC40NC0uODQuNDMtMS41OSAxLjE4djExLjEzaC0zLjcxdi0xNS4zOWgyLjI3cS43MiAwIC45NC42OG0yMy45NC45OS0uODQgMS4zM3EtLjE1LjI0LS4zMS4zNC0uMTcuMDktLjQyLjA5LS4yNyAwLS41OC0uMTUtLjMxLS4xNC0uNzEtLjMzLS40MS0uMTktLjkyLS4zNC0uNTItLjE1LTEuMjMtLjE1LTEuMDkgMC0xLjcxLjQ3LS42My40Ni0uNjMgMS4yMSAwIC41LjMzLjgzLjMyLjM0Ljg1LjYuNTMuMjUgMS4yMS40NS42Ny4yMSAxLjM3LjQ1LjcuMjMgMS4zNy41NC42OC4zMSAxLjIxLjc4dC44NiAxLjE0cS4zMi42Ni4zMiAxLjU4IDAgMS4xMi0uNCAyLjA1LS40Ljk0LTEuMTggMS42MnQtMS45MiAxLjA3cS0xLjE1LjM4LTIuNjUuMzgtLjggMC0xLjU1LS4xNC0uNzYtLjE0LTEuNDYtLjQtLjctLjI1LTEuMjktLjYtLjU5LS4zNC0xLjA0LS43NWwuODUtMS40MXEuMTctLjI1LjM5LS4zOS4yMy0uMTMuNTctLjEzLjM1IDAgLjY2LjE5LjMuMi43MS40Mi40LjIyLjk1LjQydDEuMzkuMnEuNjYgMCAxLjEzLS4xNnQuNzgtLjQxcS4zMS0uMjYuNDUtLjYuMTQtLjMzLjE0LS42OSAwLS41NC0uMzItLjg5LS4zMi0uMzQtLjg1LS42LS41NC0uMjYtMS4yMi0uNDZ0LTEuMzktLjQ0cS0uNzItLjI0LTEuNC0uNTZ0LTEuMjEtLjgycS0uNTQtLjQ5LS44Ni0xLjIyLS4zMi0uNzEtLjMyLTEuNzMgMC0uOTUuMzctMS44LjM4LS44NiAxLjExLTEuNS43Mi0uNjQgMS44MS0xLjAydDIuNTEtLjM4cTEuNTkgMCAyLjkuNTMgMS4zLjUyIDIuMTcgMS4zOG05Ljc3LTEuOTFxMS43MSAwIDMuMTEuNTYgMS40LjU1IDIuNCAxLjU3dDEuNTQgMi40OS41NCAzLjI5cTAgMS44My0uNTQgMy4zLS41NCAxLjQ2LTEuNTQgMi41LTEgMS4wMy0yLjQgMS41OS0xLjQuNTUtMy4xMS41NS0xLjczIDAtMy4xNC0uNTUtMS40MS0uNTYtMi40LTEuNTktMS0xLjA0LTEuNTUtMi41LS41NS0xLjQ3LS41NS0zLjMgMC0xLjgyLjU1LTMuMjl0MS41NS0yLjQ5cS45OS0xLjAyIDIuNC0xLjU3IDEuNDEtLjU2IDMuMTQtLjU2bTAgMTNxMS45MiAwIDIuODQtMS4yOXQuOTItMy43N3EwLTIuNS0uOTItMy44dC0yLjg0LTEuM3EtMS45NSAwLTIuODkgMS4zMXQtLjk0IDMuNzlxMCAyLjQ3Ljk0IDMuNzcuOTQgMS4yOSAyLjg5IDEuMjltMTAuNDctMTkuNjZoMy43djIyLjI5aC0zLjd6bTEwLjMzIDEyLjgzaDYuOTlxMC0uNzMtLjItMS4zNi0uMi0uNjQtLjYxLTEuMTItLjQtLjQ4LTEuMDItLjc2LS42My0uMjctMS40NS0uMjctMS42MSAwLTIuNTMuOTEtLjkyLjkyLTEuMTggMi42bTkuNDUgMi4yM2gtOS41MnEuMDkgMS4xOS40MiAyLjA1dC44NyAxLjQycS41NC41NyAxLjI4Ljg0Ljc0LjI4IDEuNjQuMjh0MS41Ni0uMjFxLjY1LS4yMSAxLjE0LS40Ni40OC0uMjYuODUtLjQ3dC43MS0uMjFxLjQ3IDAgLjY5LjM0bDEuMDcgMS4zNnEtLjYyLjcyLTEuMzggMS4yLS43Ny40OS0xLjYuNzgtLjgzLjMtMS42OS40MS0uODcuMTItMS42OC4xMi0xLjYgMC0yLjk4LS41M3QtMi40LTEuNTctMS42MS0yLjU4cS0uNTgtMS41NC0uNTgtMy41NyAwLTEuNTcuNTEtMi45NnQxLjQ2LTIuNDFxLjk1LTEuMDMgMi4zMy0xLjYzIDEuMzctLjYgMy4wOS0uNiAxLjQ2IDAgMi42OS40NyAxLjIzLjQ2IDIuMTEgMS4zNS44OS45IDEuMzkgMi4xOS41IDEuMy41IDIuOTcgMCAuODQtLjE4IDEuMTN0LS42OS4yOW0yNS4yLTExLjI1aC05LjYzdjYuMDJoNy41OXYzLjFoLTcuNTl2Ni4xM2g5LjYzdjMuMjNoLTEzLjY4di0yMS42OWgxMy42OHptNi4yNiA0LjAyLjIyIDEuNzRxLjcyLTEuMzggMS43MS0yLjE3Ljk5LS43OCAyLjM0LS43OCAxLjA3IDAgMS43MS40NmwtLjI0IDIuNzhxLS4wNy4yNy0uMjEuMzgtLjE1LjExLS4zOS4xMS0uMjIgMC0uNjYtLjA3LS40NS0uMDgtLjg3LS4wOC0uNjEgMC0xLjA5LjE4dC0uODYuNTJxLS4zOS4zNC0uNjguODJ0LS41NSAxLjA5djkuNDhoLTMuN3YtMTUuMzloMi4xN3EuNTcgMCAuOC4yLjIyLjIxLjMuNzNtMTEuMTkgMCAuMjIgMS43NHEuNzItMS4zOCAxLjcxLTIuMTcuOTktLjc4IDIuMzQtLjc4IDEuMDcgMCAxLjcxLjQ2bC0uMjQgMi43OHEtLjA3LjI3LS4yMS4zOC0uMTUuMTEtLjM5LjExLS4yMiAwLS42Ni0uMDctLjQ1LS4wOC0uODctLjA4LS42MSAwLTEuMDkuMTh0LS44Ni41MnEtLjM5LjM0LS42OC44MnQtLjU1IDEuMDl2OS40OGgtMy43di0xNS4zOWgyLjE3cS41NyAwIC44LjIuMjIuMjEuMy43M20xNC43My0xLjE3cTEuNzEgMCAzLjExLjU2IDEuNC41NSAyLjQgMS41N3QxLjU0IDIuNDkuNTQgMy4yOXEwIDEuODMtLjU0IDMuMy0uNTQgMS40Ni0xLjU0IDIuNS0xIDEuMDMtMi40IDEuNTktMS40LjU1LTMuMTEuNTUtMS43MyAwLTMuMTQtLjU1LTEuNDEtLjU2LTIuNC0xLjU5LTEtMS4wNC0xLjU1LTIuNS0uNTUtMS40Ny0uNTUtMy4zIDAtMS44Mi41NS0zLjI5dDEuNTUtMi40OXEuOTktMS4wMiAyLjQtMS41NyAxLjQxLS41NiAzLjE0LS41Nm0wIDEzcTEuOTIgMCAyLjg0LTEuMjl0LjkyLTMuNzdxMC0yLjUtLjkyLTMuOHQtMi44NC0xLjNxLTEuOTUgMC0yLjg5IDEuMzF0LS45NCAzLjc5cTAgMi40Ny45NCAzLjc3Ljk0IDEuMjkgMi44OSAxLjI5bTEzLjY5LTExLjgzLjIzIDEuNzRxLjcyLTEuMzggMS43MS0yLjE3Ljk5LS43OCAyLjM0LS43OCAxLjA2IDAgMS43MS40NmwtLjI0IDIuNzhxLS4wOC4yNy0uMjIuMzh0LS4zOC4xMXEtLjIzIDAtLjY3LS4wNy0uNDQtLjA4LS44Ni0uMDgtLjYyIDAtMS4xLjE4dC0uODYuNTItLjY3LjgycS0uMy40OC0uNTUgMS4wOXY5LjQ4aC0zLjcxdi0xNS4zOWgyLjE4cS41NyAwIC43OS4yLjIzLjIxLjMuNzNtMzYuMjctNy4yM2gzLjA1djIxLjY5aC0zLjU2di0xNC4wMXEwLS44NC4wOS0xLjgxbC02LjU1IDEyLjMxcS0uNDcuODgtMS40My44OGgtLjU3cS0uOTYgMC0xLjQyLS44OGwtNi42My0xMi4zNnEuMDQuNDkuMDcuOTguMDMuNDguMDMuODh2MTQuMDFoLTMuNTV2LTIxLjY5aDMuMDRxLjI3IDAgLjQ3LjAxLjE5LjAyLjM1LjA4dC4yOS4ycS4xMi4xMy4yNC4zNmw2LjUgMTIuMDRxLjI1LjQ4LjQ3Ljk5dC40MyAxLjA1cS4yMS0uNTUuNDMtMS4wNy4yMy0uNTIuNDgtMWw2LjQxLTEyLjAxcS4xMi0uMjMuMjUtLjM2LjE0LS4xNC4zLS4yLjE1LS4wNi4zNS0uMDguMTktLjAxLjQ2LS4wMW0xMC4yMiAxMi4yM2g2Ljk5cTAtLjczLS4yLTEuMzYtLjIxLS42NC0uNjEtMS4xMi0uNDEtLjQ4LTEuMDMtLjc2LS42Mi0uMjctMS40NS0uMjctMS42IDAtMi41Mi45MS0uOTMuOTItMS4xOCAyLjZtOS40NSAyLjIzaC05LjUzcS4wOSAxLjE5LjQyIDIuMDV0Ljg3IDEuNDJxLjU0LjU3IDEuMjkuODQuNzQuMjggMS42NC4yOHQxLjU1LS4yMSAxLjE0LS40NnEuNDktLjI2Ljg2LS40Ny4zNi0uMjEuNzEtLjIxLjQ2IDAgLjY5LjM0bDEuMDYgMS4zNnEtLjYxLjcyLTEuMzggMS4yLS43Ni40OS0xLjU5Ljc4LS44NC4zLTEuNy40MS0uODYuMTItMS42Ny4xMi0xLjYxIDAtMi45OS0uNTN0LTIuNC0xLjU3LTEuNi0yLjU4cS0uNTktMS41NC0uNTktMy41NyAwLTEuNTcuNTEtMi45NnQxLjQ3LTIuNDFxLjk1LTEuMDMgMi4zMi0xLjYzdDMuMS0uNnExLjQ1IDAgMi42OC40NyAxLjIzLjQ2IDIuMTIgMS4zNS44OC45IDEuMzkgMi4xOS41IDEuMy41IDIuOTcgMCAuODQtLjE4IDEuMTN0LS42OS4yOW0xMy44Ny02LjQ5LS44NCAxLjMzcS0uMTUuMjQtLjMxLjM0LS4xNy4wOS0uNDIuMDktLjI3IDAtLjU4LS4xNS0uMzEtLjE0LS43MS0uMzMtLjQxLS4xOS0uOTItLjM0LS41Mi0uMTUtMS4yMy0uMTUtMS4wOSAwLTEuNzEuNDctLjYzLjQ2LS42MyAxLjIxIDAgLjUuMzMuODMuMzIuMzQuODUuNi41My4yNSAxLjIxLjQ1LjY3LjIxIDEuMzcuNDUuNy4yMyAxLjM3LjU0LjY4LjMxIDEuMjEuNzh0Ljg2IDEuMTRxLjMyLjY2LjMyIDEuNTggMCAxLjEyLS40IDIuMDUtLjQuOTQtMS4xOCAxLjYydC0xLjkyIDEuMDdxLTEuMTUuMzgtMi42NS4zOC0uOCAwLTEuNTUtLjE0LS43Ni0uMTQtMS40Ni0uNC0uNy0uMjUtMS4yOS0uNi0uNTktLjM0LTEuMDQtLjc1bC44NS0xLjQxcS4xNy0uMjUuMzktLjM5LjIzLS4xMy41Ny0uMTMuMzUgMCAuNjYuMTkuMy4yLjcxLjQyLjQuMjIuOTUuNDJ0MS4zOS4ycS42NiAwIDEuMTMtLjE2dC43OC0uNDFxLjMxLS4yNi40NS0uNi4xNC0uMzMuMTQtLjY5IDAtLjU0LS4zMi0uODktLjMyLS4zNC0uODUtLjYtLjU0LS4yNi0xLjIyLS40NnQtMS4zOS0uNDRxLS43Mi0uMjQtMS40LS41NnQtMS4yMS0uODJxLS41NC0uNDktLjg2LTEuMjItLjMyLS43MS0uMzItMS43MyAwLS45NS4zNy0xLjguMzgtLjg2IDEuMTEtMS41LjcyLS42NCAxLjgxLTEuMDJ0Mi41MS0uMzhxMS41OSAwIDIuOS41MyAxLjMuNTIgMi4xNyAxLjM4bTEzLjE5IDAtLjg0IDEuMzNxLS4xNS4yNC0uMzIuMzQtLjE2LjA5LS40Mi4wOS0uMjcgMC0uNTctLjE1LS4zMS0uMTQtLjcyLS4zMy0uNC0uMTktLjkyLS4zNHQtMS4yMi0uMTVxLTEuMSAwLTEuNzIuNDctLjYyLjQ2LS42MiAxLjIxIDAgLjUuMzIuODMuMzIuMzQuODYuNi41My4yNSAxLjIuNDUuNjguMjEgMS4zOC40NS42OS4yMyAxLjM3LjU0LjY3LjMxIDEuMjEuNzguNTMuNDcuODUgMS4xNC4zMi42Ni4zMiAxLjU4IDAgMS4xMi0uMzkgMi4wNS0uNC45NC0xLjE4IDEuNjJ0LTEuOTMgMS4wN3EtMS4xNS4zOC0yLjY1LjM4LS43OSAwLTEuNTUtLjE0dC0xLjQ1LS40cS0uNy0uMjUtMS4yOS0uNi0uNi0uMzQtMS4wNS0uNzVsLjg2LTEuNDFxLjE2LS4yNS4zOS0uMzkuMjItLjEzLjU3LS4xMy4zNCAwIC42NS4xOS4zMS4yLjcxLjQyLjQxLjIyLjk2LjQyLjU0LjIgMS4zOC4yLjY2IDAgMS4xNC0uMTYuNDctLjE2Ljc4LS40MS4zLS4yNi40NS0uNi4xNC0uMzMuMTQtLjY5IDAtLjU0LS4zMi0uODktLjMzLS4zNC0uODYtLjZ0LTEuMjEtLjQ2cS0uNjktLjItMS40LS40NHQtMS4zOS0uNTZxLS42OS0uMzItMS4yMi0uODItLjUzLS40OS0uODUtMS4yMi0uMzMtLjcxLS4zMy0xLjczIDAtLjk1LjM4LTEuOC4zNy0uODYgMS4xLTEuNXQxLjgyLTEuMDJxMS4wOC0uMzggMi41MS0uMzggMS41OSAwIDIuODkuNTMgMS4zMS41MiAyLjE4IDEuMzhtMTEuMDggOS43NXYtMi42cS0xLjYuMDctMi43LjI4LTEuMDkuMi0xLjc1LjUyLS42Ni4zMS0uOTUuNzMtLjI4LjQyLS4yOC45MSAwIC45OC41OCAxLjQuNTcuNDIgMS41LjQyIDEuMTQgMCAxLjk4LS40MS44My0uNDEgMS42Mi0xLjI1bS03LjgzLTguMDktLjY2LTEuMThxMi42Ni0yLjQzIDYuMzktMi40MyAxLjM1IDAgMi40Mi40NCAxLjA2LjQ0IDEuOCAxLjIzLjczLjc5IDEuMTIgMS44OC4zOCAxLjA5LjM4IDIuNHY5LjcyaC0xLjY4cS0uNTMgMC0uODEtLjE2LS4yOS0uMTYtLjQ1LS42M2wtLjMzLTEuMTJxLS41OS41My0xLjE0LjkzLS41Ni40LTEuMTYuNjYtLjYuMjgtMS4yOC40MnQtMS41MS4xNHEtLjk3IDAtMS44LS4yNi0uODItLjI2LTEuNDItLjc5LS42LS41Mi0uOTMtMS4zLS4zMy0uNzktLjMzLTEuODIgMC0uNTguMTktMS4xNi4yLS41OC42NC0xLjEuNDQtLjUzIDEuMTUtLjk5LjctLjQ3IDEuNzMtLjgyIDEuMDMtLjM0IDIuMzktLjU2IDEuMzctLjIyIDMuMTItLjI2di0uOXEwLTEuNTQtLjY2LTIuMjktLjY2LS43NC0xLjktLjc0LS45IDAtMS40OS4yMS0uNi4yMS0xLjA1LjQ3LS40NS4yNy0uODEuNDgtLjM3LjIxLS44Mi4yMS0uMzkgMC0uNjYtLjIxLS4yNy0uMi0uNDQtLjQ3bTIwLjU1IDMuOTlxLjY5IDAgMS4yLS4xOXQuODUtLjUyLjUxLS43OXEuMTctLjQ3LjE3LTEuMDIgMC0xLjE0LS42OC0xLjgxLS42OC0uNjYtMi4wNS0uNjYtMS4zNiAwLTIuMDQuNjYtLjY5LjY3LS42OSAxLjgxIDAgLjU0LjE4IDEuMDEuMTcuNDYuNTEuOC4zMy4zMy44NS41MnQxLjE5LjE5bTQuMTkgOC43NnEwLS40NS0uMjctLjczLS4yNy0uMjktLjc0LS40NS0uNDYtLjE2LTEuMDgtLjIzLS42My0uMDctMS4zMi0uMTEtLjctLjA0LTEuNDQtLjA3LS43NS0uMDMtMS40NS0uMTItLjYyLjM1LTEgLjgxLS4zOC40Ny0uMzggMS4wOCAwIC40LjIuNzYuMi4zNS42NS42LjQ0LjI2IDEuMTQuNC43MS4xNCAxLjczLjE0IDEuMDMgMCAxLjc4LS4xNS43NS0uMTYgMS4yNC0uNDQuNDktLjI3LjcxLS42Ni4yMy0uMzguMjMtLjgzbS0uNzQtMTUuNTZoNC40M3YxLjM5cTAgLjY2LS44LjgxbC0xLjM4LjI1cS4zMi43OS4zMiAxLjc0IDAgMS4xNC0uNDYgMi4wNi0uNDYuOTMtMS4yNyAxLjU3LS44MS42NS0xLjkxIDF0LTIuMzguMzVxLS40NSAwLS44Ny0uMDUtLjQyLS4wNC0uODItLjEyLS43Mi40NC0uNzIuOTggMCAuNDcuNDMuNjguNDIuMjIgMS4xMy4zMS43LjA5IDEuNi4xMS45LjAzIDEuODUuMS45NC4wOCAxLjg0LjI2LjkuMTkgMS42MS42LjcuNCAxLjEzIDEuMXQuNDMgMS43OXEwIDEuMDItLjUgMS45OC0uNTEuOTYtMS40NiAxLjcxdC0yLjM0IDEuMjEtMy4xNi40NnEtMS43NCAwLTMuMDMtLjM0dC0yLjE0LS45cS0uODYtLjU3LTEuMjgtMS4zdC0uNDItMS41M3EwLTEuMDguNjYtMS44MS42NS0uNzMgMS43OS0xLjE2LS42Mi0uMzEtLjk4LS44NC0uMzYtLjUyLS4zNi0xLjM4IDAtLjM0LjEzLS43MXQuMzgtLjczcS4yNC0uMzYuNjItLjY4LjM3LS4zMy44OC0uNTgtMS4xNy0uNjMtMS44My0xLjY4LS42Ny0xLjA1LS42Ny0yLjQ2IDAtMS4xNC40Ni0yLjA2LjQ1LS45MiAxLjI3LTEuNTguODItLjY1IDEuOTQtLjk5IDEuMTEtLjM1IDIuNDMtLjM1Ljk5IDAgMS44Ni4yLjg3LjIxIDEuNTkuNTltOS42OSA1LjQxaDYuOTlxMC0uNzMtLjItMS4zNi0uMi0uNjQtLjYxLTEuMTItLjQtLjQ4LTEuMDMtLjc2LS42Mi0uMjctMS40NC0uMjctMS42MSAwLTIuNTMuOTEtLjkyLjkyLTEuMTggMi42bTkuNDUgMi4yM2gtOS41MnEuMDkgMS4xOS40MiAyLjA1dC44NyAxLjQycS41NC41NyAxLjI4Ljg0Ljc0LjI4IDEuNjQuMjh0MS41NS0uMjFxLjY2LS4yMSAxLjE1LS40Ni40OC0uMjYuODUtLjQ3dC43MS0uMjFxLjQ3IDAgLjY5LjM0bDEuMDcgMS4zNnEtLjYyLjcyLTEuMzggMS4yLS43Ny40OS0xLjYuNzgtLjgzLjMtMS42OS40MS0uODcuMTItMS42OC4xMi0xLjYgMC0yLjk4LS41M3QtMi40LTEuNTctMS42MS0yLjU4cS0uNTgtMS41NC0uNTgtMy41NyAwLTEuNTcuNTEtMi45NnQxLjQ2LTIuNDFxLjk1LTEuMDMgMi4zMi0xLjYzIDEuMzgtLjYgMy4xLS42IDEuNDYgMCAyLjY5LjQ3IDEuMjMuNDYgMi4xMSAxLjM1Ljg5LjkgMS4zOSAyLjE5LjUgMS4zLjUgMi45NyAwIC44NC0uMTggMS4xM3QtLjY5LjI5Ii8+PC9zdmc+" alt="Browser console showing error: useAudio.js:28 Audio failed to play: NotSupportedError" style="max-width: 500px; width: 100%;"> <em>Figure: Error handling prevents crashes and logs helpful debugging information</em></p>
-<hr />
-<h3 id="phase-3-cleanup-function">Phase 3: Cleanup Function</h3>
-<p>🎯 <strong>Goal:</strong> Prevent memory leaks by cleaning up when the hook unmounts</p>
-<p><strong>Your Tasks:</strong></p>
-<ol type="1">
-<li><p>With <code>src/hooks/useAudio.js</code> open, issue the following prompt to GitHub Copilot:</p>
-<blockquote>
-<p>🤖 <strong>AI Prompt:</strong></p>
-<p><code>/fix Add a useEffect cleanup function to the useAudio hook that stops the audio and clears the reference when the component unmounts</code></p>
-</blockquote></li>
-<li>Review the generated <code>useEffect</code> code</li>
-<li><p>Apply the changes</p></li>
-</ol>
-<p><strong>Verify your implementation:</strong></p>
-<p>Check that your <code>useAudio</code> hook includes a <code>useEffect</code> with a cleanup function that:</p>
+<h3 id="add-error-handling-with-ai-assistance">2. Add Error Handling with AI Assistance</h3>
+<p>With <code>useAudio.js</code> open, use the GitHub Copilot workflow you just learned:</p>
+<p><strong>Prompt</strong>:</p>
+<pre class="text"><code>/fix Add error handling to the play function in the useAudio hook so that 
+if the audio fails to play, it catches the error, logs a warning, and 
+updates isPlaying to false</code></pre>
 <ul>
-<li>Pauses the audio if it’s playing</li>
-<li>Clears the <code>audioRef.current</code> reference</li>
-<li>Returns the cleanup function from <code>useEffect</code></li>
+<li><strong>Review</strong> the generated code</li>
+<li><strong>Apply</strong> the changes if they look correct</li>
+<li><strong>Test</strong> to verify error handling works, temporarily break the audio path
+<ul>
+<li><strong>Open</strong> <code>src/context/GameContext.jsx</code></li>
+<li><strong>Find</strong> the line <code>const music = useAudio(getAssetPath(&quot;audio/dramatic-action.mp3&quot;));</code></li>
+<li><strong>Change</strong> <code>&quot;audio/dramatic-action.mp3&quot;</code> to <code>&quot;audio/nonexistent.mp3&quot;</code> (keep the <code>getAssetPath()</code> wrapper)</li>
+<li><strong>Save</strong> the file → click music toggle → check browser console for error message</li>
+<li><strong>Important</strong> change the path back to <code>&quot;audio/dramatic-action.mp3&quot;</code> when done testing</li>
+</ul></li>
 </ul>
-<hr />
-<h3 id="success-review">✅ Success Review</h3>
-<p>Your completed <code>useAudio</code> hook should:</p>
+<h3 id="add-cleanup-with-ai-assistance">3. Add Cleanup with AI Assistance</h3>
+<p><strong>Prompt</strong>:</p>
+<pre class="text"><code>/fix Add a useEffect cleanup function to the useAudio hook that stops 
+the audio and clears the reference when the component unmounts</code></pre>
+<ul>
+<li><strong>Review</strong> the generated useEffect code</li>
+<li><strong>Apply</strong> the changes to prevent memory leaks</li>
+<li><strong>Test</strong> by navigating between screens to verify cleanup works</li>
+</ul>
+<h3 id="requirements-checklist">Requirements Checklist</h3>
+<p>Your completed <code>useAudio</code> hook must:</p>
 <ul>
 <li>Export <code>play</code>, <code>pause</code>, <code>toggle</code>, and <code>isPlaying</code></li>
-<li>Successfully toggle audio playback on/off</li>
+<li>Successfully toggle audio playback</li>
 <li>Handle errors when attempting to play audio</li>
-<li>Set <code>isPlaying</code> to false if an error occurs</li>
+<li>Set <code>isPlaying(false)</code> if an error occurs</li>
 <li>Include a <code>useEffect</code> cleanup function for component unmounting</li>
-<li>Prevent memory leaks when navigating between screens</li>
 </ul>
-<h3 id="reference-guide">🔍 Reference Guide</h3>
-<ul>
-<li><strong>src/hooks/useGame.js</strong> – Custom hook structure, exporting functions and state</li>
-<li><strong>src/components/QuizModal.jsx</strong> – useEffect cleanup pattern</li>
-<li><strong>src/context/GameContext.jsx</strong> – Error handling with try/catch blocks</li>
-</ul>
+<p>This challenge combines everything you’ve learned: custom hooks, browser APIs, error handling, and AI-assisted development. You’re building quality code that handles edge cases and prevents memory leaks — exactly what experienced developers do.</p>
 <p><a id="essential-terms"></a></p>
 <h2 id="essential-terms">📚 Essential Terms</h2>
 <p><em>Quick reference for all the custom hooks and browser API concepts you just learned:</em></p>
@@ -837,14 +777,14 @@ audioRef.current stores Audio element → future calls reuse same element</code>
 </thead>
 <tbody>
 <tr class="odd">
-<td>🪝 custom hook</td>
-<td>Functions starting with “use” that let you extract and reuse component logic across multiple components.</td>
-<td>Hooks like <code>useAudio</code> let you “write once, use often” instead of copying audio logic across components.</td>
+<td>🪝 hook</td>
+<td>Functions starting with “use” that let you use React features like state and context.</td>
+<td>Hooks like <code>useState</code> are your tools for managing data and behavior in components.</td>
 </tr>
 <tr class="even">
 <td>🔄 DRY (Don’t Repeat Yourself)</td>
 <td>A fundamental programming principle that emphasizes eliminating code duplication through reusable solutions.</td>
-<td>Custom hooks embody DRY by encapsulating complex logic into reusable functions.</td>
+<td>Custom hooks like <code>useAudio</code> let you “write once, use often” instead of copying audio logic across components.</td>
 </tr>
 <tr class="odd">
 <td>🔊 HTMLAudioElement</td>

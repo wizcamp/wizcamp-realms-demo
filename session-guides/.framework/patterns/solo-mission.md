@@ -44,6 +44,11 @@ Solo Missions provide structured independence where students synthesize multiple
 
 [Clear description of the end goal - what the feature does and why it matters]
 
+<img src="https://placehold.co/600x400?text=[Description]" alt="[Descriptive alt text]" style="max-width: 600px; width: 100%;">
+*Figure: [Caption reinforcing what students will build]*
+
+---
+
 ### Phase 1: [Phase Name]
 
 🎯 **Goal:** [What this phase accomplishes]
@@ -59,6 +64,8 @@ Solo Missions provide structured independence where students synthesize multiple
 
 **Test:** [How to verify this phase works]
 
+---
+
 ### Phase 2: [Phase Name]
 
 🎯 **Goal:** [What this phase accomplishes]
@@ -69,6 +76,8 @@ Solo Missions provide structured independence where students synthesize multiple
 2. Task 2 with specific details
 
 **Test:** [How to verify this phase works]
+
+---
 
 ### ✅ Success Review
 
@@ -139,7 +148,9 @@ Solo Missions target higher-order thinking:
 ✅ Break complex features into 3 logical phases  
 ✅ Include verification points for each phase  
 ✅ Keep intro brief and motivational  
-✅ Use emojis for visual hierarchy (🎖️, ✅, 🔍)  
+✅ Use emojis for visual hierarchy (🎖️, 🎯, ✅, 🔍)  
+✅ Add visual placeholder showing completed work in context  
+✅ Use horizontal rules (---) to separate phases  
 
 ### Don'ts
 
@@ -150,19 +161,48 @@ Solo Missions target higher-order thinking:
 ❌ Skip testing guidance  
 ❌ Add unnecessary "What You'll Need" section  
 ❌ Include encouraging callouts (keep it concise)  
+❌ Omit visual placeholder figure  
+
+---
+
+## Visual Placeholder Standards
+
+### Purpose
+Provides students with a visual reference of what their completed work should look like in context.
+
+### Format
+```markdown
+<img src="https://placehold.co/[width]x[height]?text=[Description]" alt="[Descriptive alt text]" style="max-width: 600px; width: 100%;">
+*Figure: [Caption reinforcing what students will build]*
+```
+
+### Guidelines
+- **Dimensions**: 500x350 to 600x400 depending on content
+- **Service**: Use placehold.co for consistency
+- **Description**: Brief text describing the component/feature
+- **Alt text**: Detailed description of what the figure shows
+- **Caption**: Reinforces the learning goal
+- **Placement**: Immediately after "What You're Building" section, before first horizontal rule
+
+### Examples
+```markdown
+<img src="https://placehold.co/600x400?text=GameOver+Screen+with+Score+and+Play+Again+Button" alt="GameOver component showing congratulations message, final score display, and Play Again button" style="max-width: 600px; width: 100%;">
+*Figure: Your completed GameOver screen will display the final score and allow players to restart*
+```
 
 ---
 
 ## Example: GameOver Component
 
-See `examples/solo-mission-example.md` for complete implementation.
+See SESSION-08.md for complete implementation.
 
 **Key features:**
-- 3 logical phases (Foundation, Display, Interaction)
+- 3 logical phases (Foundation, Score Display, Play Again Button)
+- Visual placeholder showing completed component
 - Clear requirements for each phase
-- Specific testing instructions
+- Specific testing instructions using React DevTools
 - Reference guide to similar patterns
-- Encouraging callout about skill development
+- Horizontal rules separating phases
 
 ---
 

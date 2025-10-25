@@ -375,6 +375,9 @@ You've built components with guidance — now it's your turn to create a victory
 
 A final screen that appears when the player completes all zones. It should display a congratulations message, show the final score, and offer a way to play again.
 
+<img src="https://placehold.co/600x400?text=GameOver+Screen+with+Score+and+Play+Again+Button" alt="GameOver component showing congratulations message, final score display, and Play Again button" style="max-width: 600px; width: 100%;">
+*Figure: Your completed GameOver screen will display the final score and allow players to restart*
+
 ---
 
 ### Phase 1: Component Foundation

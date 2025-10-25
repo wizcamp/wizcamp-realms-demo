@@ -236,7 +236,67 @@ const questions = data.results.map(apiQuestion => transformQuestion(apiQuestion)
 - **Exception handling**: Confirm protected sections remain unchanged
 - **Cross-session consistency**: Ensure similar section types use identical naming patterns
 
-### Step 9: Instructional Command Bolding Verification
+### Step 9: Solo Mission Pattern Verification
+
+**Solo Mission Structure Standards:**
+
+All Solo Mission sections must follow this exact pattern:
+
+**Required Components (in order):**
+1. **Section heading**: `## 🎖️ Solo Mission: [Component/Feature Name]`
+2. **Opening statement**: One sentence establishing independence (e.g., "You've built components with guidance — now it's your turn...")
+3. **"What You're Building" subsection**: Clear description of end goal
+4. **Visual placeholder**: Figure showing completed work in context (use placehold.co)
+5. **Horizontal rule**: `---` separator before phases
+6. **Phase structure**: Multiple phases (typically 3) with:
+   - Phase heading: `### Phase X: [Phase Name]`
+   - Goal statement: `🎯 **Goal:** [Clear objective]`
+   - "Your Tasks" subheading with numbered task list
+   - "Test" subheading with specific verification steps
+   - Horizontal rule: `---` separator after each phase
+7. **Success Review**: `### ✅ Success Review` with bulleted checklist
+8. **Reference Guide**: `### 🔍 Reference Guide` with bulleted file references
+
+**Visual Placeholder Standards:**
+- Use placehold.co service: `https://placehold.co/[width]x[height]?text=[Description]`
+- Dimensions: 500x350 to 600x400 depending on content
+- Alt text: Descriptive explanation of what component shows
+- Caption: Reinforces what students will build
+- Format:
+  ```markdown
+  <img src="https://placehold.co/600x400?text=..." alt="..." style="max-width: 600px; width: 100%;">
+  *Figure: [Caption text]*
+  ```
+
+**Phase Structure Standards:**
+- Each phase focuses on one major feature/capability
+- Goal statement clearly defines what phase accomplishes
+- Tasks are specific, actionable steps (not vague instructions)
+- Test section provides concrete verification steps
+- Phases build progressively (foundation → features → integration)
+
+**Success Review Standards:**
+- Bulleted list of functional requirements
+- Each bullet describes observable behavior
+- Covers complete feature set
+- Written in present tense ("should display", "should include")
+
+**Reference Guide Standards:**
+- Bulleted list of relevant files
+- Each bullet: `**[FileName.jsx]** – [What to reference]`
+- Points to similar patterns students have seen
+- Helps students find examples without giving away answers
+
+**Common Issues to Flag:**
+- Missing "What You're Building" section
+- Missing visual placeholder figure
+- Using numbered list instead of phase structure
+- Missing "Test" sections in phases
+- Missing Success Review or Reference Guide
+- Vague task descriptions ("implement functionality" vs specific steps)
+- AI-assisted tasks not clearly marked or structured
+
+### Step 10: Instructional Command Bolding Verification
 
 **Hands-On Sections Subject to Command Bolding Standards:**
 
