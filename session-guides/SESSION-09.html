@@ -491,7 +491,7 @@ overflow-x: hidden !important;
 <p>You’re about to add another dimension to your trivia game — theme music! This guide walks you through creating custom React hooks, working with browser audio APIs, and building reusable audio controls. Ready to bring your game to life with sound? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#custom-hooks">Custom Hooks</a></li>
+<li><a href="#custom-hooks-in-react">Custom Hooks in React</a></li>
 <li><a href="#browser-audio-apis">Browser Audio APIs</a></li>
 <li><a href="#refs-and-useref">Refs and useRef</a></li>
 <li><a href="#building-the-musictoggle-component">Building the MusicToggle Component</a></li>
@@ -505,10 +505,9 @@ overflow-x: hidden !important;
 <p><a id="accessing-your-codespace"></a></p>
 <h2 id="accessing-your-codespace">☁️ Accessing Your Codespace</h2>
 <p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 8.</p>
-<p><a id="custom-hooks"></a></p>
-<h2 id="custom-hooks">🪝 Custom Hooks</h2>
-<p>Before we dive into audio, let’s understand <strong>custom hooks</strong> — one of React’s most powerful patterns for code reuse.</p>
-<p>Custom hooks are functions that start with “use” and let you create reusable pieces of logic. React gives you built-in hooks like <code>useState</code> and <code>useEffect</code>, but you can write your own for logic that’s specific to your app.</p>
+<p><a id="custom-hooks-in-react"></a></p>
+<h2 id="custom-hooks-in-react">🪝 Custom Hooks in React</h2>
+<p>Hooks help you organize React code and avoid duplication. React gives you built-in hooks like <code>useState</code> and <code>useRef</code> for common tasks. You can also write your own custom hooks — functions that start with “use” and combine built-in hooks to package logic you’ll reuse across components.</p>
 <p>You’ve already been using one — <code>useGame()</code> is a custom hook! Here’s how it works:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="co">// Custom hook definition (in src/hooks/useGame.js)</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="im">export</span> <span class="kw">function</span> <span class="at">useGame</span>() <span class="op">{</span></a>
@@ -520,7 +519,7 @@ overflow-x: hidden !important;
 <a class="sourceLine" id="cb1-8" title="8"><span class="kw">function</span> <span class="at">MyComponent</span>() <span class="op">{</span></a>
 <a class="sourceLine" id="cb1-9" title="9">  <span class="kw">const</span> <span class="op">{</span> score <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span>  <span class="co">// Access shared state</span></a>
 <a class="sourceLine" id="cb1-10" title="10"><span class="op">}</span></a></code></pre></div>
-<p>Custom hooks follow <strong>“Don’t Repeat Yourself” (DRY)</strong> — instead of copying audio logic into every component that needs music, you write it once in a reusable hook. Your <code>useAudio</code> hook will follow this same pattern:</p>
+<p>Hooks follow <strong>“Don’t Repeat Yourself” (DRY)</strong> — instead of copying audio logic into every component that needs music, you write it once in a hook and reuse it. Your <code>useAudio</code> hook will follow this pattern:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">const</span> music <span class="op">=</span> <span class="at">useAudio</span>(<span class="st">&#39;/music.mp3&#39;</span>)<span class="op">;</span></a></code></pre></div>
 <p>Now any component can add background music with a single line of code.</p>
 <blockquote>
@@ -783,36 +782,31 @@ audioRef.current stores Audio element → future calls reuse same element</code>
 </thead>
 <tbody>
 <tr class="odd">
-<td>🪝 custom hook</td>
-<td>Functions starting with “use” that let you extract and reuse component logic across multiple components.</td>
-<td>Hooks like <code>useAudio</code> let you “write once, use often” instead of copying audio logic across components.</td>
-</tr>
-<tr class="even">
 <td>🔄 DRY (Don’t Repeat Yourself)</td>
 <td>A fundamental programming principle that emphasizes eliminating code duplication through reusable solutions.</td>
-<td>Custom hooks embody DRY by encapsulating complex logic into reusable functions.</td>
+<td>Custom hooks embody DRY by packaging complex logic into reusable functions.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>🔊 HTMLAudioElement</td>
 <td>Part of the Web API that provides an interface for controlling audio playback, with methods like play(), pause(), and properties like volume and loop.</td>
 <td>Gives you programmatic control over audio files in web applications.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>🔗 ref</td>
 <td>A way to access DOM elements or store values that don’t cause re-renders when changed.</td>
 <td>Perfect for storing audio elements that need to persist but don’t affect UI rendering.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>🎯 useRef</td>
 <td>A React hook that creates a persistent reference to a DOM element or value that doesn’t cause re-renders when it changes.</td>
 <td>Essential for storing audio elements and other browser API objects across component updates.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>🔄 mutable</td>
 <td>Data that can be changed or modified after it’s created, as opposed to immutable data that cannot be changed.</td>
 <td>Refs store mutable values that can be updated without triggering re-renders, perfect for audio objects that change state.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>⏳ lazy initialization</td>
 <td>A pattern where resources are created only when first needed, rather than upfront.</td>
 <td>Avoids unnecessary setup and ensures efficient resource reuse, like creating audio elements only when play() is first called.</td>

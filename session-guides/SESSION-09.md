@@ -4,7 +4,7 @@ You're about to add another dimension to your trivia game — theme music! This 
 
 ## Table of Contents
 
-- [Custom Hooks](#custom-hooks)
+- [Custom Hooks in React](#custom-hooks-in-react)
 - [Browser Audio APIs](#browser-audio-apis)
 - [Refs and useRef](#refs-and-useref)
 - [Building the MusicToggle Component](#building-the-musictoggle-component)
@@ -21,13 +21,11 @@ You're about to add another dimension to your trivia game — theme music! This 
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 8.
 
-<a id="custom-hooks"></a>
+<a id="custom-hooks-in-react"></a>
 
-## 🪝 Custom Hooks
+## 🪝 Custom Hooks in React
 
-Before we dive into audio, let's understand **custom hooks** — one of React's most powerful patterns for code reuse.
-
-Custom hooks are functions that start with "use" and let you create reusable pieces of logic. React gives you built-in hooks like `useState` and `useEffect`, but you can write your own for logic that's specific to your app.
+Hooks help you organize React code and avoid duplication. React gives you built-in hooks like `useState` and `useRef` for common tasks. You can also write your own custom hooks — functions that start with "use" and combine built-in hooks to package logic you'll reuse across components.
 
 You've already been using one — `useGame()` is a custom hook! Here's how it works:
 
@@ -44,7 +42,7 @@ function MyComponent() {
 }
 ```
 
-Custom hooks follow **"Don't Repeat Yourself" (DRY)** — instead of copying audio logic into every component that needs music, you write it once in a reusable hook. Your `useAudio` hook will follow this same pattern:
+Hooks follow **"Don't Repeat Yourself" (DRY)** — instead of copying audio logic into every component that needs music, you write it once in a hook and reuse it. Your `useAudio` hook will follow this pattern:
 
 ```javascript
 const music = useAudio('/music.mp3');
@@ -423,8 +421,7 @@ _Quick reference for all the custom hooks and browser API concepts you just lear
 
 | Term   | Definition | Why it matters |
 |--------|------------|----------------|
-| 🪝 custom hook | Functions starting with "use" that let you extract and reuse component logic across multiple components. | Hooks like `useAudio` let you "write once, use often" instead of copying audio logic across components. |
-| 🔄 DRY (Don't Repeat Yourself) | A fundamental programming principle that emphasizes eliminating code duplication through reusable solutions. | Custom hooks embody DRY by encapsulating complex logic into reusable functions. |
+| 🔄 DRY (Don't Repeat Yourself) | A fundamental programming principle that emphasizes eliminating code duplication through reusable solutions. | Custom hooks embody DRY by packaging complex logic into reusable functions. |
 | 🔊 HTMLAudioElement | Part of the Web API that provides an interface for controlling audio playback, with methods like play(), pause(), and properties like volume and loop. | Gives you programmatic control over audio files in web applications. |
 | 🔗 ref | A way to access DOM elements or store values that don't cause re-renders when changed. | Perfect for storing audio elements that need to persist but don't affect UI rendering. |
 | 🎯 useRef | A React hook that creates a persistent reference to a DOM element or value that doesn't cause re-renders when it changes. | Essential for storing audio elements and other browser API objects across component updates. |
