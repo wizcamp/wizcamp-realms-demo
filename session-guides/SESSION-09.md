@@ -27,29 +27,12 @@ Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Co
 
 Before we dive into audio, let's understand **custom hooks** — one of React's most powerful patterns for code reuse.
 
-Custom hooks are functions that start with "use" and let you extract component logic into reusable functions. Think of them as your own personal React features that you can use across multiple components.
+Custom hooks are functions that start with "use" and let you create reusable pieces of logic. React gives you built-in hooks like `useState` and `useEffect`, but you can write your own for logic that's specific to your app.
 
-| **Built-in Hooks** | **Custom Hooks** |
-|-------------------|------------------|
-| `useState`, `useEffect`, `useRef` | `useGame`, `useAudio` |
-| Provided by React | Created by developers |
-| Basic React features | Complex, reusable logic |
-| Used in every React app | Specific to your app's needs |
-
-Custom hooks embody one of programming's most important principles: **"Don't Repeat Yourself" (DRY)**. Instead of copying and pasting audio logic into every component that needs music, you encapsulate that complexity into a reusable `useAudio` hook. Now, any component can add background music with a single line of code:
+You've already been using one — `useGame()` is a custom hook! Here's how it works:
 
 ```javascript
-const music = useAudio('/music.mp3');
-```
-
-This is the difference between basic and advanced code — experienced developers reduce repetition by creating reusable solutions. Custom hooks let you "write once, use often," making your code cleaner, more maintainable, and easier to scale.
-
-### How Custom Hooks Work
-
-You've already used custom hooks without realizing it — `useGame()` is a custom hook! Here's how it looks under the hood:
-
-```javascript
-// Custom hook definition (in GameContext)
+// Custom hook definition (in src/hooks/useGame.js)
 export function useGame() {
   const context = useContext(GameContext);
   return context;
@@ -61,7 +44,13 @@ function MyComponent() {
 }
 ```
 
-Your `useAudio` hook will follow this same pattern, encapsulating audio logic so any component can add music with one line.
+Custom hooks follow **"Don't Repeat Yourself" (DRY)** — instead of copying audio logic into every component that needs music, you write it once in a reusable hook. Your `useAudio` hook will follow this same pattern:
+
+```javascript
+const music = useAudio('/music.mp3');
+```
+
+Now any component can add background music with a single line of code.
 
 > 🏆 **Bonus Challenge**
 >
@@ -73,7 +62,9 @@ Your `useAudio` hook will follow this same pattern, encapsulating audio logic so
 
 Let's understand the **HTMLAudioElement** — the browser's built-in interface for controlling audio playback.
 
-You might be familiar with HTML audio elements like `<audio src="music.mp3"></audio>` that you write in HTML files. HTMLAudioElement is the JavaScript version of the same thing — it's like a digital music player that you create and control entirely with JavaScript code. Instead of writing HTML tags, you use `new Audio()` to create the player, then control it with methods like `play()` and `pause()`.
+You might be familiar with HTML audio elements like `<audio src="music.mp3"></audio>` that you write in HTML files. HTMLAudioElement is the JavaScript version — it's a music player you create and control with code. Instead of writing HTML tags, you use `new Audio()` to create the player, then control it with methods like `play()` and `pause()`.
+
+Think of it like the play/pause buttons on a music player — but instead of clicking buttons, your code sends commands. You can tell it to play, pause, adjust volume, loop tracks — all through JavaScript.
 
 ### Creating Audio Elements
 
@@ -98,57 +89,51 @@ audio.currentTime = 0;    // Reset to beginning
 audio.muted = true;       // Mute audio
 ```
 
-The HTMLAudioElement gives you programmatic control over audio playback. Your `useAudio` hook will wrap this browser API in a clean React interface, making it easy to add music to any component.
+In the upcoming sections, you'll wrap these audio controls in a custom hook, making it easy to add music to any component in your game.
 
 <a id="refs-and-useref"></a>
 
 ## 🔗 Refs and useRef
 
-Now let's understand **refs** — React's way to "step outside" the component system and work directly with DOM elements or browser APIs.
+You need a place to store your audio player so you can control it—play, pause, adjust volume. If you use state, every interaction with the audio would trigger a re-render, even though nothing on screen needs to change.
 
-Refs are like bookmarks that let you remember information that doesn't affect what's rendered on the page. Unlike state, changing a ref doesn't trigger re-renders.
+The **`useRef`** hook creates a **ref**—a place to store something that stays put between renders. When you update what's in a ref, your component doesn't re-render.
 
-| **State** | **Refs** |
-|-----------|----------|
-| Triggers re-renders when changed | No re-renders when changed |
-| For data that affects UI | For data that doesn't affect UI |
-| `const [value, setValue] = useState()` | `const ref = useRef()` |
-| Access with `value` | Access with `ref.current` |
+### Creating a Ref
 
-### Common useRef Patterns
+The `useRef` hook creates a ref that starts empty (or whatever starting value you give it):
 
-**Storing Mutable Values (Your Audio Use Case):**
+```javascript
+const audioRef = useRef(null);  // Create an empty ref
+```
+
+The ref has a `current` property where you store things:
+
+```javascript
+audioRef.current = new Audio('music.mp3');   // Store the audio player
+audioRef.current.play();                     // Use it later
+```
+
+### Why Refs for Audio?
+
+You need to keep the same audio player around so you can control it—play it, pause it, change the volume. If you created a new audio player on every render, the music would restart constantly. A ref solves this by holding onto the same value—in this case, your audio player—across re-renders.
+
+### The Pattern You'll Use
+
 ```javascript
 function useAudio(src) {
-  const audioRef = useRef(null); // Starts as null, won't trigger re-renders
+  const audioRef = useRef(null);          // Create a place to store audio player
   
   const play = () => {
-    if (!audioRef.current) { // Check if audio element exists
-      audioRef.current = new Audio(src); // Store in .current property
+    if (!audioRef.current) {              // If we haven't created the player yet
+      audioRef.current = new Audio(src);  // Create it and store it
     }
-    audioRef.current.play(); // Access stored element via .current
+    audioRef.current.play();              // Use the stored player
   };
 }
 ```
 
-The ref acts like a bookmark — it remembers where your audio element is so you can find it again later. Create the audio element once, bookmark it in `audioRef.current`, then use that bookmark every time `play()` is called. No re-renders, no recreating the same audio element.
-
-**Accessing DOM Elements:**
-```javascript
-function MyComponent() {
-  const inputRef = useRef(null); // Create ref for DOM element
-  
-  const focusInput = () => {
-    inputRef.current.focus(); // Call DOM method via .current
-  };
-  
-  return <input ref={inputRef} />; // Connect ref to DOM element
-}
-```
-
-The ref creates a direct connection to the actual HTML input element. When you call `inputRef.current.focus()`, you're telling the browser to focus that specific input — just like clicking on it.
-
-Refs are perfect for storing audio elements because the audio object doesn't need to trigger re-renders — it just needs to be remembered between function calls. The `current` property holds the actual value you stored.
+The first time `play()` runs, `audioRef.current` is `null`, so it creates the audio player and stores it. Every time after that, it reuses the same player. This means your music doesn't restart every time the component re-renders—the player persists in memory.
 
 <a id="building-the-musictoggle-component"></a>
 
@@ -176,7 +161,7 @@ Add the MusicToggle component after the CurrentZone function.
 
 ```javascript
 function MusicToggle() {
-  const { music } = useGame();
+  const { music } = useGame();  // Access music controls from shared state
   return (
     <button 
       onClick={music.toggle}
@@ -251,8 +236,9 @@ Add the audio reference inside the `useAudio` function.
 
 ```javascript
 export function useAudio(src) {
-  const audioRef = useRef(null);
+  const audioRef = useRef(null); // Add audio reference
   const [isPlaying, setIsPlaying] = useState(false);
+  
   // ... rest of hook
 }
 ```
@@ -292,10 +278,8 @@ const play = () => {
     audioRef.current.loop = true;
     audioRef.current.volume = 0.5;
   }
-  // [2] Play audio
-  audioRef.current.play();
-  // [3] Update state
-  setIsPlaying(true);
+  audioRef.current.play();  // [2] Play audio
+  setIsPlaying(true);       // [3] Update state
 };
 ```
 
@@ -343,26 +327,26 @@ Use this workflow during your Solo Mission and anytime you're stuck or want to i
 
 ## 🎖️ Solo Mission: Complete useAudio Hook
 
-Now for your independent challenge — complete the `useAudio` hook with pause functionality, error handling, and cleanup using AI assistance.
+You've built audio playback with guidance — now it's your turn to complete the hook with pause controls, error handling, and cleanup using AI assistance.
 
 ### What You're Building
 
-A complete custom audio hook that manages background music playback with play/pause controls, error handling, and proper cleanup. This hook will encapsulate all audio logic, making it reusable across any component that needs music.
+A complete audio hook with pause functionality, error handling for failed playback, and cleanup that prevents memory leaks when components unmount.
 
 ---
 
 ### Phase 1: Pause Functionality
 
-🎯 **Goal:** Add pause controls to stop audio playback and update state
+🎯 **Goal:** Stop audio playback and update state
 
 **Your Task:**
 
-In `src/hooks/useAudio.js`, update the `pause` function to:
+Update the `pause` function in `src/hooks/useAudio.js` to:
 
-- Call `audioRef.current.pause()` method
+- Call `audioRef.current.pause()`
 - Set `isPlaying` to `false`
 
-**Test:** Click the music toggle while audio is playing → music should stop and the icon should switch to the paused state
+**Test:** Click music toggle while audio is playing → music stops, icon changes to paused state
 
 ---
 
@@ -372,13 +356,12 @@ In `src/hooks/useAudio.js`, update the `pause` function to:
 
 **Your Tasks:**
 
-1. With `src/hooks/useAudio.js` open, issue the following prompt to GitHub Copilot:
+1. Open `src/hooks/useAudio.js` and use GitHub Copilot:
    
    > 🤖 **AI Prompt:**
    >
    > `/fix Add error handling to the play function in the useAudio hook so that if the audio fails to play, it catches the error, logs a warning, and updates isPlaying to false`
-2. Review the generated code
-3. Apply the changes if they look correct
+2. Review and apply the generated code
 
 **Test error handling:**
 
@@ -387,11 +370,11 @@ In `src/hooks/useAudio.js`, update the `pause` function to:
    ```javascript
    const music = useAudio(getAssetPath("audio/dramatic-action.mp3"));
    ```
-3. Change the path to `"audio/nonexistent.mp3"` (keep the `getAssetPath()` wrapper)
-4. Click music toggle → check browser console for an error message
-5. Revert the path back to `"audio/dramatic-action.mp3"` after testing
+3. Change path to `"audio/nonexistent.mp3"` (keep the `getAssetPath()` wrapper)
+4. Click music toggle → check browser console for error message
+5. Revert path to `"audio/dramatic-action.mp3"` after testing
 
-**✓ You should see:** Console shows error message, app doesn't crash, and `isPlaying` stays false
+**✓ You should see:** Console shows error, app doesn't crash, and `isPlaying` stays false
 
 <img src="https://placehold.co/500x100?text=Console+Error+Message" alt="Browser console showing error: useAudio.js:28 Audio failed to play: NotSupportedError" style="max-width: 500px; width: 100%;">
 *Figure: Error handling prevents crashes and logs helpful debugging information*
@@ -404,21 +387,14 @@ In `src/hooks/useAudio.js`, update the `pause` function to:
 
 **Your Tasks:**
 
-1. With `src/hooks/useAudio.js` open, issue the following prompt to GitHub Copilot:
+1. Open `src/hooks/useAudio.js` and use GitHub Copilot:
    
    > 🤖 **AI Prompt:**
    >
    > `/fix Add a useEffect cleanup function to the useAudio hook that stops the audio and clears the reference when the component unmounts`
-2. Review the generated `useEffect` code
-3. Apply the changes
+2. Review and apply the generated code
 
-**Verify your implementation:**
-
-Check that your `useAudio` hook includes a `useEffect` with a cleanup function that:
-
-- Pauses the audio if it's playing
-- Clears the `audioRef.current` reference
-- Returns the cleanup function from `useEffect`
+**Verify:** Check that your hook includes a `useEffect` with cleanup that pauses audio and clears the ref
 
 ---
 

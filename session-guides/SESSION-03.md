@@ -4,7 +4,7 @@ You're about to unlock one of React's most powerful features — shared state th
 
 ## Table of Contents
 
-- [State vs Props](#state-vs-props)
+- [State in React](#state-in-react)
 - [Adding Local State for Credits](#adding-local-state-for-credits)
 - [Screen Constants](#screen-constants)
 - [Context and Prop Drilling](#context-and-prop-drilling)
@@ -20,16 +20,65 @@ You're about to unlock one of React's most powerful features — shared state th
 
 Visit [github.com/codespaces](https://github.com/codespaces) to relaunch your Codespace from Session 2.
 
-<a id="state-vs-props"></a>
+<a id="state-in-react"></a>
 
-## 🧠 State vs Props
+## 🧠 State in React
 
-Before we dive into code, let's understand the key difference between **state** and **props** — two fundamental concepts that control how data flows in React apps.
+Before we dive into code, let's understand **state** — one of React's most fundamental concepts that makes your components interactive and dynamic.
 
-### Props vs State: The Key Differences
+**State** is data that can change over time. When state changes, React automatically updates what you see on screen. Think of it like a scoreboard at a game — when the score changes, the display updates to show the new value.
+
+In your trivia game, state tracks things like:
+- Whether the credits modal is visible
+- Which screen the user is on (splash, playing, game over)
+- The player's current score
+- Which questions have been answered
+
+### How React Updates the Screen
+
+When you write a component, you're writing a function that returns JSX — the HTML-like code that describes what should appear on screen. React runs this function to figure out what to display. This is called **rendering**.
+
+```javascript
+function SplashScreen() {
+  return <div>Welcome to the game!</div>;  // React renders this
+}
+```
+
+When state changes, React runs your component function again to get the updated JSX. This is called **re-rendering**. React compares the new JSX with what's currently on screen and updates only what changed.
+
+```text
+User clicks button → State changes → React re-renders component → Screen updates
+```
+
+This automatic updating is what makes React powerful — you change the data, and React handles updating the screen for you.
+
+### Using State with useState
+
+The `useState` **hook** gives your component its own memory. Hooks are special functions that start with "use" and let you tap into React features like state.
+
+Here's how `useState` works:
+
+```javascript
+const [showCredits, setShowCredits] = useState(false);
+```
+
+This line does three things:
+
+1. **Creates state** that starts as `false`
+2. **Gives you the current value** (`showCredits`)
+3. **Gives you a function to update it** (`setShowCredits`)
+
+When you call `setShowCredits(true)`, React:
+1. Updates the state value to `true`
+2. Re-renders your component
+3. Updates the screen to reflect the change
+
+### State vs Props
+
+Now that you understand state, let's compare it to props:
 
 | **Props** | **State** |
-|-----------|-----------|
+|-----------|-----------||
 | Data flows **down** from parent to child | Data lives **inside** a component |
 | **Read-only** — child can't change them | **Changeable** — component can update it |
 | Like function parameters | Like component memory |
@@ -37,9 +86,11 @@ Before we dive into code, let's understand the key difference between **state** 
 
 **Props** are like ingredients you receive to make a recipe — you can't change them, but you use them to create something. **State** is like your kitchen's current condition — you can rearrange, add, or remove things as needed.
 
-> 💡 **State vs Props**
->
-> Understanding this difference is crucial because it determines how data flows through your app and which component is responsible for managing what information. **Props** flow down from parent to child (one-way data flow), while **state** lives inside a component and can be updated by that component.
+### When to Use Local State
+
+Use local state (also called component state) when the data only affects that one component. In the upcoming section, you'll add state to track whether the credits modal is visible. Since only SplashScreen needs to know about the modal, you'll use local state rather than shared state.
+
+This pattern keeps data isolated where it belongs — only the component that needs it manages it. Later, you'll learn about shared state for data that multiple components need to access.
 
 <a id="adding-local-state-for-credits"></a>
 
@@ -116,10 +167,6 @@ Add the modal to your component so it can appear when needed.
 Test the complete flow by clicking the Credits button to open the modal, then closing it.
 
 **✓ You should see:** The credits modal appears! Click outside or the close button to dismiss it.
-
-> 💡 **Giving Components Their Own Memory**
->
-> The `useState` hook gives a component its own memory that persists between renders. Since the credits modal only affects SplashScreen, we use component-level state rather than shared state. This pattern keeps data isolated where it belongs — only the component that needs it manages it.
 
 > 🏆 **Bonus Challenge**
 >

@@ -126,6 +126,12 @@ margin-top: 48px;
 margin-bottom: 16px;
 }
 
+hr {
+border: none;
+border-bottom: 1px solid #d0d7de;
+margin: 24px 0;
+}
+
 h1 + * h2:first-of-type,
 h2:first-of-type {
 margin-top: 24px;
@@ -485,7 +491,7 @@ overflow-x: hidden !important;
 <p>You’re about to unlock one of React’s most powerful features — shared state that controls your entire app! This guide walks you through implementing screen navigation, understanding the difference between local and shared state, and using React’s Context API to manage game flow. Ready to make your buttons actually navigate? Let’s go!</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#state-vs-props">State vs Props</a></li>
+<li><a href="#state-in-react">State in React</a></li>
 <li><a href="#adding-local-state-for-credits">Adding Local State for Credits</a></li>
 <li><a href="#screen-constants">Screen Constants</a></li>
 <li><a href="#context-and-prop-drilling">Context and Prop Drilling</a></li>
@@ -498,94 +504,87 @@ overflow-x: hidden !important;
 <p><a id="accessing-your-codespace"></a></p>
 <h2 id="accessing-your-codespace">☁️ Accessing Your Codespace</h2>
 <p>Visit <a href="https://github.com/codespaces">github.com/codespaces</a> to relaunch your Codespace from Session 2.</p>
-<p><a id="state-vs-props"></a></p>
-<h2 id="state-vs-props">🧠 State vs Props</h2>
-<p>Before we dive into code, let’s understand the key difference between <strong>state</strong> and <strong>props</strong> — two fundamental concepts that control how data flows in React apps.</p>
-<h3 id="props-vs-state-the-key-differences">Props vs State: The Key Differences</h3>
-<table>
-<thead>
-<tr class="header">
-<th><strong>Props</strong></th>
-<th><strong>State</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Data flows <strong>down</strong> from parent to child</td>
-<td>Data lives <strong>inside</strong> a component</td>
-</tr>
-<tr class="even">
-<td><strong>Read-only</strong> — child can’t change them</td>
-<td><strong>Changeable</strong> — component can update it</td>
-</tr>
-<tr class="odd">
-<td>Like function parameters</td>
-<td>Like component memory</td>
-</tr>
-<tr class="even">
-<td>External data</td>
-<td>Internal data</td>
-</tr>
-</tbody>
-</table>
+<p><a id="state-in-react"></a></p>
+<h2 id="state-in-react">🧠 State in React</h2>
+<p>Before we dive into code, let’s understand <strong>state</strong> — one of React’s most fundamental concepts that makes your components interactive and dynamic.</p>
+<p><strong>State</strong> is data that can change over time. When state changes, React automatically updates what you see on screen. Think of it like a scoreboard at a game — when the score changes, the display updates to show the new value.</p>
+<p>In your trivia game, state tracks things like: - Whether the credits modal is visible - Which screen the user is on (splash, playing, game over) - The player’s current score - Which questions have been answered</p>
+<h3 id="how-react-updates-the-screen">How React Updates the Screen</h3>
+<p>When you write a component, you’re writing a function that returns JSX — the HTML-like code that describes what should appear on screen. React runs this function to figure out what to display. This is called <strong>rendering</strong>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">function</span> <span class="at">SplashScreen</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>Welcome to the game<span class="op">!</span>&lt;/div<span class="op">&gt;;</span>  <span class="co">// React renders this</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="op">}</span></a></code></pre></div>
+<p>When state changes, React runs your component function again to get the updated JSX. This is called <strong>re-rendering</strong>. React compares the new JSX with what’s currently on screen and updates only what changed.</p>
+<pre class="text"><code>User clicks button → State changes → React re-renders component → Screen updates</code></pre>
+<p>This automatic updating is what makes React powerful — you change the data, and React handles updating the screen for you.</p>
+<h3 id="using-state-with-usestate">Using State with useState</h3>
+<p>The <code>useState</code> <strong>hook</strong> gives your component its own memory. Hooks are special functions that start with “use” and let you tap into React features like state.</p>
+<p>Here’s how <code>useState</code> works:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a></code></pre></div>
+<p>This line does three things:</p>
+<ol type="1">
+<li><strong>Creates state</strong> that starts as <code>false</code></li>
+<li><strong>Gives you the current value</strong> (<code>showCredits</code>)</li>
+<li><strong>Gives you a function to update it</strong> (<code>setShowCredits</code>)</li>
+</ol>
+<p>When you call <code>setShowCredits(true)</code>, React: 1. Updates the state value to <code>true</code> 2. Re-renders your component 3. Updates the screen to reflect the change</p>
+<h3 id="state-vs-props">State vs Props</h3>
+<p>Now that you understand state, let’s compare it to props:</p>
+<div class="line-block"><strong>Props</strong> | <strong>State</strong> |</div>
+<p>|———–|———–|| | Data flows <strong>down</strong> from parent to child | Data lives <strong>inside</strong> a component | | <strong>Read-only</strong> — child can’t change them | <strong>Changeable</strong> — component can update it | | Like function parameters | Like component memory | | External data | Internal data |</p>
 <p><strong>Props</strong> are like ingredients you receive to make a recipe — you can’t change them, but you use them to create something. <strong>State</strong> is like your kitchen’s current condition — you can rearrange, add, or remove things as needed.</p>
-<blockquote>
-<p>💡 <strong>State vs Props</strong></p>
-<p>Understanding this difference is crucial because it determines how data flows through your app and which component is responsible for managing what information. <strong>Props</strong> flow down from parent to child (one-way data flow), while <strong>state</strong> lives inside a component and can be updated by that component.</p>
-</blockquote>
+<h3 id="when-to-use-local-state">When to Use Local State</h3>
+<p>Use local state (also called component state) when the data only affects that one component. In the upcoming section, you’ll add state to track whether the credits modal is visible. Since only SplashScreen needs to know about the modal, you’ll use local state rather than shared state.</p>
+<p>This pattern keeps data isolated where it belongs — only the component that needs it manages it. Later, you’ll learn about shared state for data that multiple components need to access.</p>
 <p><a id="adding-local-state-for-credits"></a></p>
 <h2 id="adding-local-state-for-credits">🏆 Adding Local State for Credits</h2>
 <p>🎯 <strong>Goal:</strong> Implement local state for the credits modal to see how components can manage their own data.</p>
 <p><strong>File:</strong> <code>src/components/SplashScreen.jsx</code></p>
 <h3 id="step-1-add-imports-to-splashscreen">Step 1: Add imports to SplashScreen</h3>
 <p>Import the tools you’ll need for managing modal visibility.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="co">// Add these two imports</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="im">import</span> <span class="op">{</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="im">import</span> CreditsModal <span class="im">from</span> <span class="st">&quot;./CreditsModal&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co">// Existing imports below</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="im">import</span> GameButton <span class="im">from</span> <span class="st">&quot;./GameButton&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="im">import</span> GameLogo <span class="im">from</span> <span class="st">&quot;./GameLogo&quot;</span><span class="op">;</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// Add these two imports</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="im">import</span> <span class="op">{</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="im">import</span> CreditsModal <span class="im">from</span> <span class="st">&quot;./CreditsModal&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">// Existing imports below</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="im">import</span> GameButton <span class="im">from</span> <span class="st">&quot;./GameButton&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="im">import</span> GameLogo <span class="im">from</span> <span class="st">&quot;./GameLogo&quot;</span><span class="op">;</span></a></code></pre></div>
 <h3 id="step-2-add-showcredits-state">Step 2: Add showCredits state</h3>
 <p>Create a state variable to track whether the modal is visible, starting with <code>false</code> since the modal should be hidden initially.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">SplashScreen</span>() <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="co">// Add this state to track modal visibility</span></a>
-<a class="sourceLine" id="cb2-3" title="3">  <span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb2-4" title="4">  </a>
-<a class="sourceLine" id="cb2-5" title="5">  <span class="co">// ... rest of function ...</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="op">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">SplashScreen</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="co">// Add this state to track modal visibility</span></a>
+<a class="sourceLine" id="cb5-3" title="3">  <span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-4" title="4">  </a>
+<a class="sourceLine" id="cb5-5" title="5">  <span class="co">// ... rest of function ...</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="op">}</span></a></code></pre></div>
 <h3 id="step-3-update-the-credits-button-onclick">Step 3: Update the Credits button onClick</h3>
 <p>Connect the Credits button to your modal visibility state.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-buttons&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb3-2" title="2">  <span class="op">&lt;</span>GameButton</a>
-<a class="sourceLine" id="cb3-3" title="3">    text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
-<a class="sourceLine" id="cb3-4" title="4">    onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Start Game!&#39;</span>)<span class="op">}</span></a>
-<a class="sourceLine" id="cb3-5" title="5">    variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
-<a class="sourceLine" id="cb3-6" title="6">  /&gt;</a>
-<a class="sourceLine" id="cb3-7" title="7">  <span class="op">&lt;</span>GameButton</a>
-<a class="sourceLine" id="cb3-8" title="8">    text<span class="op">=</span><span class="st">&quot;Credits&quot;</span></a>
-<a class="sourceLine" id="cb3-9" title="9">    onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">setShowCredits</span>(<span class="kw">true</span>)<span class="op">}</span></a>
-<a class="sourceLine" id="cb3-10" title="10">    variant<span class="op">=</span><span class="st">&quot;secondary&quot;</span></a>
-<a class="sourceLine" id="cb3-11" title="11">  /&gt;</a>
-<a class="sourceLine" id="cb3-12" title="12">  <span class="op">{</span><span class="co">/* ↑ Update onClick to set state */</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb3-13" title="13">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-buttons&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="op">&lt;</span>GameButton</a>
+<a class="sourceLine" id="cb6-3" title="3">    text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
+<a class="sourceLine" id="cb6-4" title="4">    onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Start Game!&#39;</span>)<span class="op">}</span></a>
+<a class="sourceLine" id="cb6-5" title="5">    variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
+<a class="sourceLine" id="cb6-6" title="6">  /&gt;</a>
+<a class="sourceLine" id="cb6-7" title="7">  <span class="op">&lt;</span>GameButton</a>
+<a class="sourceLine" id="cb6-8" title="8">    text<span class="op">=</span><span class="st">&quot;Credits&quot;</span></a>
+<a class="sourceLine" id="cb6-9" title="9">    onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">setShowCredits</span>(<span class="kw">true</span>)<span class="op">}</span></a>
+<a class="sourceLine" id="cb6-10" title="10">    variant<span class="op">=</span><span class="st">&quot;secondary&quot;</span></a>
+<a class="sourceLine" id="cb6-11" title="11">  /&gt;</a>
+<a class="sourceLine" id="cb6-12" title="12">  <span class="op">{</span><span class="co">/* ↑ Update onClick to set state */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb6-13" title="13">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
 <h3 id="step-4-add-the-modal-to-jsx">Step 4: Add the modal to JSX</h3>
 <p>Add the modal to your component so it can appear when needed.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-screen&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-2" title="2">  <span class="op">&lt;</span>GameLogo /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-3" title="3">  <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-buttons&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-4" title="4">    <span class="op">{</span><span class="co">/* ... existing buttons ... */</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb4-5" title="5">  &lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7">  <span class="op">{</span>showCredits <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>CreditsModal onClose<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">setShowCredits</span>(<span class="kw">false</span>)<span class="op">}</span> /&gt;<span class="op">}</span></a>
-<a class="sourceLine" id="cb4-8" title="8">  <span class="op">{</span><span class="co">/* ↑ Add this line: show modal when showCredits is true */</span><span class="op">}</span></a>
-<a class="sourceLine" id="cb4-9" title="9">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-screen&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="op">&lt;</span>GameLogo /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-3" title="3">  <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;splash-buttons&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-4" title="4">    <span class="op">{</span><span class="co">/* ... existing buttons ... */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-5" title="5">  &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb7-6" title="6"></a>
+<a class="sourceLine" id="cb7-7" title="7">  <span class="op">{</span>showCredits <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>CreditsModal onClose<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">setShowCredits</span>(<span class="kw">false</span>)<span class="op">}</span> /&gt;<span class="op">}</span></a>
+<a class="sourceLine" id="cb7-8" title="8">  <span class="op">{</span><span class="co">/* ↑ Add this line: show modal when showCredits is true */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-9" title="9">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
 <h3 id="step-5-test-the-modal">Step 5: Test the modal</h3>
 <p>Test the complete flow by clicking the Credits button to open the modal, then closing it.</p>
 <p><strong>✓ You should see:</strong> The credits modal appears! Click outside or the close button to dismiss it.</p>
-<blockquote>
-<p>💡 <strong>Giving Components Their Own Memory</strong></p>
-<p>The <code>useState</code> hook gives a component its own memory that persists between renders. Since the credits modal only affects SplashScreen, we use component-level state rather than shared state. This pattern keeps data isolated where it belongs — only the component that needs it manages it.</p>
-</blockquote>
 <blockquote>
 <p>🏆 <strong>Bonus Challenge</strong></p>
 <p>Use React DevTools to inspect the SplashScreen component and watch the <code>showCredits</code> state change as you interact with the Credits button.</p>
@@ -595,21 +594,21 @@ overflow-x: hidden !important;
 <p>Before implementing navigation, let’s understand how <strong>constants</strong> organize your game’s screens and prevent errors.</p>
 <p><strong>File:</strong> <code>src/constants/screens.js</code></p>
 <p>Here’s the SCREENS object that defines your game’s navigation states:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="im">export</span> <span class="kw">const</span> SCREENS <span class="op">=</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb5-2" title="2">  <span class="dt">SPLASH</span><span class="op">:</span> <span class="st">&quot;splash&quot;</span><span class="op">,</span>              <span class="co">// ← Initial screen users see</span></a>
-<a class="sourceLine" id="cb5-3" title="3">  <span class="dt">PLAYING</span><span class="op">:</span> <span class="st">&quot;playing&quot;</span><span class="op">,</span>            <span class="co">// ← Active gameplay screen</span></a>
-<a class="sourceLine" id="cb5-4" title="4">  <span class="dt">GAME_OVER</span><span class="op">:</span> <span class="st">&quot;gameover&quot;</span><span class="op">,</span>         <span class="co">// ← End screen after completing all zones</span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="op">};</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="im">export</span> <span class="kw">const</span> SCREENS <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="dt">SPLASH</span><span class="op">:</span> <span class="st">&quot;splash&quot;</span><span class="op">,</span>              <span class="co">// ← Initial screen users see</span></a>
+<a class="sourceLine" id="cb8-3" title="3">  <span class="dt">PLAYING</span><span class="op">:</span> <span class="st">&quot;playing&quot;</span><span class="op">,</span>            <span class="co">// ← Active gameplay screen</span></a>
+<a class="sourceLine" id="cb8-4" title="4">  <span class="dt">GAME_OVER</span><span class="op">:</span> <span class="st">&quot;gameover&quot;</span><span class="op">,</span>         <span class="co">// ← End screen after completing all zones</span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="op">};</span></a></code></pre></div>
 <h3 id="how-constants-work-in-your-game">How Constants Work in Your Game</h3>
 <p><strong>Constants</strong> are named values that stay the same throughout your app. Instead of typing the string <code>&quot;splash&quot;</code> every time you need to reference the splash screen, you use <code>SCREENS.SPLASH</code>.</p>
 <p><strong>When you write:</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="cf">if</span> (screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb6-2" title="2">  <span class="cf">return</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="op">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="cf">if</span> (screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="cf">return</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="op">}</span></a></code></pre></div>
 <p><strong>JavaScript sees:</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="cf">if</span> (screen <span class="op">===</span> <span class="st">&quot;splash&quot;</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb7-2" title="2">  <span class="cf">return</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="op">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="cf">if</span> (screen <span class="op">===</span> <span class="st">&quot;splash&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="cf">return</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="op">}</span></a></code></pre></div>
 <p>The constant <code>SCREENS.SPLASH</code> resolves to the string <code>&quot;splash&quot;</code>. This means you get autocomplete in your editor, protection from typos, and the ability to change the value in one place if needed.</p>
 <p><strong>In your game, you’ll use these constants to:</strong></p>
 <ul>
@@ -649,32 +648,32 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <p><strong>File:</strong> <code>src/App.jsx</code></p>
 <h3 id="step-1-add-imports-to-app">Step 1: Add imports to App</h3>
 <p>Import the tools you’ll need for screen navigation and the game map.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="co">// Add these three imports</span></a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./hooks/useGame&#39;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb10-3" title="3"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;./constants/screens&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="im">import</span> GameMap <span class="im">from</span> <span class="st">&quot;./components/GameMap&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="co">// Existing import below</span></a>
-<a class="sourceLine" id="cb10-6" title="6"><span class="im">import</span> SplashScreen <span class="im">from</span> <span class="st">&quot;./components/SplashScreen&quot;</span><span class="op">;</span></a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="co">// Add these three imports</span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./hooks/useGame&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;./constants/screens&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="im">import</span> GameMap <span class="im">from</span> <span class="st">&quot;./components/GameMap&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="co">// Existing import below</span></a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="im">import</span> SplashScreen <span class="im">from</span> <span class="st">&quot;./components/SplashScreen&quot;</span><span class="op">;</span></a></code></pre></div>
 <h3 id="step-2-access-screen-from-usegame">Step 2: Access screen from useGame</h3>
 <p>Get the current screen value from your game’s shared state.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">App</span>() <span class="op">{</span></a>
-<a class="sourceLine" id="cb11-2" title="2">  <span class="co">// Access shared screen state from Context</span></a>
-<a class="sourceLine" id="cb11-3" title="3">  <span class="kw">const</span> <span class="op">{</span> screen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb11-4" title="4">  </a>
-<a class="sourceLine" id="cb11-5" title="5">  <span class="co">// ... rest of function ...</span></a>
-<a class="sourceLine" id="cb11-6" title="6"><span class="op">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">App</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-2" title="2">  <span class="co">// Access shared screen state from Context</span></a>
+<a class="sourceLine" id="cb14-3" title="3">  <span class="kw">const</span> <span class="op">{</span> screen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-4" title="4">  </a>
+<a class="sourceLine" id="cb14-5" title="5">  <span class="co">// ... rest of function ...</span></a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="op">}</span></a></code></pre></div>
 <h3 id="step-3-add-conditional-rendering">Step 3: Add conditional rendering</h3>
 <p>Set up your app to show different screens based on the current game state.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="co">// Before:</span></a>
-<a class="sourceLine" id="cb12-2" title="2"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb12-3" title="3">  <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb12-4" title="4">&lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb12-5" title="5"></a>
-<a class="sourceLine" id="cb12-6" title="6"><span class="co">// After:</span></a>
-<a class="sourceLine" id="cb12-7" title="7"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb12-8" title="8">  <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;}</span></a>
-<a class="sourceLine" id="cb12-9" title="9">  <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>GameMap /<span class="op">&gt;}</span></a>
-<a class="sourceLine" id="cb12-10" title="10">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="co">// Before:</span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb15-3" title="3">  <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb15-4" title="4">&lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb15-5" title="5"></a>
+<a class="sourceLine" id="cb15-6" title="6"><span class="co">// After:</span></a>
+<a class="sourceLine" id="cb15-7" title="7"><span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;app-container&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb15-8" title="8">  <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">SPLASH</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>SplashScreen /<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb15-9" title="9">  <span class="op">{</span>screen <span class="op">===</span> <span class="va">SCREENS</span>.<span class="at">PLAYING</span> <span class="op">&amp;&amp;</span> <span class="op">&lt;</span>GameMap /<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb15-10" title="10">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
 <h3 id="step-4-test-the-setup">Step 4: Test the setup</h3>
 <p><strong>Run</strong> <code>npm run dev</code> if not already running.</p>
 <p><strong>✓ You should see:</strong> Your splash screen still appears normally. The navigation is ready, but we haven’t wired up the button yet!</p>
@@ -713,50 +712,50 @@ GameButton (uses useGame hook to get screen)</code></pre>
 <p><strong>File:</strong> <code>src/components/SplashScreen.jsx</code></p>
 <h3 id="step-1-add-imports-to-splashscreen-1">Step 1: Add imports to SplashScreen</h3>
 <p>Import the tools you’ll need to navigate to the game screen.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="co">// Add these two imports</span></a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/screens&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../hooks/useGame&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb13-4" title="4"><span class="co">// Existing imports below</span></a>
-<a class="sourceLine" id="cb13-5" title="5"><span class="im">import</span> <span class="op">{</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb13-6" title="6"><span class="im">import</span> CreditsModal <span class="im">from</span> <span class="st">&quot;./CreditsModal&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb13-7" title="7"><span class="im">import</span> GameButton <span class="im">from</span> <span class="st">&quot;./GameButton&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb13-8" title="8"><span class="im">import</span> GameLogo <span class="im">from</span> <span class="st">&quot;./GameLogo&quot;</span><span class="op">;</span></a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1"><span class="co">// Add these two imports</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="im">import</span> <span class="op">{</span> SCREENS <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../constants/screens&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="im">import</span> <span class="op">{</span> useGame <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;../hooks/useGame&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="co">// Existing imports below</span></a>
+<a class="sourceLine" id="cb16-5" title="5"><span class="im">import</span> <span class="op">{</span> useState <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb16-6" title="6"><span class="im">import</span> CreditsModal <span class="im">from</span> <span class="st">&quot;./CreditsModal&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb16-7" title="7"><span class="im">import</span> GameButton <span class="im">from</span> <span class="st">&quot;./GameButton&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb16-8" title="8"><span class="im">import</span> GameLogo <span class="im">from</span> <span class="st">&quot;./GameLogo&quot;</span><span class="op">;</span></a></code></pre></div>
 <h3 id="step-2-access-setscreen-from-usegame">Step 2: Access setScreen from useGame</h3>
 <p>Add the <code>setScreen</code> function from the <code>useGame</code> hook.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">SplashScreen</span>() <span class="op">{</span></a>
-<a class="sourceLine" id="cb14-2" title="2">  <span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb14-3" title="3">  <span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span>  <span class="co">// Add this line</span></a>
-<a class="sourceLine" id="cb14-4" title="4">  </a>
-<a class="sourceLine" id="cb14-5" title="5">  <span class="co">// ... rest of function ...</span></a>
-<a class="sourceLine" id="cb14-6" title="6"><span class="op">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb17-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">SplashScreen</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb17-2" title="2">  <span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb17-3" title="3">  <span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span>  <span class="co">// Add this line</span></a>
+<a class="sourceLine" id="cb17-4" title="4">  </a>
+<a class="sourceLine" id="cb17-5" title="5">  <span class="co">// ... rest of function ...</span></a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="op">}</span></a></code></pre></div>
 <h3 id="step-3-create-the-start-game-function">Step 3: Create the start game function</h3>
 <p>Define a <code>startGame</code> function that changes the screen state to PLAYING, triggering navigation to GameMap.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">SplashScreen</span>() <span class="op">{</span></a>
-<a class="sourceLine" id="cb15-2" title="2">  <span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb15-3" title="3">  <span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb15-4" title="4">  </a>
-<a class="sourceLine" id="cb15-5" title="5">  <span class="co">// Add this function to handle game start</span></a>
-<a class="sourceLine" id="cb15-6" title="6">  <span class="kw">const</span> startGame <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb15-7" title="7">    <span class="at">setScreen</span>(<span class="va">SCREENS</span>.<span class="at">PLAYING</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb15-8" title="8">  <span class="op">};</span></a>
-<a class="sourceLine" id="cb15-9" title="9">  </a>
-<a class="sourceLine" id="cb15-10" title="10">  <span class="co">// ... rest of function ...</span></a>
-<a class="sourceLine" id="cb15-11" title="11"><span class="op">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb18-1" title="1"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">SplashScreen</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb18-2" title="2">  <span class="kw">const</span> [showCredits<span class="op">,</span> setShowCredits] <span class="op">=</span> <span class="at">useState</span>(<span class="kw">false</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb18-3" title="3">  <span class="kw">const</span> <span class="op">{</span> setScreen <span class="op">}</span> <span class="op">=</span> <span class="at">useGame</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb18-4" title="4">  </a>
+<a class="sourceLine" id="cb18-5" title="5">  <span class="co">// Add this function to handle game start</span></a>
+<a class="sourceLine" id="cb18-6" title="6">  <span class="kw">const</span> startGame <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb18-7" title="7">    <span class="at">setScreen</span>(<span class="va">SCREENS</span>.<span class="at">PLAYING</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb18-8" title="8">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb18-9" title="9">  </a>
+<a class="sourceLine" id="cb18-10" title="10">  <span class="co">// ... rest of function ...</span></a>
+<a class="sourceLine" id="cb18-11" title="11"><span class="op">}</span></a></code></pre></div>
 <h3 id="step-4-update-the-start-adventure-button">Step 4: Update the Start Adventure button</h3>
 <p>Connect the button to your start game function by replacing the alert with the actual navigation handler.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1"><span class="co">// Before:</span></a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="op">&lt;</span>GameButton</a>
-<a class="sourceLine" id="cb16-3" title="3">  text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
-<a class="sourceLine" id="cb16-4" title="4">  onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Start Game!&#39;</span>)<span class="op">}</span></a>
-<a class="sourceLine" id="cb16-5" title="5">  variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
-<a class="sourceLine" id="cb16-6" title="6">/&gt;</a>
-<a class="sourceLine" id="cb16-7" title="7"></a>
-<a class="sourceLine" id="cb16-8" title="8"><span class="co">// After:</span></a>
-<a class="sourceLine" id="cb16-9" title="9"><span class="op">&lt;</span>GameButton</a>
-<a class="sourceLine" id="cb16-10" title="10">  text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
-<a class="sourceLine" id="cb16-11" title="11">  onClick<span class="op">={</span>startGame<span class="op">}</span></a>
-<a class="sourceLine" id="cb16-12" title="12">  variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
-<a class="sourceLine" id="cb16-13" title="13">/&gt;</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb19-1" title="1"><span class="co">// Before:</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="op">&lt;</span>GameButton</a>
+<a class="sourceLine" id="cb19-3" title="3">  text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
+<a class="sourceLine" id="cb19-4" title="4">  onClick<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="at">alert</span>(<span class="st">&#39;Start Game!&#39;</span>)<span class="op">}</span></a>
+<a class="sourceLine" id="cb19-5" title="5">  variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
+<a class="sourceLine" id="cb19-6" title="6">/&gt;</a>
+<a class="sourceLine" id="cb19-7" title="7"></a>
+<a class="sourceLine" id="cb19-8" title="8"><span class="co">// After:</span></a>
+<a class="sourceLine" id="cb19-9" title="9"><span class="op">&lt;</span>GameButton</a>
+<a class="sourceLine" id="cb19-10" title="10">  text<span class="op">=</span><span class="st">&quot;Start Adventure&quot;</span></a>
+<a class="sourceLine" id="cb19-11" title="11">  onClick<span class="op">={</span>startGame<span class="op">}</span></a>
+<a class="sourceLine" id="cb19-12" title="12">  variant<span class="op">=</span><span class="st">&quot;primary&quot;</span></a>
+<a class="sourceLine" id="cb19-13" title="13">/&gt;</a></code></pre></div>
 <h3 id="step-5-test-the-navigation">Step 5: Test the navigation</h3>
 <p><strong>Click</strong> the “Start Adventure” button on your splash screen.</p>
 <p><strong>✓ You should see:</strong> The screen changes to GameMap! Your button now controls the entire app’s navigation through shared state.</p>
