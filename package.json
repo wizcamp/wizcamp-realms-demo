@@ -1,12 +1,12 @@
 {
-  "name": "fullstack-explorer-trivia",
+  "name": "trivia-quest-starter",
   "private": true,
   "version": "1.0.0",
-  "description": "Fullstack Explorer - Trivia Game Template",
+  "description": "Trivia Quest - React Trivia Game Template",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/fullstack-explorer-demo/",
+    "build": "vite build --base=/trivia-quest/",
     "preview": "vite preview",
     "format": "eslint --config .eslintrc.format.json --fix src/**/*.{js,jsx} && prettier --write .",
     "format:check": "prettier --check ."

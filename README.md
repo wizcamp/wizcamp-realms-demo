@@ -1,6 +1,6 @@
-# Fullstack Explorer: Trivia Game Edition
+# Trivia Quest Starter
 
-Welcome to your React development journey! You'll be building an interactive trivia game over 12 sessions using modern web development tools and techniques.
+Welcome to your React development journey! You'll be building an interactive trivia game using modern web development tools and techniques.
 
 ## 🎯 For Students
 
@@ -43,7 +43,7 @@ npm run format:check # Check code formatting
 └── .github/workflows/ # GitHub Actions deployment
 ```
 
-## 📚 Learning Journey - 12 Sessions
+## 📚 Learning Journey
 
 ### Session 1: Welcome to React Development
 
@@ -222,11 +222,11 @@ By the end of this course, you'll have:
 ## 🚀 Deployment
 
 Your game automatically deploys to GitHub Pages at:
-`https://USERNAME.github.io/wizcamp-realms-demo/`
+`https://USERNAME.github.io/trivia-quest/`
 
 ---
 
-**Built for Wizcamp's Fullstack Explorer Program**  
-Template Version 1.0.0 | 2025
+**Trivia Quest Starter Template**  
+Version 1.0.0 | 2025
 
 Ready to start your React journey? Let's build something amazing! 🚀

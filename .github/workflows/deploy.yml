@@ -19,7 +19,7 @@ concurrency:
 jobs:
   build-and-deploy:
     # Only run if this is NOT the template repository
-    if: github.repository != 'wizcamp/wizcamp-realms-demo'
+    if: github.repository != 'wizcamp/trivia-quest-starter'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

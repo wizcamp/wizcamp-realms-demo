@@ -242,7 +242,7 @@ export default function StartHere() {
               </g>
             </svg>
           </div>
-          <h1 className="start-here-title">Fullstack Explorer</h1>
+          <h1 className="start-here-title">Trivia Quest</h1>
           <p className="start-here-subtitle">
             Your journey into React begins now!
           </p>
