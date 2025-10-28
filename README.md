@@ -31,13 +31,13 @@ npm run format:check # Check code formatting
 ```
 ├── src/
 │   ├── components/     # React components (GameLogo, SplashScreen, etc.)
-│   ├── constants/      # Game constants (screens, messages)
+│   ├── constants/      # Game constants (screens)
 │   ├── context/        # Game state management (GameContext)
 │   ├── data/          # Game configuration (zones.js)
 │   ├── hooks/         # Custom React hooks (useGame, useAudio)
-│   ├── services/      # API integration (api.js)
-│   └── styles/        # CSS stylesheets
-├── session-guides/   # Detailed guides for each session
+│   ├── services/      # API integration (trivia.js)
+│   ├── styles/        # CSS stylesheets
+│   └── utils/         # Utility functions (assets.js)
 ├── public/           # Static assets (images, audio)
 ├── .devcontainer/    # Codespaces configuration
 └── .github/workflows/ # GitHub Actions deployment
@@ -194,11 +194,10 @@ npm run format:check # Check code formatting
 
 ### Getting Help
 
-- **Check session-guides/** folder for detailed step-by-step instructions
 - Read TODO comments in each file for guidance
 - Use console.log() for debugging
-- Ask questions during sessions
 - Experiment and break things (that's how you learn!)
+- Ask your instructor questions
 
 ## 🎯 Success Metrics
 
